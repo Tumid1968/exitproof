@@ -42,5 +42,5 @@
 
 ## Intraday history and newcomer view (10 Oct, tags pre-intraday, pre-novice)
 - History on every round: k = 13, 3, 0, 0, 0, 0 of 62 (daily sample 6, 1, 0, 0, 0, 0); worst window −4.75 % (Jun 2022); 1-day p95/p99 0.15 %/0.60 %, 30-day 2.83 %/4.54 %.
-- Newcomer view: one question + Safe/Careful/Risky, three steps, "?" on terms, glossary page, scaled example, verdict in two lines, expert mode closed by default.
+- Newcomer view: one question + Easy/Tight/Hard exit (about leaving, not advice), three steps, "?" on terms, glossary page, scaled example, verdict in two lines, expert mode closed by default.
 - Tests: unit 17/17, e2e 90 (89 passed, 1 opt-in skipped), fork 9/9.

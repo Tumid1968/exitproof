@@ -122,7 +122,8 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
         <div className="herobody">
           <h1>Can I get my money back out of this <Term k="vault">vault</Term> if something goes wrong?</h1>
           {refine?.answer && report
-            ? <p className={`answer w-${refine.answer.word.toLowerCase()}`}><span className="word">{refine.answer.word}</span> <span className="answertext">{answerSentence(refine.answer)}</span></p>
+            ? <><p className={`answer w-${refine.answer.level}`}><span className="word">{refine.answer.word}</span> <span className="answertext">{answerSentence(refine.answer)}</span></p>
+              <p className="answernote">This is about how easily you can leave, not whether you should. The advice is below.</p></>
             : <p className="answer">{err ? "No result for this pool: pick another one below." : "Loading…"}</p>}
           {report && <p className="answerfor">For the largest deposit in {report.target.name}, measured on a copy of Ethereum frozen on 9 Oct 2026. <InfoTip label="How we pick the word" text={refine?.answer?.rule ?? "not measured"} /></p>}
           <button className="pill primary big" onClick={seeWhy}>See why</button>

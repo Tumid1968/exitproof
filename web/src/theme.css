@@ -251,7 +251,9 @@ main.app { padding-top: 76px; }
 .hero h1 .term .qbtn { vertical-align: middle; }
 .answer { font-size: clamp(1.1rem, 2.4vw, 1.4rem); font-weight: 300; color: #eef1f4; max-width: 34em; margin: 0 auto 10px; line-height: 1.45; }
 .answer .word { display: inline-block; font-weight: 600; border-radius: 999px; padding: 2px 14px; margin-right: 6px; color: #06121a; }
-.answer.w-safe .word { background: #5ee08f; } .answer.w-careful .word { background: #f0c05a; } .answer.w-risky .word { background: #ff8a8a; }
+.answer.w-easy .word { background: #5ee08f; } .answer.w-tight .word { background: #f0c05a; } .answer.w-hard .word { background: #ff8a8a; }
+.answer .word { white-space: nowrap; }
+.answernote { font-size: 16px; color: #d6dce5; margin: 0 auto 12px; max-width: 34em; }
 .answerfor { font-size: 15px; color: #b4bdca; margin: 0 0 26px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px; }
 .infolabel { text-decoration: underline; text-underline-offset: 3px; margin-right: 4px; color: inherit; }
 .infotip .tagbtn { color: inherit; font-size: inherit; }

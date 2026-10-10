@@ -108,12 +108,13 @@ test("historical reference file: sha256 matches and counts are k of N", async ()
 });
 
 test("one-word answer: limits stated, applied to the worst executed case", async () => {
-  const { answerWord, ANSWER_LIMITS } = await import("../src/refine/refine.ts");
+  const { answerWord, answerLevel, ANSWER_LIMITS } = await import("../src/refine/refine.ts");
   assert.deepEqual(ANSWER_LIMITS, { safe: 0.9, careful: 0.5 });
-  assert.equal(answerWord(true, 1), "Safe");
-  assert.equal(answerWord(true, 0.9), "Safe");
-  assert.equal(answerWord(true, 0.899), "Careful");
-  assert.equal(answerWord(true, 0.5), "Careful");
-  assert.equal(answerWord(true, 0.399), "Risky");
-  assert.equal(answerWord(false, 1), "Risky");
+  assert.equal(answerWord(true, 1), "Easy exit");
+  assert.equal(answerWord(true, 0.9), "Easy exit");
+  assert.equal(answerWord(true, 0.899), "Tight exit");
+  assert.equal(answerWord(true, 0.5), "Tight exit");
+  assert.equal(answerWord(true, 0.399), "Hard exit");
+  assert.equal(answerWord(false, 1), "Hard exit");
+  assert.deepEqual([answerLevel(true, 1), answerLevel(true, 0.6), answerLevel(false, 1)], ["easy", "tight", "hard"]);
 });

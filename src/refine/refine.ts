@@ -41,8 +41,12 @@ export const REGIMES = { pegged: 0.9, volatile: 0.6 } as const; // price factor:
 const WATCH_UTILIZATION = 0.9;
 /** limits of the one-word answer (share of the largest deposit that comes out in the worst executed case) */
 export const ANSWER_LIMITS = { safe: 0.9, careful: 0.5 } as const;
+/** colour level of the word (same thresholds) */
+export function answerLevel(aloneFull: boolean, worstShare: number) {
+  return ({ "Easy exit": "easy", "Tight exit": "tight", "Hard exit": "hard" } as const)[answerWord(aloneFull, worstShare)];
+}
 export function answerWord(aloneFull: boolean, worstShare: number) {
-  return !aloneFull || worstShare < ANSWER_LIMITS.careful ? "Risky" : worstShare < ANSWER_LIMITS.safe ? "Careful" : "Safe";
+  return !aloneFull || worstShare < ANSWER_LIMITS.careful ? "Hard exit" : worstShare < ANSWER_LIMITS.safe ? "Tight exit" : "Easy exit";
 }
 const round6 = (x: number) => Math.round(x * 1e6) / 1e6;
 
@@ -126,7 +130,8 @@ export function buildRefine(vault: Address) {
     word: answerWord(!!alone.fullExitOk, worstShare),
     aloneFull: !!alone.fullExitOk, aloneShare, worstShare,
     worstRun: { id: worstRun.id, otherPool: worstRun.others.some((o: any) => o.vault.toLowerCase() !== vault.toLowerCase()), others: worstRun.others.length },
-    rule: `Safe: at least ${ANSWER_LIMITS.safe * 100} % comes out even in the worst executed case; Careful: ${ANSWER_LIMITS.careful * 100}–${ANSWER_LIMITS.safe * 100} %; Risky: below ${ANSWER_LIMITS.careful * 100} %, or not everything can come out even alone. These limits are a choice, for the largest deposit in the pool.`,
+    level: answerLevel(!!alone.fullExitOk, worstShare),
+    rule: `Easy exit: at least ${ANSWER_LIMITS.safe * 100} % of the largest deposit gets out even in the worst executed case; Tight exit: ${ANSWER_LIMITS.careful * 100}–${ANSWER_LIMITS.safe * 100} %; Hard exit: below ${ANSWER_LIMITS.careful * 100} %, or not everything can get out even alone. It describes how easily you can leave, not whether you should. These limits are a choice.`,
   };
 
   return {

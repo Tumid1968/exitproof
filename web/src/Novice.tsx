@@ -74,14 +74,13 @@ const per1000 = (x: string | bigint, total: string | bigint) => { const t = BigI
 const n0 = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 0 });
 const n2 = (x: number) => x.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-/** The hero's one-sentence answer (no technical word). */
+/** The hero's one-sentence answer, about the exit only (no technical word, no advice). */
 export function answerSentence(a: any) {
   if (!a) return null;
   const worst = Math.round(a.worstShare * 100);
-  const who = a.worstRun.otherPool ? "the biggest depositors (here and in another pool that lends to the same borrowers)" : "the biggest depositors";
-  if (!a.aloneFull) return `Not all of it right now: even if nobody leaves before you, only about ${Math.round(a.aloneShare * 100)} % of a deposit this size can come out; the rest waits until borrowers repay.`;
-  if (a.worstShare >= 0.999) return "Yes: even if the biggest depositors leave before you, all of it can come out.";
-  return `Today, yes, all of it. But if ${who} leave first, only about ${worst} % of a large deposit could come out at once; the rest would have to wait.`;
+  if (!a.aloneFull) return `Even with nobody leaving before you, only about ${Math.round(a.aloneShare * 100)} % of this position could get out now. If many people leave at once, about ${worst} % could get out; the rest waits until borrowers repay.`;
+  if (a.worstShare >= 0.999) return "If many people leave at once, all of this position could still get out.";
+  return `If many people leave at once, about ${worst} % of this position could get out right away; the rest would have to wait. With nobody leaving before you, all of it can get out today.`;
 }
 
 /** Who leaves first, in plain words (from the executed run's labels). */

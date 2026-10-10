@@ -199,8 +199,12 @@ for (const tg of targets) {
         const rf = readJson(`results/refine/${STEAKHOUSE}.json`);
         assert.equal(norm(await visibleText(page, ".hero h1")), "Can I get my money back out of this vault if something goes wrong?");
         assert.equal(await page.locator(".answer .word").innerText(), rf.answer.word);
-        assert.match(await page.locator(".answer").getAttribute("class") ?? "", new RegExp(`w-${rf.answer.word.toLowerCase()}`));
-        assert.ok(norm(await page.locator(".answertext").innerText()).includes(`about ${Math.round(rf.answer.worstShare * 100)} %`));
+        assert.ok(["Easy exit", "Tight exit", "Hard exit"].includes(rf.answer.word));
+        assert.match(await page.locator(".answer").getAttribute("class") ?? "", new RegExp(`w-${rf.answer.level}`));
+        assert.ok(norm(await page.locator(".answertext").innerText()).includes(`If many people leave at once, about ${Math.round(rf.answer.worstShare * 100)} % of this position could get out`));
+        assert.equal(norm(await page.locator(".answernote").innerText()), "This is about how easily you can leave, not whether you should. The advice is below.");
+        // the word speaks about the exit only: no advice word above the fold
+        assert.doesNotMatch(await visibleText(page, ".hero"), /Safe|Careful|Risky/);
         assert.equal(await page.locator(".hero button.pill").count(), 1, "one button in the hero");
         // the hero stays dark in both themes: its "?" marks must stay light (axe ignores a lone "?")
         for (const theme of ["dark", "light"]) {

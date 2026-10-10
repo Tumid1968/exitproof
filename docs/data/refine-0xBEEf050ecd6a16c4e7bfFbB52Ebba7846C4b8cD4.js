@@ -12,7 +12,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["refine:0xBEE
     "forkLocalChainId": 31337
   },
   "answer": {
-    "word": "Risky",
+    "word": "Hard exit",
     "aloneFull": true,
     "aloneShare": 1,
     "worstShare": 0.399,
@@ -21,7 +21,8 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["refine:0xBEE
       "otherPool": true,
       "others": 2
     },
-    "rule": "Safe: at least 90 % comes out even in the worst executed case; Careful: 50–90 %; Risky: below 50 %, or not everything can come out even alone. These limits are a choice, for the largest deposit in the pool."
+    "level": "hard",
+    "rule": "Easy exit: at least 90 % of the largest deposit gets out even in the worst executed case; Tight exit: 50–90 %; Hard exit: below 50 %, or not everything can get out even alone. It describes how easily you can leave, not whether you should. These limits are a choice."
   },
   "note": "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
   "history": {
