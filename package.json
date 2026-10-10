@@ -19,7 +19,8 @@
     "web": "vite --config web/vite.config.ts",
     "web:build": "vite build --config web/vite.config.ts",
     "test": "node --import tsx --test test/unit.test.ts",
-    "test:fork": "node --import tsx --test --test-concurrency=1 test/acceptance.test.ts"
+    "test:fork": "node --import tsx --test --test-concurrency=1 test/acceptance.test.ts",
+    "all": "tsx src/cli/all.ts"
   },
   "dependencies": {
     "hardhat": "3.19.0",

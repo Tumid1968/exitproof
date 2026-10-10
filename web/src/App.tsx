@@ -79,7 +79,7 @@ function Position({ r }: { r: Report }) {
         <div className="kpi"><div className="l">Holder position <Chip k="onchain" /></div><div className="v">{w(t.holderValue)} <small>{pct(Number(BigInt(t.holderValue) * 10000n / BigInt(v.totalAssets)) / 10000)} of vault</small></div></div>
         <div className="kpi"><div className="l">Holder exits alone <Chip k="fork" /></div><div className="v ok">{w(r.runs[0].holderExecutedExit)}</div></div>
         <div className="kpi"><div className="l">Net supply APY <Chip k="onchain" /></div><div className="v">{pct(v.netApy, 2)}</div></div>
-        <div className="kpi"><div className="l">Public Allocator backstop <Chip k="onchain" /></div><div className="v">{w(v.publicAllocatorReallocatableIntoExposedMarkets)} <small>reallocatable in</small></div></div>
+        <div className="kpi"><div className="l">Public Allocator backstop <Chip k="onchain" /></div><div className="v">{w(v.publicAllocatorReallocatableIntoExposedMarkets)} <small>net, up to</small></div></div>
       </div>
       <h3 style={{ fontSize: 14, margin: "14px 0 6px" }}>Why only {pct(v.liquidRatio)} can leave: the withdraw queue, market by market <Chip k="onchain" /></h3>
       <table>

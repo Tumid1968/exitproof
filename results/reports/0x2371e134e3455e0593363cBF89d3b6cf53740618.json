@@ -35,10 +35,10 @@
     "exposedMarketCount": 4,
     "peerVaultCount": 8,
     "publicAllocatorIsAllocator": true,
-    "publicAllocatorReallocatableIntoExposedMarkets": "6950344108167458428510",
+    "publicAllocatorReallocatableIntoExposedMarkets": "3438792960025137286",
     "nodeCount": 51,
     "edgeCount": 75,
-    "readCount": 478,
+    "readCount": 451,
     "netApy": 0.01528571432419391,
     "holders": {
       "coverage": 0.993204,

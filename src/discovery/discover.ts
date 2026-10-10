@@ -417,28 +417,36 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
         const [fc, fcId] = await r.must<readonly [bigint, bigint]>(ADDR.publicAllocator, publicAllocatorAbi, "flowCaps", [pv.vault, x.m.id]);
         flowCaps.push({ id: x.m.id, maxIn: fc[0], maxOut: fc[1] }); fcProv.push(fcId);
       }
-      // Public Allocator backstop: liquidity anyone can pull INTO an exposed market from this peer's other markets.
-      // = min(maxIn(target), cap headroom(target), sum over other queue markets of min(maxOut, peer supply, market liquidity))
+      // Public Allocator backstop = NET new liquidity anyone can pull into the target's exposed markets from
+      // this peer's markets that the target does NOT use (moving funds between two exposed markets creates none):
+      //   min( sum over exposed targets of min(maxIn, cap headroom),  sum over non-exposed sources of min(maxOut, peer supply, market liquidity) )
+      // Upper bound: two peers drawing on the same source market share its liquidity.
       const reallocatableIn: { id: Hex; amount: bigint }[] = [];
-      for (const fc of flowCaps.filter((f) => f.maxIn > 0n)) {
+      const inCaps = flowCaps.filter((f) => f.maxIn > 0n);
+      if (inCaps.length) {
+        let inRoom = 0n;
+        for (const fc of inCaps) {
+          const [cfg, cfgId] = await r.must<readonly [bigint, boolean, bigint]>(pv.vault, metaMorphoAbi, "config", [fc.id]);
+          const cur = pv.ms.find((x) => x.m.id === fc.id);
+          const curAssets = cur ? toAssetsDown(cur.shares, cur.m.totalSupplyAssets, cur.m.totalSupplyShares) : 0n;
+          const headroom = cfg[0] > curAssets ? cfg[0] - curAssets : 0n;
+          inRoom += fc.maxIn < headroom ? fc.maxIn : headroom;
+          fcProv.push(cfgId);
+        }
         let source = 0n;
         for (const q of queueVals) {
-          if (!q || q === fc.id) continue;
+          if (!q || exposed.some((m) => m.id === q)) continue;
           const [qfc, qfcId] = await r.must<readonly [bigint, bigint]>(ADDR.publicAllocator, publicAllocatorAbi, "flowCaps", [pv.vault, q]);
-          if (qfc[1] === 0n) { fcProv.push(qfcId); continue; }
+          fcProv.push(qfcId);
+          if (qfc[1] === 0n) continue;
           const [qm, qmId] = await r.must<readonly bigint[]>(ADDR.morphoBlue, morphoBlueAbi, "market", [q]);
           const [qp, qpId] = await r.must<readonly [bigint, bigint, bigint]>(ADDR.morphoBlue, morphoBlueAbi, "position", [q, pv.vault]);
           const sup = toAssetsDown(qp[0], qm[0], qm[1]);
           const liq = qm[0] - qm[2];
-          source += [qfc[1], sup, liq].reduce((a, b) => (a < b ? a : b));
-          fcProv.push(qfcId, qmId, qpId);
+          source += [qfc[1], sup, liq].reduce((x, y) => (x < y ? x : y));
+          fcProv.push(qmId, qpId);
         }
-        const [cfg, cfgId] = await r.must<readonly [bigint, boolean, bigint]>(pv.vault, metaMorphoAbi, "config", [fc.id]);
-        const cur = pv.ms.find((x) => x.m.id === fc.id);
-        const curAssets = cur ? toAssetsDown(cur.shares, cur.m.totalSupplyAssets, cur.m.totalSupplyShares) : 0n;
-        const headroom = cfg[0] > curAssets ? cfg[0] - curAssets : 0n;
-        fcProv.push(cfgId);
-        reallocatableIn.push({ id: fc.id, amount: [fc.maxIn, headroom, source].reduce((a, b) => (a < b ? a : b)) });
+        reallocatableIn.push({ id: inCaps[0].id, amount: inRoom < source ? inRoom : source });
       }
       const [psupply] = await r.must<bigint>(pv.vault, metaMorphoAbi, "totalSupply");
       const ph = await topHolders(pv.vault, psupply, 5);

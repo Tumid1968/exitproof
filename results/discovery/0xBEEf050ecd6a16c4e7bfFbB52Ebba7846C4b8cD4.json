@@ -30,7 +30,7 @@
     "publicAllocatorReallocatableIntoExposedMarkets": "0",
     "nodeCount": 61,
     "edgeCount": 90,
-    "readCount": 582
+    "readCount": 581
   },
   "markets": [
     {
@@ -3113,30 +3113,6 @@
       ]
     },
     {
-      "id": "peer:0x2371e134e3455e0593363cBF89d3b6cf53740618",
-      "kind": "peerVault",
-      "layer": 2,
-      "label": "Gauntlet WETH Prime (peer vault)",
-      "address": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-      "data": {
-        "totalAssets": "3129308993996307816570",
-        "version": "MetaMorpho V1.0",
-        "publicAllocatorEnabled": true
-      },
-      "prov": [
-        "r474",
-        "r478",
-        "r482",
-        "r496",
-        "r500",
-        "r503",
-        "r504",
-        "r509",
-        "r510",
-        "r512"
-      ]
-    },
-    {
       "id": "peer:0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
       "kind": "peerVault",
       "layer": 2,
@@ -3151,31 +3127,10 @@
         "r474",
         "r479",
         "r483",
-        "r498",
-        "r511",
-        "r513",
-        "r515"
-      ]
-    },
-    {
-      "id": "peer:0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-      "kind": "peerVault",
-      "layer": 2,
-      "label": "MEV Capital wETH (peer vault)",
-      "address": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-      "data": {
-        "totalAssets": "1857085896129683972586",
-        "version": "MetaMorpho V1.0",
-        "publicAllocatorEnabled": false
-      },
-      "prov": [
-        "r474",
-        "r481",
-        "r485",
+        "r497",
         "r502",
-        "r514",
-        "r516",
-        "r526"
+        "r506",
+        "r512"
       ]
     },
     {
@@ -3193,65 +3148,55 @@
         "r474",
         "r480",
         "r484",
-        "r501",
-        "r524",
-        "r527",
-        "r540"
+        "r503",
+        "r508",
+        "r513",
+        "r517"
       ]
     },
     {
-      "id": "peer:0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "id": "peer:0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
       "kind": "peerVault",
       "layer": 2,
-      "label": "Vault Bridge WETH (peer vault)",
-      "address": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "label": "MEV Capital wETH (peer vault)",
+      "address": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
       "data": {
-        "totalAssets": "6604026177135432340255",
-        "version": "MetaMorpho V1.1",
-        "publicAllocatorEnabled": true
+        "totalAssets": "1857085896129683972586",
+        "version": "MetaMorpho V1.0",
+        "publicAllocatorEnabled": false
       },
       "prov": [
         "r474",
-        "r528",
-        "r529",
-        "r533",
-        "r534",
-        "r535",
-        "r536",
-        "r539",
-        "r568",
-        "r570"
+        "r481",
+        "r485",
+        "r504",
+        "r510",
+        "r514",
+        "r518"
       ]
     },
     {
-      "id": "peer:0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "id": "peer:0x2371e134e3455e0593363cBF89d3b6cf53740618",
       "kind": "peerVault",
       "layer": 2,
-      "label": "Gauntlet LRT Core (peer vault)",
-      "address": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "label": "Gauntlet WETH Prime (peer vault)",
+      "address": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
       "data": {
-        "totalAssets": "875884334084614873775",
+        "totalAssets": "3129308993996307816570",
         "version": "MetaMorpho V1.0",
         "publicAllocatorEnabled": true
       },
       "prov": [
         "r474",
-        "r541",
-        "r542",
-        "r546",
-        "r547",
-        "r548",
-        "r549",
-        "r550",
-        "r551",
-        "r552",
-        "r553",
-        "r554",
-        "r555",
-        "r556",
-        "r571",
-        "r572",
-        "r573"
+        "r478",
+        "r482",
+        "r496",
+        "r500",
+        "r505",
+        "r511",
+        "r516",
+        "r519",
+        "r520"
       ]
     },
     {
@@ -3267,12 +3212,36 @@
       },
       "prov": [
         "r474",
-        "r517",
-        "r518",
+        "r521",
         "r522",
-        "r525",
-        "r538",
-        "r558"
+        "r537",
+        "r542",
+        "r546",
+        "r550"
+      ]
+    },
+    {
+      "id": "peer:0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Vault Bridge WETH (peer vault)",
+      "address": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "data": {
+        "totalAssets": "6604026177135432340255",
+        "version": "MetaMorpho V1.1",
+        "publicAllocatorEnabled": true
+      },
+      "prov": [
+        "r474",
+        "r523",
+        "r526",
+        "r543",
+        "r547",
+        "r551",
+        "r554",
+        "r558",
+        "r561",
+        "r565"
       ]
     },
     {
@@ -3288,15 +3257,45 @@
       },
       "prov": [
         "r474",
-        "r557",
-        "r559",
-        "r563",
+        "r528",
+        "r532",
+        "r549",
+        "r553",
+        "r556",
+        "r560",
         "r564",
-        "r565",
+        "r567",
+        "r569"
+      ]
+    },
+    {
+      "id": "peer:0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Gauntlet LRT Core (peer vault)",
+      "address": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "data": {
+        "totalAssets": "875884334084614873775",
+        "version": "MetaMorpho V1.0",
+        "publicAllocatorEnabled": true
+      },
+      "prov": [
+        "r474",
+        "r524",
+        "r527",
+        "r544",
+        "r548",
+        "r552",
+        "r555",
+        "r559",
+        "r562",
         "r566",
+        "r568",
+        "r570",
+        "r571",
+        "r573",
         "r574",
-        "r575",
-        "r576"
+        "r575"
       ]
     },
     {
@@ -3312,8 +3311,8 @@
         "maxLtv": 0.943639
       },
       "prov": [
-        "r577",
-        "r578"
+        "r576",
+        "r577"
       ]
     },
     {
@@ -3329,8 +3328,8 @@
         "maxLtv": 0.964759
       },
       "prov": [
-        "r579",
-        "r580"
+        "r578",
+        "r579"
       ]
     },
     {
@@ -3346,8 +3345,8 @@
         "maxLtv": 0.729728
       },
       "prov": [
-        "r581",
-        "r582"
+        "r580",
+        "r581"
       ]
     }
   ],
@@ -4114,32 +4113,6 @@
       ]
     },
     {
-      "from": "peer:0x2371e134e3455e0593363cBF89d3b6cf53740618",
-      "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-      "rel": "also lends here (queue #2)",
-      "data": {
-        "supplyAssets": "417615503945564679677"
-      },
-      "prov": [
-        "r474",
-        "r477",
-        "r490"
-      ]
-    },
-    {
-      "from": "peer:0x2371e134e3455e0593363cBF89d3b6cf53740618",
-      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-      "rel": "also lends here (queue #1)",
-      "data": {
-        "supplyAssets": "2627960979864850232700"
-      },
-      "prov": [
-        "r474",
-        "r477",
-        "r490"
-      ]
-    },
-    {
       "from": "peer:0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
       "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
       "rel": "also lends here (queue #0)",
@@ -4149,7 +4122,20 @@
       "prov": [
         "r474",
         "r477",
-        "r491"
+        "r490"
+      ]
+    },
+    {
+      "from": "peer:0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "rel": "also lends here (queue #1)",
+      "data": {
+        "supplyAssets": "288090902360076082968"
+      },
+      "prov": [
+        "r474",
+        "r477",
+        "r494"
       ]
     },
     {
@@ -4179,42 +4165,29 @@
       ]
     },
     {
-      "from": "peer:0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "from": "peer:0x2371e134e3455e0593363cBF89d3b6cf53740618",
       "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-      "rel": "also lends here (queue #1)",
+      "rel": "also lends here (queue #2)",
       "data": {
-        "supplyAssets": "288090902360076082968"
+        "supplyAssets": "417615503945564679677"
       },
       "prov": [
         "r474",
         "r477",
-        "r492"
+        "r489"
       ]
     },
     {
-      "from": "peer:0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-      "rel": "also lends here (queue #0)",
-      "data": {
-        "supplyAssets": "4859033677419910223013"
-      },
-      "prov": [
-        "r474",
-        "r477",
-        "r531"
-      ]
-    },
-    {
-      "from": "peer:0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "from": "peer:0x2371e134e3455e0593363cBF89d3b6cf53740618",
       "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
       "rel": "also lends here (queue #1)",
       "data": {
-        "supplyAssets": "647015232293325021063"
+        "supplyAssets": "2627960979864850232700"
       },
       "prov": [
         "r474",
         "r477",
-        "r544"
+        "r489"
       ]
     },
     {
@@ -4227,7 +4200,7 @@
       "prov": [
         "r474",
         "r477",
-        "r520"
+        "r529"
       ]
     },
     {
@@ -4240,7 +4213,20 @@
       "prov": [
         "r474",
         "r477",
-        "r520"
+        "r529"
+      ]
+    },
+    {
+      "from": "peer:0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "also lends here (queue #0)",
+      "data": {
+        "supplyAssets": "4859033677419910223013"
+      },
+      "prov": [
+        "r474",
+        "r477",
+        "r534"
       ]
     },
     {
@@ -4253,7 +4239,20 @@
       "prov": [
         "r474",
         "r477",
-        "r561"
+        "r540"
+      ]
+    },
+    {
+      "from": "peer:0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "also lends here (queue #1)",
+      "data": {
+        "supplyAssets": "647015232293325021063"
+      },
+      "prov": [
+        "r474",
+        "r477",
+        "r535"
       ]
     },
     {
@@ -4261,7 +4260,7 @@
       "to": "borrowers:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
       "rel": "lent to (repayment is the only way idle liquidity comes back)",
       "prov": [
-        "r577"
+        "r576"
       ]
     },
     {
@@ -4269,7 +4268,7 @@
       "to": "borrowers:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
       "rel": "lent to (repayment is the only way idle liquidity comes back)",
       "prov": [
-        "r579"
+        "r578"
       ]
     },
     {
@@ -4277,7 +4276,7 @@
       "to": "borrowers:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
       "rel": "lent to (repayment is the only way idle liquidity comes back)",
       "prov": [
-        "r581"
+        "r580"
       ]
     }
   ],
@@ -10596,16 +10595,6 @@
       "id": "r489",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "6"
-    },
-    {
-      "id": "r490",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
       "fn": "aggregate3 x6 withdrawQueue(uint256)",
       "args": [
@@ -10657,7 +10646,7 @@
       ]
     },
     {
-      "id": "r491",
+      "id": "r490",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -10704,7 +10693,41 @@
       ]
     },
     {
+      "id": "r491",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "6"
+    },
+    {
       "id": "r492",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x2371e134e3455e0593363cBF89d3b6cf53740618"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r493",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r494",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -10728,30 +10751,6 @@
         "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
         "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
       ]
-    },
-    {
-      "id": "r493",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0x2371e134e3455e0593363cBF89d3b6cf53740618"
-      ],
-      "ok": true,
-      "result": true
-    },
-    {
-      "id": "r494",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237"
-      ],
-      "ok": true,
-      "result": false
     },
     {
       "id": "r495",
@@ -10823,18 +10822,6 @@
       "id": "r497",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
-      ],
-      "ok": true,
-      "result": true
-    },
-    {
-      "id": "r498",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
       "fn": "isAllocator(address)",
       "args": [
@@ -10842,6 +10829,18 @@
       ],
       "ok": true,
       "result": false
+    },
+    {
+      "id": "r498",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
+      ],
+      "ok": true,
+      "result": true
     },
     {
       "id": "r499",
@@ -10875,6 +10874,30 @@
       "id": "r501",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "37810099870035904825"
+    },
+    {
+      "id": "r502",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:08.122Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r503",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
       "fn": "isAllocator(address)",
       "args": [
@@ -10884,7 +10907,7 @@
       "result": false
     },
     {
-      "id": "r502",
+      "id": "r504",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
@@ -10896,7 +10919,7 @@
       "result": false
     },
     {
-      "id": "r503",
+      "id": "r505",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -10912,185 +10935,7 @@
       ]
     },
     {
-      "id": "r504",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r505",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-      "fn": "totalSupply()",
-      "args": [],
-      "ok": true,
-      "result": "2968469318201336398185"
-    },
-    {
       "id": "r506",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
-      "fn": "totalSupply()",
-      "args": [],
-      "ok": true,
-      "result": "37810099870035904825"
-    },
-    {
-      "id": "r507",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
-      "fn": "totalSupply()",
-      "args": [],
-      "ok": true,
-      "result": "267194066128579282216"
-    },
-    {
-      "id": "r508",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-      "fn": "totalSupply()",
-      "args": [],
-      "ok": true,
-      "result": "1716742951573331384263"
-    },
-    {
-      "id": "r509",
-      "block": "26157638",
-      "method": "offchain-candidates",
-      "fn": "morpho-api",
-      "args": [
-        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x2371e134e3455e0593363cBF89d3b6cf53740618\"], chainId_in:[1]}) { items { user { address } } } }"
-      ],
-      "ok": true,
-      "result": {
-        "fetchedAt": "2026-10-10T09:09:07.973Z",
-        "resultCount": 5
-      }
-    },
-    {
-      "id": "r510",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x5 balanceOf(address)",
-      "args": [
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "0x9fC3dc011b461664c835F2527fffb1169b3C213e"
-          ]
-        },
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "0x28a55C4b4f9615FDE3CDAdDf6cc01FcF2E38A6b0"
-          ]
-        },
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "0x71f795c78E026C655C1f8e14F47E8fcACd69f382"
-          ]
-        },
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "0x4176535CD44124A9Ea6d4eeF16EB11942c240A78"
-          ]
-        },
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "0xf4504fB740aa9e71e11b6220d6E332b159153f60"
-          ]
-        }
-      ],
-      "ok": true,
-      "result": [
-        "2021918067656956335939",
-        "319929775674482928852",
-        "98235764888459567951",
-        "96786250798263334902",
-        "77171682303530699358"
-      ]
-    },
-    {
-      "id": "r511",
-      "block": "26157638",
-      "method": "offchain-candidates",
-      "fn": "morpho-api",
-      "args": [
-        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237\"], chainId_in:[1]}) { items { user { address } } } }"
-      ],
-      "ok": true,
-      "result": {
-        "fetchedAt": "2026-10-10T09:09:08.122Z",
-        "resultCount": 5
-      }
-    },
-    {
-      "id": "r512",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x5 convertToAssets(uint256)",
-      "args": [
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "2021918067656956335939"
-          ]
-        },
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "319929775674482928852"
-          ]
-        },
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "98235764888459567951"
-          ]
-        },
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "96786250798263334902"
-          ]
-        },
-        {
-          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-          "args": [
-            "77171682303530699358"
-          ]
-        }
-      ],
-      "ok": true,
-      "result": [
-        "2131468643104658707928",
-        "337264054243252487697",
-        "103558327036364471439",
-        "102030276082958659681",
-        "81352960635157645827"
-      ]
-    },
-    {
-      "id": "r513",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -11137,7 +10982,41 @@
       ]
     },
     {
-      "id": "r514",
+      "id": "r507",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "267194066128579282216"
+    },
+    {
+      "id": "r508",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:08.733Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r509",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "1716742951573331384263"
+    },
+    {
+      "id": "r510",
       "block": "26157638",
       "method": "offchain-candidates",
       "fn": "morpho-api",
@@ -11151,7 +11030,23 @@
       }
     },
     {
-      "id": "r515",
+      "id": "r511",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r512",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -11198,240 +11093,7 @@
       ]
     },
     {
-      "id": "r516",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x5 balanceOf(address)",
-      "args": [
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "0xB7574272Dc4829c6eE6437Bccd691E5735a2a9b5"
-          ]
-        },
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "0x1Ee19E4fA886d0F6474F5d8109053e43Dbe8C3Cd"
-          ]
-        },
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "0xf42D67BabBEEC8A5FdC89007dB0Aeea75f29cf42"
-          ]
-        },
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "0xe53879aa426cafd5e0cCAFBB74dDa5D494a91C0F"
-          ]
-        },
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "0x5d050C502F57976Cae9136aE6fBFa2B77e7eA356"
-          ]
-        }
-      ],
-      "ok": true,
-      "result": [
-        "1447716528844171547669",
-        "71982640036526705745",
-        "53200647664681403470",
-        "48317743993622973834",
-        "21864340598526658535"
-      ]
-    },
-    {
-      "id": "r517",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "Yearn OG WETH"
-    },
-    {
-      "id": "r518",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "926741206794799208410"
-    },
-    {
-      "id": "r519",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "5"
-    },
-    {
-      "id": "r520",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x5 withdrawQueue(uint256)",
-      "args": [
-        {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-          "args": [
-            "0"
-          ]
-        },
-        {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-          "args": [
-            "1"
-          ]
-        },
-        {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-          "args": [
-            "2"
-          ]
-        },
-        {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-          "args": [
-            "3"
-          ]
-        },
-        {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-          "args": [
-            "4"
-          ]
-        }
-      ],
-      "ok": true,
-      "result": [
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
-        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
-      ]
-    },
-    {
-      "id": "r521",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0xE89371eAaAC6D46d4C3ED23453241987916224FC"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
-      "id": "r522",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
-      "id": "r523",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-      "fn": "totalSupply()",
-      "args": [],
-      "ok": true,
-      "result": "890491977096055717187"
-    },
-    {
-      "id": "r524",
-      "block": "26157638",
-      "method": "offchain-candidates",
-      "fn": "morpho-api",
-      "args": [
-        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0\"], chainId_in:[1]}) { items { user { address } } } }"
-      ],
-      "ok": true,
-      "result": {
-        "fetchedAt": "2026-10-10T09:09:08.733Z",
-        "resultCount": 5
-      }
-    },
-    {
-      "id": "r525",
-      "block": "26157638",
-      "method": "offchain-candidates",
-      "fn": "morpho-api",
-      "args": [
-        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0xE89371eAaAC6D46d4C3ED23453241987916224FC\"], chainId_in:[1]}) { items { user { address } } } }"
-      ],
-      "ok": true,
-      "result": {
-        "fetchedAt": "2026-10-10T09:09:08.763Z",
-        "resultCount": 5
-      }
-    },
-    {
-      "id": "r526",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x5 convertToAssets(uint256)",
-      "args": [
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "1447716528844171547669"
-          ]
-        },
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "71982640036526705745"
-          ]
-        },
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "53200647664681403470"
-          ]
-        },
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "48317743993622973834"
-          ]
-        },
-        {
-          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
-          "args": [
-            "21864340598526658535"
-          ]
-        }
-      ],
-      "ok": true,
-      "result": [
-        "1566044590889160347538",
-        "77866088989896385503",
-        "57548964073506214937",
-        "52266959807105410322",
-        "23651406643134695015"
-      ]
-    },
-    {
-      "id": "r527",
+      "id": "r513",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -11478,227 +11140,78 @@
       ]
     },
     {
-      "id": "r528",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "Vault Bridge WETH"
-    },
-    {
-      "id": "r529",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "6604026177135432340255"
-    },
-    {
-      "id": "r530",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "5"
-    },
-    {
-      "id": "r531",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x5 withdrawQueue(uint256)",
-      "args": [
-        {
-          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-          "args": [
-            "0"
-          ]
-        },
-        {
-          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-          "args": [
-            "1"
-          ]
-        },
-        {
-          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-          "args": [
-            "2"
-          ]
-        },
-        {
-          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-          "args": [
-            "3"
-          ]
-        },
-        {
-          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-          "args": [
-            "4"
-          ]
-        }
-      ],
-      "ok": true,
-      "result": [
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
-        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
-      ]
-    },
-    {
-      "id": "r532",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
-      "id": "r533",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": true
-    },
-    {
-      "id": "r534",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9",
-        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r535",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9",
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r536",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9",
-        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r537",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "totalSupply()",
-      "args": [],
-      "ok": true,
-      "result": "6436342173522994817677"
-    },
-    {
-      "id": "r538",
+      "id": "r514",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
       "fn": "aggregate3 x5 balanceOf(address)",
       "args": [
         {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
           "args": [
-            "0xc56413869c6CDf96496f2b1eF801fEDBdFA7dDB0"
+            "0xB7574272Dc4829c6eE6437Bccd691E5735a2a9b5"
           ]
         },
         {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
           "args": [
-            "0xCC20b66A3d65646732A4E8a46D84Ba760D6635D3"
+            "0x1Ee19E4fA886d0F6474F5d8109053e43Dbe8C3Cd"
           ]
         },
         {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
           "args": [
-            "0x29f66860c93cb45ce811aDA74b1B30F4965740F1"
+            "0xf42D67BabBEEC8A5FdC89007dB0Aeea75f29cf42"
           ]
         },
         {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
           "args": [
-            "0xd0699aAfd17bA63fB6519b9EA2bD8Bd2c9d4eb87"
+            "0xe53879aa426cafd5e0cCAFBB74dDa5D494a91C0F"
           ]
         },
         {
-          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
           "args": [
-            "0xd3078C0afDc06327c511306ED2164d45269436A6"
+            "0x5d050C502F57976Cae9136aE6fBFa2B77e7eA356"
           ]
         }
       ],
       "ok": true,
       "result": [
-        "862429643277391816619",
-        "9358919990961434680",
-        "8066505534098423769",
-        "5381473084739055061",
-        "1969955323304047444"
+        "1447716528844171547669",
+        "71982640036526705745",
+        "53200647664681403470",
+        "48317743993622973834",
+        "21864340598526658535"
       ]
     },
     {
-      "id": "r539",
+      "id": "r515",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "2968469318201336398185"
+    },
+    {
+      "id": "r516",
       "block": "26157638",
       "method": "offchain-candidates",
       "fn": "morpho-api",
       "args": [
-        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x31A5684983EeE865d943A696AAC155363bA024f9\"], chainId_in:[1]}) { items { user { address } } } }"
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x2371e134e3455e0593363cBF89d3b6cf53740618\"], chainId_in:[1]}) { items { user { address } } } }"
       ],
       "ok": true,
       "result": {
-        "fetchedAt": "2026-10-10T09:09:09.227Z",
+        "fetchedAt": "2026-10-10T09:09:07.973Z",
         "resultCount": 5
       }
     },
     {
-      "id": "r540",
+      "id": "r517",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -11745,7 +11258,178 @@
       ]
     },
     {
-      "id": "r541",
+      "id": "r518",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "1447716528844171547669"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "71982640036526705745"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "53200647664681403470"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "48317743993622973834"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "21864340598526658535"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "1566044590889160347538",
+        "77866088989896385503",
+        "57548964073506214937",
+        "52266959807105410322",
+        "23651406643134695015"
+      ]
+    },
+    {
+      "id": "r519",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0x9fC3dc011b461664c835F2527fffb1169b3C213e"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0x28a55C4b4f9615FDE3CDAdDf6cc01FcF2E38A6b0"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0x71f795c78E026C655C1f8e14F47E8fcACd69f382"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0x4176535CD44124A9Ea6d4eeF16EB11942c240A78"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0xf4504fB740aa9e71e11b6220d6E332b159153f60"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "2021918067656956335939",
+        "319929775674482928852",
+        "98235764888459567951",
+        "96786250798263334902",
+        "77171682303530699358"
+      ]
+    },
+    {
+      "id": "r520",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "2021918067656956335939"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "319929775674482928852"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "98235764888459567951"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "96786250798263334902"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "77171682303530699358"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "2131468643104658707928",
+        "337264054243252487697",
+        "103558327036364471439",
+        "102030276082958659681",
+        "81352960635157645827"
+      ]
+    },
+    {
+      "id": "r521",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Yearn OG WETH"
+    },
+    {
+      "id": "r522",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "926741206794799208410"
+    },
+    {
+      "id": "r523",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Vault Bridge WETH"
+    },
+    {
+      "id": "r524",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
@@ -11755,7 +11439,27 @@
       "result": "Gauntlet LRT Core"
     },
     {
-      "id": "r542",
+      "id": "r525",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "5"
+    },
+    {
+      "id": "r526",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "6604026177135432340255"
+    },
+    {
+      "id": "r527",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
@@ -11765,7 +11469,74 @@
       "result": "875884334084614873775"
     },
     {
-      "id": "r543",
+      "id": "r528",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Index Coop hyETH"
+    },
+    {
+      "id": "r529",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "2"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "3"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "4"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ]
+    },
+    {
+      "id": "r530",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "5"
+    },
+    {
+      "id": "r531",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
@@ -11775,7 +11546,76 @@
       "result": "6"
     },
     {
-      "id": "r544",
+      "id": "r532",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "750555043554324840962"
+    },
+    {
+      "id": "r533",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0xE89371eAaAC6D46d4C3ED23453241987916224FC"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r534",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "2"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "3"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "4"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ]
+    },
+    {
+      "id": "r535",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -11829,7 +11669,41 @@
       ]
     },
     {
-      "id": "r545",
+      "id": "r536",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "2"
+    },
+    {
+      "id": "r537",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r538",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r539",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
@@ -11841,7 +11715,69 @@
       "result": true
     },
     {
-      "id": "r546",
+      "id": "r540",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x2 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "1"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ]
+    },
+    {
+      "id": "r541",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "890491977096055717187"
+    },
+    {
+      "id": "r542",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0xE89371eAaAC6D46d4C3ED23453241987916224FC\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:08.763Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r543",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r544",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
@@ -11853,7 +11789,82 @@
       "result": true
     },
     {
+      "id": "r545",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x701907283a57FF77E255C3f1aAD790466B8CE4ef"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r546",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0xc56413869c6CDf96496f2b1eF801fEDBdFA7dDB0"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0xCC20b66A3d65646732A4E8a46D84Ba760D6635D3"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0x29f66860c93cb45ce811aDA74b1B30F4965740F1"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0xd0699aAfd17bA63fB6519b9EA2bD8Bd2c9d4eb87"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0xd3078C0afDc06327c511306ED2164d45269436A6"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "862429643277391816619",
+        "9358919990961434680",
+        "8066505534098423769",
+        "5381473084739055061",
+        "1969955323304047444"
+      ]
+    },
+    {
       "id": "r547",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r548",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -11869,161 +11880,19 @@
       ]
     },
     {
-      "id": "r548",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
       "id": "r549",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "isAllocator(address)",
       "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
       ],
       "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
+      "result": true
     },
     {
       "id": "r550",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r551",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r552",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r553",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r554",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r555",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r556",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-      "fn": "config(bytes32)",
-      "args": [
-        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        false,
-        "0"
-      ]
-    },
-    {
-      "id": "r557",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "Index Coop hyETH"
-    },
-    {
-      "id": "r558",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -12070,77 +11939,39 @@
       ]
     },
     {
-      "id": "r559",
+      "id": "r551",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "750555043554324840962"
-    },
-    {
-      "id": "r560",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "2"
-    },
-    {
-      "id": "r561",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x2 withdrawQueue(uint256)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        {
-          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
-          "args": [
-            "0"
-          ]
-        },
-        {
-          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
-          "args": [
-            "1"
-          ]
-        }
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
       ],
       "ok": true,
       "result": [
-        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+        "0",
+        "0"
       ]
     },
     {
-      "id": "r562",
+      "id": "r552",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x701907283a57FF77E255C3f1aAD790466B8CE4ef"
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
       ],
       "ok": true,
-      "result": false
+      "result": [
+        "0",
+        "0"
+      ]
     },
     {
-      "id": "r563",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": true
-    },
-    {
-      "id": "r564",
+      "id": "r553",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -12156,7 +11987,39 @@
       ]
     },
     {
-      "id": "r565",
+      "id": "r554",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r555",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r556",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -12172,7 +12035,47 @@
       ]
     },
     {
-      "id": "r566",
+      "id": "r557",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "6436342173522994817677"
+    },
+    {
+      "id": "r558",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x31A5684983EeE865d943A696AAC155363bA024f9\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:09.227Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r559",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "config(bytes32)",
+      "args": [
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        false,
+        "0"
+      ]
+    },
+    {
+      "id": "r560",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -12188,17 +12091,7 @@
       ]
     },
     {
-      "id": "r567",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-      "fn": "totalSupply()",
-      "args": [],
-      "ok": true,
-      "result": "797342426602853314772"
-    },
-    {
-      "id": "r568",
+      "id": "r561",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -12245,7 +12138,23 @@
       ]
     },
     {
-      "id": "r569",
+      "id": "r562",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r563",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
@@ -12255,7 +12164,21 @@
       "result": "712599853329114617004"
     },
     {
-      "id": "r570",
+      "id": "r564",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x701907283a57FF77E255C3f1aAD790466B8CE4ef\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:10.229Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r565",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -12302,129 +12225,23 @@
       ]
     },
     {
-      "id": "r571",
-      "block": "26157638",
-      "method": "offchain-candidates",
-      "fn": "morpho-api",
-      "args": [
-        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658\"], chainId_in:[1]}) { items { user { address } } } }"
-      ],
-      "ok": true,
-      "result": {
-        "fetchedAt": "2026-10-10T09:09:09.898Z",
-        "resultCount": 5
-      }
-    },
-    {
-      "id": "r572",
+      "id": "r566",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x5 balanceOf(address)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "0x28a55C4b4f9615FDE3CDAdDf6cc01FcF2E38A6b0"
-          ]
-        },
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "0xC09aB4F53d0CB0fC04af22Bf850cE6f97EE1F990"
-          ]
-        },
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "0x15D5cd0342c79C158c448DB6F7fF27a0ce8dC0ab"
-          ]
-        },
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "0x70a0d9a7797a61916150d94D7c01341f744551c7"
-          ]
-        },
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "0x5FD8bCC6180eCd977813465bDd0A76A5a9F88B47"
-          ]
-        }
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7"
       ],
       "ok": true,
       "result": [
-        "286680026550113806373",
-        "137093097811429560597",
-        "103665739597301872965",
-        "62296518211938279914",
-        "45995997796894787132"
+        "0",
+        "0"
       ]
     },
     {
-      "id": "r573",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x5 convertToAssets(uint256)",
-      "args": [
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "286680026550113806373"
-          ]
-        },
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "137093097811429560597"
-          ]
-        },
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "103665739597301872965"
-          ]
-        },
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "62296518211938279914"
-          ]
-        },
-        {
-          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-          "args": [
-            "45995997796894787132"
-          ]
-        }
-      ],
-      "ok": true,
-      "result": [
-        "314918493339098960878",
-        "150596999482341451290",
-        "113876990028668313408",
-        "68432830468382535523",
-        "50526681262513896060"
-      ]
-    },
-    {
-      "id": "r574",
-      "block": "26157638",
-      "method": "offchain-candidates",
-      "fn": "morpho-api",
-      "args": [
-        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x701907283a57FF77E255C3f1aAD790466B8CE4ef\"], chainId_in:[1]}) { items { user { address } } } }"
-      ],
-      "ok": true,
-      "result": {
-        "fetchedAt": "2026-10-10T09:09:10.229Z",
-        "resultCount": 5
-      }
-    },
-    {
-      "id": "r575",
+      "id": "r567",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -12471,7 +12288,23 @@
       ]
     },
     {
-      "id": "r576",
+      "id": "r568",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r569",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -12518,7 +12351,157 @@
       ]
     },
     {
-      "id": "r577",
+      "id": "r570",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r571",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r572",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "797342426602853314772"
+    },
+    {
+      "id": "r573",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:09.898Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r574",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0x28a55C4b4f9615FDE3CDAdDf6cc01FcF2E38A6b0"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0xC09aB4F53d0CB0fC04af22Bf850cE6f97EE1F990"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0x15D5cd0342c79C158c448DB6F7fF27a0ce8dC0ab"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0x70a0d9a7797a61916150d94D7c01341f744551c7"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0x5FD8bCC6180eCd977813465bDd0A76A5a9F88B47"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "286680026550113806373",
+        "137093097811429560597",
+        "103665739597301872965",
+        "62296518211938279914",
+        "45995997796894787132"
+      ]
+    },
+    {
+      "id": "r575",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "286680026550113806373"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "137093097811429560597"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "103665739597301872965"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "62296518211938279914"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "45995997796894787132"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "314918493339098960878",
+        "150596999482341451290",
+        "113876990028668313408",
+        "68432830468382535523",
+        "50526681262513896060"
+      ]
+    },
+    {
+      "id": "r576",
       "block": "26157638",
       "method": "offchain-candidates",
       "fn": "morpho-api",
@@ -12532,7 +12515,7 @@
       }
     },
     {
-      "id": "r578",
+      "id": "r577",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -13132,7 +13115,7 @@
       ]
     },
     {
-      "id": "r579",
+      "id": "r578",
       "block": "26157638",
       "method": "offchain-candidates",
       "fn": "morpho-api",
@@ -13146,7 +13129,7 @@
       }
     },
     {
-      "id": "r580",
+      "id": "r579",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -14514,7 +14497,7 @@
       ]
     },
     {
-      "id": "r581",
+      "id": "r580",
       "block": "26157638",
       "method": "offchain-candidates",
       "fn": "morpho-api",
@@ -14528,7 +14511,7 @@
       }
     },
     {
-      "id": "r582",
+      "id": "r581",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
