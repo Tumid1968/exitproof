@@ -51,6 +51,7 @@ export function App() {
         <div className="legend"><Chip k="onchain" /> real data read at the block <Chip k="fork" /> tx simulated locally <Chip k="hyp" /> scenario assumption <Chip k="offchain" /> candidates from Morpho API, verified on-chain</div>
       </div>
       <main>
+        <BottomLine r={report} />
         <Position r={report} />
         <section className="panel">
           <h2><span className="n">2</span> Dependency stack — discovered from contract reads</h2>
@@ -64,6 +65,30 @@ export function App() {
         <Proofs key={"p" + report.target.vault} r={report} />
       </main>
     </>
+  );
+}
+
+function BottomLine({ r }: { r: Report }) {
+  const value = BigInt(r.target.holderValue);
+  const worst = [...r.runs].sort((a: any, b: any) => (BigInt(a.holderExecutedExit) < BigInt(b.holderExecutedExit) ? -1 : 1))[0];
+  const share = (x: string) => pct(Number(BigInt(x) * 10000n / (value || 1n)) / 10000, 0);
+  return (
+    <section className="panel" style={{ borderColor: "#2f81f7" }}>
+      <h2>Bottom line for the {r.target.holderLabel} of {r.target.name}</h2>
+      <div className="kpis" style={{ marginTop: 8 }}>
+        <div className="kpi"><div className="l">Exits alone today <Chip k="fork" /></div><div className="v ok">{share(r.runs[0].holderExecutedExit)}</div><div className="muted">{w(r.runs[0].holderExecutedExit)} {r.target.assetSymbol}</div></div>
+        <div className="kpi"><div className="l">Worst executed run <Chip k="fork" /></div><div className="v bad">{share(worst.holderExecutedExit)}</div><div className="muted">{worst.others.length} exits first, {worst.others.filter((o: any) => o.vault !== r.target.vault).length} from other vaults</div></div>
+        {r.incidents.map((i: any) => {
+          const v = r.verdicts.find((x: any) => x.id === i.id)?.verdict;
+          return (
+            <div className="kpi" key={i.id}><div className="l">{i.id.includes("blind") ? "Market depeg −10%, oracle blind, + run" : i.id.includes("dexlimited") ? "Price −10%, AMM-limited liquidations, + run" : "Price −10%, all liquidated, + run"} <Chip k="hyp" /></div>
+              <div className="v">{v?.breakEvenProbability === null || v?.breakEvenProbability === undefined ? "—" : v.breakEvenProbability > 1 ? ">100%" : pct(v.breakEvenProbability, 2)} <small>break-even / 30 d</small></div>
+              <div className="muted">exitable after the run: {share(i.executedFacts.holderMaxWithdrawAfterRun)}</div></div>
+          );
+        })}
+      </div>
+      <p className="muted" style={{ margin: "8px 0 0", fontSize: 12 }}>Break-even = the incident probability above which exiting now beats staying (defaults: 30 days, locked funds cost 10 %; adjust in section 5). Probabilities are your assumptions, not predictions.</p>
+    </section>
   );
 }
 
@@ -398,7 +423,7 @@ function BreakEvenChart({ curve, inc, coll }: { curve: any[]; coll: string | nul
         <line x1={pad} y1={H - pad + 6} x2={W - 10} y2={H - pad + 6} stroke="#2a323d" />
         <line x1={pad} y1={10} x2={pad} y2={H - pad + 6} stroke="#2a323d" />
         <polyline fill="none" stroke="#4ea1ff" strokeWidth={2} points={pts.map((c) => `${x(c.factor)},${y(c.breakEven)}`).join(" ")} />
-        {pts.map((c) => <g key={c.factor}><circle cx={x(c.factor)} cy={y(c.breakEven)} r={3} fill="#4ea1ff" /><text x={x(c.factor)} y={H - 8} fontSize={10} fill="#8b98a5" textAnchor="middle">-{Math.round((1 - c.factor) * 100)}%</text><text x={x(c.factor)} y={y(c.breakEven) - 6} fontSize={10} fill="#e6edf3" textAnchor="middle">{(c.breakEven * 100).toFixed(2)}%</text></g>)}
+        {pts.map((c) => { const lab = [0.99, 0.97, 0.95, 0.9, 0.85, 0.8].includes(c.factor); return <g key={c.factor}><circle cx={x(c.factor)} cy={y(c.breakEven)} r={3} fill="#4ea1ff" />{lab && <text x={x(c.factor)} y={H - 8} fontSize={10} fill="#8b98a5" textAnchor="middle">-{Math.round((1 - c.factor) * 100)}%</text>}{[0.99, 0.95, 0.9, 0.8].includes(c.factor) && <text x={x(c.factor)} y={y(c.breakEven) - 6} fontSize={10} fill="#e6edf3" textAnchor="middle">{(c.breakEven * 100).toFixed(2)}%</text>}</g>; })}
       </svg>
     </div>
   );
