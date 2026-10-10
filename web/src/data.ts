@@ -75,3 +75,7 @@ export async function apiPost<T>(path: string, body: unknown): Promise<T> {
   if (!r.ok) throw new Error(j.error ?? r.statusText);
   return j as T;
 }
+
+/** Derived indicators and historical reference (results/refine, results/history): read from files in both modes. */
+export const getRefine = (v: string) => staticGet<any>(`refine:${v}`, `refine-${v}.js`);
+export const getHistory = (id: string) => staticGet<any>(`history:${id}`, `history-${id}.js`);

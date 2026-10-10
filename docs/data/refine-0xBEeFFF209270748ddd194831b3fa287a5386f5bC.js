@@ -1,0 +1,260 @@
+window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["refine:0xBEeFFF209270748ddd194831b3fa287a5386f5bC"]={
+  "schema": "exitproof-refine/1",
+  "vault": "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+  "name": "Smokehouse USDC",
+  "assetSymbol": "USDC",
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "baseFeePerGas": "121537943",
+    "forkLocalChainId": 31337
+  },
+  "note": "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
+  "history": null,
+  "governance": {
+    "timelockSeconds": 259200,
+    "timelockDays": 3,
+    "guardian": {
+      "address": "0x94aa34975987119197e53e760AF1ee5aC80A27D3",
+      "kind": "Contract"
+    },
+    "source": "read on-chain during discovery (vault timelock(), guardian())"
+  },
+  "exitWindow": {
+    "kind": "immediate",
+    "share": 1
+  },
+  "vaultLevel": {
+    "incident": "incident_feed_shock_plus_run",
+    "ratio": 0.001579,
+    "vaultLossAssets": "20130429547",
+    "basis": "executed on fork: holder value before minus after liquidations (bad debt socialised by Morpho Blue; net of lostAssets on MetaMorpho V1.1, where the share price does not drop)",
+    "threshold": 0.01,
+    "aboveThreshold": false
+  },
+  "concentration": {
+    "byMarket": {
+      "hhi": 0.232017,
+      "word": "moderately concentrated",
+      "n": 11
+    },
+    "byCollateral": {
+      "hhi": 0.235442,
+      "word": "moderately concentrated",
+      "groups": [
+        {
+          "collateral": "PT-reUSD-10DEC2026",
+          "share": 0.249529
+        },
+        {
+          "collateral": "weETH",
+          "share": 0.151423
+        },
+        {
+          "collateral": "wFalconX",
+          "share": 0.190449
+        },
+        {
+          "collateral": "mF-ONE",
+          "share": 0.330209
+        },
+        {
+          "collateral": "steakEURCV",
+          "share": 0.007931
+        },
+        {
+          "collateral": "reUSD",
+          "share": 0.069829
+        },
+        {
+          "collateral": "WBTC",
+          "share": 0.000629
+        },
+        {
+          "collateral": "TSLAon",
+          "share": 0.000001
+        },
+        {
+          "collateral": "FLHYon",
+          "share": 0
+        }
+      ]
+    },
+    "thresholds": "HHI ≥ 0.25 concentrated, 0.15–0.25 moderately concentrated, < 0.15 diversified (US DOJ/FTC 2010 guidelines); weights = vault supply per market, idle market (no collateral) included"
+  },
+  "utilization": {
+    "watchLevel": 0.9,
+    "watchSource": "Gauntlet VaultBook (90 % utilization watch level; the 48-hour duration is not measured here)",
+    "markets": [
+      {
+        "queueIndex": 4,
+        "collateral": "PT-reUSD-10DEC2026",
+        "utilization": 0.8902,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 5,
+        "collateral": "weETH",
+        "utilization": 0.897,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 6,
+        "collateral": "wFalconX",
+        "utilization": 0.9012,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 7,
+        "collateral": "mF-ONE",
+        "utilization": 0.8824,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 8,
+        "collateral": "steakEURCV",
+        "utilization": 0.897,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 9,
+        "collateral": "reUSD",
+        "utilization": 0.9006,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 11,
+        "collateral": "WBTC",
+        "utilization": 0.9002,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 12,
+        "collateral": "weETH",
+        "utilization": 0.8942,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 13,
+        "collateral": "weETH",
+        "utilization": 0.9059,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 20,
+        "collateral": "TSLAon",
+        "utilization": 0.899,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 21,
+        "collateral": "FLHYon",
+        "utilization": 0.8985,
+        "aboveWatch": false
+      }
+    ]
+  },
+  "regimes": {
+    "definition": "pegged: collateral of the same family as the loan asset (ETH, USD, BTC, EUR by symbol), −10 %; volatile: otherwise, −40 %",
+    "factors": {
+      "pegged": 0.9,
+      "volatile": 0.6
+    },
+    "byRegime": [
+      {
+        "regime": "pegged",
+        "shockSize": 0.1,
+        "collaterals": [
+          "PT-reUSD-10DEC2026",
+          "reUSD"
+        ],
+        "exposure": "4070759168951",
+        "exposureShare": 0.319354,
+        "shocks": [
+          {
+            "collateral": "PT-reUSD-10DEC2026",
+            "label": "PT-reUSD-10DEC2026 market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "3030085",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "reUSD",
+            "label": "reUSD market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "4589356846",
+            "vaultLossRatio": 0.00036
+          }
+        ]
+      },
+      {
+        "regime": "volatile",
+        "shockSize": 0.4,
+        "collaterals": [
+          "weETH",
+          "wFalconX",
+          "mF-ONE",
+          "steakEURCV",
+          "WBTC",
+          "TSLAon",
+          "FLHYon"
+        ],
+        "exposure": "8675944612712",
+        "exposureShare": 0.680635,
+        "shocks": [
+          {
+            "collateral": "weETH",
+            "label": "weETH market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "214547049902",
+            "vaultLossRatio": 0.016831
+          },
+          {
+            "collateral": "wFalconX",
+            "label": "wFalconX market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "529719505001",
+            "vaultLossRatio": 0.041556
+          },
+          {
+            "collateral": "mF-ONE",
+            "label": "mF-ONE market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "835944074172",
+            "vaultLossRatio": 0.06558
+          },
+          {
+            "collateral": "steakEURCV",
+            "label": "steakEURCV market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "23518108032",
+            "vaultLossRatio": 0.001845
+          },
+          {
+            "collateral": "WBTC",
+            "label": "WBTC market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "3687763",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "TSLAon",
+            "label": "TSLAon market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "0",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "FLHYon",
+            "label": "FLHYon market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "0",
+            "vaultLossRatio": 0
+          }
+        ]
+      }
+    ]
+  }
+};

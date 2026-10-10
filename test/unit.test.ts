@@ -78,3 +78,31 @@ test("percentage changes are rounded, not truncated", async () => {
   assert.equal(pctChange(105n, 100n, 2), 5);
   assert.equal(pctChange(1n, 3n, 2), -66.67);
 });
+
+test("concentration index and regimes (derived indicators)", async () => {
+  const { hhi, hhiWord, regimeOf } = await import("../src/refine/refine.ts");
+  assert.equal(hhi([1, 1, 1, 1]), 0.25);
+  assert.equal(hhi([5]), 1);
+  assert.equal(hhi([]), 0);
+  assert.equal(hhiWord(0.25), "concentrated");
+  assert.equal(hhiWord(0.2), "moderately concentrated");
+  assert.equal(hhiWord(0.1), "diversified");
+  assert.equal(regimeOf("wstETH", "WETH"), "pegged");
+  assert.equal(regimeOf("cbBTC", "WETH"), "volatile");
+  assert.equal(regimeOf("sUSDe", "DAI"), "pegged");
+  assert.equal(regimeOf("wstETH", "USDC"), "volatile");
+  assert.equal(regimeOf("WBTC", "cbBTC"), "pegged");
+  assert.equal(regimeOf("PT-unknown", "USDC"), "volatile");
+});
+
+test("historical reference file: sha256 matches and counts are k of N", async () => {
+  const { readFileSync } = await import("node:fs");
+  const { createHash } = await import("node:crypto");
+  const { toJson } = await import("../src/lib/util.ts");
+  const h = JSON.parse(readFileSync("results/history/steth-eth.json", "utf8"));
+  const { sha256, ...body } = h;
+  assert.equal(createHash("sha256").update(toJson(body)).digest("hex"), sha256);
+  for (const x of h.windows.bySize) { assert.equal(x.n, h.windows.count); assert.ok(x.k >= 0 && x.k <= x.n); }
+  const ks = h.windows.bySize.map((x: { k: number }) => x.k);
+  assert.deepEqual([...ks].sort((a, b) => b - a), ks, "k must not increase with the shock size");
+});

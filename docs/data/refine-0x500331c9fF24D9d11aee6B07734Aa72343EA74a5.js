@@ -1,0 +1,186 @@
+window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["refine:0x500331c9fF24D9d11aee6B07734Aa72343EA74a5"]={
+  "schema": "exitproof-refine/1",
+  "vault": "0x500331c9fF24D9d11aee6B07734Aa72343EA74a5",
+  "name": "Gauntlet DAI Core",
+  "assetSymbol": "DAI",
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "baseFeePerGas": "121537943",
+    "forkLocalChainId": 31337
+  },
+  "note": "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
+  "history": null,
+  "governance": {
+    "timelockSeconds": 259200,
+    "timelockDays": 3,
+    "guardian": {
+      "address": "0x7084bF4dB6c21e1834dD6482f6056a39A33584cD",
+      "kind": "Safe 3/6"
+    },
+    "source": "read on-chain during discovery (vault timelock(), guardian())"
+  },
+  "exitWindow": {
+    "kind": "partial",
+    "share": 0.5259
+  },
+  "vaultLevel": {
+    "incident": "incident_blind_depeg_plus_run",
+    "ratio": 0,
+    "vaultLossAssets": "1992249654979618354",
+    "basis": "analytic economic shortfall (debt minus collateral market value of underwater borrowers), pro rata of vault supply shares",
+    "threshold": 0.01,
+    "aboveThreshold": false
+  },
+  "concentration": {
+    "byMarket": {
+      "hhi": 0.490881,
+      "word": "concentrated",
+      "n": 7
+    },
+    "byCollateral": {
+      "hhi": 0.846866,
+      "word": "concentrated",
+      "groups": [
+        {
+          "collateral": "sUSDe",
+          "share": 0.91806
+        },
+        {
+          "collateral": "USDe",
+          "share": 0.059344
+        },
+        {
+          "collateral": "PT-USDe-31JUL2025",
+          "share": 0.022587
+        },
+        {
+          "collateral": "PT-sUSDE-31JUL2025",
+          "share": 0.000007
+        },
+        {
+          "collateral": "PT-USDS-14AUG2025",
+          "share": 0.000002
+        }
+      ]
+    },
+    "thresholds": "HHI ≥ 0.25 concentrated, 0.15–0.25 moderately concentrated, < 0.15 diversified (US DOJ/FTC 2010 guidelines); weights = vault supply per market, idle market (no collateral) included"
+  },
+  "utilization": {
+    "watchLevel": 0.9,
+    "watchSource": "Gauntlet VaultBook (90 % utilization watch level; the 48-hour duration is not measured here)",
+    "markets": [
+      {
+        "queueIndex": 1,
+        "collateral": "sUSDe",
+        "utilization": 0.746,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 2,
+        "collateral": "sUSDe",
+        "utilization": 0.9159,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 5,
+        "collateral": "USDe",
+        "utilization": 0.9057,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 6,
+        "collateral": "PT-USDe-31JUL2025",
+        "utilization": 0.9035,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 7,
+        "collateral": "PT-sUSDE-31JUL2025",
+        "utilization": 0.9015,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 8,
+        "collateral": "PT-USDS-14AUG2025",
+        "utilization": 0.9103,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 9,
+        "collateral": "sUSDe",
+        "utilization": 0.9061,
+        "aboveWatch": true
+      }
+    ]
+  },
+  "regimes": {
+    "definition": "pegged: collateral of the same family as the loan asset (ETH, USD, BTC, EUR by symbol), −10 %; volatile: otherwise, −40 %",
+    "factors": {
+      "pegged": 0.9,
+      "volatile": 0.6
+    },
+    "byRegime": [
+      {
+        "regime": "pegged",
+        "shockSize": 0.1,
+        "collaterals": [
+          "sUSDe",
+          "USDe",
+          "PT-USDe-31JUL2025",
+          "PT-sUSDE-31JUL2025",
+          "PT-USDS-14AUG2025"
+        ],
+        "exposure": "2159694326316744697875712",
+        "exposureShare": 0.999694,
+        "shocks": [
+          {
+            "collateral": "sUSDe",
+            "label": "sUSDe market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "1992248323470373448",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "USDe",
+            "label": "USDe market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "0",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "PT-USDe-31JUL2025",
+            "label": "PT-USDe-31JUL2025 market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "401602654927480",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "PT-sUSDE-31JUL2025",
+            "label": "PT-sUSDE-31JUL2025 market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "9836168925593",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "PT-USDS-14AUG2025",
+            "label": "PT-USDS-14AUG2025 market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "99811442671611408",
+            "vaultLossRatio": 0
+          }
+        ]
+      },
+      {
+        "regime": "volatile",
+        "shockSize": 0.4,
+        "collaterals": [],
+        "exposure": "0",
+        "exposureShare": 0,
+        "shocks": []
+      }
+    ]
+  }
+};

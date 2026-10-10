@@ -1,0 +1,133 @@
+{
+  "schema": "exitproof-refine/1",
+  "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+  "name": "Steakhouse ETH",
+  "assetSymbol": "WETH",
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "baseFeePerGas": "121537943",
+    "forkLocalChainId": 31337
+  },
+  "note": "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
+  "history": {
+    "file": "results/history/steth-eth.json",
+    "sha256": "2c7512271d1230ffb94a953fb138a02cb0927dd386cb2c3f19232c50d36b1b40",
+    "incidentShockSize": 0.1,
+    "sizeSource": "scenario catalog: market price x0.9"
+  },
+  "governance": {
+    "timelockSeconds": 604800,
+    "timelockDays": 7,
+    "guardian": {
+      "address": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "kind": "Contract"
+    },
+    "source": "read on-chain during discovery (vault timelock(), guardian())"
+  },
+  "exitWindow": {
+    "kind": "immediate",
+    "share": 1
+  },
+  "vaultLevel": {
+    "incident": "incident_steth_depeg_blind_plus_run",
+    "ratio": 0.022536,
+    "vaultLossAssets": "219017024509180573381",
+    "basis": "analytic economic shortfall (debt minus collateral market value of underwater borrowers), pro rata of vault supply shares",
+    "threshold": 0.01,
+    "aboveThreshold": true
+  },
+  "concentration": {
+    "byMarket": {
+      "hhi": 0.704246,
+      "word": "concentrated",
+      "n": 3
+    },
+    "byCollateral": {
+      "hhi": 0.995869,
+      "word": "concentrated",
+      "groups": [
+        {
+          "collateral": "wstETH",
+          "share": 0.99793
+        },
+        {
+          "collateral": "cbBTC",
+          "share": 0.00207
+        }
+      ]
+    },
+    "thresholds": "HHI ≥ 0.25 concentrated, 0.15–0.25 moderately concentrated, < 0.15 diversified (US DOJ/FTC 2010 guidelines); weights = vault supply per market, idle market (no collateral) included"
+  },
+  "utilization": {
+    "watchLevel": 0.9,
+    "watchSource": "Gauntlet VaultBook (90 % utilization watch level; the 48-hour duration is not measured here)",
+    "markets": [
+      {
+        "queueIndex": 1,
+        "collateral": "wstETH",
+        "utilization": 0.8488,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 2,
+        "collateral": "wstETH",
+        "utilization": 0.8359,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 3,
+        "collateral": "cbBTC",
+        "utilization": 0.8708,
+        "aboveWatch": false
+      }
+    ]
+  },
+  "regimes": {
+    "definition": "pegged: collateral of the same family as the loan asset (ETH, USD, BTC, EUR by symbol), −10 %; volatile: otherwise, −40 %",
+    "factors": {
+      "pegged": 0.9,
+      "volatile": 0.6
+    },
+    "byRegime": [
+      {
+        "regime": "pegged",
+        "shockSize": 0.1,
+        "collaterals": [
+          "wstETH"
+        ],
+        "exposure": "9698059655231830029533",
+        "exposureShare": 0.997926,
+        "shocks": [
+          {
+            "collateral": "wstETH",
+            "label": "wstETH market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "219016882133851517000",
+            "vaultLossRatio": 0.022536
+          }
+        ]
+      },
+      {
+        "regime": "volatile",
+        "shockSize": 0.4,
+        "collaterals": [
+          "cbBTC"
+        ],
+        "exposure": "20116053728304155755",
+        "exposureShare": 0.002069,
+        "shocks": [
+          {
+            "collateral": "cbBTC",
+            "label": "cbBTC market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "3083783253059251019",
+            "vaultLossRatio": 0.000317
+          }
+        ]
+      }
+    ]
+  }
+}

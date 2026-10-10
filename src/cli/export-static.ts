@@ -27,6 +27,7 @@ for (const f of readdirSync("results/reports")) {
   const replay = existsSync(`results/replays/${f}`) ? JSON.parse(readFileSync(`results/replays/${f}`, "utf8")) : null;
   write(`report-${vault}.js`, `report:${vault}`, report);
   write(`graph-${vault}.js`, `graph:${vault}`, graph);
+  if (existsSync(`results/refine/${f}`)) write(`refine-${vault}.js`, `refine:${vault}`, readFileSync(`results/refine/${f}`, "utf8"));
   index.push({
     vault, name: r.target.name, version: r.target.version, asset: r.target.assetSymbol, catalog: r.catalog,
     totalAssets: r.vault.totalAssets, assetDecimals: r.target.assetDecimals,
@@ -34,6 +35,7 @@ for (const f of readdirSync("results/reports")) {
     replay: replay ? { verdict: replay.verdict, at: replay.at, hashOk: replay.hashOk, cushionOk: replay.cushionOk, scenarios: replay.scenarios.length, okScenarios: replay.scenarios.filter((x: { ok: boolean }) => x.ok).length } : null,
   });
 }
+if (existsSync("results/history/steth-eth.json")) write("history-steth-eth.js", "history:steth-eth", readFileSync("results/history/steth-eth.json", "utf8"));
 index.sort((a, b) => (a.name === "Steakhouse ETH" ? -1 : b.name === "Steakhouse ETH" ? 1 : String(a.name).localeCompare(String(b.name))));
 write("index.js", "index", JSON.stringify({ source: { chainId: 1, block: "26157638", blockHash: "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4", timestamp: "1791582443" }, exportedAt: new Date().toISOString(), vaults: index }));
 console.log(`exported ${index.length} vaults to ${OUT}`);

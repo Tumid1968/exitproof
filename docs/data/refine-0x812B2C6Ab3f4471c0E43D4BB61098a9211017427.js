@@ -1,0 +1,99 @@
+window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["refine:0x812B2C6Ab3f4471c0E43D4BB61098a9211017427"]={
+  "schema": "exitproof-refine/1",
+  "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+  "name": "Vault Bridge WBTC",
+  "assetSymbol": "WBTC",
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "baseFeePerGas": "121537943",
+    "forkLocalChainId": 31337
+  },
+  "note": "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
+  "history": null,
+  "governance": {
+    "timelockSeconds": 259200,
+    "timelockDays": 3,
+    "guardian": {
+      "address": "0x7084bF4dB6c21e1834dD6482f6056a39A33584cD",
+      "kind": "Safe 3/6"
+    },
+    "source": "read on-chain during discovery (vault timelock(), guardian())"
+  },
+  "exitWindow": {
+    "kind": "immediate",
+    "share": 1
+  },
+  "vaultLevel": null,
+  "concentration": {
+    "byMarket": {
+      "hhi": 0.99991,
+      "word": "concentrated",
+      "n": 2
+    },
+    "byCollateral": {
+      "hhi": 0.99991,
+      "word": "concentrated",
+      "groups": [
+        {
+          "collateral": "none",
+          "share": 0.999955
+        },
+        {
+          "collateral": "cbBTC",
+          "share": 0.000045
+        }
+      ]
+    },
+    "thresholds": "HHI ≥ 0.25 concentrated, 0.15–0.25 moderately concentrated, < 0.15 diversified (US DOJ/FTC 2010 guidelines); weights = vault supply per market, idle market (no collateral) included"
+  },
+  "utilization": {
+    "watchLevel": 0.9,
+    "watchSource": "Gauntlet VaultBook (90 % utilization watch level; the 48-hour duration is not measured here)",
+    "markets": [
+      {
+        "queueIndex": 1,
+        "collateral": "cbBTC",
+        "utilization": 0.001,
+        "aboveWatch": false
+      }
+    ]
+  },
+  "regimes": {
+    "definition": "pegged: collateral of the same family as the loan asset (ETH, USD, BTC, EUR by symbol), −10 %; volatile: otherwise, −40 %",
+    "factors": {
+      "pegged": 0.9,
+      "volatile": 0.6
+    },
+    "byRegime": [
+      {
+        "regime": "pegged",
+        "shockSize": 0.1,
+        "collaterals": [
+          "cbBTC"
+        ],
+        "exposure": "836517",
+        "exposureShare": 0.000044,
+        "shocks": [
+          {
+            "collateral": "cbBTC",
+            "label": "cbBTC market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "0",
+            "vaultLossRatio": 0
+          }
+        ]
+      },
+      {
+        "regime": "volatile",
+        "shockSize": 0.4,
+        "collaterals": [],
+        "exposure": "0",
+        "exposureShare": 0,
+        "shocks": []
+      }
+    ]
+  }
+};

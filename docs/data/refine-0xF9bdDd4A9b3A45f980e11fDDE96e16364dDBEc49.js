@@ -1,0 +1,212 @@
+window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["refine:0xF9bdDd4A9b3A45f980e11fDDE96e16364dDBEc49"]={
+  "schema": "exitproof-refine/1",
+  "vault": "0xF9bdDd4A9b3A45f980e11fDDE96e16364dDBEc49",
+  "name": "Yearn OG USDC",
+  "assetSymbol": "USDC",
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "baseFeePerGas": "121537943",
+    "forkLocalChainId": 31337
+  },
+  "note": "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
+  "history": null,
+  "governance": {
+    "timelockSeconds": 259200,
+    "timelockDays": 3,
+    "guardian": {
+      "address": "0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+      "kind": "Safe 6/9"
+    },
+    "source": "read on-chain during discovery (vault timelock(), guardian())"
+  },
+  "exitWindow": {
+    "kind": "immediate",
+    "share": 1
+  },
+  "vaultLevel": {
+    "incident": "incident_feed_shock_plus_run",
+    "ratio": 0.00001,
+    "vaultLossAssets": "106666327",
+    "basis": "executed on fork: holder value before minus after liquidations (bad debt socialised by Morpho Blue; net of lostAssets on MetaMorpho V1.1, where the share price does not drop)",
+    "threshold": 0.01,
+    "aboveThreshold": false
+  },
+  "concentration": {
+    "byMarket": {
+      "hhi": 0.293837,
+      "word": "concentrated",
+      "n": 7
+    },
+    "byCollateral": {
+      "hhi": 0.293837,
+      "word": "concentrated",
+      "groups": [
+        {
+          "collateral": "cbBTC",
+          "share": 0.000081
+        },
+        {
+          "collateral": "siUSD",
+          "share": 0.072152
+        },
+        {
+          "collateral": "PT-USD3-17DEC2026",
+          "share": 0.360002
+        },
+        {
+          "collateral": "USD3",
+          "share": 0.329994
+        },
+        {
+          "collateral": "OETH",
+          "share": 0.223493
+        },
+        {
+          "collateral": "WOUSD",
+          "share": 0.000712
+        },
+        {
+          "collateral": "YFI",
+          "share": 0.013567
+        }
+      ]
+    },
+    "thresholds": "HHI ≥ 0.25 concentrated, 0.15–0.25 moderately concentrated, < 0.15 diversified (US DOJ/FTC 2010 guidelines); weights = vault supply per market, idle market (no collateral) included"
+  },
+  "utilization": {
+    "watchLevel": 0.9,
+    "watchSource": "Gauntlet VaultBook (90 % utilization watch level; the 48-hour duration is not measured here)",
+    "markets": [
+      {
+        "queueIndex": 0,
+        "collateral": "cbBTC",
+        "utilization": 0.895,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 1,
+        "collateral": "siUSD",
+        "utilization": 0.9041,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 2,
+        "collateral": "PT-USD3-17DEC2026",
+        "utilization": 0.8557,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 3,
+        "collateral": "USD3",
+        "utilization": 0.8362,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 4,
+        "collateral": "OETH",
+        "utilization": 0.9027,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 5,
+        "collateral": "WOUSD",
+        "utilization": 0.9037,
+        "aboveWatch": true
+      },
+      {
+        "queueIndex": 9,
+        "collateral": "YFI",
+        "utilization": 0.9093,
+        "aboveWatch": true
+      }
+    ]
+  },
+  "regimes": {
+    "definition": "pegged: collateral of the same family as the loan asset (ETH, USD, BTC, EUR by symbol), −10 %; volatile: otherwise, −40 %",
+    "factors": {
+      "pegged": 0.9,
+      "volatile": 0.6
+    },
+    "byRegime": [
+      {
+        "regime": "pegged",
+        "shockSize": 0.1,
+        "collaterals": [
+          "siUSD",
+          "PT-USD3-17DEC2026",
+          "USD3",
+          "WOUSD"
+        ],
+        "exposure": "7930987109971",
+        "exposureShare": 0.762855,
+        "shocks": [
+          {
+            "collateral": "siUSD",
+            "label": "siUSD market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "216202",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "PT-USD3-17DEC2026",
+            "label": "PT-USD3-17DEC2026 market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "0",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "USD3",
+            "label": "USD3 market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "9764709018",
+            "vaultLossRatio": 0.000939
+          },
+          {
+            "collateral": "WOUSD",
+            "label": "WOUSD market price x0.9 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "0",
+            "vaultLossRatio": 0
+          }
+        ]
+      },
+      {
+        "regime": "volatile",
+        "shockSize": 0.4,
+        "collaterals": [
+          "cbBTC",
+          "OETH",
+          "YFI"
+        ],
+        "exposure": "2465404915210",
+        "exposureShare": 0.237139,
+        "shocks": [
+          {
+            "collateral": "cbBTC",
+            "label": "cbBTC market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "6539032",
+            "vaultLossRatio": 0
+          },
+          {
+            "collateral": "OETH",
+            "label": "OETH market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "1581",
+            "vaultHiddenLoss": "32169330623",
+            "vaultLossRatio": 0.003094
+          },
+          {
+            "collateral": "YFI",
+            "label": "YFI market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "0",
+            "vaultLossRatio": 0
+          }
+        ]
+      }
+    ]
+  }
+};

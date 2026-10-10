@@ -1,0 +1,138 @@
+window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["refine:0xBEefb9f61CC44895d8AEc381373555a64191A9c4"]={
+  "schema": "exitproof-refine/1",
+  "vault": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+  "name": "Vault Bridge USDC",
+  "assetSymbol": "USDC",
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "baseFeePerGas": "121537943",
+    "forkLocalChainId": 31337
+  },
+  "note": "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
+  "history": null,
+  "governance": {
+    "timelockSeconds": 604800,
+    "timelockDays": 7,
+    "guardian": {
+      "address": "0xf4F2f5F6bAdBE05433C4604320ecC56BbECBC04E",
+      "kind": "Safe 2/3"
+    },
+    "source": "read on-chain during discovery (vault timelock(), guardian())"
+  },
+  "exitWindow": {
+    "kind": "immediate",
+    "share": 1
+  },
+  "vaultLevel": {
+    "incident": "incident_feed_shock_plus_run",
+    "ratio": 0.000001,
+    "vaultLossAssets": "11499149",
+    "basis": "executed on fork: holder value before minus after liquidations (bad debt socialised by Morpho Blue; net of lostAssets on MetaMorpho V1.1, where the share price does not drop)",
+    "threshold": 0.01,
+    "aboveThreshold": false
+  },
+  "concentration": {
+    "byMarket": {
+      "hhi": 0.928705,
+      "word": "concentrated",
+      "n": 3
+    },
+    "byCollateral": {
+      "hhi": 0.928705,
+      "word": "concentrated",
+      "groups": [
+        {
+          "collateral": "cbBTC",
+          "share": 0.021116
+        },
+        {
+          "collateral": "WBTC",
+          "share": 0.963337
+        },
+        {
+          "collateral": "wstETH",
+          "share": 0.015547
+        }
+      ]
+    },
+    "thresholds": "HHI ≥ 0.25 concentrated, 0.15–0.25 moderately concentrated, < 0.15 diversified (US DOJ/FTC 2010 guidelines); weights = vault supply per market, idle market (no collateral) included"
+  },
+  "utilization": {
+    "watchLevel": 0.9,
+    "watchSource": "Gauntlet VaultBook (90 % utilization watch level; the 48-hour duration is not measured here)",
+    "markets": [
+      {
+        "queueIndex": 1,
+        "collateral": "cbBTC",
+        "utilization": 0.895,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 2,
+        "collateral": "WBTC",
+        "utilization": 0.8864,
+        "aboveWatch": false
+      },
+      {
+        "queueIndex": 3,
+        "collateral": "wstETH",
+        "utilization": 0.9014,
+        "aboveWatch": true
+      }
+    ]
+  },
+  "regimes": {
+    "definition": "pegged: collateral of the same family as the loan asset (ETH, USD, BTC, EUR by symbol), −10 %; volatile: otherwise, −40 %",
+    "factors": {
+      "pegged": 0.9,
+      "volatile": 0.6
+    },
+    "byRegime": [
+      {
+        "regime": "pegged",
+        "shockSize": 0.1,
+        "collaterals": [],
+        "exposure": "0",
+        "exposureShare": 0,
+        "shocks": []
+      },
+      {
+        "regime": "volatile",
+        "shockSize": 0.4,
+        "collaterals": [
+          "cbBTC",
+          "WBTC",
+          "wstETH"
+        ],
+        "exposure": "10473862761550",
+        "exposureShare": 0.999998,
+        "shocks": [
+          {
+            "collateral": "cbBTC",
+            "label": "cbBTC market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "1720313565",
+            "vaultLossRatio": 0.000164
+          },
+          {
+            "collateral": "WBTC",
+            "label": "WBTC market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "240525903455",
+            "vaultLossRatio": 0.022964
+          },
+          {
+            "collateral": "wstETH",
+            "label": "wstETH market price x0.6 (oracle unchanged: economic shortfall)",
+            "vaultLoss": "0",
+            "vaultHiddenLoss": "1310615972",
+            "vaultLossRatio": 0.000125
+          }
+        ]
+      }
+    ]
+  }
+};
