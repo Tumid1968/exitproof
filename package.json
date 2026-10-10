@@ -1,0 +1,22 @@
+{
+  "name": "exitproof",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "DeFi dependency & exit-liquidity risk engine for MetaMorpho V1 vaults, proven on a frozen-block local fork",
+  "license": "MIT",
+  "scripts": {
+    "proxy": "tsx src/proxy/rpcProxy.ts",
+    "fork": "hardhat node --fork http://127.0.0.1:8600 --fork-block-number 26157638",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hardhat": "3.19.0",
+    "viem": "2.57.4"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}

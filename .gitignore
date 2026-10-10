@@ -1,0 +1,9 @@
+node_modules/
+cache/
+artifacts/
+dist/
+.env
+*.log
+web/node_modules/
+web/dist/
+scratch/
