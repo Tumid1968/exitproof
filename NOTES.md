@@ -33,3 +33,11 @@
 22. Fraîcheur des feeds : intervalle maximal et variation de déclenchement **observés** sur les 24 derniers rounds (`getRoundData`), Chainlink ne les publiant pas on-chain. cbBTC/USD : âge 10,1 h, intervalle max observé 24,0 h, déclenchement ~2 % → normal.
 23. Public Allocator exécuté (scénario d'atténuation générique) : Steakhouse USDT, sortie possible du plus gros détenteur 46,73 M → 50,47 M USDT après déplacement de 3,75 M par un coffre pair (frais payés dans la transaction).
 24. Feeds de stablecoins (USDT/USD…) : presque toutes les mises à jour viennent du heartbeat ; quand les variations observées sont < 0,05 %, l'interface dit « heartbeat-driven » au lieu d'un seuil de variation ~0,00 % trompeur. Graphe : hauteur limitée à 720 px avec défilement (coffres à 180+ nœuds).
+25. Validation hors connexion (sam. ~14:20) sur nœud neuf, avec les 11 coffres : 11 replays verts ; analyse d'un coffre en cache via l'API en 27 s ; coffre jamais vu → 503 lisible (« analysez-le d'abord en ligne »).
+26. **Deuxième revue indépendante (agent, sam. ~14:25)** : 4 défauts réels + 3 mineurs, tous corrigés (tag `pre-review2-fixes` avant) :
+    (a) une analyse en échec juste après un remplacement d'oracle pouvait laisser l'oracle choqué sur le fork partagé et le figer comme état de base → `run()` restaure toujours en `finally` ; `init()` revient toujours au snapshot de base de la même instance de nœud (`hardhat_metadata.instanceId`) ; les adresses dont le code a été remplacé sont journalisées sur disque et restaurées depuis l'archive par toute exécution suivante (même après un processus tué, puisque `evm_revert` ne défait pas `setCode` sur EDR). Deux tests d'acceptation reproduisent ces pannes ;
+    (b) Public Allocator : salle (room) par marché cible, choix du marché qui a le plus de place (avant : tout attribué au premier) ;
+    (c) `reallocateTo` : `accrueInterest` du marché cible avant le calcul de la marge sous le cap (sinon revert `SupplyCapExceeded` possible) ;
+    (d) détection « 429 » trop large dans les messages d'erreur ;
+    (e) boucle de suivi de l'interface : réponse inattendue (API redémarrée) → message clair, délai max 20 min ;
+    (f) point mort affiché à « — » quand la sortie est impossible ; (g) ligne gaz classée « exécuté sur fork ».

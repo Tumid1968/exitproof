@@ -1476,7 +1476,7 @@
       "verdict": {
         "decision": "NO_ACTION_POSSIBLE",
         "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
-        "breakEvenProbability": 1224.6306833189701,
+        "breakEvenProbability": null,
         "expectedLossStay": 664243.6678540101,
         "expectedLossExit": 682508.7055367258,
         "exitCost": 18265.78344973345,
@@ -1497,7 +1497,7 @@
       "verdict": {
         "decision": "NO_ACTION_POSSIBLE",
         "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
-        "breakEvenProbability": 1145.3755529488135,
+        "breakEvenProbability": null,
         "expectedLossStay": 710206.5124055501,
         "expectedLossExit": 728471.4984843512,
         "exitCost": 18265.78344973345,
@@ -1518,7 +1518,7 @@
       "verdict": {
         "decision": "NO_ACTION_POSSIBLE",
         "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
-        "breakEvenProbability": 1148.7907819776847,
+        "breakEvenProbability": null,
         "expectedLossStay": 708095.146318955,
         "expectedLossExit": 726360.1347682525,
         "exitCost": 18265.78344973345,
@@ -1539,37 +1539,37 @@
     {
       "factor": 0.99,
       "holderLoss": "0",
-      "breakEven": 1224.6306833189701
+      "breakEven": null
     },
     {
       "factor": 0.98,
       "holderLoss": "0",
-      "breakEven": 1224.6306833189701
+      "breakEven": null
     },
     {
       "factor": 0.97,
       "holderLoss": "0",
-      "breakEven": 1224.6306833189701
+      "breakEven": null
     },
     {
       "factor": 0.95,
       "holderLoss": "0",
-      "breakEven": 1224.6306833189701
+      "breakEven": null
     },
     {
       "factor": 0.9,
       "holderLoss": "0",
-      "breakEven": 1224.6306833189701
+      "breakEven": null
     },
     {
       "factor": 0.85,
       "holderLoss": "0",
-      "breakEven": 1224.6306833189701
+      "breakEven": null
     },
     {
       "factor": 0.8,
       "holderLoss": "0",
-      "breakEven": 1224.6306833189701
+      "breakEven": null
     }
   ],
   "depegCurveCollateral": "sdeUSD",
@@ -1696,13 +1696,13 @@
     {
       "item": "Gas of the exit",
       "value": "null gas × 0.122 gwei",
-      "cls": "measured",
+      "cls": "executed",
       "source": "gasUsed of the exit on the fork × baseFeePerGas of the source block header",
       "hypotheses": "re-entry assumed to cost the same gas (no deposit executed)"
     },
     {
       "item": "Break-even incident probability",
-      "value": ">100 % / >100 % / >100 %",
+      "value": "— / — / —",
       "cls": "modeled",
       "source": "p* = exit cost / (incident loss × exitable share); src/verdict/verdict.ts",
       "hypotheses": "horizon 30 d, locked funds cost 10 %, net APY 148996.57 %"

@@ -65,7 +65,7 @@ function friendly(e: unknown, stage: string): UserError {
   const m = `${(e as Error)?.message ?? e} ${(e as { details?: string })?.details ?? ""}`;
   if (/not a MetaMorpho V1/.test(m)) return new UserError(422, m.split("\n")[0].trim());
   if (/offline proxy|not cached|EXITPROOF_OFFLINE/i.test(m)) return new UserError(503, "Offline mode: this vault was never analysed online, so its on-chain state is not in the local cache. Restart the proxy online (npm run proxy) and retry.");
-  if (/upstream failed|429|rate limit|fetch failed|ECONNREFUSED|took too long|timeout/i.test(m)) return new UserError(503, "The archive RPC did not answer (unreachable or rate-limited). Retry in a minute, or set EXITPROOF_RPC_URL to another archive endpoint.");
+  if (/upstream failed|\b429\b|status(?: code)? 429|Too Many Requests|rate limit|fetch failed|ECONNREFUSED|took too long|timed? ?out/i.test(m)) return new UserError(503, "The archive RPC did not answer (unreachable or rate-limited). Retry in a minute, or set EXITPROOF_RPC_URL to another archive endpoint.");
   if (/Fork is not at the frozen source block|8545/.test(m)) return new UserError(503, "The local fork is not running at the source block. Start it with npm run fork.");
   return new UserError(500, `Failed during ${stage}: ${m.split("\n")[0].trim().slice(0, 250)}`);
 }

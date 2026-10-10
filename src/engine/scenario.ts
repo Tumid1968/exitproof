@@ -4,6 +4,7 @@
  * real contract call by an impersonated actor (scenario hypothesis) or an explicit state override
  * (oracle replaced by a constant: shock hypothesis). Measurements are eth_calls on the fork.
  */
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { decodeEventLog, encodeAbiParameters, encodeFunctionData, getAddress, keccak256, pad, toHex, type Address, type Hex } from "viem";
 import { rpc } from "../lib/rpc.ts";
 import { erc20Abi, metaMorphoAbi, morphoBlueAbi, morphoOracleAbi, publicAllocatorAbi } from "../lib/abis.ts";
@@ -134,8 +135,20 @@ export class ScenarioRunner {
       ScenarioRunner.originals.set(k, await rpc<Hex>(PROXY_URL, "eth_getCode", [k, "0x" + SOURCE.block.toString(16)]));
     await rpc(this.eng.url, "hardhat_setCode", [k, ScenarioRunner.originals.get(k)!]);
   }
+  /** Every address whose code was ever replaced on this fork, persisted so another process can restore it. */
+  private static OVERRIDES_FILE = "cache/fork-code-overrides.json";
+  private static recorded(): string[] {
+    try { return JSON.parse(readFileSync(ScenarioRunner.OVERRIDES_FILE, "utf8")); } catch { return []; }
+  }
+  private static record(addr: Address) {
+    const all = new Set(ScenarioRunner.recorded());
+    all.add(getAddress(addr));
+    mkdirSync("cache", { recursive: true });
+    writeFileSync(ScenarioRunner.OVERRIDES_FILE, JSON.stringify([...all].sort()));
+  }
   private async restoreAll() {
-    for (const k of ScenarioRunner.originals.keys()) await this.restoreCode(k as Address);
+    const all = new Set([...ScenarioRunner.originals.keys(), ...ScenarioRunner.recorded()]);
+    for (const k of all) await this.restoreCode(k as Address);
   }
 
   private async setOracle(a: Extract<ScenarioAction, { type: "oraclePrice" }>): Promise<ActionResult> {
@@ -150,6 +163,7 @@ export class ScenarioRunner {
     const ref = await rpc<Hex>(PROXY_URL, "eth_call", [{ to: a.oracle, data: "0xa035b1fe" }, "0x" + SOURCE.block.toString(16)]);
     if (BigInt(ref) !== before) throw new Error(`oracle ${a.oracle} price on fork (${before}) differs from archive (${BigInt(ref)})`);
     const after = (before * BigInt(a.num)) / BigInt(a.den);
+    ScenarioRunner.record(a.oracle); // before the override: a crash after it still gets restored next time
     await rpc(this.eng.url, "hardhat_setCode", [a.oracle, constantReturner(after)]);
     return { type: "oraclePrice", label: a.label, oracle: a.oracle, priceBefore: before.toString(), priceAfter: after.toString() };
   }
@@ -239,6 +253,11 @@ export class ScenarioRunner {
       const p = await this.eng.call<readonly [Address, Address, Address, Address, bigint]>(ADDR.morphoBlue, morphoBlueAbi, "idToMarketParams", [id]);
       return { loanToken: p[0], collateralToken: p[1], oracle: p[2], irm: p[3], lltv: p[4] };
     };
+    const caller = getAddress("0x000000000000000000000000000000000000a110");
+    await rpc(this.eng.url, "hardhat_impersonateAccount", [caller]);
+    await rpc(this.eng.url, "hardhat_setBalance", [caller, hex(10n ** 18n * 10n)]);
+    // reallocateTo accrues interest before MetaMorpho checks the supply cap: accrue first so the room we compute is exact
+    await this.tx(caller, ADDR.morphoBlue, encodeFunctionData({ abi: morphoBlueAbi, functionName: "accrueInterest", args: [await params(a.supplyMarketId)] }));
     const [maxIn] = await this.eng.call<readonly [bigint, bigint]>(PA, publicAllocatorAbi, "flowCaps", [a.vault, a.supplyMarketId]);
     const [cap] = await this.eng.call<readonly [bigint, boolean, bigint]>(a.vault, metaMorphoAbi, "config", [a.supplyMarketId]);
     const mS = await this.eng.call<readonly bigint[]>(ADDR.morphoBlue, morphoBlueAbi, "market", [a.supplyMarketId]);
@@ -267,9 +286,6 @@ export class ScenarioRunner {
     ws.sort((x, y) => (BigInt(x.marketId) < BigInt(y.marketId) ? -1 : 1)); // the Public Allocator requires increasing ids
     const withdrawals = [] as { marketParams: Awaited<ReturnType<typeof params>>; amount: bigint }[];
     for (const w of ws) withdrawals.push({ marketParams: await params(w.marketId), amount: w.amount });
-    const caller = getAddress("0x000000000000000000000000000000000000a110");
-    await rpc(this.eng.url, "hardhat_impersonateAccount", [caller]);
-    await rpc(this.eng.url, "hardhat_setBalance", [caller, hex(10n ** 18n * 10n)]);
     const data = encodeFunctionData({ abi: publicAllocatorAbi, functionName: "reallocateTo", args: [a.vault, withdrawals, await params(a.supplyMarketId)] });
     const r = await this.tx(caller, PA, data, fee);
     return {
@@ -286,6 +302,7 @@ export class ScenarioRunner {
     this.k = 0;
     this.funded.clear();
     const results: ActionResult[] = [];
+    try {
     for (const a of s.actions) {
       if (a.type === "exit") {
         this.k++;
@@ -295,7 +312,10 @@ export class ScenarioRunner {
       else if (a.type === "publicReallocate") results.push(await this.publicReallocate(a));
       else results.push({ type: "measure", label: a.label, m: await this.measure(a.label, s.target) });
     }
-    await this.restoreAll();
+    } finally {
+      // never leave a shocked oracle on the shared fork, even if an action failed
+      await this.restoreAll();
+    }
     return { id: s.id, title: s.title, hypotheses: s.hypotheses, target: s.target, txCount: this.k, results };
   }
 }

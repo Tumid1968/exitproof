@@ -417,6 +417,8 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
   // ---------- Peer vaults sharing the same markets ----------
   const exposed = markets.filter((m) => m.vaultSupplyAssets > 0n);
   const peers: PeerExposure[] = [];
+  /** net liquidity each peer can bring through the Public Allocator: min(sum of target rooms, source) */
+  const peerTotals = new Map<Address, bigint>();
   if (opts.peers !== false && exposed.length) {
     log("peer vault candidates from Morpho API, each verified on-chain...");
     const api = await supplyingVaultCandidates(exposed.map((m) => m.id));
@@ -454,12 +456,15 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
       const inCaps = flowCaps.filter((f) => f.maxIn > 0n);
       if (inCaps.length) {
         let inRoom = 0n;
+        const rooms: { id: Hex; room: bigint }[] = [];
         for (const fc of inCaps) {
           const [cfg, cfgId] = await r.must<readonly [bigint, boolean, bigint]>(pv.vault, metaMorphoAbi, "config", [fc.id]);
           const cur = pv.ms.find((x) => x.m.id === fc.id);
           const curAssets = cur ? toAssetsDown(cur.shares, cur.m.totalSupplyAssets, cur.m.totalSupplyShares) : 0n;
           const headroom = cfg[0] > curAssets ? cfg[0] - curAssets : 0n;
-          inRoom += fc.maxIn < headroom ? fc.maxIn : headroom;
+          const room = fc.maxIn < headroom ? fc.maxIn : headroom;
+          inRoom += room;
+          rooms.push({ id: fc.id, room });
           fcProv.push(cfgId);
         }
         let source = 0n;
@@ -475,7 +480,10 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
           source += [qfc[1], sup, liq].reduce((x, y) => (x < y ? x : y));
           fcProv.push(qmId, qpId);
         }
-        reallocatableIn.push({ id: inCaps[0].id, amount: inRoom < source ? inRoom : source });
+        // per target market: its own room, capped by the shared source; sorted so the largest comes first
+        for (const x of rooms) reallocatableIn.push({ id: x.id, amount: x.room < source ? x.room : source });
+        reallocatableIn.sort((p1, p2) => (p2.amount > p1.amount ? 1 : p2.amount < p1.amount ? -1 : 0));
+        peerTotals.set(pv.vault, inRoom < source ? inRoom : source);
       }
       const [psupply] = await r.must<bigint>(pv.vault, metaMorphoAbi, "totalSupply");
       const ph = await topHolders(pv.vault, psupply, 5);
@@ -595,7 +603,7 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
       grossSupplyApyBeforeVaultFee: supplyApy, vaultPerformanceFee: Number(fee) / 1e18,
       marketCount: markets.length, exposedMarketCount: exposed.length, peerVaultCount: peers.length,
       publicAllocatorIsAllocator: paIsAllocator,
-      publicAllocatorReallocatableIntoExposedMarkets: peers.reduce((t, p) => t + p.publicAllocator.reallocatableIn.reduce((a, x) => a + x.amount, 0n), 0n),
+      publicAllocatorReallocatableIntoExposedMarkets: peers.reduce((t, p) => t + (peerTotals.get(p.vault) ?? 0n), 0n),
       nodeCount: nodes.size, edgeCount: edges.length, readCount: r.reads.length,
     },
     markets, peers, borrowers, holders: { coverage: holders.coverage, list: holders.list }, dex,

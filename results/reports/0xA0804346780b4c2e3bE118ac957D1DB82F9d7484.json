@@ -8970,7 +8970,7 @@
       "value": "1,578,293.36 USDT",
       "cls": "bounded",
       "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
-      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; executed in scenario all_first_then_public_allocator: holder exitable 11,436,780.96 USDT → 11,504,249.15 USDT"
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; executed in scenario all_first_then_public_allocator: holder exitable 11,436,780.96 USDT → 11,504,249.23 USDT"
     },
     {
       "item": "AMM liquidation capacity, wstETH market #4",
@@ -9213,7 +9213,7 @@
     {
       "item": "Gas of the exit",
       "value": "null gas × 0.122 gwei",
-      "cls": "measured",
+      "cls": "executed",
       "source": "gasUsed of the exit on the fork × baseFeePerGas of the source block header",
       "hypotheses": "re-entry assumed to cost the same gas (no deposit executed)"
     },
@@ -9236,7 +9236,7 @@
     "id": "all_first_then_public_allocator",
     "baseId": "all_first",
     "withoutWei": "11436780960493",
-    "withWei": "11504249150601",
+    "withWei": "11504249225897",
     "fullExitWithPa": false,
     "reallocations": [
       {

@@ -242,7 +242,7 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
       };
     }),
     { item: "Net APY (yield given up by exiting)", value: `${(netApy * 100).toFixed(2)} %`, cls: "measured", source: "IRM borrowRateView(params, market) per market × utilization × (1 − market fee), weighted by the vault's supply, minus the vault performance fee", hypotheses: "rate constant over the horizon (APR compounded continuously)" },
-    { item: "Gas of the exit", value: `${aloneExit.gasUsed} gas × ${(Number(baseFee) / 1e9).toFixed(3)} gwei`, cls: "measured", source: "gasUsed of the exit on the fork × baseFeePerGas of the source block header", hypotheses: "re-entry assumed to cost the same gas (no deposit executed)" },
+    { item: "Gas of the exit", value: `${aloneExit.gasUsed} gas × ${(Number(baseFee) / 1e9).toFixed(3)} gwei`, cls: "executed", source: "gasUsed of the exit on the fork × baseFeePerGas of the source block header", hypotheses: "re-entry assumed to cost the same gas (no deposit executed)" },
     { item: "Break-even incident probability", value: verdicts.map((v) => (v.verdict.breakEvenProbability === null ? "—" : v.verdict.breakEvenProbability > 1 ? ">100 %" : `${(v.verdict.breakEvenProbability * 100).toFixed(2)} %`)).join(" / "), cls: "modeled", source: "p* = exit cost / (incident loss × exitable share); src/verdict/verdict.ts", hypotheses: `horizon ${defaults.horizonDays} d, locked funds cost ${defaults.lockedHaircut * 100} %, net APY ${(netApy * 100).toFixed(2)} %` },
     { item: "Incident probability", value: `${defaults.probability * 100} % (default)`, cls: "hypothesis", source: "user input", hypotheses: "never a prediction" },
   ];

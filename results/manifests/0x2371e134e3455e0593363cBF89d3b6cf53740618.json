@@ -1,6 +1,6 @@
 {
   "exitproof_manifest": "0.2",
-  "created_at": "2026-10-10T11:04:47.566Z",
+  "created_at": "2026-10-10T12:15:17.292Z",
   "tooling": {
     "node": "v24.14.1",
     "hardhat": "3.19.0",
@@ -3142,7 +3142,7 @@
           "vault": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
           "holder": "0x9fC3dc011b461664c835F2527fffb1169b3C213e"
         },
-        "txCount": 9,
+        "txCount": 10,
         "results": [
           {
             "type": "measure",
@@ -3360,14 +3360,14 @@
             "label": "before the holder's exit",
             "m": {
               "label": "before the holder's exit",
-              "afterTx": 7,
-              "vaultTotalAssets": "2586456567901802424749",
+              "afterTx": 8,
+              "vaultTotalAssets": "2586456623670015699861",
               "vaultTotalSupply": "2453520871866733461133",
               "holderShares": "2021918067656956335939",
-              "holderValue": "2131468823957430802465",
+              "holderValue": "2131468867617471093583",
               "vaultLostAssets": "0",
-              "holderEconomicValue": "2131468823957430802465",
-              "holderMaxWithdraw": "1277857896437529957953",
+              "holderEconomicValue": "2131468867617471093583",
+              "holderMaxWithdraw": "1277857896972432774600",
               "markets": [
                 {
                   "id": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
@@ -3378,10 +3378,10 @@
                 },
                 {
                   "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-                  "totalSupplyAssets": "29522268121012190824156",
-                  "totalBorrowAssets": "28328133853452721964728",
+                  "totalSupplyAssets": "29522268726723971094689",
+                  "totalBorrowAssets": "28328134459164502235261",
                   "liquidity": "1194134267559468859428",
-                  "vaultSupplyAssets": "2085116170964210709064"
+                  "vaultSupplyAssets": "2085116213749758429099"
                 },
                 {
                   "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
@@ -3418,14 +3418,14 @@
             "type": "exit",
             "label": "holder exits everything (redeem all shares)",
             "result": {
-              "k": 8,
+              "k": 9,
               "label": "holder exits everything (redeem all shares)",
               "vault": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
               "owner": "0x9fC3dc011b461664c835F2527fffb1169b3C213e",
               "action": {
                 "kind": "redeemAll"
               },
-              "timestamp": "1791582539",
+              "timestamp": "1791582551",
               "call": "redeem(all shares)",
               "sharesIn": "2021918067656956335939",
               "ok": false,
@@ -3437,29 +3437,29 @@
                 "raw": "0x4323a555"
               },
               "gasUsed": null,
-              "ownerMaxWithdrawBeforeWei": "1277857896437529957953"
+              "ownerMaxWithdrawBeforeWei": "1277857896972432774600"
             }
           },
           {
             "type": "exit",
             "label": "holder withdraws its maximum",
             "result": {
-              "k": 9,
+              "k": 10,
               "label": "holder withdraws its maximum",
               "vault": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
               "owner": "0x9fC3dc011b461664c835F2527fffb1169b3C213e",
               "action": {
                 "kind": "withdrawMax"
               },
-              "timestamp": "1791582551",
+              "timestamp": "1791582563",
               "call": "withdraw(maxWithdraw)",
-              "sharesIn": "1212179992972253786210",
-              "assetsRequested": "1277857896972432774600",
+              "sharesIn": "1212179968649276686506",
+              "assetsRequested": "1277857897507334953388",
               "ok": true,
-              "assetsOutWei": "1277857896972432774600",
+              "assetsOutWei": "1277857897507334953388",
               "error": null,
               "gasUsed": "552239",
-              "ownerMaxWithdrawBeforeWei": "1277857896972432774600"
+              "ownerMaxWithdrawBeforeWei": "1277857897507334953388"
             }
           },
           {
@@ -3467,14 +3467,14 @@
             "label": "end",
             "m": {
               "label": "end",
-              "afterTx": 9,
-              "vaultTotalAssets": "1308598782353816932422",
-              "vaultTotalSupply": "1241340892876580935882",
-              "holderShares": "809738074684702549729",
-              "holderValue": "853611014217411836084",
+              "afterTx": 10,
+              "vaultTotalAssets": "1308598837588573370580",
+              "vaultTotalSupply": "1241340919844721314143",
+              "holderShares": "809738099007679649433",
+              "holderValue": "853611057343681483370",
               "vaultLostAssets": "0",
-              "holderEconomicValue": "853611014217411836084",
-              "holderMaxWithdraw": "534902178788",
+              "holderEconomicValue": "853611057343681483370",
+              "holderMaxWithdraw": "534901235174",
               "markets": [
                 {
                   "id": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
@@ -3485,38 +3485,38 @@
                 },
                 {
                   "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-                  "totalSupplyAssets": "28328135063428448808049",
-                  "totalBorrowAssets": "28328135063428448808049",
+                  "totalSupplyAssets": "28328135669153998627981",
+                  "totalBorrowAssets": "28328135669153998627981",
                   "liquidity": "0",
-                  "vaultSupplyAssets": "890981988863621369787"
+                  "vaultSupplyAssets": "890982031650141613886"
                 },
                 {
                   "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-                  "totalSupplyAssets": "7772177718534878225116",
-                  "totalBorrowAssets": "7772177718534878225116",
+                  "totalSupplyAssets": "7772177950206384133207",
+                  "totalBorrowAssets": "7772177950206384133207",
                   "liquidity": "0",
-                  "vaultSupplyAssets": "417616792955293383847"
+                  "vaultSupplyAssets": "417616805403530521520"
                 },
                 {
                   "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-                  "totalSupplyAssets": "77770443500639142879",
-                  "totalBorrowAssets": "54923673717352298346",
-                  "liquidity": "22846769783286844533",
+                  "totalSupplyAssets": "77770443573771902225",
+                  "totalBorrowAssets": "54923673790487658746",
+                  "liquidity": "22846769783284243479",
                   "vaultSupplyAssets": "0"
                 },
                 {
                   "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-                  "totalSupplyAssets": "74776026435815920820",
-                  "totalBorrowAssets": "22864312839661392166",
+                  "totalSupplyAssets": "74776026440207881399",
+                  "totalBorrowAssets": "22864312844053352745",
                   "liquidity": "51911713596154528654",
                   "vaultSupplyAssets": "0"
                 },
                 {
                   "id": "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
-                  "totalSupplyAssets": "5627958321766277721858",
-                  "totalBorrowAssets": "4739145710044513878596",
-                  "liquidity": "888812611721763843262",
-                  "vaultSupplyAssets": "534902178788"
+                  "totalSupplyAssets": "5627958357723708139315",
+                  "totalBorrowAssets": "4739145746536843873787",
+                  "liquidity": "888812611186864265528",
+                  "vaultSupplyAssets": "534901235174"
                 }
               ]
             }
@@ -8478,5 +8478,5 @@
       }
     ]
   },
-  "sha256": "88c5855ad2c6c8538898ed0ce5b7a2c11851f36011476de993dd8301bc4366af"
+  "sha256": "c3fc0393d31984fc2a9af96d9d486cf1c81d0e9062550aea0de2ac9d74bd284e"
 }

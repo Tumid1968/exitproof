@@ -6252,7 +6252,7 @@
       "value": "9,405,093.94 USDC",
       "cls": "bounded",
       "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
-      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; executed in scenario all_first_then_public_allocator: holder exitable 29,030,900.79 USDC → 30,466,845.69 USDC"
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; executed in scenario all_first_then_public_allocator: holder exitable 29,030,900.79 USDC → 29,119,478.66 USDC"
     },
     {
       "item": "AMM liquidation capacity, cbBTC market #1",
@@ -6432,7 +6432,7 @@
     {
       "item": "Gas of the exit",
       "value": "676547 gas × 0.122 gwei",
-      "cls": "measured",
+      "cls": "executed",
       "source": "gasUsed of the exit on the fork × baseFeePerGas of the source block header",
       "hypotheses": "re-entry assumed to cost the same gas (no deposit executed)"
     },
@@ -6455,15 +6455,15 @@
     "id": "all_first_then_public_allocator",
     "baseId": "all_first",
     "withoutWei": "29030900791570",
-    "withWei": "30466845692200",
+    "withWei": "29119478659081",
     "fullExitWithPa": false,
     "reallocations": [
       {
         "vault": "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "moved": "1435944051633",
+        "moved": "9389912798520",
         "ok": true,
         "error": null,
-        "withdrawals": 5,
+        "withdrawals": 6,
         "feeWei": "0"
       },
       {

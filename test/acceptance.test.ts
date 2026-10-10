@@ -65,3 +65,35 @@ test("cushion: passes at 1736.990, reverts at 1736.991", async () => {
   assert.equal(c.passesAt, "1736990000000000000000");
   assert.equal(c.revertsAt, "1736991000000000000000");
 });
+
+const WSTETH_ORACLE = "0xbD60A6770b27E084E8617335ddE769241B0e71D8" as Address;
+const priceOf = async () => (await import("../src/lib/rpc.ts")).rpc<string>("http://127.0.0.1:8545", "eth_call", [{ to: WSTETH_ORACLE, data: "0xa035b1fe" }, "latest"]);
+
+test("a scenario that fails right after an oracle override leaves no shocked oracle behind", async () => {
+  const before = await priceOf();
+  await assert.rejects(runner.run({
+    id: "t_fail", title: "", hypotheses: [], target: { vault: V, holder: ACTORS.A },
+    actions: [
+      { type: "oraclePrice", oracle: WSTETH_ORACLE, num: "1", den: "2" },
+      // a market id that does not exist: liquidation setup throws
+      { type: "liquidateAll", marketId: ("0x" + "00".repeat(31) + "01") as `0x${string}`, borrowers: [] },
+    ],
+  }));
+  assert.equal(await priceOf(), before);
+});
+
+test("an override orphaned by a killed process is restored by the next run", async () => {
+  const { rpc } = await import("../src/lib/rpc.ts");
+  const { writeFileSync, readFileSync } = await import("node:fs");
+  const before = await priceOf();
+  // simulate a crash: code replaced and recorded, never restored
+  let prev: string[] = [];
+  try { prev = JSON.parse(readFileSync("cache/fork-code-overrides.json", "utf8")); } catch { /* none */ }
+  writeFileSync("cache/fork-code-overrides.json", JSON.stringify([...new Set([...prev, WSTETH_ORACLE])]));
+  await rpc("http://127.0.0.1:8545", "hardhat_setCode", [WSTETH_ORACLE, "0x7f" + "1".padStart(64, "0") + "60005260206000f3"]);
+  assert.notEqual(await priceOf(), before);
+  const fresh = new ScenarioRunner(new ForkEngine());
+  await (fresh as unknown as { eng: ForkEngine }).eng.init();
+  await fresh.run({ id: "t_noop", title: "", hypotheses: [], target: { vault: V, holder: ACTORS.A }, actions: [{ type: "measure", label: "x" }] });
+  assert.equal(await priceOf(), before);
+});

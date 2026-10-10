@@ -72,7 +72,7 @@ export function decide(i: VerdictInputs, unit = "WETH"): Verdict {
     sentence = `STAY: you assume a ${pct(i.probability)} chance of this incident within ${i.horizonDays} days, below the break-even ${pct(pStar)}. Exiting costs ${f(exitCost)} ${unit} for an expected avoided loss of ${f(i.probability * avoidable)} ${unit}.`;
   }
   return {
-    decision, sentence, breakEvenProbability: pStar, expectedLossStay: stay, expectedLossExit: exit, exitCost, incidentLoss: L, exitableShare: share,
+    decision, sentence, breakEvenProbability: decision === "NO_ACTION_POSSIBLE" ? null : pStar, expectedLossStay: stay, expectedLossExit: exit, exitCost, incidentLoss: L, exitableShare: share,
     parts: { forgoneYield: forgone, gasOut: n(i.gasCostOut), gasReentry: n(i.gasCostReentry), slippage: n(i.slippage), valueLoss: n(i.incidentValueLoss), lockedAfterRun: n(i.incidentLocked) },
   };
 }

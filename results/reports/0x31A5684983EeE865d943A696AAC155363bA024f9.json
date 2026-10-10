@@ -3014,7 +3014,7 @@
     {
       "item": "Gas of the exit",
       "value": "321415 gas × 0.122 gwei",
-      "cls": "measured",
+      "cls": "executed",
       "source": "gasUsed of the exit on the fork × baseFeePerGas of the source block header",
       "hypotheses": "re-entry assumed to cost the same gas (no deposit executed)"
     },
@@ -3037,7 +3037,7 @@
     "id": "all_first_then_public_allocator",
     "baseId": "all_first",
     "withoutWei": "2218141233178442087691",
-    "withWei": "3604216153558168043908",
+    "withWei": "3604216153558966799261",
     "fullExitWithPa": false,
     "reallocations": [
       {

@@ -46,17 +46,19 @@ export type TxLog = { address: Address; topics: Hex[]; data: Hex };
 
 export class ForkEngine {
   private baseSnapshot: string | null = null;
+  private instanceId = "";
   constructor(readonly url: string = NODE_URL) {}
 
   async init() {
     const chainId = BigInt(await rpc<string>(this.url, "eth_chainId"));
-    let head = BigInt(await rpc<string>(this.url, "eth_blockNumber"));
-    if (head !== SOURCE.block && existsSync(SNAP_FILE)) {
-      // A previous session left local blocks: revert to the base snapshot it saved (Hardhat 3 has no hardhat_reset).
-      const saved = JSON.parse(readFileSync(SNAP_FILE, "utf8")) as { url: string; id: string };
-      if (saved.url === this.url) await rpcRaw(this.url, "evm_revert", [saved.id]);
-      head = BigInt(await rpc<string>(this.url, "eth_blockNumber"));
+    this.instanceId = (await rpc<{ instanceId: string }>(this.url, "hardhat_metadata")).instanceId;
+    if (existsSync(SNAP_FILE)) {
+      // A previous session of THIS node may have left blocks or state overrides (setCode/setStorageAt mine no
+      // block): always revert to the base snapshot it saved. Snapshot ids of another node instance are ignored.
+      const saved = JSON.parse(readFileSync(SNAP_FILE, "utf8")) as { url: string; id: string; instanceId?: string };
+      if (saved.url === this.url && saved.instanceId === this.instanceId) await rpcRaw(this.url, "evm_revert", [saved.id]);
     }
+    const head = BigInt(await rpc<string>(this.url, "eth_blockNumber"));
     const blk = await rpc<{ hash: Hex; timestamp: Hex }>(this.url, "eth_getBlockByNumber", [hex(SOURCE.block), false]);
     if (head !== SOURCE.block || blk.hash.toLowerCase() !== SOURCE.blockHash || BigInt(blk.timestamp) !== SOURCE.timestamp)
       throw new Error(`Fork is not at the frozen source block (head=${head}, hash=${blk.hash}). Restart the node.`);
@@ -67,7 +69,7 @@ export class ForkEngine {
   private async saveSnapshot() {
     this.baseSnapshot = await rpc<string>(this.url, "evm_snapshot");
     mkdirSync("cache", { recursive: true });
-    writeFileSync(SNAP_FILE, JSON.stringify({ url: this.url, id: this.baseSnapshot }));
+    writeFileSync(SNAP_FILE, JSON.stringify({ url: this.url, id: this.baseSnapshot, instanceId: this.instanceId }));
   }
 
   /** Back to the pristine source state (Hardhat consumes a snapshot on revert, so re-take it). */

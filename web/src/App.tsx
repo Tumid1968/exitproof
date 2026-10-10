@@ -108,9 +108,13 @@ function Analyze({ onDone }: { onDone: (vault: string) => void }) {
       const j = await r.json();
       if (!r.ok) throw new Error(j.error ?? r.statusText);
       // poll the background job
+      const deadline = Date.now() + 20 * 60_000;
       for (;;) {
         await new Promise((res) => setTimeout(res, 2000));
-        const s = await fetch(`/api/analyze?vault=${v}`).then((x) => x.json());
+        if (Date.now() > deadline) throw new Error("No answer after 20 minutes: check the API terminal.");
+        const resp = await fetch(`/api/analyze?vault=${v}`);
+        const s = await resp.json().catch(() => ({}));
+        if (!resp.ok || !s.state) throw new Error(s.error ?? "The analysis was lost (API restarted?). Please retry.");
         if (s.state === "done") { setMsg(`${s.result.name}: ${s.result.nodes} nodes, ${s.result.reads} reads, ${s.result.seconds} s`); onDone(s.vault); break; }
         if (s.state === "error") throw new Error(s.error.message);
         setMsg(`${s.stage}: ${s.log[s.log.length - 1] ?? "…"}`);
