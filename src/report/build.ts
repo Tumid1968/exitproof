@@ -55,6 +55,12 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
   const totalSupply = B(src.vaultTotalSupply);
   const holderValue = B(src.holderValue);
   const aloneExit = exits(alone)[0];
+  // If the full redeem reverts, what the holder can take out is the withdrawMax step that follows it
+  const aloneSteps = exits(alone).filter((e) => e.owner === holder && e.vault === vault);
+  const aloneOut = aloneExit.ok ? B(aloneExit.assetsOutWei) : B(aloneSteps[1]?.assetsOutWei ?? "0");
+  /** value as Morpho sees it, net of V1.1 lostAssets */
+  const econ = (m: Measurement) => B(m.holderEconomicValue ?? m.holderValue);
+  const vaultEcon = (m: Measurement) => B(m.vaultTotalAssets) - B(m.vaultLostAssets ?? "0");
 
   // ---- 2. cushion before blockage, against the largest competing holder of the same vault
   let cushion: Awaited<ReturnType<typeof findCushion>> | null = null;
@@ -71,7 +77,7 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
   }
 
   // ---- 3. exit-run table
-  const aloneMax = B(aloneExit.assetsOutWei);
+  const aloneMax = aloneOut;
   const runs = meta.runIds.map((id) => {
     const r = byId(id);
     const ex = exits(r);
@@ -128,8 +134,8 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
       id, label: shock.label, factor: shock.factor,
       executedBadDebt: liqs(r).reduce((s, x) => s + B(x.badDebtRealised), 0n).toString(), analyticBadDebt: a.markets.reduce((s, m) => s + m.badDebt, 0n).toString(),
       executedLiquidations: liqs(r).reduce((s, x) => s + x.liquidated, 0), analyticLiquidatable: a.markets.reduce((s, m) => s + m.liquidatable, 0),
-      executedVaultLoss: sub(B(before.vaultTotalAssets), B(after.vaultTotalAssets)).toString(), analyticVaultLoss: a.vaultLoss.toString(),
-      executedHolderValueLoss: sub(B(before.holderValue), B(after.holderValue)).toString(),
+      executedVaultLoss: sub(vaultEcon(before), vaultEcon(after)).toString(), analyticVaultLoss: a.vaultLoss.toString(),
+      executedHolderValueLoss: sub(econ(before), econ(after)).toString(),
       note: "Executed values include interest accrued during the liquidation sequence (tx k at T0+12k); analytic ignores it.",
     };
   });
@@ -139,8 +145,10 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
   const gasOut = B(aloneExit.gasUsed ?? "0") * baseFee; // in ETH wei; converted below for non-ETH assets is not done (shown separately)
   const gasInAsset = dec === 18 && g.target.assetSymbol.toUpperCase().includes("ETH") ? gasOut : 0n;
   const netApy = Number(g.summary.grossSupplyApyBeforeVaultFee ?? 0) * (1 - Number(g.summary.vaultPerformanceFee ?? 0));
-  const exitableNow = B(aloneExit.assetsOutWei);
-  const slippage = sub(holderValue, exitableNow);
+  const exitableNow = aloneOut;
+  // Slippage only on what was actually redeemed: a full redeem's shortfall vs its value; withdraw(assets) pays exact assets.
+  // Locked funds are NOT slippage (they stay exposed and are counted in the verdict's residual risk).
+  const slippage = aloneExit.ok ? sub(holderValue, B(aloneExit.assetsOutWei)) : 0n;
   const incidents: { id: string; regime: string; title: string; valueSource: string; executedFacts: Record<string, unknown>; inputs: { positionValue: bigint; exitableNow: bigint; incidentValueLoss: bigint; incidentLocked: bigint } }[] = [];
   if (meta.incidents.blind) {
     const ib = meta.incidents.blind;
@@ -159,16 +167,16 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     const before = measure(r, "before the holder's exit");
     incidents.push({
       id: meta.incidents.shock.id, regime: "oracle sees it: liquidations realise bad debt and bring repaid liquidity back", title: r.title,
-      valueSource: "executed on fork: holder value before minus after liquidations (bad debt socialised by Morpho Blue)",
+      valueSource: "executed on fork: holder value before minus after liquidations (bad debt socialised by Morpho Blue; net of lostAssets on MetaMorpho V1.1, where the share price does not drop)",
       executedFacts: { holderMaxWithdrawAfterRun: before.holderMaxWithdraw },
-      inputs: { positionValue: holderValue, exitableNow, incidentValueLoss: sub(holderValue, B(measure(r, "after shock and liquidations").holderValue)), incidentLocked: sub(B(before.holderValue), B(before.holderMaxWithdraw)) },
+      inputs: { positionValue: holderValue, exitableNow, incidentValueLoss: sub(holderValue, econ(measure(r, "after shock and liquidations"))), incidentLocked: sub(B(before.holderValue), B(before.holderMaxWithdraw)) },
     });
   }
   if (meta.incidents.dexShock) {
     const r = byId(meta.incidents.dexShock.id);
     const before = measure(r, "before the holder's exit");
     const a = propagate(g, meta.incidents.dexShock.shock, { dexLimited: true });
-    const recognised = sub(holderValue, B(measure(r, "after shock and liquidations").holderValue));
+    const recognised = sub(holderValue, econ(measure(r, "after shock and liquidations")));
     incidents.push({
       id: meta.incidents.dexShock.id, regime: "oracle sees it, but liquidations stop where the AMM depth measured at the block runs out: part of the loss stays unrecognised and less liquidity comes back", title: r.title,
       valueSource: "executed on fork (bad debt of the liquidations the AMM depth allows) + analytic unrecognised shortfall of the positions left insolvent",

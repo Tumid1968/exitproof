@@ -28,7 +28,7 @@ Everything runs on **real Ethereum state frozen at block 26,157,638** (`0x3e84�
    Each feed shock is evaluated in two liquidation regimes: liquidators absorb everything, or liquidations stop where the AMM depth measured at the block runs out (the positions left over keep an unrecognised shortfall and bring no liquidity back).
 
    The impact is computed analytically for sensitivity sweeps, and **executed on the fork**: the oracle is replaced by a constant and every unhealthy borrower is liquidated with a real `liquidate` transaction. Bad debt is read from Morpho Blue's `Liquidate` event, then the vault and holder values are re-read. Exit runs (other holders, including holders of **other vaults**, leaving first) are executed the same way.
-3. **Stay / exit verdict** (`src/verdict/verdict.ts`). Expected loss of staying = p × incident loss. Exit cost = forgone yield on what can leave now (net APY read on-chain) + gas out and back (gas used on the fork × base fee of the block) + slippage measured on the fork. Any part that cannot leave stays exposed. The tool outputs the **break-even probability p\*** and a sensitivity analysis. **p is the user's assumption, never a prediction.**
+3. **Stay / exit verdict** (`src/verdict/verdict.ts`). Expected loss of staying = p × incident loss. Exit cost = forgone yield on what can leave now (net APY read on-chain) + gas out (gas used by the exit on the fork × base fee of the block) and back in (assumed equal to the exit's gas; no deposit is executed) + slippage on what is actually redeemed (value of the redeemed shares minus assets received, measured on the fork; locked funds are not slippage). Any part that cannot leave stays exposed. The tool outputs the **break-even probability p\*** and a sensitivity analysis. **p is the user's assumption, never a prediction.**
 4. **Executed proof.** `results/manifests/<vault>.json` (sha256) records every scenario (inputs, timestamps `T0 + 12·k`, expected amounts, statuses, decoded errors). `npm run replay` re-executes them all on a fresh fork and compares to the wei, both online and offline (local proxy serving its disk cache).
 
 ## Results for Steakhouse ETH, largest holder (5,209.91 WETH = 53.6 % of the vault)
@@ -76,7 +76,7 @@ flowchart LR
 | Shock | Recognised vault loss | Economic shortfall (unrecognised) | Holder max withdraw after a run by holder #2 + Vault Bridge #1 |
 |---|---:|---:|---:|
 | Lido backing loss −10 % (oracle sees it), executed: 90/90 liquidations | 293.106 WETH (analytic 293.084) | — | 5,052.78 (liquidations repay debt and bring liquidity back) |
-| same, but liquidations limited by the AMM depth measured at the block: 44 executed, 46 positions left insolvent | 191.4 (analytic) | 83.5 | 5,107.28 |
+| same, but liquidations limited by the AMM depth measured at the block: 44 executed on the fork, 46 positions left insolvent | 191.4 (analytic estimate; the verdict uses the fork-measured part + the analytic unrecognised part) | 83.5 | 5,107.28 |
 | stETH market depeg −10 % (oracle blind), executed: 0 liquidatable | 0 | 219.0 WETH (analytic) | **582.53 (−89 %)** |
 
 **AMM layer (on-chain quotes at the block):** liquidators can sell about 18,739 wstETH at a profit in the 96.5 % LLTV market, where borrowers have posted 25,174 wstETH (74 %). Most of that depth is the Curve stETH/ETH pool, reached by unwrapping, then the Uniswap V3 0.01 % pool.
@@ -129,7 +129,7 @@ npm run web              # terminal 4: UI on http://127.0.0.1:5173
 
 ## What works / partial / excluded
 
-- **Works:** everything above, for any MetaMorpho V1.0/V1.1 vault (shown on three). Wei-exact replay online and offline. Unit and fork acceptance tests.
+- **Works:** everything above, for any MetaMorpho V1.0/V1.1 vault (shown on four, including Vault Bridge WETH, V1.1). On V1.1 the share price does not drop after bad debt (`lostAssets`), so losses are measured on the vault's real assets (sum of its market positions): fork 143.731 vs analytic 143.734 WETH for a −10 % feed shock on Vault Bridge WETH. Wei-exact replay online and offline. Unit and fork acceptance tests.
 - **Partial:**
   - The AMM capacity is a lower bound. Only Uniswap V3 and Curve are counted (direct pools, plus the best two-hop route via WETH); aggregators and other DEXes are not. Depth is assumed to scale with the shocked price.
   - The Public Allocator backstop is computed (net liquidity from markets outside the target's exposure) but not executed before the exit.
@@ -146,7 +146,7 @@ npm run web              # terminal 4: UI on http://127.0.0.1:5173
 - No transaction is ever sent to Ethereum: only reads on the RPC, and `eth_sendTransaction` on the local node.
 - Impersonated actors are a scenario hypothesis, not their signature or intention. The largest holder's contract reports a name; it is not verified and is not used.
 - The cross-vault exit mechanism is already documented (e.g. LlamaRisk's Morpho vault risk disclaimer, articles on shared markets). ExitProof's contribution is to **execute** it and put a number on it for one position at one block, with a replay.
-- The economic shortfall of an oracle-blind depeg assumes the depeg persists and underwater borrowers walk away. It is not a loss recognised on-chain and is labelled as such.
+- The economic shortfall of an oracle-blind depeg assumes the depeg persists and underwater borrowers walk away. It is not a loss recognised on-chain and is labelled as such. It is split pro rata of current shares, which is a **lower bound** for holders who stay: those who exit first leave at full value and the shortfall concentrates on the rest.
 
 ## Origine des composants (component origin)
 

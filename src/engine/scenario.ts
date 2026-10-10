@@ -35,6 +35,9 @@ export type Measurement = {
   vaultTotalSupply: string;
   holderShares: string;
   holderValue: string;
+  /** V1.1 only: totalAssets minus the real assets (sum of market positions), i.e. bad debt not reflected in the share price. 0 on V1.0. */
+  vaultLostAssets: string;
+  holderEconomicValue: string;
   holderMaxWithdraw: string;
   markets: { id: Hex; totalSupplyAssets: string; totalBorrowAssets: string; liquidity: string; vaultSupplyAssets: string }[];
 };
@@ -90,12 +93,22 @@ export class ScenarioRunner {
         vaultSupplyAssets: (m[1] === 0n ? 0n : (p[0] * (m[0] + 1n)) / (m[1] + 1_000_000n)).toString(),
       });
     }
+    const supply = await this.eng.call<bigint>(vault, metaMorphoAbi, "totalSupply");
+    const value = await this.eng.call<bigint>(vault, metaMorphoAbi, "convertToAssets", [shares]);
+    // MetaMorpho V1.1 (has lostAssets()) keeps the share price up after bad debt: its real assets are the sum of
+    // its positions in the markets. V1.0 lowers totalAssets itself, so its convertToAssets is already economic.
+    const isV11 = await this.eng.call<bigint>(vault, metaMorphoAbi, "lostAssets").then(() => true, () => false);
+    const realTotal = markets.reduce((s, m) => s + BigInt(m.vaultSupplyAssets), 0n);
+    const totalAssets = await this.eng.call<bigint>(vault, metaMorphoAbi, "totalAssets");
+    const lost = isV11 && totalAssets > realTotal ? totalAssets - realTotal : 0n;
     return {
       label, afterTx: this.k,
       vaultTotalAssets: (await this.eng.call<bigint>(vault, metaMorphoAbi, "totalAssets")).toString(),
-      vaultTotalSupply: (await this.eng.call<bigint>(vault, metaMorphoAbi, "totalSupply")).toString(),
+      vaultTotalSupply: supply.toString(),
       holderShares: shares.toString(),
-      holderValue: (await this.eng.call<bigint>(vault, metaMorphoAbi, "convertToAssets", [shares])).toString(),
+      holderValue: value.toString(),
+      vaultLostAssets: lost.toString(),
+      holderEconomicValue: (supply === 0n ? value : value - (lost * shares) / supply).toString(),
       holderMaxWithdraw: (await this.eng.call<bigint>(vault, metaMorphoAbi, "maxWithdraw", [holder])).toString(),
       markets,
     };

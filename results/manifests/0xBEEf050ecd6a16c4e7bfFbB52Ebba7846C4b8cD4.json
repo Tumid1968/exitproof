@@ -1,6 +1,6 @@
 {
   "exitproof_manifest": "0.2",
-  "created_at": "2026-10-10T09:56:13.873Z",
+  "created_at": "2026-10-10T10:03:07.288Z",
   "tooling": {
     "node": "v24.14.1",
     "hardhat": "3.19.0",
@@ -89,6 +89,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -153,6 +155,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -260,6 +264,8 @@
               "vaultTotalSupply": "4285022875907963768920",
               "holderShares": "0",
               "holderValue": "0",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "0",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -394,6 +400,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -479,6 +487,8 @@
               "vaultTotalSupply": "8550990282322075152170",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914854809315636083",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914854809315636083",
               "holderMaxWithdraw": "5209914854809315636083",
               "markets": [
                 {
@@ -586,6 +596,8 @@
               "vaultTotalSupply": "3599091787862586165028",
               "holderShares": "0",
               "holderValue": "0",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "0",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -720,6 +732,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -805,6 +819,8 @@
               "vaultTotalSupply": "8978132411751455814578",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914854809315636084",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914854809315636084",
               "holderMaxWithdraw": "5209914854809315636084",
               "markets": [
                 {
@@ -912,6 +928,8 @@
               "vaultTotalSupply": "4026233917015346407222",
               "holderShares": "0",
               "holderValue": "0",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "0",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -1055,6 +1073,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -1161,6 +1181,8 @@
               "vaultTotalSupply": "8292201323365789922045",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914887726757695955",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914887726757695955",
               "holderMaxWithdraw": "5209914887726757695955",
               "markets": [
                 {
@@ -1268,6 +1290,8 @@
               "vaultTotalSupply": "3340302829051792988545",
               "holderShares": "0",
               "holderValue": "0",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "0",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -1402,6 +1426,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -1487,6 +1513,8 @@
               "vaultTotalSupply": "6636204602650216631097",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914854809315636084",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914854809315636084",
               "holderMaxWithdraw": "4210679414346963425094",
               "markets": [
                 {
@@ -1599,6 +1627,8 @@
               "vaultTotalSupply": "2634055367422861096399",
               "holderShares": "949749261056387415080",
               "holderValue": "999235516267813048650",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "999235516267813048650",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -1742,6 +1772,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -1848,6 +1880,8 @@
               "vaultTotalSupply": "5950273513962021701549",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914892711984756444",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914892711984756444",
               "holderMaxWithdraw": "3489008199441496936870",
               "markets": [
                 {
@@ -1960,6 +1994,8 @@
               "vaultTotalSupply": "2634055391175784648861",
               "holderShares": "1635680373798305448139",
               "holderValue": "1720906772810510545956",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1720906772810510545956",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -2094,6 +2130,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -2179,6 +2217,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914854809315636083",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914854809315636083",
               "holderMaxWithdraw": "3318751556034097893931",
               "markets": [
                 {
@@ -2291,6 +2331,8 @@
               "vaultTotalSupply": "6082528099723023876736",
               "holderShares": "1797505215195959294049",
               "holderValue": "1891163431036378710020",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1891163431036378710020",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -2434,6 +2476,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -2540,6 +2584,8 @@
               "vaultTotalSupply": "6636204605726414640823",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914887776125133117",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914887776125133117",
               "holderMaxWithdraw": "2079210741633111021926",
               "markets": [
                 {
@@ -2652,6 +2698,8 @@
               "vaultTotalSupply": "4659964985896515748893",
               "holderShares": "2975658871781807153187",
               "holderValue": "3130704291638520383299",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "3130704291638520383299",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -2966,6 +3014,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -3411,6 +3461,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5193639093078109797696",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5193639093078109797696",
               "holderMaxWithdraw": "5193639093078109797696",
               "markets": [
                 {
@@ -3475,6 +3527,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5193639093078109797696",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5193639093078109797696",
               "holderMaxWithdraw": "5193639093078109797696",
               "markets": [
                 {
@@ -3582,6 +3636,8 @@
               "vaultTotalSupply": "4285016865371617350763",
               "holderShares": "0",
               "holderValue": "0",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "0",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -3896,6 +3952,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -4709,6 +4767,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5052784668305713248091",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5052784668305713248091",
               "holderMaxWithdraw": "5052784668305713248091",
               "markets": [
                 {
@@ -4773,6 +4833,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5052784668305713248091",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5052784668305713248091",
               "holderMaxWithdraw": "5052784668305713248091",
               "markets": [
                 {
@@ -4880,6 +4942,8 @@
               "vaultTotalSupply": "4285016864950466992626",
               "holderShares": "0",
               "holderValue": "0",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "0",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -5212,6 +5276,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -6025,6 +6091,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5052784668305713248091",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5052784668305713248091",
               "holderMaxWithdraw": "5052784668305713248091",
               "markets": [
                 {
@@ -6131,6 +6199,8 @@
               "vaultTotalSupply": "6636198595248843339105",
               "holderShares": "4951898501365758933941",
               "holderValue": "5052784674376720966173",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5052784674376720966173",
               "holderMaxWithdraw": "5052784674376720966173",
               "markets": [
                 {
@@ -6238,6 +6308,8 @@
               "vaultTotalSupply": "1684300094476198067614",
               "holderShares": "0",
               "holderValue": "0",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "0",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -6452,6 +6524,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -6897,6 +6971,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5107281821594848427473",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5107281821594848427473",
               "holderMaxWithdraw": "5107281821594848427473",
               "markets": [
                 {
@@ -7003,6 +7079,8 @@
               "vaultTotalSupply": "6636198595248843339105",
               "holderShares": "4951898501365758933941",
               "holderValue": "5107281840369176925062",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5107281840369176925062",
               "holderMaxWithdraw": "5107281840369176925062",
               "markets": [
                 {
@@ -7110,6 +7188,8 @@
               "vaultTotalSupply": "1684300095733126396650",
               "holderShares": "0",
               "holderValue": "0",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "0",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -7431,6 +7511,8 @@
               "vaultTotalSupply": "9236915366149900690829",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209914824792343398774",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209914824792343398774",
               "holderMaxWithdraw": "5209914824792343398774",
               "markets": [
                 {
@@ -7557,6 +7639,8 @@
               "vaultTotalSupply": "6636204613853942625674",
               "holderShares": "4951898501365758933941",
               "holderValue": "5209915012779192523316",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "5209915012779192523316",
               "holderMaxWithdraw": "582525496907172782518",
               "markets": [
                 {
@@ -7669,6 +7753,8 @@
               "vaultTotalSupply": "6082528232329141931010",
               "holderShares": "4398222100254900181603",
               "holderValue": "4627389770123339930908",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "4627389770123339930908",
               "holderMaxWithdraw": "0",
               "markets": [
                 {
@@ -7831,5 +7917,5 @@
       }
     ]
   },
-  "sha256": "e1854cfe9471d3662492486881a6e4e8db71071a47b8a89ffe9c31c5b056a6e8"
+  "sha256": "598d2df774bf8843e08de28790cb4631841233f020ac77d2bd3700b7f4ef5edf"
 }

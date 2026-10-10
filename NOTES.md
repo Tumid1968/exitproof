@@ -17,3 +17,8 @@
 15. Couche AMM : capacité = borne basse (Uniswap V3 + Curve seulement, pools directs additionnés + meilleure route en deux sauts via WETH). Hypothèse : la profondeur suit le prix choqué. Le budget de liquidation est partagé entre marchés d'un même collatéral (mêmes pools), servi d'abord aux marchés à plus forte prime.
 16. **Bug corrigé (sam. ~12:10)** : dans le décrochage « aveugle », le facteur était appliqué deux fois (prix × f × f). Le manque économique annoncé à −10 % (~910 WETH) correspondait en fait à ~−19 %. Valeur corrigée : 219,0 WETH pour le coffre, point mort 1,13 % (et non 0,69 %). Test unitaire sur graphe synthétique ajouté (`test/analytic.test.ts`), il aurait détecté l'erreur. Tous les résultats, README et DEMO régénérés.
 17. Confirmé par Alex (sam. ~12:05) : interface et README en anglais, licence MIT.
+18. **Revue de code indépendante (agent, sam. ~12:15)** : trois défauts réels, corrigés.
+    (a) MetaMorpho V1.1 ne baisse pas le prix de part sur mauvaise dette (`lostAssets`) → perte mesurée ≈ 0 ; désormais mesurée sur les actifs réels (somme des positions) pour V1.1 : 143,731 (fork) vs 143,734 (analytique) sur Vault Bridge.
+    (b) Si la sortie complète du détenteur revert, « sortable maintenant » prend l'étape withdrawMax, et le bloqué n'est plus compté comme glissement.
+    (c) Surévaluation d'oracle non rentable (LLTV × facteur ≤ 1) ne vide plus la liquidité.
+    Formulations du README corrigées (gaz de réentrée supposé = gaz de sortie, glissement, borne basse du décrochage aveugle).

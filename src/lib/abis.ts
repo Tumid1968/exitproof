@@ -38,6 +38,7 @@ export const metaMorphoAbi = parseAbi([
   "function withdrawQueue(uint256) view returns (bytes32)",
   "function config(bytes32) view returns (uint184 cap, bool enabled, uint64 removableAt)",
   "function lastTotalAssets() view returns (uint256)",
+  "function lostAssets() view returns (uint256)",
   "event SetIsAllocator(address indexed allocator, bool isAllocator)",
 ]);
 

@@ -1280,7 +1280,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1327,7 +1327,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1374,7 +1374,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1421,7 +1421,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1468,7 +1468,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1502,7 +1502,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1536,7 +1536,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1570,7 +1570,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1604,7 +1604,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1638,7 +1638,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1672,7 +1672,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1706,7 +1706,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1740,7 +1740,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1774,7 +1774,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1808,7 +1808,7 @@
       "hypotheses": [
         "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
         "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back."
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
       ],
       "dexLimited": null
     },
@@ -1823,7 +1823,7 @@
       "holderLoss": "0",
       "holderHiddenLoss": "0",
       "withdrawableBefore": "3129300015313873333764",
-      "withdrawableAfter": "83723531503458421387",
+      "withdrawableAfter": "3129300015313873333764",
       "markets": [
         {
           "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
@@ -1871,7 +1871,7 @@
       "holderLoss": "3840088470718641354",
       "holderHiddenLoss": "0",
       "withdrawableBefore": "3129300015313873333764",
-      "withdrawableAfter": "83723531503458421387",
+      "withdrawableAfter": "501339035449023101064",
       "markets": [
         {
           "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
@@ -1967,7 +1967,7 @@
       "holderLoss": "0",
       "holderHiddenLoss": "0",
       "withdrawableBefore": "3129300015313873333764",
-      "withdrawableAfter": "3129297249323766989600",
+      "withdrawableAfter": "3129300015313873333764",
       "markets": [
         {
           "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
@@ -2002,7 +2002,7 @@
       "holderLoss": "0",
       "holderHiddenLoss": "0",
       "withdrawableBefore": "3129300015313873333764",
-      "withdrawableAfter": "3129297249323766989600",
+      "withdrawableAfter": "3129300015313873333764",
       "markets": [
         {
           "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
@@ -2072,7 +2072,7 @@
       "holderLoss": "0",
       "holderHiddenLoss": "0",
       "withdrawableBefore": "3129300015313873333764",
-      "withdrawableAfter": "3045579249800521256541",
+      "withdrawableAfter": "3129300015313873333764",
       "markets": [
         {
           "id": "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
@@ -2107,7 +2107,7 @@
       "holderLoss": "0",
       "holderHiddenLoss": "0",
       "withdrawableBefore": "3129300015313873333764",
-      "withdrawableAfter": "3045579249800521256541",
+      "withdrawableAfter": "3129300015313873333764",
       "markets": [
         {
           "id": "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
@@ -2216,7 +2216,7 @@
       "id": "incident_feed_shock_plus_run",
       "regime": "oracle sees it: liquidations realise bad debt and bring repaid liquidity back",
       "title": "Incident: wstETH/stETH exchange rate -10% (oracle sees it), liquidations, then the largest competing holders exit first",
-      "valueSource": "executed on fork: holder value before minus after liquidations (bad debt socialised by Morpho Blue)",
+      "valueSource": "executed on fork: holder value before minus after liquidations (bad debt socialised by Morpho Blue; net of lostAssets on MetaMorpho V1.1, where the share price does not drop)",
       "executedFacts": {
         "holderMaxWithdrawAfterRun": "2069080940895056406879"
       },

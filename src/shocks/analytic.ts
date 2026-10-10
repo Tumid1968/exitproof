@@ -148,7 +148,7 @@ export function propagate(g: DependencyGraph, shock: Shock, opts: PropagateOptio
     hypotheses: [
       "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
       "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-      shock.kind === "blindDepeg" ? "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back." : "The shocked price is what the oracle returns to Morpho Blue.",
+      shock.kind === "blindDepeg" ? "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value." : "The shocked price is what the oracle returns to Morpho Blue.",
       shock.kind === "oracleOverprice" ? "Worst case: an actor borrows all idle liquidity against collateral valued at the overpriced oracle and walks away." : "",
       opts.dexLimited ? "Liquidations stop when the AMM pools measured at the block can no longer absorb the seized collateral at a profit (depth assumed to scale with the shocked price); insolvent positions left over are an unrecognised shortfall and bring no liquidity back." : "",
     ].filter(Boolean),
@@ -198,7 +198,9 @@ function impactOnMarket(g: DependencyGraph, m: MarketState, seen: number, blind:
   if (badDebt > m.totalSupplyAssets) badDebt = m.totalSupplyAssets;
   const vaultLoss = m.totalSupplyShares === 0n ? 0n : (badDebt * m.vaultSupplyShares) / m.totalSupplyShares;
   const vaultHidden = m.totalSupplyShares === 0n ? 0n : (hidden * m.vaultSupplyShares) / m.totalSupplyShares;
-  const liquidityAfter = overprice ? m.liquidity - min(m.liquidity, m.liquidity) : m.liquidity + repaid;
+  // An overpricing only drains liquidity when borrowing against it is profitable (LLTV x factor > 1)
+  const drained = overprice && (Number(m.params.lltv) / 1e18) * seen > 1;
+  const liquidityAfter = drained ? 0n : overprice ? m.liquidity : m.liquidity + repaid;
   const vaultSupplyAfter = m.vaultSupplyAssets - vaultLoss;
   return {
     id: m.id,
