@@ -47,6 +47,7 @@ export function App() {
         <select value={vault} onChange={(e) => { setVault(e.target.value); location.hash = `vault=${e.target.value}`; }}>
           {reports.map((v) => <option key={v.vault} value={v.vault}>{v.name} ({v.asset})</option>)}
         </select>
+        <Analyze onDone={(v) => { api<typeof reports>("/api/reports").then(setReports); setVault(v); location.hash = `vault=${v}`; }} />
         <div className="legend"><Chip k="onchain" /> real data read at the block <Chip k="fork" /> tx simulated locally <Chip k="hyp" /> scenario assumption <Chip k="offchain" /> candidates from Morpho API, verified on-chain</div>
       </div>
       <main>
@@ -63,6 +64,27 @@ export function App() {
         <Proofs key={"p" + report.target.vault} r={report} />
       </main>
     </>
+  );
+}
+
+function Analyze({ onDone }: { onDone: (vault: string) => void }) {
+  const [addr, setAddr] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<string | null>(null);
+  const go = async () => {
+    if (!/^0x[0-9a-fA-F]{40}$/.test(addr.trim())) { setMsg("enter a vault address (0x…)"); return; }
+    setBusy(true); setMsg("discovering dependencies and executing scenarios on the fork… (1–5 min for a new vault)");
+    try { const o: any = await api("/api/analyze", { vault: addr.trim() }); setMsg(`${o.name}: ${o.nodes} nodes, ${o.reads} reads, ${Math.round(o.ms / 1000)} s`); onDone(o.vault); }
+    catch (e) { setMsg(String((e as Error).message)); }
+    setBusy(false);
+  };
+  return (
+    <div className="row" style={{ gap: 6 }}>
+      <input value={addr} onChange={(e) => setAddr(e.target.value)} placeholder="any MetaMorpho V1 vault 0x…" className="mono"
+        style={{ width: 330, background: "var(--panel2)", color: "var(--text)", border: "1px solid var(--line)", borderRadius: 6, padding: 6 }} />
+      <button disabled={busy} onClick={go}>{busy ? "Analyzing…" : "Analyze"}</button>
+      {msg && <span className="status" style={{ maxWidth: 420 }}>{msg}</span>}
+    </div>
   );
 }
 

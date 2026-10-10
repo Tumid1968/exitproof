@@ -3,7 +3,7 @@
  * live on the fork (one at a time: the fork is a single shared state).
  */
 import http from "node:http";
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawn } from "node:child_process";
 import { getAddress, type Address } from "viem";
 import { ForkEngine } from "../engine/fork.ts";
@@ -13,7 +13,8 @@ import { FORK_FACT, RUN_HYPOTHESIS, shockActions } from "../scenarios/catalog.ts
 import { ACTORS, NODE_URL, PROXY_URL, SOURCE } from "../lib/constants.ts";
 import { rpcRaw } from "../lib/rpc.ts";
 import { toJson } from "../lib/util.ts";
-import { manifestPath, reportPath } from "../report/build.ts";
+import { buildReport, manifestPath, reportPath } from "../report/build.ts";
+import { discover } from "../discovery/discover.ts";
 
 const PORT = Number(process.env.EXITPROOF_API_PORT ?? 8700);
 
@@ -115,6 +116,21 @@ const server = http.createServer(async (req, res) => {
         return out;
       });
       return json(res, 200, { scenario: s, result: r, ms: Date.now() - t0 });
+    }
+    if (url.pathname === "/api/analyze" && req.method === "POST") {
+      // Any MetaMorpho V1 vault: discovery (on-chain reads, needs the proxy online unless cached) + executed report
+      const body = JSON.parse((await readBody(req)) || "{}");
+      const v = getAddress(body.vault);
+      const t0 = Date.now();
+      const out = await exclusive(async () => {
+        const g = await discover(v, {});
+        mkdirSync("results/discovery", { recursive: true });
+        writeFileSync(`results/discovery/${g.target.vault}.json`, toJson(g));
+        await buildReport(g.target.vault, body.holder ? getAddress(body.holder) : undefined, () => {});
+        runner = null; // buildReport moved the fork's base snapshot
+        return { vault: g.target.vault, name: g.target.name, nodes: g.nodes.length, reads: g.reads.length };
+      });
+      return json(res, 200, { ...out, ms: Date.now() - t0 });
     }
     if (url.pathname === "/api/replay" && req.method === "POST") {
       const out = await exclusive(() => new Promise<{ code: number; log: string }>((resolve) => {

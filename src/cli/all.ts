@@ -15,6 +15,7 @@ export const DEMO_VAULTS: Address[] = [
   "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4", // Steakhouse ETH (curated scenarios)
   "0x2371e134e3455e0593363cBF89d3b6cf53740618", // Gauntlet WETH Prime
   "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB", // Steakhouse USDC
+  "0x31A5684983EeE865d943A696AAC155363bA024f9", // Vault Bridge WETH (MetaMorpho V1.1)
 ];
 
 const vaults = (process.argv.slice(2).filter((a) => a.startsWith("0x")) as Address[]);
