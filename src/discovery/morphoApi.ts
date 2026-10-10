@@ -58,3 +58,10 @@ export async function borrowerCandidates(marketId: Hex): Promise<{ addresses: Ad
   const addresses = [...new Set(all)];
   return { addresses, rec: { source: "morpho-api", query: queries.join("\n"), fetchedAt, resultCount: addresses.length } };
 }
+
+export async function holderCandidates(vault: Address, first = 25): Promise<{ addresses: Address[]; rec: Omit<ApiRecord, "id"> }> {
+  const query = `{ vaultPositions(first: ${first}, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:["${vault}"], chainId_in:[1]}) { items { user { address } } } }`;
+  const { data, fetchedAt } = await gql<{ vaultPositions: { items: { user: { address: string } }[] } }>(query);
+  const addresses = [...new Set(data.vaultPositions.items.map((x) => getAddress(x.user.address)))];
+  return { addresses, rec: { source: "morpho-api", query, fetchedAt, resultCount: addresses.length } };
+}

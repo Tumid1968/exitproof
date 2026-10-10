@@ -4,10 +4,10 @@
  * real contract call by an impersonated actor (scenario hypothesis) or an explicit state override
  * (oracle replaced by a constant: shock hypothesis). Measurements are eth_calls on the fork.
  */
-import { decodeEventLog, encodeFunctionData, getAddress, type Address, type Hex } from "viem";
+import { decodeEventLog, encodeAbiParameters, encodeFunctionData, getAddress, keccak256, pad, toHex, type Address, type Hex } from "viem";
 import { rpc } from "../lib/rpc.ts";
 import { erc20Abi, metaMorphoAbi, morphoBlueAbi, morphoOracleAbi } from "../lib/abis.ts";
-import { ADDR } from "../lib/constants.ts";
+import { ADDR, PROXY_URL, SOURCE } from "../lib/constants.ts";
 import { ForkEngine, type Action as ExitAction, type StepResult } from "./fork.ts";
 import type { DecodedError } from "./decode.ts";
 
@@ -50,7 +50,7 @@ export type ActionResult =
 export type ScenarioResult = { id: string; title: string; hypotheses: string[]; target: Scenario["target"]; txCount: number; results: ActionResult[] };
 
 /** A fixed liquidator address (no private key needed: impersonated on the local fork). */
-export const LIQUIDATOR = "0x000000000000000000000000000000000000E1F0" as Address;
+export const LIQUIDATOR = getAddress("0x000000000000000000000000000000000000e1f0");
 const hex = (n: bigint) => "0x" + n.toString(16);
 const MAX = 2n ** 256n - 1n;
 
@@ -101,29 +101,70 @@ export class ScenarioRunner {
     };
   }
 
+  /**
+   * Hardhat 3 (EDR) does not reliably undo hardhat_setCode on evm_revert for forked accounts, so every
+   * overridden contract gets its original bytecode back explicitly, read from the archive (via the proxy)
+   * at the source block, before and after each scenario.
+   */
+  private static originals = new Map<string, Hex>();
+  private async restoreCode(addr: Address) {
+    const k = getAddress(addr);
+    if (!ScenarioRunner.originals.has(k))
+      ScenarioRunner.originals.set(k, await rpc<Hex>(PROXY_URL, "eth_getCode", [k, "0x" + SOURCE.block.toString(16)]));
+    await rpc(this.eng.url, "hardhat_setCode", [k, ScenarioRunner.originals.get(k)!]);
+  }
+  private async restoreAll() {
+    for (const k of ScenarioRunner.originals.keys()) await this.restoreCode(k as Address);
+  }
+
   private async setOracle(a: Extract<ScenarioAction, { type: "oraclePrice" }>): Promise<ActionResult> {
+    await this.restoreCode(a.oracle);
     const before = await this.eng.call<bigint>(a.oracle, morphoOracleAbi, "price");
+    // Guard: the price we shock must be the real one at the source block.
+    const ref = await rpc<Hex>(PROXY_URL, "eth_call", [{ to: a.oracle, data: "0xa035b1fe" }, "0x" + SOURCE.block.toString(16)]);
+    if (BigInt(ref) !== before) throw new Error(`oracle ${a.oracle} price on fork (${before}) differs from archive (${BigInt(ref)})`);
     const after = (before * BigInt(a.num)) / BigInt(a.den);
     await rpc(this.eng.url, "hardhat_setCode", [a.oracle, constantReturner(after)]);
     return { type: "oraclePrice", label: a.label, oracle: a.oracle, priceBefore: before.toString(), priceAfter: after.toString() };
   }
 
-  private liquidatorReady = false;
-  private async fundLiquidator() {
-    if (this.liquidatorReady) return;
+  private funded = new Set<string>();
+  /**
+   * Give the liquidator loan tokens (scenario hypothesis: liquidators have capital).
+   * WETH: wrap impersonated ETH. Other ERC-20: locate the balanceOf mapping slot by probing
+   * (Solidity and Vyper layouts) and write the balance with hardhat_setStorageAt.
+   */
+  private async fundLiquidator(token: Address) {
+    const key = token.toLowerCase();
+    if (this.funded.has(key)) return;
     await rpc(this.eng.url, "hardhat_impersonateAccount", [LIQUIDATOR]);
     await rpc(this.eng.url, "hardhat_setBalance", [LIQUIDATOR, hex(10n ** 6n * 10n ** 18n)]);
-    // Liquidator brings its own WETH (wrapped from impersonated ETH) - scenario hypothesis: liquidators have capital.
-    await this.tx(LIQUIDATOR, ADDR.weth, encodeFunctionData({ abi: erc20Abi, functionName: "deposit" }), 500_000n * 10n ** 18n);
-    await this.tx(LIQUIDATOR, ADDR.weth, encodeFunctionData({ abi: erc20Abi, functionName: "approve", args: [ADDR.morphoBlue, MAX] }));
-    this.liquidatorReady = true;
+    if (key === ADDR.weth.toLowerCase()) {
+      await this.tx(LIQUIDATOR, ADDR.weth, encodeFunctionData({ abi: erc20Abi, functionName: "deposit" }), 500_000n * 10n ** 18n);
+    } else {
+      const amount = 10n ** 30n;
+      let ok = false;
+      for (let slot = 0n; slot < 64n && !ok; slot++) {
+        for (const layout of ["sol", "vy"] as const) {
+          const k = layout === "sol"
+            ? keccak256(encodeAbiParameters([{ type: "address" }, { type: "uint256" }], [LIQUIDATOR, slot]))
+            : keccak256(encodeAbiParameters([{ type: "uint256" }, { type: "address" }], [slot, LIQUIDATOR]));
+          const prev = await rpc<Hex>(this.eng.url, "eth_getStorageAt", [token, k, "latest"]);
+          await rpc(this.eng.url, "hardhat_setStorageAt", [token, k, pad(toHex(amount))]);
+          if ((await this.eng.call<bigint>(token, erc20Abi, "balanceOf", [LIQUIDATOR])) === amount) { ok = true; break; }
+          await rpc(this.eng.url, "hardhat_setStorageAt", [token, k, pad(prev)]);
+        }
+      }
+      if (!ok) throw new Error(`cannot fund liquidator with ${token}: balance slot not found`);
+    }
+    await this.tx(LIQUIDATOR, token, encodeFunctionData({ abi: erc20Abi, functionName: "approve", args: [ADDR.morphoBlue, MAX] }));
+    this.funded.add(key);
   }
 
   private async liquidateAll(a: Extract<ScenarioAction, { type: "liquidateAll" }>): Promise<ActionResult> {
     const p = await this.eng.call<readonly [Address, Address, Address, Address, bigint]>(ADDR.morphoBlue, morphoBlueAbi, "idToMarketParams", [a.marketId]);
     const params = { loanToken: p[0], collateralToken: p[1], oracle: p[2], irm: p[3], lltv: p[4] };
-    if (params.loanToken.toLowerCase() !== ADDR.weth.toLowerCase()) throw new Error("liquidator funding implemented for WETH-loan markets only");
-    await this.fundLiquidator();
+    await this.fundLiquidator(params.loanToken);
     // Accrue interest first so health checks use up-to-date debt.
     await this.tx(LIQUIDATOR, ADDR.morphoBlue, encodeFunctionData({ abi: morphoBlueAbi, functionName: "accrueInterest", args: [params] }));
     const price = await this.eng.call<bigint>(params.oracle, morphoOracleAbi, "price");
@@ -164,8 +205,10 @@ export class ScenarioRunner {
 
   async run(s: Scenario): Promise<ScenarioResult> {
     await this.eng.reset();
+    for (const a of s.actions) if (a.type === "oraclePrice") await this.restoreCode(a.oracle);
+    await this.restoreAll();
     this.k = 0;
-    this.liquidatorReady = false;
+    this.funded.clear();
     const results: ActionResult[] = [];
     for (const a of s.actions) {
       if (a.type === "exit") {
@@ -175,6 +218,7 @@ export class ScenarioRunner {
       else if (a.type === "liquidateAll") results.push(await this.liquidateAll(a));
       else results.push({ type: "measure", label: a.label, m: await this.measure(a.label, s.target) });
     }
+    await this.restoreAll();
     return { id: s.id, title: s.title, hypotheses: s.hypotheses, target: s.target, txCount: this.k, results };
   }
 }

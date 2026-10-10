@@ -7,7 +7,7 @@
  *   -> 5 aggregators behind feeds ; plus peer vaults lending in the same markets and the borrowers of each market.
  */
 import { getAddress, zeroAddress, type Address, type Hex } from "viem";
-import { borrowerCandidates, supplyingVaultCandidates } from "./morphoApi.ts";
+import { borrowerCandidates, holderCandidates, supplyingVaultCandidates } from "./morphoApi.ts";
 import { Reader } from "./reader.ts";
 import {
   chainlinkFeedAbi, collateralProbeAbi, erc20Abi, factoryAbi, irmAbi, metaMorphoAbi, morphoBlueAbi,
@@ -15,7 +15,7 @@ import {
 } from "../lib/abis.ts";
 import { ADDR, SOURCE } from "../lib/constants.ts";
 import { pmap, toAssetsDown, toAssetsUp } from "../lib/util.ts";
-import type { Borrower, DependencyGraph, GraphEdge, GraphNode, MarketParams, MarketState, PeerExposure } from "./types.ts";
+import type { Borrower, Holder, DependencyGraph, GraphEdge, GraphNode, MarketParams, MarketState, PeerExposure } from "./types.ts";
 
 const SECONDS_PER_YEAR = 31_536_000;
 const SLOTS = {
@@ -358,6 +358,34 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
     addEdge({ from: oracleNode, to: fid, rel: slot, prov: oProv });
   }
 
+  /** Largest holders of a vault: API candidates, balances re-read on-chain at the block. */
+  async function topHolders(v: Address, supply: bigint, first: number): Promise<{ list: Holder[]; coverage: number; prov: string[] }> {
+    const api = await holderCandidates(v, first);
+    const apiId = r.offchain(api.rec);
+    const [bals, bIds] = await r.multi<bigint>(metaMorphoAbi, "balanceOf", api.addresses.map((a) => ({ to: v, args: [a] })));
+    const [vals, vIds] = await r.multi<bigint>(metaMorphoAbi, "convertToAssets", api.addresses.map((_, i) => ({ to: v, args: [bals[i] ?? 0n] })));
+    const list: Holder[] = [];
+    for (let i = 0; i < api.addresses.length; i++) {
+      const sh = bals[i] ?? 0n;
+      if (sh === 0n) continue;
+      const code = await r.client.getCode({ address: api.addresses[i], blockNumber: r.block });
+      list.push({ address: api.addresses[i], shares: sh, assets: vals[i] ?? 0n, shareOfSupply: supply === 0n ? 0 : Number((sh * 1_000_000n) / supply) / 1e6, isContract: !!code && code !== "0x" });
+    }
+    list.sort((a, b) => (b.shares > a.shares ? 1 : -1));
+    const cov = list.reduce((s2, h) => s2 + h.shares, 0n);
+    return { list, coverage: supply === 0n ? 0 : Number((cov * 1_000_000n) / supply) / 1e6, prov: [apiId, ...new Set([...bIds, ...vIds])] };
+  }
+
+  log("largest holders (Morpho API candidates, balanceOf re-read on-chain)...");
+  const holders = await topHolders(vault, totalSupply, 25);
+  addNode({
+    id: `holders:${vault}`, kind: "holders", layer: 1,
+    label: `Holders: top ${holders.list.length} = ${(holders.coverage * 100).toFixed(1)}% of shares`,
+    data: { coverage: holders.coverage, largestShare: holders.list[0]?.shareOfSupply ?? 0, top3Share: holders.list.slice(0, 3).reduce((s2, h) => s2 + h.shareOfSupply, 0) },
+    prov: holders.prov,
+  });
+  addEdge({ from: vaultId, to: `holders:${vault}`, rel: "owned by (concentration = who can drain liquidity first)", prov: holders.prov });
+
   // ---------- Peer vaults sharing the same markets ----------
   const exposed = markets.filter((m) => m.vaultSupplyAssets > 0n);
   const peers: PeerExposure[] = [];
@@ -412,8 +440,12 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
         fcProv.push(cfgId);
         reallocatableIn.push({ id: fc.id, amount: [fc.maxIn, headroom, source].reduce((a, b) => (a < b ? a : b)) });
       }
+      const [psupply] = await r.must<bigint>(pv.vault, metaMorphoAbi, "totalSupply");
+      const ph = await topHolders(pv.vault, psupply, 5);
+      fcProv.push(...ph.prov);
       const peer: PeerExposure = {
         vault: pv.vault, name: pname, version: isV10b ? "MetaMorpho V1.0" : "MetaMorpho V1.1", totalAssets: pta,
+        topHolder: ph.list[0] ?? null,
         markets: pv.ms.filter((x) => x.shares > 0n).map((x) => ({
           id: x.m.id,
           supplyAssets: toAssetsDown(x.shares, x.m.totalSupplyAssets, x.m.totalSupplyShares),
@@ -493,7 +525,7 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
       publicAllocatorReallocatableIntoExposedMarkets: peers.reduce((t, p) => t + p.publicAllocator.reallocatableIn.reduce((a, x) => a + x.amount, 0n), 0n),
       nodeCount: nodes.size, edgeCount: edges.length, readCount: r.reads.length,
     },
-    markets, peers, borrowers,
+    markets, peers, borrowers, holders: { coverage: holders.coverage, list: holders.list },
     nodes: [...nodes.values()], edges, reads: r.reads,
     notes: [
       "All values are eth_call / eth_getStorageAt / eth_getLogs reads at the frozen block through the local proxy; every node and edge lists the read ids it rests on.",

@@ -1,6 +1,6 @@
 {
-  "exitproof_manifest": "0.1",
-  "created_at": "2026-10-10T09:06:34.542Z",
+  "exitproof_manifest": "0.2",
+  "created_at": "2026-10-10T09:19:33.289Z",
   "tooling": {
     "node": "v24.14.1",
     "hardhat": "3.19.0",
@@ -13,11 +13,12 @@
     "timestamp": "1791582443",
     "rpc": "archive RPC via local proxy 127.0.0.1:8600 (upstream URL not recorded)"
   },
+  "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
   "convention": "transaction k (1-based) of a scenario is mined at timestamp 1791582443 + 12*k; every scenario starts from the same snapshot of the source block",
   "assumptions": [
     "Local fork: no transaction is sent to Ethereum",
     "Impersonated actors: scenario hypothesis, not their signature or intention",
-    "Oracle overrides (hardhat_setCode with a constant price) are shock hypotheses"
+    "Oracle overrides (hardhat_setCode with a constant price) and liquidator funding (hardhat_setStorageAt / wrapped ETH) are shock hypotheses"
   ],
   "scenarios": [
     {
@@ -6958,5 +6959,5 @@
       }
     ]
   },
-  "sha256": "bca2bbe79d42ab36f49241dee42ec171e80c1ed406987e1dbc3d860a9d3919fe"
+  "sha256": "fcb18ec6174ae7e6b40247264d0a4366b87a72513dc6fb781d09ff20a996975a"
 }

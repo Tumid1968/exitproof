@@ -15,7 +15,9 @@ export function loadGraph(vault: Address): DependencyGraph {
     big(m.params as never, ["lltv"]);
   }
   for (const b of Object.values(g.borrowers)) for (const x of b.list) big(x as never, ["borrowShares", "collateral", "debt"]);
+  for (const h of g.holders?.list ?? []) big(h as never, ["shares", "assets"]);
   for (const p of g.peers) {
+    if (p.topHolder) big(p.topHolder as never, ["shares", "assets"]);
     big(p as never, ["totalAssets"]);
     for (const m of p.markets) big(m as never, ["supplyAssets"]);
   }

@@ -10,7 +10,7 @@ import { toJson } from "../lib/util.ts";
 
 const only = process.argv.slice(2).filter((a) => !a.startsWith("-"));
 const g = loadGraph(ACTORS.steakhouseEth);
-const catalog = steakhouseEthCatalog(g).filter((s) => only.length === 0 || only.includes(s.id));
+const catalog = steakhouseEthCatalog(g).scenarios.filter((s) => only.length === 0 || only.includes(s.id));
 const eng = new ForkEngine();
 await eng.init();
 const runner = new ScenarioRunner(eng);

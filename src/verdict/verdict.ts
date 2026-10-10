@@ -59,6 +59,9 @@ export function decide(i: VerdictInputs, unit = "WETH"): Verdict {
   } else if (pStar === null) {
     decision = "STAY";
     sentence = `This incident causes no loss to the position under these assumptions: exiting only costs ${f(exitCost)} ${unit}.`;
+  } else if (pStar > 1) {
+    decision = "STAY";
+    sentence = `STAY: even if this incident were certain within ${i.horizonDays} days, exiting would cost more (${f(exitCost)} ${unit}) than the loss it avoids (${f(avoidable)} ${unit}).`;
   } else if (i.probability > pStar) {
     decision = "EXIT";
     sentence = `EXIT: you assume a ${pct(i.probability)} chance of this incident within ${i.horizonDays} days, above the break-even ${pct(pStar)}. Expected loss if you stay ${f(stay)} ${unit} vs ${f(exit)} ${unit} if you exit${share < 1 ? ` (only ${pct(share)} of the position can leave now)` : ""}.`;

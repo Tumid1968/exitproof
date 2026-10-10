@@ -3,14 +3,17 @@
  * statuses, decoded errors and measurements to the wei. Transaction hashes are not compared
  * (they vary between runs); the timestamp convention is the one recorded in the manifest.
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { ForkEngine } from "../engine/fork.ts";
 import { ScenarioRunner, type Scenario, type ScenarioResult } from "../engine/scenario.ts";
 import { findCushion } from "../engine/cushion.ts";
-import { manifestHash } from "../report/build.ts";
+import { manifestHash, manifestPath } from "../report/build.ts";
+import { ACTORS } from "../lib/constants.ts";
+import type { Address } from "viem";
 import { toJson } from "../lib/util.ts";
 
-const file = process.argv[2] ?? "results/manifest.json";
+const arg = process.argv[2];
+const file = !arg ? manifestPath(ACTORS.steakhouseEth) : arg.startsWith("0x") ? manifestPath(arg as Address) : arg;
 const m = JSON.parse(readFileSync(file, "utf8"));
 const hashOk = manifestHash(m) === m.sha256;
 console.log(`manifest ${file}: sha256 ${hashOk ? "OK" : "MISMATCH (file edited?)"}`);
@@ -38,11 +41,15 @@ for (const { scenario, expected } of m.scenarios as { scenario: Scenario; expect
   console.log(`${d.length === 0 ? "OK  " : "FAIL"} ${scenario.id}${d.length ? "\n     " + d.slice(0, 5).join("\n     ") : ""}`);
 }
 const c = m.cushion;
-const c2 = await findCushion(runner, m.scenarios[0].scenario.target.vault, m.scenarios[0].scenario.target.holder, c.otherHolder, BigInt(c.probes[1].amount) /* probe #1 is the upper bound */, BigInt(c.precisionWei));
-const cushionOk = c2.passesAt === c.passesAt && c2.revertsAt === c.revertsAt;
-console.log(`${cushionOk ? "OK  " : "FAIL"} cushion passes at ${c2.passesAt}, reverts at ${c2.revertsAt}`);
+let cushionOk = true;
+if (c) {
+  const c2 = await findCushion(runner, m.scenarios[0].scenario.target.vault, m.scenarios[0].scenario.target.holder, c.otherHolder, BigInt(c.probes[1].amount) /* probe #1 is the upper bound */, BigInt(c.precisionWei));
+  cushionOk = c2.passesAt === c.passesAt && c2.revertsAt === c.revertsAt;
+  console.log(`${cushionOk ? "OK  " : "FAIL"} cushion passes at ${c2.passesAt}, reverts at ${c2.revertsAt}`);
+}
 await eng.reset();
 const allOk = hashOk && cushionOk && report.every((r) => r.ok);
-writeFileSync("results/replay.json", toJson({ at: new Date().toISOString(), manifest: file, manifestSha256: m.sha256, hashOk, cushionOk, scenarios: report, verdict: allOk ? "REPLAY OK" : "REPLAY FAILED" }));
+mkdirSync("results/replays", { recursive: true });
+writeFileSync(file.replace("manifests", "replays"), toJson({ at: new Date().toISOString(), manifest: file, manifestSha256: m.sha256, hashOk, cushionOk, scenarios: report, verdict: allOk ? "REPLAY OK" : "REPLAY FAILED" }));
 console.log(allOk ? `\nREPLAY OK: ${report.length} scenarios + cushion identical to the wei` : "\nREPLAY FAILED");
 process.exit(allOk ? 0 : 1);

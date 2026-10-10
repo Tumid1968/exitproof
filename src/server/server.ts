@@ -13,6 +13,7 @@ import { FORK_FACT, RUN_HYPOTHESIS, shockActions } from "../scenarios/catalog.ts
 import { ACTORS, NODE_URL, PROXY_URL, SOURCE } from "../lib/constants.ts";
 import { rpcRaw } from "../lib/rpc.ts";
 import { toJson } from "../lib/util.ts";
+import { manifestPath, reportPath } from "../report/build.ts";
 
 const PORT = Number(process.env.EXITPROOF_API_PORT ?? 8700);
 
@@ -42,30 +43,32 @@ async function getRunner() {
   return runner;
 }
 
-function buildCustom(body: { exits?: string[]; shock?: { feed: Address; factor: number } }): Scenario {
-  const V = ACTORS.steakhouseEth;
-  const target = { vault: V, holder: ACTORS.A };
+type ExitSpec = string | { vault: Address; owner: Address; label?: string };
+function buildCustom(body: { vault?: Address; holder?: Address; exits?: ExitSpec[]; shock?: { feed: Address; factor: number } }): Scenario {
+  const V = getAddress(body.vault ?? ACTORS.steakhouseEth);
+  const target = { vault: V, holder: getAddress(body.holder ?? ACTORS.A) };
   const actions: ScenarioAction[] = [{ type: "measure", label: "source state" }];
   const hyps = [FORK_FACT];
   if (body.shock) {
     const g = loadGraph(V);
+    if (!g) throw new Error("no discovery graph for this vault");
     const { actions: sa } = shockActions(g, { kind: "feed", feed: body.shock.feed, factor: body.shock.factor, label: "" });
     actions.push(...sa, { type: "measure", label: "after shock and liquidations" });
     hyps.push("Shock hypothesis: oracle replaced on the fork by one returning the shocked price; all unhealthy borrowers liquidated.");
   }
   for (const k of body.exits ?? []) {
-    const a = ACTOR_EXITS[k];
+    const a = typeof k === "string" ? ACTOR_EXITS[k] : { label: k.label ?? `${k.owner.slice(0, 8)}… exits`, vault: getAddress(k.vault), owner: getAddress(k.owner) };
     if (!a) throw new Error(`unknown actor ${k}`);
     actions.push({ type: "exit", label: a.label, vault: a.vault, owner: a.owner, action: { kind: "redeemAll" } });
   }
   if ((body.exits ?? []).length) hyps.push(RUN_HYPOTHESIS);
   actions.push(
     { type: "measure", label: "before the holder's exit" },
-    { type: "exit", label: "holder exits everything (redeem all shares)", vault: V, owner: ACTORS.A, action: { kind: "redeemAll" } },
-    { type: "exit", label: "holder withdraws its maximum", vault: V, owner: ACTORS.A, action: { kind: "withdrawMax" } },
+    { type: "exit", label: "holder exits everything (redeem all shares)", vault: V, owner: target.holder, action: { kind: "redeemAll" } },
+    { type: "exit", label: "holder withdraws its maximum", vault: V, owner: target.holder, action: { kind: "withdrawMax" } },
     { type: "measure", label: "end" },
   );
-  return { id: `custom_${(body.exits ?? []).join("_") || "none"}${body.shock ? "_shock" : ""}`, title: "Custom run", target, hypotheses: hyps, actions };
+  return { id: `custom_${(body.exits ?? []).length}exits${body.shock ? "_shock" : ""}`, title: "Custom run", target, hypotheses: hyps, actions };
 }
 
 const json = (res: http.ServerResponse, code: number, body: unknown) => {
@@ -78,9 +81,15 @@ const server = http.createServer(async (req, res) => {
   const url = new URL(req.url ?? "/", "http://x");
   try {
     if (req.method === "OPTIONS") return json(res, 204, "");
-    if (url.pathname === "/api/report") return json(res, 200, readFileSync("results/report.json", "utf8"));
-    if (url.pathname === "/api/manifest") return json(res, 200, readFileSync("results/manifest.json", "utf8"));
-    if (url.pathname === "/api/replay-last") return json(res, 200, existsSync("results/replay.json") ? readFileSync("results/replay.json", "utf8") : "{}");
+    const qv = getAddress(url.searchParams.get("vault") ?? ACTORS.steakhouseEth);
+    if (url.pathname === "/api/reports")
+      return json(res, 200, existsSync("results/reports") ? readdirSync("results/reports").map((f) => {
+        const r = JSON.parse(readFileSync(`results/reports/${f}`, "utf8"));
+        return { vault: r.target.vault, name: r.target.name, asset: r.target.assetSymbol, catalog: r.catalog };
+      }) : []);
+    if (url.pathname === "/api/report") return json(res, 200, readFileSync(reportPath(qv), "utf8"));
+    if (url.pathname === "/api/manifest") return json(res, 200, readFileSync(manifestPath(qv), "utf8"));
+    if (url.pathname === "/api/replay-last") { const f = manifestPath(qv).replace("manifests", "replays"); return json(res, 200, existsSync(f) ? readFileSync(f, "utf8") : "{}"); }
     if (url.pathname === "/api/vaults")
       return json(res, 200, readdirSync("results/discovery").map((f) => {
         const g = JSON.parse(readFileSync(`results/discovery/${f}`, "utf8"));
@@ -109,14 +118,15 @@ const server = http.createServer(async (req, res) => {
     }
     if (url.pathname === "/api/replay" && req.method === "POST") {
       const out = await exclusive(() => new Promise<{ code: number; log: string }>((resolve) => {
-        const p = spawn(process.execPath, ["--import", "tsx", "src/cli/replay.ts"], { cwd: process.cwd() });
+        const p = spawn(process.execPath, ["--import", "tsx", "src/cli/replay.ts", qv], { cwd: process.cwd() });
         let log = "";
         p.stdout.on("data", (d) => (log += d));
         p.stderr.on("data", (d) => (log += d));
         p.on("close", (code) => resolve({ code: code ?? 1, log }));
       }));
       runner = null; // the replay process moved the fork's base snapshot: re-init on next run
-      return json(res, 200, { ...out, replay: existsSync("results/replay.json") ? JSON.parse(readFileSync("results/replay.json", "utf8")) : null });
+      const rf = manifestPath(qv).replace("manifests", "replays");
+      return json(res, 200, { ...out, replay: existsSync(rf) ? JSON.parse(readFileSync(rf, "utf8")) : null });
     }
     json(res, 404, { error: "not found" });
   } catch (e) {

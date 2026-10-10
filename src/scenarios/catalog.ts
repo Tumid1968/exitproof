@@ -6,7 +6,8 @@ import { getAddress, type Address, type Hex } from "viem";
 import type { DependencyGraph } from "../discovery/types.ts";
 import type { Scenario, ScenarioAction } from "../engine/scenario.ts";
 import { propagate, type Shock } from "../shocks/analytic.ts";
-import { ACTORS } from "../lib/constants.ts";
+import { ACTORS, ADDR } from "../lib/constants.ts";
+import type { CatalogMeta } from "./generic.ts";
 
 export const RUN_HYPOTHESIS = "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention.";
 export const FORK_FACT = "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.";
@@ -32,7 +33,8 @@ export function shockActions(g: DependencyGraph, shock: Shock): { actions: Scena
   return { actions, affected };
 }
 
-export function steakhouseEthCatalog(g: DependencyGraph): Scenario[] {
+/** Curated catalog for Steakhouse ETH: reproduces the reference values of the preparation night. */
+export function steakhouseEthCatalog(g: DependencyGraph): { scenarios: Scenario[]; meta: CatalogMeta } {
   const V = ACTORS.steakhouseEth;
   const target = { vault: V, holder: ACTORS.A };
   const finish = (label = "before the holder's exit"): ScenarioAction[] => [
@@ -101,5 +103,14 @@ export function steakhouseEthCatalog(g: DependencyGraph): Scenario[] {
       { type: "exit", label: "holder withdraws its maximum", vault: V, owner: ACTORS.A, action: { kind: "withdrawMax" } }, { type: "measure", label: "end" },
     ],
   });
-  return [...runs, ...shocks];
+  const meta: CatalogMeta = {
+    target, runIds: runs.map((s) => s.id),
+    crossChecks: rateFeed ? [0.95, 0.9].map((f) => ({ id: `lido_loss_${Math.round((1 - f) * 100)}pct`, shock: { kind: "feed" as const, feed: rateFeed.address!, factor: f, label: `wstETH/stETH rate x${f}` } })) : [],
+    incidents: {
+      ...(wstMarkets.length ? { blind: { id: "incident_steth_depeg_blind_plus_run", collateral: ADDR.wstETH as Address, factor: 0.9 } } : {}),
+      ...(rateFeed ? { shock: { id: "incident_lido10_plus_run", shock: { kind: "feed" as const, feed: rateFeed.address!, factor: 0.9, label: "wstETH/stETH rate x0.9" } } } : {}),
+    },
+    cushionOther: ACTORS.B,
+  };
+  return { scenarios: [...runs, ...shocks], meta };
 }

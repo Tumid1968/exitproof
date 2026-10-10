@@ -1,11 +1,7 @@
 {
-  "schema": "exitproof.report/0.1",
+  "schema": "exitproof.report/0.2",
   "generatedBy": "src/report/build.ts",
-  "labels": {
-    "onchain": "Real data read on-chain at the frozen block",
-    "fork": "Transaction simulated on a local fork (Hardhat 3), never sent to Ethereum",
-    "hypothesis": "Scenario hypothesis (impersonated actors, shocks, probabilities)"
-  },
+  "catalog": "curated (Steakhouse ETH reference scenarios)",
   "source": {
     "chainId": 1,
     "block": "26157638",
@@ -40,10 +36,190 @@
     "peerVaultCount": 8,
     "publicAllocatorIsAllocator": true,
     "publicAllocatorReallocatableIntoExposedMarkets": "0",
-    "nodeCount": 60,
-    "edgeCount": 89,
-    "readCount": 547,
-    "netApy": 0.015267569628602694
+    "nodeCount": 61,
+    "edgeCount": 90,
+    "readCount": 582,
+    "netApy": 0.015267569628602694,
+    "holders": {
+      "coverage": 0.999185,
+      "list": [
+        {
+          "address": "0x27F23c710dD3d878FE9393d93465FeD1302f2EbD",
+          "shares": "4951898501365758933941",
+          "assets": "5209914824792343398774",
+          "shareOfSupply": 0.536098,
+          "isContract": true
+        },
+        {
+          "address": "0x9fC3dc011b461664c835F2527fffb1169b3C213e",
+          "shares": "2600716770901057351724",
+          "assets": "2736225885095679233262",
+          "shareOfSupply": 0.281556,
+          "isContract": true
+        },
+        {
+          "address": "0x5EC6abfF9BB4c673f63D077a962A29945f744857",
+          "shares": "685931091229198830651",
+          "assets": "721671205497318542640",
+          "shareOfSupply": 0.074259,
+          "isContract": false
+        },
+        {
+          "address": "0x5a91cE2E8E201aaDe717246F04f9618A58eF9931",
+          "shares": "258788961799818168243",
+          "assets": "272273037947290879799",
+          "shareOfSupply": 0.028016,
+          "isContract": true
+        },
+        {
+          "address": "0x9F177DF7adE7375DDf627b955e340f35D6796D62",
+          "shares": "192880264945412044956",
+          "assets": "202930199694485546359",
+          "shareOfSupply": 0.020881,
+          "isContract": false
+        },
+        {
+          "address": "0x7A9f26a753d5a4778052af4D27AD953b3bAd4E3d",
+          "shares": "135546120460620980414",
+          "assets": "142608686796813169702",
+          "shareOfSupply": 0.014674,
+          "isContract": false
+        },
+        {
+          "address": "0x730EB1e054ad08b390E29A648DE134c35270cE72",
+          "shares": "104603349642032269820",
+          "assets": "110053657576514143727",
+          "shareOfSupply": 0.011324,
+          "isContract": true
+        },
+        {
+          "address": "0xAD17139d1a60e4df6d7bb527BF7E382816EC6bbB",
+          "shares": "62998234372255048201",
+          "assets": "66280727503043660796",
+          "shareOfSupply": 0.00682,
+          "isContract": false
+        },
+        {
+          "address": "0xaA8d6d306DA25dECB35c2668519352155D75AdFf",
+          "shares": "53433666597026710939",
+          "assets": "56217802459012627720",
+          "shareOfSupply": 0.005784,
+          "isContract": false
+        },
+        {
+          "address": "0x5F0cE149ace15980eb8062B2527b283c05B84c2B",
+          "shares": "41675912729527130486",
+          "assets": "43847416401291410413",
+          "shareOfSupply": 0.004511,
+          "isContract": false
+        },
+        {
+          "address": "0x7C1215D47d4EF75c70571b5df805A8cb22E6fc28",
+          "shares": "31075093654090629239",
+          "assets": "32694246674402713090",
+          "shareOfSupply": 0.003364,
+          "isContract": true
+        },
+        {
+          "address": "0xaa4506F51773F370553D34aa1b1d8037b2f609dF",
+          "shares": "29731558843579385403",
+          "assets": "31280707619638858858",
+          "shareOfSupply": 0.003218,
+          "isContract": false
+        },
+        {
+          "address": "0xF6dE7ffaB409b0E9e741d807bD166E659d1Cb956",
+          "shares": "16003311184807855626",
+          "assets": "16837156125978767980",
+          "shareOfSupply": 0.001732,
+          "isContract": false
+        },
+        {
+          "address": "0x2104905000D2904597cA0951565BbA5A5f8D0BAB",
+          "shares": "10206774241896764201",
+          "assets": "10738593374137263524",
+          "shareOfSupply": 0.001104,
+          "isContract": false
+        },
+        {
+          "address": "0x9Cd1aF69FCfB8c99760ba8a752CC849c12F7460A",
+          "shares": "9605052291490316386",
+          "assets": "10105518986816746209",
+          "shareOfSupply": 0.001039,
+          "isContract": false
+        },
+        {
+          "address": "0xe66831804421Cb8Dbf8097f2C2d1C4AA2119ECB8",
+          "shares": "9248034035020793390",
+          "assets": "9729898463377286428",
+          "shareOfSupply": 0.001001,
+          "isContract": false
+        },
+        {
+          "address": "0xc451e2e6C1483a04D0490f7585237e2170Dff6D9",
+          "shares": "4998895212174762771",
+          "assets": "5259360276934138528",
+          "shareOfSupply": 0.000541,
+          "isContract": false
+        },
+        {
+          "address": "0x6310C1f4ac20CC021D7730e2d1907001be423A4C",
+          "shares": "4976590844913572726",
+          "assets": "5235893751192619917",
+          "shareOfSupply": 0.000538,
+          "isContract": false
+        },
+        {
+          "address": "0xFF040F7ffaF177b638E050E4E1de03b201bA0d1C",
+          "shares": "4813818478574830543",
+          "assets": "5064640207885774662",
+          "shareOfSupply": 0.000521,
+          "isContract": true
+        },
+        {
+          "address": "0x59D6d90321B211736A62367d3C6695f01c972FE6",
+          "shares": "4633558355882554911",
+          "assets": "4874987716972571586",
+          "shareOfSupply": 0.000501,
+          "isContract": false
+        },
+        {
+          "address": "0xDEbD769c0E05160f4E270F8240df714B2eB4e6Bc",
+          "shares": "4588145690684842936",
+          "assets": "4827208846387555251",
+          "shareOfSupply": 0.000496,
+          "isContract": false
+        },
+        {
+          "address": "0xD1A2d9DF5db842DA2Ee81075Fa441602B2352915",
+          "shares": "3786815471428343197",
+          "assets": "3984125696014604631",
+          "shareOfSupply": 0.000409,
+          "isContract": true
+        },
+        {
+          "address": "0x7F3eA8dAa8C1BC344EcdeB54A800Da6B4d48A1fb",
+          "shares": "3014947237111577614",
+          "assets": "3172039633337008669",
+          "shareOfSupply": 0.000326,
+          "isContract": false
+        },
+        {
+          "address": "0x5c9148566827ceC36c025ec3382ABC0bFaab0aE6",
+          "shares": "2333652344639696577",
+          "assets": "2455246193534962750",
+          "shareOfSupply": 0.000252,
+          "isContract": false
+        },
+        {
+          "address": "0x425A40c52A0F06FbbB46Bd0B91E9a50275ba4200",
+          "shares": "1907287964761135386",
+          "assets": "2006666299807323083",
+          "shareOfSupply": 0.000206,
+          "isContract": false
+        }
+      ]
+    }
   },
   "queue": [
     {
@@ -1045,501 +1221,6 @@
       ]
     },
     {
-      "label": "BTC / ETH feed x0.99",
-      "kind": "feed",
-      "factor": 0.99,
-      "node": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-          "label": "WBTC/WETH LLTV 91.5% (queue #4)",
-          "factorSeen": 0.99,
-          "path": [
-            "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Oracle: BTC / ETH BASE_FEED_1 x0.99"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "BTC / ETH feed x0.97",
-      "kind": "feed",
-      "factor": 0.97,
-      "node": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-          "label": "WBTC/WETH LLTV 91.5% (queue #4)",
-          "factorSeen": 0.97,
-          "path": [
-            "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Oracle: BTC / ETH BASE_FEED_1 x0.97"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "BTC / ETH feed x0.95",
-      "kind": "feed",
-      "factor": 0.95,
-      "node": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-          "label": "WBTC/WETH LLTV 91.5% (queue #4)",
-          "factorSeen": 0.95,
-          "path": [
-            "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Oracle: BTC / ETH BASE_FEED_1 x0.95"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "BTC / ETH feed x0.9",
-      "kind": "feed",
-      "factor": 0.9,
-      "node": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-          "label": "WBTC/WETH LLTV 91.5% (queue #4)",
-          "factorSeen": 0.9,
-          "path": [
-            "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Oracle: BTC / ETH BASE_FEED_1 x0.9"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "BTC / ETH feed x0.8",
-      "kind": "feed",
-      "factor": 0.8,
-      "node": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-          "label": "WBTC/WETH LLTV 91.5% (queue #4)",
-          "factorSeen": 0.8,
-          "path": [
-            "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Oracle: BTC / ETH BASE_FEED_1 x0.8"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "BTC / USD feed x0.99",
-      "kind": "feed",
-      "factor": 0.99,
-      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 0.99,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.99"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "BTC / USD feed x0.97",
-      "kind": "feed",
-      "factor": 0.97,
-      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 0.97,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.97"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "BTC / USD feed x0.95",
-      "kind": "feed",
-      "factor": 0.95,
-      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 0.95,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.95"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "BTC / USD feed x0.9",
-      "kind": "feed",
-      "factor": 0.9,
-      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 0.9,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.9"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "BTC / USD feed x0.8",
-      "kind": "feed",
-      "factor": 0.8,
-      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 0.8,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.8"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "ETH / USD feed x0.99",
-      "kind": "feed",
-      "factor": 0.99,
-      "node": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 1.0101010101010102,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.99"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "ETH / USD feed x0.97",
-      "kind": "feed",
-      "factor": 0.97,
-      "node": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 1.0309278350515465,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.97"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "ETH / USD feed x0.95",
-      "kind": "feed",
-      "factor": 0.95,
-      "node": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 1.0526315789473684,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.95"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "ETH / USD feed x0.9",
-      "kind": "feed",
-      "factor": 0.9,
-      "node": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 1.1111111111111112,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.9"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
-      "label": "ETH / USD feed x0.8",
-      "kind": "feed",
-      "factor": 0.8,
-      "node": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
-      "vaultLoss": "0",
-      "vaultLossPct": 0,
-      "vaultHiddenLoss": "0",
-      "holderLoss": "0",
-      "holderHiddenLoss": "0",
-      "withdrawableBefore": "6946905315207433291224",
-      "withdrawableAfter": "6946905315207433291224",
-      "markets": [
-        {
-          "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-          "label": "cbBTC/WETH LLTV 91.5% (queue #5)",
-          "factorSeen": 1.25,
-          "path": [
-            "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.8"
-          ],
-          "liquidatable": 0,
-          "badDebt": "0",
-          "hiddenShortfall": "0",
-          "repaid": "0"
-        }
-      ],
-      "hypotheses": [
-        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
-        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
-        "The shocked price is what the oracle returns to Morpho Blue."
-      ]
-    },
-    {
       "label": "wstETH market depeg x0.99 (oracle unchanged)",
       "kind": "blindDepeg",
       "factor": 0.99,
@@ -2246,6 +1927,7 @@
   "crossCheck": [
     {
       "id": "lido_loss_5pct",
+      "label": "wstETH/stETH rate x0.95",
       "factor": 0.95,
       "executedBadDebt": "130091147489273404610",
       "analyticBadDebt": "130054412090250860497",
@@ -2258,6 +1940,7 @@
     },
     {
       "id": "lido_loss_10pct",
+      "label": "wstETH/stETH rate x0.9",
       "factor": 0.9,
       "executedBadDebt": "1306267031703367766042",
       "analyticBadDebt": "1306159918065194854059",
@@ -2272,8 +1955,8 @@
   "incidents": [
     {
       "id": "incident_steth_depeg_blind_plus_run",
-      "regime": "oracle blind: no liquidation, losses unrecognised, liquidity drained by the run",
-      "title": "stETH depegs -10% on the market (oracle unchanged) + holder #2 and Vault Bridge #1 exit first",
+      "regime": "oracle blind: no liquidation, losses unrecognised on-chain, liquidity drained by the run",
+      "title": "Incident: stETH depegs on the market, the exchange-rate oracle does not see it; holder #2 and Vault Bridge #1 run first",
       "valueSource": "analytic economic shortfall (debt minus collateral market value of underwater borrowers), pro rata of vault supply shares",
       "executedFacts": {
         "liquidatableFoundOnFork": 0,
@@ -2289,7 +1972,7 @@
     {
       "id": "incident_lido10_plus_run",
       "regime": "oracle sees it: liquidations realise bad debt and bring repaid liquidity back",
-      "title": "Lido backing loss -10% (oracle sees it), all unhealthy borrowers liquidated, then holder #2 and Vault Bridge #1 exit first",
+      "title": "Incident: Lido loss -10%, liquidations, then holder #2 and Vault Bridge #1 run before the holder",
       "valueSource": "executed on fork: holder value before minus after liquidations (bad debt socialised by Morpho Blue)",
       "executedFacts": {
         "holderMaxWithdrawAfterRun": "5052784674376720966173"
@@ -2304,8 +1987,11 @@
   ],
   "verdictParams": {
     "netApy": 0.015267569628602694,
+    "decimals": 18,
     "gasCostOut": "58298348194696",
     "gasCostReentry": "58298348194696",
+    "gasNote": null,
+    "gasOutEth": "58298348194696",
     "slippage": "0",
     "exitGasUsed": "479672",
     "baseFeePerGas": "121537943",
@@ -2359,108 +2045,6 @@
       }
     }
   ],
-  "sensitivity": [
-    {
-      "id": "incident_steth_depeg_blind_plus_run",
-      "grid": [
-        {
-          "horizonDays": 7,
-          "lockedHaircut": 0,
-          "breakEven": 0.003125661925938587
-        },
-        {
-          "horizonDays": 7,
-          "lockedHaircut": 0.1,
-          "breakEven": 0.0016044938566238285
-        },
-        {
-          "horizonDays": 7,
-          "lockedHaircut": 0.5,
-          "breakEven": 0.000544508510484922
-        },
-        {
-          "horizonDays": 30,
-          "lockedHaircut": 0,
-          "breakEven": 0.013394909059608292
-        },
-        {
-          "horizonDays": 30,
-          "lockedHaircut": 0.1,
-          "breakEven": 0.006875999326038002
-        },
-        {
-          "horizonDays": 30,
-          "lockedHaircut": 0.5,
-          "breakEven": 0.0023334711664116173
-        },
-        {
-          "horizonDays": 90,
-          "lockedHaircut": 0,
-          "breakEven": 0.040184249408311876
-        },
-        {
-          "horizonDays": 90,
-          "lockedHaircut": 0.1,
-          "breakEven": 0.02062775272450976
-        },
-        {
-          "horizonDays": 90,
-          "lockedHaircut": 0.5,
-          "breakEven": 0.007000330268829086
-        }
-      ]
-    },
-    {
-      "id": "incident_lido10_plus_run",
-      "grid": [
-        {
-          "horizonDays": 7,
-          "lockedHaircut": 0,
-          "breakEven": 0.009709108584886139
-        },
-        {
-          "horizonDays": 7,
-          "lockedHaircut": 0.1,
-          "breakEven": 0.009709108584886139
-        },
-        {
-          "horizonDays": 7,
-          "lockedHaircut": 0.5,
-          "breakEven": 0.009709108584886139
-        },
-        {
-          "horizonDays": 30,
-          "lockedHaircut": 0,
-          "breakEven": 0.04160802723581797
-        },
-        {
-          "horizonDays": 30,
-          "lockedHaircut": 0.1,
-          "breakEven": 0.04160802723581797
-        },
-        {
-          "horizonDays": 30,
-          "lockedHaircut": 0.5,
-          "breakEven": 0.04160802723581797
-        },
-        {
-          "horizonDays": 90,
-          "lockedHaircut": 0,
-          "breakEven": 0.12482259762955321
-        },
-        {
-          "horizonDays": 90,
-          "lockedHaircut": 0.1,
-          "breakEven": 0.12482259762955321
-        },
-        {
-          "horizonDays": 90,
-          "lockedHaircut": 0.5,
-          "breakEven": 0.12482259762955321
-        }
-      ]
-    }
-  ],
   "depegCurve": [
     {
       "factor": 0.99,
@@ -2497,5 +2081,6 @@
       "holderLoss": "1293692256030688887645",
       "breakEven": 0.00372224990781407
     }
-  ]
+  ],
+  "depegCurveCollateral": "wstETH"
 }

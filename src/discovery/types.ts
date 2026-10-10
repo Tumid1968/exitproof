@@ -3,7 +3,7 @@ import type { ReadRecord } from "./reader.ts";
 
 export type NodeKind =
   | "chain" | "vault" | "market" | "token" | "yieldSource" | "oracle" | "feed" | "aggregator"
-  | "irm" | "governance" | "allocator" | "peerVault" | "borrowers";
+  | "irm" | "governance" | "allocator" | "peerVault" | "borrowers" | "holders";
 
 export type GraphNode = {
   id: string;
@@ -50,8 +50,11 @@ export type MarketState = {
 
 export type Borrower = { address: Address; borrowShares: bigint; collateral: bigint; debt: bigint; ltv: number | null };
 
+export type Holder = { address: Address; shares: bigint; assets: bigint; shareOfSupply: number; isContract: boolean };
+
 export type PeerExposure = {
   vault: Address; name: string; version: string; totalAssets: bigint;
+  topHolder: Holder | null;
   markets: { id: Hex; supplyAssets: bigint; queueIndex: number | null }[];
   publicAllocator: { enabled: boolean; flowCaps: { id: Hex; maxIn: bigint; maxOut: bigint }[]; reallocatableIn: { id: Hex; amount: bigint }[] };
 };
@@ -63,6 +66,7 @@ export type DependencyGraph = {
   summary: Record<string, unknown>;
   markets: MarketState[];
   peers: PeerExposure[];
+  holders: { coverage: number; list: Holder[] };
   borrowers: Record<string, { coverage: number; count: number; list: Borrower[] }>;
   nodes: GraphNode[];
   edges: GraphEdge[];
