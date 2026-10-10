@@ -157,6 +157,12 @@ async function handle(r: RpcReq): Promise<Record<string, unknown>> {
 }
 
 const server = http.createServer((req, res) => {
+  if (req.method === "GET") {
+    // Health/status for the UI: which mode, how many answers came from cache.
+    res.writeHead(200, { "content-type": "application/json", "access-control-allow-origin": "*" });
+    res.end(JSON.stringify({ service: "exitproof-proxy", mode, upstreamHost: mode === "online" ? new URL(UPSTREAM).host : null, stats }));
+    return;
+  }
   let body = "";
   req.on("data", (c) => (body += c));
   req.on("end", async () => {
