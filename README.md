@@ -35,6 +35,22 @@ Everything runs on **real Ethereum state frozen at block 26,157,638** (`0x3e84�
 
 Data labels used everywhere: **on-chain** (real data read at the block) · **fork** (transaction simulated locally, never sent to Ethereum) · **hypothesis** (impersonated actors, shocks, probabilities).
 
+**The stack discovered for this position** (every arrow is backed by recorded reads; numbers at block 26,157,638):
+
+```mermaid
+flowchart LR
+  H["Largest holder<br/>5,209.91 WETH"] --> V["Steakhouse ETH<br/>MetaMorpho V1.0<br/>owner Safe 5/10, curator Safe 3/9"]
+  V -->|"queue #1: 1,727.78"| M1["wstETH/WETH LLTV 94.5 %<br/>utilization 84.9 %"]
+  V -->|"queue #2: 7,970.28"| M2["wstETH/WETH LLTV 96.5 %<br/>utilization 83.6 %"]
+  V -->|"queue #3: 20.12"| M3["cbBTC/WETH LLTV 91.5 %"]
+  P["8 peer vaults<br/>e.g. Vault Bridge WETH, Gauntlet WETH Prime"] -->|"compete for the same idle liquidity"| M2
+  M1 & M2 --> O["Oracle: wstETH/stETH exchange rate only<br/>(stETH = ETH hard-coded)"]
+  O --> W["wstETH (wrapper)"] --> S["stETH / Lido<br/>upgradeable via Aragon kernel"] --> E["Ethereum validators<br/>(rewards, slashing)"]
+  M1 & M2 --> B["162 borrowers, 100 % of debt identified<br/>one owes 79.4 % of market #1"]
+  B -->|"liquidators sell seized wstETH"| A["AMM: Curve stETH/ETH, Uniswap V3 0.01 %<br/>≈18,739 wstETH absorbable at a profit"]
+  M3 --> R["Oracle router: primary BTC/USD ÷ ETH/USD<br/>backup cbBTC/USD, 2 % deviation challenge"]
+```
+
 **Liquidity now (on-chain):** 9,718.21 WETH total, 6,946.905 withdrawable (71.5 %). About 2,771 WETH are lent to borrowers, mostly against wstETH. The Public Allocator could reallocate **0 WETH** into the exposed markets: the flow caps of the peer vaults are 0, or their other markets give no room.
 
 **Who exits before you (fork, impersonated actors):**
