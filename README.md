@@ -61,11 +61,11 @@ Data labels used everywhere: **on-chain** (real data read at the block) · **for
 |---|---:|---:|---:|
 | Lido backing loss −10 % (oracle sees it), executed: 90/90 liquidations | 293.106 WETH (analytic 293.084) | — | 5,052.78 (liquidations repay debt and bring liquidity back) |
 | same, but liquidations limited by the AMM depth measured at the block: 44 executed, 46 positions left insolvent | 191.4 (analytic) | 83.5 | 5,107.28 |
-| stETH market depeg −10 % (oracle blind), executed: 0 liquidatable | 0 | ≈910 WETH (analytic) | **582.53 (−89 %)** |
+| stETH market depeg −10 % (oracle blind), executed: 0 liquidatable | 0 | 219.0 WETH (analytic) | **582.53 (−89 %)** |
 
 **AMM layer (on-chain quotes at the block):** liquidators can sell about 18,739 wstETH at a profit in the 96.5 % LLTV market, where borrowers have posted 25,174 wstETH (74 %). Most of that depth is the Curve stETH/ETH pool, reached by unwrapping, then the Uniswap V3 0.01 % pool.
 
-**Verdict (defaults: p = 5 %, 30 days, locked funds valued at a 10 % haircut):** in the oracle-blind incident, EXIT is the answer as soon as the holder's own incident probability exceeds **0.69 %** over 30 days. Sensitivity runs from 0.05 % (7 days, 50 % haircut) to 4.0 % (90 days, no haircut). The Lido-loss incidents break even at 4.16 % (all liquidations) and 4.44 % (AMM-limited).
+**Verdict (defaults: p = 5 %, 30 days, locked funds valued at a 10 % haircut):** in the oracle-blind incident, EXIT is the answer as soon as the holder's own incident probability exceeds **1.13 %** over 30 days. Sensitivity runs from 0.06 % (7 days, 50 % haircut) to 16.7 % (90 days, no haircut). The Lido-loss incidents break even at 4.16 % (all liquidations) and 4.44 % (AMM-limited).
 
 ## The same pipeline on other vaults (generic catalog)
 

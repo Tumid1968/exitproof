@@ -159,7 +159,6 @@ function impactOnMarket(g: DependencyGraph, m: MarketState, seen: number, blind:
   const list = g.borrowers[m.id]?.list ?? [];
   const price = m.oraclePrice ?? 0n;
   const pSeen = scale(price, seen);
-  const pReal = scale(price, blind * (overprice ? 1 : 1));
   const lif = lifWad(m.params.lltv);
   let badDebt = 0n, repaid = 0n, hidden = 0n, liquidatable = 0, unliquidated = 0;
   const liquidated: Address[] = [];
@@ -190,8 +189,8 @@ function impactOnMarket(g: DependencyGraph, m: MarketState, seen: number, blind:
         if (maxRepay < debt) { badDebt += debt - maxRepay; repaid += maxRepay; } else repaid += debt;
       }
       if (blind !== 1) {
-        const collReal = (coll * pReal) / ORACLE_SCALE;
-        const real = (collReal * toBig(blind)) / 10n ** 12n;
+        // market value of the collateral after the depeg (the oracle price is unchanged in this case)
+        const real = (coll * scale(price, blind)) / ORACLE_SCALE;
         if (debt > real) hidden += debt - real;
       }
     }

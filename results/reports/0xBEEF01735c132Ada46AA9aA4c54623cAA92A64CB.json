@@ -3608,9 +3608,9 @@
       "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
       "vaultLoss": "0",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "41851400",
+      "vaultHiddenLoss": "0",
       "holderLoss": "0",
-      "holderHiddenLoss": "19647943",
+      "holderHiddenLoss": "0",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859043",
       "markets": [
@@ -3637,7 +3637,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "661811552",
+          "hiddenShortfall": "0",
           "repaid": "0"
         }
       ],
@@ -3655,9 +3655,9 @@
       "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
       "vaultLoss": "0",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "71413057130",
+      "vaultHiddenLoss": "75990787",
       "holderLoss": "0",
-      "holderHiddenLoss": "33526230939",
+      "holderHiddenLoss": "35675334",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859043",
       "markets": [
@@ -3671,7 +3671,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "17406769282",
+          "hiddenShortfall": "0",
           "repaid": "0"
         },
         {
@@ -3684,7 +3684,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "1128779048197",
+          "hiddenShortfall": "1201670196",
           "repaid": "0"
         }
       ],
@@ -3843,9 +3843,9 @@
       "node": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
       "vaultLoss": "0",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "139300971",
+      "vaultHiddenLoss": "0",
       "holderLoss": "0",
-      "holderHiddenLoss": "65397515",
+      "holderHiddenLoss": "0",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859043",
       "markets": [
@@ -3872,7 +3872,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "1352561853",
+          "hiddenShortfall": "0",
           "repaid": "0"
         }
       ],
@@ -3890,9 +3890,9 @@
       "node": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
       "vaultLoss": "0",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "168471339274",
+      "vaultHiddenLoss": "240971538",
       "holderLoss": "0",
-      "holderHiddenLoss": "79092105199",
+      "holderHiddenLoss": "113128715",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859043",
       "markets": [
@@ -3906,7 +3906,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "379132879",
+          "hiddenShortfall": "0",
           "repaid": "0"
         },
         {
@@ -3919,7 +3919,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "1635422473125",
+          "hiddenShortfall": "2339746136",
           "repaid": "0"
         }
       ],
@@ -4125,9 +4125,9 @@
       "node": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
       "vaultLoss": "0",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "877550568992",
+      "vaultHiddenLoss": "0",
       "holderLoss": "0",
-      "holderHiddenLoss": "411982965292",
+      "holderHiddenLoss": "0",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859043",
       "markets": [
@@ -4154,7 +4154,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "3039665063623",
+          "hiddenShortfall": "0",
           "repaid": "0"
         }
       ],
@@ -4295,7 +4295,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "1",
+          "hiddenShortfall": "0",
           "repaid": "0"
         }
       ],
@@ -4342,7 +4342,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "1",
+          "hiddenShortfall": "0",
           "repaid": "0"
         }
       ],
@@ -4360,9 +4360,9 @@
       "node": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
       "vaultLoss": "0",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "78867552253",
+      "vaultHiddenLoss": "0",
       "holderLoss": "0",
-      "holderHiddenLoss": "37025886815",
+      "holderHiddenLoss": "0",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859043",
       "markets": [
@@ -4376,7 +4376,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "659349528188",
+          "hiddenShortfall": "0",
           "repaid": "0"
         },
         {
@@ -4389,7 +4389,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "78615453175",
+          "hiddenShortfall": "0",
           "repaid": "0"
         }
       ],
@@ -4509,9 +4509,9 @@
       "node": "0xbeef0C075Da5D01112AE5cF34d257074fB5DDB2f",
       "vaultLoss": "0",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "86898886185",
+      "vaultHiddenLoss": "0",
       "holderLoss": "0",
-      "holderHiddenLoss": "40796350747",
+      "holderHiddenLoss": "0",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859043",
       "markets": [
@@ -4525,7 +4525,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "87635825236",
+          "hiddenShortfall": "0",
           "repaid": "0"
         }
       ],
@@ -4543,9 +4543,9 @@
       "node": "0xbeef0C075Da5D01112AE5cF34d257074fB5DDB2f",
       "vaultLoss": "0",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "2245215491906",
+      "vaultHiddenLoss": "153825473869",
       "holderLoss": "0",
-      "holderHiddenLoss": "1054059525183",
+      "holderHiddenLoss": "72216322456",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859043",
       "markets": [
@@ -4559,7 +4559,7 @@
           ],
           "liquidatable": 0,
           "badDebt": "0",
-          "hiddenShortfall": "2264255862224",
+          "hiddenShortfall": "155129978492",
           "repaid": "0"
         }
       ],
@@ -4593,7 +4593,7 @@
           ],
           "liquidatable": 1,
           "badDebt": "34",
-          "hiddenShortfall": "34",
+          "hiddenShortfall": "33",
           "repaid": "1"
         }
       ],
@@ -4627,7 +4627,7 @@
           ],
           "liquidatable": 1,
           "badDebt": "34",
-          "hiddenShortfall": "34",
+          "hiddenShortfall": "33",
           "repaid": "1"
         }
       ],
@@ -4661,7 +4661,7 @@
           ],
           "liquidatable": 1,
           "badDebt": "34",
-          "hiddenShortfall": "34",
+          "hiddenShortfall": "33",
           "repaid": "1"
         }
       ],
@@ -4679,9 +4679,9 @@
       "node": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "vaultLoss": "2",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "82863632",
+      "vaultHiddenLoss": "2",
       "holderLoss": "0",
-      "holderHiddenLoss": "38901923",
+      "holderHiddenLoss": "0",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859041",
       "markets": [
@@ -4695,7 +4695,7 @@
           ],
           "liquidatable": 1,
           "badDebt": "34",
-          "hiddenShortfall": "1203164544",
+          "hiddenShortfall": "33",
           "repaid": "1"
         }
       ],
@@ -4713,9 +4713,9 @@
       "node": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "vaultLoss": "2",
       "vaultLossPct": 0,
-      "vaultHiddenLoss": "3566446431",
+      "vaultHiddenLoss": "148391586",
       "holderLoss": "0",
-      "holderHiddenLoss": "1674336759",
+      "holderHiddenLoss": "69665279",
       "withdrawableBefore": "45989139859043",
       "withdrawableAfter": "45989139859041",
       "markets": [
@@ -4729,7 +4729,7 @@
           ],
           "liquidatable": 1,
           "badDebt": "34",
-          "hiddenShortfall": "51784139203",
+          "hiddenShortfall": "2154618251",
           "repaid": "1"
         }
       ],
@@ -6041,7 +6041,7 @@
       "inputs": {
         "positionValue": "30561384626529",
         "exitableNow": "30561385093280",
-        "incidentValueLoss": "19647943",
+        "incidentValueLoss": "0",
         "incidentLocked": "0"
       }
     },
@@ -6099,19 +6099,19 @@
       "id": "incident_blind_depeg_plus_run",
       "verdict": {
         "decision": "STAY",
-        "sentence": "STAY: even if this incident were certain within 30 days, exiting would cost more (102,978.5 USDC) than the loss it avoids (19.65 USDC).",
-        "breakEvenProbability": 5241.1846485539145,
-        "expectedLossStay": 0.9823971500000002,
+        "sentence": "This incident causes no loss to the position under these assumptions: exiting only costs 102,978.5 USDC.",
+        "breakEvenProbability": null,
+        "expectedLossStay": 0,
         "expectedLossExit": 102978.49722726236,
         "exitCost": 102978.49722726236,
-        "incidentLoss": 19.647943,
+        "incidentLoss": 0,
         "exitableShare": 1,
         "parts": {
           "forgoneYield": 102978.49722726236,
           "gasOut": 0,
           "gasReentry": 0,
           "slippage": 0,
-          "valueLoss": 19.647943,
+          "valueLoss": 0,
           "lockedAfterRun": 0
         }
       }
@@ -6182,18 +6182,18 @@
     },
     {
       "factor": 0.9,
-      "holderLoss": "19647943",
-      "breakEven": 5241.1846485539145
+      "holderLoss": "0",
+      "breakEven": null
     },
     {
       "factor": 0.85,
-      "holderLoss": "796421626",
-      "breakEven": 129.30148286463324
+      "holderLoss": "0",
+      "breakEven": null
     },
     {
       "factor": 0.8,
-      "holderLoss": "33526230939",
-      "breakEven": 3.0715799045418715
+      "holderLoss": "35675334",
+      "breakEven": 2886.546128124893
     }
   ],
   "depegCurveCollateral": "cbBTC",
