@@ -145,3 +145,13 @@ test("exit at the user's size: the largest measured position gives the report's 
   assert.equal(parseAmount("1,000.5", 18), 1000500000000000000000n);
   assert.equal(parseAmount("0.1234567", 6), null);
 });
+
+test("amount messages: too many decimals says how many are allowed", async () => {
+  const { amountError } = await import("../src/verdict/size.ts");
+  assert.equal(amountError("1.1234567", 6), "Use at most 6 decimals.");
+  assert.equal(amountError("1.123456", 6), null);
+  assert.equal(amountError("", 18), "Enter an amount above 0.");
+  assert.equal(amountError("-2", 18), "Enter an amount above 0.");
+  assert.equal(amountError("0", 18), "Enter an amount above 0.");
+  assert.equal(amountError("1,000.5", 18), null);
+});

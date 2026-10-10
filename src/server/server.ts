@@ -162,9 +162,10 @@ const server = http.createServer(async (req, res) => {
       return json(res, 200, { proxy, fork: head && head.ok ? { url: NODE_URL, head: BigInt(head.result).toString(), sourceBlock: SOURCE.block.toString() } : null });
     }
     if (url.pathname === "/api/size" && req.method === "POST") {
-      // Your own size, simulated: a test account really deposits the amount, the worst executed case is replayed
-      // (others leave first, both vaults), then the account exits. The fork is reset to its base state before and
-      // after (engine.reset = evm_revert to the base snapshot), even on error.
+      // Your own size, simulated as an existing depositor: you play the vault's largest position. The worst executed case
+      // is replayed with the same transactions and ranks (timestamps T0 + 12·k) as the reference scenario: the others
+      // leave first, then you withdraw exactly your amount from that position; if that reverts, you take what is left
+      // (withdrawMax). No account is credited and no cash is added. The fork is reset before and after, even on error.
       const body = await jsonBody(req) as { vault?: string; amount?: string };
       if (!body.vault || !/^0x[0-9a-fA-F]{40}$/.test(body.vault)) throw new UserError(400, "Pick a pool.");
       if (!body.amount || !/^\d+$/.test(body.amount) || BigInt(body.amount) === 0n) throw new UserError(400, "Enter an amount above 0.");
@@ -174,14 +175,16 @@ const server = http.createServer(async (req, res) => {
       const rfFile = `results/refine/${V}.json`;
       const worstId = existsSync(rfFile) ? JSON.parse(readFileSync(rfFile, "utf8")).answer?.worstRun?.id : null;
       const run = rep.runs.find((x: any) => x.id === worstId) ?? rep.runs[rep.runs.length - 1];
-      const T = getAddress("0x000000000000000000000000000000000000d3e7"); // test depositor (impersonated, no key)
+      const holder = getAddress(rep.target.holder);
+      const position = BigInt(rep.target.holderValue);
+      const requested = BigInt(body.amount);
+      const amount = requested > position ? position : requested; // above the measured range: capped, as in static
       const s: Scenario = {
-        id: "your_size", title: "Your size, simulated", target: { vault: V, holder: T }, hypotheses: [FORK_FACT, RUN_HYPOTHESIS, "A test account deposits the amount at the source block."],
+        id: "your_size", title: "Your size, as the largest existing position", target: { vault: V, holder }, hypotheses: [FORK_FACT, RUN_HYPOTHESIS, "You hold the vault's largest position and withdraw your amount from it."],
         actions: [
-          { type: "deposit", label: "you deposit", vault: V, owner: T, assets: body.amount },
           ...run.others.map((o: any): ScenarioAction => ({ type: "exit", label: o.label, vault: getAddress(o.vault), owner: getAddress(o.owner), action: { kind: "redeemAll" } })),
-          { type: "exit", label: "you redeem everything", vault: V, owner: T, action: { kind: "redeemAll" } },
-          { type: "exit", label: "you withdraw your maximum", vault: V, owner: T, action: { kind: "withdrawMax" } },
+          { type: "exit", label: "you withdraw your amount", vault: V, owner: holder, action: { kind: "withdrawAssets", assets: amount.toString() } },
+          { type: "exit", label: "you withdraw what is left for you", vault: V, owner: holder, action: { kind: "withdrawMax" } },
         ],
       };
       const t0 = Date.now();
@@ -189,22 +192,19 @@ const server = http.createServer(async (req, res) => {
         let rn = await getRunner();
         try { await engine!.reset(); } catch { runner = null; rn = await getRunner(); }
         try { return await rn.run(s); } finally { try { await engine!.reset(); } catch { runner = null; } }
-      }).catch((e) => {
-        if (/cannot fund the test account/.test(String((e as Error).message))) throw new UserError(422, "Live simulation not available for this asset: scaled from the measured case.");
-        throw e;
       });
-      const dep = out.results[0] as Extract<(typeof out.results)[number], { type: "deposit" }>;
-      if (!dep.ok) throw new UserError(422, dep.error?.name === "NoDepositCapacity" ? "This pool accepts no new deposit right now." : `The pool refused the deposit (${dep.error?.name ?? "unknown error"}).`);
-      const mine = out.results.filter((x) => x.type === "exit" && x.result.owner === T).map((x) => (x as Extract<typeof x, { type: "exit" }>).result);
-      const full = mine[0], max = mine[1];
-      const got = full.ok ? BigInt(full.assetsOutWei) : BigInt(max.assetsOutWei);
-      const gasOut = BigInt((full.ok ? full.gasUsed : max.gasUsed) ?? "0");
-      const gasIn = BigInt(dep.gasUsed.approve ?? "0") + BigInt(dep.gasUsed.deposit ?? "0");
+      const mine = out.results.filter((x) => x.type === "exit" && x.result.owner === holder).map((x) => (x as Extract<typeof x, { type: "exit" }>).result);
+      const exact = mine[0], rest = mine[1];
+      // what came out for you: the exact amount if it went through, otherwise what withdrawMax gave (never above your amount)
+      const restOut = BigInt(rest.assetsOutWei);
+      const got = exact.ok ? BigInt(exact.assetsOutWei) : restOut < amount ? restOut : amount;
+      const gasOut = BigInt((exact.ok ? exact.gasUsed : rest.gasUsed) ?? "0");
       const baseFee = BigInt(rep.verdictParams.baseFeePerGas);
       return json(res, 200, {
-        vault: V, worstRun: run.id, requested: dep.requested, deposited: dep.deposited, capped: dep.capped, maxDeposit: dep.maxDeposit, funding: dep.funding,
-        exitNow: got.toString(), fullExit: { ok: full.ok, error: full.error?.name ?? null }, gasUsed: { wrap: dep.gasUsed.wrap, approve: dep.gasUsed.approve, deposit: dep.gasUsed.deposit, exit: gasOut.toString() },
-        baseFeePerGas: baseFee.toString(), gasCostOut: (gasOut * baseFee).toString(), gasCostReentry: (gasIn * baseFee).toString(), ms: Date.now() - t0,
+        vault: V, worstRun: run.id, requested: requested.toString(), amount: amount.toString(), capped: requested > position,
+        exitNow: got.toString(), exactWithdraw: { ok: exact.ok, error: exact.error?.name ?? null, k: exact.k }, rest: { ok: rest.ok, out: rest.assetsOutWei, k: rest.k },
+        gasUsed: { exit: gasOut.toString() }, baseFeePerGas: baseFee.toString(),
+        gasCostOut: (gasOut * baseFee).toString(), gasCostReentry: (gasOut * baseFee).toString(), ms: Date.now() - t0,
       });
     }
     if (url.pathname === "/api/run" && req.method === "POST") {

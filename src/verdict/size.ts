@@ -3,7 +3,8 @@
  *  - static ("scaled from the measured case"): what gets out right away in the worst executed case =
  *    min(amount, liquidity left for the holder in that case); the rest waits. Amounts above the largest measured
  *    position are capped to it.
- *  - live ("simulated on the fork"): the caller passes what actually got out and the gas actually used.
+ *  - live ("simulated on the fork"): you play the largest existing position; the caller passes what actually got out
+ *    and the gas actually used. Amounts above the largest position are capped in both modes.
  * The break-even uses the same decide() as the report, with the incident's inputs at this size (value loss pro
  * rata, locked cost only on the part that waits after the incident run, gas measured or the report's default).
  * At the largest measured position the result is the report's, unchanged.
@@ -21,6 +22,14 @@ export function parseAmount(s: string, decimals: number): bigint | null {
   return BigInt(i) * 10n ** BigInt(decimals) + BigInt((f + "0".repeat(decimals)).slice(0, decimals) || "0");
 }
 
+/** Why an amount is not accepted, in one plain sentence (null if it is fine). */
+export function amountError(s: string, decimals: number): string | null {
+  const t = s.replace(/[\s,_]/g, "");
+  if (/^\d+\.\d+$/.test(t) && t.split(".")[1].length > decimals) return `Use at most ${decimals} decimals.`;
+  const v = parseAmount(s, decimals);
+  return v === null || v === 0n ? "Enter an amount above 0." : null;
+}
+
 export type LiveMeasure = { exitNow: bigint; gasCostOut: bigint; gasCostReentry: bigint };
 export type SizeCase = {
   amount: bigint; capped: boolean; now: bigint; wait: bigint; changePct: number;
@@ -35,7 +44,7 @@ export function sizeCase(r: any, worstRunId: string, amountIn: bigint, live?: Li
   const pos = BigInt(r.target.holderValue);
   const run = r.runs.find((x: any) => x.id === worstRunId);
   const alone = r.runs[0];
-  const capped = !live && amountIn > pos;
+  const capped = amountIn > pos;
   const A = capped ? pos : amountIn;
   const atMeasured = A === pos;
   const now = live ? live.exitNow : min(A, BigInt(run.holderExecutedExit));
