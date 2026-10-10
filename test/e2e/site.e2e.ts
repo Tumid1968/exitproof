@@ -269,7 +269,7 @@ for (const tg of targets) {
         await waitAmount(page);
         await showAll(page);
         const h = readJson("results/history/steth-eth.json");
-        const tile = page.locator(".histtile");
+        const tile = page.locator(".histtile:not(.oct2025)");
         await tile.locator(".histtable").waitFor();
         const rows = await tile.locator(".histtable tr").allInnerTexts();
         assert.deepEqual(rows.map(norm), h.windows.bySize.map((x: any) => `${Math.round(x.size * 100)} %${x.size === 0.1 ? " (this incident)" : ""} ${x.k} of ${x.n} windows`));
@@ -309,10 +309,61 @@ for (const tg of targets) {
         const vl = await page.locator(".vaultlevel").innerText();
         assert.ok(vl.includes(fmtPct(rf.vaultLevel.ratio)), `vault-level line lacks ${fmtPct(rf.vaultLevel.ratio)}: ${vl}`);
         assert.equal(/significant loss/.test(vl), rf.vaultLevel.ratio >= 0.01);
+        // wording: economic shortfall, not realized bad debt; "significant loss" only together with "approximate"
+        assert.ok(norm(vl).includes(`an economic shortfall of ${fmtPct(rf.vaultLevel.ratio)} at vault level (not realized bad debt)`), vl);
+        if (/significant loss/.test(vl)) assert.match(vl, /approximate/);
         await page.locator("details.fold > summary").click();
         const nm = norm(await page.locator("details.fold").innerText());
         for (const s of ["Contract hack: total-loss threshold", "Other risk teams also avoid predicting hack probabilities; we show the threshold instead.",
           `wait ${rf.governance.timelockDays} days (timelock)`, "not the liquidity lock measured above"]) assert.ok(nm.includes(s), `Not modeled lacks "${s}"`);
+      }));
+
+      test("15. incident defined in plain words above the verdict; tags carry a letter, legend under the verdict", () => withPage(T("incidentdef"), tg.base(), opts, async ({ page }) => {
+        await waitAmount(page);
+        await showAll(page);
+        const card = page.locator(".card.glass").first();
+        const def = card.locator(".incidentdef");
+        assert.equal(norm(await def.innerText()), "Incident = the stETH price drops on the market but the vault's oracle does not see it, and big holders leave first.");
+        // the definition comes before the verdict sentence
+        assert.ok(await def.evaluate((d) => !!(d.compareDocumentPosition(document.querySelector(".verdict2")!) & Node.DOCUMENT_POSITION_FOLLOWING)));
+        const letters = await card.locator(".honest .tagletter").allInnerTexts();
+        assert.deepEqual(letters, ["F", "M", "A", "H"], "legend under the verdict: one letter per kind of number");
+        const tagLetters = await page.locator(".tagpill").evaluateAll((ps) => ps.map((p) => [p.querySelector(".tagletter")?.textContent ?? "", p.textContent!.replace(/^[A-Z]/, "")]));
+        const want: Record<string, string> = { "measured on fork": "F", "modeled": "M", "your assumption": "A", "historical reference": "H" };
+        for (const [l, label] of tagLetters) assert.equal(l, want[label], `tag "${label}" has letter "${l}"`);
+      }));
+
+      test("16. 'Another vault' says why: the shared market, from the graph", () => withPage(T("sharedmarket"), tg.base(), opts, async ({ page }) => {
+        await waitAmount(page);
+        await clickPill(page, "Another vault");
+        const g = readJson(`results/discovery/${STEAKHOUSE}.json`);
+        const peer = g.peers.find((p: any) => p.vault === "0x31A5684983EeE865d943A696AAC155363bA024f9");
+        const shared = peer.markets.filter((pm: any) => BigInt(pm.supplyAssets) > 0n && g.markets.some((m: any) => m.id === pm.id && BigInt(m.vaultSupplyAssets) > 0n));
+        assert.equal(shared.length, 1);
+        assert.equal(norm(await page.locator(".shared").innerText()), "Your vault and Vault Bridge WETH both lend into the same wstETH market. If their depositor leaves, your cash runs out too.");
+        await clickPill(page, "Alone");
+        assert.equal(await page.locator(".shared").count(), 0, "the shared-market text belongs to the 'Another vault' scenario only");
+      }));
+
+      test("17. Oct 10, 2025 card: figures from results/history (all rounds of the window)", () => withPage(T("oct2025"), tg.base(), opts, async ({ page }) => {
+        await waitAmount(page);
+        await showAll(page);
+        const e = readJson("results/history/steth-eth.json").events.find((x: any) => x.id === "2025-10-10");
+        const t = norm(await page.locator(".oct2025").innerText());
+        for (const s of [e.before.price.toFixed(6), e.min.price.toFixed(6), `${(e.dropFromBefore * 100).toFixed(2)} %`, `${e.window.roundsInWindow} feed updates`,
+          "Chainlink feed reading, not a DEX price. This shows how the stETH/ETH feed moved on a day of very large liquidations; it does not say how any vault behaved."])
+          assert.ok(t.includes(s), `Oct 2025 card lacks "${s}": ${t}`);
+        assert.doesNotMatch(t, /validat/i, "the card must not claim the model is validated");
+      }));
+
+      test("18. rule of three under the frequency tile when k = 0, computed from N", () => withPage(T("ruleofthree"), tg.base(), opts, async ({ page }) => {
+        await waitAmount(page);
+        await showAll(page);
+        const h = readJson("results/history/steth-eth.json");
+        const row = h.windows.bySize.find((x: any) => x.size === 0.1);
+        const line = page.locator(".ruleofthree");
+        if (row.k !== 0) { assert.equal(await line.count(), 0); return; }
+        assert.equal(norm(await line.innerText()), `0 events in ${row.n} windows does not mean zero risk: with this sample, the frequency could still be as high as about 3/${row.n} ≈ ${(300 / row.n).toFixed(1)} % of 30-day windows (rule of three, about 95 % confidence).`);
       }));
 
       test("7. tabs open without errors; Replay shows REPLAY OK and the manifest sha256 computed here", () => withPage(T("tabs"), tg.base(), opts, async ({ page, errors }) => {

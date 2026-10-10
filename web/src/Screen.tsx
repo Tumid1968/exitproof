@@ -260,6 +260,17 @@ function Tabs({ r, g, entry, mode, refine }: { r: any; g: any; entry?: IndexEntr
   );
 }
 
+/** A small "?" that shows one sentence on tap or focus (no hover-only tooltip). */
+function InfoTip({ text }: { text: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className="tag infotip">
+      <button type="button" className="tagbtn" aria-expanded={open} aria-label="about these thresholds" title={text} onClick={() => setOpen(!open)}><span className="infodot">?</span></button>
+      {open && <span className="tip" role="tooltip">{text}</span>}
+    </span>
+  );
+}
+
 /** Withdraw-queue concentration (HHI) and utilization vs a published watch level; values from results/refine. */
 function Concentration({ refine }: { refine?: any }) {
   if (!refine) return <p className="muted">Concentration: {NM}.</p>;
@@ -268,7 +279,7 @@ function Concentration({ refine }: { refine?: any }) {
   return (
     <div className="conc">
       <h3>Where the vault's money sits</h3>
-      <p>By market: concentration index <b>{n2(c.byMarket.hhi)}</b>, <b>{c.byMarket.word}</b> ({c.byMarket.n} funded markets). By collateral: <b>{n2(c.byCollateral.hhi)}</b>, <b>{c.byCollateral.word}</b> ({c.byCollateral.groups.map((x: any) => `${x.collateral === "none" ? "idle" : x.collateral} ${pct(x.share, 1)}`).join(", ")}).</p>
+      <p>By market: concentration index <b>{n2(c.byMarket.hhi)}</b>, <b>{c.byMarket.word}</b> <InfoTip text="Thresholds 0.15 and 0.25 come from US antitrust concentration guidelines, not from a DeFi vault standard." /> ({c.byMarket.n} funded markets). By collateral: <b>{n2(c.byCollateral.hhi)}</b>, <b>{c.byCollateral.word}</b> ({c.byCollateral.groups.map((x: any) => `${x.collateral === "none" ? "idle" : x.collateral} ${pct(x.share, 1)}`).join(", ")}).</p>
       <p className="muted small">Index = sum of the squared weights of the vault's supply (1 = everything in one place). {c.thresholds}. No letter grade.</p>
       {ut.markets.length > 0 && <table><tbody>
         {ut.markets.map((m: any) => <tr key={m.queueIndex}><td>{m.collateral} market (queue #{m.queueIndex})</td><td className={`r ${m.aboveWatch ? "bad" : ""}`}>utilization {pct(m.utilization, 1)} vs a 90 % watch level</td></tr>)}

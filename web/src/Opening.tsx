@@ -147,6 +147,31 @@ export function ExitPanel({ r, entry, mode, pick, refine, g }: { r: any; entry?:
   );
 }
 
+/** Feed reading around 10 Oct 2025 (every round of the window, from results/history). Says nothing about any vault. */
+function Oct2025Card({ history }: { history?: any }) {
+  const e = history?.events?.find((x: any) => x.id === "2025-10-10");
+  if (!e) return null;
+  const t = (x: string) => new Date(x).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "UTC" }) + " UTC";
+  const dur = (sec: number) => { const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s2 = sec % 60; return h ? `${h} h ${m} min` : `${m} min ${s2} s`; };
+  const p = (x: number) => `${(x * 100).toFixed(2)}\u00a0%`;
+  const moved = e.dropFromBefore >= 0.005;
+  return (
+    <div className="stat histtile oct2025">
+      <span className="statlabel">{e.title} <Tag k="hist" /></span>
+      {moved ? <table className="histtable"><tbody>
+        <tr><td>Before (end of 9 Oct)</td><td className="r">{e.before.price.toFixed(6)} ETH · {t(e.before.updatedAt)}</td></tr>
+        <tr><td>Lowest reading</td><td className="r">{e.min.price.toFixed(6)} ETH · {t(e.min.updatedAt)}</td></tr>
+        <tr className="this"><td>Largest drop</td><td className="r">{p(e.dropFromBefore)}, about {e.vsOneDayP99.toFixed(1)}× the 99th percentile of daily drops ({p(history.drops.oneDay.p99)})</td></tr>
+        <tr><td>Time</td><td className="r">{dur(e.secondsBeforeToMin)} between the two readings (the feed only updates every 24 h when calm); the fall itself took {dur(e.fall.secondsFirstMoveToMin)}{e.fall.secondsMinToRecovery !== null ? <>, back within 0.5&nbsp;% {dur(e.fall.secondsMinToRecovery)} later</> : null}</td></tr>
+      </tbody></table>
+        : <span className="statsub">The feed moved by {p(e.dropFromBefore)} at most over this window.</span>}
+      {e.dailySample && <span className="statsub">The daily samples behind the counts above recorded only {p(e.dailySample.drop)} that day: they miss intraday moves, so those counts understate short drops.</span>}
+      <span className="statsub">{e.window.roundsInWindow} feed updates between {t(e.window.from)} and {t(e.window.to)}.</span>
+      <span className="statsub"><b>Chainlink feed reading, not a DEX price. This shows how the stETH/ETH feed moved on a day of very large liquidations; it does not say how any vault behaved.</b></span>
+    </div>
+  );
+}
+
 /** "How often has this shock happened?": raw counts from the on-chain history; never a single forecast. */
 function HistoryTile({ refine, history }: { refine?: any; history?: any }) {
   if (!refine?.history || !history) return (
@@ -167,6 +192,8 @@ function HistoryTile({ refine, history }: { refine?: any; history?: any }) {
       </tbody></table>
       {rare >= rows.length / 2 && <span className="statsub">{rare} of the {rows.length} sizes happened in 0 or 1 window over this period.</span>}
       <span className="statsub">Worst window: −{p(history.windows.worst.drop)} (from {history.windows.worst.start}). 99th percentile of drops: {p(history.drops.oneDay.p99)} over 1 day, {p(history.drops.thirtyDays.p99)} over 30 days. The market's oracle does not use this feed.</span>
+      {(() => { const t = rows.find((x) => Math.abs(x.size - size) < 1e-9); return t && t.k === 0
+        ? <span className="statsub ruleofthree">0 events in {t.n} windows does not mean zero risk: with this sample, the frequency could still be as high as about 3/{t.n} ≈ {(300 / t.n).toFixed(1)}&nbsp;% of 30-day windows (rule of three, about 95&nbsp;% confidence).</span> : null; })()}
       <span className="statsub"><b>One event is not a distribution. This is a reference, not a forecast.</b></span>
     </div>
   );
@@ -222,6 +249,7 @@ export function LeaveCard({ r, refine, history }: { r: any; refine?: any; histor
           </button></div>
         </div>
         <HistoryTile refine={refine} history={history} />
+        {refine?.history && <Oct2025Card history={history} />}
         <div className="toggle" role="radiogroup" aria-label="cost of locked funds">
           <span className="muted">locked funds cost</span>
           {[0.1, 0].map((x) => <button key={x} role="radio" aria-checked={hc === x} className={`pill seg ${hc === x ? "active" : ""}`} onClick={() => setHc(x)}>{x * 100} %</button>)}
@@ -253,9 +281,12 @@ export function LeaveCard({ r, refine, history }: { r: any; refine?: any; histor
           <p className="small">Your estimate = 1 × 2 = <b>{pEff === null ? "—" : pct(pEff, 2)}</b>, compared with the threshold above.</p>
         </>}
         <p className={`reading ${pEff === null ? "muted" : reading.includes("leaving pays") ? "bad" : "good"}`} aria-live="polite">{reading}</p>
-        {vl && <p className="small vaultlevel">{vl.ratio >= 0.01
-          ? <>Credora defines a significant loss as bad debt above 1&nbsp;% of principal. This incident produces <b>{pct(vl.ratio, 2)}</b> at vault level <Tag k="modeled" /> ({vl.basis.startsWith("analytic economic shortfall") ? "an economic shortfall that the oracle does not recognise on-chain" : "modeled loss"}).</>
-          : <>At vault level this incident produces <b>{pct(vl.ratio, 2)}</b> of the vault's assets <Tag k="modeled" />, below the 1&nbsp;% of principal that Credora uses to define a loss event.</>}</p>}
+        {vl && (() => {
+          const what = vl.basis.startsWith("analytic economic shortfall") ? <>an economic shortfall of <b>{pct(vl.ratio, 2)}</b> at vault level (not realized bad debt)</> : <>a modeled loss of <b>{pct(vl.ratio, 2)}</b> at vault level</>;
+          return <p className="small vaultlevel">This incident produces {what} <Tag k="modeled" />. {vl.ratio >= 0.01
+            ? <>Credora counts a significant loss when bad debt exceeds 1&nbsp;% of principal; the comparison is approximate, because this figure is not realized bad debt.</>
+            : <>That is below the 1&nbsp;% of principal Credora uses for bad debt.</>}</p>;
+        })()}
         <button className="pill primary" aria-expanded={calc} onClick={() => setCalc(!calc)}>{calc ? "Hide the calculation" : "Show how this is calculated"}</button>
         {calc && c && (
           <div className="detailbox">
