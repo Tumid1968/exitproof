@@ -20,3 +20,9 @@
 - Wording: "stETH depegs (oracle blind)"; 6 reports rebuilt from existing runs, amounts identical, 6 replays OK.
 - Checked: 14/14 unit, 9/9 fork; static site has no external requests at 375 and 1440 px; no horizontal scroll; live mode OK; +80.6 KB (code + font) vs. acb2b92.
 - Screens: results/screens/v2-*.png. Measured waves frame rate (headless Chrome, software rendering): 30 fps at 375 px, 19–24 fps at 1440 px.
+
+## End-to-end test (10 Oct, tag pre-e2e)
+- `npm run test:e2e`: 42 checks, 41 passed, 0 failed, 1 skipped (opt-in real fork kill), about 72 s. Static site over HTTP and file:// at 1440/375 px, 23 vaults, live mode with `npm run demo` running. B4 (real kill, `E2E_KILL_FORK=1`) passed in separate runs.
+- First display of the default vault: 311–405 ms (headless Chrome, local).
+- Bugs found and fixed (separate commits fc60045, 128efac): nested buttons in the 10 %/0 % tiles; static build probing /api/status (404 on HTTP and Pages); favicon 404; light-theme hero contrast without the canvas; mobile text under 16 px and controls under 44 px; mobile top bar wrapping; "Internal error: fetch failed" during a fork restart.
+- Open: 14 controls inside the expert tabs are under 44 px on mobile (warning, not failed). After the fork fallback, the page stays in static mode until reload. A real fork kill shows the banner only if the outage lasts past the page's 8 s poll (the supervisor restarts the fork in ~7 s).

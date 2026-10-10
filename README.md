@@ -78,7 +78,7 @@ npm run demo -- --offline    # the proxy serves its disk cache only (after one o
 
 `http://127.0.0.1:5173/#/status` shows proxy, fork, API and mode. If the fork stops answering, the UI switches to the static replay with a visible banner.
 
-Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
+Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork), `npm run test:e2e` (42 end-to-end checks in the installed Chrome, see below). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
 
 ## How it works (short)
 
@@ -133,12 +133,17 @@ What the tool **does not do**:
 - The cross-vault exit mechanism is already documented (e.g. LlamaRisk's Morpho vault risk disclaimer, articles on shared markets). ExitProof's contribution is to **execute** it and put a number on it for one position at one block, with a replay.
 - The economic shortfall of an oracle-blind depeg assumes the depeg persists and underwater borrowers walk away. It is not a loss recognised on-chain and is labelled as such. It is split pro rata of current shares, which is a **lower bound** for holders who stay: those who exit first leave at full value and the shortfall concentrates on the rest.
 
+### End-to-end test of the site
+
+`npm run test:e2e` drives the Chrome already installed on the machine (playwright-core, `channel: "chrome"`, no browser download). It serves `docs/` on a local port and also opens it from disk (`file://`), at 1440 px and 375 px, and checks: no console error and no request leaving the machine; hero facts equal to the index, manifests and replays; the five scenario amounts equal to `results/reports` (plus 5,209.91 / 4,210.68 / 3,489.01 / 3,318.75 / 2,079.21 as guard values); cushion 1,736.990 and `NotEnoughLiquidity (0x4323a555)` in Details; break-evens 1.13 % / 5.57 %, the 10 %/0 % switch and no verdict before the slider moves; Not modeled 0.03 % / 0.13 % / 0.38 %; all 23 vaults (number, no NaN/undefined/null, Replay tab showing REPLAY OK and the manifest sha256 recomputed by the test); colour contrast (axe-core) in both themes; mobile text ≥ 16 px and tap targets ≥ 44 px; a still background with reduced motion; keyboard access. If `npm run demo` is running it also checks live mode (badge, "Execute this again on the fork" identical to the wei, refusal of a non-V1 address, simulated fork outage); otherwise those checks are skipped and the output says so. `E2E_KILL_FORK=1` additionally kills the real fork process. A deployed copy is tested with `E2E_URL=https://… npm run test:e2e:url` (PowerShell: `$env:E2E_URL="https://…"; npm run test:e2e:url`). Failures leave a screenshot in `results/e2e-failures/`; timings in `results/e2e/last-run.json`.
+
 ## Origine des composants (component origin)
 
 - **Written during the event (10–11 Oct 2026):** all code in this repository: proxy, fork engine, scenarios, discovery, shocks, verdict, report, replay, API and UI. It was written from scratch in a fresh repository (see the git history).
 - **Prior preparation (night of 9–10 Oct 2026):** desk research and a throwaway feasibility check, kept in a separate research folder that is **not** included here. That check covered RPC archive availability, whether a Hardhat 3 fork works at this block, and the reference values for this vault and block. Only **facts** were reused: public addresses, block number and hash, and the reference amounts used as acceptance tests. Its code was not copied.
 - **Libraries (all via npm):**
   - viem 2.57.4 (MIT), Hardhat 3.19.0 (MIT), React / React-DOM 19.3.0 (MIT), Vite 8.3.4 (MIT), @vitejs/plugin-react 6.1.2 (MIT), tsx 4.23.15 (MIT), TypeScript 7.0.2 (Apache-2.0)
+  - Tests only (devDependencies): playwright-core 1.63.0 (Apache-2.0), axe-core 4.13.0 (MPL-2.0); they drive the locally installed Chrome and are not shipped in `docs/`.
   - Font: Outfit (SIL Open Font License 1.1), woff2 files taken from @fontsource/outfit 5.3.0 and embedded in `web/public/fonts` → `docs/fonts` with their license file; no font CDN. The animated waves in the background are drawn by our own canvas code (no library, no image or video).
   - Data sources: Ethereum archive RPC (dRPC public endpoint) and Morpho public GraphQL API, used for candidate lists only.
 - **AI assistance:** the code was written with Claude Code (Anthropic), working with the team member who directed the work and reviewed the results. No AI is used in any computation of the tool.
