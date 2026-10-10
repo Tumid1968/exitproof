@@ -14,6 +14,8 @@ import type { Address } from "viem";
 import { loadGraph } from "../discovery/load.ts";
 import { propagate, type Shock } from "../shocks/analytic.ts";
 import type { DependencyGraph } from "../discovery/types.ts";
+import { ANSWER_LIMITS, answerLevel, answerWord } from "../verdict/answer.ts";
+export { ANSWER_LIMITS, answerLevel, answerWord };
 
 /** Herfindahl–Hirschman index of weights (normalised to sum 1). */
 export function hhi(values: number[]) {
@@ -39,15 +41,6 @@ export function regimeOf(collateral: string, loan: string): "pegged" | "volatile
 export const REGIMES = { pegged: 0.9, volatile: 0.6 } as const; // price factor: −10 % / −40 %
 
 const WATCH_UTILIZATION = 0.9;
-/** limits of the one-word answer (share of the largest deposit that comes out in the worst executed case) */
-export const ANSWER_LIMITS = { safe: 0.9, careful: 0.5 } as const;
-/** colour level of the word (same thresholds) */
-export function answerLevel(aloneFull: boolean, worstShare: number) {
-  return ({ "Easy exit": "easy", "Tight exit": "tight", "Hard exit": "hard" } as const)[answerWord(aloneFull, worstShare)];
-}
-export function answerWord(aloneFull: boolean, worstShare: number) {
-  return !aloneFull || worstShare < ANSWER_LIMITS.careful ? "Hard exit" : worstShare < ANSWER_LIMITS.safe ? "Tight exit" : "Easy exit";
-}
 const round6 = (x: number) => Math.round(x * 1e6) / 1e6;
 
 export function buildRefine(vault: Address) {

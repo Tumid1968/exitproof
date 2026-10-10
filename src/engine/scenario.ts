@@ -24,7 +24,12 @@ export type ScenarioAction =
    * exposure into one of the target's markets (amounts computed live on the fork within flow caps, supply
    * cap headroom and market liquidity). Mitigation: it adds idle liquidity where the holder withdraws.
    */
-  | { type: "publicReallocate"; label?: string; vault: Address; supplyMarketId: Hex; excludeMarketIds: Hex[] };
+  | { type: "publicReallocate"; label?: string; vault: Address; supplyMarketId: Hex; excludeMarketIds: Hex[] }
+  /**
+   * A test account deposits into the vault (real approve + deposit transactions on the fork), capped to maxDeposit.
+   * Funding: WETH by wrapping impersonated ETH; other ERC-20 by writing the balanceOf mapping slot (probed).
+   */
+  | { type: "deposit"; label?: string; vault: Address; owner: Address; assets: string };
 
 export type Scenario = {
   id: string;
@@ -56,7 +61,8 @@ export type ActionResult =
   | { type: "oraclePrice"; label?: string; oracle: Address; priceBefore: string; priceAfter: string; error?: string }
   | { type: "liquidateAll"; label?: string; marketId: Hex; attempted: number; liquidated: number; repaidAssets: string; badDebtRealised: string; liquidations: LiquidationResult[]; error?: string }
   | { type: "measure"; label: string; m: Measurement }
-  | { type: "publicReallocate"; label?: string; vault: Address; supplyMarketId: Hex; withdrawals: { marketId: Hex; amount: string }[]; moved: string; feeWei: string; ok: boolean; error: DecodedError | null };
+  | { type: "publicReallocate"; label?: string; vault: Address; supplyMarketId: Hex; withdrawals: { marketId: Hex; amount: string }[]; moved: string; feeWei: string; ok: boolean; error: DecodedError | null }
+  | { type: "deposit"; label?: string; vault: Address; owner: Address; requested: string; maxDeposit: string; deposited: string; capped: boolean; funding: "wrap" | "storage" | "none"; ok: boolean; error: DecodedError | null; shares: string; gasUsed: { wrap: string | null; approve: string | null; deposit: string | null } };
 
 export type ScenarioResult = { id: string; title: string; hypotheses: string[]; target: Scenario["target"]; txCount: number; results: ActionResult[] };
 
@@ -295,6 +301,45 @@ export class ScenarioRunner {
     };
   }
 
+  private async deposit(a: Extract<ScenarioAction, { type: "deposit" }>): Promise<ActionResult> {
+    const asset = await this.eng.call<Address>(a.vault, metaMorphoAbi, "asset");
+    const maxDep = await this.eng.call<bigint>(a.vault, metaMorphoAbi, "maxDeposit", [a.owner]);
+    const req = BigInt(a.assets);
+    const amt = req > maxDep ? maxDep : req;
+    const base = { type: "deposit" as const, label: a.label, vault: a.vault, owner: a.owner, requested: req.toString(), maxDeposit: maxDep.toString(), deposited: "0", capped: req > maxDep };
+    const gasUsed = { wrap: null as string | null, approve: null as string | null, deposit: null as string | null };
+    if (amt === 0n) return { ...base, funding: "none", ok: false, error: { selector: null, name: "NoDepositCapacity", meaning: "maxDeposit is 0: the pool accepts no new deposit now", raw: "" }, shares: "0", gasUsed };
+    await this.eng.impersonate(a.owner);
+    let funding: "wrap" | "storage";
+    if (asset.toLowerCase() === ADDR.weth.toLowerCase()) {
+      await rpc(this.eng.url, "hardhat_setBalance", [a.owner, hex(amt + 10n * 10n ** 18n)]);
+      const w = await this.tx(a.owner, ADDR.weth, encodeFunctionData({ abi: erc20Abi, functionName: "deposit" }), amt);
+      gasUsed.wrap = w.gasUsed?.toString() ?? null;
+      funding = "wrap";
+    } else {
+      let ok = false;
+      for (let slot = 0n; slot < 64n && !ok; slot++) {
+        for (const layout of ["sol", "vy"] as const) {
+          const k = layout === "sol"
+            ? keccak256(encodeAbiParameters([{ type: "address" }, { type: "uint256" }], [a.owner, slot]))
+            : keccak256(encodeAbiParameters([{ type: "uint256" }, { type: "address" }], [slot, a.owner]));
+          const prev = await rpc<Hex>(this.eng.url, "eth_getStorageAt", [asset, k, "latest"]);
+          await rpc(this.eng.url, "hardhat_setStorageAt", [asset, k, pad(toHex(amt))]);
+          if ((await this.eng.call<bigint>(asset, erc20Abi, "balanceOf", [a.owner])) === amt) { ok = true; break; }
+          await rpc(this.eng.url, "hardhat_setStorageAt", [asset, k, pad(prev)]);
+        }
+      }
+      if (!ok) throw new Error(`cannot fund the test account with ${asset}: balance slot not found`);
+      funding = "storage";
+    }
+    const ap = await this.tx(a.owner, asset, encodeFunctionData({ abi: erc20Abi, functionName: "approve", args: [a.vault, amt] }));
+    gasUsed.approve = ap.gasUsed?.toString() ?? null;
+    const dp = await this.tx(a.owner, a.vault, encodeFunctionData({ abi: metaMorphoAbi, functionName: "deposit", args: [amt, a.owner] }));
+    gasUsed.deposit = dp.gasUsed?.toString() ?? null;
+    const shares = await this.eng.call<bigint>(a.vault, metaMorphoAbi, "balanceOf", [a.owner]);
+    return { ...base, deposited: dp.ok ? amt.toString() : "0", funding, ok: dp.ok, error: dp.error, shares: shares.toString(), gasUsed };
+  }
+
   async run(s: Scenario): Promise<ScenarioResult> {
     await this.eng.reset();
     for (const a of s.actions) if (a.type === "oraclePrice") await this.restoreCode(a.oracle);
@@ -310,6 +355,7 @@ export class ScenarioRunner {
       } else if (a.type === "oraclePrice") results.push(await this.setOracle(a));
       else if (a.type === "liquidateAll") results.push(await this.liquidateAll(a));
       else if (a.type === "publicReallocate") results.push(await this.publicReallocate(a));
+      else if (a.type === "deposit") results.push(await this.deposit(a));
       else results.push({ type: "measure", label: a.label, m: await this.measure(a.label, s.target) });
     }
     } finally {

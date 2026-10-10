@@ -118,3 +118,30 @@ test("one-word answer: limits stated, applied to the worst executed case", async
   assert.equal(answerWord(false, 1), "Hard exit");
   assert.deepEqual([answerLevel(true, 1), answerLevel(true, 0.6), answerLevel(false, 1)], ["easy", "tight", "hard"]);
 });
+
+test("exit at the user's size: the largest measured position gives the report's numbers exactly", async () => {
+  const { readFileSync } = await import("node:fs");
+  const { sizeCase, parseAmount } = await import("../src/verdict/size.ts");
+  const r = JSON.parse(readFileSync("results/reports/0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4.json", "utf8"));
+  const rf = JSON.parse(readFileSync("results/refine/0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4.json", "utf8"));
+  const g = r.verdictGrid.find((x: any) => x.id === r.bindingIncident);
+  const cell = (hc: number) => g.cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === hc);
+  const big = sizeCase(r, rf.answer.worstRun.id, BigInt(r.target.holderValue));
+  assert.equal(big.now, 2079210741633111021926n);
+  assert.equal(big.changePct, -60.09);
+  assert.equal(big.breakEven10, cell(0.1).breakEven);
+  assert.equal(big.breakEven0, cell(0).breakEven);
+  assert.equal(big.word, rf.answer.word);
+  assert.equal(Math.round(1 / big.breakEven10!), 89);
+  assert.equal(Math.round(1 / big.breakEven0!), 18);
+  const half = sizeCase(r, rf.answer.worstRun.id, parseAmount("0.5", 18)!);
+  assert.deepEqual([half.now, half.wait, half.word], [5n * 10n ** 17n, 0n, "Easy exit"]);
+  assert.ok(half.breakEven10! > big.breakEven10!, "gas weighs more on a small position: higher break-even");
+  const above = sizeCase(r, rf.answer.worstRun.id, parseAmount("10000", 18)!);
+  assert.equal(above.capped, true);
+  assert.equal(above.amount, BigInt(r.target.holderValue));
+  assert.equal(parseAmount("", 18), null);
+  assert.equal(parseAmount("-1", 18), null);
+  assert.equal(parseAmount("1,000.5", 18), 1000500000000000000000n);
+  assert.equal(parseAmount("0.1234567", 6), null);
+});

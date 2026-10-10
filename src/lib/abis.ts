@@ -12,6 +12,8 @@ export const erc20Abi = parseAbi([
 ]);
 
 export const metaMorphoAbi = parseAbi([
+  "function deposit(uint256 assets, address receiver) returns (uint256)",
+  "function maxDeposit(address) view returns (uint256)",
   "function asset() view returns (address)",
   "function name() view returns (string)",
   "function symbol() view returns (string)",
