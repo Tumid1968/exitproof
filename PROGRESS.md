@@ -11,7 +11,7 @@
 - Bug Hardhat 3 contourné : `evm_revert` ne défait pas `hardhat_setCode` → code d'oracle restauré depuis l'archive + garde-fou de prix.
 
 ## En cours
-- Revue de code indépendante des modules de calcul (agent)
+- Revue de code indépendante faite (3 défauts corrigés, voir NOTES 18) ; replay vert à froid sur copie fraîche (NOTES 19)
 - Finitions interface
 
 ## Bloqué
