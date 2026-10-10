@@ -10,5 +10,7 @@
   5. Réponses : valeur 5209914854809315636083 expliquée (NOTES 32) ; replay hors connexion sur clone propre vert.
   6. DEMO.md (90 s commençant par l'ordre des sorties, 3 min), LIVRABLES.md.
 
+- **Retour du jury** (sam. ~17:00) : curseur sans verdict par défaut, « Not modeled » avec point mort perte totale, 10 % et 0 % à égalité, verdict en deux lignes, arrondis corrigés, README/DEMO recentrés (NOTES 38-39).
+
 ## Reste à faire (Alex)
 - git push, activer GitHub Pages sur `/docs` et recopier l'URL dans LIVRABLES.md, enregistrer la vidéo de secours, soumettre.
