@@ -150,16 +150,18 @@ export function LeaveCard({ r }: { r: any }) {
       <p className="honest"><span className="hitem"><Tag k="fork" /> what you can withdraw is measured</span><span className="hitem"><Tag k="modeled" /> the loss in an incident is modeled (lower bound)</span><span className="hitem"><Tag k="hyp" /> the chance of the incident is yours</span></p>
       {!g ? <p className="muted">No incident could be built for this vault, so there is no threshold to show ({NM}).</p> : <>
         <div className="twostats">
+          <div className="statwrap"><span className="stattag"><Tag k="hyp" /></span>
           <button className={`stat ${hc === 0.1 ? "chosen" : ""}`} onClick={() => setHc(0.1)} aria-pressed={hc === 0.1}>
-            <span className="statlabel">if being locked in costs you 10 % <Tag k="hyp" /></span>
+            <span className="statlabel">if being locked in costs you 10 %</span>
             <span className="statnum">{fmtP(c10?.breakEven)}</span>
             <span className="statsub">chance of the incident within 30 days above which leaving pays off</span>
-          </button>
+          </button></div>
+          <div className="statwrap"><span className="stattag"><Tag k="hyp" /></span>
           <button className={`stat ${hc === 0 ? "chosen" : ""}`} onClick={() => setHc(0)} aria-pressed={hc === 0}>
-            <span className="statlabel">if being locked in costs you nothing <Tag k="hyp" /></span>
+            <span className="statlabel">if being locked in costs you nothing</span>
             <span className="statnum">{fmtP(c0?.breakEven)}</span>
             <span className="statsub">chance of the incident within 30 days above which leaving pays off</span>
-          </button>
+          </button></div>
         </div>
         <div className="toggle" role="radiogroup" aria-label="cost of locked funds">
           <span className="muted">locked funds cost</span>

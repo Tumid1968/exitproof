@@ -7,7 +7,12 @@
 export type Mode = "live" | "static";
 export type Status = { api: boolean; proxy: { mode: string } | null; fork: { head: string; sourceBlock: string } | null };
 
-declare global { interface Window { __EXITPROOF__?: Record<string, any> } }
+declare global {
+  interface Window { __EXITPROOF__?: Record<string, any> }
+  interface ImportMeta { env: { DEV: boolean } }
+}
+/** Live mode exists only with the dev server of `npm run demo`; the built site (docs/) is the static replay. */
+const LIVE_CAPABLE = import.meta.env.DEV;
 
 const loadScript = (src: string) => new Promise<void>((resolve, reject) => {
   const s = document.createElement("script");
@@ -36,7 +41,7 @@ async function getJson<T>(path: string, timeoutMs = 4000): Promise<T> {
 }
 
 export async function readStatus(): Promise<Status> {
-  if (location.protocol === "file:") return { api: false, proxy: null, fork: null };
+  if (location.protocol === "file:" || !LIVE_CAPABLE) return { api: false, proxy: null, fork: null };
   try {
     const j = await getJson<{ proxy: any; fork: any }>("/api/status", 2500);
     return { api: true, proxy: j.proxy && j.proxy.mode ? j.proxy : null, fork: j.fork };

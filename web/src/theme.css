@@ -198,3 +198,18 @@ body { background: transparent !important; }
 #app { scroll-margin-top: 0; }
 main.app { padding-top: 76px; }
 @media (max-width: 640px) { .ctl .name { width: 100%; } }
+
+/* e2e fixes: the hero background is dark in both themes even without the canvas (contrast) */
+:root[data-theme] { background-color: #04070d; }
+.statwrap { position: relative; display: grid; }
+.statwrap .statlabel { padding-right: 112px; } /* room for the tag pill at the top right */
+.stattag { position: absolute; top: 4px; right: 6px; z-index: 2; }
+.pill.accentline { min-height: 44px; }
+.navlink { min-width: 44px; justify-content: center; }
+.tabs button { min-height: 44px; }
+@media (max-width: 640px) {
+  .facts dd, .modeline, .context, .detailbox, .detailbox p, .verdict2sub, .honest, .statsub, details.fold > p, details.fold > p.small { font-size: 16px; }
+}
+.nav .navlink, .nav .pill, .nav .logo { white-space: nowrap; }
+.nav .narrow { display: none; }
+@media (max-width: 420px) { .nav .wide { display: none; } .nav .narrow { display: inline; } .nav { gap: 4px; } }

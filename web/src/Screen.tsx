@@ -105,7 +105,7 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
         <button className="navlink" aria-expanded={howto} onClick={() => setHowto(!howto)}>How to read</button>
         <a className="navlink" href="#/status">Status</a>
         <button className="navlink" onClick={() => setTheme(theme === "light" ? "dark" : "light")} aria-label="switch light or dark theme">{theme === "light" ? "Dark" : "Light"}</button>
-        <button className="pill accentline" onClick={() => toApp(false)}>Open the demo</button>
+        <button className="pill accentline" aria-label="Open the demo" onClick={() => toApp(false)}><span className="wide">Open the demo</span><span className="narrow" aria-hidden="true">Demo</span></button>
       </header>
       {howto && <HowToRead onClose={() => setHowto(false)} />}
       <section className="hero" id="top">
