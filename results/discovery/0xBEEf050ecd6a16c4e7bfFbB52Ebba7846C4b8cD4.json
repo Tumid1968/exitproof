@@ -1943,7 +1943,7 @@
       "id": "oracle:0xbD60A6770b27E084E8617335ddE769241B0e71D8",
       "kind": "oracle",
       "layer": 3,
-      "label": "Morpho Chainlink-style oracle (1 feed)",
+      "label": "Oracle: wstETH/stETH exchange rate",
       "address": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
       "data": {
         "BASE_FEED_1": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
@@ -2188,7 +2188,7 @@
       "id": "oracle:0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
       "kind": "oracle",
       "layer": 4,
-      "label": "Morpho Chainlink-style oracle (2 feeds)",
+      "label": "Oracle: BTC / USD ÷ ETH / USD",
       "address": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
       "data": {
         "BASE_FEED_1": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
@@ -2340,7 +2340,7 @@
       "id": "oracle:0x57d8696d311AE314f68549953661560b16Ff1a79",
       "kind": "oracle",
       "layer": 4,
-      "label": "Morpho Chainlink-style oracle (2 feeds)",
+      "label": "Oracle: cbBTC / USD ÷ ETH / USD",
       "address": "0x57d8696d311AE314f68549953661560b16Ff1a79",
       "data": {
         "BASE_FEED_1": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
@@ -2489,7 +2489,7 @@
       "id": "oracle:0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
       "kind": "oracle",
       "layer": 3,
-      "label": "Morpho Chainlink-style oracle (1 feed)",
+      "label": "Oracle: BTC / ETH",
       "address": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
       "data": {
         "BASE_FEED_1": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
@@ -2601,7 +2601,7 @@
       "id": "oracle:0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
       "kind": "oracle",
       "layer": 3,
-      "label": "Morpho Chainlink-style oracle (2 feeds)",
+      "label": "Oracle: BTC / USD ÷ ETH / USD",
       "address": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
       "data": {
         "BASE_FEED_1": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
@@ -2791,7 +2791,7 @@
       "id": "oracle:0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
       "kind": "oracle",
       "layer": 4,
-      "label": "Morpho Chainlink-style oracle (3 feeds)",
+      "label": "Oracle: WBTC / BTC × BTC / USD ÷ ETH / USD",
       "address": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
       "data": {
         "BASE_FEED_1": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
@@ -2879,24 +2879,6 @@
       ]
     },
     {
-      "id": "peer:0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
-      "kind": "peerVault",
-      "layer": 2,
-      "label": "Re7 WETH (peer vault)",
-      "address": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
-      "data": {
-        "totalAssets": "288091741667553008410",
-        "version": "MetaMorpho V1.0",
-        "publicAllocatorEnabled": false
-      },
-      "prov": [
-        "r471",
-        "r477",
-        "r481",
-        "r497"
-      ]
-    },
-    {
       "id": "peer:0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
       "kind": "peerVault",
       "layer": 2,
@@ -2911,6 +2893,24 @@
         "r471",
         "r479",
         "r483",
+        "r498"
+      ]
+    },
+    {
+      "id": "peer:0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Re7 WETH (peer vault)",
+      "address": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "data": {
+        "totalAssets": "288091741667553008410",
+        "version": "MetaMorpho V1.0",
+        "publicAllocatorEnabled": false
+      },
+      "prov": [
+        "r471",
+        "r477",
+        "r481",
         "r499"
       ]
     },
@@ -2929,10 +2929,10 @@
         "r471",
         "r475",
         "r478",
-        "r494",
-        "r498",
-        "r502",
-        "r508"
+        "r493",
+        "r497",
+        "r501",
+        "r505"
       ]
     },
     {
@@ -2950,7 +2950,7 @@
         "r471",
         "r500",
         "r504",
-        "r521"
+        "r523"
       ]
     },
     {
@@ -2966,12 +2966,12 @@
       },
       "prov": [
         "r471",
-        "r501",
-        "r505",
-        "r518",
-        "r522",
+        "r502",
+        "r506",
+        "r521",
         "r525",
-        "r528"
+        "r528",
+        "r531"
       ]
     },
     {
@@ -2987,10 +2987,10 @@
       },
       "prov": [
         "r471",
-        "r512",
-        "r515",
-        "r529",
-        "r531",
+        "r509",
+        "r513",
+        "r527",
+        "r530",
         "r533",
         "r535"
       ]
@@ -3009,10 +3009,10 @@
       "prov": [
         "r471",
         "r503",
-        "r509",
-        "r524",
-        "r527",
-        "r530",
+        "r507",
+        "r522",
+        "r526",
+        "r529",
         "r532",
         "r534",
         "r536",
@@ -3841,19 +3841,6 @@
       ]
     },
     {
-      "from": "peer:0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
-      "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-      "rel": "also lends here (queue #1)",
-      "data": {
-        "supplyAssets": "288090902360076082968"
-      },
-      "prov": [
-        "r471",
-        "r474",
-        "r489"
-      ]
-    },
-    {
       "from": "peer:0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
       "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
       "rel": "also lends here (queue #0)",
@@ -3877,6 +3864,19 @@
         "r471",
         "r474",
         "r491"
+      ]
+    },
+    {
+      "from": "peer:0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "rel": "also lends here (queue #1)",
+      "data": {
+        "supplyAssets": "288090902360076082968"
+      },
+      "prov": [
+        "r471",
+        "r474",
+        "r489"
       ]
     },
     {
@@ -3915,7 +3915,7 @@
       "prov": [
         "r471",
         "r474",
-        "r510"
+        "r512"
       ]
     },
     {
@@ -3928,7 +3928,7 @@
       "prov": [
         "r471",
         "r474",
-        "r510"
+        "r512"
       ]
     },
     {
@@ -3941,7 +3941,7 @@
       "prov": [
         "r471",
         "r474",
-        "r511"
+        "r514"
       ]
     },
     {
@@ -3954,7 +3954,7 @@
       "prov": [
         "r471",
         "r474",
-        "r523"
+        "r520"
       ]
     },
     {
@@ -3967,7 +3967,7 @@
       "prov": [
         "r471",
         "r474",
-        "r516"
+        "r515"
       ]
     },
     {
@@ -10137,10 +10137,10 @@
       "id": "r493",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "isAllocator(address)",
       "args": [
-        "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
       ],
       "ok": true,
       "result": true
@@ -10149,10 +10149,10 @@
       "id": "r494",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-      "fn": "isAllocator(address)",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
       "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+        "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8"
       ],
       "ok": true,
       "result": true
@@ -10164,7 +10164,7 @@
       "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
       "fn": "isMetaMorpho(address)",
       "args": [
-        "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8"
+        "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
       ],
       "ok": true,
       "result": true
@@ -10185,18 +10185,6 @@
       "id": "r497",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
-      "id": "r498",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -10210,10 +10198,22 @@
       ]
     },
     {
-      "id": "r499",
+      "id": "r498",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r499",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
       "fn": "isAllocator(address)",
       "args": [
         "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
@@ -10235,16 +10235,6 @@
       "id": "r501",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "Vault Bridge WETH"
-    },
-    {
-      "id": "r502",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -10256,6 +10246,16 @@
         "0",
         "0"
       ]
+    },
+    {
+      "id": "r502",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Vault Bridge WETH"
     },
     {
       "id": "r503",
@@ -10281,36 +10281,6 @@
       "id": "r505",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "6604026177135432340255"
-    },
-    {
-      "id": "r506",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "5"
-    },
-    {
-      "id": "r507",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "5"
-    },
-    {
-      "id": "r508",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -10324,7 +10294,17 @@
       ]
     },
     {
-      "id": "r509",
+      "id": "r506",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "6604026177135432340255"
+    },
+    {
+      "id": "r507",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
@@ -10334,7 +10314,47 @@
       "result": "875884334084614873775"
     },
     {
+      "id": "r508",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "5"
+    },
+    {
+      "id": "r509",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Index Coop hyETH"
+    },
+    {
       "id": "r510",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "5"
+    },
+    {
+      "id": "r511",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "6"
+    },
+    {
+      "id": "r512",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -10381,7 +10401,17 @@
       ]
     },
     {
-      "id": "r511",
+      "id": "r513",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "750555043554324840962"
+    },
+    {
+      "id": "r514",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -10428,49 +10458,7 @@
       ]
     },
     {
-      "id": "r512",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "Index Coop hyETH"
-    },
-    {
-      "id": "r513",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "6"
-    },
-    {
-      "id": "r514",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
       "id": "r515",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "750555043554324840962"
-    },
-    {
-      "id": "r516",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -10524,7 +10512,7 @@
       ]
     },
     {
-      "id": "r517",
+      "id": "r516",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
@@ -10536,19 +10524,7 @@
       "result": false
     },
     {
-      "id": "r518",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": true
-    },
-    {
-      "id": "r519",
+      "id": "r517",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
@@ -10558,7 +10534,19 @@
       "result": "2"
     },
     {
-      "id": "r520",
+      "id": "r518",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r519",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
@@ -10570,35 +10558,7 @@
       "result": true
     },
     {
-      "id": "r521",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
-      "id": "r522",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9",
-        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r523",
+      "id": "r520",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -10624,7 +10584,19 @@
       ]
     },
     {
-      "id": "r524",
+      "id": "r521",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r522",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
@@ -10636,23 +10608,19 @@
       "result": true
     },
     {
-      "id": "r525",
+      "id": "r523",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "isAllocator(address)",
       "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9",
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
       ],
       "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
+      "result": false
     },
     {
-      "id": "r526",
+      "id": "r524",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
@@ -10664,7 +10632,23 @@
       "result": false
     },
     {
-      "id": "r527",
+      "id": "r525",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r526",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -10680,23 +10664,7 @@
       ]
     },
     {
-      "id": "r528",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9",
-        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r529",
+      "id": "r527",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
@@ -10708,7 +10676,23 @@
       "result": true
     },
     {
-      "id": "r530",
+      "id": "r528",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r529",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -10724,7 +10708,7 @@
       ]
     },
     {
-      "id": "r531",
+      "id": "r530",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -10732,6 +10716,22 @@
       "args": [
         "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
         "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r531",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
       ],
       "ok": true,
       "result": [

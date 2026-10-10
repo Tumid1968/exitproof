@@ -39,6 +39,7 @@
     "exposedMarketCount": 3,
     "peerVaultCount": 8,
     "publicAllocatorIsAllocator": true,
+    "publicAllocatorReallocatableIntoExposedMarkets": "0",
     "nodeCount": 60,
     "edgeCount": 89,
     "readCount": 547,
@@ -352,7 +353,7 @@
           "factorSeen": 0.99,
           "path": [
             "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.99"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.99"
           ],
           "liquidatable": 3,
           "badDebt": "0",
@@ -365,7 +366,7 @@
           "factorSeen": 0.99,
           "path": [
             "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.99"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.99"
           ],
           "liquidatable": 11,
           "badDebt": "0",
@@ -398,7 +399,7 @@
           "factorSeen": 0.97,
           "path": [
             "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.97"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.97"
           ],
           "liquidatable": 9,
           "badDebt": "0",
@@ -411,7 +412,7 @@
           "factorSeen": 0.97,
           "path": [
             "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.97"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.97"
           ],
           "liquidatable": 24,
           "badDebt": "940536016527241037",
@@ -444,7 +445,7 @@
           "factorSeen": 0.95,
           "path": [
             "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.95"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.95"
           ],
           "liquidatable": 12,
           "badDebt": "4940207597478601308",
@@ -457,7 +458,7 @@
           "factorSeen": 0.95,
           "path": [
             "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.95"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.95"
           ],
           "liquidatable": 32,
           "badDebt": "125114204492772259189",
@@ -490,7 +491,7 @@
           "factorSeen": 0.9,
           "path": [
             "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.9"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.9"
           ],
           "liquidatable": 26,
           "badDebt": "303739874797913565659",
@@ -503,7 +504,7 @@
           "factorSeen": 0.9,
           "path": [
             "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.9"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.9"
           ],
           "liquidatable": 64,
           "badDebt": "1002420043267281288400",
@@ -536,7 +537,7 @@
           "factorSeen": 0.8,
           "path": [
             "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.8"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.8"
           ],
           "liquidatable": 38,
           "badDebt": "1113792595333208923084",
@@ -549,7 +550,7 @@
           "factorSeen": 0.8,
           "path": [
             "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.8"
+            "Oracle: wstETH/stETH exchange rate BASE_FEED_1 x0.8"
           ],
           "liquidatable": 75,
           "badDebt": "3661888810770001551597",
@@ -583,7 +584,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.99"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.99"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -597,7 +598,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.99"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.99"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -631,7 +632,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.97"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.97"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -645,7 +646,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.97"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.97"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -679,7 +680,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.95"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.95"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -693,7 +694,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.95"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.95"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -727,7 +728,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.9"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.9"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -741,7 +742,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.9"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.9"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -775,7 +776,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.8"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.8"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -789,7 +790,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.8"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.8"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -823,7 +824,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.99"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.99"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -837,7 +838,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.99"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.99"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -871,7 +872,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.97"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.97"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -885,7 +886,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.97"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.97"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -919,7 +920,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.95"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.95"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -933,7 +934,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.95"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.95"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -967,7 +968,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.9"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.9"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -981,7 +982,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.9"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.9"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1015,7 +1016,7 @@
           "path": [
             "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.8"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.8"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1029,7 +1030,7 @@
           "path": [
             "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
             "Oracle router (primary/backup, deviation challenge 2%) -> primary leg",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.8"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.8"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1062,7 +1063,7 @@
           "factorSeen": 0.99,
           "path": [
             "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.99"
+            "Oracle: BTC / ETH BASE_FEED_1 x0.99"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1095,7 +1096,7 @@
           "factorSeen": 0.97,
           "path": [
             "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.97"
+            "Oracle: BTC / ETH BASE_FEED_1 x0.97"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1128,7 +1129,7 @@
           "factorSeen": 0.95,
           "path": [
             "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.95"
+            "Oracle: BTC / ETH BASE_FEED_1 x0.95"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1161,7 +1162,7 @@
           "factorSeen": 0.9,
           "path": [
             "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.9"
+            "Oracle: BTC / ETH BASE_FEED_1 x0.9"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1194,7 +1195,7 @@
           "factorSeen": 0.8,
           "path": [
             "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
-            "Morpho Chainlink-style oracle (1 feed) BASE_FEED_1 x0.8"
+            "Oracle: BTC / ETH BASE_FEED_1 x0.8"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1227,7 +1228,7 @@
           "factorSeen": 0.99,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.99"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.99"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1260,7 +1261,7 @@
           "factorSeen": 0.97,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.97"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.97"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1293,7 +1294,7 @@
           "factorSeen": 0.95,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.95"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.95"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1326,7 +1327,7 @@
           "factorSeen": 0.9,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.9"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.9"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1359,7 +1360,7 @@
           "factorSeen": 0.8,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) BASE_FEED_1 x0.8"
+            "Oracle: BTC / USD ÷ ETH / USD BASE_FEED_1 x0.8"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1392,7 +1393,7 @@
           "factorSeen": 1.0101010101010102,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.99"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.99"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1425,7 +1426,7 @@
           "factorSeen": 1.0309278350515465,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.97"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.97"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1458,7 +1459,7 @@
           "factorSeen": 1.0526315789473684,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.95"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.95"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1491,7 +1492,7 @@
           "factorSeen": 1.1111111111111112,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.9"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.9"
           ],
           "liquidatable": 0,
           "badDebt": "0",
@@ -1524,7 +1525,7 @@
           "factorSeen": 1.25,
           "path": [
             "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
-            "Morpho Chainlink-style oracle (2 feeds) QUOTE_FEED_1 /0.8"
+            "Oracle: BTC / USD ÷ ETH / USD QUOTE_FEED_1 /0.8"
           ],
           "liquidatable": 0,
           "badDebt": "0",

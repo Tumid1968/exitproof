@@ -312,6 +312,13 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
         }
       }
       for (const [slot, feed] of feeds) await feedLayer(feed, oid, slot, prov);
+      if (morphoShape) {
+        // Readable formula from the discovered feeds: base feeds multiply, quote feeds divide.
+        const desc = (slot: string) => feeds.filter(([s]) => s.startsWith(slot)).map(([, f]) => String(nodes.get(`feed:${f}`)?.data.description ?? "feed"));
+        const base = [...desc("BASE"), ...vaults.filter(([s]) => s === "BASE_VAULT").map(() => "vault rate")];
+        const quote = [...desc("QUOTE"), ...vaults.filter(([s]) => s === "QUOTE_VAULT").map(() => "vault rate")];
+        nodes.get(oid)!.label = `Oracle: ${base.join(" × ") || "1"}${quote.length ? " ÷ " + quote.join(" × ") : ""}`;
+      }
       for (const [slot, vaultAddr] of vaults) {
         const [sym, sId] = await r.call<string>(vaultAddr, erc20Abi, "symbol");
         addNode({ id: `token:${vaultAddr}`, kind: "token", layer: 4, label: `${sym ?? "vault"} (ERC-4626 rate source)`, address: vaultAddr, data: {}, prov: sId ? [sId] : [] });
