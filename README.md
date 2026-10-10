@@ -8,11 +8,24 @@ One protocol, MetaMorpho V1 on Morpho Blue. For a position, ExitProof executes t
 
 ## Main screen
 
-One screen, no scrolling on a phone (375×667): pick a pool, then
+One screen, no scrolling on a phone (375×667): pick a pool, enter how much you put in (default: the largest position; optional price of 1 unit in € to see euros, empty by default), then
 - the exit word: **Easy exit** (at least 90 % of the largest deposit gets out even in the worst executed case), **Tight exit** (50–90 %), **Hard exit** (below 50 %, or not everything can get out even alone); these limits are a choice;
-- one number: "If others leave first, you get back X of Y WETH" (the worst executed case) with a bar;
-- one verdict line: "Leave if you think a problem is more likely than 1 in N this month", which turns into "Stay" or "Leave" once you move the slider;
-- "Replay" (static: the recorded replay) or "Run the exit" (live: the worst case executed again on the fork), and "Why?".
+- one number: "If others leave first, X of your A WETH comes out right away" (the worst executed case at your size) with a bar, and "Y would wait" when something waits;
+- one neutral line: "The break-even is 1 in N this month (1 in M if blocked money costs nothing)", which turns into "Stay" or "Leave" once you move the slider (thumb in the middle until then);
+- "Replay" (static: the recorded replay) or "Run the exit" (live, see below), and "Why?".
+
+**Your size, two ways.** *Scaled* (static site, and live before a run): what gets out right away = min(amount, liquidity left in the worst executed case: 2,079.21 WETH for Steakhouse ETH), the rest waits; above the largest measured position the amount is capped ("Above the measured range"). The word and the break-even are recomputed at that size with the same `decide()` and thresholds (gas from the report, cost of blocked money only on the part that waits). *Simulated on the fork* (live, "Run the exit"): a test account really deposits the amount (WETH: `hardhat_setBalance` then a real `WETH.deposit()`; other assets: the token's `balanceOf` storage slot is written, found by probing Solidity and Vyper layouts and checked with `balanceOf`; checked on USDC and USDT), then the worst case is replayed (the others leave first, from both vaults), then the account exits; gas actually used is recorded; the fork is reset to its base state before and after, even on error (two runs give the same result to the wei). If the fork does not answer: "Fork not reachable: scaled from the measured case".
+
+Verification on Steakhouse ETH (live, 10 Oct 2026):
+
+| amount | predicted (scaled) | measured on the fork | identical to the wei? |
+|---|---:|---:|---|
+| 0.5 | 0.500000000000000000 | 0.500000013024452097 | no (+0.000000013) |
+| 100 | 100.000000000000000000 | 100.000002536129810994 | no (+0.0000025) |
+| 2,079.21 | 2,079.210000000000000000 | 2,079.210037627559645973 | no (+0.000038) |
+| 2,079.22 | 2,079.210741633111021926 | 2,079.220037627722242574 | no (+0.0093) |
+
+Two gaps, both shown, not hidden: (1) interest accrues during the simulation (each transaction is 12 s later), about 2.5 × 10⁻⁸ of the amount; (2) a fresh deposit adds its own cash to the pool, so above 2,079.21 everything still gets out, whereas the scaled case describes money already lent out at the frozen block. The screen says "New money adds cash." when this happens.
 
 For Steakhouse ETH: Hard exit, 2,079.21 of 5,209.91 WETH, leave above 1 in 89. Over the 23 precomputed vaults: 11 Easy exit, 3 Tight exit, 9 Hard exit. "Why?" opens four short blocks (if a problem hits, who depends on whom, money stuck for a while, what this tool cannot see), with a "?" on each technical term and a glossary at `#/glossary`. Text budget, tested: 41 words on the main screen (95 before), at most 40 per block, no sentence over 20 words. Everything else (all numbers, the dependencies, the proof) is in "Expert mode", closed by default.
 
@@ -101,7 +114,7 @@ npm run demo -- --offline    # the proxy serves its disk cache only (after one o
 
 `http://127.0.0.1:5173/#/status` shows proxy, fork, API and mode. If the fork stops answering, the UI switches to the static replay with a visible banner.
 
-Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork), `npm run test:e2e` (101 end-to-end checks in the installed Chrome, see below). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
+Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork), `npm run test:e2e` (115 end-to-end checks in the installed Chrome, see below). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
 
 ## How it works (short)
 

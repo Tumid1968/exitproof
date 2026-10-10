@@ -1,18 +1,18 @@
 {
-  "at": "2026-10-10T19:10:12.758Z",
+  "at": "2026-10-10T19:42:05.147Z",
   "target": "local",
   "metrics": [
     {
       "target": "http",
       "viewport": "1440",
-      "firstAnswerMs": 632,
+      "firstAnswerMs": 452,
       "requests": 11
     },
     {
       "target": "http",
       "viewport": "1440",
       "words": {
-        "main": 44,
+        "main": 56,
         "why 1": 38,
         "why 2": 37,
         "why 3": 31,
@@ -32,14 +32,14 @@
     {
       "target": "http",
       "viewport": "375",
-      "firstAnswerMs": 496,
+      "firstAnswerMs": 192,
       "requests": 11
     },
     {
       "target": "http",
       "viewport": "375",
       "words": {
-        "main": 41,
+        "main": 54,
         "why 1": 38,
         "why 2": 37,
         "why 3": 31,
@@ -49,14 +49,14 @@
     {
       "target": "file",
       "viewport": "1440",
-      "firstAnswerMs": 467,
+      "firstAnswerMs": 321,
       "requests": 11
     },
     {
       "target": "file",
       "viewport": "1440",
       "words": {
-        "main": 44,
+        "main": 56,
         "why 1": 38,
         "why 2": 37,
         "why 3": 31,
@@ -76,14 +76,14 @@
     {
       "target": "file",
       "viewport": "375",
-      "firstAnswerMs": 474,
+      "firstAnswerMs": 282,
       "requests": 11
     },
     {
       "target": "file",
       "viewport": "375",
       "words": {
-        "main": 41,
+        "main": 54,
         "why 1": 38,
         "why 2": 37,
         "why 3": 31,
@@ -92,7 +92,17 @@
     },
     {
       "live": "execute again",
-      "result": "3,318.751556 WETH in 1475 ms — identical to the wei"
+      "result": "3,318.751556 WETH in 1062 ms — identical to the wei"
+    },
+    {
+      "live": "your size 100 WETH",
+      "first": "100000002536129810994",
+      "second": "100000002536129810994",
+      "gasExit": "462572"
+    },
+    {
+      "live": "words after a run at 5,209.91",
+      "words": 57
     }
   ],
   "warnings": [

@@ -110,7 +110,6 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
         <a className="logo" href="#top" onClick={(e) => { e.preventDefault(); scrollTo({ top: 0, behavior: "smooth" }); }}>ExitProof</a>
         <span className={`modebadge ${mode === "live" ? "live" : ""}`} title={mode === "live" ? "transactions execute on a local fork" : "results replayed from the manifests; no network"}>{mode === "live" ? "live fork" : "replay · offline"}</span>
         <div className="spacer" />
-        <a className="navlink" href="#/status">Status</a>
         <button className="navlink" onClick={() => setTheme(theme === "light" ? "dark" : "light")} aria-label="switch light or dark theme">{theme === "light" ? "Dark" : "Light"}</button>
       </header>
       {(() => {
@@ -135,6 +134,7 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
             </div>
             {expert && <div className="expert">
               <div className="controls glass">
+                <a className="navlink" href="#/status">Status of the live stack</a>
                 <label className="ctl"><span>Your first name</span><input className="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={24} /></label>
                 <p className="modeline">
                   {mode === null ? "Detecting the local fork…" : mode === "live"

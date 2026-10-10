@@ -8,6 +8,7 @@ import { apiPost, type IndexEntry, type Mode } from "./data";
 import { w } from "./lib";
 import { Kind, Term } from "./Novice";
 import { pickScenarios } from "./Opening";
+import { parseAmount, sizeCase, type LiveMeasure } from "../../src/verdict/size";
 
 const oneIn = (p: number | null | undefined) => (p === null || p === undefined ? "—" : p > 1 ? "never" : `1 in ${Math.max(1, Math.round(1 / p))}`);
 const n0 = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 0 });
@@ -21,51 +22,80 @@ const cellOf = (r: any, hc: number) => r.verdictGrid?.find((x: any) => x.id === 
 export function MainScreen({ r, refine, entry, mode, select, fallback, why, setWhy }: {
   r: any; refine?: any; entry?: IndexEntry; mode: Mode; select: React.ReactNode; fallback: string | null; why: boolean; setWhy: (b: boolean) => void;
 }) {
-  const [p, setP] = useState<number | null>(null); // no verdict on the user's guess before the slider is touched
-  const [out, setOut] = useState<string | null>(null);
-  useEffect(() => { setP(null); setOut(null); }, [r]);
-  const run = worstRun(r, refine);
-  const value = BigInt(r.target.holderValue);
-  const share = value === 0n ? 0 : Number((BigInt(run.holderExecutedExit) * 10000n) / value) / 100;
+  const dec = r.target.assetDecimals;
   const u = r.target.assetSymbol;
-  const c = cellOf(r, 0.1);
-  const be = c?.breakEven ?? null;
-  const a = refine?.answer;
-  const replay = async () => {
+  const pos = BigInt(r.target.holderValue);
+  const defaultText = w(pos);
+  const [p, setP] = useState<number | null>(null); // no verdict on the user's guess before the slider is touched
+  const [amountText, setAmountText] = useState(defaultText);
+  const [priceText, setPriceText] = useState("");
+  const [live, setLive] = useState<{ amount: bigint; m: LiveMeasure } | null>(null);
+  const [note, setNote] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  useEffect(() => { setP(null); setAmountText(w(BigInt(r.target.holderValue))); setLive(null); setNote(null); }, [r]);
+  const worstId = worstRun(r, refine).id;
+  // the default text stands for the exact largest position (so its numbers are the report's)
+  const typed = amountText === defaultText ? pos : parseAmount(amountText, dec);
+  const valid = typed !== null && typed > 0n;
+  const liveNow = live && valid && live.amount === typed ? live.m : undefined;
+  const sc = valid ? sizeCase(r, worstId, typed!, liveNow) : null;
+  const price = priceText.trim() === "" ? null : Number(priceText.replace(",", "."));
+  const eur = (x: bigint) => price !== null && Number.isFinite(price) && price > 0 ? (Number(x) / 10 ** dec * price).toLocaleString("en-US", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }) : null;
+  const be = sc?.breakEven10 ?? null, be0 = sc?.breakEven0 ?? null;
+  const scaled = sc ? sizeCase(r, worstId, typed!) : null; // what the measured case says at this size
+  const run = async () => {
     if (mode !== "live") {
-      setOut(entry?.replay ? `Recorded replay: ${entry.replay.okScenarios}/${entry.replay.scenarios} runs identical to the wei.` : "No recorded replay for this pool.");
+      setNote(entry?.replay ? `Recorded replay: ${entry.replay.okScenarios}/${entry.replay.scenarios} runs identical to the wei.` : "No recorded replay for this pool.");
       return;
     }
-    setOut("Running on the fork…");
+    if (!valid) return;
+    setBusy(true); setNote("Simulating on the fork…");
     try {
-      const o: any = await apiPost("/api/run", { vault: r.target.vault, holder: r.target.holder, exits: run.others.map((x: any) => ({ vault: x.vault, owner: x.owner, label: x.label })) });
-      const ex = o.result.results.filter((x: any) => x.type === "exit" && x.result.owner === r.target.holder);
-      const got = ex[0].result.ok ? ex[0].result.assetsOutWei : ex[1]?.result.assetsOutWei ?? "0";
-      setOut(`${w(got, 6)} ${u} in ${o.ms} ms: ${got === run.holderExecutedExit ? "identical to the wei" : "DIFFERENT from the record"}.`);
-    } catch (e) { setOut(String((e as Error).message)); }
+      const o: any = await apiPost("/api/size", { vault: r.target.vault, amount: typed!.toString() });
+      setLive({ amount: typed!, m: { exitNow: BigInt(o.exitNow), gasCostOut: BigInt(o.gasCostOut), gasCostReentry: BigInt(o.gasCostReentry) } });
+      setNote(o.capped ? `The pool takes at most ${w(o.maxDeposit)} ${u} now: shown for that.` : null);
+    } catch (e) {
+      const m = String((e as Error).message);
+      setLive(null);
+      setNote(/not available for this asset|refused|no new deposit/.test(m) ? m : "Fork not reachable: scaled from the measured case.");
+    }
+    setBusy(false);
   };
-  const decided = p !== null && be !== null && c?.decision !== "NO_ACTION_POSSIBLE";
+  const decided = p !== null && be !== null && !sc?.noAction;
+  const guessMin = 0.0025, guessMax = 0.2;
   return (
     <section className="lean" id="top">
       <div className="leanbody">
         <div className="vsel">{select}</div>
-        {a ? <p className={`bigword w-${a.level}`}>{a.word}</p> : <p className="bigword">…</p>}
-        <p className="wordsub">For the largest deposit in this pool</p>
-        <p className="figure">If others leave first, you get back <b>{w(run.holderExecutedExit)}</b> of {w(value)} {u}</p>
-        <div className="leanbar" role="img" aria-label={`${share.toFixed(0)} % gets out`}><div className={`fill ${run.fullExitOk ? "good" : "bad"}`} style={{ width: `${Math.min(100, share)}%` }} /></div>
-        {!c || be === null ? <p className="verdictL">No problem scenario for this pool: no advice.</p>
-          : c.decision === "NO_ACTION_POSSIBLE" ? <p className="verdictL"><b>Stay</b>: you could not get out now anyway.</p>
-          : decided ? <p className="verdictL"><b className={p! > be ? "leave" : "stay"}>{p! > be ? "Leave" : "Stay"}</b>: your guess {oneIn(p)} is {p! > be ? "above" : "below"} {oneIn(be)} this month.</p>
-          : <p className="verdictL"><b>Leave</b> if you think a problem is more likely than {oneIn(be)} this month.</p>}
-        {c && be !== null && c.decision !== "NO_ACTION_POSSIBLE" && <label className="guess">
-          <span>Your guess: {p === null ? "—" : oneIn(p)}</span>
-          <input type="range" min={0.0025} max={0.2} step={0.0025} value={p ?? Math.min(0.2, Math.max(0.0025, be))} onChange={(e) => setP(Number(e.target.value))} aria-label="your guess" />
-        </label>}
+        <div className="amount-row">
+          <label className="amt"><span>How much did you put in?</span>
+            <span className="amtfield"><input inputMode="decimal" value={amountText} onChange={(e) => { setAmountText(e.target.value); setNote(null); }} aria-label="how much did you put in" /><span className="unit">{u}</span></span>
+          </label>
+          <input className="price" inputMode="decimal" value={priceText} onChange={(e) => setPriceText(e.target.value)} placeholder={`Price of 1 ${u} in €`} aria-label={`Price of 1 ${u} in €`} />
+        </div>
+        {!sc ? <p className="figure invalid" role="alert">Enter an amount above 0.</p> : <>
+          <p className={`bigword w-${sc.level}`}>{sc.word}</p>
+          <p className="figure">If others leave first, <b>{w(sc.now)}</b> of your {w(sc.amount)} {u} comes out right away ({sc.changePct === 0 ? "±0.00" : sc.changePct.toFixed(2)} %).</p>
+          {eur(sc.amount) && <p className="eur">{eur(sc.now)} of {eur(sc.amount)}{sc.wait > 0n ? `; ${eur(sc.wait)} would wait` : ""}</p>}
+          <div className="leanbar" role="img" aria-label={`${Math.round(sc.worstShare * 100)} % comes out right away`}><div className={`fill ${sc.wait === 0n ? "good" : "bad"}`} style={{ width: `${Math.min(100, sc.worstShare * 100)}%` }} /></div>
+          {sc.wait > 0n && <p className="wait">{w(sc.wait)} {u} would wait.</p>}
+          <p className="source">{liveNow ? "Simulated on the fork, just now." : sc.capped ? `Above the measured range: shown for ${w(sc.amount)} ${u}.` : "Scaled from the measured case."}</p>
+          {/* only when the measured case had money waiting and the fresh deposit let more out (not mere interest) */}
+          {liveNow && scaled && scaled.wait > 0n && liveNow.exitNow > scaled.now && <p className="source gap">New money adds cash.</p>}
+          {sc.noAction ? <p className="verdictL">Stay: you could not get out now anyway.</p>
+            : be === null ? <p className="verdictL">No problem scenario for this pool: no advice.</p>
+            : decided ? <p className="verdictL"><b className={p! > be ? "leave" : "stay"}>{p! > be ? "Leave" : "Stay"}</b>: your guess {oneIn(p)} is {p! > be ? "above" : "below"} {oneIn(be)} this month.</p>
+            : <p className="verdictL">The break-even is {oneIn(be)} this month ({oneIn(be0)} if blocked money costs nothing).</p>}
+          {be !== null && !sc.noAction && <label className="guess">
+            <span>Your guess: {p === null ? "—" : oneIn(p)}</span>
+            <input type="range" min={guessMin} max={guessMax} step={0.0025} value={p ?? (guessMin + guessMax) / 2} onChange={(e) => setP(Number(e.target.value))} aria-label="your guess" />
+          </label>}
+        </>}
         <div className="actions">
-          <button className="pill primary" onClick={replay} disabled={out === "Running on the fork…"}>{mode === "live" ? "Run the exit" : "Replay"}</button>
+          <button className="pill primary" onClick={run} disabled={busy || (mode === "live" && !valid)}>{mode === "live" ? "Run the exit" : "Replay"}</button>
           <button className="pill ghostpill" aria-expanded={why} onClick={() => { setWhy(!why); if (!why) setTimeout(() => document.getElementById("why")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }), 0); }}>Why?</button>
         </div>
-        {out && <p className="runout" aria-live="polite">{out}</p>}
+        {note && <p className="runout" aria-live="polite">{note}</p>}
         {fallback && <p className="modeline"><span className="fallback">{fallback}</span></p>}
       </div>
     </section>

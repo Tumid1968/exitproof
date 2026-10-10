@@ -22,6 +22,7 @@ import { createRequire } from "node:module";
 import vm from "node:vm";
 import { chromium, type Browser, type BrowserContextOptions, type Page } from "playwright-core";
 import { manifestHash } from "../../src/report/build.ts";
+import { parseAmount, sizeCase } from "../../src/verdict/size.ts";
 
 declare global { interface Window { __epFps?: number } }
 
@@ -204,8 +205,14 @@ for (const tg of targets) {
         assert.equal(await page.locator(".bigword").innerText(), rf.answer.word);
         assert.match(await page.locator(".bigword").getAttribute("class") ?? "", new RegExp(`w-${rf.answer.level}`));
         const run = r.runs.find((x: any) => x.id === rf.answer.worstRun.id);
-        assert.equal(norm(await page.locator(".figure").innerText()), `If others leave first, you get back ${fmtUnits(run.holderExecutedExit, 18)} of ${fmtUnits(r.target.holderValue, 18)} WETH`);
-        assert.deepEqual([fmtUnits(run.holderExecutedExit, 18), fmtUnits(r.target.holderValue, 18)], ["2,079.21", "5,209.91"], "guard values");
+        // default amount = the largest position: the numbers are the report's (2,079.21, −60.09 %, 1 in 89, 1 in 18)
+        assert.equal(await page.getByRole("textbox", { name: "how much did you put in" }).inputValue(), fmtUnits(r.target.holderValue, 18));
+        assert.equal(norm(await page.locator(".figure").innerText()), `If others leave first, ${fmtUnits(run.holderExecutedExit, 18)} of your ${fmtUnits(r.target.holderValue, 18)} WETH comes out right away (${run.changePct.toFixed(2)} %).`);
+        assert.deepEqual([fmtUnits(run.holderExecutedExit, 18), fmtUnits(r.target.holderValue, 18), run.changePct], ["2,079.21", "5,209.91", -60.09], "guard values");
+        assert.equal(norm(await page.locator(".wait").innerText()), `${fmtUnits(BigInt(r.target.holderValue) - BigInt(run.holderExecutedExit), 18)} WETH would wait.`);
+        assert.equal(await page.locator(".source").first().innerText(), "Scaled from the measured case.");
+        assert.equal(norm(await page.locator(".verdictL").innerText()), "The break-even is 1 in 89 this month (1 in 18 if blocked money costs nothing).");
+        assert.equal(await page.locator(".verdictL b").count(), 0, "nothing in bold before the slider is touched");
         const width = await page.locator(".leanbar .fill").evaluate((e) => (e as HTMLElement).style.width);
         assert.equal(Math.round(parseFloat(width)), Math.round((rf.answer.worstShare) * 100));
         assert.equal(await page.locator(".lean .qbtn").count(), 0, "no '?' on the main screen");
@@ -291,8 +298,12 @@ for (const tg of targets) {
         const be = r.verdictGrid.find((x: any) => x.id === r.bindingIncident).cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === 0.1).breakEven as number;
         const N = Math.round(1 / be);
         assert.equal(N, 89, "guard value");
-        assert.equal(norm(await page.locator(".verdictL").innerText()), `Leave if you think a problem is more likely than 1 in ${N} this month.`);
+        const be0 = r.verdictGrid.find((x: any) => x.id === r.bindingIncident).cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === 0).breakEven as number;
+        assert.equal(norm(await page.locator(".verdictL").innerText()), `The break-even is 1 in ${N} this month (1 in ${Math.round(1 / be0)} if blocked money costs nothing).`);
         assert.equal(norm(await page.locator(".guess span").innerText()), "Your guess: —");
+        // the thumb sits in the middle until touched (not at the threshold)
+        const rng = await page.getByRole("slider", { name: "your guess" }).evaluate((e) => { const i = e as HTMLInputElement; return [Number(i.min), Number(i.max), Number(i.value)]; });
+        assert.ok(Math.abs(rng[2] - (rng[0] + rng[1]) / 2) < 0.0026, `thumb not centred: ${rng}`);
         const slider = page.getByRole("slider", { name: "your guess" });
         await slider.focus();
         await page.keyboard.press("End"); // 20 % = 1 in 5
@@ -308,12 +319,52 @@ for (const tg of targets) {
         const before = [await page.locator(".bigword").innerText(), norm(await page.locator(".figure").innerText())];
         await page.locator("select[aria-label=vault]").selectOption(other);
         const run = r.runs.find((x: any) => x.id === rf.answer.worstRun.id);
-        const want = `If others leave first, you get back ${fmtUnits(run.holderExecutedExit, 18)} of ${fmtUnits(r.target.holderValue, 18)} WETH`;
+        const want = `If others leave first, ${fmtUnits(run.holderExecutedExit, 18)} of your ${fmtUnits(r.target.holderValue, 18)} WETH comes out right away (${run.changePct.toFixed(2)} %).`;
         await page.locator(".figure", { hasText: fmtUnits(run.holderExecutedExit, 18) }).waitFor({ timeout: 10_000 });
         const after = [await page.locator(".bigword").innerText(), norm(await page.locator(".figure").innerText())];
         assert.deepEqual(after, [rf.answer.word, want]);
         assert.notEqual(after[0], before[0], "the word changes (Hard exit → Tight exit)");
         assert.notEqual(after[1], before[1]);
+      }));
+
+      test("27. your size: 0.5 WETH all comes out, nothing waits, Easy exit; gas weighs more so the break-even is higher", () => withPage(T("size-small"), tg.base(), opts, async ({ page }) => {
+        await waitAnswer(page);
+        const r = report(STEAKHOUSE), rf = readJson(`results/refine/${STEAKHOUSE}.json`);
+        const big = sizeCase(r, rf.answer.worstRun.id, BigInt(r.target.holderValue));
+        const half = sizeCase(r, rf.answer.worstRun.id, parseAmount("0.5", 18)!);
+        await page.getByRole("textbox", { name: "how much did you put in" }).fill("0.5");
+        await page.locator(".bigword", { hasText: "Easy exit" }).waitFor({ timeout: 3000 });
+        assert.equal(norm(await page.locator(".figure").innerText()), "If others leave first, 0.50 of your 0.50 WETH comes out right away (±0.00 %).");
+        assert.equal(await page.locator(".wait").count(), 0, "no 'would wait' line");
+        assert.equal(await page.locator(".source").first().innerText(), "Scaled from the measured case.");
+        assert.equal(norm(await page.locator(".verdictL").innerText()), `The break-even is 1 in ${Math.round(1 / half.breakEven10!)} this month (1 in ${Math.round(1 / half.breakEven0!)} if blocked money costs nothing).`);
+        assert.ok(half.breakEven10! > big.breakEven10!, "higher break-even for the small amount");
+        assert.ok(Math.round(1 / half.breakEven10!) < 89, "shown as a smaller N (1 in 15 vs 1 in 89)");
+      }));
+
+      test("28. empty, negative, not a number, or above the measured range: a simple message, no console error", () => withPage(T("size-bad"), tg.base(), opts, async ({ page, errors }) => {
+        await waitAnswer(page);
+        const box = page.getByRole("textbox", { name: "how much did you put in" });
+        for (const v of ["", "-3", "abc", "0"]) {
+          await box.fill(v);
+          await page.locator(".figure.invalid", { hasText: "Enter an amount above 0." }).waitFor({ timeout: 3000 });
+        }
+        await box.fill("10000");
+        await page.locator(".source", { hasText: "Above the measured range: shown for 5,209.91 WETH." }).waitFor({ timeout: 3000 });
+        assert.ok(norm(await page.locator(".figure").innerText()).startsWith("If others leave first, 2,079.21 of your 5,209.91 WETH"));
+        assert.deepEqual(errors, []);
+      }));
+
+      test("29. optional € price: amounts also shown in euros (no default value, no network)", () => withPage(T("size-eur"), tg.base(), opts, async ({ page, requests, origin }) => {
+        await waitAnswer(page);
+        assert.equal(await page.getByRole("textbox", { name: "Price of 1 WETH in €" }).inputValue(), "", "empty by default");
+        assert.equal(await page.locator(".eur").count(), 0);
+        await page.getByRole("textbox", { name: "Price of 1 WETH in €" }).fill("2000");
+        const r = report(STEAKHOUSE), rf = readJson(`results/refine/${STEAKHOUSE}.json`);
+        const sc = sizeCase(r, rf.answer.worstRun.id, BigInt(r.target.holderValue));
+        const e = (x: bigint) => (Number(x) / 1e18 * 2000).toLocaleString("en-US", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+        assert.equal(norm(await page.locator(".eur").innerText()), `${e(sc.now)} of ${e(sc.amount)}; ${e(sc.wait)} would wait`);
+        assert.deepEqual(requests.filter((u) => !isLocal(u, origin)), []);
       }));
 
       test("25. Replay (static) reports the recorded replay", () => withPage(T("replaybtn"), tg.base(), opts, async ({ page }) => {
@@ -619,7 +670,7 @@ ${JSON.stringify(v, null, 1)}`);
       if (vp === "375") {
         test("26. the main screen fits 375×667 without scrolling", () => withPage(T("fit667"), tg.base(), { ...opts, viewport: { width: 375, height: 667 } }, async ({ page }) => {
           await waitAnswer(page);
-          const boxes = await page.evaluate(() => ["select[aria-label=vault]", ".bigword", ".figure", ".leanbar", ".verdictL", ".guess", ".actions"].map((s) => { const b = document.querySelector(s)!.getBoundingClientRect(); return { s, top: Math.round(b.top), bottom: Math.round(b.bottom) }; }));
+          const boxes = await page.evaluate(() => ["select[aria-label=vault]", ".amount-row", ".bigword", ".figure", ".leanbar", ".verdictL", ".guess", ".actions"].map((s) => { const b = document.querySelector(s)!.getBoundingClientRect(); return { s, top: Math.round(b.top), bottom: Math.round(b.bottom) }; }));
           const nav = await page.locator("header.nav").boundingBox();
           const out = boxes.filter((b) => b.bottom > 667 || b.top < (nav ? nav.y + nav.height : 0));
           assert.deepEqual(out, [], `outside the first 667 px or under the top bar: ${JSON.stringify(boxes)}`);
@@ -628,8 +679,8 @@ ${JSON.stringify(v, null, 1)}`);
 
         test("9. mobile: no horizontal scroll, running text ≥ 16 px, tap targets ≥ 44 px, readable hero", () => withPage(T("mobile"), tg.base(), opts, async ({ page }) => {
           await waitAnswer(page);
-          const SMALL_TEXT = ".lean p, .lean .guess span, .whyblock p, .whyblock h3";
-          const TARGETS = ".lean button, .lean select, .lean input[type=range], .qbtn, .whyblock .tagbtn, header button, header a, .expertbar button";
+          const SMALL_TEXT = ".lean p, .lean .guess span, .lean .amt span, .lean .unit, .whyblock p, .whyblock h3";
+          const TARGETS = ".lean button, .lean select, .lean input, .qbtn, .whyblock .tagbtn, header button, header a, .expertbar button";
           const issues: unknown[] = [];
           for (const stage of ["main", "why"]) {
             if (stage === "why") await openWhy(page);
@@ -741,16 +792,53 @@ if (!EXTERNAL) {
       assert.deepEqual(errors, []);
     }));
 
-    test("B5. 'Run the exit' on the main screen executes the worst case on the fork, identical to the wei", { skip }, () => withPage("live-run", LIVE_URL, DESKTOP, async ({ page, errors }) => {
+    test("B5. 'Run the exit' at your size: a real deposit on the fork, the worst case replayed, the fork reset (second run identical to the wei)", { skip }, () => withPage("live-run", LIVE_URL, DESKTOP, async ({ page, errors }) => {
       await page.locator(".modebadge", { hasText: "live fork" }).waitFor({ timeout: 10_000 });
       await waitAnswer(page);
-      await page.getByRole("button", { name: "Run the exit" }).click();
-      const out = page.locator(".runout", { hasText: /identical to the wei|DIFFERENT|rror|did not answer/ });
-      await out.waitFor({ timeout: 180_000 });
-      const rf = readJson(`results/refine/${STEAKHOUSE}.json`), r = report(STEAKHOUSE);
-      const run = r.runs.find((x: any) => x.id === rf.answer.worstRun.id);
-      assert.equal((await out.innerText()).replace(/ in [0-9]+ ms/, ""), `${fmtUnits(run.holderExecutedExit, 18, 6)} WETH: identical to the wei.`);
+      await page.getByRole("textbox", { name: "how much did you put in" }).fill("100");
+      const runOnce = async () => {
+        const resp = page.waitForResponse((x) => x.url().includes("/api/size"), { timeout: 180_000 });
+        await page.getByRole("button", { name: "Run the exit" }).click();
+        const j = await (await resp).json();
+        await page.locator(".source", { hasText: "Simulated on the fork, just now." }).waitFor({ timeout: 10_000 });
+        return j;
+      };
+      const a = await runOnce();
+      const b = await runOnce();
+      metrics.push({ live: "your size 100 WETH", first: a.exitNow, second: b.exitNow, gasExit: a.gasUsed.exit });
+      assert.equal(a.deposited, "100000000000000000000");
+      assert.equal(a.exitNow, b.exitNow, "the fork is back to its base state between runs");
+      assert.equal(a.gasUsed.exit, b.gasUsed.exit);
+      assert.ok(norm(await page.locator(".figure").innerText()).startsWith(`If others leave first, ${fmtUnits(a.exitNow, 18)} of your 100.00 WETH`));
       assert.deepEqual(errors, []);
+    }));
+
+    test("B7. live run at the largest position: word budget and 375×667 fit still hold; a fresh deposit adds cash (stated)", { skip }, () => withPage("live-budget", LIVE_URL, { ...MOBILE, viewport: { width: 375, height: 667 } }, async ({ page }) => {
+      await waitAnswer(page);
+      const resp = page.waitForResponse((x) => x.url().includes("/api/size"), { timeout: 180_000 });
+      await page.getByRole("button", { name: "Run the exit" }).click();
+      const j = await (await resp).json();
+      await page.locator(".source", { hasText: "Simulated on the fork, just now." }).waitFor({ timeout: 10_000 });
+      const r = report(STEAKHOUSE);
+      // the measured case keeps 3,130.70 waiting; a fresh deposit adds its own cash, so it all gets out (shown, not hidden)
+      assert.ok(BigInt(j.exitNow) > BigInt(r.runs.find((x: any) => x.id === "B_both_vaults").holderExecutedExit));
+      assert.equal(await page.locator(".source.gap").innerText(), "New money adds cash.");
+      const words = countWords(await visibleText(page, "header.nav") + " " + await visibleText(page, ".lean"));
+      metrics.push({ live: "words after a run at 5,209.91", words });
+      assert.ok(words <= 60, `${words} words`);
+      const bottom = await page.evaluate(() => document.querySelector(".actions")!.getBoundingClientRect().bottom);
+      assert.ok(bottom <= 667, `actions bottom at ${bottom}`);
+    }));
+
+    test("B6. fork not reachable: the main screen falls back to the scaled case with a plain message", { skip }, () => withPage("live-size-down", LIVE_URL, DESKTOP, async ({ page, errors }) => {
+      await page.locator(".modebadge", { hasText: "live fork" }).waitFor({ timeout: 10_000 });
+      await waitAnswer(page);
+      await page.route("**/api/size", (r) => r.abort());
+      await page.getByRole("button", { name: "Run the exit" }).click();
+      await page.locator(".runout", { hasText: "Fork not reachable: scaled from the measured case." }).waitFor({ timeout: 10_000 });
+      assert.equal(await page.locator(".source").first().innerText(), "Scaled from the measured case.");
+      assert.ok(norm(await page.locator(".figure").innerText()).startsWith("If others leave first, 2,079.21 of your 5,209.91 WETH"));
+      assert.deepEqual(errors.filter((e) => !/Failed to load resource|ERR_FAILED/.test(e)), []);
     }));
 
     test("B2. analyzing a non-V1 address is refused with a clear reason", { skip }, () => withPage("live-refuse", LIVE_URL, DESKTOP, async ({ page }) => {

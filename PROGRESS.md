@@ -49,3 +49,8 @@
 - One screen (fits 375×667): pool, exit word, worst case X of Y, verdict line + slider, Replay / Run the exit, Why?. Main screen 41 words (95 before); Why? blocks 38/37/31/32.
 - Removed: three-step view, hero question and long sentence, per-1,000 example, How to read / Glossary / Demo in the top bar (glossary still reached from the "?" in Why?).
 - Tests: unit 17/17, e2e 101 (100 passed, 1 opt-in skipped), fork 9/9.
+
+## Your size (10 Oct, tag pre-size)
+- Amount + optional € price on the main screen; scaled in static, simulated on the fork in live (/api/size: real deposit, worst case, exit, gas, reset).
+- Verification 0.5 / 100 / 2,079.21 / 2,079.22: not identical to the wei (interest, and a fresh deposit adds cash above 2,079.21), explained in README.
+- Tests: unit 18/18, fork 9/9, e2e 115 (114 passed, 1 opt-in skipped); replay Steakhouse ETH OK after the engine change.

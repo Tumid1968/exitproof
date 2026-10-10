@@ -341,3 +341,15 @@ main.app { padding-top: 76px; }
 :root[data-theme="light"] { --hist: #0f6f64; }
 .dot.hist { background: var(--hist); } .tag-hist .tagpill { color: var(--hist); } .tag-hist .tagletter { background: var(--hist); }
 @media (min-width: 641px) { .leanbody { max-width: 640px; } }
+/* your size */
+.amount-row { width: 100%; display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; justify-content: center; }
+.amt { display: grid; gap: 2px; font-size: 16px; color: #d6dce5; text-align: left; flex: 1 1 200px; }
+.amtfield { display: flex; align-items: center; gap: 6px; }
+.amtfield input, .lean input.price { min-height: 44px; border-radius: 999px; padding: 0 14px; background: rgba(6, 10, 18, 0.6); border: 1px solid rgba(238, 241, 244, 0.35); color: #eef1f4; font: inherit; font-size: 16px; width: 100%; box-sizing: border-box; }
+.lean input.price { flex: 1 1 140px; }
+.lean input.price::placeholder { color: #aab4c2; }
+.unit { font-size: 16px; color: #d6dce5; }
+.eur, .wait, .source { margin: 0; font-size: 16px; color: #d6dce5; }
+.source { color: #b4bdca; }
+.figure.invalid { color: #ff8a8a; }
+@media (max-width: 640px) { .lean input.price { flex-basis: 100%; } .amt { flex-basis: 100%; } }
