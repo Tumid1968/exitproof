@@ -6,8 +6,9 @@ import { useEffect, useMemo, useState } from "react";
 import { GraphView } from "./GraphView";
 import { BreakEvenChart, Chip, Evidence, Findings, Position, Runs, Shocks, shockNodes } from "./App";
 import { ModeCtx } from "./mode";
+import { Hero, HowToRead, LeaveCard, NotModeledCard } from "./Opening";
 import { apiPost, getGraph, getIndex, getReport, liveUsable, readStatus, type IndexEntry, type Mode, type Status } from "./data";
-import { pct, setAssetDecimals, w } from "./lib";
+import { pct, setAssetDecimals } from "./lib";
 
 const BLOCK = "26,157,638";
 const NM = "not measured";
@@ -17,9 +18,9 @@ const fmtP = (x: number | null | undefined) => (x === null || x === undefined ? 
 export function Main() {
   const [route, setRoute] = useState(location.hash);
   useEffect(() => { const f = () => setRoute(location.hash); addEventListener("hashchange", f); return () => removeEventListener("hashchange", f); }, []);
-  const [theme, setTheme] = useState<string>(() => { try { return localStorage.getItem("ep-theme") ?? ""; } catch { return ""; } });
+  const [theme, setTheme] = useState<string>(() => { try { return localStorage.getItem("ep-theme") || "dark"; } catch { return "dark"; } });
   useEffect(() => {
-    if (theme) document.documentElement.dataset.theme = theme; else delete document.documentElement.dataset.theme;
+    document.documentElement.dataset.theme = theme || "dark";
     try { localStorage.setItem("ep-theme", theme); } catch { /* private mode */ }
   }, [theme]);
   if (route.startsWith("#/status")) return <StatusPage theme={theme} setTheme={setTheme} />;
@@ -34,6 +35,8 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
   const [report, setReport] = useState<any>(null);
   const [graph, setGraph] = useState<any>(null);
   const [err, setErr] = useState<string | null>(null);
+  const [howto, setHowto] = useState(false);
+  const [more, setMore] = useState(false);
   const [name, setName] = useState<string>(() => { try { return localStorage.getItem("ep-name") ?? "Jad"; } catch { return "Jad"; } });
   useEffect(() => { try { localStorage.setItem("ep-name", name); } catch { /* ignore */ } }, [name]);
 
@@ -66,136 +69,42 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
   const entry = index.find((x) => x.vault.toLowerCase() === vault.toLowerCase());
   return (
     <ModeCtx.Provider value={mode ?? "static"}>
-      <div className="top">
-        <div className="brand">Exit<span>Proof</span></div>
+      <header className="nav">
+        <a className="logo serif" href="#" aria-label="ExitProof home">ExitProof</a>
         <select value={vault} onChange={(e) => { setVault(e.target.value); location.hash = `vault=${e.target.value}`; }} aria-label="vault">
           {index.length === 0 && <option value={vault}>{vault}</option>}
           {index.map((v) => <option key={v.vault} value={v.vault}>{v.name} ({v.asset})</option>)}
         </select>
-        {mode === "live" && <Analyze onDone={(v) => { getIndex("live").then(setIndex); setVault(v); location.hash = `vault=${v}`; }} />}
         <div className="spacer" />
-        <label className="status">analyst <input className="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={24} aria-label="your first name" /></label>
-        <button className="ghost" onClick={() => setTheme(theme === "light" ? "dark" : theme === "dark" ? "" : "light")} title="theme">{theme === "light" ? "☀ light" : theme === "dark" ? "☾ dark" : "◐ auto"}</button>
-        <a className="status" href="#/status">status</a>
-      </div>
-      <div className={`banner ${mode === "live" ? "live" : "static"}`}>
+        <button className="navlink" aria-expanded={howto} onClick={() => setHowto(!howto)}>How to read this page</button>
+        <a className="navlink" href="#/status">Status</a>
+        <input className="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={24} aria-label="your first name" />
+        <button className="pill ghostpill themebtn" onClick={() => setTheme(theme === "light" ? "dark" : "light")} aria-label="switch light or dark theme">{theme === "light" ? "☾ dark" : "☀ light"}</button>
+      </header>
+      {howto && <HowToRead onClose={() => setHowto(false)} />}
+      <div className={`modeline ${mode === "live" ? "live" : "static"}`}>
         {mode === null ? "Detecting the local fork…" : mode === "live"
-          ? <>Live: transactions execute on a local fork of Ethereum frozen at block {BLOCK}. Nothing is sent to Ethereum.</>
-          : <>Results executed on a fork of Ethereum frozen at block {BLOCK}, replayed from the manifests. No fork, no RPC, no network in this view.</>}
+          ? <>Live · transactions execute on a local copy of Ethereum frozen at block {BLOCK}; nothing is sent to Ethereum.</>
+          : <>Results executed on a fork of Ethereum frozen at block {BLOCK}, replayed from the manifests · no network in this view.</>}
         {fallback && <div className="fallback">{fallback}</div>}
       </div>
-      <main>
-        {err && <section className="panel bad">This vault has no exported result ({err}). Pick another vault in the list.</section>}
-        {!report && !err && <section className="panel">Loading…</section>}
+      <main className="page">
+        {err && <section className="card bad">This vault has no exported result ({err}). Pick another vault in the list.</section>}
+        {!report && !err && <section className="card">Loading…</section>}
         {report && <>
-          <Headline r={report} name={name} />
-          <Honesty r={report} />
-          <GetBack r={report} entry={entry} mode={mode ?? "static"} />
-          <Decision r={report} />
-          <NotModeled r={report} />
-          <Tabs r={report} g={graph} entry={entry} mode={mode ?? "static"} />
+          <Hero r={report} entry={entry} mode={mode ?? "static"} />
+          <LeaveCard r={report} />
+          <NotModeledCard r={report} />
+          <div className="reveal">
+            <button className="pill ghostpill big" aria-expanded={more} onClick={() => setMore(!more)}>{more ? "Hide the dependencies and the proof" : "See the dependencies and the proof"}</button>
+          </div>
+          {more && <div className="deep">
+            {mode === "live" && <div className="card"><b>Analyze another vault</b> <Analyze onDone={(v) => { getIndex("live").then(setIndex); setVault(v); location.hash = `vault=${v}`; }} /></div>}
+            <Tabs r={report} g={graph} entry={entry} mode={mode ?? "static"} />
+          </div>}
         </>}
       </main>
     </ModeCtx.Provider>
-  );
-}
-
-function Headline({ r, name }: { r: any; name: string }) {
-  return (
-    <section className="verdict NEUTRAL" style={{ fontSize: 16 }}>
-      <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>
-        {name ? `${name}, ` : ""}exit decision for the {r.target.holderLabel} of {r.target.name} ({r.target.version}) · 30 days · locked funds cost 10 % or 0 % <Chip k="hyp" />
-      </div>
-      {r.headline ?? NM}
-    </section>
-  );
-}
-
-/** What is measured, modeled, assumed — and how much of the loss rests on the locked-funds assumption. */
-function Honesty({ r }: { r: any }) {
-  const id = r.bindingIncident;
-  const g = r.verdictGrid?.find((x: any) => x.id === id);
-  const c10 = g?.cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === 0.1);
-  const c0 = g?.cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === 0);
-  const u = r.target.assetSymbol;
-  const n = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 2 });
-  return (
-    <section className="panel honesty">
-      <div className="hgrid">
-        <div><Chip k="fork" /> <b>Measured on the fork</b>: exit liquidity (what each order of exits returns, reverts, cushion).</div>
-        <div><span className="chip modeled">modeled</span> <b>Modeled, lower bound</b>: value loss in an incident (bad debt, unrecognised shortfall).</div>
-        <div><Chip k="hyp" /> <b>Your assumption</b>: the probability of the incident. Nothing here predicts it.</div>
-      </div>
-      {c10 && c0 && c10.lockedPart > 0 && (
-        <p style={{ margin: "8px 0 0" }}>
-          In the decisive incident, the loss L = <b>{n(c10.incidentLoss)} {u}</b> = {n(c10.valueLoss)} of modeled value loss + <b>{n(c10.lockedPart)} {u}</b> from {n(c10.lockedAfterRun)} {u} locked after the run, valued at a 10 % cost (an assumption).
-          Both cases are shown with the same weight: <b>p* = {fmtP(c10.breakEven)}</b> if locked funds cost 10 % (L = {n(c10.incidentLoss)} {u}), <b>p* = {fmtP(c0.breakEven)}</b> if they cost 0 % (L = {n(c0.incidentLoss)} {u}). The difference is an assumption, not a measurement.
-        </p>
-      )}
-    </section>
-  );
-}
-
-function GetBack({ r, entry, mode }: { r: any; entry?: IndexEntry; mode: Mode }) {
-  // rows: every executed order; orders that change nothing (other than "alone") are grouped in one row
-  const rows = useMemo(() => {
-    const alone = r.runs[0];
-    const zero = r.runs.slice(1).filter((x: any) => x.changePct === 0 && x.fullExitOk === alone.fullExitOk);
-    const rest = r.runs.slice(1).filter((x: any) => !zero.includes(x));
-    const out: any[] = [{ ...alone, label: "I exit alone", sub: "nobody moves before me" }];
-    if (zero.length) out.push({ ...zero[zero.length - 1], label: zero.map((x: any) => x.others.map((o: any) => o.label).join(" → ")).join(", or "), sub: `${zero.length} executed orders, no effect` });
-    for (const x of rest) out.push({ ...x, label: x.others.map((o: any) => o.label).join(" → "), sub: x.others.some((o: any) => o.vault !== r.target.vault) ? "includes a depositor of ANOTHER vault" : "holders of this vault" });
-    return out;
-  }, [r]);
-  const [sel, setSel] = useState(rows.length > 2 ? 2 : 0);
-  const [live, setLive] = useState<string | null>(null);
-  const value = BigInt(r.target.holderValue);
-  const row = rows[Math.min(sel, rows.length - 1)];
-  const share = (x: string) => Number(BigInt(x) * 10000n / (value || 1n)) / 100;
-  const runLive = async () => {
-    setLive("executing on the fork…");
-    try {
-      const o: any = await apiPost("/api/run", { vault: r.target.vault, holder: r.target.holder, exits: row.others.map((x: any) => ({ vault: x.vault, owner: x.owner, label: x.label })) });
-      const ex = o.result.results.filter((x: any) => x.type === "exit" && x.result.owner === r.target.holder);
-      const out = ex[0].result.ok ? ex[0].result.assetsOutWei : ex[1]?.result.assetsOutWei ?? "0";
-      setLive(`${ex[0].result.ok ? "✓" : "✗ " + ex[0].result.error?.name} → ${w(out, 6)} in ${o.ms} ms ${out === row.holderExecutedExit ? "(identical to the wei)" : "(DIFFERENT from the recorded value)"}`);
-    } catch (e) { setLive(String((e as Error).message)); }
-  };
-  return (
-    <section className="panel" style={{ borderColor: "#2f81f7" }}>
-      <h2><span className="n">1</span> What I really get back <Chip k="fork" /> <Chip k="hyp" /></h2>
-      <p className="sub">Same block, same starting state, position of {w(r.target.holderValue)} {r.target.assetSymbol}. Only the order of exits changes. Each amount is a withdrawal executed on a fork of Ethereum; other holders are impersonated (a scenario, not their intention). Ratings (e.g. Credora) and risk pages (e.g. DefiLlama) describe the vault's risk; this executes <b>your</b> exit.</p>
-      <div className="getback">
-        <div className="rows">
-          {rows.map((x: any, i: number) => (
-            <button key={i} className={`gbrow ${i === sel ? "on" : ""}`} onClick={() => { setSel(i); setLive(null); }}>
-              <span className="gl">{x.label}<small>{x.sub}</small></span>
-              <span className={`gv ${x.fullExitOk ? "ok" : "bad"}`}>{w(x.holderExecutedExit)}</span>
-            </button>
-          ))}
-        </div>
-        <div className="detail">
-          <div className="muted" style={{ fontSize: 12 }}>{row.label}</div>
-          <div className="big"><span className={row.fullExitOk ? "ok" : "bad"}>{w(row.holderExecutedExit, 2)}</span> <small>{r.target.assetSymbol} · {share(row.holderExecutedExit).toFixed(0)} % of the position{row.changePct ? ` · ${Number(row.changePct).toFixed(2)} % vs alone` : ""}</small></div>
-          <div className="bar"><div className="exit" style={{ width: `${share(row.holderExecutedExit)}%` }} /><div className="lock" style={{ left: `${share(row.holderExecutedExit)}%`, right: 0 }} /><span>{share(row.holderExecutedExit).toFixed(0)} % exitable</span></div>
-          <p style={{ margin: "8px 0" }}>{row.fullExitOk
-            ? <span className="ok">✓ full exit succeeds</span>
-            : <span className="bad">✗ full exit reverts {row.fullExitError?.name ?? NM}{row.fullExitError?.selector ? ` (${row.fullExitError.selector})` : ""}; the amount shown is the maximum still withdrawable, executed.</span>}</p>
-          {r.cushion && r.cushion.revertsAt !== "none"
-            ? <p className="muted" style={{ margin: "4px 0" }}>Cushion: the full exit survives as long as less than <b>{w(r.cushion.passesAt, 3)}</b> {r.target.assetSymbol} leaves before (bisection on the fork: passes at {w(r.cushion.passesAt, 3)}, reverts at {w(r.cushion.revertsAt, 3)}).</p>
-            : r.cushion ? <p className="muted">Cushion: no blockage even if the next largest holder withdraws everything it can.</p> : <p className="muted">Cushion: {NM}.</p>}
-          {mode === "live"
-            ? <><button onClick={runLive} disabled={live === "executing on the fork…"}>Execute again on the fork</button>{live && <div className="mono" style={{ fontSize: 12, marginTop: 6 }}>{live}</div>}</>
-            : <div className="replayproof">
-                <button disabled title="requires the local fork, see README">Execute again on the fork</button>
-                <span className="muted" style={{ fontSize: 12 }}> requires the local fork, see README (“Run it”).</span>
-                <div className="mono" style={{ fontSize: 11.5, marginTop: 6 }}>
-                  {entry?.manifest ? <>manifest sha256 {entry.manifest.sha256} · {entry.manifest.scenarios} scenarios{entry.replay ? <> · replay compared to the wei: <b className={entry.replay.verdict === "REPLAY OK" ? "ok" : "bad"}>{entry.replay.verdict}</b> ({entry.replay.okScenarios}/{entry.replay.scenarios}, {entry.replay.at})</> : " · replay: " + NM}</> : "manifest: " + NM}
-                </div>
-              </div>}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -266,29 +175,7 @@ function Decision({ r }: { r: any }) {
   );
 }
 
-/** Risks the engine cannot model; the break-even for a total loss uses the same decide() and parameters as p*. */
-function NotModeled({ r }: { r: any }) {
-  const nm = r.notModeled;
-  if (!nm) return null;
-  return (
-    <section className="panel">
-      <h2>Not modeled</h2>
-      <p className="sub">These risks are not simulated here: their probability and size cannot be read on-chain.</p>
-      <ul style={{ margin: "0 0 10px", paddingLeft: 18, lineHeight: 1.6 }}>{nm.risks.map((x: string) => <li key={x}>{x}</li>)}</ul>
-      <p style={{ margin: "0 0 6px" }}>If one of them wiped out the whole position (loss = position value, {w(r.target.holderValue)} {r.target.assetSymbol}), leaving now pays off above:</p>
-      <div className="kpis three">
-        {nm.totalLoss.map((x: any) => (
-          <div className="kpi" key={x.horizonDays}><div className="l">total loss within {x.horizonDays} days</div>
-            <div className="v">{x.decision === "NO_ACTION_POSSIBLE" ? "cannot exit" : fmtP(x.breakEven)}</div>
-            <div className="muted" style={{ fontSize: 12 }}>exit cost {x.exitCost.toLocaleString("en-US", { maximumFractionDigits: 2 })} {r.target.assetSymbol}; {pct(x.exitableShare)} can leave now</div></div>
-        ))}
-      </div>
-      <p className="muted" style={{ marginTop: 8 }}>Same function and parameters as p* above (net APY {pct(r.verdictParams.netApy, 2)}, gas and slippage executed on the fork, share that can leave now). <b>The probability is yours, nothing here predicts it.</b></p>
-    </section>
-  );
-}
-
-const TABS = ["Dependencies", "Exits in detail", "Shocks", "Withdraw queue", "Evidence", "Replay"] as const;
+const TABS = ["Dependencies", "Exits in detail", "Decision in detail", "Shocks", "Withdraw queue", "Evidence", "Replay"] as const;
 
 function Tabs({ r, g, entry, mode }: { r: any; g: any; entry?: IndexEntry; mode: Mode }) {
   const [tab, setTab] = useState<(typeof TABS)[number]>("Dependencies");
@@ -308,6 +195,7 @@ function Tabs({ r, g, entry, mode }: { r: any; g: any; entry?: IndexEntry; mode:
         </section>
       )}
       {tab === "Exits in detail" && <Runs r={r} />}
+      {tab === "Decision in detail" && <Decision r={r} />}
       {tab === "Shocks" && <><Shocks r={r} sel={shockSel} setSel={setShockSel} />{shockSel !== null && <p className="muted">The propagation path is highlighted in red in the Dependencies tab.</p>}</>}
       {tab === "Withdraw queue" && <Position r={r} />}
       {tab === "Evidence" && <Evidence r={r} />}

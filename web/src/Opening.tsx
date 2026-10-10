@@ -1,0 +1,207 @@
+/**
+ * Opening screen for someone who has never seen the project. Display only: every number is read from
+ * the exported report (same values as the detailed tabs); nothing is computed here except formatting.
+ */
+import { useEffect, useMemo, useState } from "react";
+import { apiPost, type IndexEntry, type Mode } from "./data";
+import { pct, w } from "./lib";
+
+const fmtP = (x: number | null | undefined) => (x === null || x === undefined ? "—" : x > 1 ? "never" : pct(x, 2));
+const NM = "not measured";
+/** keep a number and its % on the same line */
+const nb = (t: string) => t.replace(/ %/g, "\u00a0%");
+
+/** The three kinds of number, as small pills with a one-line meaning (tap to read it). */
+const TAGS = {
+  fork: ["measured on fork", "Executed on a copy of Ethereum frozen at block 26,157,638: real contracts, real state, simulated transactions."],
+  modeled: ["modeled", "Computed from measured data with stated assumptions; a lower bound, not a measurement."],
+  hyp: ["your assumption", "A choice you make (probability, cost of locked funds). Nothing here predicts it."],
+} as const;
+export function Tag({ k }: { k: keyof typeof TAGS }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className={`tag tag-${k}`}>
+      <button type="button" className="tagbtn" aria-expanded={open} onClick={() => setOpen(!open)} title={TAGS[k][1]}><span className="tagpill">{TAGS[k][0]}</span></button>
+      {open && <span className="tip" role="tooltip">{TAGS[k][1]}</span>}
+    </span>
+  );
+}
+
+export function HowToRead({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="howto" role="dialog" aria-label="How to read this page">
+      <p>1. The big number is what you could actually withdraw from this vault, executed on a frozen copy of Ethereum, depending on who leaves before you.</p>
+      <p>2. “Should I leave?” compares the yield you would give up with what an incident would cost you, and gives the chance of an incident above which leaving pays off.</p>
+      <p>3. The chance itself is yours to judge: nothing here predicts it, and the pills say whether each number is measured, modeled or your assumption.</p>
+      <button className="pill ghostpill" onClick={onClose}>Got it</button>
+    </div>
+  );
+}
+
+type Run = any;
+const who = (r: any, x: Run) => x.others.map((o: any) => {
+  const m = /^holder #(\d+) exits(?: (Gauntlet.*|this vault))?/.exec(o.label);
+  if (o.vault !== r.target.vault) {
+    const name = /^(.*?) #1 exits its own vault/.exec(o.label)?.[1];
+    return name ? `the largest depositor of ${name} (another vault)` : `holder #${m?.[1] ?? "?"} leaving another vault`;
+  }
+  return m ? `holder #${m[1]}` : o.label;
+}).join(", then ");
+
+/** Five scenarios, picked from the executed runs (worst case of each kind). */
+function pickScenarios(r: any) {
+  const runs: Run[] = r.runs;
+  const inV = (x: Run) => x.others.every((o: any) => o.vault === r.target.vault);
+  const worst = (xs: Run[]) => [...xs].sort((a, b) => a.changePct - b.changePct)[0];
+  const out: { key: string; label: string; run: Run }[] = [{ key: "alone", label: "Alone", run: runs[0] }];
+  const one = worst(runs.filter((x) => x.others.length === 1 && inV(x)));
+  const two = worst(runs.filter((x) => x.others.length >= 2 && inV(x)));
+  const other = worst(runs.filter((x) => x.others.length === 1 && !inV(x)));
+  const both = worst(runs.filter((x) => x.others.length >= 2 && !inV(x)));
+  if (one) out.push({ key: "one", label: "One holder before me", run: one });
+  if (two) out.push({ key: "two", label: "Two holders", run: two });
+  if (other) out.push({ key: "other", label: "Another vault", run: other });
+  if (both) out.push({ key: "both", label: "Both vaults", run: both });
+  return out;
+}
+
+export function Hero({ r, entry, mode }: { r: any; entry?: IndexEntry; mode: Mode }) {
+  const scenarios = useMemo(() => pickScenarios(r), [r]);
+  const [sel, setSel] = useState(0);
+  const [details, setDetails] = useState(false);
+  const [live, setLive] = useState<string | null>(null);
+  useEffect(() => { setSel(0); setDetails(false); setLive(null); }, [r]);
+  const s = scenarios[Math.min(sel, scenarios.length - 1)];
+  const run = s.run;
+  const value = BigInt(r.target.holderValue);
+  const share = Number(BigInt(run.holderExecutedExit) * 10000n / (value || 1n)) / 100;
+  const full = run.fullExitOk;
+  const u = r.target.assetSymbol;
+  const sentence = s.key === "alone"
+    ? full ? "Nobody leaves before you: you can take out everything." : `Even alone, the vault does not have enough cash available: you can take out ${share.toFixed(0)} % of your position.`
+    : full ? `If ${who(r, run)} ${run.others.length > 1 ? "leave" : "leaves"} first, you can still take out everything.`
+      : `If ${who(r, run)} ${run.others.length > 1 ? "leave" : "leaves"} first, the vault does not have enough cash available: you can take out only ${share.toFixed(0)} % of your position.`;
+  const runLive = async () => {
+    setLive("executing on the fork…");
+    try {
+      const o: any = await apiPost("/api/run", { vault: r.target.vault, holder: r.target.holder, exits: run.others.map((x: any) => ({ vault: x.vault, owner: x.owner, label: x.label })) });
+      const ex = o.result.results.filter((x: any) => x.type === "exit" && x.result.owner === r.target.holder);
+      const out = ex[0].result.ok ? ex[0].result.assetsOutWei : ex[1]?.result.assetsOutWei ?? "0";
+      setLive(`${w(out, 6)} ${u} in ${o.ms} ms ${out === run.holderExecutedExit ? "— identical to the wei" : "— DIFFERENT from the recorded value"}`);
+    } catch (e) { setLive(String((e as Error).message)); }
+  };
+  return (
+    <section className="hero">
+      <h1 className="serif">How much do you really get back?</h1>
+      <p className="lede">If you try to withdraw from this vault during a stress, here is what the blockchain actually lets you take out.</p>
+      <p className="context">{r.target.name} · the {r.target.holderLabel}'s position of <b>{w(r.target.holderValue)} {u}</b> · block 26,157,638</p>
+      <div className="bignum" aria-live="polite">
+        <div key={s.key + run.holderExecutedExit} className={`amount ${full ? "good" : "bad"}`}>{w(run.holderExecutedExit)} <span className="unit">{u}</span></div>
+        <div className="delta">{s.key === "alone" ? (full ? "100 % of your position" : `${share.toFixed(0)} % of your position`) : `${run.changePct === 0 ? "±0.00" : run.changePct.toFixed(2)} % vs exiting alone`} <Tag k="fork" /></div>
+        <div className="thinbar" role="img" aria-label={`${share.toFixed(0)} % of the position can be withdrawn`}>
+          <div className={`fill ${full ? "good" : "bad"}`} style={{ width: `${Math.min(100, share)}%` }} />
+        </div>
+      </div>
+      <div className="pills" role="tablist" aria-label="who leaves before you">
+        {scenarios.map((x, i) => <button key={x.key} role="tab" aria-selected={i === sel} className={`pill seg ${i === sel ? "active" : ""}`} onClick={() => { setSel(i); setLive(null); }}>{x.label}</button>)}
+      </div>
+      <p className="plain">{sentence} {s.key !== "alone" && <Tag k="hyp" />}</p>
+      <button className="pill ghostpill" aria-expanded={details} onClick={() => setDetails(!details)}>{details ? "Hide details" : "Details"}</button>
+      {details && (
+        <div className="detailbox">
+          <p><b>What happened, technically.</b> {s.key === "alone" ? "The holder redeems all shares" : `Executed first: ${run.others.map((o: any) => o.label).join(" → ")}; then the holder redeems all shares`}. Full exit: {full ? "succeeds" : <>reverts with <span className="mono">{run.fullExitError?.name ?? NM}</span>{run.fullExitError?.selector ? <> (<span className="mono">{run.fullExitError.selector}</span>)</> : null}: the vault does not have enough cash available; the amount shown is the maximum still withdrawable, executed</>}.</p>
+          {r.cushion && (r.cushion.revertsAt !== "none"
+            ? <p><b>How much can leave before you without blocking you:</b> {w(r.cushion.passesAt, 3)} {u} (found by bisection on the fork: your full exit passes at {w(r.cushion.passesAt, 3)}, fails at {w(r.cushion.revertsAt, 3)}).</p>
+            : <p><b>How much can leave before you without blocking you:</b> even the next largest holder withdrawing everything it can does not block you.</p>)}
+          <p className="mono small">{entry?.manifest ? <>manifest sha256 {entry.manifest.sha256} · {entry.manifest.scenarios} scenarios{entry.replay ? ` · replayed to the wei: ${entry.replay.verdict} (${entry.replay.okScenarios}/${entry.replay.scenarios})` : ""}</> : `manifest: ${NM}`}</p>
+          {mode === "live"
+            ? <><button className="pill primary" onClick={runLive} disabled={live === "executing on the fork…"}>Execute this again on the fork</button>{live && <p className="mono small">{live}</p>}</>
+            : <p className="small muted"><button className="pill ghostpill" disabled>Execute this again on the fork</button> needs the local fork, see README (“Live demo”).</p>}
+        </div>
+      )}
+    </section>
+  );
+}
+
+export function LeaveCard({ r }: { r: any }) {
+  const grid: any[] = r.verdictGrid ?? [];
+  const g = grid.find((x) => x.id === r.bindingIncident);
+  const [hc, setHc] = useState(0.1);
+  const [p, setP] = useState<number | null>(null); // no verdict before the user touches the slider
+  const [calc, setCalc] = useState(false);
+  useEffect(() => { setP(null); setCalc(false); setHc(0.1); }, [r]);
+  const u = r.target.assetSymbol;
+  const n = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 2 });
+  const c10 = g?.cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === 0.1);
+  const c0 = g?.cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === 0);
+  const c = hc === 0.1 ? c10 : c0;
+  // wording only: the dependency sentence is the report's own text
+  const dominant = /Dominant dependency: (.*?)\.?$/.exec(r.headline ?? "")?.[1] ?? null;
+  const reading = !c ? NM : p === null ? "Move the slider to compare your own estimate." : c.decision === "NO_ACTION_POSSIBLE" ? "You cannot leave: less than 1 % of the position can be withdrawn."
+    : c.breakEven === null ? "This incident costs you nothing: staying is cheaper." : p > c.breakEven ? "With your estimate, leaving pays off." : "With your estimate, staying is cheaper.";
+  return (
+    <section className="card">
+      <h2 className="serif">Should I leave?</h2>
+      {g && c10 && c0 ? <>
+        <p className="verdict2">Leaving pays off if you judge this incident more likely than <b>{nb(fmtP(c10.breakEven))}</b> (locked funds cost 10&nbsp;%) or <b>{nb(fmtP(c0.breakEven))}</b> (cost 0&nbsp;%) within 30&nbsp;days.</p>
+        <p className="verdict2sub">Incident: {r.shortIncidents?.[g.id] ?? NM}{dominant ? <> · dominant dependency: {dominant}</> : null}</p>
+      </> : <p className="verdict2">{nb(r.headline ?? NM)}</p>}
+      <p className="honest"><span className="hitem"><Tag k="fork" /> what you can withdraw is measured</span><span className="hitem"><Tag k="modeled" /> the loss in an incident is modeled (lower bound)</span><span className="hitem"><Tag k="hyp" /> the chance of the incident is yours</span></p>
+      {!g ? <p className="muted">No incident could be built for this vault, so there is no threshold to show ({NM}).</p> : <>
+        <div className="twostats">
+          <button className={`stat ${hc === 0.1 ? "chosen" : ""}`} onClick={() => setHc(0.1)} aria-pressed={hc === 0.1}>
+            <span className="statlabel">if being locked in costs you 10 % <Tag k="hyp" /></span>
+            <span className="statnum">{fmtP(c10?.breakEven)}</span>
+            <span className="statsub">chance of the incident within 30 days above which leaving pays off</span>
+          </button>
+          <button className={`stat ${hc === 0 ? "chosen" : ""}`} onClick={() => setHc(0)} aria-pressed={hc === 0}>
+            <span className="statlabel">if being locked in costs you nothing <Tag k="hyp" /></span>
+            <span className="statnum">{fmtP(c0?.breakEven)}</span>
+            <span className="statsub">chance of the incident within 30 days above which leaving pays off</span>
+          </button>
+        </div>
+        <div className="toggle" role="radiogroup" aria-label="cost of locked funds">
+          <span className="muted">locked funds cost</span>
+          {[0.1, 0].map((x) => <button key={x} role="radio" aria-checked={hc === x} className={`pill seg ${hc === x ? "active" : ""}`} onClick={() => setHc(x)}>{x * 100} %</button>)}
+        </div>
+        <label className="slider2">
+          <span>Your estimate of the chance of this incident within 30 days <Tag k="hyp" /></span>
+          <input type="range" min={0} max={0.3} step={0.0025} value={p ?? Math.min(0.3, c?.breakEven ?? 0)} onChange={(e) => setP(Number(e.target.value))} aria-label="your estimate" />
+          <span className="sliderval">{p === null ? "—" : pct(p, 2)}</span>
+        </label>
+        <p className={`reading ${p === null ? "muted" : reading.includes("leaving pays") ? "bad" : "good"}`} aria-live="polite">{reading}</p>
+        <button className="pill primary" aria-expanded={calc} onClick={() => setCalc(!calc)}>{calc ? "Hide the calculation" : "Show how this is calculated"}</button>
+        {calc && c && (
+          <div className="detailbox">
+            <table><tbody>
+              <tr><td>Loss in the incident, modeled <Tag k="modeled" /></td><td className="r">{n(c.valueLoss)} {u}</td></tr>
+              <tr><td>Locked after others run, {n(c.lockedAfterRun)} {u} <Tag k="fork" />, valued at {hc * 100} % <Tag k="hyp" /></td><td className="r">{n(c.lockedPart)} {u}</td></tr>
+              <tr><td><b>Total loss if the incident happens</b></td><td className="r"><b>{n(c.incidentLoss)} {u}</b></td></tr>
+              <tr><td>Cost of leaving: yield given up over 30 days ({pct(r.verdictParams.netApy, 2)} a year) + gas</td><td className="r">{n(c.exitCost)} {u}</td></tr>
+              <tr><td>Share of the position that can leave now <Tag k="fork" /></td><td className="r">{pct(c.exitableShare)}</td></tr>
+              <tr><td><b>Chance above which leaving pays off</b> = cost of leaving ÷ (loss × share that can leave)</td><td className="r"><b>{fmtP(c.breakEven)}</b></td></tr>
+            </tbody></table>
+            {c10 && c10.lockedPart > 0 && <p className="small">At 10 %, {n(c10.lockedPart)} of the {n(c10.incidentLoss)} {u} come from the cost of being locked in; at 0 %, the loss is {n(c0?.incidentLoss ?? 0)} {u}. Other incidents and horizons: see “Decision in detail” below.</p>}
+          </div>
+        )}
+      </>}
+    </section>
+  );
+}
+
+export function NotModeledCard({ r }: { r: any }) {
+  const nm = r.notModeled;
+  if (!nm) return null;
+  return (
+    <details className="card fold">
+      <summary><span className="serif">Not modeled</span> <span className="muted">contract hack, governance attack, oracle exploit</span></summary>
+      <p>These risks cannot be read on-chain, so they are not simulated. If one of them wiped out the whole position ({w(r.target.holderValue)} {r.target.assetSymbol}), leaving now pays off above these chances:</p>
+      <div className="threestats">
+        {nm.totalLoss.map((x: any) => (
+          <div key={x.horizonDays} className="stat"><span className="statlabel">within {x.horizonDays} days</span><span className="statnum">{x.decision === "NO_ACTION_POSSIBLE" ? "—" : fmtP(x.breakEven)}</span></div>
+        ))}
+      </div>
+      <p className="small">Same calculation and inputs as above (yield given up {pct(r.verdictParams.netApy, 2)} a year, gas and slippage executed on the fork). <b>The probability is yours, nothing here predicts it.</b></p>
+    </details>
+  );
+}

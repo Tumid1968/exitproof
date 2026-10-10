@@ -32,7 +32,7 @@ await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-color-sch
 await send("Page.enable");
 await send("Page.navigate", { url });
 await sleep(3500);
-if (click) { await send("Runtime.evaluate", { expression: `document.querySelector(${JSON.stringify(click)})?.click()` }); await sleep(800); }
+for (const sel of click.split("|").filter(Boolean)) { await send("Runtime.evaluate", { expression: `document.querySelector(${JSON.stringify(sel)})?.click()` }); await sleep(700); }
 const scrollW = (await send("Runtime.evaluate", { expression: "document.documentElement.scrollWidth", returnByValue: true })).result.result.value;
 const shot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
 writeFileSync(out, Buffer.from(shot.result.data, "base64"));
