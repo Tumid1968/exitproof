@@ -65,9 +65,11 @@ function pickScenarios(r: any) {
   return out;
 }
 
-export function Hero({ r, entry, mode }: { r: any; entry?: IndexEntry; mode: Mode }) {
+export function ExitPanel({ r, entry, mode, pick }: { r: any; entry?: IndexEntry; mode: Mode; pick: number }) {
   const scenarios = useMemo(() => pickScenarios(r), [r]);
   const [sel, setSel] = useState(0);
+  // "See it in action" (pick > 0): show the depositor of another vault leaving first
+  useEffect(() => { if (pick > 0) { const i = scenarios.findIndex((x) => x.key === "other"); setSel(i >= 0 ? i : Math.min(1, scenarios.length - 1)); } }, [pick]);
   const [details, setDetails] = useState(false);
   const [live, setLive] = useState<string | null>(null);
   useEffect(() => { setSel(0); setDetails(false); setLive(null); }, [r]);
@@ -91,9 +93,8 @@ export function Hero({ r, entry, mode }: { r: any; entry?: IndexEntry; mode: Mod
     } catch (e) { setLive(String((e as Error).message)); }
   };
   return (
-    <section className="hero">
-      <h1 className="serif">How much do you really get back?</h1>
-      <p className="lede">If you try to withdraw from this vault during a stress, here is what the blockchain actually lets you take out.</p>
+    <section className="exitpanel glass sr">
+      <p className="eyebrow">What you really get back</p>
       <p className="context">{r.target.name} · the {r.target.holderLabel}'s position of <b>{w(r.target.holderValue)} {u}</b> · block 26,157,638</p>
       <div className="bignum" aria-live="polite">
         <div key={s.key + run.holderExecutedExit} className={`amount ${full ? "good" : "bad"}`}>{w(run.holderExecutedExit)} <span className="unit">{u}</span></div>
@@ -140,7 +141,7 @@ export function LeaveCard({ r }: { r: any }) {
   const reading = !c ? NM : p === null ? "Move the slider to compare your own estimate." : c.decision === "NO_ACTION_POSSIBLE" ? "You cannot leave: less than 1 % of the position can be withdrawn."
     : c.breakEven === null ? "This incident costs you nothing: staying is cheaper." : p > c.breakEven ? "With your estimate, leaving pays off." : "With your estimate, staying is cheaper.";
   return (
-    <section className="card">
+    <section className="card glass sr">
       <h2 className="serif">Should I leave?</h2>
       {g && c10 && c0 ? <>
         <p className="verdict2">Leaving pays off if you judge this incident more likely than <b>{nb(fmtP(c10.breakEven))}</b> (locked funds cost 10&nbsp;%) or <b>{nb(fmtP(c0.breakEven))}</b> (cost 0&nbsp;%) within 30&nbsp;days.</p>
@@ -193,7 +194,7 @@ export function NotModeledCard({ r }: { r: any }) {
   const nm = r.notModeled;
   if (!nm) return null;
   return (
-    <details className="card fold">
+    <details className="card glass fold sr">
       <summary><span className="serif">Not modeled</span> <span className="muted">contract hack, governance attack, oracle exploit</span></summary>
       <p>These risks cannot be read on-chain, so they are not simulated. If one of them wiped out the whole position ({w(r.target.holderValue)} {r.target.assetSymbol}), leaving now pays off above these chances:</p>
       <div className="threestats">

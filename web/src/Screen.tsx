@@ -6,7 +6,21 @@ import { useEffect, useMemo, useState } from "react";
 import { GraphView } from "./GraphView";
 import { BreakEvenChart, Chip, Evidence, Findings, Position, Runs, Shocks, shockNodes } from "./App";
 import { ModeCtx } from "./mode";
-import { Hero, HowToRead, LeaveCard, NotModeledCard } from "./Opening";
+import { ExitPanel, HowToRead, LeaveCard, NotModeledCard } from "./Opening";
+import { Waves } from "./Waves";
+
+/** Subtle reveal of cards when they enter the viewport (skipped with prefers-reduced-motion). */
+function useScrollReveal() {
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) { document.documentElement.classList.add("no-sr"); return; }
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.12 });
+    const scan = () => document.querySelectorAll(".sr:not(.in)").forEach((el) => io.observe(el));
+    scan();
+    const mo = new MutationObserver(scan);
+    mo.observe(document.body, { childList: true, subtree: true });
+    return () => { io.disconnect(); mo.disconnect(); };
+  }, []);
+}
 import { apiPost, getGraph, getIndex, getReport, liveUsable, readStatus, type IndexEntry, type Mode, type Status } from "./data";
 import { pct, setAssetDecimals } from "./lib";
 
@@ -37,6 +51,12 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
   const [err, setErr] = useState<string | null>(null);
   const [howto, setHowto] = useState(false);
   const [more, setMore] = useState(false);
+  const [pick, setPick] = useState(0);
+  const [solid, setSolid] = useState(false);
+  // header turns opaque once the hero is scrolled past
+  useEffect(() => { const f = () => setSolid(scrollY > innerHeight * 0.75); f(); addEventListener("scroll", f, { passive: true }); return () => removeEventListener("scroll", f); }, []);
+  const toApp = (inAction: boolean) => { document.getElementById("app")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); if (inAction) setPick((x) => x + 1); };
+  useScrollReveal();
   const [name, setName] = useState<string>(() => { try { return localStorage.getItem("ep-name") ?? "Jad"; } catch { return "Jad"; } });
   useEffect(() => { try { localStorage.setItem("ep-name", name); } catch { /* ignore */ } }, [name]);
 
@@ -67,39 +87,68 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
   }, [mode, vault]);
 
   const entry = index.find((x) => x.vault.toLowerCase() === vault.toLowerCase());
+  // hero facts: read from the exported manifests and reports, never typed by hand
+  const facts = {
+    block: report ? Number(report.source.block).toLocaleString("en-US") : "…",
+    replayable: entry?.replay ? (entry.replay.verdict === "REPLAY OK" ? "to the wei" : "replay failed") : "not measured",
+    replay: entry?.replay ? `${entry.replay.okScenarios}/${entry.replay.scenarios} ${entry.replay.verdict === "REPLAY OK" ? "OK" : "FAILED"}` : "not measured",
+    coverage: index.length ? `${index.length} Morpho vaults` : "not measured",
+  };
   return (
     <ModeCtx.Provider value={mode ?? "static"}>
-      <header className="nav">
-        <a className="logo serif" href="#" aria-label="ExitProof home">ExitProof</a>
-        <select value={vault} onChange={(e) => { setVault(e.target.value); location.hash = `vault=${e.target.value}`; }} aria-label="vault">
-          {index.length === 0 && <option value={vault}>{vault}</option>}
-          {index.map((v) => <option key={v.vault} value={v.vault}>{v.name} ({v.asset})</option>)}
-        </select>
+      <Waves />
+      <div className="veil" aria-hidden="true" />
+      <header className={`nav ${solid ? "solid" : ""}`}>
+        <a className="logo" href="#top" onClick={(e) => { e.preventDefault(); scrollTo({ top: 0, behavior: "smooth" }); }}>ExitProof</a>
+        <span className={`modebadge ${mode === "live" ? "live" : ""}`} title={mode === "live" ? "transactions execute on a local fork" : "results replayed from the manifests; no network"}>{mode === "live" ? "live fork" : "replay · offline"}</span>
         <div className="spacer" />
-        <button className="navlink" aria-expanded={howto} onClick={() => setHowto(!howto)}>How to read this page</button>
+        <button className="navlink" aria-expanded={howto} onClick={() => setHowto(!howto)}>How to read</button>
         <a className="navlink" href="#/status">Status</a>
-        <input className="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={24} aria-label="your first name" />
-        <button className="pill ghostpill themebtn" onClick={() => setTheme(theme === "light" ? "dark" : "light")} aria-label="switch light or dark theme">{theme === "light" ? "☾ dark" : "☀ light"}</button>
+        <button className="navlink" onClick={() => setTheme(theme === "light" ? "dark" : "light")} aria-label="switch light or dark theme">{theme === "light" ? "Dark" : "Light"}</button>
+        <button className="pill accentline" onClick={() => toApp(false)}>Open the demo</button>
       </header>
       {howto && <HowToRead onClose={() => setHowto(false)} />}
-      <div className={`modeline ${mode === "live" ? "live" : "static"}`}>
-        {mode === null ? "Detecting the local fork…" : mode === "live"
-          ? <>Live · transactions execute on a local copy of Ethereum frozen at block {BLOCK}; nothing is sent to Ethereum.</>
-          : <>Results executed on a fork of Ethereum frozen at block {BLOCK}, replayed from the manifests · no network in this view.</>}
-        {fallback && <div className="fallback">{fallback}</div>}
-      </div>
-      <main className="page">
+      <section className="hero" id="top">
+        <div className="herobody">
+          <h1>How much do you really get back?</h1>
+          <p className="sub2">Exit liquidity for Morpho vaults, measured on a fork of Ethereum.</p>
+          <button className="pill primary big" onClick={() => toApp(true)}>See it in action</button>
+        </div>
+        <button className="down" onClick={() => toApp(false)} aria-label="scroll to the demo">↓</button>
+        <dl className="facts">
+          <div><dt>Measured on</dt><dd>a fork of Ethereum, block {facts.block}</dd></div>
+          <div><dt>Replayable</dt><dd>{facts.replayable}</dd></div>
+          <div><dt>Replay</dt><dd>{facts.replay}</dd></div>
+          <div><dt>Coverage</dt><dd>{facts.coverage}</dd></div>
+        </dl>
+      </section>
+      <main className="page app" id="app">
+        <div className="controls glass">
+          <label className="ctl"><span>Vault</span>
+            <select value={vault} onChange={(e) => { setVault(e.target.value); location.hash = `vault=${e.target.value}`; }} aria-label="vault">
+              {index.length === 0 && <option value={vault}>{vault}</option>}
+              {index.map((v) => <option key={v.vault} value={v.vault}>{v.name} ({v.asset})</option>)}
+            </select>
+          </label>
+          <label className="ctl"><span>Your first name</span><input className="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={24} /></label>
+          <p className="modeline">
+            {mode === null ? "Detecting the local fork…" : mode === "live"
+              ? <>Live · transactions execute on a local copy of Ethereum frozen at block {BLOCK}; nothing is sent to Ethereum.</>
+              : <>Results executed on a fork of Ethereum frozen at block {BLOCK}, replayed from the manifests · no network in this view.</>}
+            {fallback && <span className="fallback"> {fallback}</span>}
+          </p>
+        </div>
         {err && <section className="card bad">This vault has no exported result ({err}). Pick another vault in the list.</section>}
         {!report && !err && <section className="card">Loading…</section>}
         {report && <>
-          <Hero r={report} entry={entry} mode={mode ?? "static"} />
+          <ExitPanel r={report} entry={entry} mode={mode ?? "static"} pick={pick} />
           <LeaveCard r={report} />
           <NotModeledCard r={report} />
           <div className="reveal">
             <button className="pill ghostpill big" aria-expanded={more} onClick={() => setMore(!more)}>{more ? "Hide the dependencies and the proof" : "See the dependencies and the proof"}</button>
           </div>
           {more && <div className="deep">
-            {mode === "live" && <div className="card"><b>Analyze another vault</b> <Analyze onDone={(v) => { getIndex("live").then(setIndex); setVault(v); location.hash = `vault=${v}`; }} /></div>}
+            {mode === "live" && <div className="card glass"><b>Analyze another vault</b> <Analyze onDone={(v) => { getIndex("live").then(setIndex); setVault(v); location.hash = `vault=${v}`; }} /></div>}
             <Tabs r={report} g={graph} entry={entry} mode={mode ?? "static"} />
           </div>}
         </>}
