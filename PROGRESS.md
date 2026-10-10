@@ -54,3 +54,8 @@
 - Amount + optional € price on the main screen; scaled in static, simulated on the fork in live (/api/size: real deposit, worst case, exit, gas, reset).
 - Verification 0.5 / 100 / 2,079.21 / 2,079.22: not identical to the wei (interest, and a fresh deposit adds cash above 2,079.21), explained in README.
 - Tests: unit 18/18, fork 9/9, e2e 115 (114 passed, 1 opt-in skipped); replay Steakhouse ETH OK after the engine change.
+
+## Your size as an existing depositor (10 Oct, tag pre-shares)
+- Live plays the largest position (no deposit, no credited account); verification identical to the wei for 0.5, 100, 2,079.21, 2,079.22, 5,209.91; live and static give the same word and number at 5,209.91.
+- Decimals message, price hint, "New money adds cash." removed.
+- Tests: unit 19/19, e2e 115 (114 passed, 1 opt-in skipped).

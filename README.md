@@ -14,18 +14,19 @@ One screen, no scrolling on a phone (375×667): pick a pool, enter how much you 
 - one neutral line: "The break-even is 1 in N this month (1 in M if blocked money costs nothing)", which turns into "Stay" or "Leave" once you move the slider (thumb in the middle until then);
 - "Replay" (static: the recorded replay) or "Run the exit" (live, see below), and "Why?".
 
-**Your size, two ways.** *Scaled* (static site, and live before a run): what gets out right away = min(amount, liquidity left in the worst executed case: 2,079.21 WETH for Steakhouse ETH), the rest waits; above the largest measured position the amount is capped ("Above the measured range"). The word and the break-even are recomputed at that size with the same `decide()` and thresholds (gas from the report, cost of blocked money only on the part that waits). *Simulated on the fork* (live, "Run the exit"): a test account really deposits the amount (WETH: `hardhat_setBalance` then a real `WETH.deposit()`; other assets: the token's `balanceOf` storage slot is written, found by probing Solidity and Vyper layouts and checked with `balanceOf`; checked on USDC and USDT), then the worst case is replayed (the others leave first, from both vaults), then the account exits; gas actually used is recorded; the fork is reset to its base state before and after, even on error (two runs give the same result to the wei). If the fork does not answer: "Fork not reachable: scaled from the measured case".
+**Your size, two ways.** *Scaled* (static site, and live before a run): what gets out right away = min(amount, liquidity left in the worst executed case: 2,079.21 WETH for Steakhouse ETH), the rest waits; above the largest measured position the amount is capped ("Above the measured range"), in both modes. The word and the break-even are recomputed at that size with the same `decide()` and thresholds (gas from the report, cost of blocked money only on the part that waits). *Simulated on the fork* (live, "Run the exit"): you play the vault's largest existing position; the worst case is replayed with the same transactions and ranks (timestamps T0 + 12·k) as the reference scenario (the others leave first, from both vaults), then you withdraw exactly your amount from that position, or what is left if that reverts (`withdrawMax`). No account is credited and no cash is added. The gas actually used is recorded; the fork is reset to its base state before and after, even on error (a second run gives the same result to the wei). If the fork does not answer: "Fork not reachable: scaled from the measured case".
 
 Verification on Steakhouse ETH (live, 10 Oct 2026):
 
-| amount | predicted (scaled) | measured on the fork | identical to the wei? |
-|---|---:|---:|---|
-| 0.5 | 0.500000000000000000 | 0.500000013024452097 | no (+0.000000013) |
-| 100 | 100.000000000000000000 | 100.000002536129810994 | no (+0.0000025) |
-| 2,079.21 | 2,079.210000000000000000 | 2,079.210037627559645973 | no (+0.000038) |
-| 2,079.22 | 2,079.210741633111021926 | 2,079.220037627722242574 | no (+0.0093) |
+| amount (WETH) | predicted (scaled) | measured on the fork | gap |
+|---|---:|---:|---:|
+| 0.5 | 0.500000000000000000 | 0.500000000000000000 | 0 |
+| 100 | 100.000000000000000000 | 100.000000000000000000 | 0 |
+| 2,079.21 | 2,079.210000000000000000 | 2,079.210000000000000000 | 0 |
+| 2,079.22 | 2,079.210741633111021926 (0.009258366888978074 waits) | 2,079.210741633111021926 | 0 |
+| 5,209.91 (largest position) | 2,079.210741633111021926 (3,130.70 waits) | 2,079.210741633111021926 | 0 |
 
-Two gaps, both shown, not hidden: (1) interest accrues during the simulation (each transaction is 12 s later), about 2.5 × 10⁻⁸ of the amount; (2) a fresh deposit adds its own cash to the pool, so above 2,079.21 everything still gets out, whereas the scaled case describes money already lent out at the frozen block. The screen says "New money adds cash." when this happens.
+Identical to the wei, with no interest drift: below the liquidity left, the exact withdrawal goes through; above it, the full withdrawal reverts with `NotEnoughLiquidity()` and `withdrawMax` runs at the same rank (same timestamp) as in the reference scenario. At 5,209.91 WETH, live and static both show Hard exit, 2,079.21 out, 3,130.70 waiting (tested).
 
 For Steakhouse ETH: Hard exit, 2,079.21 of 5,209.91 WETH, leave above 1 in 89. Over the 23 precomputed vaults: 11 Easy exit, 3 Tight exit, 9 Hard exit. "Why?" opens four short blocks (if a problem hits, who depends on whom, money stuck for a while, what this tool cannot see), with a "?" on each technical term and a glossary at `#/glossary`. Text budget, tested: 41 words on the main screen (95 before), at most 40 per block, no sentence over 20 words. Everything else (all numbers, the dependencies, the proof) is in "Expert mode", closed by default.
 

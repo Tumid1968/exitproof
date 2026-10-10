@@ -349,6 +349,8 @@ for (const tg of targets) {
           await box.fill(v);
           await page.locator(".figure.invalid", { hasText: "Enter an amount above 0." }).waitFor({ timeout: 3000 });
         }
+        await box.fill("1.1234567890123456789");
+        await page.locator(".figure.invalid", { hasText: "Use at most 18 decimals." }).waitFor({ timeout: 3000 });
         await box.fill("10000");
         await page.locator(".source", { hasText: "Above the measured range: shown for 5,209.91 WETH." }).waitFor({ timeout: 3000 });
         assert.ok(norm(await page.locator(".figure").innerText()).startsWith("If others leave first, 2,079.21 of your 5,209.91 WETH"));
@@ -359,11 +361,13 @@ for (const tg of targets) {
         await waitAnswer(page);
         assert.equal(await page.getByRole("textbox", { name: "Price of 1 WETH in €" }).inputValue(), "", "empty by default");
         assert.equal(await page.locator(".eur").count(), 0);
+        assert.equal(await page.locator(".pricehint").count(), 0, "hint shown when the price field is used");
         await page.getByRole("textbox", { name: "Price of 1 WETH in €" }).fill("2000");
         const r = report(STEAKHOUSE), rf = readJson(`results/refine/${STEAKHOUSE}.json`);
         const sc = sizeCase(r, rf.answer.worstRun.id, BigInt(r.target.holderValue));
         const e = (x: bigint) => (Number(x) / 1e18 * 2000).toLocaleString("en-US", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
         assert.equal(norm(await page.locator(".eur").innerText()), `${e(sc.now)} of ${e(sc.amount)}; ${e(sc.wait)} would wait`);
+        assert.equal(await page.locator(".pricehint").innerText(), "Your own figure, not a market quote");
         assert.deepEqual(requests.filter((u) => !isLocal(u, origin)), []);
       }));
 
@@ -792,7 +796,7 @@ if (!EXTERNAL) {
       assert.deepEqual(errors, []);
     }));
 
-    test("B5. 'Run the exit' at your size: a real deposit on the fork, the worst case replayed, the fork reset (second run identical to the wei)", { skip }, () => withPage("live-run", LIVE_URL, DESKTOP, async ({ page, errors }) => {
+    test("B5. 'Run the exit' at your size: you play the largest position, the worst case replayed, the fork reset (second run identical to the wei)", { skip }, () => withPage("live-run", LIVE_URL, DESKTOP, async ({ page, errors }) => {
       await page.locator(".modebadge", { hasText: "live fork" }).waitFor({ timeout: 10_000 });
       await waitAnswer(page);
       await page.getByRole("textbox", { name: "how much did you put in" }).fill("100");
@@ -806,23 +810,28 @@ if (!EXTERNAL) {
       const a = await runOnce();
       const b = await runOnce();
       metrics.push({ live: "your size 100 WETH", first: a.exitNow, second: b.exitNow, gasExit: a.gasUsed.exit });
-      assert.equal(a.deposited, "100000000000000000000");
+      assert.equal(a.exitNow, "100000000000000000000", "exactly the amount: withdrawn from the existing position, no interest drift");
       assert.equal(a.exitNow, b.exitNow, "the fork is back to its base state between runs");
       assert.equal(a.gasUsed.exit, b.gasUsed.exit);
       assert.ok(norm(await page.locator(".figure").innerText()).startsWith(`If others leave first, ${fmtUnits(a.exitNow, 18)} of your 100.00 WETH`));
       assert.deepEqual(errors, []);
     }));
 
-    test("B7. live run at the largest position: word budget and 375×667 fit still hold; a fresh deposit adds cash (stated)", { skip }, () => withPage("live-budget", LIVE_URL, { ...MOBILE, viewport: { width: 375, height: 667 } }, async ({ page }) => {
+    test("B7. at the largest position, live and static give the same word and the same number; budget and 375×667 fit hold", { skip }, () => withPage("live-same", LIVE_URL, { ...MOBILE, viewport: { width: 375, height: 667 } }, async ({ page }) => {
       await waitAnswer(page);
+      const read = async () => [await page.locator(".bigword").innerText(), norm(await page.locator(".figure").innerText()), norm(await page.locator(".wait").innerText())];
+      const scaled = await read();
+      assert.equal(await page.locator(".source").first().innerText(), "Scaled from the measured case.");
       const resp = page.waitForResponse((x) => x.url().includes("/api/size"), { timeout: 180_000 });
       await page.getByRole("button", { name: "Run the exit" }).click();
       const j = await (await resp).json();
       await page.locator(".source", { hasText: "Simulated on the fork, just now." }).waitFor({ timeout: 10_000 });
       const r = report(STEAKHOUSE);
-      // the measured case keeps 3,130.70 waiting; a fresh deposit adds its own cash, so it all gets out (shown, not hidden)
-      assert.ok(BigInt(j.exitNow) > BigInt(r.runs.find((x: any) => x.id === "B_both_vaults").holderExecutedExit));
-      assert.equal(await page.locator(".source.gap").innerText(), "New money adds cash.");
+      assert.equal(j.exitNow, r.runs.find((x: any) => x.id === "B_both_vaults").holderExecutedExit, "exactly the measured 2,079.21 (to the wei)");
+      const simulated = await read();
+      assert.deepEqual(simulated, scaled, "same word, same number, same wait line");
+      assert.deepEqual(scaled, ["Hard exit", "If others leave first, 2,079.21 of your 5,209.91 WETH comes out right away (-60.09 %).", "3,130.70 WETH would wait."]);
+      assert.equal(await page.getByText("New money adds cash").count(), 0);
       const words = countWords(await visibleText(page, "header.nav") + " " + await visibleText(page, ".lean"));
       metrics.push({ live: "words after a run at 5,209.91", words });
       assert.ok(words <= 60, `${words} words`);

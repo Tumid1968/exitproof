@@ -8,7 +8,7 @@ import { apiPost, type IndexEntry, type Mode } from "./data";
 import { w } from "./lib";
 import { Kind, Term } from "./Novice";
 import { pickScenarios } from "./Opening";
-import { parseAmount, sizeCase, type LiveMeasure } from "../../src/verdict/size";
+import { amountError, parseAmount, sizeCase, type LiveMeasure } from "../../src/verdict/size";
 
 const oneIn = (p: number | null | undefined) => (p === null || p === undefined ? "—" : p > 1 ? "never" : `1 in ${Math.max(1, Math.round(1 / p))}`);
 const n0 = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 0 });
@@ -37,12 +37,13 @@ export function MainScreen({ r, refine, entry, mode, select, fallback, why, setW
   // the default text stands for the exact largest position (so its numbers are the report's)
   const typed = amountText === defaultText ? pos : parseAmount(amountText, dec);
   const valid = typed !== null && typed > 0n;
+  const amountMsg = amountText === defaultText ? null : amountError(amountText, dec);
+  const [priceFocus, setPriceFocus] = useState(false);
   const liveNow = live && valid && live.amount === typed ? live.m : undefined;
   const sc = valid ? sizeCase(r, worstId, typed!, liveNow) : null;
   const price = priceText.trim() === "" ? null : Number(priceText.replace(",", "."));
   const eur = (x: bigint) => price !== null && Number.isFinite(price) && price > 0 ? (Number(x) / 10 ** dec * price).toLocaleString("en-US", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }) : null;
   const be = sc?.breakEven10 ?? null, be0 = sc?.breakEven0 ?? null;
-  const scaled = sc ? sizeCase(r, worstId, typed!) : null; // what the measured case says at this size
   const run = async () => {
     if (mode !== "live") {
       setNote(entry?.replay ? `Recorded replay: ${entry.replay.okScenarios}/${entry.replay.scenarios} runs identical to the wei.` : "No recorded replay for this pool.");
@@ -53,11 +54,11 @@ export function MainScreen({ r, refine, entry, mode, select, fallback, why, setW
     try {
       const o: any = await apiPost("/api/size", { vault: r.target.vault, amount: typed!.toString() });
       setLive({ amount: typed!, m: { exitNow: BigInt(o.exitNow), gasCostOut: BigInt(o.gasCostOut), gasCostReentry: BigInt(o.gasCostReentry) } });
-      setNote(o.capped ? `The pool takes at most ${w(o.maxDeposit)} ${u} now: shown for that.` : null);
+      setNote(null);
     } catch (e) {
       const m = String((e as Error).message);
       setLive(null);
-      setNote(/not available for this asset|refused|no new deposit/.test(m) ? m : "Fork not reachable: scaled from the measured case.");
+      setNote(/^(Pick a pool|Enter an amount|No result)/.test(m) ? m : "Fork not reachable: scaled from the measured case.");
     }
     setBusy(false);
   };
@@ -71,17 +72,19 @@ export function MainScreen({ r, refine, entry, mode, select, fallback, why, setW
           <label className="amt"><span>How much did you put in?</span>
             <span className="amtfield"><input inputMode="decimal" value={amountText} onChange={(e) => { setAmountText(e.target.value); setNote(null); }} aria-label="how much did you put in" /><span className="unit">{u}</span></span>
           </label>
-          <input className="price" inputMode="decimal" value={priceText} onChange={(e) => setPriceText(e.target.value)} placeholder={`Price of 1 ${u} in €`} aria-label={`Price of 1 ${u} in €`} />
+          <span className="pricefield">
+            <input className="price" inputMode="decimal" value={priceText} onChange={(e) => setPriceText(e.target.value)} onFocus={() => setPriceFocus(true)} onBlur={() => setPriceFocus(false)} placeholder={`Price of 1 ${u} in €`} aria-label={`Price of 1 ${u} in €`} aria-describedby="pricehint" />
+            {(priceFocus || priceText.trim() !== "") && <span className="pricehint" id="pricehint">Your own figure, not a market quote</span>}
+          </span>
         </div>
-        {!sc ? <p className="figure invalid" role="alert">Enter an amount above 0.</p> : <>
+        {!sc ? <p className="figure invalid" role="alert">{amountMsg ?? "Enter an amount above 0."}</p> : <>
           <p className={`bigword w-${sc.level}`}>{sc.word}</p>
           <p className="figure">If others leave first, <b>{w(sc.now)}</b> of your {w(sc.amount)} {u} comes out right away ({sc.changePct === 0 ? "±0.00" : sc.changePct.toFixed(2)} %).</p>
           {eur(sc.amount) && <p className="eur">{eur(sc.now)} of {eur(sc.amount)}{sc.wait > 0n ? `; ${eur(sc.wait)} would wait` : ""}</p>}
           <div className="leanbar" role="img" aria-label={`${Math.round(sc.worstShare * 100)} % comes out right away`}><div className={`fill ${sc.wait === 0n ? "good" : "bad"}`} style={{ width: `${Math.min(100, sc.worstShare * 100)}%` }} /></div>
           {sc.wait > 0n && <p className="wait">{w(sc.wait)} {u} would wait.</p>}
-          <p className="source">{liveNow ? "Simulated on the fork, just now." : sc.capped ? `Above the measured range: shown for ${w(sc.amount)} ${u}.` : "Scaled from the measured case."}</p>
-          {/* only when the measured case had money waiting and the fresh deposit let more out (not mere interest) */}
-          {liveNow && scaled && scaled.wait > 0n && liveNow.exitNow > scaled.now && <p className="source gap">New money adds cash.</p>}
+          <p className="source">{sc.capped ? `Above the measured range: shown for ${w(sc.amount)} ${u}.` : liveNow ? "Simulated on the fork, just now." : "Scaled from the measured case."}</p>
+          {sc.capped && liveNow && <p className="source">Simulated on the fork, just now.</p>}
           {sc.noAction ? <p className="verdictL">Stay: you could not get out now anyway.</p>
             : be === null ? <p className="verdictL">No problem scenario for this pool: no advice.</p>
             : decided ? <p className="verdictL"><b className={p! > be ? "leave" : "stay"}>{p! > be ? "Leave" : "Stay"}</b>: your guess {oneIn(p)} is {p! > be ? "above" : "below"} {oneIn(be)} this month.</p>
