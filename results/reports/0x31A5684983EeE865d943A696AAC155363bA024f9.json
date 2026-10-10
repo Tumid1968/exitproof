@@ -38,7 +38,7 @@
     "publicAllocatorReallocatableIntoExposedMarkets": "1387462382761688865459",
     "nodeCount": 103,
     "edgeCount": 121,
-    "readCount": 1078,
+    "readCount": 620,
     "netApy": 0.013731157108116732,
     "holders": {
       "coverage": 0.999999,
@@ -688,13 +688,13 @@
         "The shocked price is what the oracle returns to Morpho Blue."
       ],
       "dexLimited": {
-        "vaultLoss": "143734306324325744448",
-        "vaultHiddenLoss": "0",
-        "withdrawableAfter": "6402533116062034721455",
-        "holderLoss": "78965493478268101228",
-        "holderHiddenLoss": "0",
-        "liquidated": 64,
-        "unliquidated": 0
+        "vaultLoss": "143383799557873053276",
+        "vaultHiddenLoss": "283721252653161186",
+        "withdrawableAfter": "6402883622828487412627",
+        "holderLoss": "78772930265711485705",
+        "holderHiddenLoss": "155872243022315595",
+        "liquidated": 35,
+        "unliquidated": 29
       }
     },
     {
@@ -730,13 +730,13 @@
         "The shocked price is what the oracle returns to Morpho Blue."
       ],
       "dexLimited": {
-        "vaultLoss": "359205466414566387994",
-        "vaultHiddenLoss": "156672066577376095478",
-        "withdrawableAfter": "6187061955971794077909",
-        "holderLoss": "197342149142283082722",
-        "holderHiddenLoss": "86073306838986570858",
-        "liquidated": 23,
-        "unliquidated": 52
+        "vaultLoss": "357934883529928959381",
+        "vaultHiddenLoss": "157791084442104441768",
+        "withdrawableAfter": "6188332538856431506522",
+        "holderLoss": "196644109773282032949",
+        "holderHiddenLoss": "86688078636749906525",
+        "liquidated": 17,
+        "unliquidated": 58
       }
     },
     {
@@ -2746,14 +2746,14 @@
       "title": "Incident: wstETH/stETH exchange rate -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first",
       "valueSource": "executed on fork (bad debt of the liquidations the AMM depth allows) + analytic unrecognised shortfall of the positions left insolvent",
       "executedFacts": {
-        "holderMaxWithdrawAfterRun": "3628150453416496651876",
-        "liquidatedOnFork": 64,
-        "leftInsolvent": 0
+        "holderMaxWithdrawAfterRun": "3628150453431776400799",
+        "liquidatedOnFork": 35,
+        "leftInsolvent": 29
       },
       "inputs": {
         "positionValue": "3628153740357559249846",
         "exitableNow": "3628153759173335397293",
-        "incidentValueLoss": "78971803313423926829",
+        "incidentValueLoss": "78935147173100217236",
         "incidentLocked": "0"
       }
     }
@@ -2822,18 +2822,18 @@
       "verdict": {
         "decision": "STAY",
         "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 5.19%. Exiting costs 4.09 WETH for an expected avoided loss of 3.95 WETH.",
-        "breakEvenProbability": 0.05185103615224967,
-        "expectedLossStay": 3.948590165671196,
+        "breakEvenProbability": 0.051875114891888396,
+        "expectedLossStay": 3.9467573586550113,
         "expectedLossExit": 4.0947698286126935,
         "exitCost": 4.0947698286126935,
-        "incidentLoss": 78.97180331342392,
+        "incidentLoss": 78.93514717310022,
         "exitableShare": 1,
         "parts": {
           "forgoneYield": 4.094691700376795,
           "gasOut": 0.000039064117949345,
           "gasReentry": 0.000039064117949345,
           "slippage": 0,
-          "valueLoss": 78.97180331342392,
+          "valueLoss": 78.93514717310022,
           "lockedAfterRun": 0
         }
       }
@@ -2877,17 +2877,190 @@
     }
   ],
   "depegCurveCollateral": "wstETH",
+  "evidence": [
+    {
+      "item": "Vault total assets",
+      "value": "6,604.03 WETH",
+      "cls": "measured",
+      "source": "totalAssets() on 0x31A5684983EeE865d943A696AAC155363bA024f9 at block 26157638",
+      "hypotheses": "none"
+    },
+    {
+      "item": "Withdrawable now (vault)",
+      "value": "6,546.27 WETH",
+      "cls": "measured",
+      "source": "Σ over the withdraw queue of min(vault supply, market idle liquidity): MetaMorpho withdrawQueue(i), Morpho Blue market(id) and position(id, vault)",
+      "hypotheses": "stored market totals (interest accrued up to the market's lastUpdate)"
+    },
+    {
+      "item": "Holder position",
+      "value": "3,628.15 WETH",
+      "cls": "measured",
+      "source": "convertToAssets(balanceOf(holder))",
+      "hypotheses": "holder selection: largest holder from Morpho API candidates, balance re-read on-chain"
+    },
+    {
+      "item": "Holder exit alone",
+      "value": "3,628.15 WETH",
+      "cls": "executed",
+      "source": "scenario alone: redeem on the local fork, tx 1 at T0+12 s",
+      "hypotheses": "holder impersonated on the fork"
+    },
+    {
+      "item": "Worst executed run (holder exitable)",
+      "value": "2,218.14 WETH (-38.86 %)",
+      "cls": "executed",
+      "source": "scenario all_first: 6 exits then the holder's",
+      "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
+    },
+    {
+      "item": "Cushion before blockage",
+      "value": "no blockage even at the competitor's full exit",
+      "cls": "executed",
+      "source": "bisection, 2 executions on the fork",
+      "hypotheses": "competitor = next largest holder of the vault"
+    },
+    {
+      "item": "Borrowers identified",
+      "value": "100.00 % / 100.00 % / 100.00 % / 100.00 % / 100.00 % of debt",
+      "cls": "measured",
+      "source": "candidates from Morpho API, each position(id, borrower) re-read on-chain; coverage = Σ borrowShares found / totalBorrowShares",
+      "hypotheses": "none (coverage is measured, not assumed)"
+    },
+    {
+      "item": "Public Allocator backstop (net)",
+      "value": "1,387.46 WETH",
+      "cls": "bounded",
+      "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; not executed before the exit"
+    },
+    {
+      "item": "AMM liquidation capacity, wstETH market #0",
+      "value": "18,638.01 of 25,173.56 wstETH posted",
+      "cls": "bounded",
+      "source": "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry",
+      "hypotheses": "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price"
+    },
+    {
+      "item": "AMM liquidation capacity, WBTC market #1",
+      "value": "12 of 3.08 WBTC posted",
+      "cls": "bounded",
+      "source": "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry",
+      "hypotheses": "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price"
+    },
+    {
+      "item": "AMM liquidation capacity, cbBTC market #2",
+      "value": "1.08 of 1.38 cbBTC posted",
+      "cls": "bounded",
+      "source": "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry",
+      "hypotheses": "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price"
+    },
+    {
+      "item": "AMM liquidation capacity, weETH market #3",
+      "value": "7,869.76 of 4,673.81 weETH posted",
+      "cls": "bounded",
+      "source": "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry",
+      "hypotheses": "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price"
+    },
+    {
+      "item": "Vault loss, wstETH/stETH exchange rate x0.95",
+      "value": "17.93 WETH executed vs 17.94 WETH analytic",
+      "cls": "executed",
+      "source": "scenario feed_shock_5pct: oracle replaced on the fork, 32 liquidate() transactions, bad debt from Morpho Blue's Liquidate events",
+      "hypotheses": "every unhealthy borrower is liquidated by a liquidator with enough loan tokens"
+    },
+    {
+      "item": "Vault loss, wstETH/stETH exchange rate x0.9",
+      "value": "143.73 WETH executed vs 143.73 WETH analytic",
+      "cls": "executed",
+      "source": "scenario feed_shock_10pct: oracle replaced on the fork, 64 liquidate() transactions, bad debt from Morpho Blue's Liquidate events",
+      "hypotheses": "every unhealthy borrower is liquidated by a liquidator with enough loan tokens"
+    },
+    {
+      "item": "Economic shortfall, oracle-blind depeg -10 % (holder share)",
+      "value": "61.74 WETH",
+      "cls": "modeled",
+      "source": "Σ max(0, debt − collateral × market price) over the identified borrowers, pro rata of supply shares",
+      "hypotheses": "depeg persists, underwater borrowers walk away; lower bound for holders who stay (first exiters leave at full value)"
+    },
+    {
+      "item": "Feed freshness, BTC / ETH",
+      "value": "age 6.3 h; max observed interval 24.0 h; trigger move ~2.03 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, BTC / USD",
+      "value": "age 0.4 h; max observed interval 1.0 h; trigger move ~0.50 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, ETH / USD",
+      "value": "age 0.6 h; max observed interval 1.0 h; trigger move ~0.50 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Net APY (yield given up by exiting)",
+      "value": "1.37 %",
+      "cls": "measured",
+      "source": "IRM borrowRateView(params, market) per market × utilization × (1 − market fee), weighted by the vault's supply, minus the vault performance fee",
+      "hypotheses": "rate constant over the horizon (APR compounded continuously)"
+    },
+    {
+      "item": "Gas of the exit",
+      "value": "321415 gas × 0.122 gwei",
+      "cls": "measured",
+      "source": "gasUsed of the exit on the fork × baseFeePerGas of the source block header",
+      "hypotheses": "re-entry assumed to cost the same gas (no deposit executed)"
+    },
+    {
+      "item": "Break-even incident probability",
+      "value": "6.63 % / 5.19 % / 5.19 %",
+      "cls": "modeled",
+      "source": "p* = exit cost / (incident loss × exitable share); src/verdict/verdict.ts",
+      "hypotheses": "horizon 30 d, locked funds cost 10 %, net APY 1.37 %"
+    },
+    {
+      "item": "Incident probability",
+      "value": "5 % (default)",
+      "cls": "hypothesis",
+      "source": "user input",
+      "hypotheses": "never a prediction"
+    }
+  ],
+  "mitigation": {
+    "id": "all_first_then_public_allocator",
+    "baseId": "all_first",
+    "withoutWei": "2218141233178442087691",
+    "withWei": "3604216153558168043908",
+    "fullExitWithPa": false,
+    "reallocations": [
+      {
+        "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+        "moved": "1386074920378927176592",
+        "ok": true,
+        "error": null,
+        "withdrawals": 2,
+        "feeWei": "0"
+      }
+    ]
+  },
   "dex": {
     "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e": {
-      "capacity": "18739010000000000000000",
+      "capacity": "18638012000000000000000",
       "collateralAtRisk": "25173557874035995670589",
       "venues": [
         {
           "id": "univ3:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
           "route": "Uniswap V3 0.01% pool",
           "pool": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
-          "capacity": "1260124000000000000000",
-          "avgPrice": 1.232857216559
+          "capacity": "1245184000000000000000",
+          "avgPrice": 1.243395344808
         },
         {
           "id": "univ3:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
@@ -2900,27 +3073,27 @@
           "id": "curve:0x828b154032950C8ff7CF8085D841723Db2696056",
           "route": "unwrap → Curve pool 0x828b15…",
           "pool": "0x828b154032950C8ff7CF8085D841723Db2696056",
-          "capacity": "9454000000000000000",
-          "avgPrice": 1.23292182376
+          "capacity": "9376000000000000000",
+          "avgPrice": 1.233965108541
         },
         {
           "id": "curve:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
           "route": "unwrap → Curve pool 0xDC2431…",
           "pool": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
-          "capacity": "14066992000000000000000",
-          "avgPrice": 1.232855976765
+          "capacity": "14024704000000000000000",
+          "avgPrice": 1.233392468422
         },
         {
           "id": "curve:0x21E27a5E5513D6e65C4f830167390997aA84843a",
           "route": "unwrap → Curve pool 0x21E27a…",
           "pool": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
-          "capacity": "3402412000000000000000",
-          "avgPrice": 1.232856020194
+          "capacity": "3358720000000000000000",
+          "avgPrice": 1.235610186749
         }
       ]
     },
     "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40": {
-      "capacity": "1200562595",
+      "capacity": "1199962595",
       "collateralAtRisk": "307915277",
       "venues": [
         {
@@ -2962,8 +3135,8 @@
           "id": "curve:0xD51a44d3FaE010294C616388b506AcdA1bfAAE46",
           "route": "Curve pool 0xD51a44…",
           "pool": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46",
-          "capacity": "98200000",
-          "avgPrice": 32.488084982054595
+          "capacity": "97600000",
+          "avgPrice": 32.492638310754685
         },
         {
           "id": "curve:0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
@@ -2982,15 +3155,15 @@
       ]
     },
     "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0": {
-      "capacity": "108200000",
+      "capacity": "107600000",
       "collateralAtRisk": "137973889",
       "venues": [
         {
           "id": "univ3:0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
           "route": "Uniswap V3 0.3% pool",
           "pool": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
-          "capacity": "99400000",
-          "avgPrice": 32.411017536899635
+          "capacity": "98800000",
+          "avgPrice": 32.41480517621515
         },
         {
           "id": "curve:0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
@@ -3002,36 +3175,36 @@
       ]
     },
     "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7": {
-      "capacity": "7909342208729683554274",
+      "capacity": "7869764062976358536993",
       "collateralAtRisk": "4673814929115838327992",
       "venues": [
         {
           "id": "univ3:0x202A6012894Ae5c288eA824cbc8A9bfb26A49b93",
           "route": "Uniswap V3 0.01% pool",
           "pool": "0x202A6012894Ae5c288eA824cbc8A9bfb26A49b93",
-          "capacity": "1698184000000000000000",
-          "avgPrice": 1.087177784185
+          "capacity": "1687552000000000000000",
+          "avgPrice": 1.094027276343
         },
         {
           "id": "univ3:0x7A415B19932c0105c82FDB6b720bb01B0CC2CAe3",
           "route": "Uniswap V3 0.05% pool",
           "pool": "0x7A415B19932c0105c82FDB6b720bb01B0CC2CAe3",
-          "capacity": "4628524208729683554274",
-          "avgPrice": 1.087173646806
+          "capacity": "4613876062976358536993",
+          "avgPrice": 1.090625208535
         },
         {
           "id": "curve:0x13947303F63b363876868D070F14dc865C36463b",
           "route": "Curve pool 0x139473…",
           "pool": "0x13947303F63b363876868D070F14dc865C36463b",
-          "capacity": "3670000000000000000",
-          "avgPrice": 1.087220192281
+          "capacity": "3664000000000000000",
+          "avgPrice": 1.087386478175
         },
         {
           "id": "curve:0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5",
           "route": "Curve pool 0xDB74df…",
           "pool": "0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5",
-          "capacity": "1578964000000000000000",
-          "avgPrice": 1.087174041775
+          "capacity": "1564672000000000000000",
+          "avgPrice": 1.092315288754
         }
       ]
     }

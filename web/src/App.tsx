@@ -62,6 +62,7 @@ export function App() {
         <Runs key={"r" + report.target.vault} r={report} />
         <Shocks key={"s" + report.target.vault} r={report} sel={shockSel} setSel={setShockSel} />
         <VerdictPanel key={"v" + report.target.vault} r={report} />
+        <Evidence r={report} />
         <Proofs key={"p" + report.target.vault} r={report} />
       </main>
     </>
@@ -87,7 +88,7 @@ function BottomLine({ r }: { r: Report }) {
           );
         })}
       </div>
-      <p className="muted" style={{ margin: "8px 0 0", fontSize: 12 }}>Break-even = the incident probability above which exiting now beats staying (defaults: 30 days, locked funds cost 10 %; adjust in section 5). Probabilities are your assumptions, not predictions.</p>
+      <p className="muted" style={{ margin: "8px 0 0", fontSize: 12 }}>Break-even = the incident probability above which exiting now beats staying, computed over a <b>{r.verdictParams.defaults.horizonDays}-day horizon</b> at the vault's <b>net APY of {pct(r.verdictParams.netApy, 2)}</b> (read on-chain), locked funds costing {pct(r.verdictParams.defaults.lockedHaircut, 0)}; adjust in section 5. Probabilities are your assumptions, not predictions.</p>
     </section>
   );
 }
@@ -96,19 +97,33 @@ function Analyze({ onDone }: { onDone: (vault: string) => void }) {
   const [addr, setAddr] = useState("");
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
+  const [err, setErr] = useState(false);
   const go = async () => {
-    if (!/^0x[0-9a-fA-F]{40}$/.test(addr.trim())) { setMsg("enter a vault address (0x…)"); return; }
-    setBusy(true); setMsg("discovering dependencies and executing scenarios on the fork… (1–5 min for a new vault)");
-    try { const o: any = await api("/api/analyze", { vault: addr.trim() }); setMsg(`${o.name}: ${o.nodes} nodes, ${o.reads} reads, ${Math.round(o.ms / 1000)} s`); onDone(o.vault); }
-    catch (e) { setMsg(String((e as Error).message)); }
+    const v = addr.trim();
+    setErr(false);
+    if (!/^0x[0-9a-fA-F]{40}$/.test(v)) { setErr(true); setMsg("Enter a vault address: 0x followed by 40 hex characters."); return; }
+    setBusy(true); setMsg("starting…");
+    try {
+      const r = await fetch("/api/analyze", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ vault: v }) });
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.error ?? r.statusText);
+      // poll the background job
+      for (;;) {
+        await new Promise((res) => setTimeout(res, 2000));
+        const s = await fetch(`/api/analyze?vault=${v}`).then((x) => x.json());
+        if (s.state === "done") { setMsg(`${s.result.name}: ${s.result.nodes} nodes, ${s.result.reads} reads, ${s.result.seconds} s`); onDone(s.vault); break; }
+        if (s.state === "error") throw new Error(s.error.message);
+        setMsg(`${s.stage}: ${s.log[s.log.length - 1] ?? "…"}`);
+      }
+    } catch (e) { setErr(true); setMsg(String((e as Error).message)); }
     setBusy(false);
   };
   return (
     <div className="row" style={{ gap: 6 }}>
-      <input value={addr} onChange={(e) => setAddr(e.target.value)} placeholder="any MetaMorpho V1 vault 0x…" className="mono"
+      <input value={addr} onChange={(e) => setAddr(e.target.value)} onKeyDown={(e) => e.key === "Enter" && !busy && go()} placeholder="any MetaMorpho V1 vault 0x…" className="mono"
         style={{ width: 330, background: "var(--panel2)", color: "var(--text)", border: "1px solid var(--line)", borderRadius: 6, padding: 6 }} />
       <button disabled={busy} onClick={go}>{busy ? "Analyzing…" : "Analyze"}</button>
-      {msg && <span className="status" style={{ maxWidth: 420 }}>{msg}</span>}
+      {msg && <span className={`status ${err ? "bad" : ""}`} style={{ maxWidth: 520 }}>{msg}</span>}
     </div>
   );
 }
@@ -123,7 +138,7 @@ function Position({ r }: { r: Report }) {
         <div className="kpi"><div className="l">Vault total assets <Chip k="onchain" /></div><div className="v">{w(v.totalAssets)}</div></div>
         <div className="kpi"><div className="l">Withdrawable now <Chip k="onchain" /></div><div className="v">{w(v.withdrawableNow, 3)} <small>{pct(v.liquidRatio)}</small></div></div>
         <div className="kpi"><div className="l">Lent to borrowers <Chip k="onchain" /></div><div className="v">{w(v.lentOutNotWithdrawable)}</div></div>
-        <div className="kpi"><div className="l">Holder position <Chip k="onchain" /></div><div className="v">{w(t.holderValue)} <small>{pct(Number(BigInt(t.holderValue) * 10000n / BigInt(v.totalAssets)) / 10000)} of vault</small></div></div>
+        <div className="kpi"><div className="l">Holder position <Chip k="onchain" /></div><div className="v">{w(t.holderValue)} <small>{BigInt(v.totalAssets) > 0n ? pct(Number(BigInt(t.holderValue) * 10000n / BigInt(v.totalAssets)) / 10000) : "—"} of vault</small></div></div>
         <div className="kpi"><div className="l">Holder exits alone <Chip k="fork" /></div><div className="v ok">{w(r.runs[0].holderExecutedExit)}</div></div>
         <div className="kpi"><div className="l">Net supply APY <Chip k="onchain" /></div><div className="v">{pct(v.netApy, 2)}</div></div>
         <div className="kpi"><div className="l">Public Allocator backstop <Chip k="onchain" /></div><div className="v">{w(v.publicAllocatorReallocatableIntoExposedMarkets)} <small>net, up to</small></div></div>
@@ -159,9 +174,15 @@ function Findings({ g }: { g: Graph }) {
   if (vnode) items.push(`Governance: ${gov.map((n) => n.label).join(", ")}; changes to caps, markets and fees wait a ${Number(vnode.data.timelockSeconds) / 86400}-day timelock (guardian can veto).`);
   const feeds = nodes.filter((n) => n.kind === "feed" && typeof n.data.ageSeconds === "number");
   if (feeds.length) {
-    const oldest = feeds.reduce((a, b) => ((a.data.ageSeconds as number) > (b.data.ageSeconds as number) ? a : b));
-    items.push(`Freshness: oldest price feed in the stack is ${oldest.data.description} (last update ${((oldest.data.ageSeconds as number) / 3600).toFixed(1)} h before the block). Morpho oracles do not check staleness: a frozen feed is treated as a valid price.`);
+    const h = (sec: number) => (sec / 3600).toFixed(1) + " h";
+    const late = feeds.filter((f) => f.data.observedUpdates && !f.data.observedUpdates.ageWithinObservedMax);
+    const oldest = feeds.reduce((x, y) => ((x.data.ageSeconds as number) > (y.data.ageSeconds as number) ? x : y));
+    const u = oldest.data.observedUpdates;
+    items.push(late.length
+      ? `Freshness ALERT: ${late.map((f) => `${f.data.description} last updated ${h(f.data.ageSeconds as number)} before the block, longer than any of its last ${f.data.observedUpdates.roundsObserved} update intervals (max ${h(f.data.observedUpdates.maxGapSeconds)})`).join("; ")}. Morpho oracles do not check staleness.`
+      : `Freshness: every Chainlink feed updated within its usual interval. Oldest: ${oldest.data.description}, ${h(oldest.data.ageSeconds as number)} old${u ? `; over its last ${u.roundsObserved} rounds it updated at most every ${h(u.maxGapSeconds)} (heartbeat-like) or on moves of ~${(u.minTriggeredMovePct ?? u.medianMovePct).toFixed(1)} % (observed on-chain; Chainlink does not publish these on-chain)` : ""}. Morpho oracles do not check staleness themselves.`);
   }
+  for (const n of (g.notes ?? []).filter((x: string) => x.includes("price() reverts"))) items.push("Frozen market: " + n);
   const hl = g.holders?.list ?? [];
   if (hl.length) items.push(`Ownership: the largest holder has ${pct(hl[0].shareOfSupply)} of the shares, the top 3 ${pct(hl.slice(0, 3).reduce((s: number, h: any) => s + h.shareOfSupply, 0))} (balances re-read on-chain; ${pct(g.holders.coverage)} of supply identified).`);
   const peerShared = g.peers.length;
@@ -244,6 +265,15 @@ function Runs({ r }: { r: Report }) {
           <b>Cushion before blockage <Chip k="fork" />:</b> the holder's full exit still succeeds if holder #{otherRank} withdraws <b>{w(r.cushion.passesAt, 3)}</b> first, and reverts at <b>{w(r.cushion.revertsAt, 3)}</b> (bisection, {r.cushion.probes} executions, precision 0.001). Below the cushion other exits cost nothing; above it every unit others withdraw is a unit you cannot.
         </p>
       ))}
+      {r.mitigation ? (
+        <div className="note" style={{ borderLeftColor: "var(--ok)", background: "#3fb95010", margin: "8px 0" }}>
+          <b>Mitigation executed <Chip k="fork" />:</b> after the worst run, anyone can call the Morpho Public Allocator to move peer vaults' funds into this vault's markets.
+          {" "}{r.mitigation.reallocations.map((x: any) => `${short(x.vault)}: ${x.ok ? w(x.moved) + " moved" : "reverted " + (x.error ?? "")}`).join("; ")}.
+          {" "}Holder exitable: <b>{w(r.mitigation.withoutWei)}</b> without → <b className="ok">{w(r.mitigation.withWei)}</b> with the reallocation{r.mitigation.fullExitWithPa ? " (full exit succeeds)" : ""}. Fee paid to the Public Allocator included in the transaction.
+        </div>
+      ) : (
+        <p className="muted" style={{ fontSize: 12 }}>Public Allocator mitigation: no peer vault lets anyone move net liquidity into this vault's markets at this block (flow caps at 0, or only between markets this vault already uses).</p>
+      )}
       <h3 style={{ fontSize: 14, margin: "14px 0 6px" }}>Run it live on the fork</h3>
       <div className="row">
         {actors.map(([k, label]) => (
@@ -271,6 +301,7 @@ function LiveResult({ live, alone }: { live: any; alone?: bigint }) {
           <div key={i} className="step"><span className="k">read</span><span className="muted">{a.label}: vault {w(a.m.vaultTotalAssets)} · holder value {w(a.m.holderValue, 4)}</span>
             <span>max withdraw <b>{w(a.m.holderMaxWithdraw, 4)}</b>{alone && a.label.startsWith("before") ? <span className="muted"> ({(Number((BigInt(a.m.holderMaxWithdraw) - alone) * 10000n / alone) / 100).toFixed(1)}%)</span> : null}</span></div>);
         if (a.type === "oraclePrice") return <div key={i} className="step"><span className="k">set</span><span>{a.label} <Chip k="hyp" /></span><span className="mono muted">{a.priceBefore.slice(0, 8)}… → {a.priceAfter.slice(0, 8)}…</span></div>;
+        if (a.type === "publicReallocate") return <div key={i} className="step"><span className="k">tx</span><span>{a.label} ({a.withdrawals.length} source markets)</span><span>{a.ok ? <span className="ok">✓ moved {w(a.moved)}</span> : <span className="bad">✗ {a.error?.name}</span>}</span></div>;
         if (a.type === "liquidateAll") return <div key={i} className="step"><span className="k">{a.liquidated} tx</span><span>{a.label}</span><span>repaid {w(a.repaidAssets)} · bad debt <b className="bad">{w(a.badDebtRealised, 3)}</b></span></div>;
         return null;
       })}
@@ -354,6 +385,16 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
 }
 
 function VerdictPanel({ r }: { r: Report }) {
+  if (!r.incidents?.length) return (
+    <section className="panel">
+      <h2><span className="n">5</span> Decision: stay or exit?</h2>
+      <p className="sub">No incident could be built for this vault: none of the markets it supplies has a collateral, an oracle that answers and identified borrowers, so there is no price shock to propagate. Exit liquidity results above still apply.</p>
+    </section>
+  );
+  return <VerdictBody r={r} />;
+}
+
+function VerdictBody({ r }: { r: Report }) {
   const d = r.verdictParams.defaults;
   const [inc, setInc] = useState(0);
   const [p, setP] = useState<number>(d.probability);
@@ -399,7 +440,10 @@ function VerdictPanel({ r }: { r: Report }) {
         <div className="grid">
           <div className={`verdict ${v.decision}`}>
             <div className="d">{v.decision === "NO_ACTION_POSSIBLE" ? "CANNOT EXIT" : v.decision}</div>
-            <div style={{ margin: "6px 0" }}>Break-even incident probability: <b>{v.breakEvenProbability === null ? "—" : pct(v.breakEvenProbability, 2)}</b> within {h} days</div>
+            <div style={{ margin: "6px 0" }}>Break-even incident probability: <b>{v.breakEvenProbability === null ? "—" : v.breakEvenProbability > 1 ? ">100%" : pct(v.breakEvenProbability, 2)}</b> within {h} days</div>
+            <div className="mono" style={{ fontSize: 12, margin: "4px 0 8px", padding: "6px 8px", background: "#0b0e13", borderRadius: 6 }}>
+              computed with: horizon <b>{h} d</b> · yield given up <b>{pct(r.verdictParams.netApy, 2)}</b> net APY <Chip k="onchain" /> (supply APR of the vault's markets weighted by its supply, minus the {pct(Number(r.vault.vaultPerformanceFee), 0)} performance fee, at the block) · locked funds cost <b>{pct(hc, 0)}</b> <Chip k="hyp" /> · exitable now {pct(v.exitableShare)} <Chip k="fork" />
+            </div>
             <div>{v.sentence}</div>
             <div className="muted" style={{ marginTop: 6, fontSize: 12 }}>Expected loss: stay {f(v.expectedLossStay)} vs exit {f(v.expectedLossExit)} {r.target.assetSymbol}</div>
           </div>
@@ -437,6 +481,27 @@ function BreakEvenChart({ curve, inc, coll }: { curve: any[]; coll: string | nul
   );
 }
 
+const CLS: Record<string, [string, string]> = {
+  measured: ["onchain", "measured on-chain"], executed: ["fork", "executed on fork"], bounded: ["bounded", "bounded"],
+  modeled: ["modeled", "modeled"], hypothesis: ["hyp", "hypothesis"],
+};
+
+function Evidence({ r }: { r: Report }) {
+  if (!r.evidence) return null;
+  return (
+    <section className="panel">
+      <h2><span className="n">6</span> Evidence ledger: measured, executed, bounded, modeled</h2>
+      <p className="sub">Every headline number, how it was obtained and what it assumes. <b>Measured</b> = read on-chain at the block. <b>Executed</b> = real contract calls on the local fork. <b>Bounded</b> = a measured upper or lower bound. <b>Modeled</b> = computed from measured inputs with the stated hypotheses. <b>Hypothesis</b> = your input.</p>
+      <table>
+        <thead><tr><th>Item</th><th>Value</th><th>Class</th><th>Source</th><th>Hypotheses</th></tr></thead>
+        <tbody>{r.evidence.map((e: any, i: number) => (
+          <tr key={i}><td>{e.item}</td><td className="mono">{e.value}</td><td><span className={`chip ${CLS[e.cls][0]}`}>{CLS[e.cls][1]}</span></td><td className="muted" style={{ fontSize: 12 }}>{e.source}</td><td className="muted" style={{ fontSize: 12 }}>{e.hypotheses}</td></tr>
+        ))}</tbody>
+      </table>
+    </section>
+  );
+}
+
 function Proofs({ r }: { r: Report }) {
   const [m, setM] = useState<any>(null);
   const [last, setLast] = useState<any>(null);
@@ -450,7 +515,7 @@ function Proofs({ r }: { r: Report }) {
   };
   return (
     <section className="panel">
-      <h2><span className="n">6</span> Proof: replayable to the wei, offline <Chip k="fork" /></h2>
+      <h2><span className="n">7</span> Proof: replayable to the wei, offline <Chip k="fork" /></h2>
       <p className="sub">Every scenario above is recorded in a manifest (inputs, timestamps T0+12·k, expected amounts, statuses and decoded errors). Replay re-executes them on a fresh fork and compares to the wei; transaction hashes are not compared. Works without Internet once the proxy cache is warm.</p>
       {m && <div className="kv mono" style={{ marginBottom: 10 }}>
         <div className="k">manifest sha256</div><div>{m.sha256}</div>

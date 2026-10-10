@@ -53,9 +53,11 @@ export function decide(i: VerdictInputs, unit = "WETH"): Verdict {
   const pct = (x: number) => (x * 100).toLocaleString("en-US", { maximumSignificantDigits: 3 }) + "%";
   let decision: Verdict["decision"];
   let sentence: string;
-  if (W === 0) {
+  if (W === 0 || share < 0.01) {
     decision = "NO_ACTION_POSSIBLE";
-    sentence = `Nothing can be withdrawn now: exit is not an option at this block.`;
+    sentence = W === 0
+      ? `Nothing can be withdrawn now: exit is not an option at this block.`
+      : `Only ${pct(share)} of the position can be withdrawn now (${f(W)} ${unit}): exiting is practically impossible at this block, the position rides the incident either way.`;
   } else if (pStar === null) {
     decision = "STAY";
     sentence = `This incident causes no loss to the position under these assumptions: exiting only costs ${f(exitCost)} ${unit}.`;

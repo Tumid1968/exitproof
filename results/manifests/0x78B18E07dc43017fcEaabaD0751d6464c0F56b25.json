@@ -1,0 +1,3611 @@
+{
+  "exitproof_manifest": "0.2",
+  "created_at": "2026-10-10T11:01:50.548Z",
+  "tooling": {
+    "node": "v24.14.1",
+    "hardhat": "3.19.0",
+    "viem": "2.57.4"
+  },
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "rpc": "archive RPC via local proxy 127.0.0.1:8600 (upstream URL not recorded)"
+  },
+  "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+  "convention": "transaction k (1-based) of a scenario is mined at timestamp 1791582443 + 12*k; every scenario starts from the same snapshot of the source block",
+  "assumptions": [
+    "Local fork: no transaction is sent to Ethereum",
+    "Impersonated actors: scenario hypothesis, not their signature or intention",
+    "Oracle overrides (hardhat_setCode with a constant price) and liquidator funding (hardhat_setStorageAt / wrapped ETH) are shock hypotheses"
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "id": "alone",
+        "title": "Holder exits alone",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "alone",
+        "title": "Holder exits alone",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 2,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 1,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582455",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "649107817739602446746"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 2,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582467",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "620812293091871250929",
+              "assetsRequested": "649107817739602446746",
+              "ok": true,
+              "assetsOutWei": "649107817739602446746",
+              "error": null,
+              "gasUsed": "463455",
+              "ownerMaxWithdrawBeforeWei": "649107817739602446746"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 2,
+              "vaultTotalAssets": "1398532843130110558130",
+              "vaultTotalSupply": "1337568825362996697309",
+              "holderShares": "1335352988960990696455",
+              "holderValue": "1396216012829907018890",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1396216012829907018890",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1048132905401127518966",
+                  "totalBorrowAssets": "1048132905401127518966",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1048132905401127517912"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "350380787480654658210",
+                  "totalBorrowAssets": "350380787480654658210",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "350379635326548704152"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438451931888",
+                  "totalBorrowAssets": "20312438451931888",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402434336066"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "h2_first",
+        "title": "Holder #2 exits first",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "h2_first",
+        "title": "Holder #2 exits first",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 3,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "result": {
+              "k": 1,
+              "label": "holder #2 exits",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582455",
+              "call": "redeem(all shares)",
+              "sharesIn": "1070284817573038177",
+              "ok": true,
+              "assetsOutWei": "1119066444984321649",
+              "error": null,
+              "gasUsed": "299203",
+              "ownerMaxWithdrawBeforeWei": "1119066386252163804"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 1,
+              "vaultTotalAssets": "2046521481367604233333",
+              "vaultTotalSupply": "1957310828290913101192",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323723224040185182",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323723224040185182",
+              "holderMaxWithdraw": "647988751294618125097",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "517611972409065274559",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "517611972409065274559",
+                  "vaultSupplyAssets": "517611972409065274559"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 2,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582467",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "647988751294618125097"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 3,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582479",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "619741975806700841104",
+              "assetsRequested": "647988751294618125097",
+              "ok": true,
+              "assetsOutWei": "647988751294618125097",
+              "error": null,
+              "gasUsed": "463455",
+              "ownerMaxWithdrawBeforeWei": "647988751294618125097"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 3,
+              "vaultTotalAssets": "1398532956187543013914",
+              "vaultTotalSupply": "1337568863297106926499",
+              "holderShares": "1336423306246161106280",
+              "holderValue": "1397335186612530952548",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1397335186612530952548",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1048133013547358662298",
+                  "totalBorrowAssets": "1048133013547358662298",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1048133013547358661244"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "350380792391863163123",
+                  "totalBorrowAssets": "350380792391863163123",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "350379640237742668446"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438459281256",
+                  "totalBorrowAssets": "20312438459281256",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402441684224"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "h3_first",
+        "title": "Holder #3 exits first",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "exit",
+            "label": "holder #3 exits",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xdf826ff6518e609E4cEE86299d40611C148099d5",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "h3_first",
+        "title": "Holder #3 exits first",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 3,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #3 exits",
+            "result": {
+              "k": 1,
+              "label": "holder #3 exits",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xdf826ff6518e609E4cEE86299d40611C148099d5",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582455",
+              "call": "redeem(all shares)",
+              "sharesIn": "1000000000000000",
+              "ok": true,
+              "assetsOutWei": "1045578173781722",
+              "error": null,
+              "gasUsed": "282079",
+              "ownerMaxWithdrawBeforeWei": "1045578118906462"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 1,
+              "vaultTotalAssets": "2047639502234414773260",
+              "vaultTotalSupply": "1958380113108486139369",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323723224040185182",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323723224040185182",
+              "holderMaxWithdraw": "649106772161428665024",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518729993275875814486",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518729993275875814486",
+                  "vaultSupplyAssets": "518729993275875814486"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 2,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582467",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "649106772161428665024"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 3,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582479",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "620811260547617494821",
+              "assetsRequested": "649106772161428665024",
+              "ok": true,
+              "assetsOutWei": "649106772161428665024",
+              "error": null,
+              "gasUsed": "463455",
+              "ownerMaxWithdrawBeforeWei": "649106772161428665024"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 3,
+              "vaultTotalAssets": "1398532956187543013914",
+              "vaultTotalSupply": "1337568863373763311579",
+              "holderShares": "1335354021505244452563",
+              "holderValue": "1396217165628502418325",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1396217165628502418325",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1048133013547358662298",
+                  "totalBorrowAssets": "1048133013547358662298",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1048133013547358661244"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "350380792391863163123",
+                  "totalBorrowAssets": "350380792391863163123",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "350379640237742668446"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438459281256",
+                  "totalBorrowAssets": "20312438459281256",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402441684224"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "h4_first",
+        "title": "Holder #4 exits first",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "exit",
+            "label": "holder #4 exits",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0x40881e3E143C5cEf2626559bc76b6AABE912Dd48",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "h4_first",
+        "title": "Holder #4 exits first",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 3,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #4 exits",
+            "result": {
+              "k": 1,
+              "label": "holder #4 exits",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0x40881e3E143C5cEf2626559bc76b6AABE912Dd48",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582455",
+              "call": "redeem(all shares)",
+              "sharesIn": "164206191574309",
+              "ok": true,
+              "assetsOutWei": "171690409909917",
+              "error": null,
+              "gasUsed": "299179",
+              "ownerMaxWithdrawBeforeWei": "171690400899060"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 1,
+              "vaultTotalAssets": "2047640376122178645065",
+              "vaultTotalSupply": "1958380948902294565060",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323723224040185182",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323723224040185182",
+              "holderMaxWithdraw": "649107646049192536829",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518730867163639686291",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518730867163639686291",
+                  "vaultSupplyAssets": "518730867163639686291"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 2,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582467",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "649107646049192536829"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 3,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582479",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "620812096341366035698",
+              "assetsRequested": "649107646049192536829",
+              "ok": true,
+              "assetsOutWei": "649107646049192536829",
+              "error": null,
+              "gasUsed": "463455",
+              "ownerMaxWithdrawBeforeWei": "649107646049192536829"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 3,
+              "vaultTotalAssets": "1398532956187543013914",
+              "vaultTotalSupply": "1337568863373823196394",
+              "holderShares": "1335353185711495911686",
+              "holderValue": "1396216291740646974528",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1396216291740646974528",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1048133013547358662298",
+                  "totalBorrowAssets": "1048133013547358662298",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1048133013547358661244"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "350380792391863163123",
+                  "totalBorrowAssets": "350380792391863163123",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "350379640237742668446"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438459281256",
+                  "totalBorrowAssets": "20312438459281256",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402441684224"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "top_holders_first",
+        "title": "Holders #2, #3, #4 exit first",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #3 exits",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xdf826ff6518e609E4cEE86299d40611C148099d5",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #4 exits",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0x40881e3E143C5cEf2626559bc76b6AABE912Dd48",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "top_holders_first",
+        "title": "Holders #2, #3, #4 exit first",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 5,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "result": {
+              "k": 1,
+              "label": "holder #2 exits",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582455",
+              "call": "redeem(all shares)",
+              "sharesIn": "1070284817573038177",
+              "ok": true,
+              "assetsOutWei": "1119066444984321649",
+              "error": null,
+              "gasUsed": "299203",
+              "ownerMaxWithdrawBeforeWei": "1119066386252163804"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #3 exits",
+            "result": {
+              "k": 2,
+              "label": "holder #3 exits",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xdf826ff6518e609E4cEE86299d40611C148099d5",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582467",
+              "call": "redeem(all shares)",
+              "sharesIn": "1000000000000000",
+              "ok": true,
+              "assetsOutWei": "1045578228655106",
+              "error": null,
+              "gasUsed": "282079",
+              "ownerMaxWithdrawBeforeWei": "1045578173781722"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #4 exits",
+            "result": {
+              "k": 3,
+              "label": "holder #4 exits",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0x40881e3E143C5cEf2626559bc76b6AABE912Dd48",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582479",
+              "call": "redeem(all shares)",
+              "sharesIn": "164206191574309",
+              "ok": true,
+              "assetsOutWei": "171690427931045",
+              "error": null,
+              "gasUsed": "299179",
+              "ownerMaxWithdrawBeforeWei": "171690418920467"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 3,
+              "vaultTotalAssets": "2046520490213504552860",
+              "vaultTotalSupply": "1957309674897616477032",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323937907203622595",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323937907203622595",
+              "holderMaxWithdraw": "647987534025961538946",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "517610755140408688408",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "517610755140408688408",
+                  "vaultSupplyAssets": "517610755140408688408"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 4,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582491",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "647987534025961538946"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 5,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582503",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "619740746550254662697",
+              "assetsRequested": "647987534025961538946",
+              "ok": true,
+              "assetsOutWei": "647987534025961538946",
+              "error": null,
+              "gasUsed": "463455",
+              "ownerMaxWithdrawBeforeWei": "647987534025961538946"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 5,
+              "vaultTotalAssets": "1398533182303744808423",
+              "vaultTotalSupply": "1337568939160334005063",
+              "holderShares": "1336424535502607284687",
+              "holderValue": "1397336618566039214208",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1397336618566039214208",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1048133229841157566126",
+                  "totalBorrowAssets": "1048133229841157566126",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1048133229841157565072"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "350380802214280380203",
+                  "totalBorrowAssets": "350380802214280380203",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "350379650060130804289"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438474038523",
+                  "totalBorrowAssets": "20312438474038523",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402456439062"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "feed_shock_5pct",
+        "title": "rswETH/ETH exchange rate feed -5% (oracle sees it), all unhealthy borrowers liquidated",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+          "Every unhealthy borrower is liquidated by a liquidator with enough loan tokens (impersonated)."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "oraclePrice",
+            "label": "oracle 0x56e2d095… price x0.95",
+            "oracle": "0x56e2d0957d2376dF4A0519b91D1Fa19D2d63bd9b",
+            "num": "950000",
+            "den": "1000000"
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidations in rswETH/msETH LLTV 94.5% (queue #2)",
+            "marketId": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+            "borrowers": [
+              "0x77611E3bA4cF2E1B2568CB7028Ab5CE4b813A4E0",
+              "0x3C7902C1C927CeadB56A8d3fb568D77F1e12EdB8",
+              "0x148AE4534dcafdDeeb0c3B4698019A6D50cfd71e",
+              "0x7F8d93ff6Ff839D610EAd53bD0475B50F35Ad9F0",
+              "0xB650306A3513B8862c5eb3f6fe38f2044DE938F2",
+              "0xc11c720C554db80A89FfEA960633429be61c6a10",
+              "0x681878dc5aBaa70D182B3E1c4D6A3Fd1e16922c0",
+              "0xA05804cC6A33378128d5f78c7124a727FebE9149",
+              "0xA2a47E6F2D8760BDFa04A2C0c4b529F8B60a9A74",
+              "0xd332a062EbDe0f25286DAc5Ff88435900950A8A2",
+              "0x9c0D1F4a029c46265831D120DeE9CDc72F0aB3C3",
+              "0xf603265f91f58F1EfA4fAd57694Fb3B77b25fC18",
+              "0xb635c102b9f857a2D76dcB9cBf9654a5e3D94857",
+              "0xfa1BF8d7A38AFA17a3b153451e63Ce77F70546b5",
+              "0x45680Ba9907F02853E6AfF502d10b9446052401C",
+              "0x225F99aaAa914D0481Ef3A0beDd8aaBF1b9C4D1d",
+              "0xf1D2D880C5DDe7cc912636C2b4D080b3FE5f7B50",
+              "0xE08D97e151473A848C3d9CA3f323Cb720472D015",
+              "0x00000F91109c4d0007e90000D9facAD5298A0CAc",
+              "0x950fD558f47E234A2fDe23B7d61f7Ccdbcb4A86F",
+              "0x99719e434eC7e5BF587599E4ca55817B3bAceb8A"
+            ]
+          },
+          {
+            "type": "measure",
+            "label": "after shock and liquidations"
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "feed_shock_5pct",
+        "title": "rswETH/ETH exchange rate feed -5% (oracle sees it), all unhealthy borrowers liquidated",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+          "Every unhealthy borrower is liquidated by a liquidator with enough loan tokens (impersonated)."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 12,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "oraclePrice",
+            "label": "oracle 0x56e2d095… price x0.95",
+            "oracle": "0x56e2d0957d2376dF4A0519b91D1Fa19D2d63bd9b",
+            "priceBefore": "1082259986336446667000000000000000000",
+            "priceAfter": "1028146987019624333650000000000000000"
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidations in rswETH/msETH LLTV 94.5% (queue #2)",
+            "marketId": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+            "attempted": 8,
+            "liquidated": 8,
+            "repaidAssets": "350016314395370570195",
+            "badDebtRealised": "61851634504185",
+            "liquidations": [
+              {
+                "borrower": "0x77611E3bA4cF2E1B2568CB7028Ab5CE4b813A4E0",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "160356163536306464702",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x3C7902C1C927CeadB56A8d3fb568D77F1e12EdB8",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "153295142370508864357",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x148AE4534dcafdDeeb0c3B4698019A6D50cfd71e",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "30367037340638448345",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x7F8d93ff6Ff839D610EAd53bD0475B50F35Ad9F0",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "5075655043454024360",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0xB650306A3513B8862c5eb3f6fe38f2044DE938F2",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "803982516246768656",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x681878dc5aBaa70D182B3E1c4D6A3Fd1e16922c0",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "65038102754847840",
+                "badDebtRealised": "61851634504185",
+                "error": null
+              },
+              {
+                "borrower": "0xA05804cC6A33378128d5f78c7124a727FebE9149",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "53295480263853484",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x45680Ba9907F02853E6AfF502d10b9446052401C",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "5197298451",
+                "badDebtRealised": "0",
+                "error": null
+              }
+            ]
+          },
+          {
+            "type": "measure",
+            "label": "after shock and liquidations",
+            "m": {
+              "label": "after shock and liquidations",
+              "afterTx": 10,
+              "vaultTotalAssets": "2047641471118319335622",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045324599884289968077",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045324599884289968077",
+              "holderMaxWithdraw": "999124132134973016941",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "389149082592192929727",
+                  "totalBorrowAssets": "364418151791744534",
+                  "liquidity": "388784664440401185193",
+                  "vaultSupplyAssets": "389147930438249617295"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 10,
+              "vaultTotalAssets": "2047641471118319335622",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045324599884289968077",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045324599884289968077",
+              "holderMaxWithdraw": "999124132134973016941",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "389149082592192929727",
+                  "totalBorrowAssets": "364418151791744534",
+                  "liquidity": "388784664440401185193",
+                  "vaultSupplyAssets": "389147930438249617295"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 11,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582575",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "999124132134973016941"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 12,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582587",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "955570447646485076695",
+              "assetsRequested": "999124132134973016941",
+              "ok": true,
+              "assetsOutWei": "999124132134973016941",
+              "error": null,
+              "gasUsed": "463745",
+              "ownerMaxWithdrawBeforeWei": "999124132134973016941"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 12,
+              "vaultTotalAssets": "1048517555285477555871",
+              "vaultTotalSupply": "1002810719353127950075",
+              "holderShares": "1000594834406376870689",
+              "holderValue": "1046200673123846835884",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1046200673123846835884",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1048133986882559600670",
+                  "totalBorrowAssets": "1048133986882559600670",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1048133986882559599616"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "364418154353343345",
+                  "totalBorrowAssets": "364418154353343345",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "363266000410023329"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438525540865",
+                  "totalBorrowAssets": "20312438525540865",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402507932926"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "feed_shock_10pct",
+        "title": "rswETH/ETH exchange rate feed -10% (oracle sees it), all unhealthy borrowers liquidated",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+          "Every unhealthy borrower is liquidated by a liquidator with enough loan tokens (impersonated)."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "oraclePrice",
+            "label": "oracle 0x56e2d095… price x0.9",
+            "oracle": "0x56e2d0957d2376dF4A0519b91D1Fa19D2d63bd9b",
+            "num": "900000",
+            "den": "1000000"
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidations in rswETH/msETH LLTV 94.5% (queue #2)",
+            "marketId": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+            "borrowers": [
+              "0x77611E3bA4cF2E1B2568CB7028Ab5CE4b813A4E0",
+              "0x3C7902C1C927CeadB56A8d3fb568D77F1e12EdB8",
+              "0x148AE4534dcafdDeeb0c3B4698019A6D50cfd71e",
+              "0x7F8d93ff6Ff839D610EAd53bD0475B50F35Ad9F0",
+              "0xB650306A3513B8862c5eb3f6fe38f2044DE938F2",
+              "0xc11c720C554db80A89FfEA960633429be61c6a10",
+              "0x681878dc5aBaa70D182B3E1c4D6A3Fd1e16922c0",
+              "0xA05804cC6A33378128d5f78c7124a727FebE9149",
+              "0xA2a47E6F2D8760BDFa04A2C0c4b529F8B60a9A74",
+              "0xd332a062EbDe0f25286DAc5Ff88435900950A8A2",
+              "0x9c0D1F4a029c46265831D120DeE9CDc72F0aB3C3",
+              "0xf603265f91f58F1EfA4fAd57694Fb3B77b25fC18",
+              "0xb635c102b9f857a2D76dcB9cBf9654a5e3D94857",
+              "0xfa1BF8d7A38AFA17a3b153451e63Ce77F70546b5",
+              "0x45680Ba9907F02853E6AfF502d10b9446052401C",
+              "0x225F99aaAa914D0481Ef3A0beDd8aaBF1b9C4D1d",
+              "0xf1D2D880C5DDe7cc912636C2b4D080b3FE5f7B50",
+              "0xE08D97e151473A848C3d9CA3f323Cb720472D015",
+              "0x00000F91109c4d0007e90000D9facAD5298A0CAc",
+              "0x950fD558f47E234A2fDe23B7d61f7Ccdbcb4A86F",
+              "0x99719e434eC7e5BF587599E4ca55817B3bAceb8A"
+            ]
+          },
+          {
+            "type": "measure",
+            "label": "after shock and liquidations"
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "feed_shock_10pct",
+        "title": "rswETH/ETH exchange rate feed -10% (oracle sees it), all unhealthy borrowers liquidated",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+          "Every unhealthy borrower is liquidated by a liquidator with enough loan tokens (impersonated)."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 15,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "oraclePrice",
+            "label": "oracle 0x56e2d095… price x0.9",
+            "oracle": "0x56e2d0957d2376dF4A0519b91D1Fa19D2d63bd9b",
+            "priceBefore": "1082259986336446667000000000000000000",
+            "priceAfter": "974033987702802000300000000000000000"
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidations in rswETH/msETH LLTV 94.5% (queue #2)",
+            "marketId": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+            "attempted": 11,
+            "liquidated": 11,
+            "repaidAssets": "333659688176572307683",
+            "badDebtRealised": "16680510699373258273",
+            "liquidations": [
+              {
+                "borrower": "0x77611E3bA4cF2E1B2568CB7028Ab5CE4b813A4E0",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "152696033678518349465",
+                "badDebtRealised": "7660129857788115238",
+                "error": null
+              },
+              {
+                "borrower": "0x3C7902C1C927CeadB56A8d3fb568D77F1e12EdB8",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "145991370095610916934",
+                "badDebtRealised": "7303772292454730311",
+                "error": null
+              },
+              {
+                "borrower": "0x148AE4534dcafdDeeb0c3B4698019A6D50cfd71e",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "28930883603000025483",
+                "badDebtRealised": "1436153742455182434",
+                "error": null
+              },
+              {
+                "borrower": "0x7F8d93ff6Ff839D610EAd53bD0475B50F35Ad9F0",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "4822042189381272888",
+                "badDebtRealised": "253612854920493691",
+                "error": null
+              },
+              {
+                "borrower": "0xB650306A3513B8862c5eb3f6fe38f2044DE938F2",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "786308764474215029",
+                "badDebtRealised": "17673751908224914",
+                "error": null
+              },
+              {
+                "borrower": "0xc11c720C554db80A89FfEA960633429be61c6a10",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "316256539794415676",
+                "badDebtRealised": "3513490946900781",
+                "error": null
+              },
+              {
+                "borrower": "0x681878dc5aBaa70D182B3E1c4D6A3Fd1e16922c0",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "61615044715119006",
+                "badDebtRealised": "3484909913695657",
+                "error": null
+              },
+              {
+                "borrower": "0xA05804cC6A33378128d5f78c7124a727FebE9149",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "51137663498366992",
+                "badDebtRealised": "2157816961019764",
+                "error": null
+              },
+              {
+                "borrower": "0xd332a062EbDe0f25286DAc5Ff88435900950A8A2",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "3164276304381548",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x9c0D1F4a029c46265831D120DeE9CDc72F0aB3C3",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "876316157721826",
+                "badDebtRealised": "11981945119812",
+                "error": null
+              },
+              {
+                "borrower": "0x45680Ba9907F02853E6AfF502d10b9446052401C",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "5117522836",
+                "badDebtRealised": "79775671",
+                "error": null
+              }
+            ]
+          },
+          {
+            "type": "measure",
+            "label": "after shock and liquidations",
+            "m": {
+              "label": "after shock and liquidations",
+              "afterTx": 13,
+              "vaultTotalAssets": "2030961396128364638372",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2029487203646396151638",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2029487203646396151638",
+              "holderMaxWithdraw": "982767505916174754429",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "372468633766503005677",
+                  "totalBorrowAssets": "40595544900082996",
+                  "liquidity": "372428038221602922681",
+                  "vaultSupplyAssets": "372467530998375439546"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 13,
+              "vaultTotalAssets": "2030961396128364638372",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2029487203646396151638",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2029487203646396151638",
+              "holderMaxWithdraw": "982767505916174754429",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "372468633766503005677",
+                  "totalBorrowAssets": "40595544900082996",
+                  "liquidity": "372428038221602922681",
+                  "vaultSupplyAssets": "372467530998375439546"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 14,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582611",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "982767505916174754429"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 15,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582623",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "947261691231717130091",
+              "assetsRequested": "982767505916174754429",
+              "ok": true,
+              "assetsOutWei": "982767505916174754429",
+              "error": null,
+              "gasUsed": "463745",
+              "ownerMaxWithdrawBeforeWei": "982767505916174754429"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 15,
+              "vaultTotalAssets": "1048194106514614216213",
+              "vaultTotalSupply": "1010324533624581204804",
+              "holderShares": "1008903590821144817293",
+              "holderValue": "1046719903105029569850",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1046719903105029569850",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1048134311335027168500",
+                  "totalBorrowAssets": "1048134311335027168500",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1048134311335027167446"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "40595545184639835",
+                  "totalBorrowAssets": "40595545184639835",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "39492777057072861"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438547587474",
+                  "totalBorrowAssets": "20312438547587474",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402529975906"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "incident_feed_shock_plus_run",
+        "title": "Incident: rswETH/ETH exchange rate -10% (oracle sees it), liquidations, then the largest competing holders exit first",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+          "Every unhealthy borrower is liquidated by a liquidator with enough loan tokens (impersonated).",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "oraclePrice",
+            "label": "oracle 0x56e2d095… price x0.9",
+            "oracle": "0x56e2d0957d2376dF4A0519b91D1Fa19D2d63bd9b",
+            "num": "900000",
+            "den": "1000000"
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidations in rswETH/msETH LLTV 94.5% (queue #2)",
+            "marketId": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+            "borrowers": [
+              "0x77611E3bA4cF2E1B2568CB7028Ab5CE4b813A4E0",
+              "0x3C7902C1C927CeadB56A8d3fb568D77F1e12EdB8",
+              "0x148AE4534dcafdDeeb0c3B4698019A6D50cfd71e",
+              "0x7F8d93ff6Ff839D610EAd53bD0475B50F35Ad9F0",
+              "0xB650306A3513B8862c5eb3f6fe38f2044DE938F2",
+              "0xc11c720C554db80A89FfEA960633429be61c6a10",
+              "0x681878dc5aBaa70D182B3E1c4D6A3Fd1e16922c0",
+              "0xA05804cC6A33378128d5f78c7124a727FebE9149",
+              "0xA2a47E6F2D8760BDFa04A2C0c4b529F8B60a9A74",
+              "0xd332a062EbDe0f25286DAc5Ff88435900950A8A2",
+              "0x9c0D1F4a029c46265831D120DeE9CDc72F0aB3C3",
+              "0xf603265f91f58F1EfA4fAd57694Fb3B77b25fC18",
+              "0xb635c102b9f857a2D76dcB9cBf9654a5e3D94857",
+              "0xfa1BF8d7A38AFA17a3b153451e63Ce77F70546b5",
+              "0x45680Ba9907F02853E6AfF502d10b9446052401C",
+              "0x225F99aaAa914D0481Ef3A0beDd8aaBF1b9C4D1d",
+              "0xf1D2D880C5DDe7cc912636C2b4D080b3FE5f7B50",
+              "0xE08D97e151473A848C3d9CA3f323Cb720472D015",
+              "0x00000F91109c4d0007e90000D9facAD5298A0CAc",
+              "0x950fD558f47E234A2fDe23B7d61f7Ccdbcb4A86F",
+              "0x99719e434eC7e5BF587599E4ca55817B3bAceb8A"
+            ]
+          },
+          {
+            "type": "measure",
+            "label": "after shock and liquidations"
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "incident_feed_shock_plus_run",
+        "title": "Incident: rswETH/ETH exchange rate -10% (oracle sees it), liquidations, then the largest competing holders exit first",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+          "Every unhealthy borrower is liquidated by a liquidator with enough loan tokens (impersonated).",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 16,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "oraclePrice",
+            "label": "oracle 0x56e2d095… price x0.9",
+            "oracle": "0x56e2d0957d2376dF4A0519b91D1Fa19D2d63bd9b",
+            "priceBefore": "1082259986336446667000000000000000000",
+            "priceAfter": "974033987702802000300000000000000000"
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidations in rswETH/msETH LLTV 94.5% (queue #2)",
+            "marketId": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+            "attempted": 11,
+            "liquidated": 11,
+            "repaidAssets": "333659688176572307683",
+            "badDebtRealised": "16680510699373258273",
+            "liquidations": [
+              {
+                "borrower": "0x77611E3bA4cF2E1B2568CB7028Ab5CE4b813A4E0",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "152696033678518349465",
+                "badDebtRealised": "7660129857788115238",
+                "error": null
+              },
+              {
+                "borrower": "0x3C7902C1C927CeadB56A8d3fb568D77F1e12EdB8",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "145991370095610916934",
+                "badDebtRealised": "7303772292454730311",
+                "error": null
+              },
+              {
+                "borrower": "0x148AE4534dcafdDeeb0c3B4698019A6D50cfd71e",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "28930883603000025483",
+                "badDebtRealised": "1436153742455182434",
+                "error": null
+              },
+              {
+                "borrower": "0x7F8d93ff6Ff839D610EAd53bD0475B50F35Ad9F0",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "4822042189381272888",
+                "badDebtRealised": "253612854920493691",
+                "error": null
+              },
+              {
+                "borrower": "0xB650306A3513B8862c5eb3f6fe38f2044DE938F2",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "786308764474215029",
+                "badDebtRealised": "17673751908224914",
+                "error": null
+              },
+              {
+                "borrower": "0xc11c720C554db80A89FfEA960633429be61c6a10",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "316256539794415676",
+                "badDebtRealised": "3513490946900781",
+                "error": null
+              },
+              {
+                "borrower": "0x681878dc5aBaa70D182B3E1c4D6A3Fd1e16922c0",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "61615044715119006",
+                "badDebtRealised": "3484909913695657",
+                "error": null
+              },
+              {
+                "borrower": "0xA05804cC6A33378128d5f78c7124a727FebE9149",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "51137663498366992",
+                "badDebtRealised": "2157816961019764",
+                "error": null
+              },
+              {
+                "borrower": "0xd332a062EbDe0f25286DAc5Ff88435900950A8A2",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "3164276304381548",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x9c0D1F4a029c46265831D120DeE9CDc72F0aB3C3",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "876316157721826",
+                "badDebtRealised": "11981945119812",
+                "error": null
+              },
+              {
+                "borrower": "0x45680Ba9907F02853E6AfF502d10b9446052401C",
+                "mode": "seizeAll",
+                "ok": true,
+                "repaidAssets": "5117522836",
+                "badDebtRealised": "79775671",
+                "error": null
+              }
+            ]
+          },
+          {
+            "type": "measure",
+            "label": "after shock and liquidations",
+            "m": {
+              "label": "after shock and liquidations",
+              "afterTx": 13,
+              "vaultTotalAssets": "2030961396128364638372",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2029487203646396151638",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2029487203646396151638",
+              "holderMaxWithdraw": "982767505916174754429",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "372468633766503005677",
+                  "totalBorrowAssets": "40595544900082996",
+                  "liquidity": "372428038221602922681",
+                  "vaultSupplyAssets": "372467530998375439546"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "result": {
+              "k": 14,
+              "label": "holder #2 exits",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582611",
+              "call": "redeem(all shares)",
+              "sharesIn": "1070284817573038177",
+              "ok": true,
+              "assetsOutWei": "1110401800581266590",
+              "error": null,
+              "gasUsed": "299348",
+              "ownerMaxWithdrawBeforeWei": "1110401744397588427"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 14,
+              "vaultTotalAssets": "2029851102478789962274",
+              "vaultTotalSupply": "1956515934844202152089",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2029487306333605048014",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2029487306333605048014",
+              "holderMaxWithdraw": "981657104115593487839",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "517620637053468329618",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "517620637053468329618",
+                  "vaultSupplyAssets": "517620637053468329618"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "372468633766503005677",
+                  "totalBorrowAssets": "40595544900082996",
+                  "liquidity": "372428038221602922681",
+                  "vaultSupplyAssets": "372467530998375439546"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 15,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582623",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "981657104115593487839"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 16,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582635",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "946191358557590952297",
+              "assetsRequested": "981657104115593487839",
+              "ok": true,
+              "assetsOutWei": "981657104115593487839",
+              "error": null,
+              "gasUsed": "463745",
+              "ownerMaxWithdrawBeforeWei": "981657104115593487839"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 16,
+              "vaultTotalAssets": "1048194214666546540821",
+              "vaultTotalSupply": "1010324586711043509292",
+              "holderShares": "1009973923495270995087",
+              "holderValue": "1047830407669365900420",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1047830407669365900420",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1048134419486809812938",
+                  "totalBorrowAssets": "1048134419486809812938",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1048134419486809811884"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "40595545326914196",
+                  "totalBorrowAssets": "40595545326914196",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "39492777199346801"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438554994923",
+                  "totalBorrowAssets": "20312438554994923",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402537382136"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "incident_feed_dexlimited_plus_run",
+        "title": "Incident: rswETH/ETH exchange rate -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+          "Every unhealthy borrower is liquidated by a liquidator with enough loan tokens (impersonated).",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention.",
+          "Only the borrowers whose collateral the measured AMM depth absorbs at a profit are liquidated."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "oraclePrice",
+            "label": "oracle 0x56e2d095… price x0.9",
+            "oracle": "0x56e2d0957d2376dF4A0519b91D1Fa19D2d63bd9b",
+            "num": "900000",
+            "den": "1000000"
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidations in rswETH/msETH LLTV 94.5% (queue #2) (0 absorbable by AMM depth, 11 not)",
+            "marketId": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+            "borrowers": []
+          },
+          {
+            "type": "measure",
+            "label": "after shock and liquidations"
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "incident_feed_dexlimited_plus_run",
+        "title": "Incident: rswETH/ETH exchange rate -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+          "Every unhealthy borrower is liquidated by a liquidator with enough loan tokens (impersonated).",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention.",
+          "Only the borrowers whose collateral the measured AMM depth absorbs at a profit are liquidated."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 5,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "oraclePrice",
+            "label": "oracle 0x56e2d095… price x0.9",
+            "oracle": "0x56e2d0957d2376dF4A0519b91D1Fa19D2d63bd9b",
+            "priceBefore": "1082259986336446667000000000000000000",
+            "priceAfter": "974033987702802000300000000000000000"
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidations in rswETH/msETH LLTV 94.5% (queue #2) (0 absorbable by AMM depth, 11 not)",
+            "marketId": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+            "attempted": 0,
+            "liquidated": 0,
+            "repaidAssets": "0",
+            "badDebtRealised": "0",
+            "liquidations": []
+          },
+          {
+            "type": "measure",
+            "label": "after shock and liquidations",
+            "m": {
+              "label": "after shock and liquidations",
+              "afterTx": 2,
+              "vaultTotalAssets": "2047640660869713004876",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323830569509465636",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323830569509465636",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "389149137525685273208",
+                  "totalBorrowAssets": "350380787480654658210",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "389147985371579319150"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "result": {
+              "k": 3,
+              "label": "holder #2 exits",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582479",
+              "call": "redeem(all shares)",
+              "sharesIn": "1070284817573038177",
+              "ok": true,
+              "assetsOutWei": "1119066562478051551",
+              "error": null,
+              "gasUsed": "299203",
+              "ownerMaxWithdrawBeforeWei": "1119066503716693121"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 3,
+              "vaultTotalAssets": "2046521707420157968684",
+              "vaultTotalSupply": "1957310838986314827260",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323937967958363466",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323937967958363466",
+              "holderMaxWithdraw": "647988751177124395195",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "517611972291571544657",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "517611972291571544657",
+                  "vaultSupplyAssets": "517611972291571544657"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "389149137525685273208",
+                  "totalBorrowAssets": "350380787480654658210",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "389147985371579319150"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 4,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582491",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "647988751177124395195"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 5,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582503",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "619741910593601328818",
+              "assetsRequested": "647988751177124395195",
+              "ok": true,
+              "assetsOutWei": "647988751177124395195",
+              "error": null,
+              "gasUsed": "463455",
+              "ownerMaxWithdrawBeforeWei": "647988751177124395195"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 5,
+              "vaultTotalAssets": "1398533182470217563686",
+              "vaultTotalSupply": "1337568939210992903724",
+              "holderShares": "1336423371459260618566",
+              "holderValue": "1397335401580874796446",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1397335401580874796446",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1048133229841157566126",
+                  "totalBorrowAssets": "1048133229841157566126",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1048133229841157565072"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "350380802380753628343",
+                  "totalBorrowAssets": "350380802380753628343",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "350379650226603559552"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438474038523",
+                  "totalBorrowAssets": "20312438474038523",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402456439062"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "incident_blind_depeg_plus_run",
+        "title": "Incident: ynETHx depegs on the market, oracles unchanged; the largest competing holders exit first",
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention.",
+          "The depeg is off-chain (DEX price); on-chain oracle unchanged, so no position becomes liquidatable."
+        ],
+        "actions": [
+          {
+            "type": "measure",
+            "label": "source state"
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidation sweep in ynETHx market #1 (oracle unchanged)",
+            "marketId": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+            "borrowers": [
+              "0x14bCD9da052Cdc6fE0b9446d5a616D5b7B4d4550",
+              "0xB61e8D2177905Cf18f0eB473aB5019a664fBb49d",
+              "0xF968A5de2019dE1F0A8f53758dD137aE5C9EFbC9",
+              "0x9b1303EBf09BC51b7fac376c9E421E8daAe63B82",
+              "0xEBf1aD18c0D4D1B3fe227F511f746a319a5cBEBA",
+              "0xB6ccAd1aC7Cbd0BA3f29F86ba50242eBD5267DB8",
+              "0xA2A9eB9A28AE1F91C5DDD038d45F51eB84326404",
+              "0x0fE12fFeD85aa2273Fa02b2E39d21540e0302A29",
+              "0x12AAF08f84F848f2043AD0D54493A7712260506b",
+              "0x3fE9962b6D75C3fA4D988426e1BB4f1F454bD404",
+              "0x10920B8c70d40F48798ceAd4e560644a30d2cF37",
+              "0x741BF6d2CcB8802c831f1cc12a30105e3f6e0755",
+              "0x950fD558f47E234A2fDe23B7d61f7Ccdbcb4A86F",
+              "0xE3c6a6bE5e899b02965804bDcFB2aBE3538bD92B",
+              "0x300BB73243Ec00866B370A6248BE18C6fd8D314A",
+              "0x7f8CE3836E8cb322178d593B7Cb8A53e06FeC7b2",
+              "0xCb9dEb72F80cA81c10B8ef5fBe70DC24a075c0cC",
+              "0x4eedfcC7193Af0244511558878235B8CA7dF06bb",
+              "0x5AD1E1ec601d4C9A02d9756BEc1A7e8B2E0bA599",
+              "0x296d86D8da77d0a53bA00921282E37C4df380Ab1",
+              "0x7638033539070cAF5cE84F732eBe35E4f4cce2aB",
+              "0x0000000000be226aFdE21672A5E4AdC45692e69D",
+              "0x37254CBbe14b978b0Ce4fd8c3F39f1D3d19c89D6",
+              "0x00000F91109c4d0007e90000D9facAD5298A0CAc",
+              "0x4748c63D9B66ec947843C4D6dFCac8c3BC77B1fC",
+              "0x09D3e815a6f04b11a64Bc2B60D6C17B613b60fa2",
+              "0xdAFCA7F2cab3Cb6E3f5bA9AaB858244aeE918BF6",
+              "0xB5BE08effb0845a4d1Ff52cc6ccc732C1e0E53d7",
+              "0xAcc7dB9fC45E3a5F35Eb58B5D4bD574A79ae3eC9",
+              "0xada26D5c115CC7712820a16CDD8C1c280D728415",
+              "0xf4f9178A9E12b2E55044f13562a62c535737218e",
+              "0xcaa2778A3fe53FF7105fbF1D66FE3484313Ad266",
+              "0xfc72d44dA5FCC74AB677fac6923721BFAf5B46B6",
+              "0x6A054031f368d4601245182489F5DFCeb146C4d4",
+              "0xe93C027414A23316476c82df86D9faaECD16f4BB",
+              "0x9f2B20A772246960810045905B7daccf960eE288",
+              "0xF88D1C5E6220e5968bc609368873F406ABF3dEFC",
+              "0x00fD2E67B6e6994c5ae9F4f4650aE2E9Ba954809",
+              "0x76C582111C6f4dd54EB952A5a1509c688b2B3eb7",
+              "0x9Bf68491d527155219153b7A57A6cd1069fa4Ab9",
+              "0xE04940F9FfA78E00a678049db0cF2820526DC5cf",
+              "0xC6AFA6fa0D5cf8178D2E3E7a09f6E9C6Cf791217",
+              "0xA353e23493E6b8A5eA2aB34E9cD293fABB118120",
+              "0x53Cf397Ef8773c9559C8b7953E04D92B13E7180D",
+              "0x7cdc2d70D6F84Ab5FCe5A29c7d475c51dCED7278",
+              "0xBbC335eD1DADE1DBA13605C6e3e04cb40f39c487",
+              "0xEE4266b04D9E1E747BfE6D9587A02feC1F5cF3E6"
+            ]
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit"
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "redeemAll"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+            "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+            "action": {
+              "kind": "withdrawMax"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end"
+          }
+        ]
+      },
+      "expected": {
+        "id": "incident_blind_depeg_plus_run",
+        "title": "Incident: ynETHx depegs on the market, oracles unchanged; the largest competing holders exit first",
+        "hypotheses": [
+          "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+          "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention.",
+          "The depeg is off-chain (DEX price); on-chain oracle unchanged, so no position becomes liquidatable."
+        ],
+        "target": {
+          "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+          "holder": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28"
+        },
+        "txCount": 26,
+        "results": [
+          {
+            "type": "measure",
+            "label": "source state",
+            "m": {
+              "label": "source state",
+              "afterTx": 0,
+              "vaultTotalAssets": "2047640434755875326772",
+              "vaultTotalSupply": "1957236780080747525282",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045323615878961351459",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045323615878961351459",
+              "holderMaxWithdraw": "649107817739602446746",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "518731038854049596208",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "518731038854049596208",
+                  "vaultSupplyAssets": "518731038854049596208"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1138827166271776414696",
+                  "totalBorrowAssets": "1047259394765602447410",
+                  "liquidity": "91567771506173967286",
+                  "vaultSupplyAssets": "1138827166271776413643"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "liquidateAll",
+            "label": "liquidation sweep in ynETHx market #1 (oracle unchanged)",
+            "marketId": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+            "attempted": 21,
+            "liquidated": 21,
+            "repaidAssets": "12491066020774540305",
+            "badDebtRealised": "0",
+            "liquidations": [
+              {
+                "borrower": "0x9b1303EBf09BC51b7fac376c9E421E8daAe63B82",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "6028690706209062138",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0xA2A9eB9A28AE1F91C5DDD038d45F51eB84326404",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "1007361932656862988",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x0fE12fFeD85aa2273Fa02b2E39d21540e0302A29",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "777430632038495952",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x12AAF08f84F848f2043AD0D54493A7712260506b",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "767730578187318122",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x10920B8c70d40F48798ceAd4e560644a30d2cF37",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "652795894004080275",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x950fD558f47E234A2fDe23B7d61f7Ccdbcb4A86F",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "553680046010814092",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0xE3c6a6bE5e899b02965804bDcFB2aBE3538bD92B",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "339202379878553774",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x300BB73243Ec00866B370A6248BE18C6fd8D314A",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "315643210636579015",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x7f8CE3836E8cb322178d593B7Cb8A53e06FeC7b2",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "309071693206707452",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0xCb9dEb72F80cA81c10B8ef5fBe70DC24a075c0cC",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "283534561689101792",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x4eedfcC7193Af0244511558878235B8CA7dF06bb",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "253964091784076402",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x5AD1E1ec601d4C9A02d9756BEc1A7e8B2E0bA599",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "190917233456283262",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x296d86D8da77d0a53bA00921282E37C4df380Ab1",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "184013349271130804",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x7638033539070cAF5cE84F732eBe35E4f4cce2aB",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "177541575928135733",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x37254CBbe14b978b0Ce4fd8c3F39f1D3d19c89D6",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "118406637016843029",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x00000F91109c4d0007e90000D9facAD5298A0CAc",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "108756161484813121",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0x4748c63D9B66ec947843C4D6dFCac8c3BC77B1fC",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "101072749120965467",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0xdAFCA7F2cab3Cb6E3f5bA9AaB858244aeE918BF6",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "85059380727695318",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0xB5BE08effb0845a4d1Ff52cc6ccc732C1e0E53d7",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "83025989654419014",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0xAcc7dB9fC45E3a5F35Eb58B5D4bD574A79ae3eC9",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "79432467728621695",
+                "badDebtRealised": "0",
+                "error": null
+              },
+              {
+                "borrower": "0xf4f9178A9E12b2E55044f13562a62c535737218e",
+                "mode": "repayAll",
+                "ok": true,
+                "repaidAssets": "73734750083980860",
+                "badDebtRealised": "0",
+                "error": null
+              }
+            ]
+          },
+          {
+            "type": "exit",
+            "label": "holder #2 exits",
+            "result": {
+              "k": 24,
+              "label": "holder #2 exits",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582731",
+              "call": "redeem(all shares)",
+              "sharesIn": "1070284817573038177",
+              "ok": true,
+              "assetsOutWei": "1119067579930454537",
+              "error": null,
+              "gasUsed": "299203",
+              "ownerMaxWithdrawBeforeWei": "1119067533298157280"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "before the holder's exit",
+            "m": {
+              "label": "before the holder's exit",
+              "afterTx": 24,
+              "vaultTotalAssets": "2046523664951970021605",
+              "vaultTotalSupply": "1957310931604458448480",
+              "holderShares": "1956165282052861947384",
+              "holderValue": "2045325797571153870917",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "2045325797571153870917",
+              "holderMaxWithdraw": "660479816180446532514",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "517611971274119141671",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "517611971274119141671",
+                  "vaultSupplyAssets": "517611971274119141671"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1139702555669210799827",
+                  "totalBorrowAssets": "1035643718142262292236",
+                  "liquidity": "104058837526948507591",
+                  "vaultSupplyAssets": "1139702555669210798773"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "387683592753757411571",
+                  "totalBorrowAssets": "348915242708726796573",
+                  "liquidity": "38768350045030614998",
+                  "vaultSupplyAssets": "387682444938690822144"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "60966690965819003",
+                  "totalBorrowAssets": "20309356617550749",
+                  "liquidity": "40657334348268254",
+                  "vaultSupplyAssets": "60956655455512984"
+                }
+              ]
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder exits everything (redeem all shares)",
+            "result": {
+              "k": 25,
+              "label": "holder exits everything (redeem all shares)",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "redeemAll"
+              },
+              "timestamp": "1791582743",
+              "call": "redeem(all shares)",
+              "sharesIn": "1956165282052861947384",
+              "ok": false,
+              "assetsOutWei": "0",
+              "error": {
+                "selector": "0x4323a555",
+                "name": "NotEnoughLiquidity()",
+                "meaning": "Not enough liquidity in the vault's markets at this instant",
+                "raw": "0x4323a555"
+              },
+              "gasUsed": null,
+              "ownerMaxWithdrawBeforeWei": "660479816180446532514"
+            }
+          },
+          {
+            "type": "exit",
+            "label": "holder withdraws its maximum",
+            "result": {
+              "k": 26,
+              "label": "holder withdraws its maximum",
+              "vault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+              "owner": "0xEb7Cc55424250F1108fcD623b0A551d682D1CF28",
+              "action": {
+                "kind": "withdrawMax"
+              },
+              "timestamp": "1791582755",
+              "call": "withdraw(maxWithdraw)",
+              "sharesIn": "631687909950231998838",
+              "assetsRequested": "660479816180446532514",
+              "ok": true,
+              "assetsOutWei": "660479816180446532514",
+              "error": null,
+              "gasUsed": "463455",
+              "ownerMaxWithdrawBeforeWei": "660479816180446532514"
+            }
+          },
+          {
+            "type": "measure",
+            "label": "end",
+            "m": {
+              "label": "end",
+              "afterTx": 26,
+              "vaultTotalAssets": "1386044028302037601394",
+              "vaultTotalSupply": "1325623030239443776018",
+              "holderShares": "1324477372102629948546",
+              "holderValue": "1384846151844867405513",
+              "vaultLostAssets": "0",
+              "holderEconomicValue": "1384846151844867405513",
+              "holderMaxWithdraw": "0",
+              "markets": [
+                {
+                  "id": "0x2adbada2c9997b34fd547f82f193ee582d17ce4d9347be55f04b561d1f742b81",
+                  "totalSupplyAssets": "0",
+                  "totalBorrowAssets": "0",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "0"
+                },
+                {
+                  "id": "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a",
+                  "totalSupplyAssets": "1035643972704203837270",
+                  "totalBorrowAssets": "1035643972704203837270",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "1035643972704203836216"
+                },
+                {
+                  "id": "0x0d55c325847ed87d53506c2aca7de046cb59d8c22928fd55fb2790c4811d20db",
+                  "totalSupplyAssets": "350380905349677780128",
+                  "totalBorrowAssets": "350380905349677780128",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "350379753195222851176"
+                },
+                {
+                  "id": "0x58b332ca359ff83620416be363c874947c2d1ae7b5913d367ed761d1ad422b19",
+                  "totalSupplyAssets": "20312438628538895",
+                  "totalBorrowAssets": "20312438628538895",
+                  "liquidity": "0",
+                  "vaultSupplyAssets": "20302402610914002"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "cushion": null,
+  "sha256": "3d06662a2751dd4ae41074a16b2f0204b36cc68c300937f794247f43dc74f32d"
+}

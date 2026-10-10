@@ -46,7 +46,7 @@ export async function discoverVenues(r: Reader, collateral: Address, loanToken: 
   // Wrapper (wstETH-like): exact unwrap, then sell the underlying
   const [under, uId] = await r.call<Address>(collateral, wrapperAbi, "stETH");
   if (under && under !== zeroAddress) {
-    const unwrap = async (x: bigint) => (await r.call<bigint>(collateral, wrapperAbi, "getStETHByWstETH", [x]))[0] ?? 0n;
+    const unwrap = async (x: bigint) => (await r.rawCall<bigint>(collateral, wrapperAbi, "getStETHByWstETH", [x])) ?? 0n;
     legs.push({ from: under, to: loanToken, pre: unwrap, preLabel: "unwrap → ", prov: [uId] });
     if (getAddress(loanToken) === getAddress(WETH)) legs.push({ from: under, to: ETH_PLACEHOLDER, pre: unwrap, preLabel: "unwrap → ", prov: [uId] });
   }
@@ -59,7 +59,7 @@ export async function discoverVenues(r: Reader, collateral: Address, loanToken: 
         id: `univ3:${pool}`, kind: "uniswap-v3", pool, route: `${leg.preLabel}Uniswap V3 ${fee / 10000}% pool`, prov: [...leg.prov, pId],
         quote: async (x) => {
           const amt = await leg.pre(x);
-          const [res] = await r.call<readonly [bigint, bigint, number, bigint]>(UNIV3_QUOTER_V2, quoterAbi, "quoteExactInputSingle", [{ tokenIn: leg.from, tokenOut: leg.to, amountIn: amt, fee, sqrtPriceLimitX96: 0n }]);
+          const res = await r.rawCall<readonly [bigint, bigint, number, bigint]>(UNIV3_QUOTER_V2, quoterAbi, "quoteExactInputSingle", [{ tokenIn: leg.from, tokenOut: leg.to, amountIn: amt, fee, sqrtPriceLimitX96: 0n }]);
           return res ? res[0] : null;
         },
       });
@@ -74,9 +74,9 @@ export async function discoverVenues(r: Reader, collateral: Address, loanToken: 
         id: `curve:${pool}`, kind: "curve", pool, route: `${leg.preLabel}Curve pool ${pool.slice(0, 8)}…`, prov: [...leg.prov, cId, iId],
         quote: async (x) => {
           const amt = await leg.pre(x);
-          const [a] = await r.call<bigint>(pool, curve128, "get_dy", [i, j, amt]);
+          const a = await r.rawCall<bigint>(pool, curve128, "get_dy", [i, j, amt]);
           if (a !== undefined) return a;
-          const [b] = await r.call<bigint>(pool, curve256, "get_dy", [i, j, amt]);
+          const b = await r.rawCall<bigint>(pool, curve256, "get_dy", [i, j, amt]);
           return b ?? null;
         },
       });
@@ -101,7 +101,7 @@ export async function discoverVenues(r: Reader, collateral: Address, loanToken: 
           quote: async (x) => {
             const weth = await v.quote(x);
             if (!weth) return null;
-            const [res] = await r.call<readonly [bigint, bigint, number, bigint]>(UNIV3_QUOTER_V2, quoterAbi, "quoteExactInputSingle", [{ tokenIn: WETH, tokenOut: loanToken, amountIn: weth, fee: second.fee, sqrtPriceLimitX96: 0n }]);
+            const res = await r.rawCall<readonly [bigint, bigint, number, bigint]>(UNIV3_QUOTER_V2, quoterAbi, "quoteExactInputSingle", [{ tokenIn: WETH, tokenOut: loanToken, amountIn: weth, fee: second.fee, sqrtPriceLimitX96: 0n }]);
             return res ? res[0] : null;
           },
         });
@@ -132,7 +132,8 @@ export async function venueCapacity(v: Venue, price: bigint, lifWad: bigint, uni
   while (hi < maxUnits && (await ok(hi * 4n))) { lo = hi * 4n; hi = lo; }
   hi = hi * 4n > maxUnits ? maxUnits : hi * 4n;
   if (await ok(hi)) return { capacity: hi, avgPriceAtCapacity: avg(await v.quote(hi), hi), quotes };
-  for (let k = 0; k < 18 && hi - lo > unit / 100n; k++) {
+  // stop at 2 % relative precision (or 0.01 unit): enough for a capacity estimate, ~6-8 quotes instead of ~18
+  for (let k = 0; k < 18 && hi - lo > unit / 100n && (hi - lo) * 50n > hi; k++) {
     const mid = (lo + hi) / 2n;
     if (await ok(mid)) lo = mid; else hi = mid;
   }

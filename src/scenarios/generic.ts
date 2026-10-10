@@ -19,6 +19,8 @@ export type CatalogMeta = {
   crossChecks: { id: string; shock: Shock }[];
   incidents: { blind?: { id: string; collateral: Address; factor: number }; shock?: { id: string; shock: Shock }; dexShock?: { id: string; shock: Shock } };
   cushionOther: Address | null;
+  /** worst run replayed with Public Allocator reallocations before the holder's exit (mitigation) */
+  mitigation?: { baseId: string; id: string };
 };
 
 const exit = (vault: Address, owner: Address, label: string): ScenarioAction => ({ type: "exit", label, vault, owner, action: { kind: "redeemAll" } });
@@ -59,6 +61,17 @@ export function genericCatalog(g: DependencyGraph, holderIn?: Address): { scenar
   if (others.length && peerRank.length)
     scenarios.push(run("all_first", "Everyone above exits first (same vault and peer vaults)", [...others.map(holderExit), ...peerRank.map(peerExit)]));
   const runIds = scenarios.map((s) => s.id);
+  // Mitigation: same worst run, then anyone pulls peers' liquidity into the target's markets through the Public Allocator
+  const paPeers = g.peers.filter((p) => p.publicAllocator.reallocatableIn.some((x) => x.amount > 0n));
+  const worstPre = others.length && peerRank.length ? [...others.map(holderExit), ...peerRank.map(peerExit)] : null;
+  let mitigation: CatalogMeta["mitigation"];
+  if (paPeers.length && worstPre) {
+    scenarios.push(run("all_first_then_public_allocator", "Everyone above exits first, then anyone calls the Public Allocator before the holder exits", [
+      ...worstPre,
+      ...paPeers.map((p): ScenarioAction => ({ type: "publicReallocate", label: `Public Allocator moves ${p.name}'s funds into the target's market`, vault: p.vault, supplyMarketId: p.publicAllocator.reallocatableIn.find((x) => x.amount > 0n)!.id, excludeMarketIds: exposed.map((m) => m.id) })),
+    ]));
+    mitigation = { baseId: "all_first", id: "all_first_then_public_allocator" };
+  }
 
   // Most damaging feed at -10% (analytic) -> executed with liquidations
   const feeds = g.nodes.filter((n) => n.kind === "feed");
@@ -66,7 +79,7 @@ export function genericCatalog(g: DependencyGraph, holderIn?: Address): { scenar
     .map((f) => ({ f, r: propagate(g, { kind: "feed", feed: f.address!, factor: 0.9, label: "" }) }))
     .filter((x) => x.r.markets.some((m) => exposed.some((e) => e.id === m.id)))
     .sort((a, b) => (b.r.vaultLoss > a.r.vaultLoss ? 1 : -1));
-  const meta: CatalogMeta = { target, runIds, crossChecks: [], incidents: {}, cushionOther: others[0]?.address ?? null };
+  const meta: CatalogMeta = { target, runIds, crossChecks: [], incidents: {}, cushionOther: others[0]?.address ?? null, mitigation };
   const shockHyps = [FORK_FACT, "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.", "Every unhealthy borrower is liquidated by a liquidator with enough loan tokens (impersonated)."];
   const worstRun = [...others.slice(0, 1).map(holderExit), ...peerRank.slice(0, 1).map(peerExit)];
   const top = ranked[0];

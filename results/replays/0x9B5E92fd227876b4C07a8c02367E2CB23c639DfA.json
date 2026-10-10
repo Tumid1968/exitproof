@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-10T11:00:36.171Z",
+  "manifest": "results/manifests/0x9B5E92fd227876b4C07a8c02367E2CB23c639DfA.json",
+  "manifestSha256": "4f7b3cf6f053407762343463c85137f16f6f1543358155febb45d56f836e316a",
+  "hashOk": true,
+  "cushionOk": true,
+  "scenarios": [
+    {
+      "id": "alone",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h2_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h3_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h4_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "top_holders_first",
+      "ok": true,
+      "diffs": []
+    }
+  ],
+  "verdict": "REPLAY OK"
+}

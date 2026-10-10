@@ -38,7 +38,7 @@
     "publicAllocatorReallocatableIntoExposedMarkets": "0",
     "nodeCount": 82,
     "edgeCount": 127,
-    "readCount": 1130,
+    "readCount": 814,
     "netApy": 0.015267569628602694,
     "holders": {
       "coverage": 0.999185,
@@ -728,13 +728,13 @@
         "The shocked price is what the oracle returns to Morpho Blue."
       ],
       "dexLimited": {
-        "vaultLoss": "191435205473420689142",
-        "vaultHiddenLoss": "83512392590382244335",
-        "withdrawableAfter": "9510063242718434477677",
-        "holderLoss": "102628168551424833874",
-        "holderHiddenLoss": "44770886743130905890",
-        "liquidated": 44,
-        "unliquidated": 46
+        "vaultLoss": "196204617740611504811",
+        "vaultHiddenLoss": "78751707764319524197",
+        "withdrawableAfter": "9505293830451243662008",
+        "holderLoss": "105185044361378464805",
+        "holderHiddenLoss": "42218689703191921947",
+        "liquidated": 45,
+        "unliquidated": 45
       }
     },
     {
@@ -783,13 +783,13 @@
         "The shocked price is what the oracle returns to Morpho Blue."
       ],
       "dexLimited": {
-        "vaultLoss": "604756524087095872586",
-        "vaultHiddenLoss": "437356904836047661422",
-        "withdrawableAfter": "9096741924104759294233",
-        "holderLoss": "324209198266833655824",
-        "holderHiddenLoss": "234466476715409213568",
-        "liquidated": 51,
-        "unliquidated": 62
+        "vaultLoss": "600023284738059258922",
+        "vaultHiddenLoss": "441841530940630123403",
+        "withdrawableAfter": "9101475163453795907897",
+        "holderLoss": "321671714711988721562",
+        "holderHiddenLoss": "236870679028212700090",
+        "liquidated": 55,
+        "unliquidated": 58
       }
     },
     {
@@ -2148,14 +2148,14 @@
       "title": "Incident: Lido loss -10%, liquidations limited by AMM depth measured at the block, then holder #2 and Vault Bridge #1 run",
       "valueSource": "executed on fork (bad debt of the liquidations the AMM depth allows) + analytic unrecognised shortfall of the positions left insolvent",
       "executedFacts": {
-        "holderMaxWithdrawAfterRun": "5107281840369176925062",
-        "liquidatedOnFork": 44,
-        "leftInsolvent": 46
+        "holderMaxWithdrawAfterRun": "5104725017894752594126",
+        "liquidatedOnFork": 45,
+        "leftInsolvent": 45
       },
       "inputs": {
         "positionValue": "5209914824792343398774",
         "exitableNow": "5209914854809315636083",
-        "incidentValueLoss": "147403889940625877191",
+        "incidentValueLoss": "147408515572622598959",
         "incidentLocked": "0"
       }
     }
@@ -2224,18 +2224,18 @@
       "verdict": {
         "decision": "EXIT",
         "sentence": "EXIT: you assume a 5% chance of this incident within 30 days, above the break-even 4.44%. Expected loss if you stay 7.37 WETH vs 6.54 WETH if you exit.",
-        "breakEvenProbability": 0.04435348234905806,
-        "expectedLossStay": 7.370194497031294,
+        "breakEvenProbability": 0.04435209055099047,
+        "expectedLossStay": 7.37042577863113,
         "expectedLossExit": 6.5378758306640465,
         "exitCost": 6.5378758306640465,
-        "incidentLoss": 147.40388994062587,
+        "incidentLoss": 147.4085155726226,
         "exitableShare": 1,
         "parts": {
           "forgoneYield": 6.537759233967658,
           "gasOut": 0.000058298348194696,
           "gasReentry": 0.000058298348194696,
           "slippage": 0,
-          "valueLoss": 147.40388994062587,
+          "valueLoss": 147.4085155726226,
           "lockedAfterRun": 0
         }
       }
@@ -2279,17 +2279,195 @@
     }
   ],
   "depegCurveCollateral": "wstETH",
+  "evidence": [
+    {
+      "item": "Vault total assets",
+      "value": "9,718.21 WETH",
+      "cls": "measured",
+      "source": "totalAssets() on 0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4 at block 26157638",
+      "hypotheses": "none"
+    },
+    {
+      "item": "Withdrawable now (vault)",
+      "value": "6,946.91 WETH",
+      "cls": "measured",
+      "source": "Σ over the withdraw queue of min(vault supply, market idle liquidity): MetaMorpho withdrawQueue(i), Morpho Blue market(id) and position(id, vault)",
+      "hypotheses": "stored market totals (interest accrued up to the market's lastUpdate)"
+    },
+    {
+      "item": "Holder position",
+      "value": "5,209.91 WETH",
+      "cls": "measured",
+      "source": "convertToAssets(balanceOf(holder))",
+      "hypotheses": "holder selection: largest holder from Morpho API candidates, balance re-read on-chain"
+    },
+    {
+      "item": "Holder exit alone",
+      "value": "5,209.91 WETH",
+      "cls": "executed",
+      "source": "scenario A_alone: redeem on the local fork, tx 1 at T0+12 s",
+      "hypotheses": "holder impersonated on the fork"
+    },
+    {
+      "item": "Worst executed run (holder exitable)",
+      "value": "2,079.21 WETH (-60.09 %)",
+      "cls": "executed",
+      "source": "scenario B_both_vaults: 2 exits then the holder's",
+      "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
+    },
+    {
+      "item": "Cushion before blockage",
+      "value": "passes 1,736.99 WETH, reverts 1,736.99 WETH",
+      "cls": "executed",
+      "source": "bisection, 24 executions on the fork",
+      "hypotheses": "competitor = next largest holder of the vault"
+    },
+    {
+      "item": "Borrowers identified",
+      "value": "100.00 % / 100.00 % / 100.00 % of debt",
+      "cls": "measured",
+      "source": "candidates from Morpho API, each position(id, borrower) re-read on-chain; coverage = Σ borrowShares found / totalBorrowShares",
+      "hypotheses": "none (coverage is measured, not assumed)"
+    },
+    {
+      "item": "Public Allocator backstop (net)",
+      "value": "0 WETH",
+      "cls": "bounded",
+      "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; not executed before the exit"
+    },
+    {
+      "item": "AMM liquidation capacity, wstETH market #1",
+      "value": "11,541.13 of 6,809.36 wstETH posted",
+      "cls": "bounded",
+      "source": "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry",
+      "hypotheses": "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price"
+    },
+    {
+      "item": "AMM liquidation capacity, wstETH market #2",
+      "value": "18,638.01 of 25,173.56 wstETH posted",
+      "cls": "bounded",
+      "source": "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry",
+      "hypotheses": "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price"
+    },
+    {
+      "item": "AMM liquidation capacity, cbBTC market #3",
+      "value": "1.09 of 0.96 cbBTC posted",
+      "cls": "bounded",
+      "source": "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry",
+      "hypotheses": "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price"
+    },
+    {
+      "item": "Vault loss, wstETH/stETH rate x0.95",
+      "value": "30.37 WETH executed vs 30.36 WETH analytic",
+      "cls": "executed",
+      "source": "scenario lido_loss_5pct: oracle replaced on the fork, 44 liquidate() transactions, bad debt from Morpho Blue's Liquidate events",
+      "hypotheses": "every unhealthy borrower is liquidated by a liquidator with enough loan tokens"
+    },
+    {
+      "item": "Vault loss, wstETH/stETH rate x0.9",
+      "value": "293.11 WETH executed vs 293.08 WETH analytic",
+      "cls": "executed",
+      "source": "scenario lido_loss_10pct: oracle replaced on the fork, 90 liquidate() transactions, bad debt from Morpho Blue's Liquidate events",
+      "hypotheses": "every unhealthy borrower is liquidated by a liquidator with enough loan tokens"
+    },
+    {
+      "item": "Economic shortfall, oracle-blind depeg -10 % (holder share)",
+      "value": "117.41 WETH",
+      "cls": "modeled",
+      "source": "Σ max(0, debt − collateral × market price) over the identified borrowers, pro rata of supply shares",
+      "hypotheses": "depeg persists, underwater borrowers walk away; lower bound for holders who stay (first exiters leave at full value)"
+    },
+    {
+      "item": "Feed freshness, BTC / USD",
+      "value": "age 0.5 h; max observed interval 1.0 h; trigger move ~0.51 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, ETH / USD",
+      "value": "age 0.4 h; max observed interval 1.0 h; trigger move ~0.50 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, cbBTC / USD",
+      "value": "age 10.1 h; max observed interval 24.0 h; trigger move ~2.00 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, BTC / ETH",
+      "value": "age 6.3 h; max observed interval 24.0 h; trigger move ~2.03 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, BTC / USD",
+      "value": "age 0.4 h; max observed interval 1.0 h; trigger move ~0.50 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, ETH / USD",
+      "value": "age 0.6 h; max observed interval 1.0 h; trigger move ~0.50 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, WBTC / BTC",
+      "value": "age 0.4 h; max observed interval 24.0 h; trigger move ~0.02 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Net APY (yield given up by exiting)",
+      "value": "1.53 %",
+      "cls": "measured",
+      "source": "IRM borrowRateView(params, market) per market × utilization × (1 − market fee), weighted by the vault's supply, minus the vault performance fee",
+      "hypotheses": "rate constant over the horizon (APR compounded continuously)"
+    },
+    {
+      "item": "Gas of the exit",
+      "value": "479672 gas × 0.122 gwei",
+      "cls": "measured",
+      "source": "gasUsed of the exit on the fork × baseFeePerGas of the source block header",
+      "hypotheses": "re-entry assumed to cost the same gas (no deposit executed)"
+    },
+    {
+      "item": "Break-even incident probability",
+      "value": "1.13 % / 4.16 % / 4.44 %",
+      "cls": "modeled",
+      "source": "p* = exit cost / (incident loss × exitable share); src/verdict/verdict.ts",
+      "hypotheses": "horizon 30 d, locked funds cost 10 %, net APY 1.53 %"
+    },
+    {
+      "item": "Incident probability",
+      "value": "5 % (default)",
+      "cls": "hypothesis",
+      "source": "user input",
+      "hypotheses": "never a prediction"
+    }
+  ],
+  "mitigation": null,
   "dex": {
     "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d": {
-      "capacity": "11580263802633455603656",
+      "capacity": "11541125802633455603656",
       "collateralAtRisk": "6809361802633455603656",
       "venues": [
         {
           "id": "univ3:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
           "route": "Uniswap V3 0.01% pool",
           "pool": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
-          "capacity": "1268044000000000000000",
-          "avgPrice": 1.225381887309
+          "capacity": "1245184000000000000000",
+          "avgPrice": 1.243395344808
         },
         {
           "id": "univ3:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
@@ -2302,15 +2480,15 @@
           "id": "univ3:0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
           "route": "unwrap → Uniswap V3 1% pool",
           "pool": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
-          "capacity": "19960000000000000000",
-          "avgPrice": 1.225380613364
+          "capacity": "19840000000000000000",
+          "avgPrice": 1.2254160427
         },
         {
           "id": "curve:0x828b154032950C8ff7CF8085D841723Db2696056",
           "route": "unwrap → Curve pool 0x828b15…",
           "pool": "0x828b154032950C8ff7CF8085D841723Db2696056",
-          "capacity": "9802000000000000000",
-          "avgPrice": 1.225523819411
+          "capacity": "9664000000000000000",
+          "avgPrice": 1.229133718696
         },
         {
           "id": "curve:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
@@ -2323,21 +2501,21 @@
           "id": "curve:0x21E27a5E5513D6e65C4f830167390997aA84843a",
           "route": "unwrap → Curve pool 0x21E27a…",
           "pool": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
-          "capacity": "3473044000000000000000",
-          "avgPrice": 1.22538171656
+          "capacity": "3457024000000000000000",
+          "avgPrice": 1.22749911008
         }
       ]
     },
     "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e": {
-      "capacity": "18739010000000000000000",
+      "capacity": "18638012000000000000000",
       "collateralAtRisk": "25173557874035995670589",
       "venues": [
         {
           "id": "univ3:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
           "route": "Uniswap V3 0.01% pool",
           "pool": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
-          "capacity": "1260124000000000000000",
-          "avgPrice": 1.232857216559
+          "capacity": "1245184000000000000000",
+          "avgPrice": 1.243395344808
         },
         {
           "id": "univ3:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
@@ -2350,22 +2528,22 @@
           "id": "curve:0x828b154032950C8ff7CF8085D841723Db2696056",
           "route": "unwrap → Curve pool 0x828b15…",
           "pool": "0x828b154032950C8ff7CF8085D841723Db2696056",
-          "capacity": "9454000000000000000",
-          "avgPrice": 1.23292182376
+          "capacity": "9376000000000000000",
+          "avgPrice": 1.233965108541
         },
         {
           "id": "curve:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
           "route": "unwrap → Curve pool 0xDC2431…",
           "pool": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
-          "capacity": "14066992000000000000000",
-          "avgPrice": 1.232855976765
+          "capacity": "14024704000000000000000",
+          "avgPrice": 1.233392468422
         },
         {
           "id": "curve:0x21E27a5E5513D6e65C4f830167390997aA84843a",
           "route": "unwrap → Curve pool 0x21E27a…",
           "pool": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
-          "capacity": "3402412000000000000000",
-          "avgPrice": 1.232856020194
+          "capacity": "3358720000000000000000",
+          "avgPrice": 1.235610186749
         }
       ]
     },

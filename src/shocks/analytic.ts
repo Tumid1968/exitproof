@@ -114,6 +114,7 @@ export function propagate(g: DependencyGraph, shock: Shock, opts: PropagateOptio
   const ordered = [...g.markets].sort((a, b) => (lifWad(b.params.lltv) > lifWad(a.params.lltv) ? 1 : -1));
   for (const m of ordered) {
     if (m.params.oracle === "0x0000000000000000000000000000000000000000") continue;
+    if (m.oraclePrice === null) continue; // price() reverts: market frozen, nothing can be liquidated (reported by discovery)
     const path: string[] = [];
     let seen = 1;
     let blindFactor = 1;

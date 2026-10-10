@@ -76,6 +76,7 @@ export const chainlinkFeedAbi = parseAbi([
   "function description() view returns (string)",
   "function decimals() view returns (uint8)",
   "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
+  "function getRoundData(uint80) view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
   "function aggregator() view returns (address)",
   "function owner() view returns (address)",
   "function minAnswer() view returns (int192)",
@@ -91,6 +92,7 @@ export const publicAllocatorAbi = parseAbi([
   "function flowCaps(address vault, bytes32 id) view returns (uint128 maxIn, uint128 maxOut)",
   "function fee(address vault) view returns (uint256)",
   "function admin(address vault) view returns (address)",
+  "function reallocateTo(address vault, ((address loanToken, address collateralToken, address oracle, address irm, uint256 lltv) marketParams, uint128 amount)[] withdrawals, (address loanToken, address collateralToken, address oracle, address irm, uint256 lltv) supplyMarketParams) payable",
 ]);
 
 /** Underlying-yield / custody hooks on collateral tokens (probed, never assumed). */

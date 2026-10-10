@@ -18,6 +18,58 @@ import { discover } from "../discovery/discover.ts";
 
 const PORT = Number(process.env.EXITPROOF_API_PORT ?? 8700);
 
+/** Errors meant for the person using the UI: an HTTP status and one readable sentence. */
+class UserError extends Error {
+  constructor(readonly status: number, message: string) { super(message); }
+}
+type Job = {
+  vault: string; state: "running" | "done" | "error"; stage: string; log: string[]; started: string; finished?: string;
+  result?: { name: string; nodes: number; reads: number; seconds: number }; error?: { status: number; message: string };
+};
+const jobs = new Map<string, Job>();
+
+async function runAnalysis(job: Job, holder?: Address) {
+  const t0 = Date.now();
+  const say = (stage: string) => (s: string) => { job.stage = stage; job.log.push(s); if (job.log.length > 400) job.log.shift(); };
+  try {
+    await exclusive(async () => {
+      say("discovery")("discovering dependencies (on-chain reads at the frozen block)...");
+      let g;
+      try { g = await discover(job.vault as Address, { log: say("discovery") }); }
+      catch (e) { throw friendly(e, "discovery"); }
+      mkdirSync("results/discovery", { recursive: true });
+      writeFileSync(`results/discovery/${g.target.vault}.json`, toJson(g));
+      if (!g.holders.list.length) throw new UserError(422, `${g.target.name}: dependency graph built (${g.nodes.length} nodes) but no holder with shares was found, so there is no position to analyse.`);
+      if (BigInt(String(g.summary.totalAssets)) === 0n) throw new UserError(422, `${g.target.name}: the vault holds no assets at block ${SOURCE.block}.`);
+      say("scenarios")(`graph: ${g.nodes.length} nodes, ${g.reads.length} reads. Executing scenarios on the fork...`);
+      try { await buildReport(g.target.vault, holder, say("scenarios")); }
+      catch (e) { throw friendly(e, "scenario execution"); }
+      finally { runner = null; } // buildReport moved the fork's base snapshot
+      job.result = { name: g.target.name, nodes: g.nodes.length, reads: g.reads.length, seconds: Math.round((Date.now() - t0) / 1000) };
+    });
+    job.state = "done";
+    job.stage = "done";
+  } catch (e) {
+    const u = e instanceof UserError ? e : friendly(e, job.stage);
+    job.state = "error";
+    job.error = { status: u.status, message: u.message };
+    job.log.push("ERROR " + u.message);
+  } finally {
+    job.finished = new Date().toISOString();
+  }
+}
+
+/** Translate engine failures into one actionable sentence (no stack traces in the UI). */
+function friendly(e: unknown, stage: string): UserError {
+  if (e instanceof UserError) return e;
+  const m = `${(e as Error)?.message ?? e} ${(e as { details?: string })?.details ?? ""}`;
+  if (/not a MetaMorpho V1/.test(m)) return new UserError(422, m.split("\n")[0].trim());
+  if (/offline proxy|not cached|EXITPROOF_OFFLINE/i.test(m)) return new UserError(503, "Offline mode: this vault was never analysed online, so its on-chain state is not in the local cache. Restart the proxy online (npm run proxy) and retry.");
+  if (/upstream failed|429|rate limit|fetch failed|ECONNREFUSED|took too long|timeout/i.test(m)) return new UserError(503, "The archive RPC did not answer (unreachable or rate-limited). Retry in a minute, or set EXITPROOF_RPC_URL to another archive endpoint.");
+  if (/Fork is not at the frozen source block|8545/.test(m)) return new UserError(503, "The local fork is not running at the source block. Start it with npm run fork.");
+  return new UserError(500, `Failed during ${stage}: ${m.split("\n")[0].trim().slice(0, 250)}`);
+}
+
 /** Exits the user can stack before the holder's own exit (real holders at the source block). */
 const ACTOR_EXITS: Record<string, { label: string; vault: Address; owner: Address }> = {
   C: { label: "holder #3 exits", vault: ACTORS.steakhouseEth, owner: ACTORS.C },
@@ -106,7 +158,7 @@ const server = http.createServer(async (req, res) => {
       return json(res, 200, { proxy, fork: head && head.ok ? { url: NODE_URL, head: BigInt(head.result).toString(), sourceBlock: SOURCE.block.toString() } : null });
     }
     if (url.pathname === "/api/run" && req.method === "POST") {
-      const body = JSON.parse((await readBody(req)) || "{}");
+      const body = await jsonBody(req);
       const s = buildCustom(body);
       const t0 = Date.now();
       const r = await exclusive(async () => {
@@ -117,20 +169,27 @@ const server = http.createServer(async (req, res) => {
       });
       return json(res, 200, { scenario: s, result: r, ms: Date.now() - t0 });
     }
+    if (url.pathname === "/api/analyze" && req.method === "GET") {
+      const v = String(url.searchParams.get("vault") ?? "");
+      const job = /^0x[0-9a-fA-F]{40}$/.test(v) ? jobs.get(getAddress(v.toLowerCase())) : undefined;
+      return job ? json(res, 200, job) : json(res, 404, { error: "No analysis started for this address." });
+    }
     if (url.pathname === "/api/analyze" && req.method === "POST") {
-      // Any MetaMorpho V1 vault: discovery (on-chain reads, needs the proxy online unless cached) + executed report
-      const body = JSON.parse((await readBody(req)) || "{}");
-      const v = getAddress(body.vault);
-      const t0 = Date.now();
-      const out = await exclusive(async () => {
-        const g = await discover(v, {});
-        mkdirSync("results/discovery", { recursive: true });
-        writeFileSync(`results/discovery/${g.target.vault}.json`, toJson(g));
-        await buildReport(g.target.vault, body.holder ? getAddress(body.holder) : undefined, () => {});
-        runner = null; // buildReport moved the fork's base snapshot
-        return { vault: g.target.vault, name: g.target.name, nodes: g.nodes.length, reads: g.reads.length };
-      });
-      return json(res, 200, { ...out, ms: Date.now() - t0 });
+      // Any MetaMorpho V1 vault: discovery (on-chain reads) + executed report. Runs as a background job; poll GET.
+      const body = await jsonBody(req);
+      const raw = String(body.vault ?? "").trim();
+      if (!/^0x[0-9a-fA-F]{40}$/.test(raw)) throw new UserError(400, `"${raw.slice(0, 50)}" is not an Ethereum address (0x followed by 40 hex characters).`);
+      const v = getAddress(raw.toLowerCase());
+      const holderRaw = body.holder ? String(body.holder).trim() : "";
+      if (holderRaw && !/^0x[0-9a-fA-F]{40}$/.test(holderRaw)) throw new UserError(400, "holder is not an Ethereum address.");
+      const holder = holderRaw ? getAddress(holderRaw.toLowerCase()) : undefined;
+      const running = [...jobs.values()].find((j) => j.state === "running");
+      if (running && running.vault !== v) throw new UserError(409, `Another analysis is running (${running.vault}). Try again when it finishes.`);
+      if (running) return json(res, 202, running);
+      const job: Job = { vault: v, state: "running", stage: "queued", log: [], started: new Date().toISOString() };
+      jobs.set(v, job);
+      void runAnalysis(job, holder);
+      return json(res, 202, job);
     }
     if (url.pathname === "/api/replay" && req.method === "POST") {
       const out = await exclusive(() => new Promise<{ code: number; log: string }>((resolve) => {
@@ -146,7 +205,18 @@ const server = http.createServer(async (req, res) => {
     }
     json(res, 404, { error: "not found" });
   } catch (e) {
-    json(res, 500, { error: String((e as Error).message ?? e) });
+    if (e instanceof UserError) return json(res, e.status, { error: e.message });
+    console.error(e);
+    json(res, 500, { error: "Internal error: " + String((e as Error).message ?? e).split("\n")[0].slice(0, 300) });
   }
 });
 server.listen(PORT, "127.0.0.1", () => console.log(`[exitproof-api] http://127.0.0.1:${PORT}`));
+
+// Never let one failed analysis take the demo server down.
+process.on("unhandledRejection", (e) => console.error("[exitproof-api] unhandled rejection:", e));
+process.on("uncaughtException", (e) => console.error("[exitproof-api] uncaught exception:", e));
+
+async function jsonBody(req: http.IncomingMessage): Promise<Record<string, any>> {
+  const raw = (await readBody(req)) || "{}";
+  try { return JSON.parse(raw); } catch { throw new UserError(400, "The request body must be JSON, e.g. {\"vault\": \"0x...\"}."); }
+}

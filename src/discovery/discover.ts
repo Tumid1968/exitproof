@@ -68,8 +68,8 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
     if (size === 45 && code.toLowerCase().startsWith("0x363d3d373d3d3d363d73")) data.eip1167Implementation = getAddress("0x" + code.slice(22, 62));
     if (size === 0) return { data, prov, admin: null as Address | null, impl: null as Address | null };
     let impl: Address | null = null; let admin: Address | null = null;
-    for (const [k, slot] of Object.entries(SLOTS)) {
-      const [v, id] = await r.storage(addr, slot);
+    const slotReads = await Promise.all(Object.entries(SLOTS).map(async ([k, slot]) => [k, ...(await r.storage(addr, slot))] as const));
+    for (const [k, v, id] of slotReads) {
       const a = slotAddr(v);
       if (a) { prov.push(id); data[k] = a; if (k.endsWith("Impl")) impl = a; if (k.endsWith("Admin")) admin = a; }
     }
@@ -179,6 +179,7 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
     if (params.oracle !== zeroAddress) {
       const [px, id2] = await r.call<bigint>(params.oracle, morphoOracleAbi, "price");
       oraclePrice = px ?? null; opId = id2;
+      if (px === undefined) notes.push(`Oracle ${params.oracle} of the ${collateralSymbol} market #${i}: price() reverts at the block. The market is frozen: no borrow and no liquidation until it answers again.`);
     }
     const ms: MarketState = {
       id, queueIndex: i, params,
@@ -341,10 +342,35 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
       const updatedAt = round ? round[3] : null;
       // updatedAt = 0 means a live-computed adapter (e.g. exchange rate read on each call): no staleness notion
       const ageSeconds = updatedAt !== null && updatedAt > 0n ? Number(SOURCE.timestamp - updatedAt) : null;
+      // Update behaviour OBSERVED on-chain (heartbeat and deviation threshold are not readable on-chain):
+      // the previous rounds of the current phase, read with getRoundData at the frozen block.
+      let updates: Record<string, unknown> | null = null;
+      const histProv: string[] = [];
+      if (agg && round && updatedAt && updatedAt > 0n) {
+        const pts: { t: bigint; a: bigint }[] = [{ t: updatedAt, a: round[1] }];
+        for (let i = 1n; i <= 24n; i++) {
+          const [rd, id] = await r.call<readonly [bigint, bigint, bigint, bigint, bigint]>(feed, chainlinkFeedAbi, "getRoundData", [round[0] - i]);
+          histProv.push(id);
+          if (!rd || rd[3] === 0n) break; // start of the aggregator phase
+          pts.push({ t: rd[3], a: rd[1] });
+        }
+        if (pts.length >= 3) {
+          const gaps = pts.slice(0, -1).map((p, i) => Number(p.t - pts[i + 1].t)).sort((x, y) => x - y);
+          const moves = pts.slice(0, -1).map((p, i) => Math.abs(Number(p.a - pts[i + 1].a)) / Math.abs(Number(pts[i + 1].a || 1n))).sort((x, y) => x - y);
+          const maxGap = gaps[gaps.length - 1];
+          updates = {
+            roundsObserved: pts.length, maxGapSeconds: maxGap, medianGapSeconds: gaps[Math.floor(gaps.length / 2)],
+            // updates that came well before the longest gap were triggered by a price move: their smallest move approximates the deviation threshold
+            minTriggeredMovePct: (() => { const trig = pts.slice(0, -1).map((p, i) => ({ gap: Number(p.t - pts[i + 1].t), mv: Math.abs(Number(p.a - pts[i + 1].a)) / Math.abs(Number(pts[i + 1].a || 1n)) })).filter((x) => x.gap < 0.9 * maxGap); return trig.length ? Math.min(...trig.map((x) => x.mv)) * 100 : null; })(),
+            medianMovePct: moves[Math.floor(moves.length / 2)] * 100,
+            ageWithinObservedMax: ageSeconds !== null && ageSeconds <= maxGap,
+          };
+        }
+      }
       addNode({
         id: fid, kind: "feed", layer: 4, label: `${desc ?? "feed"}${agg ? " (Chainlink proxy)" : " (adapter / custom feed)"}`, address: feed,
-        data: { description: desc, decimals: dec, answer: round?.[1], updatedAt, ageSeconds, hasAggregator: !!agg, ...p.data },
-        prov: [dId, decId, rId, ...(agg ? [aId] : []), ...p.prov].filter(Boolean),
+        data: { description: desc, decimals: dec, answer: round?.[1], updatedAt, ageSeconds, observedUpdates: updates, hasAggregator: !!agg, ...p.data },
+        prov: [dId, decId, rId, ...(agg ? [aId] : []), ...p.prov, ...histProv].filter(Boolean),
       });
       if (agg) {
         const [minA, mnId] = await r.call<bigint>(agg, chainlinkFeedAbi, "minAnswer");
@@ -526,13 +552,18 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
       const atRisk = (borrowers[m.id]?.list ?? []).reduce((s, b) => s + b.collateral, 0n);
       const unit = 10n ** BigInt(m.collateralDecimals);
       const out: DependencyGraph["dex"][string]["venues"] = [];
-      for (const v of venues) {
-        const c = await venueCapacity(v, m.oraclePrice, lifWad(m.params.lltv), unit, atRisk > unit ? atRisk : unit, m.collateralDecimals - m.loanDecimals);
+      // One summary record per venue, reserved in venue order so ids stay deterministic; searches run in parallel.
+      const summaryIds = venues.map(() => r.reserve());
+      const price = m.oraclePrice;
+      const caps = await pmap(venues, 6, (v) => venueCapacity(v, price, lifWad(m.params.lltv), unit, atRisk > unit ? atRisk : unit, m.collateralDecimals - m.loanDecimals));
+      venues.forEach((v, i) => {
+        const c = caps[i];
+        r.fill(summaryIds[i], { method: "eth_call", to: v.pool, fn: `quote series (${c.quotes} quotes: Uniswap V3 QuoterV2 / Curve get_dy) for ${v.route}`, args: [{ threshold: "proceeds >= amount * oraclePrice / LIF", lltv: m.params.lltv.toString() }], ok: true, result: { capacity: c.capacity, avgPrice: c.avgPriceAtCapacity } });
         out.push({ id: v.id, route: v.route, pool: v.pool, capacity: c.capacity, avgPrice: c.avgPriceAtCapacity });
         const did = `dex:${v.pool}`;
-        addNode({ id: did, kind: "dex", layer: 4, label: v.route, address: v.pool, data: { venue: v.kind }, prov: v.prov });
-        addEdge({ from: `token:${getAddress(m.params.collateralToken)}`, to: did, rel: "sold by liquidators via", prov: v.prov });
-      }
+        addNode({ id: did, kind: "dex", layer: 4, label: v.route, address: v.pool, data: { venue: v.kind }, prov: [...v.prov, summaryIds[i]] });
+        addEdge({ from: `token:${getAddress(m.params.collateralToken)}`, to: did, rel: "sold by liquidators via", prov: [...v.prov, summaryIds[i]] });
+      });
       // Direct venues add up; two-hop routes share their WETH leg, so only the best one counts (lower bound).
       const direct = out.filter((x) => !x.id.startsWith("2hop:")).reduce((s, x) => s + x.capacity, 0n);
       const bestHop = out.filter((x) => x.id.startsWith("2hop:")).reduce((mx, x) => (x.capacity > mx ? x.capacity : mx), 0n);

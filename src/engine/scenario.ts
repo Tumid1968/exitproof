@@ -6,7 +6,7 @@
  */
 import { decodeEventLog, encodeAbiParameters, encodeFunctionData, getAddress, keccak256, pad, toHex, type Address, type Hex } from "viem";
 import { rpc } from "../lib/rpc.ts";
-import { erc20Abi, metaMorphoAbi, morphoBlueAbi, morphoOracleAbi } from "../lib/abis.ts";
+import { erc20Abi, metaMorphoAbi, morphoBlueAbi, morphoOracleAbi, publicAllocatorAbi } from "../lib/abis.ts";
 import { ADDR, PROXY_URL, SOURCE } from "../lib/constants.ts";
 import { ForkEngine, type Action as ExitAction, type StepResult } from "./fork.ts";
 import type { DecodedError } from "./decode.ts";
@@ -17,7 +17,13 @@ export type ScenarioAction =
   | { type: "oraclePrice"; label?: string; oracle: Address; num: string; den: string }
   /** Liquidate every listed borrower that is unhealthy at the current oracle price (seize all collateral, or repay all debt). */
   | { type: "liquidateAll"; label?: string; marketId: Hex; borrowers: Address[] }
-  | { type: "measure"; label: string };
+  | { type: "measure"; label: string }
+  /**
+   * Anyone calls the Public Allocator to move a PEER vault's funds from its markets outside the target's
+   * exposure into one of the target's markets (amounts computed live on the fork within flow caps, supply
+   * cap headroom and market liquidity). Mitigation: it adds idle liquidity where the holder withdraws.
+   */
+  | { type: "publicReallocate"; label?: string; vault: Address; supplyMarketId: Hex; excludeMarketIds: Hex[] };
 
 export type Scenario = {
   id: string;
@@ -46,15 +52,17 @@ export type LiquidationResult = { borrower: Address; mode: "seizeAll" | "repayAl
 
 export type ActionResult =
   | { type: "exit"; label?: string; result: StepResult }
-  | { type: "oraclePrice"; label?: string; oracle: Address; priceBefore: string; priceAfter: string }
-  | { type: "liquidateAll"; label?: string; marketId: Hex; attempted: number; liquidated: number; repaidAssets: string; badDebtRealised: string; liquidations: LiquidationResult[] }
-  | { type: "measure"; label: string; m: Measurement };
+  | { type: "oraclePrice"; label?: string; oracle: Address; priceBefore: string; priceAfter: string; error?: string }
+  | { type: "liquidateAll"; label?: string; marketId: Hex; attempted: number; liquidated: number; repaidAssets: string; badDebtRealised: string; liquidations: LiquidationResult[]; error?: string }
+  | { type: "measure"; label: string; m: Measurement }
+  | { type: "publicReallocate"; label?: string; vault: Address; supplyMarketId: Hex; withdrawals: { marketId: Hex; amount: string }[]; moved: string; feeWei: string; ok: boolean; error: DecodedError | null };
 
 export type ScenarioResult = { id: string; title: string; hypotheses: string[]; target: Scenario["target"]; txCount: number; results: ActionResult[] };
 
 /** A fixed liquidator address (no private key needed: impersonated on the local fork). */
 export const LIQUIDATOR = getAddress("0x000000000000000000000000000000000000e1f0");
 const hex = (n: bigint) => "0x" + n.toString(16);
+const oneLine = (e: unknown) => String((e as Error)?.message ?? e).split("\n")[0].slice(0, 200);
 const MAX = 2n ** 256n - 1n;
 
 /** Runtime bytecode: return the 32-byte constant for any call (Morpho Blue only calls price()). */
@@ -132,7 +140,12 @@ export class ScenarioRunner {
 
   private async setOracle(a: Extract<ScenarioAction, { type: "oraclePrice" }>): Promise<ActionResult> {
     await this.restoreCode(a.oracle);
-    const before = await this.eng.call<bigint>(a.oracle, morphoOracleAbi, "price");
+    let before: bigint;
+    try { before = await this.eng.call<bigint>(a.oracle, morphoOracleAbi, "price"); }
+    catch (e) {
+      // An oracle whose price() reverts freezes its market (no borrow, no liquidation): recorded, not overridden.
+      return { type: "oraclePrice", label: a.label, oracle: a.oracle, priceBefore: "0", priceAfter: "0", error: "oracle price() reverts at the source block: " + oneLine(e) };
+    }
     // Guard: the price we shock must be the real one at the source block.
     const ref = await rpc<Hex>(PROXY_URL, "eth_call", [{ to: a.oracle, data: "0xa035b1fe" }, "0x" + SOURCE.block.toString(16)]);
     if (BigInt(ref) !== before) throw new Error(`oracle ${a.oracle} price on fork (${before}) differs from archive (${BigInt(ref)})`);
@@ -180,7 +193,11 @@ export class ScenarioRunner {
     await this.fundLiquidator(params.loanToken);
     // Accrue interest first so health checks use up-to-date debt.
     await this.tx(LIQUIDATOR, ADDR.morphoBlue, encodeFunctionData({ abi: morphoBlueAbi, functionName: "accrueInterest", args: [params] }));
-    const price = await this.eng.call<bigint>(params.oracle, morphoOracleAbi, "price");
+    let price: bigint;
+    try { price = await this.eng.call<bigint>(params.oracle, morphoOracleAbi, "price"); }
+    catch (e) {
+      return { type: "liquidateAll", label: a.label, marketId: a.marketId, attempted: 0, liquidated: 0, repaidAssets: "0", badDebtRealised: "0", liquidations: [], error: "oracle price() reverts: no position can be liquidated (" + oneLine(e) + ")" };
+    }
     const WAD = 10n ** 18n;
     const lif = (() => { const c = 3n * 10n ** 17n; const l = (WAD * WAD) / ((c * params.lltv) / WAD + WAD - c); return l < 115n * 10n ** 16n ? l : 115n * 10n ** 16n; })();
     const out: LiquidationResult[] = [];
@@ -216,6 +233,52 @@ export class ScenarioRunner {
     };
   }
 
+  private async publicReallocate(a: Extract<ScenarioAction, { type: "publicReallocate" }>): Promise<ActionResult> {
+    const PA = getAddress("0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D");
+    const params = async (id: Hex) => {
+      const p = await this.eng.call<readonly [Address, Address, Address, Address, bigint]>(ADDR.morphoBlue, morphoBlueAbi, "idToMarketParams", [id]);
+      return { loanToken: p[0], collateralToken: p[1], oracle: p[2], irm: p[3], lltv: p[4] };
+    };
+    const [maxIn] = await this.eng.call<readonly [bigint, bigint]>(PA, publicAllocatorAbi, "flowCaps", [a.vault, a.supplyMarketId]);
+    const [cap] = await this.eng.call<readonly [bigint, boolean, bigint]>(a.vault, metaMorphoAbi, "config", [a.supplyMarketId]);
+    const mS = await this.eng.call<readonly bigint[]>(ADDR.morphoBlue, morphoBlueAbi, "market", [a.supplyMarketId]);
+    const pS = await this.eng.call<readonly bigint[]>(ADDR.morphoBlue, morphoBlueAbi, "position", [a.supplyMarketId, a.vault]);
+    const curS = mS[1] === 0n ? 0n : (pS[0] * (mS[0] + 1n)) / (mS[1] + 1_000_000n);
+    let room = cap > curS ? cap - curS : 0n;
+    if (maxIn < room) room = maxIn;
+    const n = await this.eng.call<bigint>(a.vault, metaMorphoAbi, "withdrawQueueLength");
+    const ws: { marketId: Hex; amount: bigint }[] = [];
+    for (let i = 0n; i < n && room > 0n; i++) {
+      const id = await this.eng.call<Hex>(a.vault, metaMorphoAbi, "withdrawQueue", [i]);
+      if (id === a.supplyMarketId || a.excludeMarketIds.includes(id)) continue;
+      const [, maxOut] = await this.eng.call<readonly [bigint, bigint]>(PA, publicAllocatorAbi, "flowCaps", [a.vault, id]);
+      if (maxOut === 0n) continue;
+      const m = await this.eng.call<readonly bigint[]>(ADDR.morphoBlue, morphoBlueAbi, "market", [id]);
+      const p = await this.eng.call<readonly bigint[]>(ADDR.morphoBlue, morphoBlueAbi, "position", [id, a.vault]);
+      const sup = m[1] === 0n ? 0n : (p[0] * m[0]) / (m[1] + 1_000_000n); // round down, below the vault's balance
+      let amt = [maxOut, sup, m[0] - m[2], room].reduce((x, y) => (x < y ? x : y));
+      amt = (amt * 999n) / 1000n; // margin for interest accrued between this read and the tx
+      if (amt <= 0n) continue;
+      ws.push({ marketId: id, amount: amt });
+      room -= amt;
+    }
+    const fee = await this.eng.call<bigint>(PA, publicAllocatorAbi, "fee", [a.vault]);
+    if (!ws.length) return { type: "publicReallocate", label: a.label, vault: a.vault, supplyMarketId: a.supplyMarketId, withdrawals: [], moved: "0", feeWei: fee.toString(), ok: true, error: null };
+    ws.sort((x, y) => (BigInt(x.marketId) < BigInt(y.marketId) ? -1 : 1)); // the Public Allocator requires increasing ids
+    const withdrawals = [] as { marketParams: Awaited<ReturnType<typeof params>>; amount: bigint }[];
+    for (const w of ws) withdrawals.push({ marketParams: await params(w.marketId), amount: w.amount });
+    const caller = getAddress("0x000000000000000000000000000000000000a110");
+    await rpc(this.eng.url, "hardhat_impersonateAccount", [caller]);
+    await rpc(this.eng.url, "hardhat_setBalance", [caller, hex(10n ** 18n * 10n)]);
+    const data = encodeFunctionData({ abi: publicAllocatorAbi, functionName: "reallocateTo", args: [a.vault, withdrawals, await params(a.supplyMarketId)] });
+    const r = await this.tx(caller, PA, data, fee);
+    return {
+      type: "publicReallocate", label: a.label, vault: a.vault, supplyMarketId: a.supplyMarketId,
+      withdrawals: ws.map((w) => ({ marketId: w.marketId, amount: w.amount.toString() })),
+      moved: (r.ok ? ws.reduce((t, w) => t + w.amount, 0n) : 0n).toString(), feeWei: fee.toString(), ok: r.ok, error: r.error,
+    };
+  }
+
   async run(s: Scenario): Promise<ScenarioResult> {
     await this.eng.reset();
     for (const a of s.actions) if (a.type === "oraclePrice") await this.restoreCode(a.oracle);
@@ -229,6 +292,7 @@ export class ScenarioRunner {
         results.push({ type: "exit", label: a.label, result: await this.eng.runStep({ label: a.label, vault: a.vault, owner: a.owner, action: a.action }, this.k) });
       } else if (a.type === "oraclePrice") results.push(await this.setOracle(a));
       else if (a.type === "liquidateAll") results.push(await this.liquidateAll(a));
+      else if (a.type === "publicReallocate") results.push(await this.publicReallocate(a));
       else results.push({ type: "measure", label: a.label, m: await this.measure(a.label, s.target) });
     }
     await this.restoreAll();

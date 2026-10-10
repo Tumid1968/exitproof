@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-10T10:58:53.222Z",
+  "manifest": "results/manifests/0xbEef047a543E45807105E51A8BBEFCc5950fcfBa.json",
+  "manifestSha256": "1f31a5b54a3938501fc66158b5efa976844cf12d45ab2f299bb3a0ef2eb4c38a",
+  "hashOk": true,
+  "cushionOk": true,
+  "scenarios": [
+    {
+      "id": "alone",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h2_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h3_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h4_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "top_holders_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "peer1_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "peer2_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "peer3_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "all_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "all_first_then_public_allocator",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "feed_shock_5pct",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "feed_shock_10pct",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_feed_shock_plus_run",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_feed_dexlimited_plus_run",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "ok": true,
+      "diffs": []
+    }
+  ],
+  "verdict": "REPLAY OK"
+}

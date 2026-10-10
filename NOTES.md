@@ -24,3 +24,11 @@
     Formulations du README corrigées (gaz de réentrée supposé = gaz de sortie, glissement, borne basse du décrochage aveugle).
 19. Copie fraîche du dépôt (clone + `npm ci`, cache vide) : `npm run replay` → REPLAY OK au wei en ~2 min. Le premier essai à froid avait échoué sur un HTTP 429 de dRPC ; proxy rendu plus patient (12 tentatives, attente plafonnée à 10 s avec aléa, concurrence 4), second test à froid vert sans aucun échec amont.
 20. Alex (sam. ~12:20) : IA autorisée par le règlement ; heure limite confirmée dimanche 10:00. Garde-fous : commit seulement tests verts, tag git avant chaque gros changement, pas de push (Alex).
+21. **Robustesse /api/analyze (sam. ~13:00)** : banc `scripts/robustness.mjs`, 12 cas, tous OK. 7 coffres inconnus réels (V1.0 USDT 73 %, V1.1 USDT 62 %, V1.1 USDC 100 %, V1.1 USDC 0 %, Adpend USDC 0 % et 499 M$ dont un oracle `price()` revert, V1.0 DAI 15 %, V1.0 msETH 32 %) → rapport + replay au wei ; 5 entrées invalides → 400/422 avec phrase lisible. Changements :
+    - analyse en tâche de fond (POST 202 puis GET de suivi) : avant, le client coupait à 300 s ;
+    - lecteur à identifiants réservés au lancement → parallélisme sans perte de déterminisme ; citations AMM résumées par pool ; bissection à 2 % ; découverte d'un coffre inconnu < 1 min (contre > 10 min) ;
+    - oracle qui revert : marché signalé « gelé », exclu de la propagation (sinon prix 0 → fausse perte totale), scénarios poursuivis ;
+    - verdict : moins de 1 % sortable → « sortie pratiquement impossible » (et non « STAY, point mort > 100 % ») ;
+    - filet anti-crash du serveur (unhandledRejection / uncaughtException), corps non-JSON → 400, analyse concurrente → 409.
+22. Fraîcheur des feeds : intervalle maximal et variation de déclenchement **observés** sur les 24 derniers rounds (`getRoundData`), Chainlink ne les publiant pas on-chain. cbBTC/USD : âge 10,1 h, intervalle max observé 24,0 h, déclenchement ~2 % → normal.
+23. Public Allocator exécuté (scénario d'atténuation générique) : Steakhouse USDT, sortie possible du plus gros détenteur 46,73 M → 50,47 M USDT après déplacement de 3,75 M par un coffre pair (frais payés dans la transaction).

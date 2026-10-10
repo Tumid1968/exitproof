@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-10T11:01:44.021Z",
+  "manifest": "results/manifests/0x500331c9fF24D9d11aee6B07734Aa72343EA74a5.json",
+  "manifestSha256": "d0b6106d3f35c379206bd89972848eb988f6feb45967a03a455dd92a729ca205",
+  "hashOk": true,
+  "cushionOk": true,
+  "scenarios": [
+    {
+      "id": "alone",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h2_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h3_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h4_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "top_holders_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "feed_shock_5pct",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "feed_shock_10pct",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_feed_shock_plus_run",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_feed_dexlimited_plus_run",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "ok": true,
+      "diffs": []
+    }
+  ],
+  "verdict": "REPLAY OK"
+}

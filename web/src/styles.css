@@ -46,6 +46,8 @@ button.on { background: #1f3b5c; border-color: var(--accent); }
 .chip.onchain { background: #3fb95022; color: var(--onchain); border: 1px solid #3fb95066; }
 .chip.fork { background: #4ea1ff22; color: var(--fork); border: 1px solid #4ea1ff66; }
 .chip.hyp { background: #d2992222; color: var(--hyp); border: 1px solid #d2992266; }
+.chip.bounded { background: #56d4dd22; color: #56d4dd; border: 1px solid #56d4dd66; }
+.chip.modeled { background: #f778ba22; color: #f778ba; border: 1px solid #f778ba66; }
 .chip.offchain { background: #a371f722; color: var(--offchain); border: 1px solid #a371f766; }
 
 main { max-width: 1400px; margin: 0 auto; padding: 16px 20px 80px; display: grid; gap: 16px; }

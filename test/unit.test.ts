@@ -38,6 +38,12 @@ test("break-even above 100% means stay even if the incident is certain", () => {
   assert.match(v.sentence, /even if this incident were certain/);
 });
 
+test("less than 1% exitable -> no action possible", () => {
+  const v = decide({ ...base, exitableNow: 5n * E });
+  assert.equal(v.decision, "NO_ACTION_POSSIBLE");
+  assert.match(v.sentence, /practically impossible/);
+});
+
 test("nothing exitable -> no action possible", () => {
   assert.equal(decide({ ...base, exitableNow: 0n }).decision, "NO_ACTION_POSSIBLE");
 });
