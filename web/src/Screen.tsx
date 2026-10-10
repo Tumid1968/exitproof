@@ -95,7 +95,9 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
   const facts = {
     block: report ? Number(report.source.block).toLocaleString("en-US") : "…",
     replayable: entry?.replay ? (entry.replay.verdict === "REPLAY OK" ? "to the wei" : "replay failed") : "not measured",
-    replay: entry?.replay ? `${entry.replay.okScenarios}/${entry.replay.scenarios} ${entry.replay.verdict === "REPLAY OK" ? "OK" : "FAILED"}` : "not measured",
+    replay: entry?.replay ? `${entry.replay.okScenarios}/${entry.replay.scenarios} ${entry.replay.verdict === "REPLAY OK" ? "OK" : "FAILED"} for this vault` : "not measured",
+    // claimed only if the index says every vault's replay is OK
+    allReplayed: index.length > 0 && index.every((v) => v.replay?.verdict === "REPLAY OK" && v.replay.okScenarios === v.replay.scenarios) ? `all ${index.length} vaults replayed OK` : null,
     coverage: index.length ? `${index.length} Morpho vaults` : "not measured",
   };
   return (
@@ -122,7 +124,7 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
         <dl className="facts">
           <div><dt>Measured on</dt><dd>a fork of Ethereum, block {facts.block}</dd></div>
           <div><dt>Replayable</dt><dd>{facts.replayable}</dd></div>
-          <div><dt>Replay</dt><dd>{facts.replay}</dd></div>
+          <div><dt>Replay</dt><dd>{facts.replay}{facts.allReplayed && <span className="allrep">{facts.allReplayed}</span>}</dd></div>
           <div><dt>Coverage</dt><dd>{facts.coverage}</dd></div>
         </dl>
       </section>
@@ -145,7 +147,7 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
         {err && <section className="card bad">This vault has no exported result ({err}). Pick another vault in the list.</section>}
         {!report && !err && <section className="card">Loading…</section>}
         {report && <>
-          <ExitPanel r={report} entry={entry} mode={mode ?? "static"} pick={pick} refine={refine} />
+          <ExitPanel r={report} entry={entry} mode={mode ?? "static"} pick={pick} refine={refine} g={graph} />
           <LeaveCard r={report} refine={refine} history={history} />
           <NotModeledCard r={report} refine={refine} />
           <div className="reveal">

@@ -227,3 +227,16 @@ main.app { padding-top: 76px; }
 @media (max-width: 640px) { .exitwinsub { font-size: 16px; } .histtable { font-size: 16px; } }
 /* the tab bar stays under the top bar while scrolling: opaque, so text does not show through */
 .deep .tabs { top: 60px; background: var(--topbg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 0 0 16px 16px; padding: 8px 0; z-index: 6; }
+
+/* polish: tag letters, legend, incident definition, shared-market note, replay scope */
+.tagletter { display: inline-flex; align-items: center; justify-content: center; width: 1.25em; height: 1.25em; border-radius: 999px; margin-right: 5px; font-weight: 700; font-size: .95em; background: currentColor; }
+.tagletter { color: var(--bg); }
+.tag-fork .tagletter { background: var(--fork); } .tag-modeled .tagletter { background: var(--modeled); } .tag-hyp .tagletter { background: var(--hyp); } .tag-hist .tagletter { background: var(--onchain); }
+.tag-hist .tagpill { color: var(--onchain); }
+.tagpill { display: inline-flex; align-items: center; }
+.taglegend { display: flex; flex-wrap: wrap; gap: 6px 10px; margin: 0 0 8px; font-size: 14px; }
+.taglegend .tag { cursor: default; }
+.incidentdef { font-size: 16px; margin: 0 0 8px; color: var(--text); }
+.shared { font-size: 15.5px; max-width: 34em; margin: 10px auto 0; color: var(--text); }
+.allrep { display: block; color: #94a0b0; font-size: 14px; }
+@media (max-width: 640px) { .shared { font-size: 16px; } .allrep { font-size: 15px; } }

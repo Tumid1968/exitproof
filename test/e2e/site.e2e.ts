@@ -73,6 +73,11 @@ function replayFact(v: string) {
   return `${ok}/${rp.scenarios.length} ${ok === rp.scenarios.length && rp.hashOk && rp.cushionOk ? "OK" : "FAILED"}`;
 }
 
+/** every vault replayed OK, according to the index AND to the replay files */
+function allReplayedOk() {
+  return INDEX.vaults.every((v) => v.replay?.verdict === "REPLAY OK" && v.replay.okScenarios === v.replay.scenarios && replayFact(v.vault).endsWith("OK"));
+}
+
 // ---------- harness ----------
 const DESKTOP: BrowserContextOptions = { viewport: { width: 1440, height: 900 } };
 const MOBILE: BrowserContextOptions = { viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 };
@@ -179,7 +184,8 @@ for (const tg of targets) {
         assert.deepEqual(facts, [
           ["Measured on", `a fork of Ethereum, block ${Number(INDEX.source.block).toLocaleString("en-US")}`],
           ["Replayable", replayFact(STEAKHOUSE).endsWith("OK") ? "to the wei" : "replay failed"],
-          ["Replay", replayFact(STEAKHOUSE)],
+          // scope stated; "all N vaults" only if every replay in the index and in results/replays is OK
+          ["Replay", `${replayFact(STEAKHOUSE)} for this vault${allReplayedOk() ? `all ${INDEX.vaults.length} vaults replayed OK` : ""}`],
           ["Coverage", `${readdirSync(join(ROOT, "results/manifests")).length} Morpho vaults`],
         ]);
         assert.equal(INDEX.vaults.length, readdirSync(join(ROOT, "results/manifests")).length);

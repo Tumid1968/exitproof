@@ -12,6 +12,7 @@ const NM = "not measured";
 const nb = (t: string) => t.replace(/ %/g, "\u00a0%");
 
 /** The three kinds of number, as small pills with a one-line meaning (tap to read it). */
+const LETTER = { fork: "F", modeled: "M", hyp: "A", hist: "H" } as const;
 const TAGS = {
   fork: ["measured on fork", "Executed on a copy of Ethereum frozen at block 26,157,638: real contracts, real state, simulated transactions."],
   modeled: ["modeled", "Computed from measured data with stated assumptions; a lower bound, not a measurement."],
@@ -22,10 +23,21 @@ export function Tag({ k }: { k: keyof typeof TAGS }) {
   const [open, setOpen] = useState(false);
   return (
     <span className={`tag tag-${k}`}>
-      <button type="button" className="tagbtn" aria-expanded={open} onClick={() => setOpen(!open)} title={TAGS[k][1]}><span className="tagpill">{TAGS[k][0]}</span></button>
+      <button type="button" className="tagbtn" aria-expanded={open} onClick={() => setOpen(!open)} title={TAGS[k][1]}><span className="tagpill"><span className="tagletter" aria-hidden="true">{LETTER[k]}</span>{TAGS[k][0]}</span></button>
       {open && <span className="tip" role="tooltip">{TAGS[k][1]}</span>}
     </span>
   );
+}
+
+/** Plain-words definition of the decisive incident, from its title (wording only). */
+export function incidentDefinition(title: string | undefined): string | null {
+  if (!title) return null;
+  const blind = /^Incident: (\S+) depegs/.exec(title);
+  if (blind) return `Incident = the ${blind[1]} price drops on the market but the vault's oracle does not see it, and big holders leave first.`;
+  const feed = /^Incident: (.+?) -10%/.exec(title);
+  if (feed && /AMM/.test(title)) return `Incident = ${feed[1]} falls by 10 %, the oracle sees it, liquidations are limited by what the exchanges can absorb, and big holders leave first.`;
+  if (feed) return `Incident = ${feed[1]} falls by 10 % and the oracle sees it: borrowers are liquidated, and big holders leave first.`;
+  return null;
 }
 
 export function HowToRead({ onClose }: { onClose: () => void }) {
@@ -66,7 +78,7 @@ function pickScenarios(r: any) {
   return out;
 }
 
-export function ExitPanel({ r, entry, mode, pick, refine }: { r: any; entry?: IndexEntry; mode: Mode; pick: number; refine?: any }) {
+export function ExitPanel({ r, entry, mode, pick, refine, g }: { r: any; entry?: IndexEntry; mode: Mode; pick: number; refine?: any; g?: any }) {
   const scenarios = useMemo(() => pickScenarios(r), [r]);
   const [sel, setSel] = useState(0);
   // "See it in action" (pick > 0): show the depositor of another vault leaving first
@@ -102,6 +114,14 @@ export function ExitPanel({ r, entry, mode, pick, refine }: { r: any; entry?: In
         <div className="delta">{s.key === "alone" ? (full ? "100 % of your position" : `${share.toFixed(0)} % of your position`) : `${run.changePct === 0 ? "±0.00" : run.changePct.toFixed(2)} % vs exiting alone`} <Tag k="fork" /></div>
         <p className="exitwin"><b>Exit window:</b> {full ? "Immediate" : <>Partial: {share.toFixed(0)}&nbsp;% now, the rest when borrowers repay or the curator reallocates</>} <Tag k="fork" /></p>
         {refine?.governance && <p className="exitwinsub">{governanceLine(refine.governance)}</p>}
+        {s.key === "other" && (() => {
+          const peer = g?.peers?.find((p: any) => p.vault.toLowerCase() === run.others[0]?.vault?.toLowerCase());
+          if (!peer) return null;
+          const shared = peer.markets.filter((pm: any) => BigInt(pm.supplyAssets) > 0n).map((pm: any) => g.markets.find((m: any) => m.id === pm.id && BigInt(m.vaultSupplyAssets) > 0n)).filter(Boolean);
+          if (!shared.length) return null;
+          const syms = [...new Set(shared.map((m: any) => m.collateralSymbol))].join(" and ");
+          return <p className="shared">Your vault and {peer.name} both lend into the same {syms} market{shared.length > 1 ? "s" : ""}. If their depositor leaves, {full ? "less cash is left for you." : "your cash runs out too."}</p>;
+        })()}
         <div className="thinbar" role="img" aria-label={`${share.toFixed(0)} % of the position can be withdrawn`}>
           <div className={`fill ${full ? "good" : "bad"}`} style={{ width: `${Math.min(100, share)}%` }} />
         </div>
@@ -181,10 +201,11 @@ export function LeaveCard({ r, refine, history }: { r: any; refine?: any; histor
     <section className="card glass sr">
       <h2 className="serif">Should I leave?</h2>
       {g && c10 && c0 ? <>
+        {incidentDefinition(r.incidents?.find((i: any) => i.id === g.id)?.title) && <p className="incidentdef">{incidentDefinition(r.incidents.find((i: any) => i.id === g.id).title)}</p>}
         <p className="verdict2">Leaving pays off if you judge this incident more likely than <b>{nb(fmtP(c10.breakEven))}</b> (locked funds cost 10&nbsp;%) or <b>{nb(fmtP(c0.breakEven))}</b> (cost 0&nbsp;%) within 30&nbsp;days.</p>
         <p className="verdict2sub">Incident: {r.shortIncidents?.[g.id] ?? NM}{dominant ? <> · dominant dependency: {dominant}</> : null}</p>
       </> : <p className="verdict2">{nb(r.headline ?? NM)}</p>}
-      <p className="honest"><span className="hitem"><Tag k="fork" /> what you can withdraw is measured</span><span className="hitem"><Tag k="modeled" /> the loss in an incident is modeled (lower bound)</span><span className="hitem"><Tag k="hyp" /> the chance of the incident is yours</span></p>
+      <p className="honest"><span className="hitem"><Tag k="fork" /> what you can withdraw is measured</span><span className="hitem"><Tag k="modeled" /> the loss in an incident is modeled (lower bound)</span><span className="hitem"><Tag k="hyp" /> the chance of the incident is yours</span>{refine?.history && history ? <span className="hitem"><Tag k="hist" /> past prices, not a forecast</span> : null}</p>
       {!g ? <p className="muted">No incident could be built for this vault, so there is no threshold to show ({NM}).</p> : <>
         <div className="twostats">
           <div className="statwrap"><span className="stattag"><Tag k="hyp" /></span>
