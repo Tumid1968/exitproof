@@ -211,6 +211,11 @@ const server = http.createServer(async (req, res) => {
   } catch (e) {
     if (e instanceof UserError) return json(res, e.status, { error: e.message });
     console.error(e);
+    // the local fork stopped or is restarting (seen in the end-to-end test: the demo supervisor brings it back in ~8 s)
+    if (/fetch failed|ECONNREFUSED|ECONNRESET|socket hang up/i.test(String((e as Error)?.message ?? e))) {
+      runner = null;
+      return json(res, 503, { error: "The local fork (127.0.0.1:8545) did not answer: it is stopped or restarting. Retry in a few seconds; npm run demo restarts it automatically." });
+    }
     json(res, 500, { error: "Internal error: " + String((e as Error).message ?? e).split("\n")[0].slice(0, 300) });
   }
 });
