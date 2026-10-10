@@ -407,7 +407,8 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
       vault: c,
       ms: exposed.map((m, mi) => ({ m, shares: posVals[ci * exposed.length + mi]?.[0] ?? 0n, prov: posIds[ci * exposed.length + mi] })),
     })).filter((x) => x.ms.some((y) => y.shares > 0n));
-    await pmap(withPos, 4, async (pv) => {
+    // Sequential on purpose: read ids (provenance) must be numbered identically on every run
+    await pmap(withPos, 1, async (pv) => {
       const [pname, pnId] = await r.must<string>(pv.vault, metaMorphoAbi, "name");
       const [pta, ptaId] = await r.must<bigint>(pv.vault, metaMorphoAbi, "totalAssets");
       const [pwql] = await r.must<bigint>(pv.vault, metaMorphoAbi, "withdrawQueueLength");
