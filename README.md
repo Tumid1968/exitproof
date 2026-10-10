@@ -19,6 +19,8 @@ Everything runs on **real Ethereum state frozen at block 26,157,638** (`0x3e84�
    - **Peer vaults** that lend in the same markets and compete for the same liquidity, plus the **Public Allocator** backstop each of them could bring
    - **Borrowers** of each exposed market, with coverage measured on-chain (Σ borrow shares found / total borrow shares)
    - **Holders** of the vault (and the largest holder of each peer vault), balances re-read on-chain: who can drain the shared liquidity first
+   - **Feed freshness**: age of every Chainlink answer at the block, next to the update behaviour **observed** over its last 24 rounds (`getRoundData`): longest interval between updates (heartbeat-like) and the move that triggers an update. Chainlink does not publish these on-chain, so they are inferred and labelled as such. Example: cbBTC/USD is 10.1 h old, but over its last 24 rounds it updated at most every 24.0 h or on ~2 % moves, so this age is normal.
+   - **Frozen markets**: an oracle whose `price()` reverts at the block (seen on Adpend USDC) is reported, and its market is excluded from the shock propagation: nothing can be liquidated there.
    - **AMM layer**: the pools where liquidators can sell seized collateral (Uniswap V3 factory, Curve registry, through the unwrapped underlying, two hops via WETH), and how much they absorb at the block before a liquidation stops paying (quoted proceeds ≥ amount × oracle price / liquidation incentive)
 2. **Shock propagation** (`src/shocks/analytic.ts`, `src/engine/scenario.ts`). A shock hits one discovered node and moves only along discovered edges: feed → oracle (active router leg only) → market → borrowers → vault → holder. Three shock types are modelled:
    - a price feed moves, and the oracle sees it;
@@ -47,7 +49,7 @@ flowchart LR
   M1 & M2 --> O["Oracle: wstETH/stETH exchange rate only<br/>(stETH = ETH hard-coded)"]
   O --> W["wstETH (wrapper)"] --> S["stETH / Lido<br/>upgradeable via Aragon kernel"] --> E["Ethereum validators<br/>(rewards, slashing)"]
   M1 & M2 --> B["162 borrowers, 100 % of debt identified<br/>one owes 79.4 % of market #1"]
-  B -->|"liquidators sell seized wstETH"| A["AMM: Curve stETH/ETH, Uniswap V3 0.01 %<br/>≈18,739 wstETH absorbable at a profit"]
+  B -->|"liquidators sell seized wstETH"| A["AMM: Curve stETH/ETH, Uniswap V3 0.01 %<br/>≈18,638 wstETH absorbable at a profit"]
   M3 --> R["Oracle router: primary BTC/USD ÷ ETH/USD<br/>backup cbBTC/USD, 2 % deviation challenge"]
 ```
 
@@ -76,12 +78,12 @@ flowchart LR
 | Shock | Recognised vault loss | Economic shortfall (unrecognised) | Holder max withdraw after a run by holder #2 + Vault Bridge #1 |
 |---|---:|---:|---:|
 | Lido backing loss −10 % (oracle sees it), executed: 90/90 liquidations | 293.106 WETH (analytic 293.084) | — | 5,052.78 (liquidations repay debt and bring liquidity back) |
-| same, but liquidations limited by the AMM depth measured at the block: 44 executed on the fork, 46 positions left insolvent | 191.4 (analytic estimate; the verdict uses the fork-measured part + the analytic unrecognised part) | 83.5 | 5,107.28 |
+| same, but liquidations limited by the AMM depth measured at the block: 45 executed on the fork, 45 positions left insolvent | 196.2 (analytic estimate; the verdict uses the fork-measured part + the analytic unrecognised part) | 78.8 | 5,104.73 |
 | stETH market depeg −10 % (oracle blind), executed: 0 liquidatable | 0 | 219.0 WETH (analytic) | **582.53 (−89 %)** |
 
-**AMM layer (on-chain quotes at the block):** liquidators can sell about 18,739 wstETH at a profit in the 96.5 % LLTV market, where borrowers have posted 25,174 wstETH (74 %). Most of that depth is the Curve stETH/ETH pool, reached by unwrapping, then the Uniswap V3 0.01 % pool.
+**AMM layer (on-chain quotes at the block):** liquidators can sell about 18,638 wstETH at a profit in the 96.5 % LLTV market, where borrowers have posted 25,174 wstETH (74 %). Most of that depth is the Curve stETH/ETH pool, reached by unwrapping, then the Uniswap V3 0.01 % pool.
 
-**Verdict (defaults: p = 5 %, 30 days, locked funds valued at a 10 % haircut):** in the oracle-blind incident, EXIT is the answer as soon as the holder's own incident probability exceeds **1.13 %** over 30 days. Sensitivity runs from 0.06 % (7 days, 50 % haircut) to 16.7 % (90 days, no haircut). The Lido-loss incidents break even at 4.16 % (all liquidations) and 4.44 % (AMM-limited).
+**Verdict (defaults: p = 5 %, 30-day horizon, yield given up = the vault's net APY of 1.53 % read on-chain, locked funds valued at a 10 % haircut; all shown next to the break-even in the UI):** in the oracle-blind incident, EXIT is the answer as soon as the holder's own incident probability exceeds **1.13 %** over 30 days. Sensitivity runs from 0.06 % (7 days, 50 % haircut) to 16.7 % (90 days, no haircut). The Lido-loss incidents break even at 4.16 % (all liquidations) and 4.44 % (AMM-limited).
 
 ## The same pipeline on other vaults (generic catalog)
 
@@ -94,6 +96,27 @@ For any MetaMorpho V1 vault, the scenarios are derived from the graph:
 
 **Steakhouse USDC** (219 nodes, 13 peer vaults, 12 markets in the withdraw queue). Liquidations are executed in USDC: the liquidator's balance slot is found by probing and written on the fork. The largest holder (30.56 M USDC) loses 5 % of its exit when all the competing holders leave first. The verdict says STAY in every incident: the exit cost (forgone yield) is larger than the loss the incidents can cause.
 
+## Analyse any vault, and what happens with unusual ones
+
+The UI has an **Analyze** box: paste any MetaMorpho V1 address. The analysis runs as a background job (POST `/api/analyze`, then GET `/api/analyze?vault=` for its stage and log), so long runs never time out in the browser. Bench (`scripts/robustness.mjs`), all from addresses never analysed before:
+
+| Case | Result |
+|---|---|
+| Steakhouse USDT (V1.0, 73 % liquid) | report in 33 s (warm cache) / 331 s (cold), replay OK |
+| Smokehouse USDT (V1.1, 62 % liquid) | report + replay OK |
+| Hakutora USDC (V1.1, ~100 % liquid) | report + replay OK |
+| Clearstar Yield USDC (V1.1, 0 % liquid) | report: nothing can be withdrawn; no shock can be built (no incident), said so in the UI |
+| Adpend USDC (V1.1, 0 % liquid, an oracle whose `price()` reverts) | report: 0.0001 % exitable → "exiting is practically impossible"; frozen market reported |
+| Gauntlet DAI Core (V1.0, 15 % liquid), Metronome msETH (V1.0, 32 %) | report + replay OK |
+| `hello`, `0x1234` | 400: not an Ethereum address |
+| an EOA, the USDC token, Morpho Blue | 422: not a MetaMorpho V1.0/V1.1 vault per the factories' `isMetaMorpho()` |
+
+Other readable errors: 409 when another analysis is running; 503 when the archive RPC is unreachable or rate-limited, or in offline mode for a vault never analysed online.
+
+**Public Allocator, executed.** When a peer vault lets anyone pull its liquidity into the target's markets, a scenario replays the worst run, then calls `reallocateTo` on the Public Allocator (amounts computed on the fork within flow caps, supply-cap headroom and market liquidity, fee paid) before the holder's exit. On Steakhouse USDT, the largest holder's exitable amount goes from 46.73 M to 50.47 M USDT after 3.75 M USDT are moved. For Steakhouse ETH there is no net liquidity to pull (0 WETH), and the UI says so.
+
+**Evidence ledger.** A UI section lists every headline number with its class: measured on-chain, executed on the fork, bounded (upper or lower bound), modeled, or hypothesis. Each row gives its source call or scenario and its hypotheses.
+
 ## Run it
 
 Requirements: Node 24, Windows/macOS/Linux. No API key is needed: the default upstream is `https://eth.drpc.org`. To use your own archive RPC, set `EXITPROOF_RPC_URL`; it is never written to disk or committed.
@@ -104,7 +127,8 @@ npm run proxy            # terminal 1: local RPC proxy on 127.0.0.1:8600 (online
 npm run fork             # terminal 2: Hardhat 3 fork of block 26,157,638 through the proxy
 npm run all              # for the 3 demo vaults: discovery -> executed scenarios, cushion, shocks, verdict -> replay check
                          #   (or per vault: npm run discover -- 0x..., npm run build:report -- 0x... [holder], npm run replay -- 0x...)
-npm test                 # unit tests (verdict, liquidation incentive, decoding)
+npm test                 # unit tests (verdict, analytic engine on a synthetic graph, liquidation incentive, decoding)
+node scripts/robustness.mjs   # /api/analyze on 7 unknown vaults + 5 invalid inputs (needs api, fork, proxy)
 npm run test:fork        # acceptance on the fork: reference values to the wei
 npm run api              # terminal 3: local API on 127.0.0.1:8700
 npm run web              # terminal 4: UI on http://127.0.0.1:5173
@@ -131,10 +155,9 @@ npm run web              # terminal 4: UI on http://127.0.0.1:5173
 
 ## What works / partial / excluded
 
-- **Works:** everything above, for any MetaMorpho V1.0/V1.1 vault (shown on four, including Vault Bridge WETH, V1.1). On V1.1 the share price does not drop after bad debt (`lostAssets`), so losses are measured on the vault's real assets (sum of its market positions): fork 143.731 vs analytic 143.734 WETH for a −10 % feed shock on Vault Bridge WETH. Wei-exact replay online and offline. Unit and fork acceptance tests.
+- **Works:** everything above, for any MetaMorpho V1.0/V1.1 vault (shown on eleven: WETH, USDC, USDT, DAI and msETH vaults, liquid from 0 % to 100 %, see the bench above). On V1.1 the share price does not drop after bad debt (`lostAssets`), so losses are measured on the vault's real assets (sum of its market positions): fork 143.731 vs analytic 143.734 WETH for a −10 % feed shock on Vault Bridge WETH. Wei-exact replay online and offline. Unit and fork acceptance tests.
 - **Partial:**
   - The AMM capacity is a lower bound. Only Uniswap V3 and Curve are counted (direct pools, plus the best two-hop route via WETH); aggregators and other DEXes are not. Depth is assumed to scale with the shocked price.
-  - The Public Allocator backstop is computed (net liquidity from markets outside the target's exposure) but not executed before the exit.
   - Gas is paid in ETH; for non-ETH vaults it is shown in ETH and not converted (no sourced price).
   - Peer vaults and borrowers are *enumerated* from Morpho's public API, because the free archive RPC does not serve historical `eth_getLogs`. Every candidate is re-read on-chain and completeness is measured on-chain.
   - Allocators other than the Public Allocator are not enumerated.

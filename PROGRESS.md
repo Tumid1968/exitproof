@@ -1,21 +1,22 @@
 # PROGRESS
 
 ## Fait (sam. 10 oct.)
-- **Phase 0** : proxy RPC local (cache disque des requêtes à bloc figé, reverts compris ; online/offline ; statut GET), fork Hardhat 3.19.0 au bloc 26 157 638, moteur de retrait (snapshot persistant, impersonation, T0+12k, décodage des reverts). Valeurs de référence retrouvées au wei.
-- **Phase 1** : découverte sourcée, générique pour tout coffre MetaMorpho V1 : chaîne, coffre (version via factories), gouvernance (Safe), marchés, IRM, collatéraux (proxy/admin/owner/masterMinter, stETH/Lido + kernel), oracles (forme Morpho, routeurs primaire/secours, clones EIP-1167, formules lisibles), feeds + agrégateurs + owners, coffres pairs, détenteurs (top 25 vérifiés on-chain), emprunteurs (couverture 100 %), Public Allocator (liquidité nette), **couche AMM** (pools Uniswap V3/Curve, via unwrap et en deux sauts via WETH ; capacité de liquidation au seuil de rentabilité).
-- **Phase 2** : chocs analytiques le long du graphe (feed vu par l'oracle, décrochage aveugle, surévaluation), deux régimes de liquidation (tout absorbé / limité par la profondeur AMM) ; chocs exécutés sur fork (oracle remplacé, liquidations réelles, mauvaise dette lue dans `Liquidate`). Recoupements analytique/exécuté concordants.
-- **Phase 3** : verdict rester/sortir, point mort, sensibilité ; 3 incidents par coffre (aveugle + course, choc + liquidations + course, choc + liquidations limitées AMM + course).
-- **Phase 4** : manifestes par coffre (sha256) + replay au wei, vert en ligne et hors connexion ; `npm run all` (découverte → rapport → replay) sur 4 coffres ; validation complète hors connexion sur nœud neuf.
-- **Phase 5** : API locale + interface React (sélecteur de coffre, graphe cliquable avec provenance, sorties exécutées en direct, chocs + chemin en rouge, table AMM, verdict à curseurs, preuves/replay).
-- **Phase 6 (en partie)** : tests unitaires (12, dont moteur analytique sur graphe synthétique) et d'acceptation sur fork (7), README (avec schéma de la pile), DEMO.md. Analyse de n'importe quel coffre V1 depuis l'interface (testé sur Vault Bridge WETH, V1.1).
-- Bug Hardhat 3 contourné : `evm_revert` ne défait pas `hardhat_setCode` → code d'oracle restauré depuis l'archive + garde-fou de prix.
+- Phases 0 à 5 : voir historique git et NOTES 1-19 (moteur, découverte sourcée, chocs, verdict, replay au wei en ligne/hors connexion, interface).
+- Revue de code indépendante : 3 défauts corrigés (NOTES 18). Copie fraîche : replay vert à froid (NOTES 19).
+- **Priorités d'Alex (sam. ~12:20)** :
+  1. Robustesse `/api/analyze` : tâche de fond + suivi, erreurs 400/409/422/503 lisibles, filet anti-crash ; banc de 12 cas (7 coffres inconnus, 5 entrées invalides) tout vert ; découverte d'un coffre inconnu < 1 min (NOTES 21).
+  2. Verdict : horizon, rendement (APY net lu on-chain) et coût du bloqué affichés à côté du point mort.
+  3. Fraîcheur des feeds : intervalle max et variation de déclenchement observés (24 rounds) ; alerte seulement si l'âge dépasse l'intervalle observé (NOTES 22).
+  4. Registre des preuves (mesuré / exécuté / borné / modélisé / hypothèse) avec sources et hypothèses, dans le rapport et l'interface.
+  5. Public Allocator exécuté (scénario d'atténuation) : Steakhouse USDT 46,73 M → 50,47 M sortables (NOTES 23).
+  6. README et DEMO.md à jour.
+- Tests : 13 unitaires, 7 d'acceptation sur fork ; 11 coffres en résultats, tous rejoués au wei.
 
 ## En cours
-- Revue de code indépendante faite (3 défauts corrigés, voir NOTES 18) ; replay vert à froid sur copie fraîche (NOTES 19)
-- Finitions interface
+- (rien)
 
 ## Bloqué
 - (rien)
 
-## Reste à faire
-- Vidéo (après une vraie exécution), soumission (Alex)
+## Reste à faire (Alex)
+- Vidéo, git push, soumission.
