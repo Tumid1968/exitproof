@@ -28,7 +28,7 @@ npm run demo -- --offline    # hors connexion (après un passage en ligne)
 
 ## 4. Preuves reproductibles
 
-- `npm run replay` (Steakhouse ETH) ou `npm run replay -- 0x<coffre>` ; `npm run test:fork` (9 tests) ; `npm test` (14 tests) ; `npm run test:e2e` (42 vérifications de bout en bout dans Chrome : site statique en HTTP et en file://, 1440 et 375 px, et mode live si `npm run demo` tourne ; sinon la partie live est sautée et annoncée) ; `E2E_URL=https://… npm run test:e2e:url` pour une copie déployée (GitHub Pages).
+- `npm run replay` (Steakhouse ETH) ou `npm run replay -- 0x<coffre>` ; `npm run test:fork` (9 tests) ; `npm test` (14 tests) ; `npm run test:e2e` (54 vérifications de bout en bout dans Chrome : site statique en HTTP et en file://, 1440 et 375 px, et mode live si `npm run demo` tourne ; sinon la partie live est sautée et annoncée) ; `E2E_URL=https://… npm run test:e2e:url` pour une copie déployée (GitHub Pages).
 - Sorties brutes sur clone propre, hors connexion : `results/clean-clone-check/`.
 - Manifestes : `results/manifests/*.json` ; rapports : `results/reports/*.json` ; graphes : `results/discovery/*.json`.
 

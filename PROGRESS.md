@@ -26,3 +26,9 @@
 - First display of the default vault: 311–405 ms (headless Chrome, local).
 - Bugs found and fixed (separate commits fc60045, 128efac): nested buttons in the 10 %/0 % tiles; static build probing /api/status (404 on HTTP and Pages); favicon 404; light-theme hero contrast without the canvas; mobile text under 16 px and controls under 44 px; mobile top bar wrapping; "Internal error: fetch failed" during a fork restart.
 - Open: 14 controls inside the expert tabs are under 44 px on mobile (warning, not failed). After the fork fallback, the page stays in static mode until reload. A real fork kill shows the banner only if the outage lasts past the page's 8 s poll (the supervisor restarts the fork in ~7 s).
+
+## Probability references (10 Oct, tag pre-proba)
+- Done 1-5: stETH/ETH history (k of N, percentiles), break-it-down mode, total-loss threshold + governance window + exit window, vault-level loss vs Credora's 1 %, HHI and utilization vs 90 %, pegged/volatile regimes. No existing number changed; results/history and results/refine are new files.
+- Tests: 16/16 unit, 54 e2e (53 passed, 1 opt-in skipped), 9/9 fork.
+- Fixed on the way (separate commit): transparent sticky tab bar.
+- Open: Credora definition not re-checked (forum unreachable); history covers only the stETH depeg incident (Steakhouse ETH, Gauntlet WETH Prime).

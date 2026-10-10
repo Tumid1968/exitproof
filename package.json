@@ -25,7 +25,9 @@
     "build:static": "tsx src/cli/export-static.ts && vite build --config web/vite.config.ts",
     "demo": "tsx src/cli/demo.ts",
     "test:e2e": "node --import tsx --test --test-concurrency=1 --test-reporter=spec test/e2e/site.e2e.ts",
-    "test:e2e:url": "node -e \"if(!process.env.E2E_URL){console.error('set E2E_URL');process.exit(1)}\" && node --import tsx --test --test-concurrency=1 --test-reporter=spec test/e2e/site.e2e.ts"
+    "test:e2e:url": "node -e \"if(!process.env.E2E_URL){console.error('set E2E_URL');process.exit(1)}\" && node --import tsx --test --test-concurrency=1 --test-reporter=spec test/e2e/site.e2e.ts",
+    "history": "tsx src/cli/history.ts",
+    "refine": "tsx src/cli/refine.ts"
   },
   "dependencies": {
     "hardhat": "3.19.0",
