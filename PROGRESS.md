@@ -14,3 +14,9 @@
 
 ## Reste à faire (Alex)
 - git push, activer GitHub Pages sur `/docs` et recopier l'URL dans LIVRABLES.md, enregistrer la vidéo de secours, soumettre.
+
+## Redesign v2 (10 Oct, display only; tag pre-redesign-v2)
+- Done: full-screen hero over hand-written canvas waves (≤30 fps cap, DPR ≤1.5, 0.6× resolution under 700 px, paused when the tab is hidden, a still frame with reduced motion); facts row read from index/manifests (block, replay verdict, coverage); fixed nav, opaque after the hero; blurred cards; "See it in action" opens the "Another vault" scenario; Outfit font embedded (SIL OFL); light theme for the content under the hero.
+- Wording: "stETH depegs (oracle blind)"; 6 reports rebuilt from existing runs, amounts identical, 6 replays OK.
+- Checked: 14/14 unit, 9/9 fork; static site has no external requests at 375 and 1440 px; no horizontal scroll; live mode OK; +80.6 KB (code + font) vs. acb2b92.
+- Screens: results/screens/v2-*.png. Measured waves frame rate (headless Chrome, software rendering): 30 fps at 375 px, 19–24 fps at 1440 px.
