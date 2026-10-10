@@ -21,6 +21,7 @@ export function loadGraph(vault: Address): DependencyGraph {
     big(p as never, ["totalAssets"]);
     for (const m of p.markets) big(m as never, ["supplyAssets"]);
   }
+  for (const d of Object.values(g.dex ?? {})) { big(d as never, ["capacity", "collateralAtRisk"]); for (const v of d.venues) big(v as never, ["capacity"]); }
   big(g.summary, ["totalAssets", "totalSupply", "withdrawableNow", "lentOutNotWithdrawable", "publicAllocatorReallocatableIntoExposedMarkets"]);
   return g;
 }

@@ -17,7 +17,7 @@ export type CatalogMeta = {
   runIds: string[];
   /** executed feed shocks to compare with the analytic engine */
   crossChecks: { id: string; shock: Shock }[];
-  incidents: { blind?: { id: string; collateral: Address; factor: number }; shock?: { id: string; shock: Shock } };
+  incidents: { blind?: { id: string; collateral: Address; factor: number }; shock?: { id: string; shock: Shock }; dexShock?: { id: string; shock: Shock } };
   cushionOther: Address | null;
 };
 
@@ -88,6 +88,15 @@ export function genericCatalog(g: DependencyGraph, holderIn?: Address): { scenar
       actions: [{ type: "measure", label: "source state" }, ...shockActions(g, shock).actions, { type: "measure", label: "after shock and liquidations" }, ...worstRun, ...finish()],
     });
     meta.incidents.shock = { id: "incident_feed_shock_plus_run", shock };
+    if (Object.keys(g.dex ?? {}).length) {
+      scenarios.push({
+        id: "incident_feed_dexlimited_plus_run",
+        title: `Incident: ${top.f.data.description} -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first`,
+        target, hypotheses: [...shockHyps, RUN_HYPOTHESIS, "Only the borrowers whose collateral the measured AMM depth absorbs at a profit are liquidated."],
+        actions: [{ type: "measure", label: "source state" }, ...shockActions(g, shock, { dexLimited: true }).actions, { type: "measure", label: "after shock and liquidations" }, ...worstRun, ...finish()],
+      });
+      meta.incidents.dexShock = { id: "incident_feed_dexlimited_plus_run", shock };
+    }
   }
 
   // Oracle-blind depeg of the main collateral (largest vault supply)

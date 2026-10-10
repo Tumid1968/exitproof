@@ -15,8 +15,8 @@ export const FORK_FACT = "Contracts and state are real at the source block; tran
 const exit = (vault: Address, owner: Address, label: string): ScenarioAction => ({ type: "exit", label, vault, owner, action: { kind: "redeemAll" } });
 
 /** Turn a feed shock into executable oracle overrides + liquidations, using the analytic propagation path. */
-export function shockActions(g: DependencyGraph, shock: Shock): { actions: ScenarioAction[]; affected: Hex[] } {
-  const r = propagate(g, shock);
+export function shockActions(g: DependencyGraph, shock: Shock, opts: { dexLimited?: boolean } = {}): { actions: ScenarioAction[]; affected: Hex[] } {
+  const r = propagate(g, shock, opts);
   const byOracle = new Map<Address, number>();
   for (const m of r.markets) {
     const mk = g.markets.find((x) => x.id === m.id)!;
@@ -27,8 +27,10 @@ export function shockActions(g: DependencyGraph, shock: Shock): { actions: Scena
     actions.push({ type: "oraclePrice", label: `oracle ${oracle.slice(0, 10)}… price x${f}`, oracle, num: String(Math.round(f * 1e6)), den: "1000000" });
   const affected = r.markets.filter((m) => m.priceFactorSeenByOracle !== 1).map((m) => m.id);
   for (const id of affected) {
-    const list = g.borrowers[id]?.list ?? [];
-    actions.push({ type: "liquidateAll", label: `liquidations in ${r.markets.find((m) => m.id === id)!.label}`, marketId: id, borrowers: list.map((b) => b.address) });
+    const mi = r.markets.find((m) => m.id === id)!;
+    // DEX-limited: only the borrowers whose collateral the measured AMM depth can absorb are liquidated
+    const list = opts.dexLimited ? mi.liquidatedBorrowers : (g.borrowers[id]?.list ?? []).map((b) => b.address);
+    actions.push({ type: "liquidateAll", label: `liquidations in ${mi.label}${opts.dexLimited ? ` (${list.length} absorbable by AMM depth, ${mi.unliquidated} not)` : ""}`, marketId: id, borrowers: list });
   }
   return { actions, affected };
 }
@@ -87,6 +89,20 @@ export function steakhouseEthCatalog(g: DependencyGraph): { scenarios: Scenario[
       ],
     });
   }
+  if (rateFeed) {
+    const { actions } = shockActions(g, { kind: "feed", feed: rateFeed.address!, factor: 0.9, label: "x0.9" }, { dexLimited: true });
+    shocks.push({
+      id: "incident_lido10_dexlimited_plus_run",
+      title: "Incident: Lido loss -10%, liquidations limited by AMM depth measured at the block, then holder #2 and Vault Bridge #1 run",
+      target, hypotheses: [FORK_FACT, RUN_HYPOTHESIS, "Shock hypothesis: oracle replaced on the fork; only the borrowers whose collateral the measured AMM depth absorbs at a profit are liquidated."],
+      actions: [
+        { type: "measure", label: "source state" }, ...actions, { type: "measure", label: "after shock and liquidations" },
+        exit(V, ACTORS.B, "holder #2 exits"), exit(ACTORS.vaultBridgeWeth, ACTORS.VB1, "Vault Bridge WETH #1 exits its own vault"),
+        ...finish("before the holder's exit"),
+        { type: "exit", label: "holder withdraws its maximum", vault: V, owner: ACTORS.A, action: { kind: "withdrawMax" } }, { type: "measure", label: "end" },
+      ],
+    });
+  }
   // Oracle-blind incident: stETH trades below ETH but the exchange-rate oracle does not move.
   // Executed part: the liquidation sweep finds nothing to liquidate (oracle unchanged), then the run.
   // Value part (economic shortfall) comes from the analytic engine, labelled as such.
@@ -109,6 +125,7 @@ export function steakhouseEthCatalog(g: DependencyGraph): { scenarios: Scenario[
     incidents: {
       ...(wstMarkets.length ? { blind: { id: "incident_steth_depeg_blind_plus_run", collateral: ADDR.wstETH as Address, factor: 0.9 } } : {}),
       ...(rateFeed ? { shock: { id: "incident_lido10_plus_run", shock: { kind: "feed" as const, feed: rateFeed.address!, factor: 0.9, label: "wstETH/stETH rate x0.9" } } } : {}),
+      ...(rateFeed ? { dexShock: { id: "incident_lido10_dexlimited_plus_run", shock: { kind: "feed" as const, feed: rateFeed.address!, factor: 0.9, label: "wstETH/stETH rate x0.9" } } } : {}),
     },
     cushionOther: ACTORS.B,
   };

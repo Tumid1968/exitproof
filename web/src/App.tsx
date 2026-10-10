@@ -245,7 +245,7 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
       </div>
       <div style={{ maxHeight: 380, overflow: "auto" }}>
         <table>
-          <thead><tr><th>Shock</th><th>Markets reached (oracle sees)</th><th className="r">Liquidatable</th><th className="r">Vault loss recognised</th><th className="r">Vault economic shortfall</th><th className="r">Holder loss</th><th className="r">Vault withdrawable after</th></tr></thead>
+          <thead><tr><th>Shock</th><th>Markets reached (oracle sees)</th><th className="r">Liquidatable</th><th className="r">Vault loss recognised</th><th className="r">Vault economic shortfall</th><th className="r">Holder loss</th><th className="r">Vault withdrawable after</th><th className="r" title="Liquidations limited by the AMM depth measured at the block">If AMM depth limits liquidations: liquidated / stuck · recognised + unrecognised loss</th></tr></thead>
           <tbody>
             {rows.map((x) => (
               <tr key={x.i} className={`click ${sel === x.i ? "sel" : ""}`} onClick={() => setSel(sel === x.i ? null : x.i)}>
@@ -256,6 +256,7 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
                 <td className={`r ${BigInt(x.vaultHiddenLoss) > 0n ? "warn" : ""}`}>{w(x.vaultHiddenLoss)}</td>
                 <td className="r">{w(BigInt(x.holderLoss) + BigInt(x.holderHiddenLoss))}</td>
                 <td className="r">{w(x.withdrawableAfter)}</td>
+                <td className="r">{x.dexLimited ? <>{x.dexLimited.liquidated} / <span className={x.dexLimited.unliquidated ? "warn" : ""}>{x.dexLimited.unliquidated}</span> · {w(x.dexLimited.vaultLoss)} + <span className="warn">{w(x.dexLimited.vaultHiddenLoss)}</span></> : <span className="muted">—</span>}</td>
               </tr>
             ))}
           </tbody>
@@ -271,6 +272,20 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
           {live && <LiveResult live={live} />}
         </div>
       )}
+      {r.dex && Object.keys(r.dex).length > 0 && <>
+        <h3 style={{ fontSize: 14, margin: "14px 0 6px" }}>AMM layer: can liquidators sell what they seize? <Chip k="onchain" /></h3>
+        <p className="sub">Pools discovered on-chain (Uniswap V3 factory, Curve registry, and through the unwrapped underlying). Capacity = largest amount whose quoted proceeds at the block still cover what the liquidator repays (oracle price / liquidation incentive). Beyond it, liquidating is unprofitable: insolvent positions stay, losses stay unrecognised and no liquidity comes back.</p>
+        <table>
+          <thead><tr><th>Market</th><th className="r">Collateral posted by borrowers</th><th className="r">Absorbable at a profit</th><th>Venues with capacity (capacity · avg price)</th></tr></thead>
+          <tbody>{Object.entries(r.dex).map(([id, d]: [string, any]) => {
+            const q = r.queue.find((x: any) => x.id === id);
+            const cd = q?.collateralDecimals ?? 18;
+            return (<tr key={id}><td>{q?.collateral} #{q?.index}</td><td className="r">{w(d.collateralAtRisk, 2, cd)}</td>
+              <td className={`r ${BigInt(d.capacity) < BigInt(d.collateralAtRisk) ? "warn" : "ok"}`}>{w(d.capacity, 2, cd)} ({pct(Number(BigInt(d.capacity) * 1000n / (BigInt(d.collateralAtRisk) || 1n)) / 1000, 0)})</td>
+              <td className="muted">{d.venues.map((v: any) => `${v.route}: ${w(v.capacity, 1, cd)} @ ${v.avgPrice?.toFixed(4) ?? "?"}`).join(" · ")}</td></tr>);
+          })}</tbody>
+        </table>
+      </>}
       <h3 style={{ fontSize: 14, margin: "14px 0 6px" }}>Cross-check: analytic engine vs execution on the fork <Chip k="fork" /></h3>
       <table>
         <thead><tr><th>Shock</th><th className="r">Liquidations (exec / analytic)</th><th className="r">Bad debt executed</th><th className="r">Bad debt analytic</th><th className="r">Vault loss executed</th><th className="r">Vault loss analytic</th><th className="r">Holder value loss (exec)</th></tr></thead>
@@ -306,7 +321,7 @@ function VerdictPanel({ r }: { r: Report }) {
       <div className="row" style={{ marginBottom: 10 }}>
         {r.incidents.map((x: any, i: number) => <button key={x.id} className={inc === i ? "on" : ""} onClick={() => setInc(i)}>{x.title}</button>)}
       </div>
-      <div className="note" style={{ marginBottom: 10 }}>Regime: {I.regime}. Value loss source: {I.valueSource}. After the run, the holder could withdraw at most <b>{w(I.executedFacts.holderMaxWithdrawAfterRun)}</b> <Chip k="fork" />{I.executedFacts.liquidatableFoundOnFork !== undefined ? <> · liquidation sweep on the fork found <b>{I.executedFacts.liquidatableFoundOnFork}</b> liquidatable positions (oracle unchanged)</> : null}.</div>
+      <div className="note" style={{ marginBottom: 10 }}>Regime: {I.regime}. Value loss source: {I.valueSource}. After the run, the holder could withdraw at most <b>{w(I.executedFacts.holderMaxWithdrawAfterRun)}</b> <Chip k="fork" />{I.executedFacts.liquidatableFoundOnFork !== undefined ? <> · liquidation sweep on the fork found <b>{I.executedFacts.liquidatableFoundOnFork}</b> liquidatable positions (oracle unchanged)</> : null}{I.executedFacts.leftInsolvent !== undefined ? <> · <b>{I.executedFacts.liquidatedOnFork}</b> liquidations executed, <b>{I.executedFacts.leftInsolvent}</b> insolvent positions left (AMM depth exhausted)</> : null}.</div>
       <div className="grid" style={{ gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)" }}>
         <div className="grid">
           <div className="slider"><span>Incident probability within horizon <Chip k="hyp" /></span><input type="range" min={0} max={0.3} step={0.0025} value={p} onChange={(e) => setP(Number(e.target.value))} /><b>{pct(p, 2)}</b></div>

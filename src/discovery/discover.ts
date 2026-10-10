@@ -8,6 +8,8 @@
  */
 import { getAddress, zeroAddress, type Address, type Hex } from "viem";
 import { borrowerCandidates, holderCandidates, supplyingVaultCandidates } from "./morphoApi.ts";
+import { discoverVenues, venueCapacity, type Venue } from "./dex.ts";
+import { lifWad } from "../shocks/analytic.ts";
 import { Reader } from "./reader.ts";
 import {
   chainlinkFeedAbi, collateralProbeAbi, erc20Abi, factoryAbi, irmAbi, metaMorphoAbi, morphoBlueAbi,
@@ -31,7 +33,7 @@ const slotAddr = (v: Hex): Address | null => {
   return BigInt(v) === 0n ? null : getAddress(a);
 };
 
-export type DiscoverOptions = { peers?: boolean; borrowers?: boolean; log?: (s: string) => void };
+export type DiscoverOptions = { peers?: boolean; borrowers?: boolean; dex?: boolean; log?: (s: string) => void };
 
 export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Promise<DependencyGraph> {
   const log = opts.log ?? (() => {});
@@ -511,6 +513,34 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
     }
   }
 
+  // ---------- AMM layer: can liquidators sell the seized collateral? ----------
+  const dex: DependencyGraph["dex"] = {};
+  if (opts.dex !== false) {
+    const venueCache = new Map<string, Venue[]>();
+    for (const m of exposed) {
+      if (m.params.collateralToken === zeroAddress || m.oraclePrice === null) continue;
+      const key = m.params.collateralToken + m.params.loanToken;
+      if (!venueCache.has(key)) venueCache.set(key, await discoverVenues(r, m.params.collateralToken, m.params.loanToken));
+      const venues = venueCache.get(key)!;
+      const atRisk = (borrowers[m.id]?.list ?? []).reduce((s, b) => s + b.collateral, 0n);
+      const unit = 10n ** BigInt(m.collateralDecimals);
+      const out: DependencyGraph["dex"][string]["venues"] = [];
+      for (const v of venues) {
+        const c = await venueCapacity(v, m.oraclePrice, lifWad(m.params.lltv), unit, atRisk > unit ? atRisk : unit, m.collateralDecimals - m.loanDecimals);
+        out.push({ id: v.id, route: v.route, pool: v.pool, capacity: c.capacity, avgPrice: c.avgPriceAtCapacity });
+        const did = `dex:${v.pool}`;
+        addNode({ id: did, kind: "dex", layer: 4, label: v.route, address: v.pool, data: { venue: v.kind }, prov: v.prov });
+        addEdge({ from: `token:${getAddress(m.params.collateralToken)}`, to: did, rel: "sold by liquidators via", prov: v.prov });
+      }
+      const capacity = out.reduce((s, x) => s + x.capacity, 0n);
+      dex[m.id] = { capacity, collateralAtRisk: atRisk, venues: out };
+      const node = nodes.get(`market:${m.id}`)!;
+      node.data.liquidationCapacityCollateral = capacity;
+      node.data.collateralPostedByBorrowers = atRisk;
+      log(`  ${m.collateralSymbol} market #${m.queueIndex}: ${venues.length} venues, liquidation capacity ${capacity} / collateral ${atRisk}`);
+    }
+  }
+
   const withdrawableTotal = markets.reduce((s, m) => s + m.vaultWithdrawable, 0n);
   const lentOut = markets.reduce((s, m) => s + (m.vaultSupplyAssets - m.vaultWithdrawable), 0n);
   const supplyApy = (() => {
@@ -533,7 +563,7 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
       publicAllocatorReallocatableIntoExposedMarkets: peers.reduce((t, p) => t + p.publicAllocator.reallocatableIn.reduce((a, x) => a + x.amount, 0n), 0n),
       nodeCount: nodes.size, edgeCount: edges.length, readCount: r.reads.length,
     },
-    markets, peers, borrowers, holders: { coverage: holders.coverage, list: holders.list },
+    markets, peers, borrowers, holders: { coverage: holders.coverage, list: holders.list }, dex,
     nodes: [...nodes.values()], edges, reads: r.reads,
     notes: [
       "All values are eth_call / eth_getStorageAt / eth_getLogs reads at the frozen block through the local proxy; every node and edge lists the read ids it rests on.",

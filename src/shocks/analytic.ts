@@ -31,6 +31,9 @@ export type MarketImpact = {
   priceFactorSeenByOracle: number;
   path: string[];
   liquidatable: number;
+  /** liquidatable but not absorbed by AMM depth (dexLimited only) */
+  unliquidated: number;
+  liquidatedBorrowers: Address[];
   badDebt: bigint;
   repaidByLiquidations: bigint;
   /** economic shortfall not recognised on-chain (blind depeg) */
@@ -91,9 +94,25 @@ export const lifWad = (lltv: bigint) => {
   return lif < maxLif ? lif : maxLif;
 };
 
-export function propagate(g: DependencyGraph, shock: Shock): ShockResult {
+export type PropagateOptions = {
+  /** Liquidations limited by the AMM depth measured at the block (shared per collateral across markets). */
+  dexLimited?: boolean;
+};
+
+export function propagate(g: DependencyGraph, shock: Shock, opts: PropagateOptions = {}): ShockResult {
   const impacts: MarketImpact[] = [];
-  for (const m of g.markets) {
+  // Shared liquidation budget per collateral: the same pools absorb the seized collateral of every market.
+  const budgets = new Map<string, { left: bigint }>();
+  if (opts.dexLimited) for (const m of g.markets) {
+    const d = g.dex?.[m.id];
+    if (!d) continue;
+    const k = getAddress(m.params.collateralToken);
+    const cur = budgets.get(k);
+    if (!cur || d.capacity > cur.left) budgets.set(k, { left: d.capacity });
+  }
+  // Higher liquidation incentive = liquidators served first
+  const ordered = [...g.markets].sort((a, b) => (lifWad(b.params.lltv) > lifWad(a.params.lltv) ? 1 : -1));
+  for (const m of ordered) {
     if (m.params.oracle === "0x0000000000000000000000000000000000000000") continue;
     const path: string[] = [];
     let seen = 1;
@@ -111,7 +130,8 @@ export function propagate(g: DependencyGraph, shock: Shock): ShockResult {
       path.push(`oracle ${m.params.oracle.slice(0, 10)} overprices x${shock.factor}`);
     }
     if (seen === 1 && blindFactor === 1) continue;
-    impacts.push(impactOnMarket(g, m, seen, blindFactor, shock.kind === "oracleOverprice", [mNode, ...path]));
+    const budget = opts.dexLimited ? budgets.get(getAddress(m.params.collateralToken)) ?? { left: 0n } : null;
+    impacts.push(impactOnMarket(g, m, seen, blindFactor, shock.kind === "oracleOverprice", [mNode, ...path], budget));
   }
   const vaultLoss = impacts.reduce((s, i) => s + i.vaultLoss, 0n);
   const totalAssets = BigInt(g.summary.totalAssets as string | bigint);
@@ -130,24 +150,27 @@ export function propagate(g: DependencyGraph, shock: Shock): ShockResult {
       "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
       shock.kind === "blindDepeg" ? "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back." : "The shocked price is what the oracle returns to Morpho Blue.",
       shock.kind === "oracleOverprice" ? "Worst case: an actor borrows all idle liquidity against collateral valued at the overpriced oracle and walks away." : "",
+      opts.dexLimited ? "Liquidations stop when the AMM pools measured at the block can no longer absorb the seized collateral at a profit (depth assumed to scale with the shocked price); insolvent positions left over are an unrecognised shortfall and bring no liquidity back." : "",
     ].filter(Boolean),
   };
 }
 
-function impactOnMarket(g: DependencyGraph, m: MarketState, seen: number, blind: number, overprice: boolean, path: string[]): MarketImpact {
+function impactOnMarket(g: DependencyGraph, m: MarketState, seen: number, blind: number, overprice: boolean, path: string[], budget: { left: bigint } | null): MarketImpact {
   const list = g.borrowers[m.id]?.list ?? [];
   const price = m.oraclePrice ?? 0n;
   const pSeen = scale(price, seen);
   const pReal = scale(price, blind * (overprice ? 1 : 1));
   const lif = lifWad(m.params.lltv);
-  let badDebt = 0n, repaid = 0n, hidden = 0n, liquidatable = 0;
+  let badDebt = 0n, repaid = 0n, hidden = 0n, liquidatable = 0, unliquidated = 0;
+  const liquidated: Address[] = [];
   if (overprice) {
     // Borrow max against collateral bought at the true price: profitable iff LLTV * factor > 1.
     // Each unit of true collateral value lets one borrow LLTV*factor: the lender loss per unit borrowed is 1 - 1/(LLTV*factor).
     const lf = (Number(m.params.lltv) / 1e18) * seen;
     if (lf > 1) badDebt = scale(m.liquidity, 1 - 1 / lf);
   } else {
-    for (const b of list) {
+    const sorted = budget ? [...list].sort((a, b) => (BigInt(b.debt) > BigInt(a.debt) ? 1 : -1)) : list;
+    for (const b of sorted) {
       const debt = BigInt(b.debt as unknown as string);
       const coll = BigInt(b.collateral as unknown as string);
       const collSeen = (coll * pSeen) / ORACLE_SCALE;
@@ -155,6 +178,15 @@ function impactOnMarket(g: DependencyGraph, m: MarketState, seen: number, blind:
       if (debt * WAD > collSeen * m.params.lltv) {
         liquidatable++;
         const maxRepay = (collSeen * WAD) / lif; // repaying this seizes all collateral
+        const seized = maxRepay < debt ? coll : pSeen === 0n ? coll : (((debt * lif) / WAD) * ORACLE_SCALE) / pSeen;
+        if (budget && seized > budget.left) {
+          // nobody can sell this collateral at a profit: position stays, shortfall unrecognised, no liquidity back
+          unliquidated++;
+          if (debt > collSeen) hidden += debt - collSeen;
+          continue;
+        }
+        if (budget) budget.left -= seized;
+        liquidated.push(b.address);
         if (maxRepay < debt) { badDebt += debt - maxRepay; repaid += maxRepay; } else repaid += debt;
       }
       if (blind !== 1) {
@@ -172,7 +204,7 @@ function impactOnMarket(g: DependencyGraph, m: MarketState, seen: number, blind:
   return {
     id: m.id,
     label: `${m.collateralSymbol}/${g.target.assetSymbol} LLTV ${(Number(m.params.lltv) / 1e16).toFixed(1)}% (queue #${m.queueIndex})`,
-    priceFactorSeenByOracle: seen, path, liquidatable,
+    priceFactorSeenByOracle: seen, path, liquidatable, unliquidated, liquidatedBorrowers: liquidated,
     badDebt, repaidByLiquidations: repaid, hiddenShortfall: hidden,
     vaultLoss, vaultHiddenLoss: vaultHidden,
     liquidityAfter, vaultSupplyAfter, vaultWithdrawableAfter: min(vaultSupplyAfter, liquidityAfter),

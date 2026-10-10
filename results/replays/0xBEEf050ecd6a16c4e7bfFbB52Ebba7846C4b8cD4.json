@@ -1,7 +1,7 @@
 {
-  "at": "2026-10-10T09:27:17.134Z",
+  "at": "2026-10-10T09:34:49.198Z",
   "manifest": "results/manifests/0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4.json",
-  "manifestSha256": "ca77e1884b3b15ef270747014e9cf36c81ef1e2cd9e3b1624089fc1349a4afc9",
+  "manifestSha256": "e143f8c2afc0dffd40103259403e9022d32e92b7ce3991b3bec11b8d428d7cb6",
   "hashOk": true,
   "cushionOk": true,
   "scenarios": [
@@ -57,6 +57,11 @@
     },
     {
       "id": "incident_lido10_plus_run",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_lido10_dexlimited_plus_run",
       "ok": true,
       "diffs": []
     },

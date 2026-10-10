@@ -1,7 +1,7 @@
 {
-  "at": "2026-10-10T09:27:44.523Z",
+  "at": "2026-10-10T09:36:10.821Z",
   "manifest": "results/manifests/0x2371e134e3455e0593363cBF89d3b6cf53740618.json",
-  "manifestSha256": "04761b33cda0064dc492d27546f7dc92c4b3945a21193b1b10ab432577d595c0",
+  "manifestSha256": "0bb3fbf5e3515f24dc62968f95550ceb9e43b5baa6d1fb29762b9903f1b8ebe5",
   "hashOk": true,
   "cushionOk": true,
   "scenarios": [
@@ -62,6 +62,11 @@
     },
     {
       "id": "incident_feed_shock_plus_run",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_feed_dexlimited_plus_run",
       "ok": true,
       "diffs": []
     },

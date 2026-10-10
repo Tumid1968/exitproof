@@ -3,7 +3,7 @@ import type { ReadRecord } from "./reader.ts";
 
 export type NodeKind =
   | "chain" | "vault" | "market" | "token" | "yieldSource" | "oracle" | "feed" | "aggregator"
-  | "irm" | "governance" | "allocator" | "peerVault" | "borrowers" | "holders";
+  | "irm" | "governance" | "allocator" | "peerVault" | "borrowers" | "holders" | "dex";
 
 export type GraphNode = {
   id: string;
@@ -67,6 +67,8 @@ export type DependencyGraph = {
   markets: MarketState[];
   peers: PeerExposure[];
   holders: { coverage: number; list: Holder[] };
+  /** AMM exit capacity for liquidators, per exposed market (collateral smallest units) */
+  dex: Record<string, { capacity: bigint; collateralAtRisk: bigint; venues: { id: string; route: string; pool: Address; capacity: bigint; avgPrice: number | null }[] }>;
   borrowers: Record<string, { coverage: number; count: number; list: Borrower[] }>;
   nodes: GraphNode[];
   edges: GraphEdge[];

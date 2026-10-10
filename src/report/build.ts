@@ -109,6 +109,14 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     withdrawableBefore: r.vaultWithdrawableBefore.toString(), withdrawableAfter: r.vaultWithdrawableAfter.toString(),
     markets: r.markets.map((m) => ({ id: m.id, label: m.label, factorSeen: m.priceFactorSeenByOracle, path: m.path, liquidatable: m.liquidatable, badDebt: m.badDebt.toString(), hiddenShortfall: m.hiddenShortfall.toString(), repaid: m.repaidByLiquidations.toString() })),
     hypotheses: r.hypotheses,
+    dexLimited: s.kind === "feed" && Object.keys(g.dex ?? {}).length ? (() => {
+      const d = propagate(g, s, { dexLimited: true });
+      return {
+        vaultLoss: d.vaultLoss.toString(), vaultHiddenLoss: d.vaultHiddenLoss.toString(), withdrawableAfter: d.vaultWithdrawableAfter.toString(),
+        holderLoss: holderPart(d.vaultLoss).toString(), holderHiddenLoss: holderPart(d.vaultHiddenLoss).toString(),
+        liquidated: d.markets.reduce((t, m) => t + m.liquidatedBorrowers.length, 0), unliquidated: d.markets.reduce((t, m) => t + m.unliquidated, 0),
+      };
+    })() : null,
   }));
 
   // ---- 5. executed shocks vs analytic (cross-check)
@@ -156,6 +164,18 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
       inputs: { positionValue: holderValue, exitableNow, incidentValueLoss: sub(holderValue, B(measure(r, "after shock and liquidations").holderValue)), incidentLocked: sub(B(before.holderValue), B(before.holderMaxWithdraw)) },
     });
   }
+  if (meta.incidents.dexShock) {
+    const r = byId(meta.incidents.dexShock.id);
+    const before = measure(r, "before the holder's exit");
+    const a = propagate(g, meta.incidents.dexShock.shock, { dexLimited: true });
+    const recognised = sub(holderValue, B(measure(r, "after shock and liquidations").holderValue));
+    incidents.push({
+      id: meta.incidents.dexShock.id, regime: "oracle sees it, but liquidations stop where the AMM depth measured at the block runs out: part of the loss stays unrecognised and less liquidity comes back", title: r.title,
+      valueSource: "executed on fork (bad debt of the liquidations the AMM depth allows) + analytic unrecognised shortfall of the positions left insolvent",
+      executedFacts: { holderMaxWithdrawAfterRun: before.holderMaxWithdraw, liquidatedOnFork: liqs(r).reduce((s, x) => s + x.liquidated, 0), leftInsolvent: a.markets.reduce((s, m) => s + m.unliquidated, 0) },
+      inputs: { positionValue: holderValue, exitableNow, incidentValueLoss: recognised + holderPart(a.vaultHiddenLoss), incidentLocked: sub(B(before.holderValue), B(before.holderMaxWithdraw)) },
+    });
+  }
   const defaults = { probability: 0.05, horizonDays: 30, lockedHaircut: 0.1 };
   const mkInputs = (x: (typeof incidents)[number]["inputs"], d = defaults): VerdictInputs => ({ ...x, ...d, netApy, gasCostOut: gasInAsset, gasCostReentry: gasInAsset, slippage });
   const unit = g.target.assetSymbol;
@@ -175,12 +195,13 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     source: { ...g.source, forkLocalChainId: fork.localChainId },
     target: { ...g.target, holder, holderLabel: holder === g.holders.list[0]?.address ? "largest holder" : "selected holder", holderShares: holderShares.toString(), holderValue: holderValue.toString(), holderMaxWithdraw: src.holderMaxWithdraw },
     vault: { totalAssets: src.vaultTotalAssets, totalSupply: src.vaultTotalSupply, ...g.summary, netApy, holders: g.holders },
-    queue: g.markets.map((m) => ({ index: m.queueIndex, id: m.id, collateral: m.collateralSymbol, lltv: m.params.lltv.toString(), vaultSupply: m.vaultSupplyAssets.toString(), liquidity: m.liquidity.toString(), withdrawable: m.vaultWithdrawable.toString(), utilization: m.utilization, oracle: m.params.oracle, supplyApr: m.supplyApr })),
+    queue: g.markets.map((m) => ({ index: m.queueIndex, id: m.id, collateral: m.collateralSymbol, collateralDecimals: m.collateralDecimals, lltv: m.params.lltv.toString(), vaultSupply: m.vaultSupplyAssets.toString(), liquidity: m.liquidity.toString(), withdrawable: m.vaultWithdrawable.toString(), utilization: m.utilization, oracle: m.params.oracle, supplyApr: m.supplyApr })),
     runs, cushion: cushion ? { ...cushion, probes: cushion.probes.length } : null,
     sweep, crossCheck,
     incidents: incidents.map((x) => ({ ...x, inputs: Object.fromEntries(Object.entries(x.inputs).map(([k, v]) => [k, v.toString()])) })),
     verdictParams: { netApy, decimals: dec, gasCostOut: gasInAsset.toString(), gasCostReentry: gasInAsset.toString(), gasNote: gasInAsset === 0n ? "gas is paid in ETH: not converted into the vault asset (no sourced price), shown separately" : null, gasOutEth: gasOut.toString(), slippage: slippage.toString(), exitGasUsed: aloneExit.gasUsed, baseFeePerGas: baseFee.toString(), defaults },
     verdicts, depegCurve, depegCurveCollateral: blindSym,
+    dex: Object.fromEntries(Object.entries(g.dex ?? {}).map(([id, d]) => [id, { capacity: d.capacity.toString(), collateralAtRisk: d.collateralAtRisk.toString(), venues: d.venues.filter((v) => v.capacity > 0n).map((v) => ({ ...v, capacity: v.capacity.toString() })) }])),
   };
   mkdirSync("results/reports", { recursive: true });
   writeFileSync(reportPath(vault), toJson(report));
