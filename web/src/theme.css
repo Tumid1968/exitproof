@@ -302,3 +302,4 @@ main.app { padding-top: 76px; }
   .exline { font-size: 17px; }
 }
 @media (max-width: 640px) { .nav a.navlink.keep { display: inline-flex; } }
+.hero .infodot { color: #eef1f4; border-color: rgba(238, 241, 244, 0.5); } /* the hero stays dark in both themes */

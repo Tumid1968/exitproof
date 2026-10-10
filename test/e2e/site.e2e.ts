@@ -202,6 +202,15 @@ for (const tg of targets) {
         assert.match(await page.locator(".answer").getAttribute("class") ?? "", new RegExp(`w-${rf.answer.word.toLowerCase()}`));
         assert.ok(norm(await page.locator(".answertext").innerText()).includes(`about ${Math.round(rf.answer.worstShare * 100)} %`));
         assert.equal(await page.locator(".hero button.pill").count(), 1, "one button in the hero");
+        // the hero stays dark in both themes: its "?" marks must stay light (axe ignores a lone "?")
+        for (const theme of ["dark", "light"]) {
+          if ((await page.evaluate(() => document.documentElement.dataset.theme)) !== theme) {
+            await page.getByRole("button", { name: "switch light or dark theme" }).click();
+            await page.waitForFunction((t) => document.documentElement.dataset.theme === t, theme);
+          }
+          const dark = await page.locator(".hero .qbtn span, .hero .infodot").evaluateAll((es) => es.filter((e) => { const m = getComputedStyle(e).color.match(/[0-9.]+/g)!.map(Number); return (m[0] + m[1] + m[2]) / 3 < 128; }).length);
+          assert.equal(dark, 0, `${theme}: a "?" in the hero is dark on the dark hero`);
+        }
         await page.getByRole("button", { name: "See why" }).click();
         await page.locator("#step-1").waitFor();
         // the steps come into view (the page may be too short below them for #app to reach the very top)
