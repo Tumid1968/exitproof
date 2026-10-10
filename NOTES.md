@@ -23,3 +23,4 @@
     (c) Surévaluation d'oracle non rentable (LLTV × facteur ≤ 1) ne vide plus la liquidité.
     Formulations du README corrigées (gaz de réentrée supposé = gaz de sortie, glissement, borne basse du décrochage aveugle).
 19. Copie fraîche du dépôt (clone + `npm ci`, cache vide) : `npm run replay` → REPLAY OK au wei en ~2 min. Le premier essai à froid avait échoué sur un HTTP 429 de dRPC ; proxy rendu plus patient (12 tentatives, attente plafonnée à 10 s avec aléa, concurrence 4), second test à froid vert sans aucun échec amont.
+20. Alex (sam. ~12:20) : IA autorisée par le règlement ; heure limite confirmée dimanche 10:00. Garde-fous : commit seulement tests verts, tag git avant chaque gros changement, pas de push (Alex).
