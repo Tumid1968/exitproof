@@ -74,3 +74,10 @@ export function decide(i: VerdictInputs, unit = "WETH"): Verdict {
     parts: { forgoneYield: forgone, gasOut: n(i.gasCostOut), gasReentry: n(i.gasCostReentry), slippage: n(i.slippage), valueLoss: n(i.incidentValueLoss), lockedAfterRun: n(i.incidentLocked) },
   };
 }
+
+/** The verdict works in 18-decimal units; rescale amounts of other assets (USDC: 6 decimals). */
+export function scaleTo18(i: VerdictInputs, decimals: number): VerdictInputs {
+  if (decimals === 18) return i;
+  const f = 10n ** BigInt(18 - decimals);
+  return { ...i, positionValue: i.positionValue * f, exitableNow: i.exitableNow * f, incidentValueLoss: i.incidentValueLoss * f, incidentLocked: i.incidentLocked * f, slippage: i.slippage * f, gasCostOut: i.gasCostOut * f, gasCostReentry: i.gasCostReentry * f };
+}

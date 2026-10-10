@@ -5,8 +5,12 @@ export const api = async <T,>(path: string, body?: unknown): Promise<T> => {
   return j as T;
 };
 
-/** wei string/bigint -> "1,234.56" (native units, never USD) */
-export const w = (x: string | bigint | null | undefined, dp = 2, decimals = 18) => {
+/** Decimals of the asset of the report on screen (set when a report loads). */
+let ASSET_DECIMALS = 18;
+export const setAssetDecimals = (d: number) => { ASSET_DECIMALS = d; };
+
+/** smallest-unit string/bigint -> "1,234.56" (native units, never USD) */
+export const w = (x: string | bigint | null | undefined, dp = 2, decimals = ASSET_DECIMALS) => {
   if (x === null || x === undefined) return "—";
   const v = Number(BigInt(x)) / 10 ** decimals;
   return v.toLocaleString("en-US", { minimumFractionDigits: dp, maximumFractionDigits: dp });

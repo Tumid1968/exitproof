@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import { decide } from "../../src/verdict/verdict.ts";
+import { decide, scaleTo18 } from "../../src/verdict/verdict.ts";
 import { GraphView } from "./GraphView";
-import { api, etherscan, pct, short, w, type Graph, type Report } from "./lib";
+import { api, etherscan, pct, setAssetDecimals, short, w, type Graph, type Report } from "./lib";
 
 const Chip = ({ k }: { k: "onchain" | "fork" | "hyp" | "offchain" }) => (
   <span className={`chip ${k}`}>{{ onchain: "on-chain", fork: "fork", hyp: "hypothesis", offchain: "off-chain list" }[k]}</span>
@@ -10,21 +10,24 @@ const Chip = ({ k }: { k: "onchain" | "fork" | "hyp" | "offchain" }) => (
 export function App() {
   const [report, setReport] = useState<Report | null>(null);
   const [graph, setGraph] = useState<Graph | null>(null);
-  const [vaults, setVaults] = useState<{ vault: string; name: string; version: string; asset: string; nodes: number }[]>([]);
-  const [graphVault, setGraphVault] = useState<string>("");
+  const [reports, setReports] = useState<{ vault: string; name: string; asset: string; catalog: string }[]>([]);
+  const [vault, setVault] = useState<string>(/vault=(0x[0-9a-fA-F]{40})/.exec(location.hash)?.[1] ?? "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4");
   const [status, setStatus] = useState<any>(null);
   const [shockSel, setShockSel] = useState<number | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
-    api<Report>("/api/report").then((r) => { setReport(r); setGraphVault(r.target.vault); }).catch((e) => setErr(String(e)));
-    api<typeof vaults>("/api/vaults").then(setVaults).catch(() => {});
+    api<typeof reports>("/api/reports").then(setReports).catch(() => {});
     const tick = () => api("/api/status").then(setStatus).catch(() => setStatus(null));
     tick();
     const t = setInterval(tick, 8000);
     return () => clearInterval(t);
   }, []);
-  useEffect(() => { if (graphVault) api<Graph>(`/api/graph/${graphVault}`).then(setGraph).catch((e) => setErr(String(e))); }, [graphVault]);
+  useEffect(() => {
+    setShockSel(null);
+    api<Report>(`/api/report?vault=${vault}`).then((r) => { setAssetDecimals(r.target.assetDecimals); setReport(r); }).catch((e) => setErr(String(e)));
+    api<Graph>(`/api/graph/${vault}`).then(setGraph).catch((e) => setErr(String(e)));
+  }, [vault]);
 
   const highlight = useMemo(() => (graph && report && shockSel !== null ? shockNodes(graph, report.sweep[shockSel]) : undefined), [graph, report, shockSel]);
 
@@ -41,6 +44,9 @@ export function App() {
           proxy: {status?.proxy ? <b className={status.proxy.mode === "offline" ? "warn" : "ok"}>{status.proxy.mode}</b> : <b className="bad">down</b>}
           {" · "}fork: {status?.fork ? <b className="ok">up (local head {status.fork.head})</b> : <b className="bad">down</b>}
         </div>
+        <select value={vault} onChange={(e) => { setVault(e.target.value); location.hash = `vault=${e.target.value}`; }}>
+          {reports.map((v) => <option key={v.vault} value={v.vault}>{v.name} ({v.asset})</option>)}
+        </select>
         <div className="legend"><Chip k="onchain" /> real data read at the block <Chip k="fork" /> tx simulated locally <Chip k="hyp" /> scenario assumption <Chip k="offchain" /> candidates from Morpho API, verified on-chain</div>
       </div>
       <main>
@@ -48,19 +54,13 @@ export function App() {
         <section className="panel">
           <h2><span className="n">2</span> Dependency stack — discovered from contract reads</h2>
           <p className="sub">Starting from the vault address only. Each box and link carries the reads it rests on (call, contract, block). Red = path of the selected shock (section 4).</p>
-          <div className="row" style={{ marginBottom: 10 }}>
-            <span className="muted">Vault:</span>
-            <select value={graphVault} onChange={(e) => setGraphVault(e.target.value)}>
-              {vaults.map((v) => <option key={v.vault} value={v.vault}>{v.name} ({v.version}, {v.asset}) — {v.nodes} nodes</option>)}
-            </select>
-          </div>
           {graph && <Findings g={graph} />}
-          {graph && <GraphView key={graph.target.vault} g={graph} highlight={graph.target.vault === report.target.vault ? highlight : undefined} />}
+          {graph && graph.target.vault === report.target.vault && <GraphView key={graph.target.vault} g={graph} highlight={highlight} />}
         </section>
-        <Runs r={report} />
-        <Shocks r={report} sel={shockSel} setSel={setShockSel} />
-        <VerdictPanel r={report} />
-        <Proofs r={report} />
+        <Runs key={"r" + report.target.vault} r={report} />
+        <Shocks key={"s" + report.target.vault} r={report} sel={shockSel} setSel={setShockSel} />
+        <VerdictPanel key={"v" + report.target.vault} r={report} />
+        <Proofs key={"p" + report.target.vault} r={report} />
       </main>
     </>
   );
@@ -107,6 +107,8 @@ function Findings({ g }: { g: Graph }) {
     if (o?.data.router) items.push(`${m.collateralSymbol} market #${m.queueIndex}: oracle is a primary/backup router (deviation challenge ${(Number(o.data.deviationThreshold) / 1e16).toFixed(0)}%, ${o.data.isPrimary ? "primary active" : "backup active"}); legs: ${feeds.join(" | ")}.`);
     else if (o) items.push(`${m.collateralSymbol} market #${m.queueIndex}: priced by ${feeds.join(", ") || "opaque oracle"}${feeds.length === 1 && String(feeds[0]).includes("exchange rate") ? " only — the oracle follows the redemption rate, not the market price: a market depeg is invisible to liquidations." : "."}`);
   }
+  const hl = g.holders?.list ?? [];
+  if (hl.length) items.push(`Ownership: the largest holder has ${pct(hl[0].shareOfSupply)} of the shares, the top 3 ${pct(hl.slice(0, 3).reduce((s: number, h: any) => s + h.shareOfSupply, 0))} (balances re-read on-chain; ${pct(g.holders.coverage)} of supply identified).`);
   const peerShared = g.peers.length;
   if (peerShared) items.push(`${peerShared} other MetaMorpho vaults lend in the same markets (they compete for the same idle liquidity).`);
   for (const m of exposed) {
@@ -149,10 +151,14 @@ function Runs({ r }: { r: Report }) {
   const [busy, setBusy] = useState(false);
   const [live, setLive] = useState<any>(null);
   const alone = BigInt(r.runs[0].holderExecutedExit);
-  const actors: [string, string][] = [["C", "Holder #3 (≈721)"], ["D", "Holder #4 (≈272)"], ["B", "Holder #2, Safe 3/5 (≈2,736)"], ["B_G", "Holder #2 exits Gauntlet WETH Prime (other vault)"], ["VB1", "Vault Bridge WETH #1 (other vault, ≈3,628)"]];
+  const otherRank = r.cushion ? (r.vault.holders.list.findIndex((h: any) => h.address === r.cushion.otherHolder) + 1) || 2 : 2;
+  // Every competing exit that appears in the report's runs, in first-seen order
+  const actorMap = new Map<string, { vault: string; owner: string; label: string }>();
+  for (const x of r.runs) for (const o of x.others) actorMap.set(`${o.vault}:${o.owner}`, { vault: o.vault, owner: o.owner, label: o.label + (o.vault !== r.target.vault ? " (other vault)" : "") });
+  const actors = [...actorMap.entries()].map(([k, a]) => [k, a.label] as [string, string]);
   const run = async () => {
     setBusy(true); setLive(null);
-    try { setLive(await api("/api/run", { exits: order })); } catch (e) { setLive({ error: String(e) }); }
+    try { setLive(await api("/api/run", { vault: r.target.vault, holder: r.target.holder, exits: order.map((k) => actorMap.get(k)) })); } catch (e) { setLive({ error: String(e) }); }
     setBusy(false);
   };
   return (
@@ -176,9 +182,13 @@ function Runs({ r }: { r: Report }) {
           })}
         </tbody>
       </table>
-      <p style={{ marginTop: 10 }}>
-        <b>Cushion before blockage <Chip k="fork" />:</b> the holder's full exit still succeeds if holder #2 withdraws <b>{w(r.cushion.passesAt, 3)}</b> first, and reverts at <b>{w(r.cushion.revertsAt, 3)}</b> (bisection, {r.cushion.probes} executions, precision 0.001). Below the cushion other exits cost nothing; above it every unit others withdraw is a unit you cannot.
-      </p>
+      {r.cushion && (r.cushion.revertsAt === "none" ? (
+        <p style={{ marginTop: 10 }}><b>Cushion before blockage <Chip k="fork" />:</b> even if holder #{otherRank} withdraws everything it can ({w(r.cushion.passesAt)}) first, the holder's full exit still succeeds.</p>
+      ) : (
+        <p style={{ marginTop: 10 }}>
+          <b>Cushion before blockage <Chip k="fork" />:</b> the holder's full exit still succeeds if holder #{otherRank} withdraws <b>{w(r.cushion.passesAt, 3)}</b> first, and reverts at <b>{w(r.cushion.revertsAt, 3)}</b> (bisection, {r.cushion.probes} executions, precision 0.001). Below the cushion other exits cost nothing; above it every unit others withdraw is a unit you cannot.
+        </p>
+      ))}
       <h3 style={{ fontSize: 14, margin: "14px 0 6px" }}>Run it live on the fork</h3>
       <div className="row">
         {actors.map(([k, label]) => (
@@ -223,7 +233,7 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
   const exec = async () => {
     if (!selRow || selRow.kind !== "feed") return;
     setBusy(true); setLive(null);
-    try { setLive(await api("/api/run", { shock: { feed: selRow.node, factor: selRow.factor }, exits: [] })); } catch (e) { setLive({ error: String(e) }); }
+    try { setLive(await api("/api/run", { vault: r.target.vault, holder: r.target.holder, shock: { feed: selRow.node, factor: selRow.factor }, exits: [] })); } catch (e) { setLive({ error: String(e) }); }
     setBusy(false);
   };
   return (
@@ -265,7 +275,7 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
       <table>
         <thead><tr><th>Shock</th><th className="r">Liquidations (exec / analytic)</th><th className="r">Bad debt executed</th><th className="r">Bad debt analytic</th><th className="r">Vault loss executed</th><th className="r">Vault loss analytic</th><th className="r">Holder value loss (exec)</th></tr></thead>
         <tbody>{r.crossCheck.map((c: any) => (
-          <tr key={c.id}><td>wstETH/stETH rate ×{c.factor} (Lido backing loss)</td><td className="r">{c.executedLiquidations} / {c.analyticLiquidatable}</td><td className="r">{w(c.executedBadDebt, 3)}</td><td className="r">{w(c.analyticBadDebt, 3)}</td><td className="r">{w(c.executedVaultLoss, 3)}</td><td className="r">{w(c.analyticVaultLoss, 3)}</td><td className="r bad">{w(c.executedHolderValueLoss, 3)}</td></tr>
+          <tr key={c.id}><td>{c.label}</td><td className="r">{c.executedLiquidations} / {c.analyticLiquidatable}</td><td className="r">{w(c.executedBadDebt, 3)}</td><td className="r">{w(c.analyticBadDebt, 3)}</td><td className="r">{w(c.executedVaultLoss, 3)}</td><td className="r">{w(c.analyticVaultLoss, 3)}</td><td className="r bad">{w(c.executedHolderValueLoss, 3)}</td></tr>
         ))}</tbody>
       </table>
       <p className="muted" style={{ fontSize: 12 }}>{r.crossCheck[0]?.note}</p>
@@ -286,7 +296,8 @@ function VerdictPanel({ r }: { r: Report }) {
     lockedHaircut: hc, netApy: r.verdictParams.netApy, horizonDays: h,
     gasCostOut: BigInt(r.verdictParams.gasCostOut), gasCostReentry: BigInt(r.verdictParams.gasCostReentry), slippage: BigInt(r.verdictParams.slippage), probability: p,
   };
-  const v = decide(inputs);
+  const dec = r.target.assetDecimals;
+  const v = decide(scaleTo18(inputs, dec), r.target.assetSymbol);
   const f = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 2 });
   return (
     <section className="panel">
@@ -309,7 +320,7 @@ function VerdictPanel({ r }: { r: Report }) {
               <tr><td>Locked after the run <Chip k="fork" /> × cost of locked</td><td className="r">{f(v.parts.lockedAfterRun)} × {pct(hc, 0)}</td></tr>
               <tr><td><b>Incident loss L</b></td><td className="r"><b>{f(v.incidentLoss)}</b></td></tr>
               <tr><td>Forgone yield ({pct(r.verdictParams.netApy, 2)} net APY <Chip k="onchain" />, {h} d)</td><td className="r">{f(v.parts.forgoneYield)}</td></tr>
-              <tr><td>Gas out + back in ({Number(r.verdictParams.exitGasUsed).toLocaleString()} gas × {(Number(r.verdictParams.baseFeePerGas) / 1e9).toFixed(3)} gwei)</td><td className="r">{(v.parts.gasOut + v.parts.gasReentry).toFixed(6)}</td></tr>
+              <tr><td>Gas out + back in ({Number(r.verdictParams.exitGasUsed).toLocaleString()} gas × {(Number(r.verdictParams.baseFeePerGas) / 1e9).toFixed(3)} gwei){r.verdictParams.gasNote ? <div className="muted" style={{ fontSize: 11 }}>{r.verdictParams.gasNote}: {(2 * Number(r.verdictParams.gasOutEth) / 1e18).toFixed(6)} ETH</div> : null}</td><td className="r">{(v.parts.gasOut + v.parts.gasReentry).toFixed(6)}</td></tr>
               <tr><td>Slippage (value − received, measured) <Chip k="fork" /></td><td className="r">{v.parts.slippage.toFixed(6)}</td></tr>
               <tr><td><b>Exit cost</b></td><td className="r"><b>{f(v.exitCost)}</b></td></tr>
             </tbody>
@@ -322,12 +333,12 @@ function VerdictPanel({ r }: { r: Report }) {
             <div>{v.sentence}</div>
             <div className="muted" style={{ marginTop: 6, fontSize: 12 }}>Expected loss: stay {f(v.expectedLossStay)} vs exit {f(v.expectedLossExit)} {r.target.assetSymbol}</div>
           </div>
-          <BreakEvenChart curve={r.depegCurve} h={h} p={p} inc={inc} />
+          <BreakEvenChart curve={r.depegCurve} coll={r.depegCurveCollateral} h={h} p={p} inc={inc} />
           <div>
             <b>Sensitivity of the break-even</b> (horizon × cost of locked funds)
             <table><thead><tr><th>Horizon</th><th className="r">locked 0%</th><th className="r">10%</th><th className="r">50%</th></tr></thead>
               <tbody>{[7, 30, 90].map((hd) => (
-                <tr key={hd}><td>{hd} d</td>{[0, 0.1, 0.5].map((x) => <td key={x} className="r">{pct(decide({ ...inputs, horizonDays: hd, lockedHaircut: x }).breakEvenProbability, 2)}</td>)}</tr>
+                <tr key={hd}><td>{hd} d</td>{[0, 0.1, 0.5].map((x) => <td key={x} className="r">{pct(decide(scaleTo18({ ...inputs, horizonDays: hd, lockedHaircut: x }, dec)).breakEvenProbability, 2)}</td>)}</tr>
               ))}</tbody></table>
           </div>
         </div>
@@ -336,8 +347,8 @@ function VerdictPanel({ r }: { r: Report }) {
   );
 }
 
-function BreakEvenChart({ curve, inc }: { curve: any[]; h: number; p: number; inc: number }) {
-  if (inc !== 0) return null;
+function BreakEvenChart({ curve, inc, coll }: { curve: any[]; coll: string | null; h: number; p: number; inc: number }) {
+  if (inc !== 0 || !curve?.length || curve.every((c) => c.breakEven === null)) return null;
   const W = 420, H = 150, pad = 34;
   const pts = curve.filter((c) => c.breakEven !== null);
   const maxY = Math.max(...pts.map((c) => c.breakEven));
@@ -345,7 +356,7 @@ function BreakEvenChart({ curve, inc }: { curve: any[]; h: number; p: number; in
   const y = (b: number) => H - pad + 6 - (b / maxY) * (H - pad - 10);
   return (
     <div>
-      <b>Break-even vs size of the stETH depeg</b> <span className="muted">(oracle-blind regime, defaults: 30 d, locked 10%)</span>
+      <b>Break-even vs size of the {coll} depeg</b> <span className="muted">(oracle-blind regime, defaults: 30 d, locked 10%)</span>
       <svg width={W} height={H} style={{ display: "block" }}>
         <line x1={pad} y1={H - pad + 6} x2={W - 10} y2={H - pad + 6} stroke="#2a323d" />
         <line x1={pad} y1={10} x2={pad} y2={H - pad + 6} stroke="#2a323d" />
@@ -361,10 +372,10 @@ function Proofs({ r }: { r: Report }) {
   const [last, setLast] = useState<any>(null);
   const [busy, setBusy] = useState(false);
   const [log, setLog] = useState("");
-  useEffect(() => { api("/api/manifest").then(setM); api("/api/replay-last").then(setLast); }, []);
+  useEffect(() => { api(`/api/manifest?vault=${r.target.vault}`).then(setM); api(`/api/replay-last?vault=${r.target.vault}`).then(setLast); }, [r.target.vault]);
   const replay = async () => {
     setBusy(true); setLog("");
-    try { const o: any = await api("/api/replay", {}); setLog(o.log); setLast(o.replay); } catch (e) { setLog(String(e)); }
+    try { const o: any = await api(`/api/replay?vault=${r.target.vault}`, {}); setLog(o.log); setLast(o.replay); } catch (e) { setLog(String(e)); }
     setBusy(false);
   };
   return (
@@ -375,13 +386,13 @@ function Proofs({ r }: { r: Report }) {
         <div className="k">manifest sha256</div><div>{m.sha256}</div>
         <div className="k">source</div><div>chainId {m.source.chainId} · block {m.source.block} · {m.source.blockHash}</div>
         <div className="k">convention</div><div>{m.convention}</div>
-        <div className="k">scenarios</div><div>{m.scenarios.length} + cushion bisection ({m.cushion.probes.length} executions)</div>
+        <div className="k">scenarios</div><div>{m.scenarios.length}{m.cushion ? ` + cushion bisection (${m.cushion.probes.length} executions)` : ""}</div>
         <div className="k">tooling</div><div>node {m.tooling.node} · hardhat {m.tooling.hardhat} · viem {m.tooling.viem}</div>
       </div>}
       <div className="row">
         <button className="primary" disabled={busy} onClick={replay}>{busy ? "Replaying on the fork…" : "Replay everything now"}</button>
         {last?.verdict && <span className={last.verdict === "REPLAY OK" ? "ok" : "bad"}><b>{last.verdict}</b> · {last.scenarios?.length} scenarios · cushion {last.cushionOk ? "OK" : "FAIL"} · hash {last.hashOk ? "OK" : "FAIL"} · {last.at}</span>}
-        <a href="/api/manifest" target="_blank" rel="noreferrer">manifest.json</a>
+        <a href={`/api/manifest?vault=${r.target.vault}`} target="_blank" rel="noreferrer">manifest.json</a>
         <a href={`/api/graph/${r.target.vault}`} target="_blank" rel="noreferrer">dependency graph JSON</a>
       </div>
       {log && <div className="log mono" style={{ marginTop: 8 }}>{log}</div>}

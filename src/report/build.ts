@@ -15,7 +15,7 @@ import { findCushion } from "../engine/cushion.ts";
 import { steakhouseEthCatalog } from "../scenarios/catalog.ts";
 import { genericCatalog, type CatalogMeta } from "../scenarios/generic.ts";
 import { propagate, type Shock } from "../shocks/analytic.ts";
-import { decide, type VerdictInputs } from "../verdict/verdict.ts";
+import { decide, scaleTo18, type VerdictInputs } from "../verdict/verdict.ts";
 import { ACTORS, SOURCE, TIMESTAMP_STEP } from "../lib/constants.ts";
 import { toJson } from "../lib/util.ts";
 
@@ -187,13 +187,6 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
   writeManifest(vault, catalog, results, cushion);
   log(`report ${g.target.name}: holder ${formatUnits(holderValue, dec)} ${unit}, cushion ${cushion ? formatUnits(B(cushion.passesAt), dec) : "n/a"}, verdicts ${verdicts.map((v) => v.verdict.decision).join("/")}`);
   return report;
-}
-
-/** The verdict works in 18-decimal units; rescale amounts of 6-decimal assets (USDC...). */
-export function scaleTo18(i: VerdictInputs, decimals: number): VerdictInputs {
-  if (decimals === 18) return i;
-  const f = 10n ** BigInt(18 - decimals);
-  return { ...i, positionValue: i.positionValue * f, exitableNow: i.exitableNow * f, incidentValueLoss: i.incidentValueLoss * f, incidentLocked: i.incidentLocked * f, slippage: i.slippage * f, gasCostOut: i.gasCostOut * f, gasCostReentry: i.gasCostReentry * f };
 }
 
 export function manifestHash(m: Record<string, unknown>) {
