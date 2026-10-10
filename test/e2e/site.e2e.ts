@@ -318,6 +318,21 @@ for (const tg of targets) {
           await page.locator(".tabs [role=tab]", { hasText: new RegExp(`^${n}$`) }).click();
           await page.locator(".tabs [role=tab].on", { hasText: new RegExp(`^${n}$`) }).waitFor();
           await page.locator(".deep section.panel, .deep .panel").first().waitFor();
+          const sw = await page.evaluate(() => document.documentElement.scrollWidth);
+          assert.ok(sw <= Number(vp), `tab ${n}: horizontal scroll (scrollWidth ${sw})`);
+          // a bar that stays on screen while the page scrolls must hide what passes under it (opaque background)
+          const see = await page.evaluate(() => { const cs = getComputedStyle(document.querySelector(".tabs")!); const a = cs.backgroundColor.match(/[0-9.]+/g)?.map(Number) ?? [0, 0, 0, 0]; return { position: cs.position, alpha: a.length === 4 ? a[3] : 1 }; });
+          assert.ok(!['sticky', 'fixed'].includes(see.position) || see.alpha > 0.9, `tab ${n}: the tab bar stays on screen with a see-through background (${JSON.stringify(see)})`);
+        }
+        if (vp === "1440") {
+          const rf = readJson(`results/refine/${STEAKHOUSE}.json`);
+          await page.locator(".tabs [role=tab]", { hasText: /^Dependencies$/ }).click();
+          const conc = norm(await page.locator(".conc").innerText());
+          for (const s of [`concentration index ${rf.concentration.byMarket.hhi.toFixed(2)}, ${rf.concentration.byMarket.word}`, ...rf.utilization.markets.map((m: any) => `utilization ${(m.utilization * 100).toFixed(1)}% vs a 90 % watch level`)])
+            assert.ok(conc.includes(s), `Dependencies lacks "${s}": ${conc}`);
+          await page.locator(".tabs [role=tab]", { hasText: /^Shocks$/ }).click();
+          const reg = norm(await page.locator(".deep section.panel").first().innerText());
+          for (const x of rf.regimes.byRegime) assert.ok(reg.includes(`${x.regime} (−${Math.round(x.shockSize * 100)} %)`) && reg.includes(`${(x.exposureShare * 100).toFixed(1)}%`), `regime ${x.regime} missing: ${reg}`);
         }
         await checkReplayTab(page, STEAKHOUSE);
         assert.deepEqual(errors, []);

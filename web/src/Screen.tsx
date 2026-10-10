@@ -153,7 +153,7 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
           </div>
           {more && <div className="deep">
             {mode === "live" && <div className="card glass"><b>Analyze another vault</b> <Analyze onDone={(v) => { getIndex("live").then(setIndex); setVault(v); location.hash = `vault=${v}`; }} /></div>}
-            <Tabs r={report} g={graph} entry={entry} mode={mode ?? "static"} />
+            <Tabs r={report} g={graph} entry={entry} mode={mode ?? "static"} refine={refine} />
           </div>}
         </>}
       </main>
@@ -230,7 +230,7 @@ function Decision({ r }: { r: any }) {
 
 const TABS = ["Dependencies", "Exits in detail", "Decision in detail", "Shocks", "Withdraw queue", "Evidence", "Replay"] as const;
 
-function Tabs({ r, g, entry, mode }: { r: any; g: any; entry?: IndexEntry; mode: Mode }) {
+function Tabs({ r, g, entry, mode, refine }: { r: any; g: any; entry?: IndexEntry; mode: Mode; refine?: any }) {
   const [tab, setTab] = useState<(typeof TABS)[number]>("Dependencies");
   const [shockSel, setShockSel] = useState<number | null>(null);
   const highlight = useMemo(() => (g && shockSel !== null ? shockNodes(g, r.sweep[shockSel]) : undefined), [g, r, shockSel]);
@@ -242,6 +242,7 @@ function Tabs({ r, g, entry, mode }: { r: any; g: any; entry?: IndexEntry; mode:
           <h2><span className="n">3</span> Why: the dependency stack</h2>
           {!g ? <p>{NM} (graph not exported)</p> : <>
             <Layers g={g} />
+            <Concentration refine={refine} />
             <Findings g={g} />
             <GraphView key={g.target.vault} g={g} highlight={highlight} />
           </>}
@@ -249,11 +250,51 @@ function Tabs({ r, g, entry, mode }: { r: any; g: any; entry?: IndexEntry; mode:
       )}
       {tab === "Exits in detail" && <Runs r={r} />}
       {tab === "Decision in detail" && <Decision r={r} />}
-      {tab === "Shocks" && <><Shocks r={r} sel={shockSel} setSel={setShockSel} />{shockSel !== null && <p className="muted">The propagation path is highlighted in red in the Dependencies tab.</p>}</>}
+      {tab === "Shocks" && <><Regimes refine={refine} u={r.target.assetSymbol} /><Shocks r={r} sel={shockSel} setSel={setShockSel} />{shockSel !== null && <p className="muted">The propagation path is highlighted in red in the Dependencies tab.</p>}</>}
       {tab === "Withdraw queue" && <Position r={r} />}
       {tab === "Evidence" && <Evidence r={r} />}
       {tab === "Replay" && <ReplayTab r={r} entry={entry} mode={mode} />}
     </>
+  );
+}
+
+/** Withdraw-queue concentration (HHI) and utilization vs a published watch level; values from results/refine. */
+function Concentration({ refine }: { refine?: any }) {
+  if (!refine) return <p className="muted">Concentration: {NM}.</p>;
+  const c = refine.concentration, ut = refine.utilization;
+  const n2 = (x: number) => x.toFixed(2);
+  return (
+    <div className="conc">
+      <h3>Where the vault's money sits</h3>
+      <p>By market: concentration index <b>{n2(c.byMarket.hhi)}</b>, <b>{c.byMarket.word}</b> ({c.byMarket.n} funded markets). By collateral: <b>{n2(c.byCollateral.hhi)}</b>, <b>{c.byCollateral.word}</b> ({c.byCollateral.groups.map((x: any) => `${x.collateral === "none" ? "idle" : x.collateral} ${pct(x.share, 1)}`).join(", ")}).</p>
+      <p className="muted small">Index = sum of the squared weights of the vault's supply (1 = everything in one place). {c.thresholds}. No letter grade.</p>
+      {ut.markets.length > 0 && <table><tbody>
+        {ut.markets.map((m: any) => <tr key={m.queueIndex}><td>{m.collateral} market (queue #{m.queueIndex})</td><td className={`r ${m.aboveWatch ? "bad" : ""}`}>utilization {pct(m.utilization, 1)} vs a 90 % watch level</td></tr>)}
+      </tbody></table>}
+      <p className="muted small">Watch level: {ut.watchSource}.</p>
+    </div>
+  );
+}
+
+/** Two shock regimes (pegged −10 %, volatile −40 %) on the markets where the vault has funds; values from results/refine. */
+function Regimes({ refine, u }: { refine?: any; u: string }) {
+  if (!refine) return null;
+  const rg = refine.regimes;
+  return (
+    <section className="panel">
+      <h2>Two shock regimes</h2>
+      <p className="sub">{rg.definition}. Same analytic engine as the grid below (no new simulation): market price of the collateral × the regime's factor, oracle unchanged, so the result is the economic shortfall carried by the vault. Only markets where the vault has funds.</p>
+      <table><tbody>
+        <tr><th>regime</th><th>collateral</th><th className="r">share of the vault exposed</th><th className="r">vault loss at that shock</th></tr>
+        {rg.byRegime.map((x: any) => <tr key={x.regime}>
+          <td>{x.regime} (−{Math.round(x.shockSize * 100)} %)</td>
+          <td>{x.collaterals.length ? x.collaterals.join(", ") : "none"}</td>
+          <td className="r">{pct(x.exposureShare, 1)}</td>
+          <td className="r">{x.shocks.length ? x.shocks.map((s: any) => `${s.collateral}: ${pct(s.vaultLossRatio, 2)}`).join(" · ") : "—"}</td>
+        </tr>)}
+      </tbody></table>
+      <p className="muted small">Shares are of the vault's total assets ({u}); the rest is idle or in markets without collateral. Regimes are assigned by symbol family (ETH, USD, BTC, EUR). <Chip k="hyp" /> the two shock sizes are scenario assumptions.</p>
+    </section>
   );
 }
 
