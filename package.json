@@ -6,8 +6,14 @@
   "description": "DeFi dependency & exit-liquidity risk engine for MetaMorpho V1 vaults, proven on a frozen-block local fork",
   "license": "MIT",
   "scripts": {
-    "proxy": "tsx src/proxy/rpcProxy.ts",
+    "proxy": "tsx src/proxy/rpcProxy.ts online",
+    "proxy:offline": "tsx src/proxy/rpcProxy.ts offline",
     "fork": "hardhat node --fork http://127.0.0.1:8600 --fork-block-number 26157638",
+    "discover": "tsx src/cli/discover.ts",
+    "phase0": "tsx src/cli/phase0.ts",
+    "scenarios": "tsx src/cli/run.ts",
+    "build:report": "tsx src/cli/build.ts",
+    "replay": "tsx src/cli/replay.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

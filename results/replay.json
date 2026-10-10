@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-10T08:57:13.203Z",
+  "manifest": "results/manifest.json",
+  "manifestSha256": "3a10e8940a67919774450bebd771ebd177e0aabaa86054338d5252ebc3a75395",
+  "hashOk": true,
+  "cushionOk": true,
+  "scenarios": [
+    {
+      "id": "A_alone",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "C_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "D_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "C_D_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "B_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "B_C_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "VB1_other_vault",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "B_both_vaults",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "lido_loss_5pct",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "lido_loss_10pct",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_lido10_plus_run",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_steth_depeg_blind_plus_run",
+      "ok": true,
+      "diffs": []
+    }
+  ],
+  "verdict": "REPLAY OK"
+}

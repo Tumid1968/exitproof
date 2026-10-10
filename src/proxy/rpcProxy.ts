@@ -75,18 +75,23 @@ function cacheable(r: RpcReq): boolean {
 const keyOf = (r: RpcReq) =>
   createHash("sha256").update(r.method + JSON.stringify(r.params ?? [])).digest("hex");
 
-function readCache(r: RpcReq): unknown | undefined {
+type Answer = { result?: unknown; error?: unknown };
+function readCache(r: RpcReq): Answer | undefined {
   const k = keyOf(r);
   const f = join(CACHE_DIR, k.slice(0, 2), k + ".json");
   if (!existsSync(f)) return undefined;
-  return JSON.parse(readFileSync(f, "utf8")).result;
+  const j = JSON.parse(readFileSync(f, "utf8"));
+  return "error" in j ? { error: j.error } : { result: j.result };
 }
-function writeCache(r: RpcReq, result: unknown) {
+function writeCache(r: RpcReq, ans: Answer) {
   const k = keyOf(r);
   mkdirSync(join(CACHE_DIR, k.slice(0, 2)), { recursive: true });
-  writeFileSync(join(CACHE_DIR, k.slice(0, 2), k + ".json"),
-    JSON.stringify({ method: r.method, params: r.params, result }));
+  writeFileSync(join(CACHE_DIR, k.slice(0, 2), k + ".json"), JSON.stringify({ method: r.method, params: r.params, ...ans }));
 }
+/** An eth_call revert at a pinned block is as deterministic as a result: cache it too. */
+const isExecutionRevert = (r: RpcReq, e: unknown) =>
+  r.method === "eth_call" && typeof e === "object" && e !== null &&
+  ((e as { code?: number }).code === 3 || /revert/i.test(String((e as { message?: string }).message)));
 
 const stats = { hit: 0, forwarded: 0, refused: 0, upstreamErr: 0 };
 const log = (s: string) => appendFileSync(LOG_FILE, `${new Date().toISOString()} ${mode} ${s}\n`);
@@ -133,7 +138,7 @@ async function handle(r: RpcReq): Promise<Record<string, unknown>> {
 
   if (cacheable(r)) {
     const hit = readCache(r);
-    if (hit !== undefined) { stats.hit++; return { ...base, result: hit }; }
+    if (hit !== undefined) { stats.hit++; return { ...base, ...hit }; }
   }
   if (mode === "offline") {
     stats.refused++;
@@ -142,7 +147,8 @@ async function handle(r: RpcReq): Promise<Record<string, unknown>> {
   }
   stats.forwarded++;
   const ans = await forward(r);
-  if (ans.error === undefined && cacheable(r)) writeCache(r, ans.result);
+  if (cacheable(r) && (ans.error === undefined || isExecutionRevert(r, ans.error)))
+    writeCache(r, ans.error === undefined ? { result: ans.result } : { error: ans.error });
   if (r.method === "eth_blockNumber" && typeof ans.result === "string") {
     meta.head = ans.result;
     writeFileSync(META_FILE, JSON.stringify(meta));

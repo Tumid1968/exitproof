@@ -14716,8 +14716,8 @@
       },
       "prov": [
         "r769",
-        "r776",
-        "r780",
+        "r777",
+        "r781",
         "r795"
       ]
     },
@@ -14736,7 +14736,7 @@
         "r769",
         "r778",
         "r782",
-        "r798"
+        "r796"
       ]
     },
     {
@@ -14769,6 +14769,35 @@
       ]
     },
     {
+      "id": "peer:0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Hyperithm USDC Apex (peer vault)",
+      "address": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+      "data": {
+        "totalAssets": "1591113628205",
+        "version": "MetaMorpho V1.1",
+        "publicAllocatorEnabled": true
+      },
+      "prov": [
+        "r769",
+        "r800",
+        "r804",
+        "r820",
+        "r824",
+        "r828",
+        "r832",
+        "r836",
+        "r840",
+        "r844",
+        "r848",
+        "r852",
+        "r856",
+        "r860",
+        "r864"
+      ]
+    },
+    {
       "id": "peer:0x974c8FBf4fd795F66B85B73ebC988A51F1A040a9",
       "kind": "peerVault",
       "layer": 2,
@@ -14787,35 +14816,6 @@
       ]
     },
     {
-      "id": "peer:0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-      "kind": "peerVault",
-      "layer": 2,
-      "label": "Hyperithm USDC Apex (peer vault)",
-      "address": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-      "data": {
-        "totalAssets": "1591113628205",
-        "version": "MetaMorpho V1.1",
-        "publicAllocatorEnabled": true
-      },
-      "prov": [
-        "r769",
-        "r802",
-        "r806",
-        "r822",
-        "r826",
-        "r830",
-        "r834",
-        "r838",
-        "r842",
-        "r846",
-        "r850",
-        "r854",
-        "r858",
-        "r862",
-        "r866"
-      ]
-    },
-    {
       "id": "peer:0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
       "kind": "peerVault",
       "layer": 2,
@@ -14823,6 +14823,35 @@
       "address": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
       "data": {
         "totalAssets": "10473874410423",
+        "version": "MetaMorpho V1.1",
+        "publicAllocatorEnabled": true
+      },
+      "prov": [
+        "r769",
+        "r868",
+        "r872",
+        "r888",
+        "r892",
+        "r896",
+        "r900",
+        "r904",
+        "r908",
+        "r912",
+        "r916",
+        "r920",
+        "r924",
+        "r928",
+        "r932"
+      ]
+    },
+    {
+      "id": "peer:0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Cronos USDC (peer vault)",
+      "address": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
+      "data": {
+        "totalAssets": "1310490365554",
         "version": "MetaMorpho V1.1",
         "publicAllocatorEnabled": true
       },
@@ -14845,35 +14874,6 @@
       ]
     },
     {
-      "id": "peer:0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
-      "kind": "peerVault",
-      "layer": 2,
-      "label": "Cronos USDC (peer vault)",
-      "address": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
-      "data": {
-        "totalAssets": "1310490365554",
-        "version": "MetaMorpho V1.1",
-        "publicAllocatorEnabled": true
-      },
-      "prov": [
-        "r769",
-        "r870",
-        "r874",
-        "r890",
-        "r894",
-        "r898",
-        "r902",
-        "r906",
-        "r910",
-        "r914",
-        "r918",
-        "r922",
-        "r926",
-        "r930",
-        "r934"
-      ]
-    },
-    {
       "id": "peer:0xd63070114470f685b75B74D60EEc7c1113d33a3D",
       "kind": "peerVault",
       "layer": 2,
@@ -14886,9 +14886,9 @@
       },
       "prov": [
         "r769",
-        "r937",
-        "r941",
-        "r957"
+        "r936",
+        "r940",
+        "r956"
       ]
     },
     {
@@ -14961,20 +14961,20 @@
       },
       "prov": [
         "r769",
-        "r938",
-        "r942",
-        "r958",
-        "r962",
-        "r966",
-        "r970",
-        "r974",
-        "r978",
-        "r982",
-        "r986",
-        "r990",
-        "r994",
-        "r998",
-        "r1002"
+        "r937",
+        "r941",
+        "r957",
+        "r961",
+        "r965",
+        "r969",
+        "r973",
+        "r977",
+        "r981",
+        "r985",
+        "r989",
+        "r993",
+        "r997",
+        "r1001"
       ]
     },
     {
@@ -14990,20 +14990,20 @@
       },
       "prov": [
         "r769",
-        "r961",
-        "r965",
-        "r981",
-        "r985",
-        "r989",
-        "r993",
-        "r997",
-        "r1001",
-        "r1005",
-        "r1008",
-        "r1011",
-        "r1014",
-        "r1017",
-        "r1020"
+        "r960",
+        "r964",
+        "r980",
+        "r984",
+        "r988",
+        "r992",
+        "r996",
+        "r1000",
+        "r1004",
+        "r1007",
+        "r1010",
+        "r1013",
+        "r1016",
+        "r1019"
       ]
     },
     {
@@ -15049,66 +15049,66 @@
       "prov": [
         "r769",
         "r774",
-        "r777",
-        "r792",
-        "r796",
-        "r800",
-        "r804",
-        "r808",
-        "r812",
-        "r816",
-        "r820",
-        "r824",
-        "r828",
-        "r832",
-        "r836",
-        "r840",
-        "r844",
-        "r848",
-        "r852",
-        "r856",
-        "r860",
-        "r864",
-        "r868",
-        "r872",
-        "r876",
-        "r880",
-        "r884",
-        "r888",
-        "r892",
-        "r896",
-        "r900",
-        "r904",
-        "r908",
-        "r912",
-        "r916",
-        "r920",
-        "r924",
-        "r928",
-        "r932",
-        "r936",
-        "r940",
-        "r944",
-        "r948",
-        "r952",
-        "r956",
-        "r960",
-        "r964",
-        "r968",
-        "r972",
-        "r976",
-        "r980",
-        "r984",
-        "r988",
-        "r992",
-        "r996",
-        "r1000",
-        "r1004",
-        "r1007",
-        "r1010",
-        "r1013",
-        "r1016",
-        "r1019",
+        "r776",
+        "r794",
+        "r798",
+        "r802",
+        "r806",
+        "r810",
+        "r814",
+        "r818",
+        "r822",
+        "r826",
+        "r830",
+        "r834",
+        "r838",
+        "r842",
+        "r846",
+        "r850",
+        "r854",
+        "r858",
+        "r862",
+        "r866",
+        "r870",
+        "r874",
+        "r878",
+        "r882",
+        "r886",
+        "r890",
+        "r894",
+        "r898",
+        "r902",
+        "r906",
+        "r910",
+        "r914",
+        "r918",
+        "r922",
+        "r926",
+        "r930",
+        "r934",
+        "r938",
+        "r942",
+        "r946",
+        "r950",
+        "r954",
+        "r958",
+        "r962",
+        "r966",
+        "r970",
+        "r974",
+        "r978",
+        "r982",
+        "r986",
+        "r990",
+        "r994",
+        "r998",
+        "r1002",
+        "r1005",
+        "r1008",
+        "r1011",
+        "r1014",
+        "r1017",
+        "r1020",
         "r1022",
         "r1024",
         "r1026",
@@ -17081,7 +17081,7 @@
       "prov": [
         "r769",
         "r772",
-        "r790"
+        "r788"
       ]
     },
     {
@@ -17094,7 +17094,7 @@
       "prov": [
         "r769",
         "r772",
-        "r790"
+        "r788"
       ]
     },
     {
@@ -17189,6 +17189,45 @@
       ]
     },
     {
+      "from": "peer:0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+      "to": "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+      "rel": "also lends here (queue #1)",
+      "data": {
+        "supplyAssets": "0"
+      },
+      "prov": [
+        "r769",
+        "r772",
+        "r812"
+      ]
+    },
+    {
+      "from": "peer:0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+      "to": "market:0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49",
+      "rel": "also lends here (queue #2)",
+      "data": {
+        "supplyAssets": "0"
+      },
+      "prov": [
+        "r769",
+        "r772",
+        "r812"
+      ]
+    },
+    {
+      "from": "peer:0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+      "to": "market:0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
+      "rel": "also lends here (queue #3)",
+      "data": {
+        "supplyAssets": "0"
+      },
+      "prov": [
+        "r769",
+        "r772",
+        "r812"
+      ]
+    },
+    {
       "from": "peer:0x974c8FBf4fd795F66B85B73ebC988A51F1A040a9",
       "to": "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
       "rel": "also lends here (queue #3)",
@@ -17215,45 +17254,6 @@
       ]
     },
     {
-      "from": "peer:0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-      "to": "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
-      "rel": "also lends here (queue #1)",
-      "data": {
-        "supplyAssets": "0"
-      },
-      "prov": [
-        "r769",
-        "r772",
-        "r814"
-      ]
-    },
-    {
-      "from": "peer:0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-      "to": "market:0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49",
-      "rel": "also lends here (queue #2)",
-      "data": {
-        "supplyAssets": "0"
-      },
-      "prov": [
-        "r769",
-        "r772",
-        "r814"
-      ]
-    },
-    {
-      "from": "peer:0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-      "to": "market:0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
-      "rel": "also lends here (queue #3)",
-      "data": {
-        "supplyAssets": "0"
-      },
-      "prov": [
-        "r769",
-        "r772",
-        "r814"
-      ]
-    },
-    {
       "from": "peer:0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
       "to": "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
       "rel": "also lends here (queue #1)",
@@ -17263,7 +17263,7 @@
       "prov": [
         "r769",
         "r772",
-        "r881"
+        "r880"
       ]
     },
     {
@@ -17276,7 +17276,7 @@
       "prov": [
         "r769",
         "r772",
-        "r881"
+        "r880"
       ]
     },
     {
@@ -17289,7 +17289,7 @@
       "prov": [
         "r769",
         "r772",
-        "r881"
+        "r880"
       ]
     },
     {
@@ -17302,7 +17302,7 @@
       "prov": [
         "r769",
         "r772",
-        "r882"
+        "r881"
       ]
     },
     {
@@ -17315,7 +17315,7 @@
       "prov": [
         "r769",
         "r772",
-        "r949"
+        "r948"
       ]
     },
     {
@@ -17328,7 +17328,7 @@
       "prov": [
         "r769",
         "r772",
-        "r949"
+        "r948"
       ]
     },
     {
@@ -17380,7 +17380,7 @@
       "prov": [
         "r769",
         "r772",
-        "r950"
+        "r949"
       ]
     },
     {
@@ -17393,7 +17393,7 @@
       "prov": [
         "r769",
         "r772",
-        "r950"
+        "r949"
       ]
     },
     {
@@ -17406,7 +17406,7 @@
       "prov": [
         "r769",
         "r772",
-        "r950"
+        "r949"
       ]
     },
     {
@@ -17419,7 +17419,7 @@
       "prov": [
         "r769",
         "r772",
-        "r950"
+        "r949"
       ]
     },
     {
@@ -17432,7 +17432,7 @@
       "prov": [
         "r769",
         "r772",
-        "r973"
+        "r972"
       ]
     },
     {
@@ -17458,7 +17458,7 @@
       "prov": [
         "r769",
         "r772",
-        "r785"
+        "r786"
       ]
     },
     {
@@ -17471,7 +17471,7 @@
       "prov": [
         "r769",
         "r772",
-        "r785"
+        "r786"
       ]
     },
     {
@@ -17484,7 +17484,7 @@
       "prov": [
         "r769",
         "r772",
-        "r785"
+        "r786"
       ]
     },
     {
@@ -17497,7 +17497,7 @@
       "prov": [
         "r769",
         "r772",
-        "r785"
+        "r786"
       ]
     },
     {
@@ -17510,7 +17510,7 @@
       "prov": [
         "r769",
         "r772",
-        "r785"
+        "r786"
       ]
     },
     {
@@ -28495,21 +28495,21 @@
       "id": "r776",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x4Ff4186188f8406917293A9e01A1ca16d3cf9E59",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "SwissBorg Morpho USDC"
-    },
-    {
-      "id": "r777",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
       "fn": "totalAssets()",
       "args": [],
       "ok": true,
       "result": "12746822118273"
+    },
+    {
+      "id": "r777",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4Ff4186188f8406917293A9e01A1ca16d3cf9E59",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "SwissBorg Morpho USDC"
     },
     {
       "id": "r778",
@@ -28535,21 +28535,21 @@
       "id": "r780",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x4Ff4186188f8406917293A9e01A1ca16d3cf9E59",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "8834865013314"
-    },
-    {
-      "id": "r781",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
       "fn": "withdrawQueueLength()",
       "args": [],
       "ok": true,
       "result": "24"
+    },
+    {
+      "id": "r781",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4Ff4186188f8406917293A9e01A1ca16d3cf9E59",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "8834865013314"
     },
     {
       "id": "r782",
@@ -28583,6 +28583,16 @@
     },
     {
       "id": "r785",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "3"
+    },
+    {
+      "id": "r786",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -28762,16 +28772,6 @@
       ]
     },
     {
-      "id": "r786",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "3"
-    },
-    {
       "id": "r787",
       "block": "26157638",
       "method": "eth_call",
@@ -28815,13 +28815,34 @@
       "id": "r788",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x3 withdrawQueue(uint256)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+        {
+          "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
+          "args": [
+            "2"
+          ]
+        }
       ],
       "ok": true,
-      "result": true
+      "result": [
+        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
+        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+        "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8"
+      ]
     },
     {
       "id": "r789",
@@ -28895,34 +28916,13 @@
       "id": "r790",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
-      "fn": "aggregate3 x3 withdrawQueue(uint256)",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
       "args": [
-        {
-          "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
-          "args": [
-            "0"
-          ]
-        },
-        {
-          "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
-          "args": [
-            "1"
-          ]
-        },
-        {
-          "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
-          "args": [
-            "2"
-          ]
-        }
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
       ],
       "ok": true,
-      "result": [
-        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
-        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
-        "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8"
-      ]
+      "result": true
     },
     {
       "id": "r791",
@@ -28940,13 +28940,13 @@
       "id": "r792",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-      "fn": "isAllocator(address)",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
       "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+        "0x56A76b428244a50513ec81e225a293d128fd581D"
       ],
       "ok": true,
-      "result": true
+      "result": false
     },
     {
       "id": "r793",
@@ -28964,13 +28964,13 @@
       "id": "r794",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
+      "to": "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+      "fn": "isAllocator(address)",
       "args": [
-        "0x56A76b428244a50513ec81e225a293d128fd581D"
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
       ],
       "ok": true,
-      "result": false
+      "result": true
     },
     {
       "id": "r795",
@@ -28988,17 +28988,13 @@
       "id": "r796",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
+      "fn": "isAllocator(address)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
       ],
       "ok": true,
-      "result": [
-        "0",
-        "1000000000000000"
-      ]
+      "result": false
     },
     {
       "id": "r797",
@@ -29016,13 +29012,17 @@
       "id": "r798",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x56A76b428244a50513ec81e225a293d128fd581D",
-      "fn": "isAllocator(address)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
       ],
       "ok": true,
-      "result": false
+      "result": [
+        "0",
+        "1000000000000000"
+      ]
     },
     {
       "id": "r799",
@@ -29038,17 +29038,11 @@
       "id": "r800",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49"
-      ],
+      "to": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+      "fn": "name()",
+      "args": [],
       "ok": true,
-      "result": [
-        "0",
-        "1000000000000000"
-      ]
+      "result": "Hyperithm USDC Apex"
     },
     {
       "id": "r801",
@@ -29070,11 +29064,17 @@
       "id": "r802",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-      "fn": "name()",
-      "args": [],
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49"
+      ],
       "ok": true,
-      "result": "Hyperithm USDC Apex"
+      "result": [
+        "0",
+        "1000000000000000"
+      ]
     },
     {
       "id": "r803",
@@ -29090,17 +29090,11 @@
       "id": "r804",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x85252bb8485c99bba46fe149c7dd2aad83672640f53c630890673cf1848ba16e"
-      ],
+      "to": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+      "fn": "totalAssets()",
+      "args": [],
       "ok": true,
-      "result": [
-        "1435944051634",
-        "1000000000000000"
-      ]
+      "result": "1591113628205"
     },
     {
       "id": "r805",
@@ -29122,11 +29116,17 @@
       "id": "r806",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-      "fn": "totalAssets()",
-      "args": [],
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x85252bb8485c99bba46fe149c7dd2aad83672640f53c630890673cf1848ba16e"
+      ],
       "ok": true,
-      "result": "1591113628205"
+      "result": [
+        "1435944051634",
+        "1000000000000000"
+      ]
     },
     {
       "id": "r807",
@@ -29142,17 +29142,11 @@
       "id": "r808",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc"
-      ],
+      "to": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+      "fn": "withdrawQueueLength()",
+      "args": [],
       "ok": true,
-      "result": [
-        "0",
-        "1000000000000000"
-      ]
+      "result": "6"
     },
     {
       "id": "r809",
@@ -29174,11 +29168,17 @@
       "id": "r810",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-      "fn": "withdrawQueueLength()",
-      "args": [],
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc"
+      ],
       "ok": true,
-      "result": "6"
+      "result": [
+        "0",
+        "1000000000000000"
+      ]
     },
     {
       "id": "r811",
@@ -29238,38 +29238,6 @@
       "id": "r812",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8"
-      ],
-      "ok": true,
-      "result": [
-        "90765033924433",
-        "1009234966075567"
-      ]
-    },
-    {
-      "id": "r813",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xdd0f28e19C1780eb6396170735D45153D261490d",
-        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r814",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
       "fn": "aggregate3 x6 withdrawQueue(uint256)",
       "args": [
@@ -29321,6 +29289,38 @@
       ]
     },
     {
+      "id": "r813",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xdd0f28e19C1780eb6396170735D45153D261490d",
+        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r814",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8"
+      ],
+      "ok": true,
+      "result": [
+        "90765033924433",
+        "1009234966075567"
+      ]
+    },
+    {
       "id": "r815",
       "block": "26157638",
       "method": "eth_call",
@@ -29336,17 +29336,13 @@
       "id": "r816",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777"
       ],
       "ok": true,
-      "result": [
-        "3062909440603",
-        "1000000000000000"
-      ]
+      "result": false
     },
     {
       "id": "r817",
@@ -29368,13 +29364,17 @@
       "id": "r818",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
       ],
       "ok": true,
-      "result": false
+      "result": [
+        "3062909440603",
+        "1000000000000000"
+      ]
     },
     {
       "id": "r819",
@@ -29392,17 +29392,13 @@
       "id": "r820",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+      "fn": "isAllocator(address)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
       ],
       "ok": true,
-      "result": [
-        "9890945685991",
-        "1000109054314009"
-      ]
+      "result": true
     },
     {
       "id": "r821",
@@ -29424,13 +29420,17 @@
       "id": "r822",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-      "fn": "isAllocator(address)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
       ],
       "ok": true,
-      "result": true
+      "result": [
+        "9890945685991",
+        "1000109054314009"
+      ]
     },
     {
       "id": "r823",
@@ -29455,13 +29455,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
       ],
       "ok": true,
       "result": [
-        "107286230428951",
-        "992713769571049"
+        "0",
+        "0"
       ]
     },
     {
@@ -29487,13 +29487,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "107286230428951",
+        "992713769571049"
       ]
     },
     {
@@ -29519,13 +29519,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49"
       ],
       "ok": true,
       "result": [
-        "6713492832344",
-        "999995928059465"
+        "0",
+        "0"
       ]
     },
     {
@@ -29551,13 +29551,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "6713492832344",
+        "999995928059465"
       ]
     },
     {
@@ -29583,13 +29583,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0xbc99de6a88904cd0e69042ad6f266e63182801f030c636507c3caf590ffd84fe"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0x85252bb8485c99bba46fe149c7dd2aad83672640f53c630890673cf1848ba16e"
       ],
       "ok": true,
       "result": [
-        "99564787334815",
-        "1000435212665185"
+        "0",
+        "0"
       ]
     },
     {
@@ -29615,13 +29615,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0x85252bb8485c99bba46fe149c7dd2aad83672640f53c630890673cf1848ba16e"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0xbc99de6a88904cd0e69042ad6f266e63182801f030c636507c3caf590ffd84fe"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "99564787334815",
+        "1000435212665185"
       ]
     },
     {
@@ -29647,13 +29647,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0xfb8d92086861bae6fb778917afd1de5dbbc4ec70edfb636fed48238e225e7e3d"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc"
       ],
       "ok": true,
       "result": [
-        "999944546035",
-        "1000000055453965"
+        "0",
+        "0"
       ]
     },
     {
@@ -29679,13 +29679,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0xfb8d92086861bae6fb778917afd1de5dbbc4ec70edfb636fed48238e225e7e3d"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "999944546035",
+        "1000000055453965"
       ]
     },
     {
@@ -29711,13 +29711,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0xe4cfbee9af4ad713b41bf79f009ca02b17c001a0c0e7bd2e6a89b1111b3d3f08"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8"
       ],
       "ok": true,
       "result": [
         "0",
-        "1000000000000000"
+        "0"
       ]
     },
     {
@@ -29743,13 +29743,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0xe4cfbee9af4ad713b41bf79f009ca02b17c001a0c0e7bd2e6a89b1111b3d3f08"
       ],
       "ok": true,
       "result": [
         "0",
-        "0"
+        "1000000000000000"
       ]
     },
     {
@@ -29772,18 +29772,15 @@
       "id": "r844",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "market(bytes32)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xe4cfbee9af4ad713b41bf79f009ca02b17c001a0c0e7bd2e6a89b1111b3d3f08"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
       ],
       "ok": true,
       "result": [
-        "564799505537",
-        "497089410614234820",
-        "495357841261",
-        "428155715813362794",
-        "1791577475",
+        "0",
         "0"
       ]
     },
@@ -29801,15 +29798,18 @@
       "id": "r846",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
+        "0xe4cfbee9af4ad713b41bf79f009ca02b17c001a0c0e7bd2e6a89b1111b3d3f08"
       ],
       "ok": true,
       "result": [
-        "0",
+        "564799505537",
+        "497089410614234820",
+        "495357841261",
+        "428155715813362794",
+        "1791577475",
         "0"
       ]
     },
@@ -29833,15 +29833,14 @@
       "id": "r848",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "position(bytes32,address)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xe4cfbee9af4ad713b41bf79f009ca02b17c001a0c0e7bd2e6a89b1111b3d3f08",
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
       ],
       "ok": true,
       "result": [
-        "0",
         "0",
         "0"
       ]
@@ -29860,14 +29859,15 @@
       "id": "r850",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
+        "0xe4cfbee9af4ad713b41bf79f009ca02b17c001a0c0e7bd2e6a89b1111b3d3f08",
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
       ],
       "ok": true,
       "result": [
+        "0",
         "0",
         "0"
       ]
@@ -29895,13 +29895,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0xeb17955ea422baeddbfb0b8d8c9086c5be7a9cfdefb292119a102e981a30062e"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1"
       ],
       "ok": true,
       "result": [
         "0",
-        "1000000000000000"
+        "0"
       ]
     },
     {
@@ -29921,13 +29921,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0xeb17955ea422baeddbfb0b8d8c9086c5be7a9cfdefb292119a102e981a30062e"
       ],
       "ok": true,
       "result": [
         "0",
-        "0"
+        "1000000000000000"
       ]
     },
     {
@@ -29950,18 +29950,15 @@
       "id": "r856",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "market(bytes32)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xeb17955ea422baeddbfb0b8d8c9086c5be7a9cfdefb292119a102e981a30062e"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
       ],
       "ok": true,
       "result": [
-        "4850318",
-        "4620115308378",
-        "4850318",
-        "4588563017780",
-        "1791577475",
+        "0",
         "0"
       ]
     },
@@ -30009,15 +30006,18 @@
       "id": "r858",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
+        "0xeb17955ea422baeddbfb0b8d8c9086c5be7a9cfdefb292119a102e981a30062e"
       ],
       "ok": true,
       "result": [
-        "0",
+        "4850318",
+        "4620115308378",
+        "4850318",
+        "4588563017780",
+        "1791577475",
         "0"
       ]
     },
@@ -30041,15 +30041,14 @@
       "id": "r860",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "position(bytes32,address)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xeb17955ea422baeddbfb0b8d8c9086c5be7a9cfdefb292119a102e981a30062e",
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0xbc99de6a88904cd0e69042ad6f266e63182801f030c636507c3caf590ffd84fe"
       ],
       "ok": true,
       "result": [
-        "0",
         "0",
         "0"
       ]
@@ -30070,14 +30069,15 @@
       "id": "r862",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0xbc99de6a88904cd0e69042ad6f266e63182801f030c636507c3caf590ffd84fe"
+        "0xeb17955ea422baeddbfb0b8d8c9086c5be7a9cfdefb292119a102e981a30062e",
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
       ],
       "ok": true,
       "result": [
+        "0",
         "0",
         "0"
       ]
@@ -30105,13 +30105,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0xbf02d6c6852fa0b8247d5514d0c91e6c1fbde9a168ac3fd2033028b5ee5ce6d0"
+        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
+        "0xfb8d92086861bae6fb778917afd1de5dbbc4ec70edfb636fed48238e225e7e3d"
       ],
       "ok": true,
       "result": [
         "0",
-        "1000000000000000"
+        "0"
       ]
     },
     {
@@ -30133,13 +30133,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x777791C4d6DC2CE140D00D2828a7C93503c67777",
-        "0xfb8d92086861bae6fb778917afd1de5dbbc4ec70edfb636fed48238e225e7e3d"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0xbf02d6c6852fa0b8247d5514d0c91e6c1fbde9a168ac3fd2033028b5ee5ce6d0"
       ],
       "ok": true,
       "result": [
         "0",
-        "0"
+        "1000000000000000"
       ]
     },
     {
@@ -30162,6 +30162,26 @@
       "id": "r868",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Vault Bridge USDC"
+    },
+    {
+      "id": "r869",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Cronos USDC"
+    },
+    {
+      "id": "r870",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "market(bytes32)",
       "args": [
@@ -30176,26 +30196,6 @@
         "1791577475",
         "0"
       ]
-    },
-    {
-      "id": "r869",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "Vault Bridge USDC"
-    },
-    {
-      "id": "r870",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "Cronos USDC"
     },
     {
       "id": "r871",
@@ -30220,6 +30220,26 @@
       "id": "r872",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "10473874410423"
+    },
+    {
+      "id": "r873",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "1310490365554"
+    },
+    {
+      "id": "r874",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "position(bytes32,address)",
       "args": [
@@ -30232,26 +30252,6 @@
         "0",
         "0"
       ]
-    },
-    {
-      "id": "r873",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "10473874410423"
-    },
-    {
-      "id": "r874",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "1310490365554"
     },
     {
       "id": "r875",
@@ -30274,6 +30274,26 @@
       "id": "r876",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "4"
+    },
+    {
+      "id": "r877",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "2"
+    },
+    {
+      "id": "r878",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -30285,26 +30305,6 @@
         "1000000000000000",
         "1000000000000000"
       ]
-    },
-    {
-      "id": "r877",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "4"
-    },
-    {
-      "id": "r878",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "2"
     },
     {
       "id": "r879",
@@ -30324,25 +30324,6 @@
     },
     {
       "id": "r880",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "market(bytes32)",
-      "args": [
-        "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8"
-      ],
-      "ok": true,
-      "result": [
-        "629032453314",
-        "629032453314000000",
-        "0",
-        "0",
-        "1791582047",
-        "0"
-      ]
-    },
-    {
-      "id": "r881",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -30382,7 +30363,7 @@
       ]
     },
     {
-      "id": "r882",
+      "id": "r881",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -30408,6 +30389,25 @@
       ]
     },
     {
+      "id": "r882",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8"
+      ],
+      "ok": true,
+      "result": [
+        "629032453314",
+        "629032453314000000",
+        "0",
+        "0",
+        "1791582047",
+        "0"
+      ]
+    },
+    {
       "id": "r883",
       "block": "26157638",
       "method": "eth_call",
@@ -30430,6 +30430,30 @@
       "id": "r884",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0xBEefb9f61CC44895d8AEc381373555a64191A9c4"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r885",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r886",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "position(bytes32,address)",
       "args": [
@@ -30442,30 +30466,6 @@
         "0",
         "0"
       ]
-    },
-    {
-      "id": "r885",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0xBEefb9f61CC44895d8AEc381373555a64191A9c4"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
-      "id": "r886",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC"
-      ],
-      "ok": true,
-      "result": false
     },
     {
       "id": "r887",
@@ -30488,23 +30488,19 @@
       "id": "r888",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
+      "to": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+      "fn": "isAllocator(address)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x1e9d614631a7df0ec07fb05b2c8cb2491575fd1a63a33bf187a6afb295a4fc64"
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
       ],
       "ok": true,
-      "result": [
-        "0",
-        "1000000000000000"
-      ]
+      "result": true
     },
     {
       "id": "r889",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+      "to": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
       "fn": "isAllocator(address)",
       "args": [
         "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
@@ -30516,13 +30512,17 @@
       "id": "r890",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
-      "fn": "isAllocator(address)",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x1e9d614631a7df0ec07fb05b2c8cb2491575fd1a63a33bf187a6afb295a4fc64"
       ],
       "ok": true,
-      "result": true
+      "result": [
+        "0",
+        "1000000000000000"
+      ]
     },
     {
       "id": "r891",
@@ -30544,25 +30544,6 @@
       "id": "r892",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "market(bytes32)",
-      "args": [
-        "0x1e9d614631a7df0ec07fb05b2c8cb2491575fd1a63a33bf187a6afb295a4fc64"
-      ],
-      "ok": true,
-      "result": [
-        "117102225856405",
-        "114326712248621899571",
-        "104245873900188",
-        "101489308859812981140",
-        "1791581015",
-        "0"
-      ]
-    },
-    {
-      "id": "r893",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -30576,7 +30557,7 @@
       ]
     },
     {
-      "id": "r894",
+      "id": "r893",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -30588,6 +30569,25 @@
       "ok": true,
       "result": [
         "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r894",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x1e9d614631a7df0ec07fb05b2c8cb2491575fd1a63a33bf187a6afb295a4fc64"
+      ],
+      "ok": true,
+      "result": [
+        "117102225856405",
+        "114326712248621899571",
+        "104245873900188",
+        "101489308859812981140",
+        "1791581015",
         "0"
       ]
     },
@@ -30614,23 +30614,6 @@
       "id": "r896",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "position(bytes32,address)",
-      "args": [
-        "0x1e9d614631a7df0ec07fb05b2c8cb2491575fd1a63a33bf187a6afb295a4fc64",
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
-      ],
-      "ok": true,
-      "result": [
-        "3105287496243447532",
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r897",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -30644,7 +30627,7 @@
       ]
     },
     {
-      "id": "r898",
+      "id": "r897",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -30655,6 +30638,23 @@
       ],
       "ok": true,
       "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r898",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x1e9d614631a7df0ec07fb05b2c8cb2491575fd1a63a33bf187a6afb295a4fc64",
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+      ],
+      "ok": true,
+      "result": [
+        "3105287496243447532",
         "0",
         "0"
       ]
@@ -30683,13 +30683,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x2a0b893471c785a1f0fda00df7fca578b703eef7ae7186d2429c2824b5212467"
+        "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+        "0x85252bb8485c99bba46fe149c7dd2aad83672640f53c630890673cf1848ba16e"
       ],
       "ok": true,
       "result": [
-        "5000000000000",
-        "1000000000000000"
+        "0",
+        "0"
       ]
     },
     {
@@ -30699,7 +30699,7 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+        "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
         "0x85252bb8485c99bba46fe149c7dd2aad83672640f53c630890673cf1848ba16e"
       ],
       "ok": true,
@@ -30715,13 +30715,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
-        "0x85252bb8485c99bba46fe149c7dd2aad83672640f53c630890673cf1848ba16e"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x2a0b893471c785a1f0fda00df7fca578b703eef7ae7186d2429c2824b5212467"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "5000000000000",
+        "1000000000000000"
       ]
     },
     {
@@ -30744,25 +30744,6 @@
       "id": "r904",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "market(bytes32)",
-      "args": [
-        "0x2a0b893471c785a1f0fda00df7fca578b703eef7ae7186d2429c2824b5212467"
-      ],
-      "ok": true,
-      "result": [
-        "24073150362640",
-        "23624993957082700120",
-        "21695086724151",
-        "21245184722988907607",
-        "1791567215",
-        "0"
-      ]
-    },
-    {
-      "id": "r905",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -30776,7 +30757,7 @@
       ]
     },
     {
-      "id": "r906",
+      "id": "r905",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -30789,6 +30770,25 @@
       "result": [
         "0",
         "1000000000000000"
+      ]
+    },
+    {
+      "id": "r906",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x2a0b893471c785a1f0fda00df7fca578b703eef7ae7186d2429c2824b5212467"
+      ],
+      "ok": true,
+      "result": [
+        "24073150362640",
+        "23624993957082700120",
+        "21695086724151",
+        "21245184722988907607",
+        "1791567215",
+        "0"
       ]
     },
     {
@@ -30814,23 +30814,6 @@
       "id": "r908",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "position(bytes32,address)",
-      "args": [
-        "0x2a0b893471c785a1f0fda00df7fca578b703eef7ae7186d2429c2824b5212467",
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
-      ],
-      "ok": true,
-      "result": [
-        "2382406476306179011",
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r909",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -30844,7 +30827,7 @@
       ]
     },
     {
-      "id": "r910",
+      "id": "r909",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -30855,6 +30838,23 @@
       ],
       "ok": true,
       "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r910",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x2a0b893471c785a1f0fda00df7fca578b703eef7ae7186d2429c2824b5212467",
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+      ],
+      "ok": true,
+      "result": [
+        "2382406476306179011",
         "0",
         "0"
       ]
@@ -30883,13 +30883,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0xef2c308b5abecf5c8750a1aa82b47c558005feb7a03f4f8e1ad682d71ac8d0ba"
+        "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
       ],
       "ok": true,
       "result": [
-        "327806020819",
-        "1000000000000000"
+        "0",
+        "0"
       ]
     },
     {
@@ -30899,7 +30899,7 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+        "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
         "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
       ],
       "ok": true,
@@ -30915,13 +30915,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
-        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0xef2c308b5abecf5c8750a1aa82b47c558005feb7a03f4f8e1ad682d71ac8d0ba"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "327806020819",
+        "1000000000000000"
       ]
     },
     {
@@ -30944,25 +30944,6 @@
       "id": "r916",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "market(bytes32)",
-      "args": [
-        "0xef2c308b5abecf5c8750a1aa82b47c558005feb7a03f4f8e1ad682d71ac8d0ba"
-      ],
-      "ok": true,
-      "result": [
-        "25037613776828",
-        "22917409430713295442",
-        "22093947964268",
-        "19983638468613686376",
-        "1791577379",
-        "0"
-      ]
-    },
-    {
-      "id": "r917",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -30976,7 +30957,7 @@
       ]
     },
     {
-      "id": "r918",
+      "id": "r917",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -30988,6 +30969,25 @@
       "ok": true,
       "result": [
         "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r918",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0xef2c308b5abecf5c8750a1aa82b47c558005feb7a03f4f8e1ad682d71ac8d0ba"
+      ],
+      "ok": true,
+      "result": [
+        "25037613776828",
+        "22917409430713295442",
+        "22093947964268",
+        "19983638468613686376",
+        "1791577379",
         "0"
       ]
     },
@@ -31011,23 +31011,6 @@
       "id": "r920",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "position(bytes32,address)",
-      "args": [
-        "0xef2c308b5abecf5c8750a1aa82b47c558005feb7a03f4f8e1ad682d71ac8d0ba",
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
-      ],
-      "ok": true,
-      "result": [
-        "3852643739660277954",
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r921",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -31041,7 +31024,7 @@
       ]
     },
     {
-      "id": "r922",
+      "id": "r921",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -31052,6 +31035,23 @@
       ],
       "ok": true,
       "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r922",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0xef2c308b5abecf5c8750a1aa82b47c558005feb7a03f4f8e1ad682d71ac8d0ba",
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+      ],
+      "ok": true,
+      "result": [
+        "3852643739660277954",
         "0",
         "0"
       ]
@@ -31079,13 +31079,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
+        "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
       ],
       "ok": true,
       "result": [
-        "3062909440603",
-        "1000000000000000"
+        "0",
+        "0"
       ]
     },
     {
@@ -31095,7 +31095,7 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEefb9f61CC44895d8AEc381373555a64191A9c4",
+        "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
         "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
       ],
       "ok": true,
@@ -31111,13 +31111,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xbeEf96B330ef1Fe7Ebe41eCe0Bd4a41A94Bc03DC",
-        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "3062909440603",
+        "1000000000000000"
       ]
     },
     {
@@ -31143,25 +31143,6 @@
       "id": "r928",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "market(bytes32)",
-      "args": [
-        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
-      ],
-      "ok": true,
-      "result": [
-        "12022627297727",
-        "11878417770276027081",
-        "10785426059565",
-        "10640672290858635427",
-        "1791581591",
-        "0"
-      ]
-    },
-    {
-      "id": "r929",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -31175,7 +31156,7 @@
       ]
     },
     {
-      "id": "r930",
+      "id": "r929",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -31187,6 +31168,25 @@
       "ok": true,
       "result": [
         "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r930",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
+      ],
+      "ok": true,
+      "result": [
+        "12022627297727",
+        "11878417770276027081",
+        "10785426059565",
+        "10640672290858635427",
+        "1791581591",
         "0"
       ]
     },
@@ -31211,23 +31211,6 @@
       "id": "r932",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "position(bytes32,address)",
-      "args": [
-        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5",
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
-      ],
-      "ok": true,
-      "result": [
-        "99883803470391636",
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r933",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -31241,7 +31224,7 @@
       ]
     },
     {
-      "id": "r934",
+      "id": "r933",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -31252,6 +31235,23 @@
       ],
       "ok": true,
       "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r934",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5",
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+      ],
+      "ok": true,
+      "result": [
+        "99883803470391636",
         "0",
         "0"
       ]
@@ -31276,6 +31276,26 @@
       "id": "r936",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": " Usual Boosted USDC"
+    },
+    {
+      "id": "r937",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Gauntlet USDC Core"
+    },
+    {
+      "id": "r938",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -31287,26 +31307,6 @@
         "325102919493",
         "1000000000000000"
       ]
-    },
-    {
-      "id": "r937",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": " Usual Boosted USDC"
-    },
-    {
-      "id": "r938",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "Gauntlet USDC Core"
     },
     {
       "id": "r939",
@@ -31331,6 +31331,26 @@
       "id": "r940",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "1964460542739"
+    },
+    {
+      "id": "r941",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "3541472253584"
+    },
+    {
+      "id": "r942",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "market(bytes32)",
       "args": [
@@ -31345,26 +31365,6 @@
         "1791577379",
         "0"
       ]
-    },
-    {
-      "id": "r941",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "1964460542739"
-    },
-    {
-      "id": "r942",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "3541472253584"
     },
     {
       "id": "r943",
@@ -31387,6 +31387,26 @@
       "id": "r944",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "9"
+    },
+    {
+      "id": "r945",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "11"
+    },
+    {
+      "id": "r946",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "position(bytes32,address)",
       "args": [
@@ -31399,26 +31419,6 @@
         "0",
         "0"
       ]
-    },
-    {
-      "id": "r945",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "9"
-    },
-    {
-      "id": "r946",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "11"
     },
     {
       "id": "r947",
@@ -31438,22 +31438,6 @@
     },
     {
       "id": "r948",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
-      ],
-      "ok": true,
-      "result": [
-        "9890945685991",
-        "1000109054314009"
-      ]
-    },
-    {
-      "id": "r949",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -31528,7 +31512,7 @@
       ]
     },
     {
-      "id": "r950",
+      "id": "r949",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -31617,6 +31601,22 @@
       ]
     },
     {
+      "id": "r950",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
+      ],
+      "ok": true,
+      "result": [
+        "9890945685991",
+        "1000109054314009"
+      ]
+    },
+    {
       "id": "r951",
       "block": "26157638",
       "method": "eth_call",
@@ -31639,6 +31639,30 @@
       "id": "r952",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0xd63070114470f685b75B74D60EEc7c1113d33a3D"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r953",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r954",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "market(bytes32)",
       "args": [
@@ -31653,30 +31677,6 @@
         "1791581591",
         "0"
       ]
-    },
-    {
-      "id": "r953",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0xd63070114470f685b75B74D60EEc7c1113d33a3D"
-      ],
-      "ok": true,
-      "result": true
-    },
-    {
-      "id": "r954",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458"
-      ],
-      "ok": true,
-      "result": true
     },
     {
       "id": "r955",
@@ -31699,6 +31699,30 @@
       "id": "r956",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r957",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r958",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "position(bytes32,address)",
       "args": [
@@ -31711,30 +31735,6 @@
         "0",
         "0"
       ]
-    },
-    {
-      "id": "r957",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xd63070114470f685b75B74D60EEc7c1113d33a3D",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
-      "id": "r958",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": true
     },
     {
       "id": "r959",
@@ -31756,22 +31756,6 @@
       "id": "r960",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1"
-      ],
-      "ok": true,
-      "result": [
-        "107286230428951",
-        "992713769571049"
-      ]
-    },
-    {
-      "id": "r961",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
       "fn": "name()",
       "args": [],
@@ -31779,7 +31763,7 @@
       "result": "Gauntlet USDC RWA"
     },
     {
-      "id": "r962",
+      "id": "r961",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -31792,6 +31776,22 @@
       "result": [
         "0",
         "0"
+      ]
+    },
+    {
+      "id": "r962",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1"
+      ],
+      "ok": true,
+      "result": [
+        "107286230428951",
+        "992713769571049"
       ]
     },
     {
@@ -31817,6 +31817,32 @@
       "id": "r964",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "10886139661761"
+    },
+    {
+      "id": "r965",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+        "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r966",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "market(bytes32)",
       "args": [
@@ -31829,32 +31855,6 @@
         "1359543933284",
         "1332012166795347491",
         "1791581591",
-        "0"
-      ]
-    },
-    {
-      "id": "r965",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "10886139661761"
-    },
-    {
-      "id": "r966",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
-        "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49"
-      ],
-      "ok": true,
-      "result": [
-        "0",
         "0"
       ]
     },
@@ -31879,23 +31879,6 @@
       "id": "r968",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "position(bytes32,address)",
-      "args": [
-        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1",
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
-      ],
-      "ok": true,
-      "result": [
-        "7873773237016285",
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r969",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
       "fn": "withdrawQueueLength()",
       "args": [],
@@ -31903,7 +31886,7 @@
       "result": "8"
     },
     {
-      "id": "r970",
+      "id": "r969",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -31914,6 +31897,23 @@
       ],
       "ok": true,
       "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r970",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1",
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+      ],
+      "ok": true,
+      "result": [
+        "7873773237016285",
         "0",
         "0"
       ]
@@ -31936,22 +31936,6 @@
     },
     {
       "id": "r972",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x61765602144e91e5ac9f9e98b8584eae308f9951596fd7f5e0f59f21cd2bf664"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "1000000000000000"
-      ]
-    },
-    {
-      "id": "r973",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -32019,7 +32003,7 @@
       ]
     },
     {
-      "id": "r974",
+      "id": "r973",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -32032,6 +32016,22 @@
       "result": [
         "0",
         "0"
+      ]
+    },
+    {
+      "id": "r974",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x61765602144e91e5ac9f9e98b8584eae308f9951596fd7f5e0f59f21cd2bf664"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "1000000000000000"
       ]
     },
     {
@@ -32054,6 +32054,34 @@
       "id": "r976",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r977",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+        "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r978",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "market(bytes32)",
       "args": [
@@ -32066,34 +32094,6 @@
         "707674423860",
         "628077172479371348",
         "1791567215",
-        "0"
-      ]
-    },
-    {
-      "id": "r977",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
-      "id": "r978",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
-        "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8"
-      ],
-      "ok": true,
-      "result": [
-        "0",
         "0"
       ]
     },
@@ -32111,23 +32111,6 @@
       "id": "r980",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "position(bytes32,address)",
-      "args": [
-        "0x61765602144e91e5ac9f9e98b8584eae308f9951596fd7f5e0f59f21cd2bf664",
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
-      ],
-      "ok": true,
-      "result": [
-        "6136320102885567",
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r981",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
       "fn": "isAllocator(address)",
       "args": [
@@ -32137,7 +32120,7 @@
       "result": true
     },
     {
-      "id": "r982",
+      "id": "r981",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -32148,6 +32131,23 @@
       ],
       "ok": true,
       "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r982",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x61765602144e91e5ac9f9e98b8584eae308f9951596fd7f5e0f59f21cd2bf664",
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+      ],
+      "ok": true,
+      "result": [
+        "6136320102885567",
         "0",
         "0"
       ]
@@ -32169,13 +32169,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
+        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
+        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
       ],
       "ok": true,
       "result": [
-        "6713492832344",
-        "999995928059465"
+        "0",
+        "0"
       ]
     },
     {
@@ -32185,8 +32185,8 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
-        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
+        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
       ],
       "ok": true,
       "result": [
@@ -32201,13 +32201,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
-        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "6713492832344",
+        "999995928059465"
       ]
     },
     {
@@ -32224,25 +32224,6 @@
       "id": "r988",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "market(bytes32)",
-      "args": [
-        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
-      ],
-      "ok": true,
-      "result": [
-        "480241558847",
-        "471777897393012369",
-        "435084217340",
-        "426415321924169519",
-        "1791581591",
-        "0"
-      ]
-    },
-    {
-      "id": "r989",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -32256,7 +32237,7 @@
       ]
     },
     {
-      "id": "r990",
+      "id": "r989",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -32268,6 +32249,25 @@
       "ok": true,
       "result": [
         "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r990",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
+      ],
+      "ok": true,
+      "result": [
+        "480241558847",
+        "471777897393012369",
+        "435084217340",
+        "426415321924169519",
+        "1791581591",
         "0"
       ]
     },
@@ -32378,23 +32378,6 @@
       "id": "r992",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "position(bytes32,address)",
-      "args": [
-        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd",
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
-      ],
-      "ok": true,
-      "result": [
-        "146843292024717982",
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r993",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -32408,7 +32391,7 @@
       ]
     },
     {
-      "id": "r994",
+      "id": "r993",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -32419,6 +32402,23 @@
       ],
       "ok": true,
       "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r994",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd",
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC"
+      ],
+      "ok": true,
+      "result": [
+        "146843292024717982",
         "0",
         "0"
       ]
@@ -32442,13 +32442,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
+        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
+        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc"
       ],
       "ok": true,
       "result": [
         "0",
-        "1000000000000000"
+        "0"
       ]
     },
     {
@@ -32458,8 +32458,8 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
-        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc"
+        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+        "0xbc99de6a88904cd0e69042ad6f266e63182801f030c636507c3caf590ffd84fe"
       ],
       "ok": true,
       "result": [
@@ -32474,13 +32474,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
-        "0xbc99de6a88904cd0e69042ad6f266e63182801f030c636507c3caf590ffd84fe"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
       ],
       "ok": true,
       "result": [
         "0",
-        "0"
+        "1000000000000000"
       ]
     },
     {
@@ -32499,25 +32499,6 @@
       "id": "r1000",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
-      "fn": "market(bytes32)",
-      "args": [
-        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
-      ],
-      "ok": true,
-      "result": [
-        "339543956696359",
-        "309998656182400827422",
-        "303900559693515",
-        "274050196792398517091",
-        "1791582047",
-        "0"
-      ]
-    },
-    {
-      "id": "r1001",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -32531,7 +32512,7 @@
       ]
     },
     {
-      "id": "r1002",
+      "id": "r1001",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
@@ -32543,6 +32524,25 @@
       "ok": true,
       "result": [
         "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r1002",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64"
+      ],
+      "ok": true,
+      "result": [
+        "339543956696359",
+        "309998656182400827422",
+        "303900559693515",
+        "274050196792398517091",
+        "1791582047",
         "0"
       ]
     },
@@ -32566,6 +32566,22 @@
       "id": "r1004",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
+        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r1005",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "position(bytes32,address)",
       "args": [
@@ -32575,22 +32591,6 @@
       "ok": true,
       "result": [
         "0",
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r1005",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
-        "0xc498f4bfdda99e60ea8eb04c1e145654a70bc59da76ef9c6ed54a1314d78e5b5"
-      ],
-      "ok": true,
-      "result": [
         "0",
         "0"
       ]
@@ -32618,13 +32618,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x22fe4c688161863c73571a2b8db65cc11a4a6bceee4f0dea4aa83e4b784f1bd9"
+        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
+        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
       ],
       "ok": true,
       "result": [
-        "3383708033163",
-        "1000000000000000"
+        "0",
+        "0"
       ]
     },
     {
@@ -32634,13 +32634,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
-        "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x22fe4c688161863c73571a2b8db65cc11a4a6bceee4f0dea4aa83e4b784f1bd9"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "3383708033163",
+        "1000000000000000"
       ]
     },
     {
@@ -32663,6 +32663,22 @@
       "id": "r1010",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
+        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r1011",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "market(bytes32)",
       "args": [
@@ -32675,22 +32691,6 @@
         "12681246272208",
         "12571011444021123645",
         "1791469775",
-        "0"
-      ]
-    },
-    {
-      "id": "r1011",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
-        "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1"
-      ],
-      "ok": true,
-      "result": [
-        "0",
         "0"
       ]
     },
@@ -32714,6 +32714,22 @@
       "id": "r1013",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
+        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r1014",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "position(bytes32,address)",
       "args": [
@@ -32723,22 +32739,6 @@
       "ok": true,
       "result": [
         "0",
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r1014",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
-        "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd"
-      ],
-      "ok": true,
-      "result": [
         "0",
         "0"
       ]
@@ -32766,13 +32766,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
-        "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8"
+        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
+        "0xbc99de6a88904cd0e69042ad6f266e63182801f030c636507c3caf590ffd84fe"
       ],
       "ok": true,
       "result": [
-        "90765033924433",
-        "1009234966075567"
+        "0",
+        "0"
       ]
     },
     {
@@ -32782,13 +32782,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
-        "0xbc99de6a88904cd0e69042ad6f266e63182801f030c636507c3caf590ffd84fe"
+        "0xBEeFFF209270748ddd194831b3fa287a5386f5bC",
+        "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "90765033924433",
+        "1009234966075567"
       ]
     },
     {
@@ -32811,6 +32811,22 @@
       "id": "r1019",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
+        "0xfb8d92086861bae6fb778917afd1de5dbbc4ec70edfb636fed48238e225e7e3d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r1020",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
       "fn": "market(bytes32)",
       "args": [
@@ -32823,22 +32839,6 @@
         "11260277536195",
         "11025094829717165453",
         "1791581591",
-        "0"
-      ]
-    },
-    {
-      "id": "r1020",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0xA8875aaeBc4f830524e35d57F9772FfAcbdD6C45",
-        "0xfb8d92086861bae6fb778917afd1de5dbbc4ec70edfb636fed48238e225e7e3d"
-      ],
-      "ok": true,
-      "result": [
-        "0",
         "0"
       ]
     },

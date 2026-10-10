@@ -44,7 +44,9 @@ export class Reader {
       return [v, this.record({ method: "eth_call", to, fn: sig, args: json(args) as unknown[], ok: true, result: v })];
     } catch (e) {
       const msg = (e as Error).message.split("\n")[0];
-      if (/upstream failed|offline proxy|fetch failed|ECONNREFUSED|took too long/i.test(msg)) throw e; // transport problem: never silently treat as "absent"
+      // Transport / cache-miss problems must never be silently recorded as "function absent".
+      const full = `${(e as Error).message} ${(e as { details?: string }).details ?? ""}`;
+      if (/upstream failed|offline proxy|fetch failed|ECONNREFUSED|took too long/i.test(full)) throw e;
       return [undefined, this.record({ method: "eth_call", to, fn: sig, args: json(args) as unknown[], ok: false, result: `revert/absent: ${msg.slice(0, 120)}` })];
     }
   }

@@ -85,5 +85,21 @@ export function steakhouseEthCatalog(g: DependencyGraph): Scenario[] {
       ],
     });
   }
+  // Oracle-blind incident: stETH trades below ETH but the exchange-rate oracle does not move.
+  // Executed part: the liquidation sweep finds nothing to liquidate (oracle unchanged), then the run.
+  // Value part (economic shortfall) comes from the analytic engine, labelled as such.
+  const wstMarkets = g.markets.filter((m) => m.collateralSymbol === "wstETH" && m.vaultSupplyAssets > 0n);
+  if (wstMarkets.length) shocks.push({
+    id: "incident_steth_depeg_blind_plus_run",
+    title: "Incident: stETH depegs on the market, the exchange-rate oracle does not see it; holder #2 and Vault Bridge #1 run first",
+    target, hypotheses: [FORK_FACT, RUN_HYPOTHESIS, "The depeg is off-chain (DEX price); on-chain oracle unchanged, so no position becomes liquidatable."],
+    actions: [
+      { type: "measure", label: "source state" },
+      ...wstMarkets.map((m): ScenarioAction => ({ type: "liquidateAll", label: `liquidation sweep in wstETH market #${m.queueIndex} (oracle unchanged)`, marketId: m.id, borrowers: (g.borrowers[m.id]?.list ?? []).map((b) => b.address) })),
+      exit(V, ACTORS.B, "holder #2 exits"), exit(ACTORS.vaultBridgeWeth, ACTORS.VB1, "Vault Bridge WETH #1 exits its own vault"),
+      ...finish("before the holder's exit"),
+      { type: "exit", label: "holder withdraws its maximum", vault: V, owner: ACTORS.A, action: { kind: "withdrawMax" } }, { type: "measure", label: "end" },
+    ],
+  });
   return [...runs, ...shocks];
 }
