@@ -92,6 +92,7 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
           <Honesty r={report} />
           <GetBack r={report} entry={entry} mode={mode ?? "static"} />
           <Decision r={report} />
+          <NotModeled r={report} />
           <Tabs r={report} g={graph} entry={entry} mode={mode ?? "static"} />
         </>}
       </main>
@@ -100,11 +101,10 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
 }
 
 function Headline({ r, name }: { r: any; name: string }) {
-  const cls = r.headlineDecision ?? "STAY";
   return (
-    <section className={`verdict ${cls}`} style={{ fontSize: 16 }}>
+    <section className="verdict NEUTRAL" style={{ fontSize: 16 }}>
       <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>
-        {name ? `${name}, ` : ""}verdict for the {r.target.holderLabel} of {r.target.name} ({r.target.version}), default assumptions: 30 days, locked funds cost 10 % <Chip k="hyp" />
+        {name ? `${name}, ` : ""}exit decision for the {r.target.holderLabel} of {r.target.name} ({r.target.version}) · 30 days · locked funds cost 10 % or 0 % <Chip k="hyp" />
       </div>
       {r.headline ?? NM}
     </section>
@@ -129,7 +129,7 @@ function Honesty({ r }: { r: any }) {
       {c10 && c0 && c10.lockedPart > 0 && (
         <p style={{ margin: "8px 0 0" }}>
           In the decisive incident, the loss L = <b>{n(c10.incidentLoss)} {u}</b> = {n(c10.valueLoss)} of modeled value loss + <b>{n(c10.lockedPart)} {u}</b> from {n(c10.lockedAfterRun)} {u} locked after the run, valued at a 10 % cost (an assumption).
-          With locked funds at 0 %, L = {n(c0.incidentLoss)} {u} and the break-even rises from {fmtP(c10.breakEven)} to <b>{fmtP(c0.breakEven)}</b>.
+          Both cases are shown with the same weight: <b>p* = {fmtP(c10.breakEven)}</b> if locked funds cost 10 % (L = {n(c10.incidentLoss)} {u}), <b>p* = {fmtP(c0.breakEven)}</b> if they cost 0 % (L = {n(c0.incidentLoss)} {u}). The difference is an assumption, not a measurement.
         </p>
       )}
     </section>
@@ -204,58 +204,86 @@ function Decision({ r }: { r: any }) {
   const [inc, setInc] = useState(Math.max(0, grid.findIndex((g) => g.id === r.bindingIncident)));
   const [h, setH] = useState(30);
   const [hc, setHc] = useState(0.1);
-  const [p, setP] = useState(0.05);
+  const [p, setP] = useState<number | null>(null); // null until the user moves the slider: no verdict before that
   if (!grid.length) return (
-    <section className="panel"><h2><span className="n">2</span> Decision: stay or exit?</h2>
-      <p className="sub">No incident could be built for this vault (no collateral market with an answering oracle and identified borrowers): the break-even is {NM}. Exit liquidity above still applies.</p></section>
+    <section className="panel"><h2><span className="n">2</span> From what probability does leaving pay off?</h2>
+      <p className="sub">No incident could be built for this vault (no collateral market with an answering oracle and identified borrowers): the break-even is {NM}. Exit liquidity above still applies; see also “Not modeled” below.</p></section>
   );
   const g = grid[Math.min(inc, grid.length - 1)];
-  const c = g.cells.find((x: any) => x.horizonDays === h && x.lockedHaircut === hc);
+  const cell = (hc0: number) => g.cells.find((x: any) => x.horizonDays === h && x.lockedHaircut === hc0);
+  const c = cell(hc), c10 = cell(0.1), c0 = cell(0);
   const I = r.incidents.find((x: any) => x.id === g.id);
   const u = r.target.assetSymbol;
   const n = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 2 });
-  const reading = !c ? NM : c.decision === "NO_ACTION_POSSIBLE" ? "cannot exit (less than 1 % of the position can leave)" : c.breakEven === null ? "stay: this incident causes no loss" : p > c.breakEven ? "exit: your probability is above the break-even" : "stay: your probability is below the break-even";
-  const isBlind = g.id.includes("blind");
+  const noExit = c10?.decision === "NO_ACTION_POSSIBLE";
+  const above = (x: any) => x && x.breakEven !== null && p !== null && p > x.breakEven;
+  const reading = p === null ? "move the slider to compare your probability with p*"
+    : noExit ? "cannot exit: less than 1 % of the position can leave"
+    : above(c10) && above(c0) ? "leaving pays off under both assumptions"
+    : above(c10) ? "leaving pays off only if locked funds cost you 10 %; not if they cost 0 %"
+    : "staying is cheaper under both assumptions";
+  const sliderStart = Math.min(0.3, c10?.breakEven ?? 0);
+  const label = (x: any) => r.shortIncidents?.[x.id] ?? (r.incidents.find((y: any) => y.id === x.id)?.title ?? x.id).replace(/^Incident: /, "");
   return (
     <section className="panel">
-      <h2><span className="n">2</span> Decision: stay or exit?</h2>
-      <p className="sub">Break-even p* = exit cost ÷ (incident loss × share that can leave now). Exit cost = yield given up on what leaves + gas executed on the fork + measured slippage. Every value below is precomputed in the report; nothing is a prediction.</p>
+      <h2><span className="n">2</span> From what probability does leaving pay off?</h2>
+      <p className="sub">Break-even p* = exit cost ÷ (incident loss × share that can leave now). Exit cost = yield given up on what leaves + gas executed on the fork + measured slippage. Values are precomputed in the report; nothing predicts the incident.</p>
       <div className="row" style={{ marginBottom: 8 }}>
-        {grid.map((x: any, i: number) => <button key={x.id} className={i === inc ? "on" : ""} onClick={() => setInc(i)}>{(r.incidents.find((y: any) => y.id === x.id)?.title ?? x.id).replace(/^Incident: /, "")}</button>)}
+        {grid.map((x: any, i: number) => <button key={x.id} className={i === inc ? "on" : ""} onClick={() => setInc(i)}>{label(x)}</button>)}
       </div>
       <div className="row" style={{ marginBottom: 10 }}>
         <span className="muted">horizon</span>{[7, 30, 90].map((x) => <button key={x} className={h === x ? "on" : ""} onClick={() => setH(x)}>{x} d</button>)}
-        <span className="muted" style={{ marginLeft: 12 }}>cost of locked funds <Chip k="hyp" /></span>{[0.1, 0].map((x) => <button key={x} className={hc === x ? "on" : ""} onClick={() => setHc(x)}>{x * 100} %</button>)}
       </div>
-      {!c ? <p>{NM}</p> : <>
-        <div className="kpis three">
-          <div className="kpi"><div className="l">Break-even p* <Chip k="fork" /></div><div className="v">{fmtP(c.breakEven)}</div><div className="muted" style={{ fontSize: 12 }}>within {h} days; above it, exiting now beats staying</div></div>
-          <div className="kpi"><div className="l">Implied by the yield spread <Chip k="hyp" /></div>
-            {c.implied.length === 0 ? <div style={{ fontSize: 13 }}>not evaluated: no sourced reference yield for {u}</div>
-              : c.implied.map((x: any) => <div key={x.reference} style={{ fontSize: 13, margin: "3px 0" }}>vs {x.reference}: <b>{x.value === null ? "not evaluated" : fmtP(x.value)}</b>{x.reason ? <div className="muted" style={{ fontSize: 11.5 }}>{String(x.reason).replace(/^not evaluated: /, "")}</div> : null}</div>)}
-            <div className="muted" style={{ fontSize: 11 }}>(net APY − reference) × horizon ÷ loss fraction; risk-neutral, includes liquidity and smart-contract premia; not a prediction.</div></div>
-          <div className="kpi"><div className="l">Your probability <Chip k="hyp" /></div>
-            <input type="range" min={0} max={0.3} step={0.0025} value={p} onChange={(e) => setP(Number(e.target.value))} aria-label="your probability" style={{ width: "100%" }} />
-            <div className="v">{pct(p, 2)}</div><div className={reading.startsWith("exit") ? "bad" : "ok"} style={{ fontSize: 13 }}>{reading}</div></div>
-        </div>
-        <div className="note" style={{ margin: "10px 0" }}>{I?.regime}. Value loss source: {I?.valueSource}.</div>
-        <div className="grid2">
-          <table><tbody>
-            <tr><td>Value loss of the position <span className="chip modeled">modeled</span></td><td className="r bad">{n(c.valueLoss)} {u}</td></tr>
-            <tr><td>Locked after the run <Chip k="fork" /> × cost of locked {pct(hc, 0)} <Chip k="hyp" /></td><td className="r">{n(c.lockedAfterRun)} × {pct(hc, 0)} = {n(c.lockedPart)}</td></tr>
-            <tr><td><b>Incident loss L</b></td><td className="r"><b>{n(c.incidentLoss)} {u}</b></td></tr>
-            <tr><td>Yield given up ({pct(r.verdictParams.netApy, 2)} net APY <Chip k="onchain" />, {h} d)</td><td className="r">{n(c.forgoneYield)}</td></tr>
-            <tr><td>Gas out + back (gas executed on the fork × base fee of the block){r.verdictParams.gasNote ? <div className="muted" style={{ fontSize: 11 }}>{r.verdictParams.gasNote}</div> : null}</td><td className="r">{c.gas.toFixed(6)}</td></tr>
-            <tr><td>Slippage (measured on the fork)</td><td className="r">{c.slippage.toFixed(6)}</td></tr>
-            <tr><td><b>Exit cost</b></td><td className="r"><b>{n(c.exitCost)} {u}</b></td></tr>
-            <tr><td>Share of the position that can leave now <Chip k="fork" /></td><td className="r">{pct(c.exitableShare)}</td></tr>
-          </tbody></table>
-          <div>
-            <div className={`verdict ${c.decision}`} style={{ fontSize: 14 }}>{c.sentence}<div className="muted" style={{ fontSize: 11, marginTop: 4 }}>sentence written at the 5 % default probability; your own reading is in the third tile</div></div>
-            {isBlind && <BreakEvenChart curve={r.depegCurve} coll={r.depegCurveCollateral} h={30} p={p} inc={0} />}
-          </div>
-        </div>
-      </>}
+      <div className="kpis four">
+        <div className="kpi"><div className="l">p* if locked funds cost 10 % <Chip k="hyp" /></div><div className="v">{fmtP(c10?.breakEven)}</div><div className="muted" style={{ fontSize: 12 }}>L = {c10 ? n(c10.incidentLoss) : NM} {u} within {h} days</div></div>
+        <div className="kpi"><div className="l">p* if locked funds cost 0 % <Chip k="hyp" /></div><div className="v">{fmtP(c0?.breakEven)}</div><div className="muted" style={{ fontSize: 12 }}>L = {c0 ? n(c0.incidentLoss) : NM} {u} within {h} days</div></div>
+        <div className="kpi"><div className="l">Implied by the yield spread <Chip k="hyp" /></div>
+          {!c10 || c10.implied.length === 0 ? <div style={{ fontSize: 13 }}>not evaluated: no sourced reference yield for {u}</div>
+            : c10.implied.map((x: any) => <div key={x.reference} style={{ fontSize: 13, margin: "3px 0" }}>vs {x.reference}: <b>{x.value === null ? "not evaluated" : fmtP(x.value)}</b>{x.reason ? <div className="muted" style={{ fontSize: 11.5 }}>{String(x.reason).replace(/^not evaluated: /, "")}</div> : null}</div>)}
+          <div className="muted" style={{ fontSize: 11 }}>risk-neutral, includes liquidity and smart-contract premia; not a prediction.</div></div>
+        <div className="kpi"><div className="l">Your probability <Chip k="hyp" /></div>
+          <input type="range" min={0} max={0.3} step={0.0025} value={p ?? sliderStart} onChange={(e) => setP(Number(e.target.value))} aria-label="your probability" style={{ width: "100%" }} />
+          <div className="v">{p === null ? "—" : pct(p, 2)}</div>
+          <div className={p === null ? "muted" : reading.startsWith("leaving pays off under") ? "bad" : reading.startsWith("staying") ? "ok" : "warn"} style={{ fontSize: 13 }}>{reading}</div></div>
+      </div>
+      <div className="note" style={{ margin: "10px 0" }}>{I?.regime}. Value loss source: {I?.valueSource}.</div>
+      <div className="row" style={{ margin: "4px 0 6px" }}><span className="muted">breakdown for locked funds at</span>{[0.1, 0].map((x) => <button key={x} className={hc === x ? "on" : ""} onClick={() => setHc(x)}>{x * 100} %</button>)}</div>
+      {!c ? <p>{NM}</p> : <div className="grid2">
+        <table><tbody>
+          <tr><td>Value loss of the position <span className="chip modeled">modeled</span></td><td className="r bad">{n(c.valueLoss)} {u}</td></tr>
+          <tr><td>Locked after the run <Chip k="fork" /> × cost of locked {pct(hc, 0)} <Chip k="hyp" /></td><td className="r">{n(c.lockedAfterRun)} × {pct(hc, 0)} = {n(c.lockedPart)}</td></tr>
+          <tr><td><b>Incident loss L</b></td><td className="r"><b>{n(c.incidentLoss)} {u}</b></td></tr>
+          <tr><td>Yield given up ({pct(r.verdictParams.netApy, 2)} net APY <Chip k="onchain" />, {h} d)</td><td className="r">{n(c.forgoneYield)}</td></tr>
+          <tr><td>Gas out + back (gas executed on the fork × base fee of the block){r.verdictParams.gasNote ? <div className="muted" style={{ fontSize: 11 }}>{r.verdictParams.gasNote}</div> : null}</td><td className="r">{c.gas.toFixed(6)}</td></tr>
+          <tr><td>Slippage (measured on the fork)</td><td className="r">{c.slippage.toFixed(6)}</td></tr>
+          <tr><td><b>Exit cost</b></td><td className="r"><b>{n(c.exitCost)} {u}</b></td></tr>
+          <tr><td>Share of the position that can leave now <Chip k="fork" /></td><td className="r">{pct(c.exitableShare)}</td></tr>
+          <tr><td><b>p* for this breakdown</b></td><td className="r"><b>{fmtP(c.breakEven)}</b></td></tr>
+        </tbody></table>
+        <div>{g.id.includes("blind") && <BreakEvenChart curve={r.depegCurve} coll={r.depegCurveCollateral} h={30} p={p ?? 0} inc={0} />}</div>
+      </div>}
+    </section>
+  );
+}
+
+/** Risks the engine cannot model; the break-even for a total loss uses the same decide() and parameters as p*. */
+function NotModeled({ r }: { r: any }) {
+  const nm = r.notModeled;
+  if (!nm) return null;
+  return (
+    <section className="panel">
+      <h2>Not modeled</h2>
+      <p className="sub">These risks are not simulated here: their probability and size cannot be read on-chain.</p>
+      <ul style={{ margin: "0 0 10px", paddingLeft: 18, lineHeight: 1.6 }}>{nm.risks.map((x: string) => <li key={x}>{x}</li>)}</ul>
+      <p style={{ margin: "0 0 6px" }}>If one of them wiped out the whole position (loss = position value, {w(r.target.holderValue)} {r.target.assetSymbol}), leaving now pays off above:</p>
+      <div className="kpis three">
+        {nm.totalLoss.map((x: any) => (
+          <div className="kpi" key={x.horizonDays}><div className="l">total loss within {x.horizonDays} days</div>
+            <div className="v">{x.decision === "NO_ACTION_POSSIBLE" ? "cannot exit" : fmtP(x.breakEven)}</div>
+            <div className="muted" style={{ fontSize: 12 }}>exit cost {x.exitCost.toLocaleString("en-US", { maximumFractionDigits: 2 })} {r.target.assetSymbol}; {pct(x.exitableShare)} can leave now</div></div>
+        ))}
+      </div>
+      <p className="muted" style={{ marginTop: 8 }}>Same function and parameters as p* above (net APY {pct(r.verdictParams.netApy, 2)}, gas and slippage executed on the fork, share that can leave now). <b>The probability is yours, nothing here predicts it.</b></p>
     </section>
   );
 }

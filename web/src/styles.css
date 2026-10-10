@@ -187,3 +187,8 @@ main { grid-template-columns: minmax(0, 1fr); }
 @media (max-width: 760px) {
   .getback, .grid2, .honesty .hgrid, .kpis.three, .split, .kpis { grid-template-columns: minmax(0, 1fr); }
 }
+
+.verdict.NEUTRAL { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); color: var(--text); }
+.kpis.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .kpis.four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .kpis.four { grid-template-columns: minmax(0, 1fr); } }
