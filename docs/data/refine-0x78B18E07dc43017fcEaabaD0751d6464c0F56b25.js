@@ -11,6 +11,18 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["refine:0x78B
     "baseFeePerGas": "121537943",
     "forkLocalChainId": 31337
   },
+  "answer": {
+    "word": "Risky",
+    "aloneFull": false,
+    "aloneShare": 0.3173,
+    "worstShare": 0.3168,
+    "worstRun": {
+      "id": "top_holders_first",
+      "otherPool": false,
+      "others": 3
+    },
+    "rule": "Safe: at least 90 % comes out even in the worst executed case; Careful: 50–90 %; Risky: below 50 %, or not everything can come out even alone. These limits are a choice, for the largest deposit in the pool."
+  },
   "note": "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
   "history": null,
   "governance": {

@@ -6,6 +6,10 @@ One protocol, MetaMorpho V1 on Morpho Blue. For a position, ExitProof executes t
 
 > Every number in this README was produced by the code in this repository (`npm run all`, `npm run replay`). Labels used everywhere: **measured on the fork** (exit liquidity), **modeled** (value loss, lower bound), **your assumption** (probabilities).
 
+## For a newcomer (first screen)
+
+The site opens on one question, "Can I get my money back out of this vault if something goes wrong?", answered with one word and one sentence. For Steakhouse ETH: **Risky** — today the largest deposit can come out in full, but if the biggest depositors here and in another pool lending to the same borrowers leave first, only about 40 % could come out at once. The word comes from the executed runs with stated limits (Safe: at least 90 % comes out even in the worst executed case; Careful: 50–90 %; Risky: below 50 %, or not everything can come out even alone); these limits are a choice and are shown under "How we pick the word". Then three steps (What you put in, What could go wrong, Stay or leave), one open at a time, with plain words and a "?" on each technical term (glossary at `#/glossary`). The example "out of every 1,000 WETH in this position" is the measured amount scaled pro rata; a smaller deposit on its own can come out in full while cash lasts, and the page says so. Everything below (numbers, dependencies, proof) is in "Expert mode", closed by default.
+
 ## 1. What do I really get back?
 
 Steakhouse ETH, largest holder (5,209.91 WETH, 53.6 % of the vault). Same block, same state; only the order of exits changes. Other holders are impersonated on the fork: their exits are scenarios, not their intentions.
@@ -91,7 +95,7 @@ npm run demo -- --offline    # the proxy serves its disk cache only (after one o
 
 `http://127.0.0.1:5173/#/status` shows proxy, fork, API and mode. If the fork stops answering, the UI switches to the static replay with a visible banner.
 
-Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork), `npm run test:e2e` (70 end-to-end checks in the installed Chrome, see below). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
+Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork), `npm run test:e2e` (90 end-to-end checks in the installed Chrome, see below). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
 
 ## How it works (short)
 

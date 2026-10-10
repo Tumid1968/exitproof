@@ -62,7 +62,7 @@ const who = (r: any, x: Run) => x.others.map((o: any) => {
 }).join(", then ");
 
 /** Five scenarios, picked from the executed runs (worst case of each kind). */
-function pickScenarios(r: any) {
+export function pickScenarios(r: any) {
   const runs: Run[] = r.runs;
   const inV = (x: Run) => x.others.every((o: any) => o.vault === r.target.vault);
   const worst = (xs: Run[]) => [...xs].sort((a, b) => a.changePct - b.changePct)[0];

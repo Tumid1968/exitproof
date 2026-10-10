@@ -1,54 +1,106 @@
 {
-  "at": "2026-10-10T17:46:40.101Z",
+  "at": "2026-10-10T18:02:22.561Z",
   "target": "local",
   "metrics": [
     {
       "target": "http",
       "viewport": "1440",
-      "firstVaultDisplayMs": 502,
+      "firstAnswerMs": 491,
       "requests": 11
     },
     {
       "target": "http",
       "theme": "dark",
+      "step": 1,
+      "contrastViolations": []
+    },
+    {
+      "target": "http",
+      "theme": "dark",
+      "step": 2,
+      "contrastViolations": []
+    },
+    {
+      "target": "http",
+      "theme": "dark",
+      "step": 3,
       "contrastViolations": []
     },
     {
       "target": "http",
       "theme": "light",
+      "step": 1,
+      "contrastViolations": []
+    },
+    {
+      "target": "http",
+      "theme": "light",
+      "step": 2,
+      "contrastViolations": []
+    },
+    {
+      "target": "http",
+      "theme": "light",
+      "step": 3,
       "contrastViolations": []
     },
     {
       "target": "http",
       "viewport": "375",
-      "firstVaultDisplayMs": 512,
+      "firstAnswerMs": 587,
       "requests": 11
     },
     {
       "target": "file",
       "viewport": "1440",
-      "firstVaultDisplayMs": 641,
+      "firstAnswerMs": 745,
       "requests": 11
     },
     {
       "target": "file",
       "theme": "dark",
+      "step": 1,
+      "contrastViolations": []
+    },
+    {
+      "target": "file",
+      "theme": "dark",
+      "step": 2,
+      "contrastViolations": []
+    },
+    {
+      "target": "file",
+      "theme": "dark",
+      "step": 3,
       "contrastViolations": []
     },
     {
       "target": "file",
       "theme": "light",
+      "step": 1,
+      "contrastViolations": []
+    },
+    {
+      "target": "file",
+      "theme": "light",
+      "step": 2,
+      "contrastViolations": []
+    },
+    {
+      "target": "file",
+      "theme": "light",
+      "step": 3,
       "contrastViolations": []
     },
     {
       "target": "file",
       "viewport": "375",
-      "firstVaultDisplayMs": 649,
+      "firstAnswerMs": 469,
       "requests": 11
     },
     {
       "live": "execute again",
-      "result": "3,318.751556 WETH in 1225 ms — identical to the wei"
+      "result": "3,318.751556 WETH in 1674 ms — identical to the wei"
     }
   ],
   "warnings": [

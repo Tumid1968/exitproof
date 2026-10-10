@@ -39,3 +39,8 @@
 - Rule of three, Credora wording (economic shortfall, approximate), threshold tooltip, DefiLlama citation (page 403 to automated requests, not re-read).
 - Bug fixed (separate commit): live 'Execute again' failed with 'evm_revert failed' after another process used the fork.
 - Tests: 16/16 unit, 9/9 fork, e2e 70 (69 passed, 1 opt-in skipped).
+
+## Intraday history and newcomer view (10 Oct, tags pre-intraday, pre-novice)
+- History on every round: k = 13, 3, 0, 0, 0, 0 of 62 (daily sample 6, 1, 0, 0, 0, 0); worst window −4.75 % (Jun 2022); 1-day p95/p99 0.15 %/0.60 %, 30-day 2.83 %/4.54 %.
+- Newcomer view: one question + Safe/Careful/Risky, three steps, "?" on terms, glossary page, scaled example, verdict in two lines, expert mode closed by default.
+- Tests: unit 17/17, e2e 90 (89 passed, 1 opt-in skipped), fork 9/9.

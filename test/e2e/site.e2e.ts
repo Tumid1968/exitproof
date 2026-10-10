@@ -113,7 +113,24 @@ async function withPage(name: string, base: string, opts: BrowserContextOptions 
 }
 
 const amount = async (page: Page) => (await page.locator(".bignum .amount").innerText()).replace(/\s*\S+$/, "").trim(); // drop the unit
-const waitAmount = (page: Page) => page.locator(".bignum .amount").waitFor({ state: "visible", timeout: 15_000 });
+/** the newcomer view is ready: the one-word answer is shown */
+const waitAnswer = (page: Page) => page.locator(".answer .word").waitFor({ state: "visible", timeout: 15_000 });
+/** expert mode is closed by default: open it, then wait for the executed amount */
+async function waitAmount(page: Page) {
+  await page.locator(".answer .word, section.card.bad").first().waitFor({ timeout: 15_000 });
+  const b = page.getByRole("button", { name: /^Expert mode/ });
+  if (await b.isVisible()) await b.click();
+  await page.locator(".bignum .amount").waitFor({ state: "visible", timeout: 15_000 });
+}
+const openStep = async (page: Page, n: number) => { await page.locator(".stepbtn").nth(n - 1).click(); await page.locator(`#step-${n}`).waitFor(); };
+/** visible text of an element without the "?" buttons, select options and open tooltips */
+const visibleText = (page: Page, sel: string) => page.locator(sel).evaluate((el) => {
+  const c = el.cloneNode(true) as HTMLElement;
+  c.querySelectorAll(".qbtn, select, .tip").forEach((x) => x.remove());
+  document.body.appendChild(c); const t = c.innerText; c.remove(); return t;
+});
+const JARGON: [string, RegExp][] = [["oracle", /oracle/i], ["queue", /\bqueue\b/i], ["wstETH", /wstETH/], ["Morpho", /Morpho/], ["HHI", /\bHHI\b/], ["ℓ", /ℓ/], ["W", /\bW\b/], ["p*", /p\*/], ["basis points", /basis points/i]];
+const jargonIn = (t: string) => JARGON.filter(([, re]) => re.test(t)).map(([k]) => k);
 const pill = (page: Page, label: string) => page.locator(".pills [role=tab]", { hasText: new RegExp(`^${label}$`) });
 async function clickPill(page: Page, label: string) {
   await pill(page, label).click();
@@ -163,21 +180,34 @@ for (const tg of targets) {
     describe(`static ${tg.id} ${vp}px`, () => {
       const T = (n: string) => `${tg.id}-${vp}-${n}`;
 
-      test("1. loads without console errors or external requests", () => withPage(T("load"), tg.base(), opts, async ({ page, errors, requests, origin }) => {
-        await waitAmount(page);
+      test("1. loads without console errors or external requests; static mode never calls the API", () => withPage(T("load"), tg.base(), opts, async ({ page, errors, requests, origin }) => {
+        await waitAnswer(page);
         const ms = await page.evaluate(() => Math.round(performance.now()));
-        metrics.push({ target: tg.id, viewport: vp, firstVaultDisplayMs: ms, requests: requests.length });
-        assert.ok(ms < 10_000, `default vault displayed after ${ms} ms (limit 10 s)`);
+        metrics.push({ target: tg.id, viewport: vp, firstAnswerMs: ms, requests: requests.length });
+        assert.ok(ms < 10_000, `answer displayed after ${ms} ms (limit 10 s)`);
+        // walk the three steps and expert mode: still no request leaving the machine, and no /api/ call in static mode
+        for (const n of [1, 2, 3]) await openStep(page, n);
+        await waitAmount(page);
         const external = requests.filter((u) => !isLocal(u, origin));
         assert.deepEqual(external, [], `external requests:\n${external.join("\n")}`);
+        assert.deepEqual(requests.filter((u) => /\/api\//.test(u)), [], "the static site called the local API");
         assert.deepEqual(errors, []);
       }));
 
-      test("2. hero: title, subtitle, four facts from index/manifests, See it in action", () => withPage(T("hero"), tg.base(), opts, async ({ page }) => {
+      test("2. hero: one question, one-word answer from results/refine, See why; facts in expert mode", () => withPage(T("hero"), tg.base(), opts, async ({ page }) => {
+        await waitAnswer(page);
+        const rf = readJson(`results/refine/${STEAKHOUSE}.json`);
+        assert.equal(norm(await visibleText(page, ".hero h1")), "Can I get my money back out of this vault if something goes wrong?");
+        assert.equal(await page.locator(".answer .word").innerText(), rf.answer.word);
+        assert.match(await page.locator(".answer").getAttribute("class") ?? "", new RegExp(`w-${rf.answer.word.toLowerCase()}`));
+        assert.ok(norm(await page.locator(".answertext").innerText()).includes(`about ${Math.round(rf.answer.worstShare * 100)} %`));
+        assert.equal(await page.locator(".hero button.pill").count(), 1, "one button in the hero");
+        await page.getByRole("button", { name: "See why" }).click();
+        await page.locator("#step-1").waitFor();
+        // the steps come into view (the page may be too short below them for #app to reach the very top)
+        await page.waitForFunction(() => { const b = document.getElementById("step-1")!.getBoundingClientRect(); return b.top >= 0 && b.top < innerHeight / 2; }, null, { timeout: 5000 });
         await waitAmount(page);
-        assert.equal(await page.locator(".hero h1").innerText(), "How much do you really get back?");
-        assert.equal(await page.locator(".hero .sub2").innerText(), "Exit liquidity for Morpho vaults, measured on a fork of Ethereum.");
-        const facts = await page.locator(".facts > div").evaluateAll((ds) => ds.map((d) => [d.querySelector("dt")!.textContent, d.querySelector("dd")!.textContent]));
+        const facts = await page.locator(".expertfacts > div").evaluateAll((ds) => ds.map((d) => [d.querySelector("dt")!.textContent, d.querySelector("dd")!.textContent]));
         const entry = INDEX.vaults.find((v) => v.vault === STEAKHOUSE)!;
         const manifest = readJson(`results/manifests/${STEAKHOUSE}.json`);
         assert.equal(manifest.sha256, entry.manifest.sha256, "index and manifest agree");
@@ -189,12 +219,104 @@ for (const tg of targets) {
           ["Coverage", `${readdirSync(join(ROOT, "results/manifests")).length} Morpho vaults`],
         ]);
         assert.equal(INDEX.vaults.length, readdirSync(join(ROOT, "results/manifests")).length);
-        await page.getByRole("button", { name: "See it in action" }).click();
-        await pill(page, "Another vault").and(page.locator("[aria-selected=true]")).waitFor();
-        await page.waitForFunction(() => Math.abs(document.getElementById("app")!.getBoundingClientRect().top) < 4, null, { timeout: 5000 });
+      }));
+
+      test("19. jargon: the first screen and each step use none of the technical terms", () => withPage(T("jargon"), tg.base(), opts, async ({ page }) => {
+        await waitAnswer(page);
+        const hero = await visibleText(page, ".hero");
+        assert.deepEqual(jargonIn(hero), [], `hero: ${hero}`);
+        assert.doesNotMatch(hero, /\bWETH\b/, "no WETH above the fold");
+        const seen: string[] = [];
+        for (const n of [1, 2, 3]) {
+          await openStep(page, n);
+          if (n === 2) for (const label of ["Alone", "One holder before me", "Two holders", "Another vault", "Both vaults"]) {
+            await page.locator(".npills [role=tab]", { hasText: new RegExp(`^${label}$`) }).click();
+            if (label === "Another vault") await page.getByRole("button", { name: "Show more" }).click();
+            const t = await visibleText(page, ".steps");
+            for (const j of jargonIn(t)) seen.push(`step 2 / ${label}: ${j}`);
+          }
+          const t = await visibleText(page, ".steps");
+          for (const j of jargonIn(t)) seen.push(`step ${n}: ${j}`);
+        }
+        assert.deepEqual(seen, []);
+        assert.equal(await page.locator(".expert").count(), 0, "expert mode closed by default");
+      }));
+
+      test("20. three numbered steps, one open at a time, Next/Back; expert mode closed by default", () => withPage(T("steps"), tg.base(), opts, async ({ page }) => {
+        await waitAnswer(page);
+        assert.deepEqual((await page.locator(".stepbtn").allInnerTexts()).map(norm), ["1 What you put in", "2 What could go wrong", "3 Stay or leave"]);
+        assert.equal(await page.locator(".nbox").count(), 1);
+        assert.equal(await page.locator(".stepbtn[aria-current=step]").innerText().then(norm), "1 What you put in");
+        await page.locator("#step-1").getByRole("button", { name: "Next" }).click();
+        await page.locator("#step-2").waitFor();
+        assert.equal(await page.locator(".nbox").count(), 1);
+        await page.locator("#step-2").getByRole("button", { name: "Next" }).click();
+        await page.locator("#step-3").waitFor();
+        await page.locator("#step-3").getByRole("button", { name: "Back" }).click();
+        await page.locator("#step-2").waitFor();
+        assert.equal(await page.locator(".expert").count(), 0);
+        const b = page.getByRole("button", { name: /^Expert mode/ });
+        assert.equal(await b.getAttribute("aria-expanded"), "false");
+      }));
+
+      test("21. the '?' explains a word in plain language (44 px target) and the glossary lists every term", () => withPage(T("qmark"), tg.base(), opts, async ({ page }) => {
+        await waitAnswer(page);
+        const q = page.locator(".hero").getByRole("button", { name: 'What does "vault" mean?' });
+        const box = await q.boundingBox();
+        assert.ok(box && box.width >= 44 && box.height >= 44, `"?" target ${JSON.stringify(box)}`);
+        await q.click();
+        assert.match(await page.locator(".hero .qtip").innerText(), /^a pool where your money is lent out\./);
+        await openStep(page, 1);
+        await page.getByRole("button", { name: 'What does "WETH" mean?' }).click();
+        assert.match(await page.locator("#step-1 .qtip").innerText(), /^Ethereum, in token form\./);
+        await openStep(page, 3);
+        await page.getByRole("button", { name: 'What does "break-even probability" mean?' }).click();
+        assert.match(await page.locator("#step-3 .qtip").innerText(), /^how likely a problem must be for leaving to be worth it\./);
+        await page.locator("#step-3 .qtip a", { hasText: "Glossary" }).click();
+        await page.locator(".glossary h1", { hasText: "Glossary" }).waitFor();
+        const g = norm(await page.locator(".glossary").innerText());
+        for (const s of ["vault a pool where your money is lent out", "WETH Ethereum, in token form", "cash available to withdraw (liquidity) the part of the pool's money",
+          "price source (oracle) the price source the pool trusts", "break-even probability how likely a problem must be for leaving to be worth it"])
+          assert.ok(g.includes(s), `glossary lacks "${s}"`);
+        for (const [term] of JARGON) assert.ok(g.includes(term), `glossary does not explain "${term}"`);
+      }));
+
+      test("22. scaled example: per 1,000 from the measured amounts, for every scenario", () => withPage(T("scaled"), tg.base(), opts, async ({ page }) => {
+        await waitAnswer(page);
+        await openStep(page, 2);
         const r = report(STEAKHOUSE);
-        const other = expectedPills(r).find(([l]) => l === "Another vault")![1];
-        assert.equal(await amount(page), fmtUnits(other.holderExecutedExit, r.target.assetDecimals));
+        for (const [label, run] of expectedPills(r)) {
+          await page.locator(".npills [role=tab]", { hasText: new RegExp(`^${label}$`) }).click();
+          const per = Number((BigInt(run.holderExecutedExit) * 100000n) / BigInt(r.target.holderValue)) / 100;
+          const ex = norm(await page.locator(".example").innerText());
+          assert.ok(ex.includes(`Out of every 1,000 WETH in this position, about ${Math.round(per).toLocaleString("en-US")} WETH could come out right away in this scenario.`), `${label}: ${ex}`);
+          assert.ok(ex.includes(`Scaled from the measured case: ${fmtUnits(run.holderExecutedExit, 18)} of ${fmtUnits(r.target.holderValue, 18)} WETH`), `${label}: ${ex}`);
+        }
+        await page.locator(".npills [role=tab]", { hasText: /^Another vault$/ }).click();
+        assert.equal(norm(await page.locator(".othershort p").first().innerText()), "Another pool lends to the same borrowers. When its biggest depositor leaves, your cash runs out too.");
+        assert.equal(await page.locator(".othershort p").count(), 1, "the detail stays behind Show more");
+      }));
+
+      test("23. verdict in two lines without 'probability' first, the 10 % and 0 % cases, and what the tool cannot see", () => withPage(T("novice-verdict"), tg.base(), opts, async ({ page }) => {
+        await waitAnswer(page);
+        await openStep(page, 3);
+        const r = report(STEAKHOUSE);
+        const g = r.verdictGrid.find((x: any) => x.id === r.bindingIncident);
+        const be = (hc: number) => g.cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === hc).breakEven as number;
+        const line1 = norm(await page.locator(".verdictN").innerText());
+        assert.equal(line1, `Stay, unless you think this problem is more likely than about 1 in ${Math.round(1 / be(0.1))} over the next month.`);
+        assert.ok(norm(await page.locator(".verdictWhy").innerText()).startsWith("Why:"));
+        assert.doesNotMatch(line1, /^probability/i);
+        assert.deepEqual((await page.locator("#step-3 .statnum").allInnerTexts()).map(norm), [`1 in ${Math.round(1 / be(0.1))}`, `1 in ${Math.round(1 / be(0))}`]);
+        assert.match(await page.locator(".reading").innerText(), /^Move the slider/);
+        const cannot = norm(await page.locator(".cannot").innerText());
+        assert.ok(cannot.startsWith("What this tool cannot see A hack, a technical failure, or a human decision."), cannot);
+        assert.deepEqual((await page.locator(".legendN .tagpill").allInnerTexts()).map(norm), ["Measured", "Modeled", "Your assumption", "Historical"]);
+        await page.getByRole("slider", { name: "your estimate of the chance" }).focus();
+        await page.keyboard.press("End");
+        await page.locator(".reading", { hasText: "leaving is worth it either way" }).waitFor({ timeout: 3000 });
+        await page.keyboard.press("Home");
+        await page.locator(".reading", { hasText: "staying is cheaper either way" }).waitFor({ timeout: 3000 });
       }));
 
       test("3. Steakhouse ETH: each pill shows the executed amount; Details shows cushion and error", () => withPage(T("pills"), tg.base(), opts, async ({ page }) => {
@@ -330,7 +452,7 @@ for (const tg of targets) {
         assert.ok(await def.evaluate((d) => !!(d.compareDocumentPosition(document.querySelector(".verdict2")!) & Node.DOCUMENT_POSITION_FOLLOWING)));
         const letters = await card.locator(".honest .tagletter").allInnerTexts();
         assert.deepEqual(letters, ["F", "M", "A", "H"], "legend under the verdict: one letter per kind of number");
-        const tagLetters = await page.locator(".tagpill").evaluateAll((ps) => ps.map((p) => [p.querySelector(".tagletter")?.textContent ?? "", p.textContent!.replace(/^[A-Z]/, "")]));
+        const tagLetters = await page.locator(".tag:not(.kind) .tagpill").evaluateAll((ps) => ps.map((p) => [p.querySelector(".tagletter")?.textContent ?? "", p.textContent!.replace(/^[A-Z]/, "")]));
         const want: Record<string, string> = { "measured on fork": "F", "modeled": "M", "your assumption": "A", "historical reference": "H" };
         for (const [l, label] of tagLetters) assert.equal(l, want[label], `tag "${label}" has letter "${l}"`);
       }));
@@ -435,9 +557,13 @@ for (const tg of targets) {
               await page.getByRole("button", { name: "switch light or dark theme" }).click();
               await page.waitForFunction((t) => document.documentElement.dataset.theme === t, theme);
             }
-            const v = await axe(page, ["color-contrast"]);
-            metrics.push({ target: tg.id, theme, contrastViolations: v });
-            assert.deepEqual(v, [], `${theme}: contrast violations\n${JSON.stringify(v, null, 1)}`);
+            // every step of the newcomer view, with expert mode open below it
+            for (const n of [1, 2, 3]) {
+              await openStep(page, n);
+              const v = await axe(page, ["color-contrast"]);
+              metrics.push({ target: tg.id, theme, step: n, contrastViolations: v });
+              assert.deepEqual(v, [], `${theme}, step ${n}: contrast violations\n${JSON.stringify(v, null, 1)}`);
+            }
             const sw = await page.evaluate(() => document.documentElement.scrollWidth);
             assert.ok(sw <= 1440, `${theme}: horizontal overflow ${sw}`);
             assert.ok(await page.locator(".bignum .amount").isVisible());
@@ -470,13 +596,23 @@ for (const tg of targets) {
             }
             throw new Error(`${selector} not reached with ${max} Tab presses`);
           };
-          const p = await tabTo(".pills [role=tab]");
+          // newcomer path with the keyboard only: step 2 → a scenario pill → Next → the slider of step 3
+          const st = await tabTo(".stepbtn");
+          assert.ok(st.visible, "focus ring not visible on the step buttons");
+          await page.keyboard.press("Tab");
+          await page.keyboard.press("Enter");
+          await page.locator("#step-2").waitFor();
+          const p = await tabTo(".npills [role=tab]");
           assert.ok(p.visible, "focus ring not visible on the pill");
           await page.keyboard.press("Enter");
+          await tabTo("#step-2 .stepnav .pill.primary");
+          await page.keyboard.press("Enter");
+          await page.locator("#step-3").waitFor();
           const s = await tabTo("input[type=range]");
           assert.ok(s.visible, "focus ring not visible on the slider");
           await page.keyboard.press("End");
-          await page.locator(".reading", { hasText: "leaving pays off" }).waitFor({ timeout: 3000 });
+          await page.locator(".reading", { hasText: "leaving is worth it either way" }).waitFor({ timeout: 3000 });
+          await waitAmount(page);
           await openTabs(page);
           const v = await axe(page, ["button-name", "link-name", "label", "select-name", "aria-valid-attr", "aria-allowed-attr", "aria-required-children", "aria-required-parent"]);
           assert.deepEqual(v, [], JSON.stringify(v, null, 1));
@@ -485,10 +621,27 @@ for (const tg of targets) {
 
       if (vp === "375") {
         test("9. mobile: no horizontal scroll, running text ≥ 16 px, tap targets ≥ 44 px, readable hero", () => withPage(T("mobile"), tg.base(), opts, async ({ page }) => {
-          await waitAmount(page);
+          await waitAnswer(page);
           const h1 = await page.locator(".hero h1").boundingBox();
           assert.ok(h1 && h1.x >= 0 && h1.x + h1.width <= 375 && h1.y >= 0 && h1.y + h1.height <= 812, `hero title outside the screen: ${JSON.stringify(h1)}`);
-          assert.equal(await page.locator(".facts").evaluate((e) => getComputedStyle(e).gridTemplateColumns.split(" ").length), 2, "facts are not a 2×2 grid");
+          const why = await page.getByRole("button", { name: "See why" }).boundingBox();
+          assert.ok(why && why.y + why.height <= 812, "the answer and 'See why' fit on the first screen");
+          // each step of the newcomer view at 375 px
+          const SMALL_TEXT = ".answertext, .answerfor, .nbox p:not(.tip), .exline, .plain2, .verdictN, .verdictWhy, .stepbtn, .legendN";
+          const TARGETS = ".stepbtn, .npills button, .nbox .pill, .qbtn, .nbox .tagbtn, .hero button, header button, header a";
+          const stepIssues: unknown[] = [];
+          for (const n of [1, 2, 3]) {
+            await openStep(page, n);
+            const r = await page.evaluate(([ts, tg]) => ({
+              small: [...document.querySelectorAll<HTMLElement>(ts)].filter((e) => e.offsetParent !== null && e.innerText.trim() && parseFloat(getComputedStyle(e).fontSize) < 16).map((e) => `${e.className}: ${e.innerText.slice(0, 30)}`),
+              targets: [...document.querySelectorAll<HTMLElement>(tg)].filter((e) => e.offsetParent !== null).map((e) => { const b = e.getBoundingClientRect(); return { t: (e.innerText || e.getAttribute("aria-label") || "").slice(0, 30), w: Math.round(b.width), h: Math.round(b.height) }; }).filter((x) => x.w < 44 || x.h < 44),
+              sw: document.documentElement.scrollWidth,
+            }), [SMALL_TEXT, TARGETS]);
+            if (r.small.length || r.targets.length || r.sw > 375) stepIssues.push({ step: n, ...r });
+          }
+          assert.deepEqual(stepIssues, [], JSON.stringify(stepIssues, null, 1));
+          await waitAmount(page);
+          assert.equal(await page.locator(".expertfacts").evaluate((e) => getComputedStyle(e).gridTemplateColumns.split(" ").length), 2, "facts are not a 2×2 grid");
           await showAll(page);
           await page.locator("details.fold > summary").click();
           await page.getByRole("button", { name: "Details", exact: true }).click();

@@ -8,6 +8,7 @@ import { BreakEvenChart, Chip, Evidence, Findings, Position, Runs, Shocks, shock
 import { ModeCtx } from "./mode";
 import { ExitPanel, HowToRead, LeaveCard, NotModeledCard } from "./Opening";
 import { Waves } from "./Waves";
+import { GlossaryPage, Steps, Term, answerSentence } from "./Novice";
 
 /** Subtle reveal of cards when they enter the viewport (skipped with prefers-reduced-motion). */
 function useScrollReveal() {
@@ -38,6 +39,7 @@ export function Main() {
     try { localStorage.setItem("ep-theme", theme); } catch { /* private mode */ }
   }, [theme]);
   if (route.startsWith("#/status")) return <StatusPage theme={theme} setTheme={setTheme} />;
+  if (route.startsWith("#/glossary")) return <GlossaryPage />;
   return <Dashboard theme={theme} setTheme={setTheme} />;
 }
 
@@ -53,11 +55,12 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
   const [err, setErr] = useState<string | null>(null);
   const [howto, setHowto] = useState(false);
   const [more, setMore] = useState(false);
-  const [pick, setPick] = useState(0);
+  const [step, setStep] = useState(1);
+  const [expert, setExpert] = useState(false);
   const [solid, setSolid] = useState(false);
   // header turns opaque once the hero is scrolled past
   useEffect(() => { const f = () => setSolid(scrollY > innerHeight * 0.75); f(); addEventListener("scroll", f, { passive: true }); return () => removeEventListener("scroll", f); }, []);
-  const toApp = (inAction: boolean) => { document.getElementById("app")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); if (inAction) setPick((x) => x + 1); };
+  const seeWhy = () => { setStep(1); document.getElementById("app")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); };
   useScrollReveal();
   const [name, setName] = useState<string>(() => { try { return localStorage.getItem("ep-name") ?? "Jad"; } catch { return "Jad"; } });
   useEffect(() => { try { localStorage.setItem("ep-name", name); } catch { /* ignore */ } }, [name]);
@@ -108,56 +111,70 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
         <a className="logo" href="#top" onClick={(e) => { e.preventDefault(); scrollTo({ top: 0, behavior: "smooth" }); }}>ExitProof</a>
         <span className={`modebadge ${mode === "live" ? "live" : ""}`} title={mode === "live" ? "transactions execute on a local fork" : "results replayed from the manifests; no network"}>{mode === "live" ? "live fork" : "replay · offline"}</span>
         <div className="spacer" />
-        <button className="navlink" aria-expanded={howto} onClick={() => setHowto(!howto)}>How to read</button>
+        <a className="navlink keep" href="#/glossary">Glossary</a>
+        <button className="navlink wideonly" aria-expanded={howto} onClick={() => setHowto(!howto)}>How to read</button>
         <a className="navlink" href="#/status">Status</a>
         <button className="navlink" onClick={() => setTheme(theme === "light" ? "dark" : "light")} aria-label="switch light or dark theme">{theme === "light" ? "Dark" : "Light"}</button>
-        <button className="pill accentline" aria-label="Open the demo" onClick={() => toApp(false)}><span className="wide">Open the demo</span><span className="narrow" aria-hidden="true">Demo</span></button>
+        <button className="pill accentline" aria-label="Open the demo" onClick={seeWhy}><span className="wide">Open the demo</span><span className="narrow" aria-hidden="true">Demo</span></button>
       </header>
       {howto && <HowToRead onClose={() => setHowto(false)} />}
       <section className="hero" id="top">
         <div className="herobody">
-          <h1>How much do you really get back?</h1>
-          <p className="sub2">Exit liquidity for Morpho vaults, measured on a fork of Ethereum.</p>
-          <button className="pill primary big" onClick={() => toApp(true)}>See it in action</button>
+          <h1>Can I get my money back out of this <Term k="vault">vault</Term> if something goes wrong?</h1>
+          {refine?.answer && report
+            ? <p className={`answer w-${refine.answer.word.toLowerCase()}`}><span className="word">{refine.answer.word}</span> <span className="answertext">{answerSentence(refine.answer)}</span></p>
+            : <p className="answer">{err ? "No result for this pool: pick another one below." : "Loading…"}</p>}
+          {report && <p className="answerfor">For the largest deposit in {report.target.name}, measured on a copy of Ethereum frozen on 9 Oct 2026. <InfoTip label="How we pick the word" text={refine?.answer?.rule ?? "not measured"} /></p>}
+          <button className="pill primary big" onClick={seeWhy}>See why</button>
         </div>
-        <button className="down" onClick={() => toApp(false)} aria-label="scroll to the demo">↓</button>
-        <dl className="facts">
-          <div><dt>Measured on</dt><dd>a fork of Ethereum, block {facts.block}</dd></div>
-          <div><dt>Replayable</dt><dd>{facts.replayable}</dd></div>
-          <div><dt>Replay</dt><dd>{facts.replay}{facts.allReplayed && <span className="allrep">{facts.allReplayed}</span>}</dd></div>
-          <div><dt>Coverage</dt><dd>{facts.coverage}</dd></div>
-        </dl>
+        <button className="down" onClick={seeWhy} aria-label="scroll to the three steps">↓</button>
       </section>
       <main className="page app" id="app">
-        <div className="controls glass">
-          <label className="ctl"><span>Vault</span>
-            <select value={vault} onChange={(e) => { setVault(e.target.value); location.hash = `vault=${e.target.value}`; }} aria-label="vault">
-              {index.length === 0 && <option value={vault}>{vault}</option>}
-              {index.map((v) => <option key={v.vault} value={v.vault}>{v.name} ({v.asset})</option>)}
-            </select>
-          </label>
-          <label className="ctl"><span>Your first name</span><input className="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={24} /></label>
-          <p className="modeline">
-            {mode === null ? "Detecting the local fork…" : mode === "live"
-              ? <>Live · transactions execute on a local copy of Ethereum frozen at block {BLOCK}; nothing is sent to Ethereum.</>
-              : <>Results executed on a fork of Ethereum frozen at block {BLOCK}, replayed from the manifests · no network in this view.</>}
-            {fallback && <span className="fallback"> {fallback}</span>}
-          </p>
-        </div>
-        {err && <section className="card bad">This vault has no exported result ({err}). Pick another vault in the list.</section>}
-        {!report && !err && <section className="card">Loading…</section>}
-        {report && <>
-          <ExitPanel r={report} entry={entry} mode={mode ?? "static"} pick={pick} refine={refine} g={graph} />
-          <LeaveCard r={report} refine={refine} history={history} />
-          <NotModeledCard r={report} refine={refine} />
-          <div className="reveal">
-            <button className="pill ghostpill big" aria-expanded={more} onClick={() => setMore(!more)}>{more ? "Hide the dependencies and the proof" : "See the dependencies and the proof"}</button>
-          </div>
-          {more && <div className="deep">
-            {mode === "live" && <div className="card glass"><b>Analyze another vault</b> <Analyze onDone={(v) => { getIndex("live").then(setIndex); setVault(v); location.hash = `vault=${v}`; }} /></div>}
-            <Tabs r={report} g={graph} entry={entry} mode={mode ?? "static"} refine={refine} />
-          </div>}
-        </>}
+        {(() => {
+          const controls = (
+            <div className="controls glass">
+              <label className="ctl"><span>Pool</span>
+                <select value={vault} onChange={(e) => { setVault(e.target.value); location.hash = `vault=${e.target.value}`; }} aria-label="vault">
+                  {index.length === 0 && <option value={vault}>{vault}</option>}
+                  {index.map((v) => <option key={v.vault} value={v.vault}>{v.name} ({v.asset})</option>)}
+                </select>
+              </label>
+              <label className="ctl"><span>Your first name</span><input className="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={24} /></label>
+              <p className="modeline">
+                {mode === null ? "Detecting the local fork…" : mode === "live"
+                  ? <>Live · transactions execute on a local copy of Ethereum frozen at block {BLOCK}; nothing is sent to Ethereum.</>
+                  : <>Results executed on a fork of Ethereum frozen at block {BLOCK}, replayed from the manifests · no network in this view.</>}
+                {fallback && <span className="fallback"> {fallback}</span>}
+              </p>
+            </div>
+          );
+          if (err) return <>{controls}<section className="card bad">This vault has no exported result ({err}). Pick another vault in the list.</section></>;
+          if (!report) return <>{controls}<section className="card">Loading…</section></>;
+          return <>
+            <Steps r={report} refine={refine} g={graph} history={history} controls={controls} open={step} setOpen={setStep} />
+            <div className="expertbar">
+              <button className="pill ghostpill big" aria-expanded={expert} onClick={() => setExpert(!expert)}>{expert ? "Close expert mode" : "Expert mode: all numbers, dependencies, proof"}</button>
+            </div>
+            {expert && <div className="expert">
+              <dl className="facts expertfacts">
+                <div><dt>Measured on</dt><dd>a fork of Ethereum, block {facts.block}</dd></div>
+                <div><dt>Replayable</dt><dd>{facts.replayable}</dd></div>
+                <div><dt>Replay</dt><dd>{facts.replay}{facts.allReplayed && <span className="allrep">{facts.allReplayed}</span>}</dd></div>
+                <div><dt>Coverage</dt><dd>{facts.coverage}</dd></div>
+              </dl>
+              <ExitPanel r={report} entry={entry} mode={mode ?? "static"} pick={0} refine={refine} g={graph} />
+              <LeaveCard r={report} refine={refine} history={history} />
+              <NotModeledCard r={report} refine={refine} />
+              <div className="reveal">
+                <button className="pill ghostpill big" aria-expanded={more} onClick={() => setMore(!more)}>{more ? "Hide the dependencies and the proof" : "See the dependencies and the proof"}</button>
+              </div>
+              {more && <div className="deep">
+                {mode === "live" && <div className="card glass"><b>Analyze another vault</b> <Analyze onDone={(v) => { getIndex("live").then(setIndex); setVault(v); location.hash = `vault=${v}`; }} /></div>}
+                <Tabs r={report} g={graph} entry={entry} mode={mode ?? "static"} refine={refine} />
+              </div>}
+            </div>}
+          </>;
+        })()}
       </main>
     </ModeCtx.Provider>
   );
@@ -261,11 +278,11 @@ function Tabs({ r, g, entry, mode, refine }: { r: any; g: any; entry?: IndexEntr
 }
 
 /** A small "?" that shows one sentence on tap or focus (no hover-only tooltip). */
-function InfoTip({ text }: { text: string }) {
+function InfoTip({ text, label }: { text: string; label?: string }) {
   const [open, setOpen] = useState(false);
   return (
     <span className="tag infotip">
-      <button type="button" className="tagbtn" aria-expanded={open} aria-label="about these thresholds" title={text} onClick={() => setOpen(!open)}><span className="infodot">?</span></button>
+      <button type="button" className="tagbtn" aria-expanded={open} aria-label={label ?? "about these thresholds"} title={text} onClick={() => setOpen(!open)}>{label ? <span className="infolabel">{label}</span> : null}<span className="infodot">?</span></button>
       {open && <span className="tip" role="tooltip">{text}</span>}
     </span>
   );
