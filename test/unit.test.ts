@@ -67,3 +67,14 @@ test("revert decoding never invents a cause", () => {
   assert.equal(decodeRevert("0xdeadbeef", "").name, "unrecognised");
   assert.equal(decodeRevert(undefined, "boom").name, "unknown");
 });
+
+test("percentage changes are rounded, not truncated", async () => {
+  const { pctChange } = await import("../src/lib/util.ts");
+  const alone = 5209914854809315636083n;
+  assert.equal(pctChange(4210679414346963425094n, alone), -19.18);
+  assert.equal(pctChange(3318751556034097893931n, alone), -36.3);
+  assert.equal(pctChange(2079210741633111021926n, alone), -60.09);
+  assert.equal(pctChange(alone, alone), 0);
+  assert.equal(pctChange(105n, 100n, 2), 5);
+  assert.equal(pctChange(1n, 3n, 2), -66.67);
+});

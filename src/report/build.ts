@@ -17,7 +17,7 @@ import { genericCatalog, type CatalogMeta } from "../scenarios/generic.ts";
 import { propagate, type Shock } from "../shocks/analytic.ts";
 import { decide, scaleTo18, type VerdictInputs } from "../verdict/verdict.ts";
 import { ACTORS, SOURCE, TIMESTAMP_STEP } from "../lib/constants.ts";
-import { toJson } from "../lib/util.ts";
+import { pctChange, toJson } from "../lib/util.ts";
 import { referenceRates } from "./references.ts";
 
 const B = (s: string | bigint) => BigInt(s);
@@ -92,7 +92,7 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
       holderExecutedExit: exitable.toString(),
       lockedWei: (full.ok ? 0n : sub(holderValue, exitable)).toString(),
       changeVsAloneWei: (exitable - aloneMax).toString(),
-      changePct: aloneMax === 0n ? 0 : Number(((exitable - aloneMax) * 10_000n) / aloneMax) / 100,
+      changePct: pctChange(exitable, aloneMax),
     };
   });
 
@@ -227,8 +227,8 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
   const liqDep = (() => {
     const h = getBack.afterHolder, pe = getBack.afterPeer;
     if (pe && (!h || pe.changePct < h.changePct) && pe.changePct < 0)
-      return `exit liquidity shared with ${peerName(pe.otherVault)} in the same Morpho markets (its largest depositor leaving first cuts this exit by ${-pe.changePct} %)`;
-    if (h && h.changePct < 0) return `holder concentration (${(h.who ?? "another holder").replace(" exits", "")} leaving first cuts this exit by ${-h.changePct} %)`;
+      return `exit liquidity shared with ${peerName(pe.otherVault)} in the same Morpho markets (its largest depositor leaving first cuts this exit by ${(-pe.changePct).toFixed(2)} %)`;
+    if (h && h.changePct < 0) return `holder concentration (${(h.who ?? "another holder").replace(" exits", "")} leaving first cuts this exit by ${(-h.changePct).toFixed(2)} %)`;
     return null;
   })();
   const valueDep = (() => {
@@ -300,7 +300,7 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     { item: "Withdrawable now (vault)", value: fmtA(B(String(g.summary.withdrawableNow))), cls: "measured", source: "Σ over the withdraw queue of min(vault supply, market idle liquidity): MetaMorpho withdrawQueue(i), Morpho Blue market(id) and position(id, vault)", hypotheses: "stored market totals (interest accrued up to the market's lastUpdate)" },
     { item: "Holder position", value: fmtA(holderValue), cls: "measured", source: "convertToAssets(balanceOf(holder))", hypotheses: "holder selection: largest holder from Morpho API candidates, balance re-read on-chain" },
     { item: "Holder exit alone", value: fmtA(aloneOut), cls: "executed", source: `scenario ${meta.runIds[0]}: redeem on the local fork, tx 1 at T0+12 s`, hypotheses: "holder impersonated on the fork" },
-    { item: "Worst executed run (holder exitable)", value: `${fmtA(B(worstRun.holderExecutedExit))} (${worstRun.changePct} %)`, cls: "executed", source: `scenario ${worstRun.id}: ${worstRun.others.length} exits then the holder's`, hypotheses: "other holders impersonated: their exits are a scenario, not their intention" },
+    { item: "Worst executed run (holder exitable)", value: `${fmtA(B(worstRun.holderExecutedExit))} (${worstRun.changePct.toFixed(2)} %)`, cls: "executed", source: `scenario ${worstRun.id}: ${worstRun.others.length} exits then the holder's`, hypotheses: "other holders impersonated: their exits are a scenario, not their intention" },
     ...(cushion ? [{ item: "Cushion before blockage", value: cushion.revertsAt === "none" ? "no blockage even at the competitor's full exit" : `passes ${fmtA(B(cushion.passesAt))}, reverts ${fmtA(B(cushion.revertsAt))}`, cls: "executed" as const, source: `bisection, ${cushion.probes.length} executions on the fork`, hypotheses: "competitor = next largest holder of the vault" }] : []),
     { item: "Borrowers identified", value: Object.values(g.borrowers).map((b) => `${(b.coverage * 100).toFixed(2)} %`).join(" / ") + " of debt", cls: "measured", source: "candidates from Morpho API, each position(id, borrower) re-read on-chain; coverage = Σ borrowShares found / totalBorrowShares", hypotheses: "none (coverage is measured, not assumed)" },
     { item: "Public Allocator backstop (net)", value: fmtA(B(String(g.summary.publicAllocatorReallocatableIntoExposedMarkets ?? "0"))), cls: "bounded", source: "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator", hypotheses: `upper bound: peers drawing on the same source market share its liquidity${mitigation ? `; executed in scenario ${mitigation.id}: holder exitable ${fmtA(B(mitigation.withoutWei))} → ${fmtA(B(mitigation.withWei))}` : ""}` },

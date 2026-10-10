@@ -176,7 +176,7 @@ function GetBack({ r, entry, mode }: { r: any; entry?: IndexEntry; mode: Mode })
         </div>
         <div className="detail">
           <div className="muted" style={{ fontSize: 12 }}>{row.label}</div>
-          <div className="big"><span className={row.fullExitOk ? "ok" : "bad"}>{w(row.holderExecutedExit, 2)}</span> <small>{r.target.assetSymbol} · {share(row.holderExecutedExit).toFixed(0)} % of the position{row.changePct ? ` · ${row.changePct} % vs alone` : ""}</small></div>
+          <div className="big"><span className={row.fullExitOk ? "ok" : "bad"}>{w(row.holderExecutedExit, 2)}</span> <small>{r.target.assetSymbol} · {share(row.holderExecutedExit).toFixed(0)} % of the position{row.changePct ? ` · ${Number(row.changePct).toFixed(2)} % vs alone` : ""}</small></div>
           <div className="bar"><div className="exit" style={{ width: `${share(row.holderExecutedExit)}%` }} /><div className="lock" style={{ left: `${share(row.holderExecutedExit)}%`, right: 0 }} /><span>{share(row.holderExecutedExit).toFixed(0)} % exitable</span></div>
           <p style={{ margin: "8px 0" }}>{row.fullExitOk
             ? <span className="ok">✓ full exit succeeds</span>

@@ -131,7 +131,7 @@ export function Runs({ r }: { r: Report }) {
                 <td className="r"><b>{w(x.holderExecutedExit)}</b></td>
                 <td>{x.fullExitOk ? <span className="ok">✓ succeeds</span> : <span className="bad">✗ revert {x.fullExitError?.name}</span>}</td>
                 <td><div className="bar"><div className="exit" style={{ width: `${ex}%` }} /><div className="lock" style={{ left: `${ex}%`, right: 0 }} /><span>{ex.toFixed(0)}% exitable</span></div></td>
-                <td className={`r ${x.changePct < 0 ? "bad" : "muted"}`}>{x.changePct === 0 ? "—" : `${x.changePct.toFixed(1)}%`}</td>
+                <td className={`r ${x.changePct < 0 ? "bad" : "muted"}`}>{x.changePct === 0 ? "—" : `${x.changePct.toFixed(2)}%`}</td>
               </tr>
             );
           })}

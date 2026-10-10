@@ -28,3 +28,14 @@ export const toAssetsDown = (shares: bigint, totalAssets: bigint, totalShares: b
   mulDivDown(shares, totalAssets + 1n, totalShares + 1_000_000n);
 export const toAssetsUp = (shares: bigint, totalAssets: bigint, totalShares: bigint) =>
   mulDivUp(shares, totalAssets + 1n, totalShares + 1_000_000n);
+
+/** Percentage change (a − b) / b × 100, rounded (half away from zero) to `dp` decimals, exact on bigints. */
+export function pctChange(a: bigint, b: bigint, dp = 2): number {
+  if (b === 0n) return 0;
+  const num = (a - b) * 10n ** BigInt(dp + 2);
+  let q = num / b;
+  const r = num % b;
+  const abs = (x: bigint) => (x < 0n ? -x : x);
+  if (2n * abs(r) >= abs(b)) q += (num < 0n) !== (b < 0n) ? -1n : 1n;
+  return Number(q) / 10 ** dp;
+}
