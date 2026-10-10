@@ -1,0 +1,19954 @@
+window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["graph:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"]={
+  "schema": "exitproof.graph/0.1",
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "baseFeePerGas": "121537943"
+  },
+  "target": {
+    "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+    "name": "Steakhouse ETH",
+    "version": "MetaMorpho V1.0",
+    "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "assetSymbol": "WETH",
+    "assetDecimals": 18
+  },
+  "summary": {
+    "totalAssets": "9718206779004181082252",
+    "totalSupply": "9236915366149900690829",
+    "withdrawableNow": "6946905315207433291224",
+    "lentOutNotWithdrawable": "2771270393752700894064",
+    "liquidRatio": 0.7148,
+    "grossSupplyApyBeforeVaultFee": 0.016071125924844942,
+    "vaultPerformanceFee": 0.05,
+    "marketCount": 7,
+    "exposedMarketCount": 3,
+    "peerVaultCount": 8,
+    "publicAllocatorIsAllocator": true,
+    "publicAllocatorReallocatableIntoExposedMarkets": "0",
+    "nodeCount": 82,
+    "edgeCount": 127,
+    "readCount": 814
+  },
+  "markets": [
+    {
+      "id": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+      "queueIndex": 0,
+      "params": {
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x0000000000000000000000000000000000000000",
+        "oracle": "0x0000000000000000000000000000000000000000",
+        "irm": "0x0000000000000000000000000000000000000000",
+        "lltv": "0"
+      },
+      "totalSupplyAssets": "755115093812241914020",
+      "totalSupplyShares": "755115093812241914020000000",
+      "totalBorrowAssets": "0",
+      "totalBorrowShares": "0",
+      "lastUpdate": "1791580343",
+      "fee": "0",
+      "vaultSupplyShares": "0",
+      "vaultSupplyAssets": "0",
+      "liquidity": "755115093812241914020",
+      "vaultWithdrawable": "0",
+      "utilization": 0,
+      "borrowApr": null,
+      "supplyApr": null,
+      "cap": "1000000000000000000000000000000",
+      "collateralSymbol": "none",
+      "collateralDecimals": 18,
+      "loanDecimals": 18,
+      "oraclePrice": null
+    },
+    {
+      "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "queueIndex": 1,
+      "params": {
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "oracle": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "945000000000000000"
+      },
+      "totalSupplyAssets": "9156173253204013786528",
+      "totalSupplyShares": "8745193106561957994743830577",
+      "totalBorrowAssets": "7772149663402350058355",
+      "totalBorrowShares": "7375219060466527805107216118",
+      "lastUpdate": "1791576671",
+      "fee": "0",
+      "vaultSupplyShares": "1650223025514863029180064225",
+      "vaultSupplyAssets": "1727775218217080336795",
+      "liquidity": "1384023589801663728173",
+      "vaultWithdrawable": "1384023589801663728173",
+      "utilization": 0.848842,
+      "borrowApr": 0.018751841964288,
+      "supplyApr": 0.01591735103665015,
+      "cap": "500000000000000000000000",
+      "collateralSymbol": "wstETH",
+      "collateralDecimals": 18,
+      "loanDecimals": 18,
+      "oraclePrice": "1245938079126728715000000000000000000"
+    },
+    {
+      "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "queueIndex": 2,
+      "params": {
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "oracle": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "965000000000000000"
+      },
+      "totalSupplyAssets": "33887475257061196484738",
+      "totalSupplyShares": "32216150604341183693494767626",
+      "totalBorrowAssets": "28328032324615452058973",
+      "totalBorrowShares": "26749088406276926920265533128",
+      "lastUpdate": "1791576671",
+      "fee": "0",
+      "vaultSupplyShares": "7577191332033501745017034362",
+      "vaultSupplyAssets": "7970284437014749692738",
+      "liquidity": "5559442932445744425765",
+      "vaultWithdrawable": "5559442932445744425765",
+      "utilization": 0.835944,
+      "borrowApr": 0.019071633970655998,
+      "supplyApr": 0.015942817987966058,
+      "cap": "500000000000000000000000",
+      "collateralSymbol": "wstETH",
+      "collateralDecimals": 18,
+      "loanDecimals": 18,
+      "oraclePrice": "1245938079126728715000000000000000000"
+    },
+    {
+      "id": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "queueIndex": 3,
+      "params": {
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "oracle": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "915000000000000000"
+      },
+      "totalSupplyAssets": "26617885432229928503",
+      "totalSupplyShares": "26358054181616666993372055",
+      "totalBorrowAssets": "23179092472204791217",
+      "totalBorrowShares": "22915681772735993806601654",
+      "lastUpdate": "1791345527",
+      "fee": "0",
+      "vaultSupplyShares": "19919690293990923224876294",
+      "vaultSupplyAssets": "20116053728304155755",
+      "liquidity": "3438792960025137286",
+      "vaultWithdrawable": "3438792960025137286",
+      "utilization": 0.870808,
+      "borrowApr": 0.021116512001808002,
+      "supplyApr": 0.018388427583270424,
+      "cap": "10000000000000000000000",
+      "collateralSymbol": "cbBTC",
+      "collateralDecimals": 8,
+      "loanDecimals": 18,
+      "oraclePrice": "332305335181901679603770140944705128031048168734"
+    },
+    {
+      "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+      "queueIndex": 4,
+      "params": {
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "oracle": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "915000000000000000"
+      },
+      "totalSupplyAssets": "77772939737825012963",
+      "totalSupplyShares": "73486315034368685404422732",
+      "totalBorrowAssets": "54923403954837736028",
+      "totalBorrowShares": "51463435649073539557893593",
+      "lastUpdate": "1791538619",
+      "fee": "0",
+      "vaultSupplyShares": "0",
+      "vaultSupplyAssets": "0",
+      "liquidity": "22849535782987276935",
+      "vaultWithdrawable": "0",
+      "utilization": 0.706201,
+      "borrowApr": 0.003525792066288,
+      "supplyApr": 0.002489917883004652,
+      "cap": "10000000000000000000000",
+      "collateralSymbol": "WBTC",
+      "collateralDecimals": 8,
+      "loanDecimals": 18,
+      "oraclePrice": "333350389097313400000000000000000000000000000000"
+    },
+    {
+      "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+      "queueIndex": 5,
+      "params": {
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "oracle": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "915000000000000000"
+      },
+      "totalSupplyAssets": "74775829900816519299",
+      "totalSupplyShares": "72418000783324386259347568",
+      "totalBorrowAssets": "22864116304661990645",
+      "totalBorrowShares": "22040502356449818149942348",
+      "lastUpdate": "1791045563",
+      "fee": "0",
+      "vaultSupplyShares": "0",
+      "vaultSupplyAssets": "0",
+      "liquidity": "51911713596154528654",
+      "vaultWithdrawable": "0",
+      "utilization": 0.305768,
+      "borrowApr": 0.00050480731656,
+      "supplyApr": 0.00015435392356991808,
+      "cap": "10000000000000000000000",
+      "collateralSymbol": "cbBTC",
+      "collateralDecimals": 8,
+      "loanDecimals": 18,
+      "oraclePrice": "332556586962182170952132453646774259321342838030"
+    },
+    {
+      "id": "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+      "queueIndex": 6,
+      "params": {
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "oracle": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "915000000000000000"
+      },
+      "totalSupplyAssets": "440011670201860",
+      "totalSupplyShares": "437273154716051012489",
+      "totalBorrowAssets": "400803899065931",
+      "totalBorrowShares": "397918569901201235393",
+      "lastUpdate": "1788408503",
+      "fee": "0",
+      "vaultSupplyShares": "0",
+      "vaultSupplyAssets": "0",
+      "liquidity": "39207771135929",
+      "vaultWithdrawable": "0",
+      "utilization": 0.910893,
+      "borrowApr": 0.010176965625168,
+      "supplyApr": 0.009270126749206156,
+      "cap": "10000000000000000000000",
+      "collateralSymbol": "WBTC",
+      "collateralDecimals": 8,
+      "loanDecimals": 18,
+      "oraclePrice": "332305335181901679603770140944705128031048168734"
+    }
+  ],
+  "peers": [
+    {
+      "vault": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "name": "Vault Bridge WETH",
+      "version": "MetaMorpho V1.1",
+      "totalAssets": "6604026177135432340255",
+      "topHolder": {
+        "address": "0x80845058350B8c3Df5c3015d8a717D64B3bF9267",
+        "shares": "3536030812159806561816",
+        "assets": "3628153740357559249846",
+        "shareOfSupply": 0.549385,
+        "isContract": false
+      },
+      "markets": [
+        {
+          "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+          "supplyAssets": "4859033677419910223013",
+          "queueIndex": 0
+        }
+      ],
+      "publicAllocator": {
+        "enabled": true,
+        "flowCaps": [
+          {
+            "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "maxIn": "0",
+            "maxOut": "0"
+          },
+          {
+            "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "maxIn": "0",
+            "maxOut": "0"
+          },
+          {
+            "id": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "maxIn": "0",
+            "maxOut": "0"
+          }
+        ],
+        "reallocatableIn": []
+      }
+    },
+    {
+      "vault": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "name": "Gauntlet WETH Prime",
+      "version": "MetaMorpho V1.0",
+      "totalAssets": "3129308993996307816570",
+      "topHolder": {
+        "address": "0x9fC3dc011b461664c835F2527fffb1169b3C213e",
+        "shares": "2021918067656956335939",
+        "assets": "2131468643104658707928",
+        "shareOfSupply": 0.681131,
+        "isContract": true
+      },
+      "markets": [
+        {
+          "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+          "supplyAssets": "417615503945564679677",
+          "queueIndex": 2
+        },
+        {
+          "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+          "supplyAssets": "2627960979864850232700",
+          "queueIndex": 1
+        }
+      ],
+      "publicAllocator": {
+        "enabled": true,
+        "flowCaps": [
+          {
+            "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "maxIn": "0",
+            "maxOut": "0"
+          },
+          {
+            "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "maxIn": "0",
+            "maxOut": "0"
+          },
+          {
+            "id": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "maxIn": "0",
+            "maxOut": "0"
+          }
+        ],
+        "reallocatableIn": []
+      }
+    },
+    {
+      "vault": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "name": "MEV Capital wETH",
+      "version": "MetaMorpho V1.0",
+      "totalAssets": "1857085896129683972586",
+      "topHolder": {
+        "address": "0xB7574272Dc4829c6eE6437Bccd691E5735a2a9b5",
+        "shares": "1447716528844171547669",
+        "assets": "1566044590889160347538",
+        "shareOfSupply": 0.843292,
+        "isContract": true
+      },
+      "markets": [
+        {
+          "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+          "supplyAssets": "3327389899448766424",
+          "queueIndex": 0
+        },
+        {
+          "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+          "supplyAssets": "1853752586338886957346",
+          "queueIndex": 3
+        }
+      ],
+      "publicAllocator": {
+        "enabled": false,
+        "flowCaps": [],
+        "reallocatableIn": []
+      }
+    },
+    {
+      "vault": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "name": "Yearn OG WETH",
+      "version": "MetaMorpho V1.1",
+      "totalAssets": "926741206794799208410",
+      "topHolder": {
+        "address": "0xc56413869c6CDf96496f2b1eF801fEDBdFA7dDB0",
+        "shares": "862429643277391816619",
+        "assets": "897536402430533233704",
+        "shareOfSupply": 0.968486,
+        "isContract": true
+      },
+      "markets": [
+        {
+          "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+          "supplyAssets": "137743430246158467071",
+          "queueIndex": 2
+        },
+        {
+          "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+          "supplyAssets": "552168586813566341082",
+          "queueIndex": 0
+        }
+      ],
+      "publicAllocator": {
+        "enabled": false,
+        "flowCaps": [],
+        "reallocatableIn": []
+      }
+    },
+    {
+      "vault": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "name": "Gauntlet LRT Core",
+      "version": "MetaMorpho V1.0",
+      "totalAssets": "875884334084614873775",
+      "topHolder": {
+        "address": "0x28a55C4b4f9615FDE3CDAdDf6cc01FcF2E38A6b0",
+        "shares": "286680026550113806373",
+        "assets": "314918493339098960878",
+        "shareOfSupply": 0.359544,
+        "isContract": false
+      },
+      "markets": [
+        {
+          "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+          "supplyAssets": "647015232293325021063",
+          "queueIndex": 1
+        }
+      ],
+      "publicAllocator": {
+        "enabled": true,
+        "flowCaps": [
+          {
+            "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "maxIn": "2795098797631830809999",
+            "maxOut": "204901202368169190001"
+          },
+          {
+            "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "maxIn": "0",
+            "maxOut": "0"
+          },
+          {
+            "id": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "maxIn": "0",
+            "maxOut": "0"
+          }
+        ],
+        "reallocatableIn": [
+          {
+            "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "amount": "0"
+          }
+        ]
+      }
+    },
+    {
+      "vault": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "name": "Index Coop hyETH",
+      "version": "MetaMorpho V1.1",
+      "totalAssets": "750555043554324840962",
+      "topHolder": {
+        "address": "0x91f7E2021B4220aB9e9f48cC9297Db8632956a23",
+        "shares": "392689464824694977375",
+        "assets": "413584226319526785034",
+        "shareOfSupply": 0.551065,
+        "isContract": true
+      },
+      "markets": [
+        {
+          "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+          "supplyAssets": "750552853439662506230",
+          "queueIndex": 1
+        }
+      ],
+      "publicAllocator": {
+        "enabled": true,
+        "flowCaps": [
+          {
+            "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "maxIn": "0",
+            "maxOut": "0"
+          },
+          {
+            "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "maxIn": "0",
+            "maxOut": "0"
+          },
+          {
+            "id": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "maxIn": "0",
+            "maxOut": "0"
+          }
+        ],
+        "reallocatableIn": []
+      }
+    },
+    {
+      "vault": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "name": "Re7 WETH",
+      "version": "MetaMorpho V1.0",
+      "totalAssets": "288091741667553008410",
+      "topHolder": {
+        "address": "0x7AFDd1bA1145e583FBa788Cc21dA686E736A311C",
+        "shares": "106451431699280528521",
+        "assets": "114763707625718197760",
+        "shareOfSupply": 0.398404,
+        "isContract": false
+      },
+      "markets": [
+        {
+          "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+          "supplyAssets": "288090902360076082968",
+          "queueIndex": 1
+        }
+      ],
+      "publicAllocator": {
+        "enabled": false,
+        "flowCaps": [],
+        "reallocatableIn": []
+      }
+    },
+    {
+      "vault": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "name": "SingularV ETH",
+      "version": "MetaMorpho V1.1",
+      "totalAssets": "41696699590427113693",
+      "topHolder": {
+        "address": "0x97c4d09F3da365160c72dC1dd0Fdc12784DF6524",
+        "shares": "23845256454711269479",
+        "assets": "26296162675473372393",
+        "shareOfSupply": 0.630658,
+        "isContract": true
+      },
+      "markets": [
+        {
+          "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+          "supplyAssets": "33300879825697066477",
+          "queueIndex": 0
+        }
+      ],
+      "publicAllocator": {
+        "enabled": false,
+        "flowCaps": [],
+        "reallocatableIn": []
+      }
+    }
+  ],
+  "borrowers": {
+    "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d": {
+      "coverage": 1,
+      "count": 49,
+      "list": [
+        {
+          "address": "0x462a336dCac6eaF544106266914caa5a18b831d0",
+          "borrowShares": "5852521354075638665099311798",
+          "collateral": "5373122056459849164629",
+          "debt": "6167501127655553362197",
+          "ltv": 0.921268
+        },
+        {
+          "address": "0x4b441cd7C5085d0C255eff3dB7eC3417cCA1a1a0",
+          "borrowShares": "776167590334240660387918942",
+          "collateral": "698388760199127768540",
+          "debt": "817940542037064547270",
+          "ltv": 0.94
+        },
+        {
+          "address": "0xB8a451107A9f87FDe481D4D686247D6e43Ed715e",
+          "borrowShares": "168845970083785844492109391",
+          "collateral": "158951848740034946921",
+          "debt": "177933175786988575902",
+          "ltv": 0.898452
+        },
+        {
+          "address": "0x5ceDE91b3c5783d093B2F6C29Cb2571a11204B27",
+          "borrowShares": "165736337885735957363367779",
+          "collateral": "150116824510128126588",
+          "debt": "174656184738555943617",
+          "ltv": 0.933809
+        },
+        {
+          "address": "0x8b4943EBcf5F31923E0C409943d5FeF53c0C53CB",
+          "borrowShares": "151648669823237533515357776",
+          "collateral": "143162455561057005845",
+          "debt": "159810325423409695506",
+          "ltv": 0.89594
+        },
+        {
+          "address": "0xc19140bd471e314788Df400C5C7760c9d8654119",
+          "borrowShares": "106923437846244427387252121",
+          "collateral": "116386320730114622722",
+          "debt": "112678003819718854804",
+          "ltv": 0.777035
+        },
+        {
+          "address": "0x946802757D0ec3e07DEE2B746cCFc297962c7FD8",
+          "borrowShares": "76562757246197961916922523",
+          "collateral": "75000000000000000000",
+          "debt": "80683326567191119113",
+          "ltv": 0.863427
+        },
+        {
+          "address": "0xBa19dcE4E43Fe16671d81B10D6f823d22032b6e2",
+          "borrowShares": "17925031416758802703104140",
+          "collateral": "21344779209061165348",
+          "debt": "18889747646821203154",
+          "ltv": 0.710293
+        },
+        {
+          "address": "0xa25328Aa6581B609978D4a33f4b45536fc8D11F4",
+          "borrowShares": "15970715219633506572673706",
+          "collateral": "30433518044708094429",
+          "debt": "16830251128936306765",
+          "ltv": 0.443855
+        },
+        {
+          "address": "0xffDf0d9b1079E3922AF387cF1F93973CD6d6F578",
+          "borrowShares": "15597901263909920648401731",
+          "collateral": "14555779251906640233",
+          "debt": "16437372512486712360",
+          "ltv": 0.906359
+        },
+        {
+          "address": "0x56143f72736598e09BCCA5f94cfEe4DbA3Ac6bF4",
+          "borrowShares": "8000451747577082689462300",
+          "collateral": "8015703804260844725",
+          "debt": "8431032061177130058",
+          "ltv": 0.844194
+        },
+        {
+          "address": "0x00ABc02c649f81Ac8B3a7Bf9926645492F53590a",
+          "borrowShares": "5144239745685698639898200",
+          "collateral": "4777441062815887257",
+          "debt": "5421100157174585618",
+          "ltv": 0.910742
+        },
+        {
+          "address": "0x32691f40E1FE4Ce475292c29dc2E85b04E4FfcFC",
+          "borrowShares": "4445536443199600524933909",
+          "collateral": "4573357595060058438",
+          "debt": "4684792992232975046",
+          "ltv": 0.822164
+        },
+        {
+          "address": "0xb32b2DAC2FE23Aa80D41fd9FC8601bFF4b88cBC3",
+          "borrowShares": "3665343701245390955865281",
+          "collateral": "4089581727068506046",
+          "debt": "3862610666927942609",
+          "ltv": 0.758063
+        },
+        {
+          "address": "0x5ACdAbEc96C1D2bc16C030b7dD98D2A8d669DC98",
+          "borrowShares": "2500926018653852515435064",
+          "collateral": "2500000000000000000",
+          "debt": "2635524606755907500",
+          "ltv": 0.846117
+        },
+        {
+          "address": "0xfa7E52Eb10069fE6f33223182124389513260D44",
+          "borrowShares": "748494111071150306171811",
+          "collateral": "803496155410720870",
+          "debt": "788777689954106306",
+          "ltv": 0.787905
+        },
+        {
+          "address": "0xDE97a58C9E3163cC5B4E7C65250f15C5Ec7b8bD6",
+          "borrowShares": "546991166350676657713351",
+          "collateral": "549254552028916154",
+          "debt": "576429957480822251",
+          "ltv": 0.842318
+        },
+        {
+          "address": "0x6b0a26C51c5ca3411192BA8e11fEC4419597b2f7",
+          "borrowShares": "477653248610901089426826",
+          "collateral": "641005448560701424",
+          "debt": "503360307670565972",
+          "ltv": 0.630261
+        },
+        {
+          "address": "0x6d265486E4527524b5BD2C9Ce7958540653d1617",
+          "borrowShares": "477217923123843611535777",
+          "collateral": "546054528687066023",
+          "debt": "502901553183415834",
+          "ltv": 0.73918
+        },
+        {
+          "address": "0x4789C274d65b6d4C5c9db42813dfc67F87DACDE6",
+          "borrowShares": "199658563194093997886424",
+          "collateral": "190965654927392729",
+          "debt": "210404087255167598",
+          "ltv": 0.884305
+        },
+        {
+          "address": "0x26Be8d49Cfd55f6467c1c586ee59D4d839c0Bb61",
+          "borrowShares": "197689303671190355276235",
+          "collateral": "188751515279131949",
+          "debt": "208328843169181186",
+          "ltv": 0.885854
+        },
+        {
+          "address": "0xfeed46c11F57B7126a773EeC6ae9cA7aE1C03C9a",
+          "borrowShares": "168734956421205298118595",
+          "collateral": "151240640301570934",
+          "debt": "177816187424584073",
+          "ltv": 0.943639
+        },
+        {
+          "address": "0x0F6C608F362FDd72ef8B2d561F05c7933fEDca13",
+          "borrowShares": "152061637216183160237843",
+          "collateral": "249924847881517863",
+          "debt": "160245518514999774",
+          "ltv": 0.514612
+        },
+        {
+          "address": "0x5A2d4A07b186e02702fd165a119122A0095335c3",
+          "borrowShares": "118238437897160825753348",
+          "collateral": "112877980951229263",
+          "debt": "124601971516966427",
+          "ltv": 0.88597
+        },
+        {
+          "address": "0xD187f0707B49b2BB4F1cBFA3e630DBebd891f231",
+          "borrowShares": "104578706256894008607690",
+          "collateral": "100000000000000000",
+          "debt": "110207079948369336",
+          "ltv": 0.88453
+        },
+        {
+          "address": "0x2735A560ca4a5ec14776a2cEF36280f17a980CD2",
+          "borrowShares": "99547249503116584437140",
+          "collateral": "91710748233715844",
+          "debt": "104904832707346906",
+          "ltv": 0.918076
+        },
+        {
+          "address": "0xF012FE980bfBf4E6120A51b134935E2F70109dE9",
+          "borrowShares": "87074228408256244439357",
+          "collateral": "109883000432349727",
+          "debt": "91760519852469208",
+          "ltv": 0.670237
+        },
+        {
+          "address": "0x6d0DEbaeDFeBEED33aa83d813E32561e60dfE90c",
+          "borrowShares": "42174178405698444428823",
+          "collateral": "40000000000000000",
+          "debt": "44443971604469940",
+          "ltv": 0.891777
+        },
+        {
+          "address": "0xd90c2DC41d97c62585841A8b6E0d500A5217B9Ab",
+          "borrowShares": "42089278726920481309536",
+          "collateral": "38516358184531258",
+          "debt": "44354502667421801",
+          "ltv": 0.924264
+        },
+        {
+          "address": "0xE7E0ee487a3d836894fDb04C0aBc5859eAc11D9a",
+          "borrowShares": "26841387808298866118001",
+          "collateral": "25599174512805830",
+          "debt": "28285977882035382",
+          "ltv": 0.886847
+        },
+        {
+          "address": "0x828c5e02d79f122ABA8FedDe33824f2340935305",
+          "borrowShares": "26279194029258832949555",
+          "collateral": "23932550845364848",
+          "debt": "27693527114850103",
+          "ltv": 0.928737
+        },
+        {
+          "address": "0xa8AB743C1ED8Fb898360ab99ef9d52bf799a6F7F",
+          "borrowShares": "19337035240511531941155",
+          "collateral": "40000000000000000",
+          "debt": "20377744810502524",
+          "ltv": 0.408883
+        },
+        {
+          "address": "0xF33C2069ebcD3979147395e8A61B22be3e387321",
+          "borrowShares": "9939850700011499739746",
+          "collateral": "11050852362594286",
+          "debt": "10474808495719069",
+          "ltv": 0.76077
+        },
+        {
+          "address": "0x8A7EA8BF5D72037b151DF18dBE180B345917e2eD",
+          "borrowShares": "9821346051431782408364",
+          "collateral": "20000000000000000",
+          "debt": "10349925986193690",
+          "ltv": 0.415346
+        },
+        {
+          "address": "0x5fF8b28732Ed1ea382Ca06F0aB65d3CD7003F53B",
+          "borrowShares": "3888437728293988347448",
+          "collateral": "4134757671861394",
+          "debt": "4097711502986791",
+          "ltv": 0.795416
+        },
+        {
+          "address": "0x69b7126E34672F174Aa754D6B1ccAA3f2095f12a",
+          "borrowShares": "1575223073813983011901",
+          "collateral": "1412927341749375",
+          "debt": "1660000792186982",
+          "ltv": 0.942957
+        },
+        {
+          "address": "0x7030D5Ae6c8beBd850e2EfB8382AD7dDe4b88174",
+          "borrowShares": "1052942618821692823669",
+          "collateral": "1000000000000000",
+          "debt": "1109611464196881",
+          "ltv": 0.890583
+        },
+        {
+          "address": "0xD1A2d9DF5db842DA2Ee81075Fa441602B2352915",
+          "borrowShares": "703604482203863452662",
+          "collateral": "756114704372520",
+          "debt": "741472123701669",
+          "ltv": 0.787065
+        },
+        {
+          "address": "0x8C407cc9395540F32F726884cDdB2a4e06822bd7",
+          "borrowShares": "486105266374426422975",
+          "collateral": "1000000000000000",
+          "debt": "512267208804931",
+          "ltv": 0.411149
+        },
+        {
+          "address": "0x3361A72C248765cb2709C1912045bD5a78263BCD",
+          "borrowShares": "450937776311663203846",
+          "collateral": "425000000000000",
+          "debt": "475207022007344",
+          "ltv": 0.897423
+        },
+        {
+          "address": "0x72811209562DA01D5b2A105F7C5e20B90Ef2fB44",
+          "borrowShares": "80092764997057853994",
+          "collateral": "79911450424397",
+          "debt": "84403317570539",
+          "ltv": 0.847723
+        },
+        {
+          "address": "0xA9601cb7afB057Ed60A0E9177c7068933Ff739AC",
+          "borrowShares": "79635494127428432138",
+          "collateral": "75379705468965",
+          "debt": "83921436611298",
+          "ltv": 0.893556
+        },
+        {
+          "address": "0x91E895a53184Aa6C58ABd2A8F4f3cB8f75287760",
+          "borrowShares": "50000000000000000000",
+          "collateral": "209167499166802",
+          "debt": "52690975004821",
+          "ltv": 0.202183
+        },
+        {
+          "address": "0xA9b4aA23fF4D79ed9386872759ab1Db66EEa04ea",
+          "borrowShares": "6135724109486754743",
+          "collateral": "5795200147543",
+          "debt": "6465945713789",
+          "ltv": 0.895503
+        },
+        {
+          "address": "0xa2533E65a31DFDe8BA16477D02a1B0E772A924AC",
+          "borrowShares": "1979337979128302472",
+          "collateral": "2001418100000",
+          "debt": "2085864959687",
+          "ltv": 0.836472
+        },
+        {
+          "address": "0xc8a3b83B64F54001CaC41281ca80D22916D2191F",
+          "borrowShares": "714862111083900529",
+          "collateral": "674666454144",
+          "debt": "753335632541",
+          "ltv": 0.896195
+        },
+        {
+          "address": "0x1F3A9A20c9e68ABdA4e8811fF7A627087BfbF801",
+          "borrowShares": "2961174497068034",
+          "collateral": "10000000000000",
+          "debt": "3120543429",
+          "ltv": 0.00025
+        },
+        {
+          "address": "0xDbDDb659dB12E4a04043136b30DF0D1d77623a99",
+          "borrowShares": "4793426243682",
+          "collateral": "4516141",
+          "debt": "5051407",
+          "ltv": 0.897735
+        },
+        {
+          "address": "0x2ed38012A1A33aeAE3375245259C8777e77dF5ea",
+          "borrowShares": "984390883787",
+          "collateral": "901652",
+          "debt": "1037371",
+          "ltv": 0.923419
+        }
+      ]
+    },
+    "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e": {
+      "coverage": 1,
+      "count": 113,
+      "list": [
+        {
+          "address": "0x462a336dCac6eaF544106266914caa5a18b831d0",
+          "borrowShares": "5288567936370432693243237097",
+          "collateral": "4906530156558447828320",
+          "debt": "5600741273009924664481",
+          "ltv": 0.916166
+        },
+        {
+          "address": "0x9A3569c7053F9fB5abEB7CCB1678Bd33c47aD278",
+          "borrowShares": "3873296753894106749957932505",
+          "collateral": "3812787484252961787418",
+          "debt": "4101929530480479680691",
+          "ltv": 0.863473
+        },
+        {
+          "address": "0x13d0503352f34B751CACfbe27e694B58561F2983",
+          "borrowShares": "2747177163518029983042024630",
+          "collateral": "2481000000000000000000",
+          "debt": "2909337406478586555167",
+          "ltv": 0.941176
+        },
+        {
+          "address": "0xb224f589297A5A207e6069De5DaFD4b120129817",
+          "borrowShares": "2418307670634284960147185939",
+          "collateral": "2141124954253829382877",
+          "debt": "2561055420808956041046",
+          "ltv": 0.96002
+        },
+        {
+          "address": "0x893aa69FBAA1ee81B536f0FbE3A3453e86290080",
+          "borrowShares": "2155225433594289319074815599",
+          "collateral": "2300000000000000000000",
+          "debt": "2282443977992373273318",
+          "ltv": 0.796481
+        },
+        {
+          "address": "0x1676D23711186076Fa74aa53511dDa750A1F0D9A",
+          "borrowShares": "2048281267645012060921681511",
+          "collateral": "1900000000000000000000",
+          "debt": "2169187116901388943540",
+          "ltv": 0.916319
+        },
+        {
+          "address": "0x4b441cd7C5085d0C255eff3dB7eC3417cCA1a1a0",
+          "borrowShares": "1542727242677026576393259435",
+          "collateral": "1365869185629536622399",
+          "debt": "1633791272990240945284",
+          "ltv": 0.960043
+        },
+        {
+          "address": "0xfB74196ecCf35a260dd5CFd300bAa37AE058B6C0",
+          "borrowShares": "1453947761195780900530283266",
+          "collateral": "1288710573056742338997",
+          "debt": "1539771320498208728984",
+          "ltv": 0.958968
+        },
+        {
+          "address": "0x5ceDE91b3c5783d093B2F6C29Cb2571a11204B27",
+          "borrowShares": "1412959575516738212076965128",
+          "collateral": "1278334079038294645602",
+          "debt": "1496363686144179868601",
+          "ltv": 0.939499
+        },
+        {
+          "address": "0xB7829e0A55975e9380e76E27D89391a795807a7F",
+          "borrowShares": "1405924409694015152096592654",
+          "collateral": "1281632528219690113341",
+          "debt": "1488913248887844701159",
+          "ltv": 0.932415
+        },
+        {
+          "address": "0xB8a451107A9f87FDe481D4D686247D6e43Ed715e",
+          "borrowShares": "672062328391044282620316525",
+          "collateral": "635807470714612522025",
+          "debt": "711732791550022795343",
+          "ltv": 0.898452
+        },
+        {
+          "address": "0x2b1dE6F5Bb3F8ae0B19099DbbDe4398a0fdF6c8E",
+          "borrowShares": "300970439925984136396562074",
+          "collateral": "270827095920571952750",
+          "debt": "318736108740675005541",
+          "ltv": 0.944588
+        },
+        {
+          "address": "0xCaA6F0E7EA422EbAa63cAecE7e8530E01C418F32",
+          "borrowShares": "285318950577545520181670876",
+          "collateral": "264745566796705462523",
+          "debt": "302160744023315097029",
+          "ltv": 0.916036
+        },
+        {
+          "address": "0xd16728A5Cc5870C5F7A09B65d04c35Ace6D33da5",
+          "borrowShares": "147346912398438092498160501",
+          "collateral": "133153599013031095125",
+          "debt": "156044498936111620757",
+          "ltv": 0.940587
+        },
+        {
+          "address": "0x83a59Ce2eF545c019e77c542552eC0f0f58402B6",
+          "borrowShares": "107757399226055008642835738",
+          "collateral": "100000000000000000000",
+          "debt": "114118097862948758303",
+          "ltv": 0.915921
+        },
+        {
+          "address": "0x68B1c5dEAF2b5de25D7eeD4E6d453aCb0502177d",
+          "borrowShares": "106481700579357733164127284",
+          "collateral": "98725827776278385394",
+          "debt": "112767097337202674358",
+          "ltv": 0.916758
+        },
+        {
+          "address": "0xB1F57674Aa6aE260f9d962CF6FeC8b5f9989D02D",
+          "borrowShares": "88691892330538317842183569",
+          "collateral": "80167396157821092341",
+          "debt": "93927193133102384184",
+          "ltv": 0.940366
+        },
+        {
+          "address": "0xE5613b1FA1caBdAFA9C4B8b16dc7c6fEAB58Eefa",
+          "borrowShares": "78220352465296375558135557",
+          "collateral": "73446296018012664946",
+          "debt": "82837539710690271936",
+          "ltv": 0.905233
+        },
+        {
+          "address": "0x66C0d9152209B51977047b9DC3b0B5bf2339b67C",
+          "borrowShares": "70895406638993386892246714",
+          "collateral": "66968385446743787948",
+          "debt": "75080217330504935987",
+          "ltv": 0.899827
+        },
+        {
+          "address": "0x8044A52A999a07163908e7dD20f477d698a9F07b",
+          "borrowShares": "62393036171998903690741355",
+          "collateral": "55564284097082161266",
+          "debt": "66075969343932186462",
+          "ltv": 0.954445
+        },
+        {
+          "address": "0xD81A40c8571fB9c5fb423D4EA06079F24210292B",
+          "borrowShares": "59282754141954340882480720",
+          "collateral": "66238675891006442172",
+          "debt": "62782093734133927790",
+          "ltv": 0.760725
+        },
+        {
+          "address": "0xB0739e7150FE098D040c79b98cFe7929F8659E4f",
+          "borrowShares": "45617756997848118536338908",
+          "collateral": "48522471788239810494",
+          "debt": "48310479788472077116",
+          "ltv": 0.799101
+        },
+        {
+          "address": "0xd174C970805EA549031B7568A123362AC867e683",
+          "borrowShares": "43109154011714450377904752",
+          "collateral": "39437602411280997706",
+          "debt": "45653799104574617278",
+          "ltv": 0.929116
+        },
+        {
+          "address": "0x7926333578a4a7E96350A6F1340BA929b2f86522",
+          "borrowShares": "42546730271975264007198251",
+          "collateral": "40183548635350152867",
+          "debt": "45058176643073308657",
+          "ltv": 0.899971
+        },
+        {
+          "address": "0xc38D4C2FafCDA2032f3dB82647512754558e3B89",
+          "borrowShares": "42460528373163087302514258",
+          "collateral": "40099999999999999972",
+          "debt": "44966886422677553039",
+          "ltv": 0.900019
+        },
+        {
+          "address": "0x16034D2b0cA0AE52bcFeEF88F55473e12F905C19",
+          "borrowShares": "41490735248996563181335782",
+          "collateral": "48109414126878092571",
+          "debt": "43939848396098207651",
+          "ltv": 0.733047
+        },
+        {
+          "address": "0x43C0Ec5456b67c8A7471b3dCadebEE0e2a272E72",
+          "borrowShares": "38917003108424918308271050",
+          "collateral": "34509150410195122657",
+          "debt": "41214194117131955335",
+          "ltv": 0.958552
+        },
+        {
+          "address": "0xFc99dd3D0d25d046ef8d94F3A64e486F6551Bfe5",
+          "borrowShares": "35306797847598266554034213",
+          "collateral": "31999759445067999999",
+          "debt": "37390885831859866458",
+          "ltv": 0.937826
+        },
+        {
+          "address": "0x7e499BDa05a7991B3a05a355b9849cf160269828",
+          "borrowShares": "23337138242993807644879097",
+          "collateral": "21626450151373140688",
+          "debt": "24714681729356271753",
+          "ltv": 0.917219
+        },
+        {
+          "address": "0x9eC90ffEA23B3dc33965f120AB87AbeBc17C0F1A",
+          "borrowShares": "16996980977118977049470180",
+          "collateral": "15235975178447820130",
+          "debt": "18000277961910428465",
+          "ltv": 0.948227
+        },
+        {
+          "address": "0x52b4c7627CEc29bD90e53c76c285A714c1C66045",
+          "borrowShares": "16001730822340505630758868",
+          "collateral": "109801850660090973208",
+          "debt": "16946280228326834513",
+          "ltv": 0.12387
+        },
+        {
+          "address": "0xF69AA51A1fdeB7B7BecC206fe44eF72660dEdF30",
+          "borrowShares": "13814778138726952177729511",
+          "collateral": "14429910293822740876",
+          "debt": "14630236205709913751",
+          "ltv": 0.81375
+        },
+        {
+          "address": "0xE58eEd9692572ee7Ec5D3eBB4Fc1Af56090eAd46",
+          "borrowShares": "11791102507483449263470864",
+          "collateral": "10799797324363242000",
+          "debt": "12487107145545371257",
+          "ltv": 0.928003
+        },
+        {
+          "address": "0x1e661e672eab9f7BA827064D126b5AA3bDD14985",
+          "borrowShares": "11057705225097490835794015",
+          "collateral": "9949320957771323899",
+          "debt": "11710418923252930747",
+          "ltv": 0.944675
+        },
+        {
+          "address": "0xe1590894e25d4aD93Be881E315aCd9516F2e6B0b",
+          "borrowShares": "9652549317843610213139819",
+          "collateral": "10179955020359405385",
+          "debt": "10222319539930709143",
+          "ltv": 0.805948
+        },
+        {
+          "address": "0x97891Bb5a666800D2F07C27Feb00ddddb69AF221",
+          "borrowShares": "8387207266349873474836233",
+          "collateral": "12000000000000000000",
+          "debt": "8882286937997309519",
+          "ltv": 0.594082
+        },
+        {
+          "address": "0x47A96DCb58E36B8c4A80EF72A50843De0FA382d9",
+          "borrowShares": "5714146588647035220154053",
+          "collateral": "5535753107395833365",
+          "debt": "6051440961733853919",
+          "ltv": 0.877375
+        },
+        {
+          "address": "0xb774299E256955FCD3C2B6Cb8EaDcB15Ed26d7AB",
+          "borrowShares": "3124336766830180912621788",
+          "collateral": "8250000000000000000",
+          "debt": "3308759968918456709",
+          "ltv": 0.321895
+        },
+        {
+          "address": "0x70b9d624b2469A46E0a398c268abEeE2C6aE438b",
+          "borrowShares": "2562104005574672239559038",
+          "collateral": "2557955840177246810",
+          "debt": "2713339758969677943",
+          "ltv": 0.851362
+        },
+        {
+          "address": "0x9c5D92cd4e2c14c9F402FBA0187fBA470391A163",
+          "borrowShares": "2372555831934071286977149",
+          "collateral": "2340683990369235064",
+          "debt": "2512602944749767703",
+          "ltv": 0.861558
+        },
+        {
+          "address": "0x542eDec06EE7106F6c005A2673249CA2D0d3cA18",
+          "borrowShares": "1579810265128870331797713",
+          "collateral": "1397533324545962876",
+          "debt": "1673063230327813738",
+          "ltv": 0.960845
+        },
+        {
+          "address": "0x81F6ae5Bd24a31B0b28fFb4012e34d6A10761b3F",
+          "borrowShares": "1283193060639814392816162",
+          "collateral": "1199141538567802305",
+          "debt": "1358937319598410981",
+          "ltv": 0.909562
+        },
+        {
+          "address": "0xcc8d76aa1ECCE6abc9E67Bf4fE6d7fBE02Cc2c85",
+          "borrowShares": "1208116701717389844494572",
+          "collateral": "1090840926036152169",
+          "debt": "1279429356931922180",
+          "ltv": 0.941365
+        },
+        {
+          "address": "0xfAfcB4fD02A320D9760d30447b8D14414E3F8a7b",
+          "borrowShares": "810394379626409418520148",
+          "collateral": "1416819027112216192",
+          "debt": "858230300527047609",
+          "ltv": 0.486175
+        },
+        {
+          "address": "0x26C0FcA64A2860D3571Bf284b5F3e59673cb138F",
+          "borrowShares": "654623298882968804646892",
+          "collateral": "608408334278495562",
+          "debt": "693264371837493081",
+          "ltv": 0.914549
+        },
+        {
+          "address": "0xEDE8Ff76E5cE200bFfc4B21c8FD54C822b11d05e",
+          "borrowShares": "571482911239427260584460",
+          "collateral": "2118764227509319138",
+          "debt": "605216377346038444",
+          "ltv": 0.229261
+        },
+        {
+          "address": "0x8dA94391457f1C1e4a62d11B33CB8Ca265DCFB67",
+          "borrowShares": "481071660097169403068148",
+          "collateral": "427367815076590723",
+          "debt": "509468335171045937",
+          "ltv": 0.956795
+        },
+        {
+          "address": "0x7D9d0DA1Ad30d4a707A473C9e91ecc100Ff065ef",
+          "borrowShares": "472237080468466605057509",
+          "collateral": "800000000000000000",
+          "debt": "500112268396166435",
+          "ltv": 0.501742
+        },
+        {
+          "address": "0x782C6C86833e571072A2E8D06a39296832019C0a",
+          "borrowShares": "454701583299834735279885",
+          "collateral": "517658827198734516",
+          "debt": "481541686734600721",
+          "ltv": 0.74661
+        },
+        {
+          "address": "0x4789C274d65b6d4C5c9db42813dfc67F87DACDE6",
+          "borrowShares": "245918629838036882157952",
+          "collateral": "233257983169449351",
+          "debt": "260434703024956964",
+          "ltv": 0.896119
+        },
+        {
+          "address": "0xfA4400264ABD97fA6d61AB04471DacaD081928DE",
+          "borrowShares": "243279764151507513042853",
+          "collateral": "214337306859803433",
+          "debt": "257640070500179752",
+          "ltv": 0.964759
+        },
+        {
+          "address": "0x92fE48f0402C7F2341c9b91c8B048814f2EAAF6F",
+          "borrowShares": "236808299957878195390309",
+          "collateral": "216363958849897137",
+          "debt": "250786609025892498",
+          "ltv": 0.930299
+        },
+        {
+          "address": "0x37Db6089A117925922Bc6f1c38a2388fEd666600",
+          "borrowShares": "76617277119205389241400",
+          "collateral": "130200000000000000",
+          "debt": "81139838109307729",
+          "ltv": 0.50018
+        },
+        {
+          "address": "0xfF18Ea2B12476e96dA2dfD458E431e26dbFd735E",
+          "borrowShares": "72951694247003484156122",
+          "collateral": "68909462803641149",
+          "debt": "77257883385649723",
+          "ltv": 0.899844
+        },
+        {
+          "address": "0x6d0DEbaeDFeBEED33aa83d813E32561e60dfE90c",
+          "borrowShares": "58254706857083125375147",
+          "collateral": "52874628256344578",
+          "debt": "61693362923022210",
+          "ltv": 0.936471
+        },
+        {
+          "address": "0x452E834e1711b30b9B256325Ff093640f076E085",
+          "borrowShares": "49969492013630209759118",
+          "collateral": "100000000000000000",
+          "debt": "52919088811810163",
+          "ltv": 0.424732
+        },
+        {
+          "address": "0x9085DA766BBFCd0d04767992BF33Bb07a6583E99",
+          "borrowShares": "45398815089201978560706",
+          "collateral": "42105653570138602",
+          "debt": "48078614187254600",
+          "ltv": 0.916463
+        },
+        {
+          "address": "0xa20F7c02d1afD9DA1EEDBB593681C70Acef60Fb0",
+          "borrowShares": "43600066509181415801144",
+          "collateral": "40433586175302094",
+          "debt": "46173689161595723",
+          "ltv": 0.916549
+        },
+        {
+          "address": "0x463625e8521b3fBaC07EEf403ED2d8837E946270",
+          "borrowShares": "43461504974171083519964",
+          "collateral": "41198168854135792",
+          "debt": "46026948622886376",
+          "ltv": 0.89668
+        },
+        {
+          "address": "0xED92063044F9004b27F2da5C6Ed5AfC1cB0188F9",
+          "borrowShares": "35324670717896915827618",
+          "collateral": "35000000000000000",
+          "debt": "37409813701096524",
+          "ltv": 0.857869
+        },
+        {
+          "address": "0x7CdF6069f3A82DBE4fB7fa9d86bc46137760D5f4",
+          "borrowShares": "32498510745080809120914",
+          "collateral": "30204943308890615",
+          "debt": "34416831291808802",
+          "ltv": 0.914526
+        },
+        {
+          "address": "0xE170ED9D77792397271d564c7161351d69fe9300",
+          "borrowShares": "32223307721637634588037",
+          "collateral": "30000000000000000",
+          "debt": "34125383597385662",
+          "ltv": 0.912976
+        },
+        {
+          "address": "0x142F3316ec1cfcd7db3dfA44c0F1aB8AEd28D6BE",
+          "borrowShares": "31002400661733053274745",
+          "collateral": "57298082263960688",
+          "debt": "32832408893611746",
+          "ltv": 0.459902
+        },
+        {
+          "address": "0xBdBcB59b6E7D74988494861D617069972e21b5e3",
+          "borrowShares": "29400870415554462831581",
+          "collateral": "29155000000000000",
+          "debt": "31136343596225747",
+          "ltv": 0.857152
+        },
+        {
+          "address": "0xb3DA159cFeb3B5319f4d5A1Fc6Ad7193Ffbde459",
+          "borrowShares": "29260976325093631889217",
+          "collateral": "50000000000000000",
+          "debt": "30988191844046142",
+          "ltv": 0.497427
+        },
+        {
+          "address": "0x00bee60F3a37576b1FE180A4A52E39f8D18480f9",
+          "borrowShares": "26147294228972529430528",
+          "collateral": "24328892193120542",
+          "debt": "27690715469232675",
+          "ltv": 0.913514
+        },
+        {
+          "address": "0xf83dB716A1Ff12F9005F98f678D8BE97B8Bc81d6",
+          "borrowShares": "19190529505997089817282",
+          "collateral": "30000000000000000",
+          "debt": "20323307169032507",
+          "ltv": 0.543721
+        },
+        {
+          "address": "0x1de35FFE05Fe45368ad200b9Be424430052425f6",
+          "borrowShares": "16629514418859181980904",
+          "collateral": "25000000000000000",
+          "debt": "17611120605125293",
+          "ltv": 0.565393
+        },
+        {
+          "address": "0xd775B8A4fC53f07E2f011A33a0D68A07a2d15fd9",
+          "borrowShares": "15767088618876093521487",
+          "collateral": "14161984283601884",
+          "debt": "16697787576035212",
+          "ltv": 0.94632
+        },
+        {
+          "address": "0x9d186580aA4B06F4D21237Dffd52886819394762",
+          "borrowShares": "10692005435224151786042",
+          "collateral": "10000000000000000",
+          "debt": "11323132623574544",
+          "ltv": 0.908803
+        },
+        {
+          "address": "0xd2E03Efa11e8d1bdc01052554B25bcA9b18B852b",
+          "borrowShares": "10577890154639535120212",
+          "collateral": "10028953732247299",
+          "debt": "11202281351634563",
+          "ltv": 0.896508
+        },
+        {
+          "address": "0x6046BbdC5af2E2c763DeB921b2E50eB0D3B39d80",
+          "borrowShares": "9676818234150424713433",
+          "collateral": "9500000000000000",
+          "debt": "10248021000675125",
+          "ltv": 0.865804
+        },
+        {
+          "address": "0xE70c134cAd0faEe3Dd716C3864Fb8A11583e5cDd",
+          "borrowShares": "9442249334969241129980",
+          "collateral": "16400000000000000",
+          "debt": "9999605979668475",
+          "ltv": 0.489375
+        },
+        {
+          "address": "0xeBCe3c37F85a1C52Db4BFaB33545f0e9837A5f5E",
+          "borrowShares": "8423406746164150624273",
+          "collateral": "7989230739804778",
+          "debt": "8920623198984525",
+          "ltv": 0.896176
+        },
+        {
+          "address": "0x6241E0edCB939c94c7dB830aBD0B24648517c634",
+          "borrowShares": "8211462285894364492102",
+          "collateral": "7613753255225016",
+          "debt": "8696168091193382",
+          "ltv": 0.916711
+        },
+        {
+          "address": "0xB22cd280b29e581e34423E86F65fd259F456D335",
+          "borrowShares": "5284078953567442488631",
+          "collateral": "8988034442551239",
+          "debt": "5595987314743523",
+          "ltv": 0.499707
+        },
+        {
+          "address": "0x3E19a14F4E987a474850883c25aB9C763bEF68c6",
+          "borrowShares": "4215626548882716454569",
+          "collateral": "3785992737663577",
+          "debt": "4464466352327489",
+          "ltv": 0.94644
+        },
+        {
+          "address": "0x69b7126E34672F174Aa754D6B1ccAA3f2095f12a",
+          "borrowShares": "3289571721840547218958",
+          "collateral": "2904819001706260",
+          "debt": "3483748404995092",
+          "ltv": 0.962567
+        },
+        {
+          "address": "0xC8520E36c0fd5df783bF32869E23606f7EDDF8Fb",
+          "borrowShares": "3126974719617389946103",
+          "collateral": "2902960042643620",
+          "debt": "3311553634657336",
+          "ltv": 0.915575
+        },
+        {
+          "address": "0x03b26cc31A241804a6C79F0d34B2ec4E1E792B68",
+          "borrowShares": "2135554162986464295986",
+          "collateral": "2076503835497702",
+          "debt": "2261611552558617",
+          "ltv": 0.874155
+        },
+        {
+          "address": "0x5Ee7035b168531736eAE63FECa62ac54e0069E17",
+          "borrowShares": "2092177670389626424263",
+          "collateral": "1858974838923028",
+          "debt": "2215674634419630",
+          "ltv": 0.956612
+        },
+        {
+          "address": "0xf01E4fd10144D069df66A47588696cAeF07b9a77",
+          "borrowShares": "2052242008994719514199",
+          "collateral": "1904159400258747",
+          "debt": "2173381652703126",
+          "ltv": 0.916085
+        },
+        {
+          "address": "0x204070E0C972319722BC4BD1D236b5Ba953dDb82",
+          "borrowShares": "1952918959097964617191",
+          "collateral": "1813070076202224",
+          "debt": "2068195766540575",
+          "ltv": 0.915546
+        },
+        {
+          "address": "0x354fbb15068cE4Ba4e5657EF1E9B5f2bdC9785e0",
+          "borrowShares": "1919277707548492000778",
+          "collateral": "4081360574563016",
+          "debt": "2032568740794518",
+          "ltv": 0.399708
+        },
+        {
+          "address": "0x47d2eaaD8c87eFaA29ac6Cb3FFf44E3f7081145b",
+          "borrowShares": "1464592731716626768957",
+          "collateral": "1351635373168849",
+          "debt": "1551044641832716",
+          "ltv": 0.921018
+        },
+        {
+          "address": "0xa5ab0893Dda1d207D850867045cbc27c3787AFEd",
+          "borrowShares": "1025847450403512062505",
+          "collateral": "8777745217598616",
+          "debt": "1086401124919674",
+          "ltv": 0.099336
+        },
+        {
+          "address": "0xa8e32Be4CA13b271673f8b01F1eeACFde66FA413",
+          "borrowShares": "766492297779309917673",
+          "collateral": "679746567190668",
+          "debt": "811736768680531",
+          "ltv": 0.958455
+        },
+        {
+          "address": "0x9C25964aAF541e3d530A0775d2885034BBb35cF8",
+          "borrowShares": "720748791339658289406",
+          "collateral": "668450361217241",
+          "debt": "763293116718185",
+          "ltv": 0.916485
+        },
+        {
+          "address": "0x39292F487A35975c2055F2a3FCe817A55024C415",
+          "borrowShares": "587721401409092717307",
+          "collateral": "99000000000000000",
+          "debt": "622413392341185",
+          "ltv": 0.005046
+        },
+        {
+          "address": "0x3006D86584B0fe871005bb7dC61EA00dFf44FCa6",
+          "borrowShares": "587213141689563080070",
+          "collateral": "1000000000000000",
+          "debt": "621875131091102",
+          "ltv": 0.499122
+        },
+        {
+          "address": "0xe9e8B9a9135C4b3A8E673BC2C7F96F26924c0253",
+          "borrowShares": "587176088311394891386",
+          "collateral": "22749000000000000",
+          "debt": "621835890527890",
+          "ltv": 0.021939
+        },
+        {
+          "address": "0x8895aC80947C6FcA7009E4e71D70f7979015FC37",
+          "borrowShares": "576613119355083804768",
+          "collateral": "1200000000000000",
+          "debt": "610649411142369",
+          "ltv": 0.408426
+        },
+        {
+          "address": "0x8C0Dc4D360060c18f3e433571aA56E65025baB1C",
+          "borrowShares": "492091381490349144113",
+          "collateral": "500000000000000",
+          "debt": "521138528154558",
+          "ltv": 0.83654
+        },
+        {
+          "address": "0x13E91D7FE3D385B1Fc4899fd67a3e1341FcA6E22",
+          "borrowShares": "482730792539480517698",
+          "collateral": "1000000000000000",
+          "debt": "511225402804259",
+          "ltv": 0.410313
+        },
+        {
+          "address": "0xd7C6b904bA79b1A2d7E505Db8FCff6c30D28b097",
+          "borrowShares": "262811335614750414569",
+          "collateral": "1085573762121051",
+          "debt": "278324550634892",
+          "ltv": 0.205776
+        },
+        {
+          "address": "0xD7E291D66CD1071c64376719895fC3dB0b745Cbd",
+          "borrowShares": "206114472934116129401",
+          "collateral": "259745146532166",
+          "debt": "218280988240280",
+          "ltv": 0.674484
+        },
+        {
+          "address": "0x8C407cc9395540F32F726884cDdB2a4e06822bd7",
+          "borrowShares": "193860481903111296239",
+          "collateral": "1000000000000000",
+          "debt": "205303669209460",
+          "ltv": 0.164778
+        },
+        {
+          "address": "0xD1A2d9DF5db842DA2Ee81075Fa441602B2352915",
+          "borrowShares": "156655164419712689299",
+          "collateral": "1000000000000000",
+          "debt": "165902198015026",
+          "ltv": 0.133154
+        },
+        {
+          "address": "0x314Ab1044316e62dCDdbC87c2df57F1254b4B4A6",
+          "borrowShares": "129219206245065234158",
+          "collateral": "348784298206517",
+          "debt": "136846751406018",
+          "ltv": 0.314906
+        },
+        {
+          "address": "0xDCF972E3851620D1BA5201B923391B9f6A3ba528",
+          "borrowShares": "113112382558379562838",
+          "collateral": "100000000000000",
+          "debt": "119789174896747",
+          "ltv": 0.961437
+        },
+        {
+          "address": "0x82a89f2595159015f2eb4318221C838fE4e63280",
+          "borrowShares": "96512276359156110224",
+          "collateral": "10000000000000000",
+          "debt": "102209198418248",
+          "ltv": 0.008203
+        },
+        {
+          "address": "0x5E395c998487D6447aB8242ED93aBe89eC7d2A49",
+          "borrowShares": "72244506879910565552",
+          "collateral": "67157703503382",
+          "debt": "76508952196284",
+          "ltv": 0.914365
+        },
+        {
+          "address": "0xdFc42cc413FDdE396d7Ca299d6B715442e1B481a",
+          "borrowShares": "20566128518157640013",
+          "collateral": "55000000000000000000",
+          "debt": "21780104974264",
+          "ltv": 0
+        },
+        {
+          "address": "0xdB2867C1eCa05D8825AAe2348EF3D47B097d83Ff",
+          "borrowShares": "4358144752865346258",
+          "collateral": "55329849372602",
+          "debt": "4615397114078",
+          "ltv": 0.06695
+        },
+        {
+          "address": "0xaE9746a85F7E08Cbfd08dB00Edf9B6C21f592fEc",
+          "borrowShares": "707962676684175796",
+          "collateral": "1000000000000",
+          "debt": "749752263895",
+          "ltv": 0.601757
+        },
+        {
+          "address": "0x8Be46b25d59616e594f0A9e20147fb14c1B989d9",
+          "borrowShares": "457791972762523850",
+          "collateral": "23354240716071",
+          "debt": "484814495560",
+          "ltv": 0.016661
+        },
+        {
+          "address": "0x3DE20F55a095a291cDE0A606198fc58344179CD4",
+          "borrowShares": "348962298614775848",
+          "collateral": "60716679872018653",
+          "debt": "369560828582",
+          "ltv": 0.000004
+        },
+        {
+          "address": "0xA612A79417E2AeeFDaf7Ed607AdF3f343b6b53Db",
+          "borrowShares": "182406056203942328",
+          "collateral": "169121395391",
+          "debt": "193173112215",
+          "ltv": 0.916751
+        },
+        {
+          "address": "0x4C8C25074882e2DFB956541dAd78A012102056B8",
+          "borrowShares": "92306514743101825",
+          "collateral": "9419936326181788",
+          "debt": "97755179306",
+          "ltv": 0.000008
+        },
+        {
+          "address": "0xFdD9919df5be35F5963d92680551f510Fa27Dc08",
+          "borrowShares": "58244999028758328",
+          "collateral": "54056320724",
+          "debt": "61683082062",
+          "ltv": 0.915847
+        },
+        {
+          "address": "0x4006c797Fd3850473b7bEc993a86a77fE7Ab882d",
+          "borrowShares": "368184654838916",
+          "collateral": "341505531",
+          "debt": "389917842",
+          "ltv": 0.916386
+        },
+        {
+          "address": "0xC6d6b46266adb9F7ACedce42cD3A3Cf3C0f98f24",
+          "borrowShares": "82025815483821",
+          "collateral": "7616352352",
+          "debt": "86867632",
+          "ltv": 0.009154
+        },
+        {
+          "address": "0x49915dD96502c7C96a69Ed8dBb66656Fce985296",
+          "borrowShares": "61053684944239",
+          "collateral": "500000000000000",
+          "debt": "64657559",
+          "ltv": 0
+        }
+      ]
+    },
+    "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0": {
+      "coverage": 1,
+      "count": 4,
+      "list": [
+        {
+          "address": "0x48651EB2808F5C370A914899c576848bC43264a6",
+          "borrowShares": "21860913456197977840227948",
+          "collateral": "91187066",
+          "debt": "22112199826886500318",
+          "ltv": 0.729728
+        },
+        {
+          "address": "0xE7635E4953B9acc7f892f74d1a44113d08E1aC81",
+          "borrowShares": "1039057730701711817638525",
+          "collateral": "4527007",
+          "debt": "1051001469768564868",
+          "ltv": 0.698642
+        },
+        {
+          "address": "0x2156f29D64f81701B58877129006E8b1964149B6",
+          "borrowShares": "15321809925030501735181",
+          "collateral": "72270",
+          "debt": "15497930745240268",
+          "ltv": 0.645324
+        },
+        {
+          "address": "0xd8dd2706eF4EF9cd0fB7F54a1C5413Aedd93121f",
+          "borrowShares": "388775911273647000000",
+          "collateral": "5337",
+          "debt": "393244804485764",
+          "ltv": 0.221732
+        }
+      ]
+    }
+  },
+  "holders": {
+    "coverage": 0.999185,
+    "list": [
+      {
+        "address": "0x27F23c710dD3d878FE9393d93465FeD1302f2EbD",
+        "shares": "4951898501365758933941",
+        "assets": "5209914824792343398774",
+        "shareOfSupply": 0.536098,
+        "isContract": true
+      },
+      {
+        "address": "0x9fC3dc011b461664c835F2527fffb1169b3C213e",
+        "shares": "2600716770901057351724",
+        "assets": "2736225885095679233262",
+        "shareOfSupply": 0.281556,
+        "isContract": true
+      },
+      {
+        "address": "0x5EC6abfF9BB4c673f63D077a962A29945f744857",
+        "shares": "685931091229198830651",
+        "assets": "721671205497318542640",
+        "shareOfSupply": 0.074259,
+        "isContract": false
+      },
+      {
+        "address": "0x5a91cE2E8E201aaDe717246F04f9618A58eF9931",
+        "shares": "258788961799818168243",
+        "assets": "272273037947290879799",
+        "shareOfSupply": 0.028016,
+        "isContract": true
+      },
+      {
+        "address": "0x9F177DF7adE7375DDf627b955e340f35D6796D62",
+        "shares": "192880264945412044956",
+        "assets": "202930199694485546359",
+        "shareOfSupply": 0.020881,
+        "isContract": false
+      },
+      {
+        "address": "0x7A9f26a753d5a4778052af4D27AD953b3bAd4E3d",
+        "shares": "135546120460620980414",
+        "assets": "142608686796813169702",
+        "shareOfSupply": 0.014674,
+        "isContract": false
+      },
+      {
+        "address": "0x730EB1e054ad08b390E29A648DE134c35270cE72",
+        "shares": "104603349642032269820",
+        "assets": "110053657576514143727",
+        "shareOfSupply": 0.011324,
+        "isContract": true
+      },
+      {
+        "address": "0xAD17139d1a60e4df6d7bb527BF7E382816EC6bbB",
+        "shares": "62998234372255048201",
+        "assets": "66280727503043660796",
+        "shareOfSupply": 0.00682,
+        "isContract": false
+      },
+      {
+        "address": "0xaA8d6d306DA25dECB35c2668519352155D75AdFf",
+        "shares": "53433666597026710939",
+        "assets": "56217802459012627720",
+        "shareOfSupply": 0.005784,
+        "isContract": false
+      },
+      {
+        "address": "0x5F0cE149ace15980eb8062B2527b283c05B84c2B",
+        "shares": "41675912729527130486",
+        "assets": "43847416401291410413",
+        "shareOfSupply": 0.004511,
+        "isContract": false
+      },
+      {
+        "address": "0x7C1215D47d4EF75c70571b5df805A8cb22E6fc28",
+        "shares": "31075093654090629239",
+        "assets": "32694246674402713090",
+        "shareOfSupply": 0.003364,
+        "isContract": true
+      },
+      {
+        "address": "0xaa4506F51773F370553D34aa1b1d8037b2f609dF",
+        "shares": "29731558843579385403",
+        "assets": "31280707619638858858",
+        "shareOfSupply": 0.003218,
+        "isContract": false
+      },
+      {
+        "address": "0xF6dE7ffaB409b0E9e741d807bD166E659d1Cb956",
+        "shares": "16003311184807855626",
+        "assets": "16837156125978767980",
+        "shareOfSupply": 0.001732,
+        "isContract": false
+      },
+      {
+        "address": "0x2104905000D2904597cA0951565BbA5A5f8D0BAB",
+        "shares": "10206774241896764201",
+        "assets": "10738593374137263524",
+        "shareOfSupply": 0.001104,
+        "isContract": false
+      },
+      {
+        "address": "0x9Cd1aF69FCfB8c99760ba8a752CC849c12F7460A",
+        "shares": "9605052291490316386",
+        "assets": "10105518986816746209",
+        "shareOfSupply": 0.001039,
+        "isContract": false
+      },
+      {
+        "address": "0xe66831804421Cb8Dbf8097f2C2d1C4AA2119ECB8",
+        "shares": "9248034035020793390",
+        "assets": "9729898463377286428",
+        "shareOfSupply": 0.001001,
+        "isContract": false
+      },
+      {
+        "address": "0xc451e2e6C1483a04D0490f7585237e2170Dff6D9",
+        "shares": "4998895212174762771",
+        "assets": "5259360276934138528",
+        "shareOfSupply": 0.000541,
+        "isContract": false
+      },
+      {
+        "address": "0x6310C1f4ac20CC021D7730e2d1907001be423A4C",
+        "shares": "4976590844913572726",
+        "assets": "5235893751192619917",
+        "shareOfSupply": 0.000538,
+        "isContract": false
+      },
+      {
+        "address": "0xFF040F7ffaF177b638E050E4E1de03b201bA0d1C",
+        "shares": "4813818478574830543",
+        "assets": "5064640207885774662",
+        "shareOfSupply": 0.000521,
+        "isContract": true
+      },
+      {
+        "address": "0x59D6d90321B211736A62367d3C6695f01c972FE6",
+        "shares": "4633558355882554911",
+        "assets": "4874987716972571586",
+        "shareOfSupply": 0.000501,
+        "isContract": false
+      },
+      {
+        "address": "0xDEbD769c0E05160f4E270F8240df714B2eB4e6Bc",
+        "shares": "4588145690684842936",
+        "assets": "4827208846387555251",
+        "shareOfSupply": 0.000496,
+        "isContract": false
+      },
+      {
+        "address": "0xD1A2d9DF5db842DA2Ee81075Fa441602B2352915",
+        "shares": "3786815471428343197",
+        "assets": "3984125696014604631",
+        "shareOfSupply": 0.000409,
+        "isContract": true
+      },
+      {
+        "address": "0x7F3eA8dAa8C1BC344EcdeB54A800Da6B4d48A1fb",
+        "shares": "3014947237111577614",
+        "assets": "3172039633337008669",
+        "shareOfSupply": 0.000326,
+        "isContract": false
+      },
+      {
+        "address": "0x5c9148566827ceC36c025ec3382ABC0bFaab0aE6",
+        "shares": "2333652344639696577",
+        "assets": "2455246193534962750",
+        "shareOfSupply": 0.000252,
+        "isContract": false
+      },
+      {
+        "address": "0x425A40c52A0F06FbbB46Bd0B91E9a50275ba4200",
+        "shares": "1907287964761135386",
+        "assets": "2006666299807323083",
+        "shareOfSupply": 0.000206,
+        "isContract": false
+      }
+    ]
+  },
+  "dex": {
+    "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d": {
+      "capacity": "11541125802633455603656",
+      "collateralAtRisk": "6809361802633455603656",
+      "venues": [
+        {
+          "id": "univ3:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+          "route": "Uniswap V3 0.01% pool",
+          "pool": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+          "capacity": "1245184000000000000000",
+          "avgPrice": 1.243395344808
+        },
+        {
+          "id": "univ3:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+          "route": "Uniswap V3 0.05% pool",
+          "pool": "0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+          "capacity": "52000000000000000",
+          "avgPrice": 1.22649595831
+        },
+        {
+          "id": "univ3:0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+          "route": "Uniswap V3 0.3% pool",
+          "pool": "0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+          "route": "Curve pool 0xB8459e…",
+          "pool": "0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+          "route": "Curve pool 0x76817a…",
+          "pool": "0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+          "route": "unwrap → Uniswap V3 0.01% pool",
+          "pool": "0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+          "route": "unwrap → Uniswap V3 0.05% pool",
+          "pool": "0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+          "route": "unwrap → Uniswap V3 0.3% pool",
+          "pool": "0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+          "route": "unwrap → Uniswap V3 1% pool",
+          "pool": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+          "capacity": "19840000000000000000",
+          "avgPrice": 1.2254160427
+        },
+        {
+          "id": "curve:0x828b154032950C8ff7CF8085D841723Db2696056",
+          "route": "unwrap → Curve pool 0x828b15…",
+          "pool": "0x828b154032950C8ff7CF8085D841723Db2696056",
+          "capacity": "9664000000000000000",
+          "avgPrice": 1.229133718696
+        },
+        {
+          "id": "curve:0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+          "route": "unwrap → Curve pool 0x9D1784…",
+          "pool": "0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+          "route": "unwrap → Curve pool 0x53E4a0…",
+          "pool": "0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+          "route": "unwrap → Curve pool 0x85ea32…",
+          "pool": "0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x108e6E958061e2769b2299C56400217C667fEb3E",
+          "route": "unwrap → Curve pool 0x108e6E…",
+          "pool": "0x108e6E958061e2769b2299C56400217C667fEb3E",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+          "route": "unwrap → Curve pool 0xDC2431…",
+          "pool": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+          "capacity": "6809361802633455603656",
+          "avgPrice": 1.244834046642
+        },
+        {
+          "id": "curve:0x21E27a5E5513D6e65C4f830167390997aA84843a",
+          "route": "unwrap → Curve pool 0x21E27a…",
+          "pool": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+          "capacity": "3457024000000000000000",
+          "avgPrice": 1.22749911008
+        }
+      ]
+    },
+    "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e": {
+      "capacity": "18638012000000000000000",
+      "collateralAtRisk": "25173557874035995670589",
+      "venues": [
+        {
+          "id": "univ3:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+          "route": "Uniswap V3 0.01% pool",
+          "pool": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+          "capacity": "1245184000000000000000",
+          "avgPrice": 1.243395344808
+        },
+        {
+          "id": "univ3:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+          "route": "Uniswap V3 0.05% pool",
+          "pool": "0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+          "capacity": "28000000000000000",
+          "avgPrice": 1.233405131839
+        },
+        {
+          "id": "univ3:0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+          "route": "Uniswap V3 0.3% pool",
+          "pool": "0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+          "route": "Curve pool 0xB8459e…",
+          "pool": "0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+          "route": "Curve pool 0x76817a…",
+          "pool": "0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+          "route": "unwrap → Uniswap V3 0.01% pool",
+          "pool": "0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+          "route": "unwrap → Uniswap V3 0.05% pool",
+          "pool": "0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+          "route": "unwrap → Uniswap V3 0.3% pool",
+          "pool": "0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+          "route": "unwrap → Uniswap V3 1% pool",
+          "pool": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x828b154032950C8ff7CF8085D841723Db2696056",
+          "route": "unwrap → Curve pool 0x828b15…",
+          "pool": "0x828b154032950C8ff7CF8085D841723Db2696056",
+          "capacity": "9376000000000000000",
+          "avgPrice": 1.233965108541
+        },
+        {
+          "id": "curve:0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+          "route": "unwrap → Curve pool 0x9D1784…",
+          "pool": "0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+          "route": "unwrap → Curve pool 0x53E4a0…",
+          "pool": "0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+          "route": "unwrap → Curve pool 0x85ea32…",
+          "pool": "0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x108e6E958061e2769b2299C56400217C667fEb3E",
+          "route": "unwrap → Curve pool 0x108e6E…",
+          "pool": "0x108e6E958061e2769b2299C56400217C667fEb3E",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+          "route": "unwrap → Curve pool 0xDC2431…",
+          "pool": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+          "capacity": "14024704000000000000000",
+          "avgPrice": 1.233392468422
+        },
+        {
+          "id": "curve:0x21E27a5E5513D6e65C4f830167390997aA84843a",
+          "route": "unwrap → Curve pool 0x21E27a…",
+          "pool": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+          "capacity": "3358720000000000000000",
+          "avgPrice": 1.235610186749
+        }
+      ]
+    },
+    "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0": {
+      "capacity": "109400000",
+      "collateralAtRisk": "95791680",
+      "venues": [
+        {
+          "id": "univ3:0x66Bb2eCF89C92a11044a46411d0c9E0BC9E31340",
+          "route": "Uniswap V3 0.01% pool",
+          "pool": "0x66Bb2eCF89C92a11044a46411d0c9E0BC9E31340",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0x66DD1ACc5da42502ddD469277aed509D1de22b69",
+          "route": "Uniswap V3 0.05% pool",
+          "pool": "0x66DD1ACc5da42502ddD469277aed509D1de22b69",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "univ3:0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+          "route": "Uniswap V3 0.3% pool",
+          "pool": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+          "capacity": "100000000",
+          "avgPrice": 32.40723602984394
+        },
+        {
+          "id": "univ3:0xce1790BB9f2327525d5e99B2C2b92EB5a486c6f8",
+          "route": "Uniswap V3 1% pool",
+          "pool": "0xce1790BB9f2327525d5e99B2C2b92EB5a486c6f8",
+          "capacity": "0",
+          "avgPrice": null
+        },
+        {
+          "id": "curve:0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+          "route": "Curve pool 0x8a4f25…",
+          "pool": "0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+          "capacity": "9400000",
+          "avgPrice": 32.39162799586107
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "chain:1",
+      "kind": "chain",
+      "layer": 0,
+      "label": "Ethereum mainnet (chainId 1)",
+      "data": {
+        "block": "26157638",
+        "hash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+        "timestamp": "1791582443",
+        "baseFeePerGas": "121537943",
+        "settlement": "Ethereum L1 consensus; archive RPC used for reads"
+      },
+      "prov": [
+        "r1"
+      ]
+    },
+    {
+      "id": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "kind": "vault",
+      "layer": 1,
+      "label": "Steakhouse ETH (MetaMorpho V1.0)",
+      "address": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "data": {
+        "name": "Steakhouse ETH",
+        "version": "MetaMorpho V1.0",
+        "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "assetSymbol": "WETH",
+        "totalAssets": "9718206779004181082252",
+        "totalSupply": "9236915366149900690829",
+        "timelockSeconds": "604800",
+        "performanceFee": 0.05,
+        "withdrawQueueLength": "7",
+        "codeSize": 19340,
+        "isContract": true,
+        "owner": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD"
+      },
+      "prov": [
+        "r2",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r12",
+        "r13",
+        "r14",
+        "r16",
+        "r17",
+        "r18",
+        "r24"
+      ]
+    },
+    {
+      "id": "factory:0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "kind": "governance",
+      "layer": 1,
+      "label": "MetaMorpho V1.0 factory",
+      "address": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "data": {},
+      "prov": [
+        "r2"
+      ]
+    },
+    {
+      "id": "gov:0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "kind": "governance",
+      "layer": 1,
+      "label": "Safe 5/10 (owner)",
+      "address": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "data": {
+        "codeSize": 171,
+        "isContract": true,
+        "role": "owner",
+        "threshold": "5",
+        "owners": 10
+      },
+      "prov": [
+        "r25",
+        "r32",
+        "r33"
+      ]
+    },
+    {
+      "id": "gov:0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "kind": "governance",
+      "layer": 1,
+      "label": "Safe 3/9 (curator)",
+      "address": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "data": {
+        "codeSize": 171,
+        "isContract": true,
+        "role": "curator",
+        "threshold": "3",
+        "owners": 9
+      },
+      "prov": [
+        "r34",
+        "r41",
+        "r42"
+      ]
+    },
+    {
+      "id": "gov:0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "kind": "governance",
+      "layer": 1,
+      "label": "Contract (guardian)",
+      "address": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "data": {
+        "codeSize": 833,
+        "isContract": true,
+        "eip1967Impl": "0x52Af16664155608b845BE18aa29620EbF6eA2D3a",
+        "role": "guardian"
+      },
+      "prov": [
+        "r43",
+        "r44"
+      ]
+    },
+    {
+      "id": "alloc:0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "kind": "allocator",
+      "layer": 1,
+      "label": "Morpho Public Allocator",
+      "address": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "data": {
+        "isAllocatorOfTarget": true
+      },
+      "prov": [
+        "r15"
+      ]
+    },
+    {
+      "id": "morpho:0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "kind": "governance",
+      "layer": 2,
+      "label": "Morpho Blue (immutable core)",
+      "address": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "data": {
+        "codeSize": 15623,
+        "isContract": true,
+        "owner": "0xcBa28b38103307Ec8dA98377ffF9816C164f9AFa",
+        "upgradeable": true
+      },
+      "prov": [
+        "r8",
+        "r52",
+        "r58"
+      ]
+    },
+    {
+      "id": "market:0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+      "kind": "market",
+      "layer": 2,
+      "label": "none/WETH LLTV 0.0%",
+      "data": {
+        "marketId": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+        "queueIndex": 0,
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x0000000000000000000000000000000000000000",
+        "oracle": "0x0000000000000000000000000000000000000000",
+        "irm": "0x0000000000000000000000000000000000000000",
+        "lltv": "0",
+        "liquidationIncentiveFactor": 1.15,
+        "totalSupplyAssets": "755115093812241914020",
+        "totalBorrowAssets": "0",
+        "liquidity": "755115093812241914020",
+        "utilization": 0,
+        "vaultSupplyAssets": "0",
+        "vaultWithdrawable": "0",
+        "vaultCap": "1000000000000000000000000000000",
+        "enabled": true,
+        "borrowApr": null,
+        "supplyApr": null,
+        "oraclePrice": null
+      },
+      "prov": [
+        "r59",
+        "r60",
+        "r61",
+        "r62",
+        "r63"
+      ]
+    },
+    {
+      "id": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "kind": "market",
+      "layer": 2,
+      "label": "wstETH/WETH LLTV 94.5%",
+      "data": {
+        "marketId": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+        "queueIndex": 1,
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "oracle": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "945000000000000000",
+        "liquidationIncentiveFactor": 1.0167768174885614,
+        "totalSupplyAssets": "9156173253204013786528",
+        "totalBorrowAssets": "7772149663402350058355",
+        "liquidity": "1384023589801663728173",
+        "utilization": 0.848842,
+        "vaultSupplyAssets": "1727775218217080336795",
+        "vaultWithdrawable": "1384023589801663728173",
+        "vaultCap": "500000000000000000000000",
+        "enabled": true,
+        "borrowApr": 0.018751841964288,
+        "supplyApr": 0.01591735103665015,
+        "oraclePrice": "1245938079126728715000000000000000000",
+        "supplyFromMetaMorphoVaults": "2574552444668328332935",
+        "supplyCoverageByVaults": 0.2811,
+        "peerVaultCount": 4,
+        "liquidationCapacityCollateral": "11541125802633455603656",
+        "collateralPostedByBorrowers": "6809361802633455603656"
+      },
+      "prov": [
+        "r64",
+        "r65",
+        "r66",
+        "r67",
+        "r68",
+        "r69",
+        "r70",
+        "r71",
+        "r72"
+      ]
+    },
+    {
+      "id": "irm:0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "kind": "irm",
+      "layer": 3,
+      "label": "Interest rate model",
+      "address": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "data": {},
+      "prov": [
+        "r66",
+        "r116",
+        "r125",
+        "r344",
+        "r434",
+        "r549"
+      ]
+    },
+    {
+      "id": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "kind": "token",
+      "layer": 3,
+      "label": "wstETH (collateral)",
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "data": {
+        "symbol": "wstETH",
+        "codeSize": 6492,
+        "isContract": true,
+        "stEthPerToken": "1245938079126728715"
+      },
+      "prov": [
+        "r70",
+        "r71",
+        "r73",
+        "r81"
+      ]
+    },
+    {
+      "id": "yield:0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "kind": "yieldSource",
+      "layer": 4,
+      "label": "stETH (Lido staking pool: yield & slashing source)",
+      "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "data": {
+        "totalPooledEther": "9691023083863304868792817",
+        "implementation": "0x028271E30a695c0527A0C50cA30603feD004cDb0",
+        "aragonKernel": "0xb8FFC3Cd6e7Cf5a098A1c92F48009765B24088Dc"
+      },
+      "prov": [
+        "r80",
+        "r85",
+        "r86",
+        "r87",
+        "r88"
+      ]
+    },
+    {
+      "id": "gov:0xb8FFC3Cd6e7Cf5a098A1c92F48009765B24088Dc",
+      "kind": "governance",
+      "layer": 5,
+      "label": "Lido Aragon kernel (upgrades stETH)",
+      "address": "0xb8FFC3Cd6e7Cf5a098A1c92F48009765B24088Dc",
+      "data": {},
+      "prov": [
+        "r88"
+      ]
+    },
+    {
+      "id": "oracle:0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "kind": "oracle",
+      "layer": 3,
+      "label": "Oracle: wstETH/stETH exchange rate",
+      "address": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "data": {
+        "BASE_FEED_1": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+        "BASE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "QUOTE_FEED_1": "0x0000000000000000000000000000000000000000",
+        "QUOTE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "BASE_VAULT": "0x0000000000000000000000000000000000000000",
+        "QUOTE_VAULT": "0x0000000000000000000000000000000000000000",
+        "SCALE_FACTOR": "1000000000000000000",
+        "morphoOracleShape": true,
+        "immutable": true,
+        "feedCount": 1,
+        "codeSize": 2598,
+        "isContract": true
+      },
+      "prov": [
+        "r72",
+        "r89",
+        "r90",
+        "r91",
+        "r92",
+        "r93",
+        "r94",
+        "r95",
+        "r96"
+      ]
+    },
+    {
+      "id": "feed:0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "kind": "feed",
+      "layer": 4,
+      "label": "wstETH/stETH exchange rate (adapter / custom feed)",
+      "address": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "data": {
+        "description": "wstETH/stETH exchange rate",
+        "decimals": 18,
+        "answer": "1245938079126728715",
+        "updatedAt": "0",
+        "ageSeconds": null,
+        "observedUpdates": null,
+        "hasAggregator": false,
+        "codeSize": 866,
+        "isContract": true
+      },
+      "prov": [
+        "r103",
+        "r104",
+        "r105",
+        "r107"
+      ]
+    },
+    {
+      "id": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "kind": "market",
+      "layer": 2,
+      "label": "wstETH/WETH LLTV 96.5%",
+      "data": {
+        "marketId": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "queueIndex": 2,
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "oracle": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "965000000000000000",
+        "liquidationIncentiveFactor": 1.010611419909045,
+        "totalSupplyAssets": "33887475257061196484738",
+        "totalBorrowAssets": "28328032324615452058973",
+        "liquidity": "5559442932445744425765",
+        "utilization": 0.835944,
+        "vaultSupplyAssets": "7970284437014749692738",
+        "vaultWithdrawable": "5559442932445744425765",
+        "vaultCap": "500000000000000000000000",
+        "enabled": true,
+        "borrowApr": 0.019071633970655998,
+        "supplyApr": 0.015942817987966058,
+        "oraclePrice": "1245938079126728715000000000000000000",
+        "supplyFromMetaMorphoVaults": "19294069233010648040649",
+        "supplyCoverageByVaults": 0.5693,
+        "peerVaultCount": 7,
+        "liquidationCapacityCollateral": "18638012000000000000000",
+        "collateralPostedByBorrowers": "25173557874035995670589"
+      },
+      "prov": [
+        "r114",
+        "r115",
+        "r116",
+        "r117",
+        "r118",
+        "r119",
+        "r120",
+        "r121",
+        "r122"
+      ]
+    },
+    {
+      "id": "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "kind": "market",
+      "layer": 2,
+      "label": "cbBTC/WETH LLTV 91.5%",
+      "data": {
+        "marketId": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+        "queueIndex": 3,
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "oracle": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "915000000000000000",
+        "liquidationIncentiveFactor": 1.0261672652642382,
+        "totalSupplyAssets": "26617885432229928503",
+        "totalBorrowAssets": "23179092472204791217",
+        "liquidity": "3438792960025137286",
+        "utilization": 0.870808,
+        "vaultSupplyAssets": "20116053728304155755",
+        "vaultWithdrawable": "3438792960025137286",
+        "vaultCap": "10000000000000000000000",
+        "enabled": true,
+        "borrowApr": 0.021116512001808002,
+        "supplyApr": 0.018388427583270424,
+        "oraclePrice": "332305335181901679603770140944705128031048168734",
+        "supplyFromMetaMorphoVaults": "20116053728304155755",
+        "supplyCoverageByVaults": 0.7557,
+        "peerVaultCount": 0,
+        "liquidationCapacityCollateral": "109400000",
+        "collateralPostedByBorrowers": "95791680"
+      },
+      "prov": [
+        "r123",
+        "r124",
+        "r125",
+        "r126",
+        "r127",
+        "r128",
+        "r129",
+        "r130",
+        "r131"
+      ]
+    },
+    {
+      "id": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "kind": "token",
+      "layer": 3,
+      "label": "cbBTC (collateral)",
+      "address": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "data": {
+        "symbol": "cbBTC",
+        "codeSize": 1550,
+        "isContract": true,
+        "zosImpl": "0x7458bfDC30034EB860B265E6068121D18Fa5Aa72",
+        "zosAdmin": "0x42D90b3faF2287475cdc863706Bd7cc3E938C2Af",
+        "owner": "0xbbc9b6001cf0a4FCcfFAB7bDda1ab16cafb9dB4F",
+        "masterMinter": "0x2B5b99D0096a1Ae5641f5041F780A33D004fc1D3",
+        "paused": false
+      },
+      "prov": [
+        "r129",
+        "r130",
+        "r132",
+        "r136",
+        "r137",
+        "r138",
+        "r142",
+        "r143"
+      ]
+    },
+    {
+      "id": "gov:0x42D90b3faF2287475cdc863706Bd7cc3E938C2Af",
+      "kind": "governance",
+      "layer": 4,
+      "label": "EOA (cbBTC proxy admin)",
+      "address": "0x42D90b3faF2287475cdc863706Bd7cc3E938C2Af",
+      "data": {
+        "codeSize": 0,
+        "isContract": false,
+        "role": "cbBTC proxy admin"
+      },
+      "prov": [
+        "r144"
+      ]
+    },
+    {
+      "id": "gov:0xbbc9b6001cf0a4FCcfFAB7bDda1ab16cafb9dB4F",
+      "kind": "governance",
+      "layer": 4,
+      "label": "EOA (cbBTC owner)",
+      "address": "0xbbc9b6001cf0a4FCcfFAB7bDda1ab16cafb9dB4F",
+      "data": {
+        "codeSize": 0,
+        "isContract": false,
+        "role": "cbBTC owner"
+      },
+      "prov": [
+        "r147"
+      ]
+    },
+    {
+      "id": "gov:0x2B5b99D0096a1Ae5641f5041F780A33D004fc1D3",
+      "kind": "governance",
+      "layer": 4,
+      "label": "EOA (cbBTC masterMinter)",
+      "address": "0x2B5b99D0096a1Ae5641f5041F780A33D004fc1D3",
+      "data": {
+        "codeSize": 0,
+        "isContract": false,
+        "role": "cbBTC masterMinter"
+      },
+      "prov": [
+        "r150"
+      ]
+    },
+    {
+      "id": "oracle:0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "kind": "oracle",
+      "layer": 3,
+      "label": "Oracle router (primary/backup, deviation challenge 2%)",
+      "address": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "data": {
+        "morphoOracleShape": false,
+        "immutable": true,
+        "feedCount": 0,
+        "codeSize": 45,
+        "isContract": true,
+        "eip1167Implementation": "0x9B4655239E91dc9E1f7599bB88FBA41B4542de5B",
+        "currentOracle": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+        "isPrimary": true,
+        "deviationThreshold": "20000000000000000",
+        "getDeviation": "5282208945328721",
+        "challengeTimelockDuration": "7200",
+        "healingTimelockDuration": "28800",
+        "isChallenged": false,
+        "router": true
+      },
+      "prov": [
+        "r131",
+        "r160",
+        "r169",
+        "r170",
+        "r171",
+        "r172",
+        "r173",
+        "r174",
+        "r175",
+        "r167",
+        "r168"
+      ]
+    },
+    {
+      "id": "oracle:0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "kind": "oracle",
+      "layer": 4,
+      "label": "Oracle: BTC / USD ÷ ETH / USD",
+      "address": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "data": {
+        "BASE_FEED_1": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+        "BASE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "QUOTE_FEED_1": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+        "QUOTE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "BASE_VAULT": "0x0000000000000000000000000000000000000000",
+        "QUOTE_VAULT": "0x0000000000000000000000000000000000000000",
+        "SCALE_FACTOR": "10000000000000000000000000000000000000000000000",
+        "morphoOracleShape": true,
+        "immutable": true,
+        "feedCount": 2,
+        "codeSize": 2598,
+        "isContract": true
+      },
+      "prov": [
+        "r176",
+        "r177",
+        "r178",
+        "r179",
+        "r180",
+        "r181",
+        "r182",
+        "r183"
+      ]
+    },
+    {
+      "id": "feed:0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "kind": "feed",
+      "layer": 4,
+      "label": "BTC / USD (Chainlink proxy)",
+      "address": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "data": {
+        "description": "BTC / USD",
+        "decimals": 8,
+        "answer": "8249573471599",
+        "updatedAt": "1791580727",
+        "ageSeconds": 1716,
+        "observedUpdates": {
+          "roundsObserved": 25,
+          "maxGapSeconds": 3636,
+          "medianGapSeconds": 3624,
+          "minTriggeredMovePct": 0.5128973812128834,
+          "medianMovePct": 0.17971669365761644,
+          "ageWithinObservedMax": true
+        },
+        "hasAggregator": true,
+        "codeSize": 9571,
+        "isContract": true,
+        "owner": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+      },
+      "prov": [
+        "r190",
+        "r191",
+        "r192",
+        "r193",
+        "r194",
+        "r200",
+        "r201",
+        "r202",
+        "r203",
+        "r204",
+        "r205",
+        "r206",
+        "r207",
+        "r208",
+        "r209",
+        "r210",
+        "r211",
+        "r212",
+        "r213",
+        "r214",
+        "r215",
+        "r216",
+        "r217",
+        "r218",
+        "r219",
+        "r220",
+        "r221",
+        "r222",
+        "r223",
+        "r224"
+      ]
+    },
+    {
+      "id": "agg:0x6f3F8d82694d52E6B6171A7b26A88c9554e7999b",
+      "kind": "aggregator",
+      "layer": 5,
+      "label": "Chainlink aggregator (off-chain node operators)",
+      "address": "0x6f3F8d82694d52E6B6171A7b26A88c9554e7999b",
+      "data": {
+        "minAnswer": "1",
+        "maxAnswer": "95780971304118053647396689196894323976171195136475135"
+      },
+      "prov": [
+        "r193",
+        "r225",
+        "r226"
+      ]
+    },
+    {
+      "id": "gov:0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "kind": "governance",
+      "layer": 5,
+      "label": "Safe 4/9 (feed owner)",
+      "address": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "data": {
+        "codeSize": 170,
+        "isContract": true,
+        "role": "feed owner",
+        "threshold": "4",
+        "owners": 9
+      },
+      "prov": [
+        "r227",
+        "r234",
+        "r235",
+        "r273",
+        "r280",
+        "r281",
+        "r333",
+        "r340",
+        "r341",
+        "r423",
+        "r430",
+        "r431",
+        "r492",
+        "r499",
+        "r500",
+        "r538",
+        "r545",
+        "r546",
+        "r630",
+        "r637",
+        "r638"
+      ]
+    },
+    {
+      "id": "feed:0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "kind": "feed",
+      "layer": 4,
+      "label": "ETH / USD (Chainlink proxy)",
+      "address": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "data": {
+        "description": "ETH / USD",
+        "decimals": 8,
+        "answer": "248252814451",
+        "updatedAt": "1791581015",
+        "ageSeconds": 1428,
+        "observedUpdates": {
+          "roundsObserved": 25,
+          "maxGapSeconds": 3636,
+          "medianGapSeconds": 3624,
+          "minTriggeredMovePct": 0.5003011720640184,
+          "medianMovePct": 0.2655606123258194,
+          "ageWithinObservedMax": true
+        },
+        "hasAggregator": true,
+        "codeSize": 9571,
+        "isContract": true,
+        "owner": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+      },
+      "prov": [
+        "r236",
+        "r237",
+        "r238",
+        "r239",
+        "r240",
+        "r246",
+        "r247",
+        "r248",
+        "r249",
+        "r250",
+        "r251",
+        "r252",
+        "r253",
+        "r254",
+        "r255",
+        "r256",
+        "r257",
+        "r258",
+        "r259",
+        "r260",
+        "r261",
+        "r262",
+        "r263",
+        "r264",
+        "r265",
+        "r266",
+        "r267",
+        "r268",
+        "r269",
+        "r270"
+      ]
+    },
+    {
+      "id": "agg:0xad88fc1A810379Ef4EFbF2D97EdE57e306178e5a",
+      "kind": "aggregator",
+      "layer": 5,
+      "label": "Chainlink aggregator (off-chain node operators)",
+      "address": "0xad88fc1A810379Ef4EFbF2D97EdE57e306178e5a",
+      "data": {
+        "minAnswer": "1",
+        "maxAnswer": "95780971304118053647396689196894323976171195136475135"
+      },
+      "prov": [
+        "r239",
+        "r271",
+        "r272"
+      ]
+    },
+    {
+      "id": "oracle:0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "kind": "oracle",
+      "layer": 4,
+      "label": "Oracle: cbBTC / USD ÷ ETH / USD",
+      "address": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "data": {
+        "BASE_FEED_1": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+        "BASE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "QUOTE_FEED_1": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+        "QUOTE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "BASE_VAULT": "0x0000000000000000000000000000000000000000",
+        "QUOTE_VAULT": "0x0000000000000000000000000000000000000000",
+        "SCALE_FACTOR": "10000000000000000000000000000000000000000000000",
+        "morphoOracleShape": true,
+        "immutable": true,
+        "feedCount": 2,
+        "codeSize": 2598,
+        "isContract": true
+      },
+      "prov": [
+        "r282",
+        "r283",
+        "r284",
+        "r285",
+        "r286",
+        "r287",
+        "r288",
+        "r289"
+      ]
+    },
+    {
+      "id": "feed:0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "kind": "feed",
+      "layer": 4,
+      "label": "cbBTC / USD (Chainlink proxy)",
+      "address": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "data": {
+        "description": "cbBTC / USD",
+        "decimals": 8,
+        "answer": "8293380842070",
+        "updatedAt": "1791546023",
+        "ageSeconds": 36420,
+        "observedUpdates": {
+          "roundsObserved": 25,
+          "maxGapSeconds": 86436,
+          "medianGapSeconds": 72960,
+          "minTriggeredMovePct": 2.0042633983578804,
+          "medianMovePct": 2.0051000494334303,
+          "ageWithinObservedMax": true
+        },
+        "hasAggregator": true,
+        "codeSize": 9571,
+        "isContract": true,
+        "owner": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+      },
+      "prov": [
+        "r296",
+        "r297",
+        "r298",
+        "r299",
+        "r300",
+        "r306",
+        "r307",
+        "r308",
+        "r309",
+        "r310",
+        "r311",
+        "r312",
+        "r313",
+        "r314",
+        "r315",
+        "r316",
+        "r317",
+        "r318",
+        "r319",
+        "r320",
+        "r321",
+        "r322",
+        "r323",
+        "r324",
+        "r325",
+        "r326",
+        "r327",
+        "r328",
+        "r329",
+        "r330"
+      ]
+    },
+    {
+      "id": "agg:0x5e2420cACE3650622f62B2713B2B3727FC8bCDd1",
+      "kind": "aggregator",
+      "layer": 5,
+      "label": "Chainlink aggregator (off-chain node operators)",
+      "address": "0x5e2420cACE3650622f62B2713B2B3727FC8bCDd1",
+      "data": {
+        "minAnswer": "1",
+        "maxAnswer": "95780971304118053647396689196894323976171195136475135"
+      },
+      "prov": [
+        "r299",
+        "r331",
+        "r332"
+      ]
+    },
+    {
+      "id": "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+      "kind": "market",
+      "layer": 2,
+      "label": "WBTC/WETH LLTV 91.5%",
+      "data": {
+        "marketId": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+        "queueIndex": 4,
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "oracle": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "915000000000000000",
+        "liquidationIncentiveFactor": 1.0261672652642382,
+        "totalSupplyAssets": "77772939737825012963",
+        "totalBorrowAssets": "54923403954837736028",
+        "liquidity": "22849535782987276935",
+        "utilization": 0.706201,
+        "vaultSupplyAssets": "0",
+        "vaultWithdrawable": "0",
+        "vaultCap": "10000000000000000000000",
+        "enabled": true,
+        "borrowApr": 0.003525792066288,
+        "supplyApr": 0.002489917883004652,
+        "oraclePrice": "333350389097313400000000000000000000000000000000"
+      },
+      "prov": [
+        "r342",
+        "r343",
+        "r344",
+        "r345",
+        "r346",
+        "r347",
+        "r348",
+        "r349",
+        "r350"
+      ]
+    },
+    {
+      "id": "token:0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "kind": "token",
+      "layer": 3,
+      "label": "WBTC (collateral)",
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "data": {
+        "symbol": "WBTC",
+        "codeSize": 4582,
+        "isContract": true,
+        "owner": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+        "paused": false
+      },
+      "prov": [
+        "r348",
+        "r349",
+        "r351",
+        "r357",
+        "r362"
+      ]
+    },
+    {
+      "id": "gov:0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "kind": "governance",
+      "layer": 4,
+      "label": "Contract (WBTC owner)",
+      "address": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "data": {
+        "codeSize": 4742,
+        "isContract": true,
+        "owner": "0x972Eed35781f09987a5c40F761f6A24623C570DE",
+        "role": "WBTC owner"
+      },
+      "prov": [
+        "r363",
+        "r369"
+      ]
+    },
+    {
+      "id": "oracle:0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "kind": "oracle",
+      "layer": 3,
+      "label": "Oracle: BTC / ETH",
+      "address": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "data": {
+        "BASE_FEED_1": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+        "BASE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "QUOTE_FEED_1": "0x0000000000000000000000000000000000000000",
+        "QUOTE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "BASE_VAULT": "0x0000000000000000000000000000000000000000",
+        "QUOTE_VAULT": "0x0000000000000000000000000000000000000000",
+        "SCALE_FACTOR": "10000000000000000000000000000",
+        "morphoOracleShape": true,
+        "immutable": true,
+        "feedCount": 1,
+        "codeSize": 2598,
+        "isContract": true
+      },
+      "prov": [
+        "r350",
+        "r372",
+        "r373",
+        "r374",
+        "r375",
+        "r376",
+        "r377",
+        "r378",
+        "r379"
+      ]
+    },
+    {
+      "id": "feed:0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "kind": "feed",
+      "layer": 4,
+      "label": "BTC / ETH (Chainlink proxy)",
+      "address": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "data": {
+        "description": "BTC / ETH",
+        "decimals": 18,
+        "answer": "33335038909731340000",
+        "updatedAt": "1791559583",
+        "ageSeconds": 22860,
+        "observedUpdates": {
+          "roundsObserved": 25,
+          "maxGapSeconds": 86436,
+          "medianGapSeconds": 86424,
+          "minTriggeredMovePct": 2.0301868138828163,
+          "medianMovePct": 0.6537473425431978,
+          "ageWithinObservedMax": true
+        },
+        "hasAggregator": true,
+        "codeSize": 9571,
+        "isContract": true,
+        "owner": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+      },
+      "prov": [
+        "r386",
+        "r387",
+        "r388",
+        "r389",
+        "r390",
+        "r396",
+        "r397",
+        "r398",
+        "r399",
+        "r400",
+        "r401",
+        "r402",
+        "r403",
+        "r404",
+        "r405",
+        "r406",
+        "r407",
+        "r408",
+        "r409",
+        "r410",
+        "r411",
+        "r412",
+        "r413",
+        "r414",
+        "r415",
+        "r416",
+        "r417",
+        "r418",
+        "r419",
+        "r420"
+      ]
+    },
+    {
+      "id": "agg:0xb0Fd105DAD6b9B07f36D5F8496712a36114279ad",
+      "kind": "aggregator",
+      "layer": 5,
+      "label": "Chainlink aggregator (off-chain node operators)",
+      "address": "0xb0Fd105DAD6b9B07f36D5F8496712a36114279ad",
+      "data": {
+        "minAnswer": "1",
+        "maxAnswer": "95780971304118053647396689196894323976171195136475135"
+      },
+      "prov": [
+        "r389",
+        "r421",
+        "r422"
+      ]
+    },
+    {
+      "id": "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+      "kind": "market",
+      "layer": 2,
+      "label": "cbBTC/WETH LLTV 91.5%",
+      "data": {
+        "marketId": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+        "queueIndex": 5,
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "oracle": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "915000000000000000",
+        "liquidationIncentiveFactor": 1.0261672652642382,
+        "totalSupplyAssets": "74775829900816519299",
+        "totalBorrowAssets": "22864116304661990645",
+        "liquidity": "51911713596154528654",
+        "utilization": 0.305768,
+        "vaultSupplyAssets": "0",
+        "vaultWithdrawable": "0",
+        "vaultCap": "10000000000000000000000",
+        "enabled": true,
+        "borrowApr": 0.00050480731656,
+        "supplyApr": 0.00015435392356991808,
+        "oraclePrice": "332556586962182170952132453646774259321342838030"
+      },
+      "prov": [
+        "r432",
+        "r433",
+        "r434",
+        "r435",
+        "r436",
+        "r437",
+        "r438",
+        "r439",
+        "r440"
+      ]
+    },
+    {
+      "id": "oracle:0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "kind": "oracle",
+      "layer": 3,
+      "label": "Oracle: BTC / USD ÷ ETH / USD",
+      "address": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "data": {
+        "BASE_FEED_1": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+        "BASE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "QUOTE_FEED_1": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+        "QUOTE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "BASE_VAULT": "0x0000000000000000000000000000000000000000",
+        "QUOTE_VAULT": "0x0000000000000000000000000000000000000000",
+        "SCALE_FACTOR": "10000000000000000000000000000000000000000000000",
+        "morphoOracleShape": true,
+        "immutable": true,
+        "feedCount": 2,
+        "codeSize": 2598,
+        "isContract": true
+      },
+      "prov": [
+        "r440",
+        "r441",
+        "r442",
+        "r443",
+        "r444",
+        "r445",
+        "r446",
+        "r447",
+        "r448"
+      ]
+    },
+    {
+      "id": "feed:0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "kind": "feed",
+      "layer": 4,
+      "label": "BTC / USD (Chainlink proxy)",
+      "address": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "data": {
+        "description": "BTC / USD",
+        "decimals": 8,
+        "answer": "8251735583226",
+        "updatedAt": "1791580979",
+        "ageSeconds": 1464,
+        "observedUpdates": {
+          "roundsObserved": 25,
+          "maxGapSeconds": 3636,
+          "medianGapSeconds": 3624,
+          "minTriggeredMovePct": 0.5006511796211451,
+          "medianMovePct": 0.1385563407558259,
+          "ageWithinObservedMax": true
+        },
+        "hasAggregator": true,
+        "codeSize": 9571,
+        "isContract": true,
+        "owner": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+      },
+      "prov": [
+        "r455",
+        "r456",
+        "r457",
+        "r458",
+        "r459",
+        "r465",
+        "r466",
+        "r467",
+        "r468",
+        "r469",
+        "r470",
+        "r471",
+        "r472",
+        "r473",
+        "r474",
+        "r475",
+        "r476",
+        "r477",
+        "r478",
+        "r479",
+        "r480",
+        "r481",
+        "r482",
+        "r483",
+        "r484",
+        "r485",
+        "r486",
+        "r487",
+        "r488",
+        "r489"
+      ]
+    },
+    {
+      "id": "agg:0x4a3411ac2948B33c69666B35cc6d055B27Ea84f1",
+      "kind": "aggregator",
+      "layer": 5,
+      "label": "Chainlink aggregator (off-chain node operators)",
+      "address": "0x4a3411ac2948B33c69666B35cc6d055B27Ea84f1",
+      "data": {
+        "minAnswer": "1",
+        "maxAnswer": "95780971304118053647396689196894323976171195136475135"
+      },
+      "prov": [
+        "r458",
+        "r490",
+        "r491"
+      ]
+    },
+    {
+      "id": "feed:0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "kind": "feed",
+      "layer": 4,
+      "label": "ETH / USD (Chainlink proxy)",
+      "address": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "data": {
+        "description": "ETH / USD",
+        "decimals": 8,
+        "answer": "248130270358",
+        "updatedAt": "1791580319",
+        "ageSeconds": 2124,
+        "observedUpdates": {
+          "roundsObserved": 25,
+          "maxGapSeconds": 3648,
+          "medianGapSeconds": 3624,
+          "minTriggeredMovePct": 0.5018980521642377,
+          "medianMovePct": 0.26784101900311774,
+          "ageWithinObservedMax": true
+        },
+        "hasAggregator": true,
+        "codeSize": 9571,
+        "isContract": true,
+        "owner": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+      },
+      "prov": [
+        "r501",
+        "r502",
+        "r503",
+        "r504",
+        "r505",
+        "r511",
+        "r512",
+        "r513",
+        "r514",
+        "r515",
+        "r516",
+        "r517",
+        "r518",
+        "r519",
+        "r520",
+        "r521",
+        "r522",
+        "r523",
+        "r524",
+        "r525",
+        "r526",
+        "r527",
+        "r528",
+        "r529",
+        "r530",
+        "r531",
+        "r532",
+        "r533",
+        "r534",
+        "r535"
+      ]
+    },
+    {
+      "id": "agg:0x7d4E742018fb52E48b08BE73d041C18B21de6Fb5",
+      "kind": "aggregator",
+      "layer": 5,
+      "label": "Chainlink aggregator (off-chain node operators)",
+      "address": "0x7d4E742018fb52E48b08BE73d041C18B21de6Fb5",
+      "data": {
+        "minAnswer": "1",
+        "maxAnswer": "95780971304118053647396689196894323976171195136475135"
+      },
+      "prov": [
+        "r504",
+        "r536",
+        "r537"
+      ]
+    },
+    {
+      "id": "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+      "kind": "market",
+      "layer": 2,
+      "label": "WBTC/WETH LLTV 91.5%",
+      "data": {
+        "marketId": "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+        "queueIndex": 6,
+        "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "collateralToken": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "oracle": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+        "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "lltv": "915000000000000000",
+        "liquidationIncentiveFactor": 1.0261672652642382,
+        "totalSupplyAssets": "440011670201860",
+        "totalBorrowAssets": "400803899065931",
+        "liquidity": "39207771135929",
+        "utilization": 0.910893,
+        "vaultSupplyAssets": "0",
+        "vaultWithdrawable": "0",
+        "vaultCap": "10000000000000000000000",
+        "enabled": true,
+        "borrowApr": 0.010176965625168,
+        "supplyApr": 0.009270126749206156,
+        "oraclePrice": "332305335181901679603770140944705128031048168734"
+      },
+      "prov": [
+        "r547",
+        "r548",
+        "r549",
+        "r550",
+        "r551",
+        "r552",
+        "r553",
+        "r554",
+        "r555"
+      ]
+    },
+    {
+      "id": "oracle:0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "kind": "oracle",
+      "layer": 3,
+      "label": "Oracle router (primary/backup, deviation challenge 2%)",
+      "address": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "data": {
+        "morphoOracleShape": false,
+        "immutable": true,
+        "feedCount": 0,
+        "codeSize": 45,
+        "isContract": true,
+        "eip1167Implementation": "0x9B4655239E91dc9E1f7599bB88FBA41B4542de5B",
+        "currentOracle": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+        "isPrimary": true,
+        "deviationThreshold": "20000000000000000",
+        "getDeviation": "1410336246842140",
+        "challengeTimelockDuration": "7200",
+        "healingTimelockDuration": "28800",
+        "isChallenged": false,
+        "router": true
+      },
+      "prov": [
+        "r555",
+        "r563",
+        "r572",
+        "r573",
+        "r574",
+        "r575",
+        "r576",
+        "r577",
+        "r578",
+        "r570",
+        "r571"
+      ]
+    },
+    {
+      "id": "oracle:0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "kind": "oracle",
+      "layer": 4,
+      "label": "Oracle: WBTC / BTC × BTC / USD ÷ ETH / USD",
+      "address": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "data": {
+        "BASE_FEED_1": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+        "BASE_FEED_2": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+        "QUOTE_FEED_1": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+        "QUOTE_FEED_2": "0x0000000000000000000000000000000000000000",
+        "BASE_VAULT": "0x0000000000000000000000000000000000000000",
+        "QUOTE_VAULT": "0x0000000000000000000000000000000000000000",
+        "SCALE_FACTOR": "100000000000000000000000000000000000000",
+        "morphoOracleShape": true,
+        "immutable": true,
+        "feedCount": 3,
+        "codeSize": 2598,
+        "isContract": true
+      },
+      "prov": [
+        "r579",
+        "r580",
+        "r581",
+        "r582",
+        "r583",
+        "r584",
+        "r585",
+        "r586"
+      ]
+    },
+    {
+      "id": "feed:0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "kind": "feed",
+      "layer": 4,
+      "label": "WBTC / BTC (Chainlink proxy)",
+      "address": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "data": {
+        "description": "WBTC / BTC",
+        "decimals": 8,
+        "answer": "99833000",
+        "updatedAt": "1791580955",
+        "ageSeconds": 1488,
+        "observedUpdates": {
+          "roundsObserved": 25,
+          "maxGapSeconds": 86436,
+          "medianGapSeconds": 86424,
+          "minTriggeredMovePct": null,
+          "medianMovePct": 0.02186878139036319,
+          "ageWithinObservedMax": true
+        },
+        "hasAggregator": true,
+        "codeSize": 9571,
+        "isContract": true,
+        "owner": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+      },
+      "prov": [
+        "r593",
+        "r594",
+        "r595",
+        "r596",
+        "r597",
+        "r603",
+        "r604",
+        "r605",
+        "r606",
+        "r607",
+        "r608",
+        "r609",
+        "r610",
+        "r611",
+        "r612",
+        "r613",
+        "r614",
+        "r615",
+        "r616",
+        "r617",
+        "r618",
+        "r619",
+        "r620",
+        "r621",
+        "r622",
+        "r623",
+        "r624",
+        "r625",
+        "r626",
+        "r627"
+      ]
+    },
+    {
+      "id": "agg:0xA5e3A55cEa42B86560a5215094981c300899199D",
+      "kind": "aggregator",
+      "layer": 5,
+      "label": "Chainlink aggregator (off-chain node operators)",
+      "address": "0xA5e3A55cEa42B86560a5215094981c300899199D",
+      "data": {
+        "minAnswer": "1",
+        "maxAnswer": "95780971304118053647396689196894323976171195136475135"
+      },
+      "prov": [
+        "r596",
+        "r628",
+        "r629"
+      ]
+    },
+    {
+      "id": "holders:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "kind": "holders",
+      "layer": 1,
+      "label": "Holders: top 25 = 99.9% of shares",
+      "data": {
+        "coverage": 0.999185,
+        "largestShare": 0.536098,
+        "top3Share": 0.8919129999999998
+      },
+      "prov": [
+        "r639",
+        "r640",
+        "r641"
+      ]
+    },
+    {
+      "id": "peer:0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Gauntlet WETH Prime (peer vault)",
+      "address": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "data": {
+        "totalAssets": "3129308993996307816570",
+        "version": "MetaMorpho V1.0",
+        "publicAllocatorEnabled": true
+      },
+      "prov": [
+        "r642",
+        "r646",
+        "r647",
+        "r651",
+        "r652",
+        "r653",
+        "r654",
+        "r656",
+        "r657",
+        "r658"
+      ]
+    },
+    {
+      "id": "peer:0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "SingularV ETH (peer vault)",
+      "address": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "data": {
+        "totalAssets": "41696699590427113693",
+        "version": "MetaMorpho V1.1",
+        "publicAllocatorEnabled": false
+      },
+      "prov": [
+        "r642",
+        "r659",
+        "r660",
+        "r664",
+        "r666",
+        "r667",
+        "r668"
+      ]
+    },
+    {
+      "id": "peer:0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Re7 WETH (peer vault)",
+      "address": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "data": {
+        "totalAssets": "288091741667553008410",
+        "version": "MetaMorpho V1.0",
+        "publicAllocatorEnabled": false
+      },
+      "prov": [
+        "r642",
+        "r669",
+        "r670",
+        "r674",
+        "r676",
+        "r677",
+        "r678"
+      ]
+    },
+    {
+      "id": "peer:0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "MEV Capital wETH (peer vault)",
+      "address": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "data": {
+        "totalAssets": "1857085896129683972586",
+        "version": "MetaMorpho V1.0",
+        "publicAllocatorEnabled": false
+      },
+      "prov": [
+        "r642",
+        "r679",
+        "r680",
+        "r684",
+        "r686",
+        "r687",
+        "r688"
+      ]
+    },
+    {
+      "id": "peer:0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Yearn OG WETH (peer vault)",
+      "address": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "data": {
+        "totalAssets": "926741206794799208410",
+        "version": "MetaMorpho V1.1",
+        "publicAllocatorEnabled": false
+      },
+      "prov": [
+        "r642",
+        "r689",
+        "r690",
+        "r694",
+        "r696",
+        "r697",
+        "r698"
+      ]
+    },
+    {
+      "id": "peer:0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Vault Bridge WETH (peer vault)",
+      "address": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "data": {
+        "totalAssets": "6604026177135432340255",
+        "version": "MetaMorpho V1.1",
+        "publicAllocatorEnabled": true
+      },
+      "prov": [
+        "r642",
+        "r699",
+        "r700",
+        "r704",
+        "r705",
+        "r706",
+        "r707",
+        "r709",
+        "r710",
+        "r711"
+      ]
+    },
+    {
+      "id": "peer:0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Gauntlet LRT Core (peer vault)",
+      "address": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "data": {
+        "totalAssets": "875884334084614873775",
+        "version": "MetaMorpho V1.0",
+        "publicAllocatorEnabled": true
+      },
+      "prov": [
+        "r642",
+        "r712",
+        "r713",
+        "r717",
+        "r718",
+        "r719",
+        "r720",
+        "r721",
+        "r722",
+        "r723",
+        "r724",
+        "r725",
+        "r726",
+        "r728",
+        "r729",
+        "r730"
+      ]
+    },
+    {
+      "id": "peer:0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "kind": "peerVault",
+      "layer": 2,
+      "label": "Index Coop hyETH (peer vault)",
+      "address": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "data": {
+        "totalAssets": "750555043554324840962",
+        "version": "MetaMorpho V1.1",
+        "publicAllocatorEnabled": true
+      },
+      "prov": [
+        "r642",
+        "r731",
+        "r732",
+        "r736",
+        "r737",
+        "r738",
+        "r739",
+        "r741",
+        "r742",
+        "r743"
+      ]
+    },
+    {
+      "id": "borrowers:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "kind": "borrowers",
+      "layer": 3,
+      "label": "49 borrowers (100.00% of debt identified)",
+      "data": {
+        "count": 49,
+        "coverage": 1,
+        "largestDebt": "6167501127655553362197",
+        "largestShare": 0.7935,
+        "maxLtv": 0.943639
+      },
+      "prov": [
+        "r744",
+        "r745"
+      ]
+    },
+    {
+      "id": "borrowers:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "kind": "borrowers",
+      "layer": 3,
+      "label": "113 borrowers (100.00% of debt identified)",
+      "data": {
+        "count": 113,
+        "coverage": 1,
+        "largestDebt": "5600741273009924664481",
+        "largestShare": 0.1977,
+        "maxLtv": 0.964759
+      },
+      "prov": [
+        "r746",
+        "r747"
+      ]
+    },
+    {
+      "id": "borrowers:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "kind": "borrowers",
+      "layer": 3,
+      "label": "4 borrowers (100.00% of debt identified)",
+      "data": {
+        "count": 4,
+        "coverage": 1,
+        "largestDebt": "22112199826886500318",
+        "largestShare": 0.9539,
+        "maxLtv": 0.729728
+      },
+      "prov": [
+        "r748",
+        "r749"
+      ]
+    },
+    {
+      "id": "dex:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Uniswap V3 0.01% pool",
+      "address": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r751",
+        "r771",
+        "r751",
+        "r787"
+      ]
+    },
+    {
+      "id": "dex:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Uniswap V3 0.05% pool",
+      "address": "0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r752",
+        "r772",
+        "r752",
+        "r788"
+      ]
+    },
+    {
+      "id": "dex:0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Uniswap V3 0.3% pool",
+      "address": "0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r753",
+        "r773",
+        "r753",
+        "r789"
+      ]
+    },
+    {
+      "id": "dex:0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Curve pool 0xB8459e…",
+      "address": "0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r755",
+        "r756",
+        "r774",
+        "r755",
+        "r756",
+        "r790"
+      ]
+    },
+    {
+      "id": "dex:0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Curve pool 0x76817a…",
+      "address": "0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r755",
+        "r757",
+        "r775",
+        "r755",
+        "r757",
+        "r791"
+      ]
+    },
+    {
+      "id": "dex:0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Uniswap V3 0.01% pool",
+      "address": "0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r750",
+        "r758",
+        "r776",
+        "r750",
+        "r758",
+        "r792"
+      ]
+    },
+    {
+      "id": "dex:0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Uniswap V3 0.05% pool",
+      "address": "0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r750",
+        "r759",
+        "r777",
+        "r750",
+        "r759",
+        "r793"
+      ]
+    },
+    {
+      "id": "dex:0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Uniswap V3 0.3% pool",
+      "address": "0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r750",
+        "r760",
+        "r778",
+        "r750",
+        "r760",
+        "r794"
+      ]
+    },
+    {
+      "id": "dex:0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Uniswap V3 1% pool",
+      "address": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r750",
+        "r761",
+        "r779",
+        "r750",
+        "r761",
+        "r795"
+      ]
+    },
+    {
+      "id": "dex:0x828b154032950C8ff7CF8085D841723Db2696056",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Curve pool 0x828b15…",
+      "address": "0x828b154032950C8ff7CF8085D841723Db2696056",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r750",
+        "r762",
+        "r763",
+        "r780",
+        "r750",
+        "r762",
+        "r763",
+        "r796"
+      ]
+    },
+    {
+      "id": "dex:0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Curve pool 0x9D1784…",
+      "address": "0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r750",
+        "r762",
+        "r764",
+        "r781",
+        "r750",
+        "r762",
+        "r764",
+        "r797"
+      ]
+    },
+    {
+      "id": "dex:0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Curve pool 0x53E4a0…",
+      "address": "0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r750",
+        "r762",
+        "r765",
+        "r782",
+        "r750",
+        "r762",
+        "r765",
+        "r798"
+      ]
+    },
+    {
+      "id": "dex:0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Curve pool 0x85ea32…",
+      "address": "0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r750",
+        "r762",
+        "r766",
+        "r783",
+        "r750",
+        "r762",
+        "r766",
+        "r799"
+      ]
+    },
+    {
+      "id": "dex:0x108e6E958061e2769b2299C56400217C667fEb3E",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Curve pool 0x108e6E…",
+      "address": "0x108e6E958061e2769b2299C56400217C667fEb3E",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r750",
+        "r762",
+        "r767",
+        "r784",
+        "r750",
+        "r762",
+        "r767",
+        "r800"
+      ]
+    },
+    {
+      "id": "dex:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Curve pool 0xDC2431…",
+      "address": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r750",
+        "r768",
+        "r769",
+        "r785",
+        "r750",
+        "r768",
+        "r769",
+        "r801"
+      ]
+    },
+    {
+      "id": "dex:0x21E27a5E5513D6e65C4f830167390997aA84843a",
+      "kind": "dex",
+      "layer": 4,
+      "label": "unwrap → Curve pool 0x21E27a…",
+      "address": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r750",
+        "r768",
+        "r770",
+        "r786",
+        "r750",
+        "r768",
+        "r770",
+        "r802"
+      ]
+    },
+    {
+      "id": "dex:0x66Bb2eCF89C92a11044a46411d0c9E0BC9E31340",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Uniswap V3 0.01% pool",
+      "address": "0x66Bb2eCF89C92a11044a46411d0c9E0BC9E31340",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r804",
+        "r810"
+      ]
+    },
+    {
+      "id": "dex:0x66DD1ACc5da42502ddD469277aed509D1de22b69",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Uniswap V3 0.05% pool",
+      "address": "0x66DD1ACc5da42502ddD469277aed509D1de22b69",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r805",
+        "r811"
+      ]
+    },
+    {
+      "id": "dex:0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Uniswap V3 0.3% pool",
+      "address": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r806",
+        "r812"
+      ]
+    },
+    {
+      "id": "dex:0xce1790BB9f2327525d5e99B2C2b92EB5a486c6f8",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Uniswap V3 1% pool",
+      "address": "0xce1790BB9f2327525d5e99B2C2b92EB5a486c6f8",
+      "data": {
+        "venue": "uniswap-v3"
+      },
+      "prov": [
+        "r807",
+        "r813"
+      ]
+    },
+    {
+      "id": "dex:0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+      "kind": "dex",
+      "layer": 4,
+      "label": "Curve pool 0x8a4f25…",
+      "address": "0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+      "data": {
+        "venue": "curve"
+      },
+      "prov": [
+        "r808",
+        "r809",
+        "r814"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "chain:1",
+      "rel": "settles on",
+      "prov": [
+        "r1"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "factory:0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "rel": "created by (isMetaMorpho=true)",
+      "prov": [
+        "r2"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "gov:0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "rel": "owner (can change caps/queues/fees; timelock 604800s)",
+      "prov": [
+        "r9"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "gov:0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "rel": "curator (can change caps/queues/fees; timelock 604800s)",
+      "prov": [
+        "r10"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "gov:0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "rel": "guardian (can change caps/queues/fees: veto only; timelock 604800s)",
+      "prov": [
+        "r11"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "alloc:0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "rel": "allocator (can move this vault's funds between its markets)",
+      "prov": [
+        "r15"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "morpho:0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "rel": "supplies through",
+      "prov": [
+        "r8"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "market:0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+      "rel": "withdraw queue #0",
+      "data": {
+        "vaultSupplyAssets": "0",
+        "withdrawable": "0"
+      },
+      "prov": [
+        "r59",
+        "r63"
+      ]
+    },
+    {
+      "from": "market:0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+      "to": "morpho:0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "rel": "lives in",
+      "prov": [
+        "r61"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "rel": "withdraw queue #1",
+      "data": {
+        "vaultSupplyAssets": "1727775218217080336795",
+        "withdrawable": "1384023589801663728173"
+      },
+      "prov": [
+        "r64",
+        "r68"
+      ]
+    },
+    {
+      "from": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "to": "morpho:0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "rel": "lives in",
+      "prov": [
+        "r66"
+      ]
+    },
+    {
+      "from": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "to": "irm:0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "rel": "borrow rate set by",
+      "data": {
+        "borrowApr": 0.018751841964288
+      },
+      "prov": [
+        "r66",
+        "r69"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "yield:0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "rel": "wraps (stEthPerToken = 1245938079126728715)",
+      "prov": [
+        "r80",
+        "r81"
+      ]
+    },
+    {
+      "from": "yield:0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "to": "gov:0xb8FFC3Cd6e7Cf5a098A1c92F48009765B24088Dc",
+      "rel": "upgradeable via Aragon kernel / Lido DAO",
+      "prov": [
+        "r88",
+        "r87"
+      ]
+    },
+    {
+      "from": "yield:0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "to": "chain:1",
+      "rel": "rewards & slashing from Ethereum validators",
+      "prov": [
+        "r85"
+      ]
+    },
+    {
+      "from": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "to": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "rel": "collateral",
+      "prov": [
+        "r70",
+        "r71"
+      ]
+    },
+    {
+      "from": "oracle:0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "to": "feed:0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "rel": "BASE_FEED_1",
+      "prov": [
+        "r72",
+        "r89",
+        "r90",
+        "r91",
+        "r92",
+        "r93",
+        "r94",
+        "r95"
+      ]
+    },
+    {
+      "from": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "to": "oracle:0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "rel": "priced by (liquidations & borrow limits)",
+      "prov": [
+        "r66"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "withdraw queue #2",
+      "data": {
+        "vaultSupplyAssets": "7970284437014749692738",
+        "withdrawable": "5559442932445744425765"
+      },
+      "prov": [
+        "r114",
+        "r118"
+      ]
+    },
+    {
+      "from": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "to": "morpho:0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "rel": "lives in",
+      "prov": [
+        "r116"
+      ]
+    },
+    {
+      "from": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "to": "irm:0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "rel": "borrow rate set by",
+      "data": {
+        "borrowApr": 0.019071633970655998
+      },
+      "prov": [
+        "r116",
+        "r119"
+      ]
+    },
+    {
+      "from": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "to": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "rel": "collateral",
+      "prov": [
+        "r120",
+        "r121"
+      ]
+    },
+    {
+      "from": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "to": "oracle:0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "rel": "priced by (liquidations & borrow limits)",
+      "prov": [
+        "r116"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "rel": "withdraw queue #3",
+      "data": {
+        "vaultSupplyAssets": "20116053728304155755",
+        "withdrawable": "3438792960025137286"
+      },
+      "prov": [
+        "r123",
+        "r127"
+      ]
+    },
+    {
+      "from": "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "to": "morpho:0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "rel": "lives in",
+      "prov": [
+        "r125"
+      ]
+    },
+    {
+      "from": "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "to": "irm:0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "rel": "borrow rate set by",
+      "data": {
+        "borrowApr": 0.021116512001808002
+      },
+      "prov": [
+        "r125",
+        "r128"
+      ]
+    },
+    {
+      "from": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "to": "gov:0x42D90b3faF2287475cdc863706Bd7cc3E938C2Af",
+      "rel": "upgradeable proxy (upgrade admin 0x42D90b3f…); implementation 0x7458bfDC30034EB860B265E6068121D18Fa5Aa72",
+      "prov": [
+        "r132",
+        "r136",
+        "r137",
+        "r138"
+      ]
+    },
+    {
+      "from": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "to": "gov:0xbbc9b6001cf0a4FCcfFAB7bDda1ab16cafb9dB4F",
+      "rel": "owner() (privileged role on token)",
+      "prov": [
+        "r132",
+        "r136",
+        "r137",
+        "r138"
+      ]
+    },
+    {
+      "from": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "to": "gov:0x2B5b99D0096a1Ae5641f5041F780A33D004fc1D3",
+      "rel": "masterMinter (controls minting: custodial issuance)",
+      "prov": [
+        "r142"
+      ]
+    },
+    {
+      "from": "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "to": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "rel": "collateral",
+      "prov": [
+        "r129",
+        "r130"
+      ]
+    },
+    {
+      "from": "feed:0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "to": "agg:0x6f3F8d82694d52E6B6171A7b26A88c9554e7999b",
+      "rel": "reads answers from",
+      "prov": [
+        "r193"
+      ]
+    },
+    {
+      "from": "feed:0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "to": "gov:0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "rel": "owner (can switch aggregator)",
+      "prov": [
+        "r194",
+        "r200"
+      ]
+    },
+    {
+      "from": "oracle:0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "to": "feed:0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "rel": "BASE_FEED_1",
+      "prov": [
+        "r176",
+        "r177",
+        "r178",
+        "r179",
+        "r180",
+        "r181",
+        "r182"
+      ]
+    },
+    {
+      "from": "feed:0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "to": "agg:0xad88fc1A810379Ef4EFbF2D97EdE57e306178e5a",
+      "rel": "reads answers from",
+      "prov": [
+        "r239"
+      ]
+    },
+    {
+      "from": "feed:0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "to": "gov:0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "rel": "owner (can switch aggregator)",
+      "prov": [
+        "r240",
+        "r246"
+      ]
+    },
+    {
+      "from": "oracle:0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "to": "feed:0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "rel": "QUOTE_FEED_1",
+      "prov": [
+        "r176",
+        "r177",
+        "r178",
+        "r179",
+        "r180",
+        "r181",
+        "r182"
+      ]
+    },
+    {
+      "from": "oracle:0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "to": "oracle:0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "rel": "primary leg",
+      "prov": [
+        "r167"
+      ]
+    },
+    {
+      "from": "feed:0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "to": "agg:0x5e2420cACE3650622f62B2713B2B3727FC8bCDd1",
+      "rel": "reads answers from",
+      "prov": [
+        "r299"
+      ]
+    },
+    {
+      "from": "feed:0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "to": "gov:0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "rel": "owner (can switch aggregator)",
+      "prov": [
+        "r300",
+        "r306"
+      ]
+    },
+    {
+      "from": "oracle:0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "to": "feed:0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "rel": "BASE_FEED_1",
+      "prov": [
+        "r282",
+        "r283",
+        "r284",
+        "r285",
+        "r286",
+        "r287",
+        "r288"
+      ]
+    },
+    {
+      "from": "oracle:0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "to": "feed:0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "rel": "QUOTE_FEED_1",
+      "prov": [
+        "r282",
+        "r283",
+        "r284",
+        "r285",
+        "r286",
+        "r287",
+        "r288"
+      ]
+    },
+    {
+      "from": "oracle:0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "to": "oracle:0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "rel": "backup leg",
+      "prov": [
+        "r168"
+      ]
+    },
+    {
+      "from": "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "to": "oracle:0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "rel": "priced by (liquidations & borrow limits)",
+      "prov": [
+        "r125"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+      "rel": "withdraw queue #4",
+      "data": {
+        "vaultSupplyAssets": "0",
+        "withdrawable": "0"
+      },
+      "prov": [
+        "r342",
+        "r346"
+      ]
+    },
+    {
+      "from": "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+      "to": "morpho:0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "rel": "lives in",
+      "prov": [
+        "r344"
+      ]
+    },
+    {
+      "from": "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+      "to": "irm:0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "rel": "borrow rate set by",
+      "data": {
+        "borrowApr": 0.003525792066288
+      },
+      "prov": [
+        "r344",
+        "r347"
+      ]
+    },
+    {
+      "from": "token:0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "to": "gov:0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "rel": "owner() (privileged role on token)",
+      "prov": [
+        "r351",
+        "r357"
+      ]
+    },
+    {
+      "from": "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+      "to": "token:0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "rel": "collateral",
+      "prov": [
+        "r348",
+        "r349"
+      ]
+    },
+    {
+      "from": "feed:0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "to": "agg:0xb0Fd105DAD6b9B07f36D5F8496712a36114279ad",
+      "rel": "reads answers from",
+      "prov": [
+        "r389"
+      ]
+    },
+    {
+      "from": "feed:0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "to": "gov:0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "rel": "owner (can switch aggregator)",
+      "prov": [
+        "r390",
+        "r396"
+      ]
+    },
+    {
+      "from": "oracle:0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "to": "feed:0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "rel": "BASE_FEED_1",
+      "prov": [
+        "r350",
+        "r372",
+        "r373",
+        "r374",
+        "r375",
+        "r376",
+        "r377",
+        "r378"
+      ]
+    },
+    {
+      "from": "market:0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+      "to": "oracle:0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "rel": "priced by (liquidations & borrow limits)",
+      "prov": [
+        "r344"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+      "rel": "withdraw queue #5",
+      "data": {
+        "vaultSupplyAssets": "0",
+        "withdrawable": "0"
+      },
+      "prov": [
+        "r432",
+        "r436"
+      ]
+    },
+    {
+      "from": "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+      "to": "morpho:0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "rel": "lives in",
+      "prov": [
+        "r434"
+      ]
+    },
+    {
+      "from": "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+      "to": "irm:0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "rel": "borrow rate set by",
+      "data": {
+        "borrowApr": 0.00050480731656
+      },
+      "prov": [
+        "r434",
+        "r437"
+      ]
+    },
+    {
+      "from": "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+      "to": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "rel": "collateral",
+      "prov": [
+        "r438",
+        "r439"
+      ]
+    },
+    {
+      "from": "feed:0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "to": "agg:0x4a3411ac2948B33c69666B35cc6d055B27Ea84f1",
+      "rel": "reads answers from",
+      "prov": [
+        "r458"
+      ]
+    },
+    {
+      "from": "feed:0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "to": "gov:0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "rel": "owner (can switch aggregator)",
+      "prov": [
+        "r459",
+        "r465"
+      ]
+    },
+    {
+      "from": "oracle:0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "to": "feed:0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "rel": "BASE_FEED_1",
+      "prov": [
+        "r440",
+        "r441",
+        "r442",
+        "r443",
+        "r444",
+        "r445",
+        "r446",
+        "r447"
+      ]
+    },
+    {
+      "from": "feed:0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "to": "agg:0x7d4E742018fb52E48b08BE73d041C18B21de6Fb5",
+      "rel": "reads answers from",
+      "prov": [
+        "r504"
+      ]
+    },
+    {
+      "from": "feed:0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "to": "gov:0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "rel": "owner (can switch aggregator)",
+      "prov": [
+        "r505",
+        "r511"
+      ]
+    },
+    {
+      "from": "oracle:0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "to": "feed:0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "rel": "QUOTE_FEED_1",
+      "prov": [
+        "r440",
+        "r441",
+        "r442",
+        "r443",
+        "r444",
+        "r445",
+        "r446",
+        "r447"
+      ]
+    },
+    {
+      "from": "market:0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+      "to": "oracle:0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "rel": "priced by (liquidations & borrow limits)",
+      "prov": [
+        "r434"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+      "rel": "withdraw queue #6",
+      "data": {
+        "vaultSupplyAssets": "0",
+        "withdrawable": "0"
+      },
+      "prov": [
+        "r547",
+        "r551"
+      ]
+    },
+    {
+      "from": "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+      "to": "morpho:0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "rel": "lives in",
+      "prov": [
+        "r549"
+      ]
+    },
+    {
+      "from": "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+      "to": "irm:0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "rel": "borrow rate set by",
+      "data": {
+        "borrowApr": 0.010176965625168
+      },
+      "prov": [
+        "r549",
+        "r552"
+      ]
+    },
+    {
+      "from": "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+      "to": "token:0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "rel": "collateral",
+      "prov": [
+        "r553",
+        "r554"
+      ]
+    },
+    {
+      "from": "oracle:0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "to": "oracle:0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "rel": "primary leg",
+      "prov": [
+        "r570"
+      ]
+    },
+    {
+      "from": "feed:0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "to": "agg:0xA5e3A55cEa42B86560a5215094981c300899199D",
+      "rel": "reads answers from",
+      "prov": [
+        "r596"
+      ]
+    },
+    {
+      "from": "feed:0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "to": "gov:0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "rel": "owner (can switch aggregator)",
+      "prov": [
+        "r597",
+        "r603"
+      ]
+    },
+    {
+      "from": "oracle:0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "to": "feed:0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "rel": "BASE_FEED_1",
+      "prov": [
+        "r579",
+        "r580",
+        "r581",
+        "r582",
+        "r583",
+        "r584",
+        "r585"
+      ]
+    },
+    {
+      "from": "oracle:0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "to": "feed:0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "rel": "BASE_FEED_2",
+      "prov": [
+        "r579",
+        "r580",
+        "r581",
+        "r582",
+        "r583",
+        "r584",
+        "r585"
+      ]
+    },
+    {
+      "from": "oracle:0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "to": "feed:0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "rel": "QUOTE_FEED_1",
+      "prov": [
+        "r579",
+        "r580",
+        "r581",
+        "r582",
+        "r583",
+        "r584",
+        "r585"
+      ]
+    },
+    {
+      "from": "oracle:0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "to": "oracle:0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "rel": "backup leg",
+      "prov": [
+        "r571"
+      ]
+    },
+    {
+      "from": "market:0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+      "to": "oracle:0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "rel": "priced by (liquidations & borrow limits)",
+      "prov": [
+        "r549"
+      ]
+    },
+    {
+      "from": "vault:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "to": "holders:0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "rel": "owned by (concentration = who can drain liquidity first)",
+      "prov": [
+        "r639",
+        "r640",
+        "r641"
+      ]
+    },
+    {
+      "from": "peer:0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "rel": "also lends here (queue #2)",
+      "data": {
+        "supplyAssets": "417615503945564679677"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r649"
+      ]
+    },
+    {
+      "from": "peer:0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "also lends here (queue #1)",
+      "data": {
+        "supplyAssets": "2627960979864850232700"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r649"
+      ]
+    },
+    {
+      "from": "peer:0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "also lends here (queue #0)",
+      "data": {
+        "supplyAssets": "33300879825697066477"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r662"
+      ]
+    },
+    {
+      "from": "peer:0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "rel": "also lends here (queue #1)",
+      "data": {
+        "supplyAssets": "288090902360076082968"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r672"
+      ]
+    },
+    {
+      "from": "peer:0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "rel": "also lends here (queue #0)",
+      "data": {
+        "supplyAssets": "3327389899448766424"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r682"
+      ]
+    },
+    {
+      "from": "peer:0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "also lends here (queue #3)",
+      "data": {
+        "supplyAssets": "1853752586338886957346"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r682"
+      ]
+    },
+    {
+      "from": "peer:0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "to": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "rel": "also lends here (queue #2)",
+      "data": {
+        "supplyAssets": "137743430246158467071"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r692"
+      ]
+    },
+    {
+      "from": "peer:0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "also lends here (queue #0)",
+      "data": {
+        "supplyAssets": "552168586813566341082"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r692"
+      ]
+    },
+    {
+      "from": "peer:0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "also lends here (queue #0)",
+      "data": {
+        "supplyAssets": "4859033677419910223013"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r702"
+      ]
+    },
+    {
+      "from": "peer:0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "also lends here (queue #1)",
+      "data": {
+        "supplyAssets": "647015232293325021063"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r715"
+      ]
+    },
+    {
+      "from": "peer:0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "to": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "also lends here (queue #1)",
+      "data": {
+        "supplyAssets": "750552853439662506230"
+      },
+      "prov": [
+        "r642",
+        "r645",
+        "r734"
+      ]
+    },
+    {
+      "from": "market:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "to": "borrowers:0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "rel": "lent to (repayment is the only way idle liquidity comes back)",
+      "prov": [
+        "r744"
+      ]
+    },
+    {
+      "from": "market:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "to": "borrowers:0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "rel": "lent to (repayment is the only way idle liquidity comes back)",
+      "prov": [
+        "r746"
+      ]
+    },
+    {
+      "from": "market:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "to": "borrowers:0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+      "rel": "lent to (repayment is the only way idle liquidity comes back)",
+      "prov": [
+        "r748"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r751",
+        "r771"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r752",
+        "r772"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r753",
+        "r773"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r755",
+        "r756",
+        "r774"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r755",
+        "r757",
+        "r775"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r758",
+        "r776"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r759",
+        "r777"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r760",
+        "r778"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r761",
+        "r779"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x828b154032950C8ff7CF8085D841723Db2696056",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r763",
+        "r780"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r764",
+        "r781"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r765",
+        "r782"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r766",
+        "r783"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x108e6E958061e2769b2299C56400217C667fEb3E",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r767",
+        "r784"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r768",
+        "r769",
+        "r785"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x21E27a5E5513D6e65C4f830167390997aA84843a",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r768",
+        "r770",
+        "r786"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r751",
+        "r787"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r752",
+        "r788"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r753",
+        "r789"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r755",
+        "r756",
+        "r790"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r755",
+        "r757",
+        "r791"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r758",
+        "r792"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r759",
+        "r793"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r760",
+        "r794"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r761",
+        "r795"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x828b154032950C8ff7CF8085D841723Db2696056",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r763",
+        "r796"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r764",
+        "r797"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r765",
+        "r798"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r766",
+        "r799"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x108e6E958061e2769b2299C56400217C667fEb3E",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r762",
+        "r767",
+        "r800"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r768",
+        "r769",
+        "r801"
+      ]
+    },
+    {
+      "from": "token:0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "to": "dex:0x21E27a5E5513D6e65C4f830167390997aA84843a",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r750",
+        "r768",
+        "r770",
+        "r802"
+      ]
+    },
+    {
+      "from": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "to": "dex:0x66Bb2eCF89C92a11044a46411d0c9E0BC9E31340",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r804",
+        "r810"
+      ]
+    },
+    {
+      "from": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "to": "dex:0x66DD1ACc5da42502ddD469277aed509D1de22b69",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r805",
+        "r811"
+      ]
+    },
+    {
+      "from": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "to": "dex:0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r806",
+        "r812"
+      ]
+    },
+    {
+      "from": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "to": "dex:0xce1790BB9f2327525d5e99B2C2b92EB5a486c6f8",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r807",
+        "r813"
+      ]
+    },
+    {
+      "from": "token:0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "to": "dex:0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+      "rel": "sold by liquidators via",
+      "prov": [
+        "r808",
+        "r809",
+        "r814"
+      ]
+    }
+  ],
+  "reads": [
+    {
+      "id": "r1",
+      "block": "26157638",
+      "method": "eth_getBlockByNumber",
+      "ok": true,
+      "result": {
+        "number": "26157638",
+        "hash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+        "timestamp": "1791582443",
+        "baseFeePerGas": "121537943"
+      }
+    },
+    {
+      "id": "r2",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r3",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r4",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Steakhouse ETH"
+    },
+    {
+      "id": "r5",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "asset()",
+      "args": [],
+      "ok": true,
+      "result": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    },
+    {
+      "id": "r6",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "9718206779004181082252"
+    },
+    {
+      "id": "r7",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "9236915366149900690829"
+    },
+    {
+      "id": "r8",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "MORPHO()",
+      "args": [],
+      "ok": true,
+      "result": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb"
+    },
+    {
+      "id": "r9",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD"
+    },
+    {
+      "id": "r10",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "curator()",
+      "args": [],
+      "ok": true,
+      "result": "0x827e86072B06674a077f592A531dcE4590aDeCdB"
+    },
+    {
+      "id": "r11",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "guardian()",
+      "args": [],
+      "ok": true,
+      "result": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9"
+    },
+    {
+      "id": "r12",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "timelock()",
+      "args": [],
+      "ok": true,
+      "result": "604800"
+    },
+    {
+      "id": "r13",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "fee()",
+      "args": [],
+      "ok": true,
+      "result": "50000000000000000"
+    },
+    {
+      "id": "r14",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "7"
+    },
+    {
+      "id": "r15",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r16",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "fn": "symbol()",
+      "args": [],
+      "ok": true,
+      "result": "WETH"
+    },
+    {
+      "id": "r17",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 18
+    },
+    {
+      "id": "r18",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "ok": true,
+      "result": {
+        "size": 19340,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r19",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r20",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r21",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r22",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r23",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r24",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD"
+    },
+    {
+      "id": "r25",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "ok": true,
+      "result": {
+        "size": 171,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r26",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r27",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r28",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r29",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r30",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r31",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r32",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "5"
+    },
+    {
+      "id": "r33",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x0A0e559bc3b0950a7e448F0d4894db195b9cf8DD",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0xC04F9610694a9E07e0d6a361bEC53ABeaDf9Cf9e",
+        "0x005398827D00c2951ffB52BD91164eF402bCF105",
+        "0x2E8c25A6f7f7f34666b998813aBF97D8B617f111",
+        "0x5571A6fEf340a9D26f1428684B9e893EA84b46Ac",
+        "0x32E5Cb1a68761a0CFf88d4baa21e398422B5166E",
+        "0x21C1e5Be991BF1544ca9759a601f66Dc60083f7d",
+        "0x9A86713145F38cd688969c0ECc87B314b23254b2",
+        "0xBC27046213d34D4A153cF57a48c74D74239e8968",
+        "0x394e6eF80c6F4Ad14a891A3987D8bD1387afA0b1",
+        "0x86Bd534A95Fb2Cc36D526ba149464c4477315C32"
+      ]
+    },
+    {
+      "id": "r34",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "ok": true,
+      "result": {
+        "size": 171,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r35",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r36",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r37",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r38",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r39",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r40",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r41",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "3"
+    },
+    {
+      "id": "r42",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x827e86072B06674a077f592A531dcE4590aDeCdB",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0x1710932cf538F38E7bcFC30AAae389B24dD004f6",
+        "0x44e6E4152a60D594c175BFeD42E68ad62FFB5871",
+        "0xfB3e98B5d59505Ceb259E9874b4553fD27FCCe3c",
+        "0x7307Bf07641a794fdBc2391d0983a7f1cFa36E4B",
+        "0x1936552B58Be97fFD9c7c1DD28E675b7B022F16d",
+        "0xd824031D4A115590e6Ff26e4e23fC346ab4cB2Db",
+        "0x4c23E86A9D8506a43046C15Be1b7fA0B6F3427DE",
+        "0x5868aaa8d66023137365ADAe9634A9D8834d488d",
+        "0x1Dc4354B39554251d4a2C4b571906e7EbAe535A3"
+      ]
+    },
+    {
+      "id": "r43",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "ok": true,
+      "result": {
+        "size": 833,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r44",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x00000000000000000000000052af16664155608b845be18aa29620ebf6ea2d3a"
+    },
+    {
+      "id": "r45",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r46",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r47",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r48",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r49",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted with the following signature:"
+    },
+    {
+      "id": "r50",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getThreshold\" reverted with the following signature:"
+    },
+    {
+      "id": "r51",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4ef090B2c36b34974e244f3699DF998e2b9D4FE9",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getOwners\" reverted with the following signature:"
+    },
+    {
+      "id": "r52",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "ok": true,
+      "result": {
+        "size": 15623,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r53",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r54",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r55",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r56",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r57",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r58",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0xcBa28b38103307Ec8dA98377ffF9816C164f9AFa"
+    },
+    {
+      "id": "r59",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "withdrawQueue(uint256)",
+      "args": [
+        "0"
+      ],
+      "ok": true,
+      "result": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+    },
+    {
+      "id": "r60",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "config(bytes32)",
+      "args": [
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ],
+      "ok": true,
+      "result": [
+        "1000000000000000000000000000000",
+        true,
+        "0"
+      ]
+    },
+    {
+      "id": "r61",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "idToMarketParams(bytes32)",
+      "args": [
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ],
+      "ok": true,
+      "result": [
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "0x0000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000",
+        "0"
+      ]
+    },
+    {
+      "id": "r62",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ],
+      "ok": true,
+      "result": [
+        "755115093812241914020",
+        "755115093812241914020000000",
+        "0",
+        "0",
+        "1791580343",
+        "0"
+      ]
+    },
+    {
+      "id": "r63",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+        "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r64",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "withdrawQueue(uint256)",
+      "args": [
+        "1"
+      ],
+      "ok": true,
+      "result": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+    },
+    {
+      "id": "r65",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "config(bytes32)",
+      "args": [
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "500000000000000000000000",
+        true,
+        "0"
+      ]
+    },
+    {
+      "id": "r66",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "idToMarketParams(bytes32)",
+      "args": [
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+        "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "945000000000000000"
+      ]
+    },
+    {
+      "id": "r67",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "9156173253204013786528",
+        "8745193106561957994743830577",
+        "7772149663402350058355",
+        "7375219060466527805107216118",
+        "1791576671",
+        "0"
+      ]
+    },
+    {
+      "id": "r68",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+        "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"
+      ],
+      "ok": true,
+      "result": [
+        "1650223025514863029180064225",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r69",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "fn": "borrowRateView(tuple,tuple)",
+      "args": [
+        {
+          "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "collateralToken": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+          "oracle": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+          "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+          "lltv": "945000000000000000"
+        },
+        {
+          "totalSupplyAssets": "9156173253204013786528",
+          "totalSupplyShares": "8745193106561957994743830577",
+          "totalBorrowAssets": "7772149663402350058355",
+          "totalBorrowShares": "7375219060466527805107216118",
+          "lastUpdate": "1791576671",
+          "fee": "0"
+        }
+      ],
+      "ok": true,
+      "result": "594617008"
+    },
+    {
+      "id": "r70",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "symbol()",
+      "args": [],
+      "ok": true,
+      "result": "wstETH"
+    },
+    {
+      "id": "r71",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 18
+    },
+    {
+      "id": "r72",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "price()",
+      "args": [],
+      "ok": true,
+      "result": "1245938079126728715000000000000000000"
+    },
+    {
+      "id": "r73",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "ok": true,
+      "result": {
+        "size": 6492,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r74",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r75",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r76",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r77",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r78",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r79",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r80",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "stETH()",
+      "args": [],
+      "ok": true,
+      "result": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84"
+    },
+    {
+      "id": "r81",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "stEthPerToken()",
+      "args": [],
+      "ok": true,
+      "result": "1245938079126728715"
+    },
+    {
+      "id": "r82",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "asset()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"asset\" reverted."
+    },
+    {
+      "id": "r83",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "masterMinter()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"masterMinter\" reverted."
+    },
+    {
+      "id": "r84",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "paused()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"paused\" reverted."
+    },
+    {
+      "id": "r85",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "fn": "getTotalPooledEther()",
+      "args": [],
+      "ok": true,
+      "result": "9691023083863304868792817"
+    },
+    {
+      "id": "r86",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "fn": "symbol()",
+      "args": [],
+      "ok": true,
+      "result": "stETH"
+    },
+    {
+      "id": "r87",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "fn": "implementation()",
+      "args": [],
+      "ok": true,
+      "result": "0x028271E30a695c0527A0C50cA30603feD004cDb0"
+    },
+    {
+      "id": "r88",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "fn": "kernel()",
+      "args": [],
+      "ok": true,
+      "result": "0xb8FFC3Cd6e7Cf5a098A1c92F48009765B24088Dc"
+    },
+    {
+      "id": "r89",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "BASE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421"
+    },
+    {
+      "id": "r90",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "BASE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r91",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "QUOTE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r92",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "QUOTE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r93",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "BASE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r94",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "QUOTE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r95",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "SCALE_FACTOR()",
+      "args": [],
+      "ok": true,
+      "result": "1000000000000000000"
+    },
+    {
+      "id": "r96",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "ok": true,
+      "result": {
+        "size": 2598,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r97",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r98",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r99",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r100",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r101",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r102",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r103",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "fn": "description()",
+      "args": [],
+      "ok": true,
+      "result": "wstETH/stETH exchange rate"
+    },
+    {
+      "id": "r104",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 18
+    },
+    {
+      "id": "r105",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "fn": "latestRoundData()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0",
+        "1245938079126728715",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r106",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "fn": "aggregator()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"aggregator\" reverted."
+    },
+    {
+      "id": "r107",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "ok": true,
+      "result": {
+        "size": 866,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r108",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r109",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r110",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r111",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r112",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r113",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x905b7dAbCD3Ce6B792D874e303D336424Cdb1421",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r114",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "withdrawQueue(uint256)",
+      "args": [
+        "2"
+      ],
+      "ok": true,
+      "result": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+    },
+    {
+      "id": "r115",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "config(bytes32)",
+      "args": [
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ],
+      "ok": true,
+      "result": [
+        "500000000000000000000000",
+        true,
+        "0"
+      ]
+    },
+    {
+      "id": "r116",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "idToMarketParams(bytes32)",
+      "args": [
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ],
+      "ok": true,
+      "result": [
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+        "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "965000000000000000"
+      ]
+    },
+    {
+      "id": "r117",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ],
+      "ok": true,
+      "result": [
+        "33887475257061196484738",
+        "32216150604341183693494767626",
+        "28328032324615452058973",
+        "26749088406276926920265533128",
+        "1791576671",
+        "0"
+      ]
+    },
+    {
+      "id": "r118",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"
+      ],
+      "ok": true,
+      "result": [
+        "7577191332033501745017034362",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r119",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "fn": "borrowRateView(tuple,tuple)",
+      "args": [
+        {
+          "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "collateralToken": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+          "oracle": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+          "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+          "lltv": "965000000000000000"
+        },
+        {
+          "totalSupplyAssets": "33887475257061196484738",
+          "totalSupplyShares": "32216150604341183693494767626",
+          "totalBorrowAssets": "28328032324615452058973",
+          "totalBorrowShares": "26749088406276926920265533128",
+          "lastUpdate": "1791576671",
+          "fee": "0"
+        }
+      ],
+      "ok": true,
+      "result": "604757546"
+    },
+    {
+      "id": "r120",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "symbol()",
+      "args": [],
+      "ok": true,
+      "result": "wstETH"
+    },
+    {
+      "id": "r121",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 18
+    },
+    {
+      "id": "r122",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+      "fn": "price()",
+      "args": [],
+      "ok": true,
+      "result": "1245938079126728715000000000000000000"
+    },
+    {
+      "id": "r123",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "withdrawQueue(uint256)",
+      "args": [
+        "3"
+      ],
+      "ok": true,
+      "result": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+    },
+    {
+      "id": "r124",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "config(bytes32)",
+      "args": [
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "10000000000000000000000",
+        true,
+        "0"
+      ]
+    },
+    {
+      "id": "r125",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "idToMarketParams(bytes32)",
+      "args": [
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+        "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "915000000000000000"
+      ]
+    },
+    {
+      "id": "r126",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "26617885432229928503",
+        "26358054181616666993372055",
+        "23179092472204791217",
+        "22915681772735993806601654",
+        "1791345527",
+        "0"
+      ]
+    },
+    {
+      "id": "r127",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+        "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"
+      ],
+      "ok": true,
+      "result": [
+        "19919690293990923224876294",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r128",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "fn": "borrowRateView(tuple,tuple)",
+      "args": [
+        {
+          "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "collateralToken": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+          "oracle": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+          "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+          "lltv": "915000000000000000"
+        },
+        {
+          "totalSupplyAssets": "26617885432229928503",
+          "totalSupplyShares": "26358054181616666993372055",
+          "totalBorrowAssets": "23179092472204791217",
+          "totalBorrowShares": "22915681772735993806601654",
+          "lastUpdate": "1791345527",
+          "fee": "0"
+        }
+      ],
+      "ok": true,
+      "result": "669600203"
+    },
+    {
+      "id": "r129",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "symbol()",
+      "args": [],
+      "ok": true,
+      "result": "cbBTC"
+    },
+    {
+      "id": "r130",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r131",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "price()",
+      "args": [],
+      "ok": true,
+      "result": "332305335181901679603770140944705128031048168734"
+    },
+    {
+      "id": "r132",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "ok": true,
+      "result": {
+        "size": 1550,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r133",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r134",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r135",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r136",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000007458bfdc30034eb860b265e6068121d18fa5aa72"
+    },
+    {
+      "id": "r137",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x00000000000000000000000042d90b3faf2287475cdc863706bd7cc3e938c2af"
+    },
+    {
+      "id": "r138",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0xbbc9b6001cf0a4FCcfFAB7bDda1ab16cafb9dB4F"
+    },
+    {
+      "id": "r139",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "stETH()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"stETH\" reverted."
+    },
+    {
+      "id": "r140",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "stEthPerToken()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"stEthPerToken\" reverted."
+    },
+    {
+      "id": "r141",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "asset()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"asset\" reverted."
+    },
+    {
+      "id": "r142",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "masterMinter()",
+      "args": [],
+      "ok": true,
+      "result": "0x2B5b99D0096a1Ae5641f5041F780A33D004fc1D3"
+    },
+    {
+      "id": "r143",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "paused()",
+      "args": [],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r144",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x42D90b3faF2287475cdc863706Bd7cc3E938C2Af",
+      "ok": true,
+      "result": {
+        "size": 0,
+        "prefix": "0x"
+      }
+    },
+    {
+      "id": "r145",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x42D90b3faF2287475cdc863706Bd7cc3E938C2Af",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getThreshold\" returned no data (\"0x\")."
+    },
+    {
+      "id": "r146",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x42D90b3faF2287475cdc863706Bd7cc3E938C2Af",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getOwners\" returned no data (\"0x\")."
+    },
+    {
+      "id": "r147",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xbbc9b6001cf0a4FCcfFAB7bDda1ab16cafb9dB4F",
+      "ok": true,
+      "result": {
+        "size": 0,
+        "prefix": "0x"
+      }
+    },
+    {
+      "id": "r148",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbbc9b6001cf0a4FCcfFAB7bDda1ab16cafb9dB4F",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getThreshold\" returned no data (\"0x\")."
+    },
+    {
+      "id": "r149",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xbbc9b6001cf0a4FCcfFAB7bDda1ab16cafb9dB4F",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getOwners\" returned no data (\"0x\")."
+    },
+    {
+      "id": "r150",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x2B5b99D0096a1Ae5641f5041F780A33D004fc1D3",
+      "ok": true,
+      "result": {
+        "size": 0,
+        "prefix": "0x"
+      }
+    },
+    {
+      "id": "r151",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2B5b99D0096a1Ae5641f5041F780A33D004fc1D3",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getThreshold\" returned no data (\"0x\")."
+    },
+    {
+      "id": "r152",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2B5b99D0096a1Ae5641f5041F780A33D004fc1D3",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getOwners\" returned no data (\"0x\")."
+    },
+    {
+      "id": "r153",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "BASE_FEED_1()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"BASE_FEED_1\" reverted."
+    },
+    {
+      "id": "r154",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "BASE_FEED_2()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"BASE_FEED_2\" reverted."
+    },
+    {
+      "id": "r155",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "QUOTE_FEED_1()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"QUOTE_FEED_1\" reverted."
+    },
+    {
+      "id": "r156",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "QUOTE_FEED_2()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"QUOTE_FEED_2\" reverted."
+    },
+    {
+      "id": "r157",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "BASE_VAULT()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"BASE_VAULT\" reverted."
+    },
+    {
+      "id": "r158",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "QUOTE_VAULT()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"QUOTE_VAULT\" reverted."
+    },
+    {
+      "id": "r159",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "SCALE_FACTOR()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"SCALE_FACTOR\" reverted."
+    },
+    {
+      "id": "r160",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "ok": true,
+      "result": {
+        "size": 45,
+        "prefix": "0x363d3d37"
+      }
+    },
+    {
+      "id": "r161",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r162",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r163",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r164",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r165",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r166",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r167",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "primaryOracle()",
+      "args": [],
+      "ok": true,
+      "result": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850"
+    },
+    {
+      "id": "r168",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "backupOracle()",
+      "args": [],
+      "ok": true,
+      "result": "0x57d8696d311AE314f68549953661560b16Ff1a79"
+    },
+    {
+      "id": "r169",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "currentOracle()",
+      "args": [],
+      "ok": true,
+      "result": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850"
+    },
+    {
+      "id": "r170",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "isPrimary()",
+      "args": [],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r171",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "deviationThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "20000000000000000"
+    },
+    {
+      "id": "r172",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "getDeviation()",
+      "args": [],
+      "ok": true,
+      "result": "5282208945328721"
+    },
+    {
+      "id": "r173",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "challengeTimelockDuration()",
+      "args": [],
+      "ok": true,
+      "result": "7200"
+    },
+    {
+      "id": "r174",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "healingTimelockDuration()",
+      "args": [],
+      "ok": true,
+      "result": "28800"
+    },
+    {
+      "id": "r175",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x998Eaa364282Ad9Ac33F934e97bef3d660389366",
+      "fn": "isChallenged()",
+      "args": [],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r176",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "fn": "BASE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2"
+    },
+    {
+      "id": "r177",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "fn": "BASE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r178",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "fn": "QUOTE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD"
+    },
+    {
+      "id": "r179",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "fn": "QUOTE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r180",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "fn": "BASE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r181",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "fn": "QUOTE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r182",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "fn": "SCALE_FACTOR()",
+      "args": [],
+      "ok": true,
+      "result": "10000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r183",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "ok": true,
+      "result": {
+        "size": 2598,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r184",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r185",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r186",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r187",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r188",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r189",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r190",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "description()",
+      "args": [],
+      "ok": true,
+      "result": "BTC / USD"
+    },
+    {
+      "id": "r191",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r192",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "latestRoundData()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "36893488147419117059",
+        "8249573471599",
+        "1791580713",
+        "1791580727",
+        "36893488147419117059"
+      ]
+    },
+    {
+      "id": "r193",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "aggregator()",
+      "args": [],
+      "ok": true,
+      "result": "0x6f3F8d82694d52E6B6171A7b26A88c9554e7999b"
+    },
+    {
+      "id": "r194",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "ok": true,
+      "result": {
+        "size": 9571,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r195",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r196",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r197",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r198",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r199",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r200",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+    },
+    {
+      "id": "r201",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117058"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117058",
+        "8234651000000",
+        "1791577082",
+        "1791577103",
+        "36893488147419117058"
+      ]
+    },
+    {
+      "id": "r202",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117057"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117057",
+        "8240833159351",
+        "1791573480",
+        "1791573491",
+        "36893488147419117057"
+      ]
+    },
+    {
+      "id": "r203",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117056"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117056",
+        "8255669976472",
+        "1791569879",
+        "1791569891",
+        "36893488147419117056"
+      ]
+    },
+    {
+      "id": "r204",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117055"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117055",
+        "8259559000000",
+        "1791566248",
+        "1791566267",
+        "36893488147419117055"
+      ]
+    },
+    {
+      "id": "r205",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117054"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117054",
+        "8293686638339",
+        "1791562616",
+        "1791562631",
+        "36893488147419117054"
+      ]
+    },
+    {
+      "id": "r206",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117053"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117053",
+        "8279487610821",
+        "1791558985",
+        "1791559007",
+        "36893488147419117053"
+      ]
+    },
+    {
+      "id": "r207",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117052"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117052",
+        "8288918048414",
+        "1791555354",
+        "1791555371",
+        "36893488147419117052"
+      ]
+    },
+    {
+      "id": "r208",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117051"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117051",
+        "8242404000000",
+        "1791553403",
+        "1791553415",
+        "36893488147419117051"
+      ]
+    },
+    {
+      "id": "r209",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117050"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117050",
+        "8284897019851",
+        "1791552743",
+        "1791552755",
+        "36893488147419117050"
+      ]
+    },
+    {
+      "id": "r210",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117049"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117049",
+        "8299667000000",
+        "1791549111",
+        "1791549131",
+        "36893488147419117049"
+      ]
+    },
+    {
+      "id": "r211",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117048"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117048",
+        "8342461000000",
+        "1791546410",
+        "1791546443",
+        "36893488147419117048"
+      ]
+    },
+    {
+      "id": "r212",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117047"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117047",
+        "8287372040151",
+        "1791545870",
+        "1791545891",
+        "36893488147419117047"
+      ]
+    },
+    {
+      "id": "r213",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117046"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117046",
+        "8241119770352",
+        "1791542449",
+        "1791542471",
+        "36893488147419117046"
+      ]
+    },
+    {
+      "id": "r214",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117045"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117045",
+        "8255817421989",
+        "1791538847",
+        "1791538859",
+        "36893488147419117045"
+      ]
+    },
+    {
+      "id": "r215",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117044"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117044",
+        "8247951558781",
+        "1791535246",
+        "1791535259",
+        "36893488147419117044"
+      ]
+    },
+    {
+      "id": "r216",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117043"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117043",
+        "8248506000000",
+        "1791531614",
+        "1791531635",
+        "36893488147419117043"
+      ]
+    },
+    {
+      "id": "r217",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117042"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117042",
+        "8248174002167",
+        "1791527982",
+        "1791527999",
+        "36893488147419117042"
+      ]
+    },
+    {
+      "id": "r218",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117041"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117041",
+        "8248665278639",
+        "1791524351",
+        "1791524375",
+        "36893488147419117041"
+      ]
+    },
+    {
+      "id": "r219",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117040"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117040",
+        "8233180492055",
+        "1791520750",
+        "1791520763",
+        "36893488147419117040"
+      ]
+    },
+    {
+      "id": "r220",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117039"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117039",
+        "8218335885124",
+        "1791517118",
+        "1791517139",
+        "36893488147419117039"
+      ]
+    },
+    {
+      "id": "r221",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117038"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117038",
+        "8191970593770",
+        "1791513487",
+        "1791513503",
+        "36893488147419117038"
+      ]
+    },
+    {
+      "id": "r222",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117037"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117037",
+        "8169182481013",
+        "1791509855",
+        "1791509879",
+        "36893488147419117037"
+      ]
+    },
+    {
+      "id": "r223",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117036"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117036",
+        "8177384741444",
+        "1791506224",
+        "1791506243",
+        "36893488147419117036"
+      ]
+    },
+    {
+      "id": "r224",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x91D32e6f01d6473b596f54c6E304e06d774f86b2",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419117035"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419117035",
+        "8179489373071",
+        "1791502592",
+        "1791502607",
+        "36893488147419117035"
+      ]
+    },
+    {
+      "id": "r225",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x6f3F8d82694d52E6B6171A7b26A88c9554e7999b",
+      "fn": "minAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "1"
+    },
+    {
+      "id": "r226",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x6f3F8d82694d52E6B6171A7b26A88c9554e7999b",
+      "fn": "maxAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "95780971304118053647396689196894323976171195136475135"
+    },
+    {
+      "id": "r227",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "ok": true,
+      "result": {
+        "size": 170,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r228",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r229",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r230",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r231",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r232",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r233",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r234",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "4"
+    },
+    {
+      "id": "r235",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0x80eFDeE7F82d0F2aBF3bF29A9A85edF0B42C9e19",
+        "0x05724B9C8C1dDE1b2f659d7c0676ff63f6d5E781",
+        "0x480496c0884D61F2f56707Adb11697F8018898c2",
+        "0xB65B6d224351cD61f856c227b2d5cFc611E9B2d8",
+        "0x80D46daD5A5450a3611CD1d7F9110AEdFA55bfF6",
+        "0xFdE996F00E42b33bdE7C640786333623aCC3f298",
+        "0x7052cB84079905400ea52B635cAb6a275fDA8823",
+        "0xb7F0643D4ca8c296564Ce335062833e1afa3Afdb",
+        "0xD66336eA98cE0da67f25934E7cC230D4226292a0"
+      ]
+    },
+    {
+      "id": "r236",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "description()",
+      "args": [],
+      "ok": true,
+      "result": "ETH / USD"
+    },
+    {
+      "id": "r237",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r238",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "latestRoundData()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "36893488147419121487",
+        "248252814451",
+        "1791580993",
+        "1791581015",
+        "36893488147419121487"
+      ]
+    },
+    {
+      "id": "r239",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "aggregator()",
+      "args": [],
+      "ok": true,
+      "result": "0xad88fc1A810379Ef4EFbF2D97EdE57e306178e5a"
+    },
+    {
+      "id": "r240",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "ok": true,
+      "result": {
+        "size": 9571,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r241",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r242",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r243",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r244",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r245",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r246",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+    },
+    {
+      "id": "r247",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121486"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121486",
+        "247856644908",
+        "1791577362",
+        "1791577379",
+        "36893488147419121486"
+      ]
+    },
+    {
+      "id": "r248",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121485"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121485",
+        "248317564810",
+        "1791573731",
+        "1791573755",
+        "36893488147419121485"
+      ]
+    },
+    {
+      "id": "r249",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121484"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121484",
+        "248454255638",
+        "1791570129",
+        "1791570143",
+        "36893488147419121484"
+      ]
+    },
+    {
+      "id": "r250",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121483"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121483",
+        "248601397374",
+        "1791566498",
+        "1791566519",
+        "36893488147419121483"
+      ]
+    },
+    {
+      "id": "r251",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121482"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121482",
+        "249263342633",
+        "1791562867",
+        "1791562883",
+        "36893488147419121482"
+      ]
+    },
+    {
+      "id": "r252",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121481"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121481",
+        "248449069870",
+        "1791559235",
+        "1791559271",
+        "36893488147419121481"
+      ]
+    },
+    {
+      "id": "r253",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121480"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121480",
+        "248979787200",
+        "1791555634",
+        "1791555647",
+        "36893488147419121480"
+      ]
+    },
+    {
+      "id": "r254",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121479"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121479",
+        "247651678005",
+        "1791553023",
+        "1791553043",
+        "36893488147419121479"
+      ]
+    },
+    {
+      "id": "r255",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121478"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121478",
+        "249179124802",
+        "1791550472",
+        "1791550487",
+        "36893488147419121478"
+      ]
+    },
+    {
+      "id": "r256",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121477"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121477",
+        "250338299248",
+        "1791546840",
+        "1791546863",
+        "36893488147419121477"
+      ]
+    },
+    {
+      "id": "r257",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121476"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121476",
+        "251597042199",
+        "1791546420",
+        "1791546443",
+        "36893488147419121476"
+      ]
+    },
+    {
+      "id": "r258",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121475"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121475",
+        "250081060000",
+        "1791545910",
+        "1791545927",
+        "36893488147419121475"
+      ]
+    },
+    {
+      "id": "r259",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121474"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121474",
+        "249237847054",
+        "1791542279",
+        "1791542303",
+        "36893488147419121474"
+      ]
+    },
+    {
+      "id": "r260",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121473"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121473",
+        "250389387502",
+        "1791538677",
+        "1791538691",
+        "36893488147419121473"
+      ]
+    },
+    {
+      "id": "r261",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121472"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121472",
+        "249689733753",
+        "1791535046",
+        "1791535067",
+        "36893488147419121472"
+      ]
+    },
+    {
+      "id": "r262",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121471"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121471",
+        "250128154818",
+        "1791531415",
+        "1791531431",
+        "36893488147419121471"
+      ]
+    },
+    {
+      "id": "r263",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121470"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121470",
+        "249800000000",
+        "1791527783",
+        "1791527807",
+        "36893488147419121470"
+      ]
+    },
+    {
+      "id": "r264",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121469"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121469",
+        "249684209212",
+        "1791524182",
+        "1791524195",
+        "36893488147419121469"
+      ]
+    },
+    {
+      "id": "r265",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121468"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121468",
+        "248436421765",
+        "1791521661",
+        "1791521675",
+        "36893488147419121468"
+      ]
+    },
+    {
+      "id": "r266",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121467"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121467",
+        "248870378209",
+        "1791518030",
+        "1791518051",
+        "36893488147419121467"
+      ]
+    },
+    {
+      "id": "r267",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121466"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121466",
+        "249502554166",
+        "1791514398",
+        "1791514415",
+        "36893488147419121466"
+      ]
+    },
+    {
+      "id": "r268",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121465"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121465",
+        "248059581700",
+        "1791513678",
+        "1791513695",
+        "36893488147419121465"
+      ]
+    },
+    {
+      "id": "r269",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121464"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121464",
+        "247884000000",
+        "1791510047",
+        "1791510071",
+        "36893488147419121464"
+      ]
+    },
+    {
+      "id": "r270",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419121463"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419121463",
+        "247560000000",
+        "1791506428",
+        "1791506447",
+        "36893488147419121463"
+      ]
+    },
+    {
+      "id": "r271",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xad88fc1A810379Ef4EFbF2D97EdE57e306178e5a",
+      "fn": "minAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "1"
+    },
+    {
+      "id": "r272",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xad88fc1A810379Ef4EFbF2D97EdE57e306178e5a",
+      "fn": "maxAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "95780971304118053647396689196894323976171195136475135"
+    },
+    {
+      "id": "r273",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "ok": true,
+      "result": {
+        "size": 170,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r274",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r275",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r276",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r277",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r278",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r279",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r280",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "4"
+    },
+    {
+      "id": "r281",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0x80eFDeE7F82d0F2aBF3bF29A9A85edF0B42C9e19",
+        "0x05724B9C8C1dDE1b2f659d7c0676ff63f6d5E781",
+        "0x480496c0884D61F2f56707Adb11697F8018898c2",
+        "0xB65B6d224351cD61f856c227b2d5cFc611E9B2d8",
+        "0x80D46daD5A5450a3611CD1d7F9110AEdFA55bfF6",
+        "0xFdE996F00E42b33bdE7C640786333623aCC3f298",
+        "0x7052cB84079905400ea52B635cAb6a275fDA8823",
+        "0xb7F0643D4ca8c296564Ce335062833e1afa3Afdb",
+        "0xD66336eA98cE0da67f25934E7cC230D4226292a0"
+      ]
+    },
+    {
+      "id": "r282",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "fn": "BASE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0x2665701293fCbEB223D11A08D826563EDcCE423A"
+    },
+    {
+      "id": "r283",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "fn": "BASE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r284",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "fn": "QUOTE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD"
+    },
+    {
+      "id": "r285",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "fn": "QUOTE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r286",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "fn": "BASE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r287",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "fn": "QUOTE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r288",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "fn": "SCALE_FACTOR()",
+      "args": [],
+      "ok": true,
+      "result": "10000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r289",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "ok": true,
+      "result": {
+        "size": 2598,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r290",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r291",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r292",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r293",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r294",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r295",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x57d8696d311AE314f68549953661560b16Ff1a79",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r296",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "description()",
+      "args": [],
+      "ok": true,
+      "result": "cbBTC / USD"
+    },
+    {
+      "id": "r297",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r298",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "latestRoundData()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "18446744073709552903",
+        "8293380842070",
+        "1791546000",
+        "1791546023",
+        "18446744073709552903"
+      ]
+    },
+    {
+      "id": "r299",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "aggregator()",
+      "args": [],
+      "ok": true,
+      "result": "0x5e2420cACE3650622f62B2713B2B3727FC8bCDd1"
+    },
+    {
+      "id": "r300",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "ok": true,
+      "result": {
+        "size": 9571,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r301",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r302",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r303",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r304",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r305",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r306",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+    },
+    {
+      "id": "r307",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552902"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552902",
+        "8130425695720",
+        "1791473006",
+        "1791473063",
+        "18446744073709552902"
+      ]
+    },
+    {
+      "id": "r308",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552901"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552901",
+        "8310274251579",
+        "1791425015",
+        "1791425027",
+        "18446744073709552901"
+      ]
+    },
+    {
+      "id": "r309",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552900"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552900",
+        "8373695920763",
+        "1791338607",
+        "1791338627",
+        "18446744073709552900"
+      ]
+    },
+    {
+      "id": "r310",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552899"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552899",
+        "8555251778729",
+        "1791306913",
+        "1791306935",
+        "18446744073709552899"
+      ]
+    },
+    {
+      "id": "r311",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552898"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552898",
+        "8527032943125",
+        "1791220499",
+        "1791220523",
+        "18446744073709552898"
+      ]
+    },
+    {
+      "id": "r312",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552897"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552897",
+        "8531590821490",
+        "1791134089",
+        "1791134111",
+        "18446744073709552897"
+      ]
+    },
+    {
+      "id": "r313",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552896"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552896",
+        "8487535457886",
+        "1791047679",
+        "1791047699",
+        "18446744073709552896"
+      ]
+    },
+    {
+      "id": "r314",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552895"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552895",
+        "8497443756243",
+        "1790961271",
+        "1790961287",
+        "18446744073709552895"
+      ]
+    },
+    {
+      "id": "r315",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552894"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552894",
+        "8673926483371",
+        "1790915409",
+        "1790915423",
+        "18446744073709552894"
+      ]
+    },
+    {
+      "id": "r316",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552893"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552893",
+        "8502099107764",
+        "1790876812",
+        "1790876831",
+        "18446744073709552893"
+      ]
+    },
+    {
+      "id": "r317",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552892"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552892",
+        "8334101521913",
+        "1790839566",
+        "1790839583",
+        "18446744073709552892"
+      ]
+    },
+    {
+      "id": "r318",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552891"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552891",
+        "8507160169334",
+        "1790772577",
+        "1790772599",
+        "18446744073709552891"
+      ]
+    },
+    {
+      "id": "r319",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552890"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552890",
+        "8339936106343",
+        "1790746465",
+        "1790746487",
+        "18446744073709552890"
+      ]
+    },
+    {
+      "id": "r320",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552889"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552889",
+        "8309874148503",
+        "1790660038",
+        "1790660051",
+        "18446744073709552889"
+      ]
+    },
+    {
+      "id": "r321",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552888"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552888",
+        "8298423077136",
+        "1790573613",
+        "1790573627",
+        "18446744073709552888"
+      ]
+    },
+    {
+      "id": "r322",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552887"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552887",
+        "8468891965564",
+        "1790519378",
+        "1790519399",
+        "18446744073709552887"
+      ]
+    },
+    {
+      "id": "r323",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552886"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552886",
+        "8396409227524",
+        "1790432968",
+        "1790432987",
+        "18446744073709552886"
+      ]
+    },
+    {
+      "id": "r324",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552885"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552885",
+        "8367032663738",
+        "1790346560",
+        "1790346575",
+        "18446744073709552885"
+      ]
+    },
+    {
+      "id": "r325",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552884"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552884",
+        "8482754889285",
+        "1790260149",
+        "1790260163",
+        "18446744073709552884"
+      ]
+    },
+    {
+      "id": "r326",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552883"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552883",
+        "8314355933650",
+        "1790242272",
+        "1790242295",
+        "18446744073709552883"
+      ]
+    },
+    {
+      "id": "r327",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552882"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552882",
+        "8493392287424",
+        "1790172699",
+        "1790172719",
+        "18446744073709552882"
+      ]
+    },
+    {
+      "id": "r328",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552881"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552881",
+        "8667651449170",
+        "1790126370",
+        "1790126387",
+        "18446744073709552881"
+      ]
+    },
+    {
+      "id": "r329",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552880"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552880",
+        "8549395599949",
+        "1790039955",
+        "1790039975",
+        "18446744073709552880"
+      ]
+    },
+    {
+      "id": "r330",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "18446744073709552879"
+      ],
+      "ok": true,
+      "result": [
+        "18446744073709552879",
+        "8727991990666",
+        "1790022427",
+        "1790022443",
+        "18446744073709552879"
+      ]
+    },
+    {
+      "id": "r331",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5e2420cACE3650622f62B2713B2B3727FC8bCDd1",
+      "fn": "minAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "1"
+    },
+    {
+      "id": "r332",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5e2420cACE3650622f62B2713B2B3727FC8bCDd1",
+      "fn": "maxAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "95780971304118053647396689196894323976171195136475135"
+    },
+    {
+      "id": "r333",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "ok": true,
+      "result": {
+        "size": 170,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r334",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r335",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r336",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r337",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r338",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r339",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r340",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "4"
+    },
+    {
+      "id": "r341",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0x80eFDeE7F82d0F2aBF3bF29A9A85edF0B42C9e19",
+        "0x05724B9C8C1dDE1b2f659d7c0676ff63f6d5E781",
+        "0x480496c0884D61F2f56707Adb11697F8018898c2",
+        "0xB65B6d224351cD61f856c227b2d5cFc611E9B2d8",
+        "0x80D46daD5A5450a3611CD1d7F9110AEdFA55bfF6",
+        "0xFdE996F00E42b33bdE7C640786333623aCC3f298",
+        "0x7052cB84079905400ea52B635cAb6a275fDA8823",
+        "0xb7F0643D4ca8c296564Ce335062833e1afa3Afdb",
+        "0xD66336eA98cE0da67f25934E7cC230D4226292a0"
+      ]
+    },
+    {
+      "id": "r342",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "withdrawQueue(uint256)",
+      "args": [
+        "4"
+      ],
+      "ok": true,
+      "result": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40"
+    },
+    {
+      "id": "r343",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "config(bytes32)",
+      "args": [
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40"
+      ],
+      "ok": true,
+      "result": [
+        "10000000000000000000000",
+        true,
+        "0"
+      ]
+    },
+    {
+      "id": "r344",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "idToMarketParams(bytes32)",
+      "args": [
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40"
+      ],
+      "ok": true,
+      "result": [
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+        "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "915000000000000000"
+      ]
+    },
+    {
+      "id": "r345",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40"
+      ],
+      "ok": true,
+      "result": [
+        "77772939737825012963",
+        "73486315034368685404422732",
+        "54923403954837736028",
+        "51463435649073539557893593",
+        "1791538619",
+        "0"
+      ]
+    },
+    {
+      "id": "r346",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+        "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r347",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "fn": "borrowRateView(tuple,tuple)",
+      "args": [
+        {
+          "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "collateralToken": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+          "oracle": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+          "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+          "lltv": "915000000000000000"
+        },
+        {
+          "totalSupplyAssets": "77772939737825012963",
+          "totalSupplyShares": "73486315034368685404422732",
+          "totalBorrowAssets": "54923403954837736028",
+          "totalBorrowShares": "51463435649073539557893593",
+          "lastUpdate": "1791538619",
+          "fee": "0"
+        }
+      ],
+      "ok": true,
+      "result": "111802133"
+    },
+    {
+      "id": "r348",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "symbol()",
+      "args": [],
+      "ok": true,
+      "result": "WBTC"
+    },
+    {
+      "id": "r349",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r350",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "fn": "price()",
+      "args": [],
+      "ok": true,
+      "result": "333350389097313400000000000000000000000000000000"
+    },
+    {
+      "id": "r351",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "ok": true,
+      "result": {
+        "size": 4582,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r352",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r353",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r354",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r355",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r356",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r357",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7"
+    },
+    {
+      "id": "r358",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "stETH()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"stETH\" reverted."
+    },
+    {
+      "id": "r359",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "stEthPerToken()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"stEthPerToken\" reverted."
+    },
+    {
+      "id": "r360",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "asset()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"asset\" reverted."
+    },
+    {
+      "id": "r361",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "masterMinter()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"masterMinter\" reverted."
+    },
+    {
+      "id": "r362",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "paused()",
+      "args": [],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r363",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "ok": true,
+      "result": {
+        "size": 4742,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r364",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r365",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r366",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r367",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r368",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r369",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x972Eed35781f09987a5c40F761f6A24623C570DE"
+    },
+    {
+      "id": "r370",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getThreshold\" reverted."
+    },
+    {
+      "id": "r371",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xCA06411bd7a7296d7dbdd0050DFc846E95fEBEB7",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"getOwners\" reverted."
+    },
+    {
+      "id": "r372",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "fn": "BASE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0xdeb288F737066589598e9214E782fa5A8eD689e8"
+    },
+    {
+      "id": "r373",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "fn": "BASE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r374",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "fn": "QUOTE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r375",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "fn": "QUOTE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r376",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "fn": "BASE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r377",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "fn": "QUOTE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r378",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "fn": "SCALE_FACTOR()",
+      "args": [],
+      "ok": true,
+      "result": "10000000000000000000000000000"
+    },
+    {
+      "id": "r379",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "ok": true,
+      "result": {
+        "size": 2598,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r380",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r381",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r382",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r383",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r384",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r385",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xc29B3Bc033640baE31ca53F8a0Eb892AdF68e663",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r386",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "description()",
+      "args": [],
+      "ok": true,
+      "result": "BTC / ETH"
+    },
+    {
+      "id": "r387",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 18
+    },
+    {
+      "id": "r388",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "latestRoundData()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "92233720368547759290",
+        "33335038909731340000",
+        "1791559570",
+        "1791559583",
+        "92233720368547759290"
+      ]
+    },
+    {
+      "id": "r389",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "aggregator()",
+      "args": [],
+      "ok": true,
+      "result": "0xb0Fd105DAD6b9B07f36D5F8496712a36114279ad"
+    },
+    {
+      "id": "r390",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "ok": true,
+      "result": {
+        "size": 9571,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r391",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r392",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r393",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r394",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r395",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r396",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+    },
+    {
+      "id": "r397",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759289"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759289",
+        "33055206000000000000",
+        "1791473154",
+        "1791473171",
+        "92233720368547759289"
+      ]
+    },
+    {
+      "id": "r398",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759288"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759288",
+        "32378464388744000000",
+        "1791454131",
+        "1791454151",
+        "92233720368547759288"
+      ]
+    },
+    {
+      "id": "r399",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759287"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759287",
+        "32409978894280630000",
+        "1791367661",
+        "1791367727",
+        "92233720368547759287"
+      ]
+    },
+    {
+      "id": "r400",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759286"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759286",
+        "31765088260987817000",
+        "1791312299",
+        "1791312311",
+        "92233720368547759286"
+      ]
+    },
+    {
+      "id": "r401",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759285"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759285",
+        "31611699104193770000",
+        "1791225892",
+        "1791225911",
+        "92233720368547759285"
+      ]
+    },
+    {
+      "id": "r402",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759284"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759284",
+        "31584760351816318000",
+        "1791139456",
+        "1791139475",
+        "92233720368547759284"
+      ]
+    },
+    {
+      "id": "r403",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759283"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759283",
+        "31630049794972827000",
+        "1791053051",
+        "1791053063",
+        "92233720368547759283"
+      ]
+    },
+    {
+      "id": "r404",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759282"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759282",
+        "31624955352239883000",
+        "1790966616",
+        "1790966639",
+        "92233720368547759282"
+      ]
+    },
+    {
+      "id": "r405",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759281"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759281",
+        "31394943000000000000",
+        "1790880198",
+        "1790880215",
+        "92233720368547759281"
+      ]
+    },
+    {
+      "id": "r406",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759280"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759280",
+        "31347468000000000000",
+        "1790793771",
+        "1790793791",
+        "92233720368547759280"
+      ]
+    },
+    {
+      "id": "r407",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759279"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759279",
+        "31047226000000000000",
+        "1790707344",
+        "1790707367",
+        "92233720368547759279"
+      ]
+    },
+    {
+      "id": "r408",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759278"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759278",
+        "31176858068038900000",
+        "1790620922",
+        "1790620943",
+        "92233720368547759278"
+      ]
+    },
+    {
+      "id": "r409",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759277"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759277",
+        "31427231765111780000",
+        "1790534502",
+        "1790534519",
+        "92233720368547759277"
+      ]
+    },
+    {
+      "id": "r410",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759276"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759276",
+        "31285172471002117000",
+        "1790448097",
+        "1790448107",
+        "92233720368547759276"
+      ]
+    },
+    {
+      "id": "r411",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759275"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759275",
+        "31182196278474454000",
+        "1790361679",
+        "1790361695",
+        "92233720368547759275"
+      ]
+    },
+    {
+      "id": "r412",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759274"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759274",
+        "31427459509382945000",
+        "1790275258",
+        "1790275271",
+        "92233720368547759274"
+      ]
+    },
+    {
+      "id": "r413",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759273"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759273",
+        "31634267693763928000",
+        "1790188848",
+        "1790188859",
+        "92233720368547759273"
+      ]
+    },
+    {
+      "id": "r414",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759272"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759272",
+        "31427810364702843000",
+        "1790102427",
+        "1790102447",
+        "92233720368547759272"
+      ]
+    },
+    {
+      "id": "r415",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759271"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759271",
+        "31252462901971043000",
+        "1790016017",
+        "1790016035",
+        "92233720368547759271"
+      ]
+    },
+    {
+      "id": "r416",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759270"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759270",
+        "30855787000000000000",
+        "1789929592",
+        "1789929611",
+        "92233720368547759270"
+      ]
+    },
+    {
+      "id": "r417",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759269"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759269",
+        "30832057141127684000",
+        "1789843165",
+        "1789843187",
+        "92233720368547759269"
+      ]
+    },
+    {
+      "id": "r418",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759268"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759268",
+        "30919216385581006000",
+        "1789756761",
+        "1789756775",
+        "92233720368547759268"
+      ]
+    },
+    {
+      "id": "r419",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759267"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759267",
+        "31214463196297267000",
+        "1789670334",
+        "1789670351",
+        "92233720368547759267"
+      ]
+    },
+    {
+      "id": "r420",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xdeb288F737066589598e9214E782fa5A8eD689e8",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "92233720368547759266"
+      ],
+      "ok": true,
+      "result": [
+        "92233720368547759266",
+        "31593514530695980000",
+        "1789583878",
+        "1789583927",
+        "92233720368547759266"
+      ]
+    },
+    {
+      "id": "r421",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xb0Fd105DAD6b9B07f36D5F8496712a36114279ad",
+      "fn": "minAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "1"
+    },
+    {
+      "id": "r422",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xb0Fd105DAD6b9B07f36D5F8496712a36114279ad",
+      "fn": "maxAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "95780971304118053647396689196894323976171195136475135"
+    },
+    {
+      "id": "r423",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "ok": true,
+      "result": {
+        "size": 170,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r424",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r425",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r426",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r427",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r428",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r429",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r430",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "4"
+    },
+    {
+      "id": "r431",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0x80eFDeE7F82d0F2aBF3bF29A9A85edF0B42C9e19",
+        "0x05724B9C8C1dDE1b2f659d7c0676ff63f6d5E781",
+        "0x480496c0884D61F2f56707Adb11697F8018898c2",
+        "0xB65B6d224351cD61f856c227b2d5cFc611E9B2d8",
+        "0x80D46daD5A5450a3611CD1d7F9110AEdFA55bfF6",
+        "0xFdE996F00E42b33bdE7C640786333623aCC3f298",
+        "0x7052cB84079905400ea52B635cAb6a275fDA8823",
+        "0xb7F0643D4ca8c296564Ce335062833e1afa3Afdb",
+        "0xD66336eA98cE0da67f25934E7cC230D4226292a0"
+      ]
+    },
+    {
+      "id": "r432",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "withdrawQueue(uint256)",
+      "args": [
+        "5"
+      ],
+      "ok": true,
+      "result": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0"
+    },
+    {
+      "id": "r433",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "config(bytes32)",
+      "args": [
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0"
+      ],
+      "ok": true,
+      "result": [
+        "10000000000000000000000",
+        true,
+        "0"
+      ]
+    },
+    {
+      "id": "r434",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "idToMarketParams(bytes32)",
+      "args": [
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0"
+      ],
+      "ok": true,
+      "result": [
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+        "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "915000000000000000"
+      ]
+    },
+    {
+      "id": "r435",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0"
+      ],
+      "ok": true,
+      "result": [
+        "74775829900816519299",
+        "72418000783324386259347568",
+        "22864116304661990645",
+        "22040502356449818149942348",
+        "1791045563",
+        "0"
+      ]
+    },
+    {
+      "id": "r436",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+        "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r437",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "fn": "borrowRateView(tuple,tuple)",
+      "args": [
+        {
+          "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "collateralToken": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+          "oracle": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+          "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+          "lltv": "915000000000000000"
+        },
+        {
+          "totalSupplyAssets": "74775829900816519299",
+          "totalSupplyShares": "72418000783324386259347568",
+          "totalBorrowAssets": "22864116304661990645",
+          "totalBorrowShares": "22040502356449818149942348",
+          "lastUpdate": "1791045563",
+          "fee": "0"
+        }
+      ],
+      "ok": true,
+      "result": "16007335"
+    },
+    {
+      "id": "r438",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "symbol()",
+      "args": [],
+      "ok": true,
+      "result": "cbBTC"
+    },
+    {
+      "id": "r439",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r440",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "fn": "price()",
+      "args": [],
+      "ok": true,
+      "result": "332556586962182170952132453646774259321342838030"
+    },
+    {
+      "id": "r441",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "fn": "BASE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c"
+    },
+    {
+      "id": "r442",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "fn": "BASE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r443",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "fn": "QUOTE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
+    },
+    {
+      "id": "r444",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "fn": "QUOTE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r445",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "fn": "BASE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r446",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "fn": "QUOTE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r447",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "fn": "SCALE_FACTOR()",
+      "args": [],
+      "ok": true,
+      "result": "10000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r448",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "ok": true,
+      "result": {
+        "size": 2598,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r449",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r450",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r451",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r452",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r453",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r454",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8F653cCFEbA16cF2c0B0D16bc82Bd6756C64f5D4",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r455",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "description()",
+      "args": [],
+      "ok": true,
+      "result": "BTC / USD"
+    },
+    {
+      "id": "r456",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r457",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "latestRoundData()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "129127208515966886307",
+        "8251735583226",
+        "1791580958",
+        "1791580979",
+        "129127208515966886307"
+      ]
+    },
+    {
+      "id": "r458",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "aggregator()",
+      "args": [],
+      "ok": true,
+      "result": "0x4a3411ac2948B33c69666B35cc6d055B27Ea84f1"
+    },
+    {
+      "id": "r459",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "ok": true,
+      "result": {
+        "size": 9571,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r460",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r461",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r462",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r463",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r464",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r465",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+    },
+    {
+      "id": "r466",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886306"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886306",
+        "8240318100000",
+        "1791577327",
+        "1791577343",
+        "129127208515966886306"
+      ]
+    },
+    {
+      "id": "r467",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886305"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886305",
+        "8242487117037",
+        "1791573695",
+        "1791573719",
+        "129127208515966886305"
+      ]
+    },
+    {
+      "id": "r468",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886304"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886304",
+        "8252251513356",
+        "1791570093",
+        "1791570107",
+        "129127208515966886304"
+      ]
+    },
+    {
+      "id": "r469",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886303"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886303",
+        "8259806723556",
+        "1791566462",
+        "1791566483",
+        "129127208515966886303"
+      ]
+    },
+    {
+      "id": "r470",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886302"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886302",
+        "8281067230101",
+        "1791562859",
+        "1791562871",
+        "129127208515966886302"
+      ]
+    },
+    {
+      "id": "r471",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886301"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886301",
+        "8283541189788",
+        "1791559258",
+        "1791559271",
+        "129127208515966886301"
+      ]
+    },
+    {
+      "id": "r472",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886300"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886300",
+        "8303865800000",
+        "1791555626",
+        "1791555647",
+        "129127208515966886300"
+      ]
+    },
+    {
+      "id": "r473",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886299"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886299",
+        "8258405042995",
+        "1791552955",
+        "1791552971",
+        "129127208515966886299"
+      ]
+    },
+    {
+      "id": "r474",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886298"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886298",
+        "8303243000000",
+        "1791550044",
+        "1791550067",
+        "129127208515966886298"
+      ]
+    },
+    {
+      "id": "r475",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886297"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886297",
+        "8337327503740",
+        "1791546412",
+        "1791546443",
+        "129127208515966886297"
+      ]
+    },
+    {
+      "id": "r476",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886296"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886296",
+        "8292254785102",
+        "1791545962",
+        "1791545987",
+        "129127208515966886296"
+      ]
+    },
+    {
+      "id": "r477",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886295"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886295",
+        "8250946324996",
+        "1791543471",
+        "1791543491",
+        "129127208515966886295"
+      ]
+    },
+    {
+      "id": "r478",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886294"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886294",
+        "8259378868766",
+        "1791539839",
+        "1791539855",
+        "129127208515966886294"
+      ]
+    },
+    {
+      "id": "r479",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886293"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886293",
+        "8260574799441",
+        "1791536208",
+        "1791536231",
+        "129127208515966886293"
+      ]
+    },
+    {
+      "id": "r480",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886292"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886292",
+        "8253978000000",
+        "1791532576",
+        "1791532595",
+        "129127208515966886292"
+      ]
+    },
+    {
+      "id": "r481",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886291"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886291",
+        "8250144900000",
+        "1791528945",
+        "1791528959",
+        "129127208515966886291"
+      ]
+    },
+    {
+      "id": "r482",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886290"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886290",
+        "8228220478680",
+        "1791525313",
+        "1791525335",
+        "129127208515966886290"
+      ]
+    },
+    {
+      "id": "r483",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886289"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886289",
+        "8218971634568",
+        "1791521681",
+        "1791521699",
+        "129127208515966886289"
+      ]
+    },
+    {
+      "id": "r484",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886288"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886288",
+        "8231595673012",
+        "1791518063",
+        "1791518087",
+        "129127208515966886288"
+      ]
+    },
+    {
+      "id": "r485",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886287"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886287",
+        "8227812677000",
+        "1791514461",
+        "1791514475",
+        "129127208515966886287"
+      ]
+    },
+    {
+      "id": "r486",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886286"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886286",
+        "8186816553279",
+        "1791513050",
+        "1791513071",
+        "129127208515966886286"
+      ]
+    },
+    {
+      "id": "r487",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886285"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886285",
+        "8173725072619",
+        "1791509448",
+        "1791509459",
+        "129127208515966886285"
+      ]
+    },
+    {
+      "id": "r488",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886284"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886284",
+        "8168944070735",
+        "1791505847",
+        "1791505859",
+        "129127208515966886284"
+      ]
+    },
+    {
+      "id": "r489",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966886283"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966886283",
+        "8177570899899",
+        "1791502215",
+        "1791502235",
+        "129127208515966886283"
+      ]
+    },
+    {
+      "id": "r490",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4a3411ac2948B33c69666B35cc6d055B27Ea84f1",
+      "fn": "minAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "1"
+    },
+    {
+      "id": "r491",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4a3411ac2948B33c69666B35cc6d055B27Ea84f1",
+      "fn": "maxAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "95780971304118053647396689196894323976171195136475135"
+    },
+    {
+      "id": "r492",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "ok": true,
+      "result": {
+        "size": 170,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r493",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r494",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r495",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r496",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r497",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r498",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r499",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "4"
+    },
+    {
+      "id": "r500",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0x80eFDeE7F82d0F2aBF3bF29A9A85edF0B42C9e19",
+        "0x05724B9C8C1dDE1b2f659d7c0676ff63f6d5E781",
+        "0x480496c0884D61F2f56707Adb11697F8018898c2",
+        "0xB65B6d224351cD61f856c227b2d5cFc611E9B2d8",
+        "0x80D46daD5A5450a3611CD1d7F9110AEdFA55bfF6",
+        "0xFdE996F00E42b33bdE7C640786333623aCC3f298",
+        "0x7052cB84079905400ea52B635cAb6a275fDA8823",
+        "0xb7F0643D4ca8c296564Ce335062833e1afa3Afdb",
+        "0xD66336eA98cE0da67f25934E7cC230D4226292a0"
+      ]
+    },
+    {
+      "id": "r501",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "description()",
+      "args": [],
+      "ok": true,
+      "result": "ETH / USD"
+    },
+    {
+      "id": "r502",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r503",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "latestRoundData()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "129127208515966895786",
+        "248130270358",
+        "1791580297",
+        "1791580319",
+        "129127208515966895786"
+      ]
+    },
+    {
+      "id": "r504",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "aggregator()",
+      "args": [],
+      "ok": true,
+      "result": "0x7d4E742018fb52E48b08BE73d041C18B21de6Fb5"
+    },
+    {
+      "id": "r505",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "ok": true,
+      "result": {
+        "size": 9571,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r506",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r507",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r508",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r509",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r510",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r511",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+    },
+    {
+      "id": "r512",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895785"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895785",
+        "247485000000",
+        "1791576666",
+        "1791576683",
+        "129127208515966895785"
+      ]
+    },
+    {
+      "id": "r513",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895784"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895784",
+        "248318000000",
+        "1791573035",
+        "1791573059",
+        "129127208515966895784"
+      ]
+    },
+    {
+      "id": "r514",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895783"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895783",
+        "248583347299",
+        "1791569434",
+        "1791569447",
+        "129127208515966895783"
+      ]
+    },
+    {
+      "id": "r515",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895782"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895782",
+        "248611440525",
+        "1791565802",
+        "1791565823",
+        "129127208515966895782"
+      ]
+    },
+    {
+      "id": "r516",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895781"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895781",
+        "249005966501",
+        "1791562171",
+        "1791562187",
+        "129127208515966895781"
+      ]
+    },
+    {
+      "id": "r517",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895780"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895780",
+        "248354692947",
+        "1791558540",
+        "1791558563",
+        "129127208515966895780"
+      ]
+    },
+    {
+      "id": "r518",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895779"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895779",
+        "249621235731",
+        "1791556259",
+        "1791556283",
+        "129127208515966895779"
+      ]
+    },
+    {
+      "id": "r519",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895778"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895778",
+        "248297510606",
+        "1791552928",
+        "1791552947",
+        "129127208515966895778"
+      ]
+    },
+    {
+      "id": "r520",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895777"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895777",
+        "249559168942",
+        "1791550737",
+        "1791550751",
+        "129127208515966895777"
+      ]
+    },
+    {
+      "id": "r521",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895776"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895776",
+        "250198546203",
+        "1791547105",
+        "1791547127",
+        "129127208515966895776"
+      ]
+    },
+    {
+      "id": "r522",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895775"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895775",
+        "251480000000",
+        "1791546415",
+        "1791546431",
+        "129127208515966895775"
+      ]
+    },
+    {
+      "id": "r523",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895774"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895774",
+        "250063960000",
+        "1791545905",
+        "1791545927",
+        "129127208515966895774"
+      ]
+    },
+    {
+      "id": "r524",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895773"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895773",
+        "249231315371",
+        "1791542273",
+        "1791542291",
+        "129127208515966895773"
+      ]
+    },
+    {
+      "id": "r525",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895772"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895772",
+        "250421002933",
+        "1791538642",
+        "1791538667",
+        "129127208515966895772"
+      ]
+    },
+    {
+      "id": "r526",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895771"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895771",
+        "249773908495",
+        "1791535011",
+        "1791535031",
+        "129127208515966895771"
+      ]
+    },
+    {
+      "id": "r527",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895770"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895770",
+        "250034000000",
+        "1791531380",
+        "1791531395",
+        "129127208515966895770"
+      ]
+    },
+    {
+      "id": "r528",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895769"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895769",
+        "249811410000",
+        "1791527749",
+        "1791527771",
+        "129127208515966895769"
+      ]
+    },
+    {
+      "id": "r529",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895768"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895768",
+        "249658840000",
+        "1791524147",
+        "1791524159",
+        "129127208515966895768"
+      ]
+    },
+    {
+      "id": "r530",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895767"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895767",
+        "248412064686",
+        "1791521656",
+        "1791521687",
+        "129127208515966895767"
+      ]
+    },
+    {
+      "id": "r531",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895766"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895766",
+        "248869634878",
+        "1791518025",
+        "1791518039",
+        "129127208515966895766"
+      ]
+    },
+    {
+      "id": "r532",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895765"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895765",
+        "249538000000",
+        "1791514393",
+        "1791514415",
+        "129127208515966895765"
+      ]
+    },
+    {
+      "id": "r533",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895764"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895764",
+        "248052860000",
+        "1791512143",
+        "1791512159",
+        "129127208515966895764"
+      ]
+    },
+    {
+      "id": "r534",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895763"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895763",
+        "247379760000",
+        "1791508511",
+        "1791508535",
+        "129127208515966895763"
+      ]
+    },
+    {
+      "id": "r535",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "129127208515966895762"
+      ],
+      "ok": true,
+      "result": [
+        "129127208515966895762",
+        "247781269449",
+        "1791504910",
+        "1791504923",
+        "129127208515966895762"
+      ]
+    },
+    {
+      "id": "r536",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7d4E742018fb52E48b08BE73d041C18B21de6Fb5",
+      "fn": "minAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "1"
+    },
+    {
+      "id": "r537",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7d4E742018fb52E48b08BE73d041C18B21de6Fb5",
+      "fn": "maxAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "95780971304118053647396689196894323976171195136475135"
+    },
+    {
+      "id": "r538",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "ok": true,
+      "result": {
+        "size": 170,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r539",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r540",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r541",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r542",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r543",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r544",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r545",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "4"
+    },
+    {
+      "id": "r546",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0x80eFDeE7F82d0F2aBF3bF29A9A85edF0B42C9e19",
+        "0x05724B9C8C1dDE1b2f659d7c0676ff63f6d5E781",
+        "0x480496c0884D61F2f56707Adb11697F8018898c2",
+        "0xB65B6d224351cD61f856c227b2d5cFc611E9B2d8",
+        "0x80D46daD5A5450a3611CD1d7F9110AEdFA55bfF6",
+        "0xFdE996F00E42b33bdE7C640786333623aCC3f298",
+        "0x7052cB84079905400ea52B635cAb6a275fDA8823",
+        "0xb7F0643D4ca8c296564Ce335062833e1afa3Afdb",
+        "0xD66336eA98cE0da67f25934E7cC230D4226292a0"
+      ]
+    },
+    {
+      "id": "r547",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "withdrawQueue(uint256)",
+      "args": [
+        "6"
+      ],
+      "ok": true,
+      "result": "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4"
+    },
+    {
+      "id": "r548",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "fn": "config(bytes32)",
+      "args": [
+        "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4"
+      ],
+      "ok": true,
+      "result": [
+        "10000000000000000000000",
+        true,
+        "0"
+      ]
+    },
+    {
+      "id": "r549",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "idToMarketParams(bytes32)",
+      "args": [
+        "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4"
+      ],
+      "ok": true,
+      "result": [
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+        "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+        "915000000000000000"
+      ]
+    },
+    {
+      "id": "r550",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "market(bytes32)",
+      "args": [
+        "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4"
+      ],
+      "ok": true,
+      "result": [
+        "440011670201860",
+        "437273154716051012489",
+        "400803899065931",
+        "397918569901201235393",
+        "1788408503",
+        "0"
+      ]
+    },
+    {
+      "id": "r551",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "fn": "position(bytes32,address)",
+      "args": [
+        "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+        "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r552",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+      "fn": "borrowRateView(tuple,tuple)",
+      "args": [
+        {
+          "loanToken": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "collateralToken": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+          "oracle": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+          "irm": "0x870aC11D48B15DB9a138Cf899d20F13F79Ba00BC",
+          "lltv": "915000000000000000"
+        },
+        {
+          "totalSupplyAssets": "440011670201860",
+          "totalSupplyShares": "437273154716051012489",
+          "totalBorrowAssets": "400803899065931",
+          "totalBorrowShares": "397918569901201235393",
+          "lastUpdate": "1788408503",
+          "fee": "0"
+        }
+      ],
+      "ok": true,
+      "result": "322709463"
+    },
+    {
+      "id": "r553",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "symbol()",
+      "args": [],
+      "ok": true,
+      "result": "WBTC"
+    },
+    {
+      "id": "r554",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r555",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "price()",
+      "args": [],
+      "ok": true,
+      "result": "332305335181901679603770140944705128031048168734"
+    },
+    {
+      "id": "r556",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "BASE_FEED_1()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"BASE_FEED_1\" reverted."
+    },
+    {
+      "id": "r557",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "BASE_FEED_2()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"BASE_FEED_2\" reverted."
+    },
+    {
+      "id": "r558",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "QUOTE_FEED_1()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"QUOTE_FEED_1\" reverted."
+    },
+    {
+      "id": "r559",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "QUOTE_FEED_2()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"QUOTE_FEED_2\" reverted."
+    },
+    {
+      "id": "r560",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "BASE_VAULT()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"BASE_VAULT\" reverted."
+    },
+    {
+      "id": "r561",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "QUOTE_VAULT()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"QUOTE_VAULT\" reverted."
+    },
+    {
+      "id": "r562",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "SCALE_FACTOR()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"SCALE_FACTOR\" reverted."
+    },
+    {
+      "id": "r563",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "ok": true,
+      "result": {
+        "size": 45,
+        "prefix": "0x363d3d37"
+      }
+    },
+    {
+      "id": "r564",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r565",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r566",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r567",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r568",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r569",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r570",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "primaryOracle()",
+      "args": [],
+      "ok": true,
+      "result": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850"
+    },
+    {
+      "id": "r571",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "backupOracle()",
+      "args": [],
+      "ok": true,
+      "result": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f"
+    },
+    {
+      "id": "r572",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "currentOracle()",
+      "args": [],
+      "ok": true,
+      "result": "0x32BC04121a60B2C2E4bf740Bda36d4E528258850"
+    },
+    {
+      "id": "r573",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "isPrimary()",
+      "args": [],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r574",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "deviationThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "20000000000000000"
+    },
+    {
+      "id": "r575",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "getDeviation()",
+      "args": [],
+      "ok": true,
+      "result": "1410336246842140"
+    },
+    {
+      "id": "r576",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "challengeTimelockDuration()",
+      "args": [],
+      "ok": true,
+      "result": "7200"
+    },
+    {
+      "id": "r577",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "healingTimelockDuration()",
+      "args": [],
+      "ok": true,
+      "result": "28800"
+    },
+    {
+      "id": "r578",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x46D18c1240dbC050d5e1224663EA22037df3A009",
+      "fn": "isChallenged()",
+      "args": [],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r579",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "fn": "BASE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23"
+    },
+    {
+      "id": "r580",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "fn": "BASE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c"
+    },
+    {
+      "id": "r581",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "fn": "QUOTE_FEED_1()",
+      "args": [],
+      "ok": true,
+      "result": "0xc0053f3FBcCD593758258334Dfce24C2A9A673aD"
+    },
+    {
+      "id": "r582",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "fn": "QUOTE_FEED_2()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r583",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "fn": "BASE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r584",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "fn": "QUOTE_VAULT()",
+      "args": [],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r585",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "fn": "SCALE_FACTOR()",
+      "args": [],
+      "ok": true,
+      "result": "100000000000000000000000000000000000000"
+    },
+    {
+      "id": "r586",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "ok": true,
+      "result": {
+        "size": 2598,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r587",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r588",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r589",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r590",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r591",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r592",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x5a4B7a6962f63122E3C3a4834111E1c8aEf9FA8f",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r593",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "description()",
+      "args": [],
+      "ok": true,
+      "result": "WBTC / BTC"
+    },
+    {
+      "id": "r594",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "decimals()",
+      "args": [],
+      "ok": true,
+      "result": 8
+    },
+    {
+      "id": "r595",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "latestRoundData()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "36893488147419104057",
+        "99833000",
+        "1791580935",
+        "1791580955",
+        "36893488147419104057"
+      ]
+    },
+    {
+      "id": "r596",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "aggregator()",
+      "args": [],
+      "ok": true,
+      "result": "0xA5e3A55cEa42B86560a5215094981c300899199D"
+    },
+    {
+      "id": "r597",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "ok": true,
+      "result": {
+        "size": 9571,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r598",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r599",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r600",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r601",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r602",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r603",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "owner()",
+      "args": [],
+      "ok": true,
+      "result": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA"
+    },
+    {
+      "id": "r604",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104056"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104056",
+        "99858897",
+        "1791494505",
+        "1791494519",
+        "36893488147419104056"
+      ]
+    },
+    {
+      "id": "r605",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104055"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104055",
+        "99948000",
+        "1791408075",
+        "1791408095",
+        "36893488147419104055"
+      ]
+    },
+    {
+      "id": "r606",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104054"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104054",
+        "99970054",
+        "1791321658",
+        "1791321671",
+        "36893488147419104054"
+      ]
+    },
+    {
+      "id": "r607",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104053"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104053",
+        "99981000",
+        "1791235225",
+        "1791235247",
+        "36893488147419104053"
+      ]
+    },
+    {
+      "id": "r608",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104052"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104052",
+        "99975000",
+        "1791148797",
+        "1791148811",
+        "36893488147419104052"
+      ]
+    },
+    {
+      "id": "r609",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104051"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104051",
+        "99956456",
+        "1791062366",
+        "1791062387",
+        "36893488147419104051"
+      ]
+    },
+    {
+      "id": "r610",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104050"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104050",
+        "99940000",
+        "1790975936",
+        "1790975951",
+        "36893488147419104050"
+      ]
+    },
+    {
+      "id": "r611",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104049"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104049",
+        "99947687",
+        "1790889508",
+        "1790889527",
+        "36893488147419104049"
+      ]
+    },
+    {
+      "id": "r612",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104048"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104048",
+        "99949944",
+        "1790803084",
+        "1790803103",
+        "36893488147419104048"
+      ]
+    },
+    {
+      "id": "r613",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104047"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104047",
+        "99967601",
+        "1790716673",
+        "1790716691",
+        "36893488147419104047"
+      ]
+    },
+    {
+      "id": "r614",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104046"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104046",
+        "99961909",
+        "1790630247",
+        "1790630267",
+        "36893488147419104046"
+      ]
+    },
+    {
+      "id": "r615",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104045"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104045",
+        "99929999",
+        "1790543813",
+        "1790543843",
+        "36893488147419104045"
+      ]
+    },
+    {
+      "id": "r616",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104044"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104044",
+        "99959999",
+        "1790457385",
+        "1790457407",
+        "36893488147419104044"
+      ]
+    },
+    {
+      "id": "r617",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104043"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104043",
+        "99965000",
+        "1790370965",
+        "1790370983",
+        "36893488147419104043"
+      ]
+    },
+    {
+      "id": "r618",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104042"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104042",
+        "100000000",
+        "1790284558",
+        "1790284571",
+        "36893488147419104042"
+      ]
+    },
+    {
+      "id": "r619",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104041"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104041",
+        "99978136",
+        "1790198126",
+        "1790198147",
+        "36893488147419104041"
+      ]
+    },
+    {
+      "id": "r620",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104040"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104040",
+        "99936794",
+        "1790111710",
+        "1790111723",
+        "36893488147419104040"
+      ]
+    },
+    {
+      "id": "r621",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104039"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104039",
+        "99954999",
+        "1790025276",
+        "1790025299",
+        "36893488147419104039"
+      ]
+    },
+    {
+      "id": "r622",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104038"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104038",
+        "99968000",
+        "1789938854",
+        "1789938875",
+        "36893488147419104038"
+      ]
+    },
+    {
+      "id": "r623",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104037"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104037",
+        "99965000",
+        "1789852437",
+        "1789852451",
+        "36893488147419104037"
+      ]
+    },
+    {
+      "id": "r624",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104036"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104036",
+        "99937148",
+        "1789766016",
+        "1789766039",
+        "36893488147419104036"
+      ]
+    },
+    {
+      "id": "r625",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104035"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104035",
+        "99977000",
+        "1789679606",
+        "1789679627",
+        "36893488147419104035"
+      ]
+    },
+    {
+      "id": "r626",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104034"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104034",
+        "99948643",
+        "1789593203",
+        "1789593215",
+        "36893488147419104034"
+      ]
+    },
+    {
+      "id": "r627",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
+      "fn": "getRoundData(uint80)",
+      "args": [
+        "36893488147419104033"
+      ],
+      "ok": true,
+      "result": [
+        "36893488147419104033",
+        "99880000",
+        "1789506794",
+        "1789506815",
+        "36893488147419104033"
+      ]
+    },
+    {
+      "id": "r628",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA5e3A55cEa42B86560a5215094981c300899199D",
+      "fn": "minAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "1"
+    },
+    {
+      "id": "r629",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA5e3A55cEa42B86560a5215094981c300899199D",
+      "fn": "maxAnswer()",
+      "args": [],
+      "ok": true,
+      "result": "95780971304118053647396689196894323976171195136475135"
+    },
+    {
+      "id": "r630",
+      "block": "26157638",
+      "method": "eth_getCode",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "ok": true,
+      "result": {
+        "size": 170,
+        "prefix": "0x60806040"
+      }
+    },
+    {
+      "id": "r631",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r632",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r633",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r634",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r635",
+      "block": "26157638",
+      "method": "eth_getStorageAt",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "args": [
+        "0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b"
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r636",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "owner()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"owner\" reverted."
+    },
+    {
+      "id": "r637",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getThreshold()",
+      "args": [],
+      "ok": true,
+      "result": "4"
+    },
+    {
+      "id": "r638",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21f73D42Eb58Ba49dDB685dc29D3bF5c0f0373CA",
+      "fn": "getOwners()",
+      "args": [],
+      "ok": true,
+      "result": [
+        "0x80eFDeE7F82d0F2aBF3bF29A9A85edF0B42C9e19",
+        "0x05724B9C8C1dDE1b2f659d7c0676ff63f6d5E781",
+        "0x480496c0884D61F2f56707Adb11697F8018898c2",
+        "0xB65B6d224351cD61f856c227b2d5cFc611E9B2d8",
+        "0x80D46daD5A5450a3611CD1d7F9110AEdFA55bfF6",
+        "0xFdE996F00E42b33bdE7C640786333623aCC3f298",
+        "0x7052cB84079905400ea52B635cAb6a275fDA8823",
+        "0xb7F0643D4ca8c296564Ce335062833e1afa3Afdb",
+        "0xD66336eA98cE0da67f25934E7cC230D4226292a0"
+      ]
+    },
+    {
+      "id": "r639",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 25, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:02.765Z",
+        "resultCount": 25
+      }
+    },
+    {
+      "id": "r640",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x25 balanceOf(address)",
+      "args": [
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x27F23c710dD3d878FE9393d93465FeD1302f2EbD"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x9fC3dc011b461664c835F2527fffb1169b3C213e"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x5EC6abfF9BB4c673f63D077a962A29945f744857"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x5a91cE2E8E201aaDe717246F04f9618A58eF9931"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x9F177DF7adE7375DDf627b955e340f35D6796D62"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x7A9f26a753d5a4778052af4D27AD953b3bAd4E3d"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x730EB1e054ad08b390E29A648DE134c35270cE72"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0xAD17139d1a60e4df6d7bb527BF7E382816EC6bbB"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0xaA8d6d306DA25dECB35c2668519352155D75AdFf"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x5F0cE149ace15980eb8062B2527b283c05B84c2B"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x7C1215D47d4EF75c70571b5df805A8cb22E6fc28"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0xaa4506F51773F370553D34aa1b1d8037b2f609dF"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0xF6dE7ffaB409b0E9e741d807bD166E659d1Cb956"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x2104905000D2904597cA0951565BbA5A5f8D0BAB"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x9Cd1aF69FCfB8c99760ba8a752CC849c12F7460A"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0xe66831804421Cb8Dbf8097f2C2d1C4AA2119ECB8"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0xc451e2e6C1483a04D0490f7585237e2170Dff6D9"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x6310C1f4ac20CC021D7730e2d1907001be423A4C"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0xFF040F7ffaF177b638E050E4E1de03b201bA0d1C"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x59D6d90321B211736A62367d3C6695f01c972FE6"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0xDEbD769c0E05160f4E270F8240df714B2eB4e6Bc"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0xD1A2d9DF5db842DA2Ee81075Fa441602B2352915"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x7F3eA8dAa8C1BC344EcdeB54A800Da6B4d48A1fb"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x5c9148566827ceC36c025ec3382ABC0bFaab0aE6"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "0x425A40c52A0F06FbbB46Bd0B91E9a50275ba4200"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "4951898501365758933941",
+        "2600716770901057351724",
+        "685931091229198830651",
+        "258788961799818168243",
+        "192880264945412044956",
+        "135546120460620980414",
+        "104603349642032269820",
+        "62998234372255048201",
+        "53433666597026710939",
+        "41675912729527130486",
+        "31075093654090629239",
+        "29731558843579385403",
+        "16003311184807855626",
+        "10206774241896764201",
+        "9605052291490316386",
+        "9248034035020793390",
+        "4998895212174762771",
+        "4976590844913572726",
+        "4813818478574830543",
+        "4633558355882554911",
+        "4588145690684842936",
+        "3786815471428343197",
+        "3014947237111577614",
+        "2333652344639696577",
+        "1907287964761135386"
+      ]
+    },
+    {
+      "id": "r641",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x25 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "4951898501365758933941"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "2600716770901057351724"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "685931091229198830651"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "258788961799818168243"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "192880264945412044956"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "135546120460620980414"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "104603349642032269820"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "62998234372255048201"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "53433666597026710939"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "41675912729527130486"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "31075093654090629239"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "29731558843579385403"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "16003311184807855626"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "10206774241896764201"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "9605052291490316386"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "9248034035020793390"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "4998895212174762771"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "4976590844913572726"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "4813818478574830543"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "4633558355882554911"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "4588145690684842936"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "3786815471428343197"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "3014947237111577614"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "2333652344639696577"
+          ]
+        },
+        {
+          "to": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "args": [
+            "1907287964761135386"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "5209914824792343398774",
+        "2736225885095679233262",
+        "721671205497318542640",
+        "272273037947290879799",
+        "202930199694485546359",
+        "142608686796813169702",
+        "110053657576514143727",
+        "66280727503043660796",
+        "56217802459012627720",
+        "43847416401291410413",
+        "32694246674402713090",
+        "31280707619638858858",
+        "16837156125978767980",
+        "10738593374137263524",
+        "10105518986816746209",
+        "9729898463377286428",
+        "5259360276934138528",
+        "5235893751192619917",
+        "5064640207885774662",
+        "4874987716972571586",
+        "4827208846387555251",
+        "3984125696014604631",
+        "3172039633337008669",
+        "2455246193534962750",
+        "2006666299807323083"
+      ]
+    },
+    {
+      "id": "r642",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ markets(first: 100, where:{uniqueKey_in:[\"0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d\",\"0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e\",\"0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0\"], chainId_in:[1]}) { items { marketId supplyingVaults { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T08:43:10.533Z",
+        "resultCount": 9
+      }
+    },
+    {
+      "id": "r643",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x8 isMetaMorpho(address)",
+      "args": [
+        {
+          "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+          "args": [
+            "0x2371e134e3455e0593363cBF89d3b6cf53740618"
+          ]
+        },
+        {
+          "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+          "args": [
+            "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237"
+          ]
+        },
+        {
+          "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+          "args": [
+            "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
+          ]
+        },
+        {
+          "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+          "args": [
+            "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8"
+          ]
+        },
+        {
+          "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+          "args": [
+            "0xE89371eAaAC6D46d4C3ED23453241987916224FC"
+          ]
+        },
+        {
+          "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+          "args": [
+            "0x31A5684983EeE865d943A696AAC155363bA024f9"
+          ]
+        },
+        {
+          "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+          "args": [
+            "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658"
+          ]
+        },
+        {
+          "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+          "args": [
+            "0x701907283a57FF77E255C3f1aAD790466B8CE4ef"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "id": "r644",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x8 isMetaMorpho(address)",
+      "args": [
+        {
+          "to": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+          "args": [
+            "0x2371e134e3455e0593363cBF89d3b6cf53740618"
+          ]
+        },
+        {
+          "to": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+          "args": [
+            "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237"
+          ]
+        },
+        {
+          "to": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+          "args": [
+            "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
+          ]
+        },
+        {
+          "to": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+          "args": [
+            "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8"
+          ]
+        },
+        {
+          "to": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+          "args": [
+            "0xE89371eAaAC6D46d4C3ED23453241987916224FC"
+          ]
+        },
+        {
+          "to": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+          "args": [
+            "0x31A5684983EeE865d943A696AAC155363bA024f9"
+          ]
+        },
+        {
+          "to": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+          "args": [
+            "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658"
+          ]
+        },
+        {
+          "to": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+          "args": [
+            "0x701907283a57FF77E255C3f1aAD790466B8CE4ef"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        false,
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "id": "r645",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x24 position(bytes32,address)",
+      "args": [
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x2371e134e3455e0593363cBF89d3b6cf53740618"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x2371e134e3455e0593363cBF89d3b6cf53740618"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0x2371e134e3455e0593363cBF89d3b6cf53740618"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xE89371eAaAC6D46d4C3ED23453241987916224FC"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xE89371eAaAC6D46d4C3ED23453241987916224FC"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0xE89371eAaAC6D46d4C3ED23453241987916224FC"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x31A5684983EeE865d943A696AAC155363bA024f9"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x31A5684983EeE865d943A696AAC155363bA024f9"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0x31A5684983EeE865d943A696AAC155363bA024f9"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x701907283a57FF77E255C3f1aAD790466B8CE4ef"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x701907283a57FF77E255C3f1aAD790466B8CE4ef"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0x701907283a57FF77E255C3f1aAD790466B8CE4ef"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        [
+          "398870589852607205552561827",
+          "0",
+          "0"
+        ],
+        [
+          "2498350380706414567434539118",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "31658485962248748239651701",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "275159775127773577591212248",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "3178038074074314931752706",
+          "0",
+          "0"
+        ],
+        [
+          "1762325816593150783422224971",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "131560736494515382567455441",
+          "0",
+          "0"
+        ],
+        [
+          "524935723798585978898628612",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "4619386943283926296754543549",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "615104548472408848274146017",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "713535711336056741663934511",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "id": "r646",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Gauntlet WETH Prime"
+    },
+    {
+      "id": "r647",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "3129308993996307816570"
+    },
+    {
+      "id": "r648",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "6"
+    },
+    {
+      "id": "r649",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x6 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "2"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "3"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "4"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "5"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7"
+      ]
+    },
+    {
+      "id": "r650",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x2371e134e3455e0593363cBF89d3b6cf53740618"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r651",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r652",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r653",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r654",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r655",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "2968469318201336398185"
+    },
+    {
+      "id": "r656",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x2371e134e3455e0593363cBF89d3b6cf53740618\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:07.973Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r657",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0x9fC3dc011b461664c835F2527fffb1169b3C213e"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0x28a55C4b4f9615FDE3CDAdDf6cc01FcF2E38A6b0"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0x71f795c78E026C655C1f8e14F47E8fcACd69f382"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0x4176535CD44124A9Ea6d4eeF16EB11942c240A78"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "0xf4504fB740aa9e71e11b6220d6E332b159153f60"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "2021918067656956335939",
+        "319929775674482928852",
+        "98235764888459567951",
+        "96786250798263334902",
+        "77171682303530699358"
+      ]
+    },
+    {
+      "id": "r658",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "2021918067656956335939"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "319929775674482928852"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "98235764888459567951"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "96786250798263334902"
+          ]
+        },
+        {
+          "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+          "args": [
+            "77171682303530699358"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "2131468643104658707928",
+        "337264054243252487697",
+        "103558327036364471439",
+        "102030276082958659681",
+        "81352960635157645827"
+      ]
+    },
+    {
+      "id": "r659",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "SingularV ETH"
+    },
+    {
+      "id": "r660",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "41696699590427113693"
+    },
+    {
+      "id": "r661",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "5"
+    },
+    {
+      "id": "r662",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "2"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "3"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "4"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "0xa0534c78620867b7c8706e3b6df9e69a2bc67c783281b7a77e034ed75cee012e",
+        "0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40"
+      ]
+    },
+    {
+      "id": "r663",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r664",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r665",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "37810099870035904825"
+    },
+    {
+      "id": "r666",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:08.122Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r667",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "0x97c4d09F3da365160c72dC1dd0Fdc12784DF6524"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "0x95495601509E608883DE91421915629EDAdC7184"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "0x9D912b6A15990f53710027dE2270a96AD2b5FFE9"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "0x5c89Abd00946c7530e69968cFe47554BEf778B5a"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "0x5313216D5e44C763bC9b2b07a07e65be14b4b9D3"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "23845256454711269479",
+        "11702881496086149938",
+        "1174179054221806589",
+        "907811155136024511",
+        "79244555999096460"
+      ]
+    },
+    {
+      "id": "r668",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "23845256454711269479"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "11702881496086149938"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "1174179054221806589"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "907811155136024511"
+          ]
+        },
+        {
+          "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
+          "args": [
+            "79244555999096460"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "26296162675473372393",
+        "12905748201003983666",
+        "1294865646699708048",
+        "1001119441068110280",
+        "87389613093726397"
+      ]
+    },
+    {
+      "id": "r669",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Re7 WETH"
+    },
+    {
+      "id": "r670",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "288091741667553008410"
+    },
+    {
+      "id": "r671",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "2"
+    },
+    {
+      "id": "r672",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x2 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "1"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ]
+    },
+    {
+      "id": "r673",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r674",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r675",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "267194066128579282216"
+    },
+    {
+      "id": "r676",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:08.733Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r677",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "0x7AFDd1bA1145e583FBa788Cc21dA686E736A311C"
+          ]
+        },
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "0x82cb45B6781B6ca6C9005ecd6E99F79a36478198"
+          ]
+        },
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "0xA64c890b2A60368f225cD7206B785a473a75F2eC"
+          ]
+        },
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "0xB55a8f084e5ECb7c0aDFA09159BC21fB26b4888A"
+          ]
+        },
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "0x82a3235f07d9f6C41e23c0f9c8f2A9e5e59B631B"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "106451431699280528521",
+        "42006782330176697926",
+        "34133355879007307637",
+        "27988079427474282986",
+        "20061029578279461248"
+      ]
+    },
+    {
+      "id": "r678",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "106451431699280528521"
+          ]
+        },
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "42006782330176697926"
+          ]
+        },
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "34133355879007307637"
+          ]
+        },
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "27988079427474282986"
+          ]
+        },
+        {
+          "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+          "args": [
+            "20061029578279461248"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "114763707625718197760",
+        "45286888195700674421",
+        "36798664065402697800",
+        "30173532785296921253",
+        "21627498065938264837"
+      ]
+    },
+    {
+      "id": "r679",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "MEV Capital wETH"
+    },
+    {
+      "id": "r680",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "1857085896129683972586"
+    },
+    {
+      "id": "r681",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "6"
+    },
+    {
+      "id": "r682",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x6 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "2"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "3"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "4"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "5"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+        "0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0"
+      ]
+    },
+    {
+      "id": "r683",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r684",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r685",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "1716742951573331384263"
+    },
+    {
+      "id": "r686",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:08.248Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r687",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "0xB7574272Dc4829c6eE6437Bccd691E5735a2a9b5"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "0x1Ee19E4fA886d0F6474F5d8109053e43Dbe8C3Cd"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "0xf42D67BabBEEC8A5FdC89007dB0Aeea75f29cf42"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "0xe53879aa426cafd5e0cCAFBB74dDa5D494a91C0F"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "0x5d050C502F57976Cae9136aE6fBFa2B77e7eA356"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "1447716528844171547669",
+        "71982640036526705745",
+        "53200647664681403470",
+        "48317743993622973834",
+        "21864340598526658535"
+      ]
+    },
+    {
+      "id": "r688",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "1447716528844171547669"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "71982640036526705745"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "53200647664681403470"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "48317743993622973834"
+          ]
+        },
+        {
+          "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
+          "args": [
+            "21864340598526658535"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "1566044590889160347538",
+        "77866088989896385503",
+        "57548964073506214937",
+        "52266959807105410322",
+        "23651406643134695015"
+      ]
+    },
+    {
+      "id": "r689",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Yearn OG WETH"
+    },
+    {
+      "id": "r690",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "926741206794799208410"
+    },
+    {
+      "id": "r691",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "5"
+    },
+    {
+      "id": "r692",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "2"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "3"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "4"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ]
+    },
+    {
+      "id": "r693",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0xE89371eAaAC6D46d4C3ED23453241987916224FC"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r694",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r695",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "890491977096055717187"
+    },
+    {
+      "id": "r696",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0xE89371eAaAC6D46d4C3ED23453241987916224FC\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:08.763Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r697",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0xc56413869c6CDf96496f2b1eF801fEDBdFA7dDB0"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0xCC20b66A3d65646732A4E8a46D84Ba760D6635D3"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0x29f66860c93cb45ce811aDA74b1B30F4965740F1"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0xd0699aAfd17bA63fB6519b9EA2bD8Bd2c9d4eb87"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "0xd3078C0afDc06327c511306ED2164d45269436A6"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "862429643277391816619",
+        "9358919990961434680",
+        "8066505534098423769",
+        "5381473084739055061",
+        "1969955323304047444"
+      ]
+    },
+    {
+      "id": "r698",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "862429643277391816619"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "9358919990961434680"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "8066505534098423769"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "5381473084739055061"
+          ]
+        },
+        {
+          "to": "0xE89371eAaAC6D46d4C3ED23453241987916224FC",
+          "args": [
+            "1969955323304047444"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "897536402430533233704",
+        "9739891763693654047",
+        "8394867237804369883",
+        "5600535684161186502",
+        "2050145919275294471"
+      ]
+    },
+    {
+      "id": "r699",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Vault Bridge WETH"
+    },
+    {
+      "id": "r700",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "6604026177135432340255"
+    },
+    {
+      "id": "r701",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "5"
+    },
+    {
+      "id": "r702",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "2"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "3"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "4"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ]
+    },
+    {
+      "id": "r703",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r704",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r705",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r706",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r707",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r708",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "6436342173522994817677"
+    },
+    {
+      "id": "r709",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x31A5684983EeE865d943A696AAC155363bA024f9\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:09.227Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r710",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "0x80845058350B8c3Df5c3015d8a717D64B3bF9267"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "0x2DC70fb75b88d2eB4715bc06E1595E6D97c34DFF"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "0xdF42B6968D790a101B8873e7AF035bAfd61692A1"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "0x9F177DF7adE7375DDf627b955e340f35D6796D62"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "0x8c1515e1e4A58CC883f005b5E7f5A3094e89c9A3"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "3536030812159806561816",
+        "1798387384572701788271",
+        "580200359422841440193",
+        "444919164024973916821",
+        "65854776142353520342"
+      ]
+    },
+    {
+      "id": "r711",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "3536030812159806561816"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "1798387384572701788271"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "580200359422841440193"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "444919164024973916821"
+          ]
+        },
+        {
+          "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+          "args": [
+            "65854776142353520342"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "3628153740357559249846",
+        "1845240118811050354633",
+        "595316108942787967248",
+        "456510481628974606838",
+        "67570466739047034530"
+      ]
+    },
+    {
+      "id": "r712",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Gauntlet LRT Core"
+    },
+    {
+      "id": "r713",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "875884334084614873775"
+    },
+    {
+      "id": "r714",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "6"
+    },
+    {
+      "id": "r715",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x6 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "2"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "3"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "4"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "5"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+        "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0"
+      ]
+    },
+    {
+      "id": "r716",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r717",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r718",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "2795098797631830809999",
+        "204901202368169190001"
+      ]
+    },
+    {
+      "id": "r719",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r720",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r721",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "config(bytes32)",
+      "args": [
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        false,
+        "0"
+      ]
+    },
+    {
+      "id": "r722",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r723",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r724",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r725",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r726",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r727",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "797342426602853314772"
+    },
+    {
+      "id": "r728",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:09.898Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r729",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0x28a55C4b4f9615FDE3CDAdDf6cc01FcF2E38A6b0"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0xC09aB4F53d0CB0fC04af22Bf850cE6f97EE1F990"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0x15D5cd0342c79C158c448DB6F7fF27a0ce8dC0ab"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0x70a0d9a7797a61916150d94D7c01341f744551c7"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "0x5FD8bCC6180eCd977813465bDd0A76A5a9F88B47"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "286680026550113806373",
+        "137093097811429560597",
+        "103665739597301872965",
+        "62296518211938279914",
+        "45995997796894787132"
+      ]
+    },
+    {
+      "id": "r730",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "286680026550113806373"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "137093097811429560597"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "103665739597301872965"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "62296518211938279914"
+          ]
+        },
+        {
+          "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+          "args": [
+            "45995997796894787132"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "314918493339098960878",
+        "150596999482341451290",
+        "113876990028668313408",
+        "68432830468382535523",
+        "50526681262513896060"
+      ]
+    },
+    {
+      "id": "r731",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Index Coop hyETH"
+    },
+    {
+      "id": "r732",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "750555043554324840962"
+    },
+    {
+      "id": "r733",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "2"
+    },
+    {
+      "id": "r734",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x2 withdrawQueue(uint256)",
+      "args": [
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "1"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ]
+    },
+    {
+      "id": "r735",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x701907283a57FF77E255C3f1aAD790466B8CE4ef"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r736",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": true
+    },
+    {
+      "id": "r737",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r738",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r739",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "id": "r740",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "712599853329114617004"
+    },
+    {
+      "id": "r741",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x701907283a57FF77E255C3f1aAD790466B8CE4ef\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:10.229Z",
+        "resultCount": 5
+      }
+    },
+    {
+      "id": "r742",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 balanceOf(address)",
+      "args": [
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "0x91f7E2021B4220aB9e9f48cC9297Db8632956a23"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "0xc4506022Fb8090774E8A628d5084EED61D9B99Ee"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "0x2D53147Bb1E3C3Dbe66bf77D721047436419aB75"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "0xB7574272Dc4829c6eE6437Bccd691E5735a2a9b5"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "0x8c2Fd016412d9449dA4b1f8a3b0FC03868F717e3"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "392689464824694977375",
+        "157373175525596705267",
+        "74418263750488844654",
+        "29422676600585798635",
+        "26080338372741386618"
+      ]
+    },
+    {
+      "id": "r743",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x5 convertToAssets(uint256)",
+      "args": [
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "392689464824694977375"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "157373175525596705267"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "74418263750488844654"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "29422676600585798635"
+          ]
+        },
+        {
+          "to": "0x701907283a57FF77E255C3f1aAD790466B8CE4ef",
+          "args": [
+            "26080338372741386618"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        "413584226319526785034",
+        "165746904038429617980",
+        "78378013148451726022",
+        "30988238870974844850",
+        "27468056910711879916"
+      ]
+    },
+    {
+      "id": "r744",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ marketPositions(first: 500, skip: 0, where:{marketUniqueKey_in:[\"0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d\"], chainId_in:[1], borrowShares_gte: \"1\"}) { pageInfo { countTotal count } items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T08:43:12.260Z",
+        "resultCount": 49
+      }
+    },
+    {
+      "id": "r745",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x49 position(bytes32,address)",
+      "args": [
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x91E895a53184Aa6C58ABd2A8F4f3cB8f75287760"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x00ABc02c649f81Ac8B3a7Bf9926645492F53590a"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x0F6C608F362FDd72ef8B2d561F05c7933fEDca13"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x1F3A9A20c9e68ABdA4e8811fF7A627087BfbF801"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x26Be8d49Cfd55f6467c1c586ee59D4d839c0Bb61"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x2735A560ca4a5ec14776a2cEF36280f17a980CD2"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x2ed38012A1A33aeAE3375245259C8777e77dF5ea"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x32691f40E1FE4Ce475292c29dc2E85b04E4FfcFC"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x3361A72C248765cb2709C1912045bD5a78263BCD"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x462a336dCac6eaF544106266914caa5a18b831d0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x4789C274d65b6d4C5c9db42813dfc67F87DACDE6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x4b441cd7C5085d0C255eff3dB7eC3417cCA1a1a0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x56143f72736598e09BCCA5f94cfEe4DbA3Ac6bF4"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x5A2d4A07b186e02702fd165a119122A0095335c3"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x5ACdAbEc96C1D2bc16C030b7dD98D2A8d669DC98"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x5ceDE91b3c5783d093B2F6C29Cb2571a11204B27"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x5fF8b28732Ed1ea382Ca06F0aB65d3CD7003F53B"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x69b7126E34672F174Aa754D6B1ccAA3f2095f12a"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x6b0a26C51c5ca3411192BA8e11fEC4419597b2f7"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x6d0DEbaeDFeBEED33aa83d813E32561e60dfE90c"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x6d265486E4527524b5BD2C9Ce7958540653d1617"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x7030D5Ae6c8beBd850e2EfB8382AD7dDe4b88174"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x72811209562DA01D5b2A105F7C5e20B90Ef2fB44"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x828c5e02d79f122ABA8FedDe33824f2340935305"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x8A7EA8BF5D72037b151DF18dBE180B345917e2eD"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x8C407cc9395540F32F726884cDdB2a4e06822bd7"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x8b4943EBcf5F31923E0C409943d5FeF53c0C53CB"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0x946802757D0ec3e07DEE2B746cCFc297962c7FD8"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xA9601cb7afB057Ed60A0E9177c7068933Ff739AC"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xA9b4aA23fF4D79ed9386872759ab1Db66EEa04ea"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xB8a451107A9f87FDe481D4D686247D6e43Ed715e"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xBa19dcE4E43Fe16671d81B10D6f823d22032b6e2"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xD187f0707B49b2BB4F1cBFA3e630DBebd891f231"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xD1A2d9DF5db842DA2Ee81075Fa441602B2352915"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xDE97a58C9E3163cC5B4E7C65250f15C5Ec7b8bD6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xDbDDb659dB12E4a04043136b30DF0D1d77623a99"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xE7E0ee487a3d836894fDb04C0aBc5859eAc11D9a"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xF012FE980bfBf4E6120A51b134935E2F70109dE9"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xF33C2069ebcD3979147395e8A61B22be3e387321"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xa25328Aa6581B609978D4a33f4b45536fc8D11F4"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xa2533E65a31DFDe8BA16477D02a1B0E772A924AC"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xa8AB743C1ED8Fb898360ab99ef9d52bf799a6F7F"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xb32b2DAC2FE23Aa80D41fd9FC8601bFF4b88cBC3"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xc19140bd471e314788Df400C5C7760c9d8654119"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xc8a3b83B64F54001CaC41281ca80D22916D2191F"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xd90c2DC41d97c62585841A8b6E0d500A5217B9Ab"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xfa7E52Eb10069fE6f33223182124389513260D44"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xfeed46c11F57B7126a773EeC6ae9cA7aE1C03C9a"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+            "0xffDf0d9b1079E3922AF387cF1F93973CD6d6F578"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        [
+          "500000000000000000000",
+          "50000000000000000000",
+          "209167499166802"
+        ],
+        [
+          "0",
+          "5144239745685698639898200",
+          "4777441062815887257"
+        ],
+        [
+          "0",
+          "152061637216183160237843",
+          "249924847881517863"
+        ],
+        [
+          "0",
+          "2961174497068034",
+          "10000000000000"
+        ],
+        [
+          "0",
+          "197689303671190355276235",
+          "188751515279131949"
+        ],
+        [
+          "0",
+          "99547249503116584437140",
+          "91710748233715844"
+        ],
+        [
+          "0",
+          "984390883787",
+          "901652"
+        ],
+        [
+          "0",
+          "4445536443199600524933909",
+          "4573357595060058438"
+        ],
+        [
+          "0",
+          "450937776311663203846",
+          "425000000000000"
+        ],
+        [
+          "0",
+          "5852521354075638665099311798",
+          "5373122056459849164629"
+        ],
+        [
+          "0",
+          "199658563194093997886424",
+          "190965654927392729"
+        ],
+        [
+          "0",
+          "776167590334240660387918942",
+          "698388760199127768540"
+        ],
+        [
+          "0",
+          "8000451747577082689462300",
+          "8015703804260844725"
+        ],
+        [
+          "0",
+          "118238437897160825753348",
+          "112877980951229263"
+        ],
+        [
+          "0",
+          "2500926018653852515435064",
+          "2500000000000000000"
+        ],
+        [
+          "0",
+          "165736337885735957363367779",
+          "150116824510128126588"
+        ],
+        [
+          "0",
+          "3888437728293988347448",
+          "4134757671861394"
+        ],
+        [
+          "0",
+          "1575223073813983011901",
+          "1412927341749375"
+        ],
+        [
+          "0",
+          "477653248610901089426826",
+          "641005448560701424"
+        ],
+        [
+          "0",
+          "42174178405698444428823",
+          "40000000000000000"
+        ],
+        [
+          "0",
+          "477217923123843611535777",
+          "546054528687066023"
+        ],
+        [
+          "0",
+          "1052942618821692823669",
+          "1000000000000000"
+        ],
+        [
+          "0",
+          "80092764997057853994",
+          "79911450424397"
+        ],
+        [
+          "0",
+          "26279194029258832949555",
+          "23932550845364848"
+        ],
+        [
+          "0",
+          "9821346051431782408364",
+          "20000000000000000"
+        ],
+        [
+          "0",
+          "486105266374426422975",
+          "1000000000000000"
+        ],
+        [
+          "0",
+          "151648669823237533515357776",
+          "143162455561057005845"
+        ],
+        [
+          "0",
+          "76562757246197961916922523",
+          "75000000000000000000"
+        ],
+        [
+          "0",
+          "79635494127428432138",
+          "75379705468965"
+        ],
+        [
+          "0",
+          "6135724109486754743",
+          "5795200147543"
+        ],
+        [
+          "0",
+          "168845970083785844492109391",
+          "158951848740034946921"
+        ],
+        [
+          "0",
+          "17925031416758802703104140",
+          "21344779209061165348"
+        ],
+        [
+          "0",
+          "104578706256894008607690",
+          "100000000000000000"
+        ],
+        [
+          "0",
+          "703604482203863452662",
+          "756114704372520"
+        ],
+        [
+          "0",
+          "546991166350676657713351",
+          "549254552028916154"
+        ],
+        [
+          "0",
+          "4793426243682",
+          "4516141"
+        ],
+        [
+          "0",
+          "26841387808298866118001",
+          "25599174512805830"
+        ],
+        [
+          "0",
+          "87074228408256244439357",
+          "109883000432349727"
+        ],
+        [
+          "0",
+          "9939850700011499739746",
+          "11050852362594286"
+        ],
+        [
+          "0",
+          "15970715219633506572673706",
+          "30433518044708094429"
+        ],
+        [
+          "0",
+          "1979337979128302472",
+          "2001418100000"
+        ],
+        [
+          "0",
+          "19337035240511531941155",
+          "40000000000000000"
+        ],
+        [
+          "0",
+          "3665343701245390955865281",
+          "4089581727068506046"
+        ],
+        [
+          "0",
+          "106923437846244427387252121",
+          "116386320730114622722"
+        ],
+        [
+          "0",
+          "714862111083900529",
+          "674666454144"
+        ],
+        [
+          "0",
+          "42089278726920481309536",
+          "38516358184531258"
+        ],
+        [
+          "0",
+          "748494111071150306171811",
+          "803496155410720870"
+        ],
+        [
+          "0",
+          "168734956421205298118595",
+          "151240640301570934"
+        ],
+        [
+          "0",
+          "15597901263909920648401731",
+          "14555779251906640233"
+        ]
+      ]
+    },
+    {
+      "id": "r746",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ marketPositions(first: 500, skip: 0, where:{marketUniqueKey_in:[\"0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e\"], chainId_in:[1], borrowShares_gte: \"1\"}) { pageInfo { countTotal count } items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T08:43:12.518Z",
+        "resultCount": 113
+      }
+    },
+    {
+      "id": "r747",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x113 position(bytes32,address)",
+      "args": [
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x49915dD96502c7C96a69Ed8dBb66656Fce985296"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x00bee60F3a37576b1FE180A4A52E39f8D18480f9"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x03b26cc31A241804a6C79F0d34B2ec4E1E792B68"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x13E91D7FE3D385B1Fc4899fd67a3e1341FcA6E22"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x13d0503352f34B751CACfbe27e694B58561F2983"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x142F3316ec1cfcd7db3dfA44c0F1aB8AEd28D6BE"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x16034D2b0cA0AE52bcFeEF88F55473e12F905C19"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x1676D23711186076Fa74aa53511dDa750A1F0D9A"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x1de35FFE05Fe45368ad200b9Be424430052425f6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x1e661e672eab9f7BA827064D126b5AA3bDD14985"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x204070E0C972319722BC4BD1D236b5Ba953dDb82"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x26C0FcA64A2860D3571Bf284b5F3e59673cb138F"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x2b1dE6F5Bb3F8ae0B19099DbbDe4398a0fdF6c8E"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x3006D86584B0fe871005bb7dC61EA00dFf44FCa6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x314Ab1044316e62dCDdbC87c2df57F1254b4B4A6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x354fbb15068cE4Ba4e5657EF1E9B5f2bdC9785e0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x37Db6089A117925922Bc6f1c38a2388fEd666600"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x39292F487A35975c2055F2a3FCe817A55024C415"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x3DE20F55a095a291cDE0A606198fc58344179CD4"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x3E19a14F4E987a474850883c25aB9C763bEF68c6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x4006c797Fd3850473b7bEc993a86a77fE7Ab882d"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x43C0Ec5456b67c8A7471b3dCadebEE0e2a272E72"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x452E834e1711b30b9B256325Ff093640f076E085"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x462a336dCac6eaF544106266914caa5a18b831d0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x463625e8521b3fBaC07EEf403ED2d8837E946270"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x4789C274d65b6d4C5c9db42813dfc67F87DACDE6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x47A96DCb58E36B8c4A80EF72A50843De0FA382d9"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x47d2eaaD8c87eFaA29ac6Cb3FFf44E3f7081145b"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x4C8C25074882e2DFB956541dAd78A012102056B8"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x4b441cd7C5085d0C255eff3dB7eC3417cCA1a1a0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x52b4c7627CEc29bD90e53c76c285A714c1C66045"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x542eDec06EE7106F6c005A2673249CA2D0d3cA18"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x5E395c998487D6447aB8242ED93aBe89eC7d2A49"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x5Ee7035b168531736eAE63FECa62ac54e0069E17"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x5ceDE91b3c5783d093B2F6C29Cb2571a11204B27"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x6046BbdC5af2E2c763DeB921b2E50eB0D3B39d80"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x6241E0edCB939c94c7dB830aBD0B24648517c634"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x66C0d9152209B51977047b9DC3b0B5bf2339b67C"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x68B1c5dEAF2b5de25D7eeD4E6d453aCb0502177d"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x69b7126E34672F174Aa754D6B1ccAA3f2095f12a"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x6d0DEbaeDFeBEED33aa83d813E32561e60dfE90c"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x70b9d624b2469A46E0a398c268abEeE2C6aE438b"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x782C6C86833e571072A2E8D06a39296832019C0a"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x7926333578a4a7E96350A6F1340BA929b2f86522"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x7CdF6069f3A82DBE4fB7fa9d86bc46137760D5f4"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x7D9d0DA1Ad30d4a707A473C9e91ecc100Ff065ef"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x7e499BDa05a7991B3a05a355b9849cf160269828"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x8044A52A999a07163908e7dD20f477d698a9F07b"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x81F6ae5Bd24a31B0b28fFb4012e34d6A10761b3F"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x82a89f2595159015f2eb4318221C838fE4e63280"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x83a59Ce2eF545c019e77c542552eC0f0f58402B6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x8895aC80947C6FcA7009E4e71D70f7979015FC37"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x893aa69FBAA1ee81B536f0FbE3A3453e86290080"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x8Be46b25d59616e594f0A9e20147fb14c1B989d9"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x8C0Dc4D360060c18f3e433571aA56E65025baB1C"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x8C407cc9395540F32F726884cDdB2a4e06822bd7"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x8dA94391457f1C1e4a62d11B33CB8Ca265DCFB67"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x9085DA766BBFCd0d04767992BF33Bb07a6583E99"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x92fE48f0402C7F2341c9b91c8B048814f2EAAF6F"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x97891Bb5a666800D2F07C27Feb00ddddb69AF221"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x9A3569c7053F9fB5abEB7CCB1678Bd33c47aD278"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x9C25964aAF541e3d530A0775d2885034BBb35cF8"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x9c5D92cd4e2c14c9F402FBA0187fBA470391A163"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x9d186580aA4B06F4D21237Dffd52886819394762"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0x9eC90ffEA23B3dc33965f120AB87AbeBc17C0F1A"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xA612A79417E2AeeFDaf7Ed607AdF3f343b6b53Db"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xB0739e7150FE098D040c79b98cFe7929F8659E4f"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xB1F57674Aa6aE260f9d962CF6FeC8b5f9989D02D"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xB22cd280b29e581e34423E86F65fd259F456D335"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xB7829e0A55975e9380e76E27D89391a795807a7F"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xB8a451107A9f87FDe481D4D686247D6e43Ed715e"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xBdBcB59b6E7D74988494861D617069972e21b5e3"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xC6d6b46266adb9F7ACedce42cD3A3Cf3C0f98f24"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xC8520E36c0fd5df783bF32869E23606f7EDDF8Fb"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xCaA6F0E7EA422EbAa63cAecE7e8530E01C418F32"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xD1A2d9DF5db842DA2Ee81075Fa441602B2352915"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xD7E291D66CD1071c64376719895fC3dB0b745Cbd"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xD81A40c8571fB9c5fb423D4EA06079F24210292B"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xDCF972E3851620D1BA5201B923391B9f6A3ba528"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xE170ED9D77792397271d564c7161351d69fe9300"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xE5613b1FA1caBdAFA9C4B8b16dc7c6fEAB58Eefa"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xE58eEd9692572ee7Ec5D3eBB4Fc1Af56090eAd46"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xE70c134cAd0faEe3Dd716C3864Fb8A11583e5cDd"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xED92063044F9004b27F2da5C6Ed5AfC1cB0188F9"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xEDE8Ff76E5cE200bFfc4B21c8FD54C822b11d05e"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xF69AA51A1fdeB7B7BecC206fe44eF72660dEdF30"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xFc99dd3D0d25d046ef8d94F3A64e486F6551Bfe5"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xFdD9919df5be35F5963d92680551f510Fa27Dc08"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xa20F7c02d1afD9DA1EEDBB593681C70Acef60Fb0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xa5ab0893Dda1d207D850867045cbc27c3787AFEd"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xa8e32Be4CA13b271673f8b01F1eeACFde66FA413"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xaE9746a85F7E08Cbfd08dB00Edf9B6C21f592fEc"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xb224f589297A5A207e6069De5DaFD4b120129817"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xb3DA159cFeb3B5319f4d5A1Fc6Ad7193Ffbde459"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xb774299E256955FCD3C2B6Cb8EaDcB15Ed26d7AB"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xc38D4C2FafCDA2032f3dB82647512754558e3B89"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xcc8d76aa1ECCE6abc9E67Bf4fE6d7fBE02Cc2c85"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xd16728A5Cc5870C5F7A09B65d04c35Ace6D33da5"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xd174C970805EA549031B7568A123362AC867e683"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xd2E03Efa11e8d1bdc01052554B25bcA9b18B852b"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xd775B8A4fC53f07E2f011A33a0D68A07a2d15fd9"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xd7C6b904bA79b1A2d7E505Db8FCff6c30D28b097"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xdB2867C1eCa05D8825AAe2348EF3D47B097d83Ff"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xdFc42cc413FDdE396d7Ca299d6B715442e1B481a"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xe1590894e25d4aD93Be881E315aCd9516F2e6B0b"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xe9e8B9a9135C4b3A8E673BC2C7F96F26924c0253"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xeBCe3c37F85a1C52Db4BFaB33545f0e9837A5f5E"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xf01E4fd10144D069df66A47588696cAeF07b9a77"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xf83dB716A1Ff12F9005F98f678D8BE97B8Bc81d6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xfA4400264ABD97fA6d61AB04471DacaD081928DE"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xfAfcB4fD02A320D9760d30447b8D14414E3F8a7b"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xfB74196ecCf35a260dd5CFd300bAa37AE058B6C0"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+            "0xfF18Ea2B12476e96dA2dfD458E431e26dbFd735E"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        [
+          "108951941336726832875",
+          "61053684944239",
+          "500000000000000"
+        ],
+        [
+          "0",
+          "26147294228972529430528",
+          "24328892193120542"
+        ],
+        [
+          "0",
+          "2135554162986464295986",
+          "2076503835497702"
+        ],
+        [
+          "0",
+          "482730792539480517698",
+          "1000000000000000"
+        ],
+        [
+          "0",
+          "2747177163518029983042024630",
+          "2481000000000000000000"
+        ],
+        [
+          "0",
+          "31002400661733053274745",
+          "57298082263960688"
+        ],
+        [
+          "0",
+          "41490735248996563181335782",
+          "48109414126878092571"
+        ],
+        [
+          "0",
+          "2048281267645012060921681511",
+          "1900000000000000000000"
+        ],
+        [
+          "0",
+          "16629514418859181980904",
+          "25000000000000000"
+        ],
+        [
+          "0",
+          "11057705225097490835794015",
+          "9949320957771323899"
+        ],
+        [
+          "0",
+          "1952918959097964617191",
+          "1813070076202224"
+        ],
+        [
+          "0",
+          "654623298882968804646892",
+          "608408334278495562"
+        ],
+        [
+          "0",
+          "300970439925984136396562074",
+          "270827095920571952750"
+        ],
+        [
+          "0",
+          "587213141689563080070",
+          "1000000000000000"
+        ],
+        [
+          "0",
+          "129219206245065234158",
+          "348784298206517"
+        ],
+        [
+          "0",
+          "1919277707548492000778",
+          "4081360574563016"
+        ],
+        [
+          "0",
+          "76617277119205389241400",
+          "130200000000000000"
+        ],
+        [
+          "0",
+          "587721401409092717307",
+          "99000000000000000"
+        ],
+        [
+          "0",
+          "348962298614775848",
+          "60716679872018653"
+        ],
+        [
+          "0",
+          "4215626548882716454569",
+          "3785992737663577"
+        ],
+        [
+          "0",
+          "368184654838916",
+          "341505531"
+        ],
+        [
+          "0",
+          "38917003108424918308271050",
+          "34509150410195122657"
+        ],
+        [
+          "0",
+          "49969492013630209759118",
+          "100000000000000000"
+        ],
+        [
+          "0",
+          "5288567936370432693243237097",
+          "4906530156558447828320"
+        ],
+        [
+          "0",
+          "43461504974171083519964",
+          "41198168854135792"
+        ],
+        [
+          "0",
+          "245918629838036882157952",
+          "233257983169449351"
+        ],
+        [
+          "0",
+          "5714146588647035220154053",
+          "5535753107395833365"
+        ],
+        [
+          "0",
+          "1464592731716626768957",
+          "1351635373168849"
+        ],
+        [
+          "0",
+          "92306514743101825",
+          "9419936326181788"
+        ],
+        [
+          "0",
+          "1542727242677026576393259435",
+          "1365869185629536622399"
+        ],
+        [
+          "0",
+          "16001730822340505630758868",
+          "109801850660090973208"
+        ],
+        [
+          "0",
+          "1579810265128870331797713",
+          "1397533324545962876"
+        ],
+        [
+          "0",
+          "72244506879910565552",
+          "67157703503382"
+        ],
+        [
+          "0",
+          "2092177670389626424263",
+          "1858974838923028"
+        ],
+        [
+          "0",
+          "1412959575516738212076965128",
+          "1278334079038294645602"
+        ],
+        [
+          "0",
+          "9676818234150424713433",
+          "9500000000000000"
+        ],
+        [
+          "0",
+          "8211462285894364492102",
+          "7613753255225016"
+        ],
+        [
+          "0",
+          "70895406638993386892246714",
+          "66968385446743787948"
+        ],
+        [
+          "0",
+          "106481700579357733164127284",
+          "98725827776278385394"
+        ],
+        [
+          "0",
+          "3289571721840547218958",
+          "2904819001706260"
+        ],
+        [
+          "0",
+          "58254706857083125375147",
+          "52874628256344578"
+        ],
+        [
+          "0",
+          "2562104005574672239559038",
+          "2557955840177246810"
+        ],
+        [
+          "0",
+          "454701583299834735279885",
+          "517658827198734516"
+        ],
+        [
+          "0",
+          "42546730271975264007198251",
+          "40183548635350152867"
+        ],
+        [
+          "0",
+          "32498510745080809120914",
+          "30204943308890615"
+        ],
+        [
+          "0",
+          "472237080468466605057509",
+          "800000000000000000"
+        ],
+        [
+          "0",
+          "23337138242993807644879097",
+          "21626450151373140688"
+        ],
+        [
+          "0",
+          "62393036171998903690741355",
+          "55564284097082161266"
+        ],
+        [
+          "0",
+          "1283193060639814392816162",
+          "1199141538567802305"
+        ],
+        [
+          "0",
+          "96512276359156110224",
+          "10000000000000000"
+        ],
+        [
+          "0",
+          "107757399226055008642835738",
+          "100000000000000000000"
+        ],
+        [
+          "0",
+          "576613119355083804768",
+          "1200000000000000"
+        ],
+        [
+          "0",
+          "2155225433594289319074815599",
+          "2300000000000000000000"
+        ],
+        [
+          "0",
+          "457791972762523850",
+          "23354240716071"
+        ],
+        [
+          "0",
+          "492091381490349144113",
+          "500000000000000"
+        ],
+        [
+          "0",
+          "193860481903111296239",
+          "1000000000000000"
+        ],
+        [
+          "0",
+          "481071660097169403068148",
+          "427367815076590723"
+        ],
+        [
+          "0",
+          "45398815089201978560706",
+          "42105653570138602"
+        ],
+        [
+          "0",
+          "236808299957878195390309",
+          "216363958849897137"
+        ],
+        [
+          "0",
+          "8387207266349873474836233",
+          "12000000000000000000"
+        ],
+        [
+          "0",
+          "3873296753894106749957932505",
+          "3812787484252961787418"
+        ],
+        [
+          "0",
+          "720748791339658289406",
+          "668450361217241"
+        ],
+        [
+          "0",
+          "2372555831934071286977149",
+          "2340683990369235064"
+        ],
+        [
+          "0",
+          "10692005435224151786042",
+          "10000000000000000"
+        ],
+        [
+          "0",
+          "16996980977118977049470180",
+          "15235975178447820130"
+        ],
+        [
+          "0",
+          "182406056203942328",
+          "169121395391"
+        ],
+        [
+          "0",
+          "45617756997848118536338908",
+          "48522471788239810494"
+        ],
+        [
+          "0",
+          "88691892330538317842183569",
+          "80167396157821092341"
+        ],
+        [
+          "0",
+          "5284078953567442488631",
+          "8988034442551239"
+        ],
+        [
+          "0",
+          "1405924409694015152096592654",
+          "1281632528219690113341"
+        ],
+        [
+          "0",
+          "672062328391044282620316525",
+          "635807470714612522025"
+        ],
+        [
+          "0",
+          "29400870415554462831581",
+          "29155000000000000"
+        ],
+        [
+          "0",
+          "82025815483821",
+          "7616352352"
+        ],
+        [
+          "0",
+          "3126974719617389946103",
+          "2902960042643620"
+        ],
+        [
+          "0",
+          "285318950577545520181670876",
+          "264745566796705462523"
+        ],
+        [
+          "0",
+          "156655164419712689299",
+          "1000000000000000"
+        ],
+        [
+          "0",
+          "206114472934116129401",
+          "259745146532166"
+        ],
+        [
+          "0",
+          "59282754141954340882480720",
+          "66238675891006442172"
+        ],
+        [
+          "0",
+          "113112382558379562838",
+          "100000000000000"
+        ],
+        [
+          "0",
+          "32223307721637634588037",
+          "30000000000000000"
+        ],
+        [
+          "0",
+          "78220352465296375558135557",
+          "73446296018012664946"
+        ],
+        [
+          "0",
+          "11791102507483449263470864",
+          "10799797324363242000"
+        ],
+        [
+          "0",
+          "9442249334969241129980",
+          "16400000000000000"
+        ],
+        [
+          "0",
+          "35324670717896915827618",
+          "35000000000000000"
+        ],
+        [
+          "0",
+          "571482911239427260584460",
+          "2118764227509319138"
+        ],
+        [
+          "0",
+          "13814778138726952177729511",
+          "14429910293822740876"
+        ],
+        [
+          "0",
+          "35306797847598266554034213",
+          "31999759445067999999"
+        ],
+        [
+          "0",
+          "58244999028758328",
+          "54056320724"
+        ],
+        [
+          "0",
+          "43600066509181415801144",
+          "40433586175302094"
+        ],
+        [
+          "0",
+          "1025847450403512062505",
+          "8777745217598616"
+        ],
+        [
+          "0",
+          "766492297779309917673",
+          "679746567190668"
+        ],
+        [
+          "0",
+          "707962676684175796",
+          "1000000000000"
+        ],
+        [
+          "0",
+          "2418307670634284960147185939",
+          "2141124954253829382877"
+        ],
+        [
+          "0",
+          "29260976325093631889217",
+          "50000000000000000"
+        ],
+        [
+          "0",
+          "3124336766830180912621788",
+          "8250000000000000000"
+        ],
+        [
+          "0",
+          "42460528373163087302514258",
+          "40099999999999999972"
+        ],
+        [
+          "0",
+          "1208116701717389844494572",
+          "1090840926036152169"
+        ],
+        [
+          "0",
+          "147346912398438092498160501",
+          "133153599013031095125"
+        ],
+        [
+          "0",
+          "43109154011714450377904752",
+          "39437602411280997706"
+        ],
+        [
+          "0",
+          "10577890154639535120212",
+          "10028953732247299"
+        ],
+        [
+          "0",
+          "15767088618876093521487",
+          "14161984283601884"
+        ],
+        [
+          "0",
+          "262811335614750414569",
+          "1085573762121051"
+        ],
+        [
+          "0",
+          "4358144752865346258",
+          "55329849372602"
+        ],
+        [
+          "0",
+          "20566128518157640013",
+          "55000000000000000000"
+        ],
+        [
+          "0",
+          "9652549317843610213139819",
+          "10179955020359405385"
+        ],
+        [
+          "0",
+          "587176088311394891386",
+          "22749000000000000"
+        ],
+        [
+          "0",
+          "8423406746164150624273",
+          "7989230739804778"
+        ],
+        [
+          "0",
+          "2052242008994719514199",
+          "1904159400258747"
+        ],
+        [
+          "0",
+          "19190529505997089817282",
+          "30000000000000000"
+        ],
+        [
+          "0",
+          "243279764151507513042853",
+          "214337306859803433"
+        ],
+        [
+          "0",
+          "810394379626409418520148",
+          "1416819027112216192"
+        ],
+        [
+          "0",
+          "1453947761195780900530283266",
+          "1288710573056742338997"
+        ],
+        [
+          "0",
+          "72951694247003484156122",
+          "68909462803641149"
+        ]
+      ]
+    },
+    {
+      "id": "r748",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ marketPositions(first: 500, skip: 0, where:{marketUniqueKey_in:[\"0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0\"], chainId_in:[1], borrowShares_gte: \"1\"}) { pageInfo { countTotal count } items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T08:43:12.834Z",
+        "resultCount": 4
+      }
+    },
+    {
+      "id": "r749",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
+      "fn": "aggregate3 x4 position(bytes32,address)",
+      "args": [
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0xd8dd2706eF4EF9cd0fB7F54a1C5413Aedd93121f"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0x2156f29D64f81701B58877129006E8b1964149B6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0x48651EB2808F5C370A914899c576848bC43264a6"
+          ]
+        },
+        {
+          "to": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+          "args": [
+            "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+            "0xE7635E4953B9acc7f892f74d1a44113d08E1aC81"
+          ]
+        }
+      ],
+      "ok": true,
+      "result": [
+        [
+          "427226276124886000000",
+          "388775911273647000000",
+          "5337"
+        ],
+        [
+          "0",
+          "15321809925030501735181",
+          "72270"
+        ],
+        [
+          "0",
+          "21860913456197977840227948",
+          "91187066"
+        ],
+        [
+          "0",
+          "1039057730701711817638525",
+          "4527007"
+        ]
+      ]
+    },
+    {
+      "id": "r750",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "fn": "stETH()",
+      "args": [],
+      "ok": true,
+      "result": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84"
+    },
+    {
+      "id": "r751",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        100
+      ],
+      "ok": true,
+      "result": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa"
+    },
+    {
+      "id": "r752",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        500
+      ],
+      "ok": true,
+      "result": "0xD340B57AAcDD10F96FC1CF10e15921936F41E29c"
+    },
+    {
+      "id": "r753",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        3000
+      ],
+      "ok": true,
+      "result": "0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE"
+    },
+    {
+      "id": "r754",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        10000
+      ],
+      "ok": true,
+      "result": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "id": "r755",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "find_pools_for_coins(address,address)",
+      "args": [
+        "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+        "0x76817aE997DEc1D943c09734E9a06D66d4Be6176"
+      ]
+    },
+    {
+      "id": "r756",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+        "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "1",
+        "0",
+        false
+      ]
+    },
+    {
+      "id": "r757",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+        "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "1",
+        false
+      ]
+    },
+    {
+      "id": "r758",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        100
+      ],
+      "ok": true,
+      "result": "0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392"
+    },
+    {
+      "id": "r759",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        500
+      ],
+      "ok": true,
+      "result": "0xeacDF56d530a4ec6639c2C86F1915F4956446b5C"
+    },
+    {
+      "id": "r760",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        3000
+      ],
+      "ok": true,
+      "result": "0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3"
+    },
+    {
+      "id": "r761",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        10000
+      ],
+      "ok": true,
+      "result": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D"
+    },
+    {
+      "id": "r762",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "find_pools_for_coins(address,address)",
+      "args": [
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "0x828b154032950C8ff7CF8085D841723Db2696056",
+        "0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+        "0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+        "0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+        "0x108e6E958061e2769b2299C56400217C667fEb3E"
+      ]
+    },
+    {
+      "id": "r763",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0x828b154032950C8ff7CF8085D841723Db2696056",
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "1",
+        "0",
+        false
+      ]
+    },
+    {
+      "id": "r764",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "1",
+        "0",
+        false
+      ]
+    },
+    {
+      "id": "r765",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "1",
+        false
+      ]
+    },
+    {
+      "id": "r766",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "1",
+        "0",
+        false
+      ]
+    },
+    {
+      "id": "r767",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0x108e6E958061e2769b2299C56400217C667fEb3E",
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "1",
+        false
+      ]
+    },
+    {
+      "id": "r768",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "find_pools_for_coins(address,address)",
+      "args": [
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+      ],
+      "ok": true,
+      "result": [
+        "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+        "0x21E27a5E5513D6e65C4f830167390997aA84843a"
+      ]
+    },
+    {
+      "id": "r769",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+      ],
+      "ok": true,
+      "result": [
+        "1",
+        "0",
+        false
+      ]
+    },
+    {
+      "id": "r770",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+        "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+      ],
+      "ok": true,
+      "result": [
+        "1",
+        "0",
+        false
+      ]
+    },
+    {
+      "id": "r771",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+      "fn": "quote series (21 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 0.01% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "1245184000000000000000",
+        "avgPrice": 1.243395344808
+      }
+    },
+    {
+      "id": "r772",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+      "fn": "quote series (9 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 0.05% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "52000000000000000",
+        "avgPrice": 1.22649595831
+      }
+    },
+    {
+      "id": "r773",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 0.3% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r774",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Curve pool 0xB8459e…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r775",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Curve pool 0x76817a…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r776",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Uniswap V3 0.01% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r777",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Uniswap V3 0.05% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r778",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Uniswap V3 0.3% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r779",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+      "fn": "quote series (18 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Uniswap V3 1% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "19840000000000000000",
+        "avgPrice": 1.2254160427
+      }
+    },
+    {
+      "id": "r780",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x828b154032950C8ff7CF8085D841723Db2696056",
+      "fn": "quote series (16 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x828b15…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "9664000000000000000",
+        "avgPrice": 1.229133718696
+      }
+    },
+    {
+      "id": "r781",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x9D1784…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r782",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x53E4a0…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r783",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x85ea32…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r784",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x108e6E958061e2769b2299C56400217C667fEb3E",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x108e6E…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r785",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "fn": "quote series (14 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0xDC2431…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "6809361802633455603656",
+        "avgPrice": 1.244834046642
+      }
+    },
+    {
+      "id": "r786",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+      "fn": "quote series (20 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x21E27a…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "945000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "3457024000000000000000",
+        "avgPrice": 1.22749911008
+      }
+    },
+    {
+      "id": "r787",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+      "fn": "quote series (21 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 0.01% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "1245184000000000000000",
+        "avgPrice": 1.243395344808
+      }
+    },
+    {
+      "id": "r788",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+      "fn": "quote series (9 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 0.05% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "28000000000000000",
+        "avgPrice": 1.233405131839
+      }
+    },
+    {
+      "id": "r789",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xC12aF0C4AA39D3061c56cD3CB19f5e62dEeaeBdE",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 0.3% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r790",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xB8459e4e0959B1D37A92E0AD0D75CFB5d186c3d7",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Curve pool 0xB8459e…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r791",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x76817aE997DEc1D943c09734E9a06D66d4Be6176",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Curve pool 0x76817a…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r792",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8f8eaaF88448ba31BdffF6aD8c42830c032C6392",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Uniswap V3 0.01% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r793",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xeacDF56d530a4ec6639c2C86F1915F4956446b5C",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Uniswap V3 0.05% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r794",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF25B9F70F7e1d9a2968b42DE00efDA666Efb2de3",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Uniswap V3 0.3% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r795",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Uniswap V3 1% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r796",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x828b154032950C8ff7CF8085D841723Db2696056",
+      "fn": "quote series (17 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x828b15…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "9376000000000000000",
+        "avgPrice": 1.233965108541
+      }
+    },
+    {
+      "id": "r797",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x9D1784097fFEADAe206FAF65188561abaA9093A8",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x9D1784…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r798",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x53E4a076b62667E8C8Aae13b8edC793e9a5F3FeD",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x53E4a0…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r799",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x85ea32f10874DBC2D7c518742A33dD2b8be789d8",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x85ea32…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r800",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x108e6E958061e2769b2299C56400217C667fEb3E",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x108e6E…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r801",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "fn": "quote series (21 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0xDC2431…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "14024704000000000000000",
+        "avgPrice": 1.233392468422
+      }
+    },
+    {
+      "id": "r802",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+      "fn": "quote series (20 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for unwrap → Curve pool 0x21E27a…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "965000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "3358720000000000000000",
+        "avgPrice": 1.235610186749
+      }
+    },
+    {
+      "id": "r803",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "fn": "stETH()",
+      "args": [],
+      "ok": false,
+      "result": "revert/absent: The contract function \"stETH\" reverted."
+    },
+    {
+      "id": "r804",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        100
+      ],
+      "ok": true,
+      "result": "0x66Bb2eCF89C92a11044a46411d0c9E0BC9E31340"
+    },
+    {
+      "id": "r805",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        500
+      ],
+      "ok": true,
+      "result": "0x66DD1ACc5da42502ddD469277aed509D1de22b69"
+    },
+    {
+      "id": "r806",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        3000
+      ],
+      "ok": true,
+      "result": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b"
+    },
+    {
+      "id": "r807",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fn": "getPool(address,address,uint24)",
+      "args": [
+        "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        10000
+      ],
+      "ok": true,
+      "result": "0xce1790BB9f2327525d5e99B2C2b92EB5a486c6f8"
+    },
+    {
+      "id": "r808",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "find_pools_for_coins(address,address)",
+      "args": [
+        "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f"
+      ]
+    },
+    {
+      "id": "r809",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC",
+      "fn": "get_coin_indices(address,address,address)",
+      "args": [
+        "0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+        "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+      ],
+      "ok": true,
+      "result": [
+        "1",
+        "2",
+        false
+      ]
+    },
+    {
+      "id": "r810",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x66Bb2eCF89C92a11044a46411d0c9E0BC9E31340",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 0.01% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "915000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r811",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x66DD1ACc5da42502ddD469277aed509D1de22b69",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 0.05% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "915000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r812",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+      "fn": "quote series (7 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 0.3% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "915000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "100000000",
+        "avgPrice": 32.40723602984394
+      }
+    },
+    {
+      "id": "r813",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xce1790BB9f2327525d5e99B2C2b92EB5a486c6f8",
+      "fn": "quote series (1 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Uniswap V3 1% pool",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "915000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "0",
+        "avgPrice": null
+      }
+    },
+    {
+      "id": "r814",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+      "fn": "quote series (12 quotes: Uniswap V3 QuoterV2 / Curve get_dy) for Curve pool 0x8a4f25…",
+      "args": [
+        {
+          "threshold": "proceeds >= amount * oraclePrice / LIF",
+          "lltv": "915000000000000000"
+        }
+      ],
+      "ok": true,
+      "result": {
+        "capacity": "9400000",
+        "avgPrice": 32.39162799586107
+      }
+    }
+  ],
+  "notes": [
+    "All values are eth_call / eth_getStorageAt / eth_getLogs reads at the frozen block through the local proxy; every node and edge lists the read ids it rests on.",
+    "Market totals are the stored values at the block (interest accrued up to lastUpdate); MetaMorpho's maxWithdraw adds interest accrued since, hence tiny differences.",
+    "Allocators other than the Public Allocator are not enumerated (would need SetIsAllocator event history)."
+  ]
+};

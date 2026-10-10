@@ -67,7 +67,7 @@ export function GraphView({ g, highlight, onSelect }: { g: Graph; highlight?: Se
         </div>
         <div className="graph-wrap">
           <svg width={PAD * 2 + 6 * COLW} height={height}>
-            {COLS.map((c, i) => <text key={c} x={PAD + i * COLW} y={20} fill="#8b98a5" fontSize={11} fontWeight={700}>{`L${i} · ${c}`}</text>)}
+            {COLS.map((c, i) => <text key={c} x={PAD + i * COLW} y={20} style={{ fill: "var(--muted)" }} fontSize={11} fontWeight={700}>{`L${i} · ${c}`}</text>)}
             {visEdges.map((e, i) => {
               const a = placed.get(e.from)!, b = placed.get(e.to)!;
               const back = b.x <= a.x;
@@ -83,7 +83,7 @@ export function GraphView({ g, highlight, onSelect }: { g: Graph; highlight?: Se
             })}
             {[...placed.values()].map(({ x, y, n }) => (
               <g key={n.id} className="gnode" transform={`translate(${x},${y})`} onClick={() => { setSel(n.id); onSelect?.(n.id); }}>
-                <rect width={BOXW} height={BOXH} rx={6} fill={n.id === sel ? "#1f3b5c" : highlight?.has(n.id) ? "#3d1d1d" : "#161b22"} stroke={COLOR[n.kind] ?? "#555"} />
+                <rect width={BOXW} height={BOXH} rx={6} style={{ fill: n.id === sel ? "var(--sel)" : highlight?.has(n.id) ? "var(--hot)" : "var(--panel)" }} stroke={COLOR[n.kind] ?? "#555"} />
                 <rect width={4} height={BOXH} rx={2} fill={COLOR[n.kind] ?? "#555"} />
                 <text x={10} y={19}>{n.label.length > 31 ? n.label.slice(0, 30) + "…" : n.label}</text>
                 <title>{n.label}</title>
@@ -109,7 +109,7 @@ export function GraphView({ g, highlight, onSelect }: { g: Graph; highlight?: Se
               <b>Links</b>
               {edges.filter((e) => e.from === sel || e.to === sel).map((e, i) => {
                 const other = nodes.find((n) => n.id === (e.from === sel ? e.to : e.from));
-                return <div key={i} className="muted">{e.from === sel ? "→" : "←"} <span style={{ color: "#e6edf3" }}>{other?.label ?? "self"}</span> · {e.rel}</div>;
+                return <div key={i} className="muted">{e.from === sel ? "→" : "←"} <span style={{ color: "var(--text)" }}>{other?.label ?? "self"}</span> · {e.rel}</div>;
               })}
             </div>
             <div className="prov">

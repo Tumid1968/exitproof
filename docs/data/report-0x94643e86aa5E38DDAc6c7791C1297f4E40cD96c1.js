@@ -1,0 +1,2058 @@
+window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1"]={
+  "schema": "exitproof.report/0.2",
+  "generatedBy": "src/report/build.ts",
+  "catalog": "generic (derived from the discovered graph)",
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "baseFeePerGas": "121537943",
+    "forkLocalChainId": 31337
+  },
+  "target": {
+    "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+    "name": "1337 USDC",
+    "version": "MetaMorpho V1.1",
+    "asset": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "assetSymbol": "USDC",
+    "assetDecimals": 6,
+    "holder": "0x308AE32327f70Cd43ee3dbCea09Ac72A4C6c4925",
+    "holderLabel": "largest holder",
+    "holderShares": "238776894325838789125727",
+    "holderValue": "262885403789693",
+    "holderMaxWithdraw": "149002371"
+  },
+  "vault": {
+    "totalAssets": "262885956585161",
+    "totalSupply": "238777396424929787453702",
+    "withdrawableNow": "149002371",
+    "lentOutNotWithdrawable": "262018158519569",
+    "liquidRatio": 0,
+    "grossSupplyApyBeforeVaultFee": 2979.931324313932,
+    "vaultPerformanceFee": 0,
+    "marketCount": 4,
+    "exposedMarketCount": 2,
+    "peerVaultCount": 11,
+    "publicAllocatorIsAllocator": false,
+    "publicAllocatorReallocatableIntoExposedMarkets": "317392171884",
+    "nodeCount": 53,
+    "edgeCount": 63,
+    "readCount": 473,
+    "netApy": 2979.931324313932,
+    "holders": {
+      "coverage": 1,
+      "list": [
+        {
+          "address": "0x308AE32327f70Cd43ee3dbCea09Ac72A4C6c4925",
+          "shares": "238776894325838789125727",
+          "assets": "262885403789693",
+          "shareOfSupply": 0.999997,
+          "isContract": false
+        },
+        {
+          "address": "0xe9015bf9527C364E041D7912DfC60E7A251994DB",
+          "shares": "207788969861217705",
+          "assets": "228768731",
+          "shareOfSupply": 0,
+          "isContract": true
+        },
+        {
+          "address": "0x3F0E87AD0fF4140b3CB8B9715e4C1A653390998b",
+          "shares": "196393276113429061",
+          "assets": "216222452",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x2fCa661c0a563a4f3aF1511C80d8391a4a5DE79D",
+          "shares": "61394625042849723",
+          "assets": "67593436",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x58C4a1F319297EC9c398A0F3a3b64AF5a18b5C35",
+          "shares": "36476047766249080",
+          "assets": "40158913",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x333c3d8F66bD0f83022138Ed81Fc74308bF380F3",
+          "shares": "45172214582406",
+          "assets": "49733",
+          "shareOfSupply": 0,
+          "isContract": true
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dEaD",
+          "shares": "1000000000000",
+          "assets": "1100",
+          "shareOfSupply": 0,
+          "isContract": false
+        }
+      ]
+    }
+  },
+  "queue": [
+    {
+      "index": 0,
+      "id": "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8",
+      "collateral": "none",
+      "collateralDecimals": 18,
+      "lltv": "0",
+      "vaultSupply": "0",
+      "liquidity": "629032453314",
+      "withdrawable": "0",
+      "utilization": 0,
+      "oracle": "0x0000000000000000000000000000000000000000",
+      "supplyApr": null
+    },
+    {
+      "index": 1,
+      "id": "0x0f9563442d64ab3bd3bcb27058db0b0d4046a4c46f0acd811dacae9551d2b129",
+      "collateral": "sdeUSD",
+      "collateralDecimals": 18,
+      "lltv": "915000000000000000",
+      "vaultSupply": "262018307519569",
+      "liquidity": "149000000",
+      "withdrawable": "149000000",
+      "utilization": 0.999999,
+      "oracle": "0x65F9f6d537C2D628D1c2663896436817440eDB72",
+      "supplyApr": 7.99999105568328
+    },
+    {
+      "index": 2,
+      "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+      "collateral": "cbBTC",
+      "collateralDecimals": 8,
+      "lltv": "860000000000000000",
+      "vaultSupply": "2371",
+      "liquidity": "35643397002844",
+      "withdrawable": "2371",
+      "utilization": 0.895025,
+      "oracle": "0xA6D6950c9F177F1De7f7757FB33539e3Ec60182a",
+      "supplyApr": 0.04173031659228035
+    },
+    {
+      "index": 3,
+      "id": "0xdb8938f97571aeab0deb0c34cf7e6278cff969538f49eebe6f4fc75a9a111293",
+      "collateral": "ETH+",
+      "collateralDecimals": 18,
+      "lltv": "860000000000000000",
+      "vaultSupply": "0",
+      "liquidity": "2528",
+      "withdrawable": "0",
+      "utilization": 0.27792,
+      "oracle": "0x83Fb5ff55eAA528F0C0f95c3f270b85E5d094756",
+      "supplyApr": 0.00013384640505030912
+    }
+  ],
+  "runs": [
+    {
+      "id": "alone",
+      "title": "Holder exits alone",
+      "others": [],
+      "holderMaxWithdrawBefore": "149002371",
+      "fullExitOk": false,
+      "fullExitError": {
+        "selector": "0x4323a555",
+        "name": "NotEnoughLiquidity()",
+        "meaning": "Not enough liquidity in the vault's markets at this instant",
+        "raw": "0x4323a555"
+      },
+      "holderExecutedExit": "149002371",
+      "lockedWei": "262885254787322",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "h2_first",
+      "title": "Holder #2 exits first",
+      "others": [
+        {
+          "label": "holder #2 exits",
+          "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+          "owner": "0xe9015bf9527C364E041D7912DfC60E7A251994DB",
+          "out": "0",
+          "ok": false
+        }
+      ],
+      "holderMaxWithdrawBefore": "149002371",
+      "fullExitOk": false,
+      "fullExitError": {
+        "selector": "0x4323a555",
+        "name": "NotEnoughLiquidity()",
+        "meaning": "Not enough liquidity in the vault's markets at this instant",
+        "raw": "0x4323a555"
+      },
+      "holderExecutedExit": "149002371",
+      "lockedWei": "262885254787322",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "h3_first",
+      "title": "Holder #3 exits first",
+      "others": [
+        {
+          "label": "holder #3 exits",
+          "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+          "owner": "0x3F0E87AD0fF4140b3CB8B9715e4C1A653390998b",
+          "out": "0",
+          "ok": false
+        }
+      ],
+      "holderMaxWithdrawBefore": "149002371",
+      "fullExitOk": false,
+      "fullExitError": {
+        "selector": "0x4323a555",
+        "name": "NotEnoughLiquidity()",
+        "meaning": "Not enough liquidity in the vault's markets at this instant",
+        "raw": "0x4323a555"
+      },
+      "holderExecutedExit": "149002371",
+      "lockedWei": "262885254787322",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "h4_first",
+      "title": "Holder #4 exits first",
+      "others": [
+        {
+          "label": "holder #4 exits",
+          "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+          "owner": "0x2fCa661c0a563a4f3aF1511C80d8391a4a5DE79D",
+          "out": "67593642",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "81408729",
+      "fullExitOk": false,
+      "fullExitError": {
+        "selector": "0x4323a555",
+        "name": "NotEnoughLiquidity()",
+        "meaning": "Not enough liquidity in the vault's markets at this instant",
+        "raw": "0x4323a555"
+      },
+      "holderExecutedExit": "81408729",
+      "lockedWei": "262885322380964",
+      "changeVsAloneWei": "-67593642",
+      "changePct": -45.36
+    },
+    {
+      "id": "top_holders_first",
+      "title": "Holders #2, #3, #4 exit first",
+      "others": [
+        {
+          "label": "holder #2 exits",
+          "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+          "owner": "0xe9015bf9527C364E041D7912DfC60E7A251994DB",
+          "out": "0",
+          "ok": false
+        },
+        {
+          "label": "holder #3 exits",
+          "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+          "owner": "0x3F0E87AD0fF4140b3CB8B9715e4C1A653390998b",
+          "out": "0",
+          "ok": false
+        },
+        {
+          "label": "holder #4 exits",
+          "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+          "owner": "0x2fCa661c0a563a4f3aF1511C80d8391a4a5DE79D",
+          "out": "67594053",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "81408318",
+      "fullExitOk": false,
+      "fullExitError": {
+        "selector": "0x4323a555",
+        "name": "NotEnoughLiquidity()",
+        "meaning": "Not enough liquidity in the vault's markets at this instant",
+        "raw": "0x4323a555"
+      },
+      "holderExecutedExit": "81408318",
+      "lockedWei": "262885322381375",
+      "changeVsAloneWei": "-67594053",
+      "changePct": -45.36
+    },
+    {
+      "id": "peer1_first",
+      "title": "Largest holder of ANOTHER vault (Steakhouse USDC) exits first",
+      "others": [
+        {
+          "label": "Steakhouse USDC #1 exits its own vault",
+          "vault": "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+          "owner": "0x334F5d28a71432f8fc21C7B2B6F5dBbcD8B32A7b",
+          "out": "30561385093280",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "149002371",
+      "fullExitOk": false,
+      "fullExitError": {
+        "selector": "0x4323a555",
+        "name": "NotEnoughLiquidity()",
+        "meaning": "Not enough liquidity in the vault's markets at this instant",
+        "raw": "0x4323a555"
+      },
+      "holderExecutedExit": "149002371",
+      "lockedWei": "262885254787322",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "peer2_first",
+      "title": "Largest holder of ANOTHER vault (Hakutora USDC) exits first",
+      "others": [
+        {
+          "label": "Hakutora USDC #1 exits its own vault",
+          "vault": "0x974c8FBf4fd795F66B85B73ebC988A51F1A040a9",
+          "owner": "0x9eCC119ba61fBC52DBC0E6f28204Ab0d3ce93534",
+          "out": "2133394344663",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "149002371",
+      "fullExitOk": false,
+      "fullExitError": {
+        "selector": "0x4323a555",
+        "name": "NotEnoughLiquidity()",
+        "meaning": "Not enough liquidity in the vault's markets at this instant",
+        "raw": "0x4323a555"
+      },
+      "holderExecutedExit": "149002371",
+      "lockedWei": "262885254787322",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "peer3_first",
+      "title": "Largest holder of ANOTHER vault (Gauntlet USDC Prime) exits first",
+      "others": [
+        {
+          "label": "Gauntlet USDC Prime #1 exits its own vault",
+          "vault": "0xdd0f28e19C1780eb6396170735D45153D261490d",
+          "owner": "0xA118d7D5460Ba8f52d7633ef3A94091d9A12FAe7",
+          "out": "3782257327575",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "149002371",
+      "fullExitOk": false,
+      "fullExitError": {
+        "selector": "0x4323a555",
+        "name": "NotEnoughLiquidity()",
+        "meaning": "Not enough liquidity in the vault's markets at this instant",
+        "raw": "0x4323a555"
+      },
+      "holderExecutedExit": "149002371",
+      "lockedWei": "262885254787322",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "all_first",
+      "title": "Everyone above exits first (same vault and peer vaults)",
+      "others": [
+        {
+          "label": "holder #2 exits",
+          "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+          "owner": "0xe9015bf9527C364E041D7912DfC60E7A251994DB",
+          "out": "0",
+          "ok": false
+        },
+        {
+          "label": "holder #3 exits",
+          "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+          "owner": "0x3F0E87AD0fF4140b3CB8B9715e4C1A653390998b",
+          "out": "0",
+          "ok": false
+        },
+        {
+          "label": "holder #4 exits",
+          "vault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+          "owner": "0x2fCa661c0a563a4f3aF1511C80d8391a4a5DE79D",
+          "out": "67594053",
+          "ok": true
+        },
+        {
+          "label": "Steakhouse USDC #1 exits its own vault",
+          "vault": "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+          "owner": "0x334F5d28a71432f8fc21C7B2B6F5dBbcD8B32A7b",
+          "out": "30561386493533",
+          "ok": true
+        },
+        {
+          "label": "Hakutora USDC #1 exits its own vault",
+          "vault": "0x974c8FBf4fd795F66B85B73ebC988A51F1A040a9",
+          "owner": "0x9eCC119ba61fBC52DBC0E6f28204Ab0d3ce93534",
+          "out": "2133394513259",
+          "ok": true
+        },
+        {
+          "label": "Gauntlet USDC Prime #1 exits its own vault",
+          "vault": "0xdd0f28e19C1780eb6396170735D45153D261490d",
+          "owner": "0xA118d7D5460Ba8f52d7633ef3A94091d9A12FAe7",
+          "out": "3782257769216",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "81408318",
+      "fullExitOk": false,
+      "fullExitError": {
+        "selector": "0x4323a555",
+        "name": "NotEnoughLiquidity()",
+        "meaning": "Not enough liquidity in the vault's markets at this instant",
+        "raw": "0x4323a555"
+      },
+      "holderExecutedExit": "81408318",
+      "lockedWei": "262885322381375",
+      "changeVsAloneWei": "-67594053",
+      "changePct": -45.36
+    }
+  ],
+  "cushion": null,
+  "sweep": [
+    {
+      "label": "BTC / USD feed x0.99",
+      "kind": "feed",
+      "factor": 0.99,
+      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 0.99,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "Oracle: BTC / USD BASE_FEED_1 x0.99"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue."
+      ],
+      "dexLimited": {
+        "vaultLoss": "0",
+        "vaultHiddenLoss": "0",
+        "withdrawableAfter": "149002371",
+        "holderLoss": "0",
+        "holderHiddenLoss": "0",
+        "liquidated": 0,
+        "unliquidated": 0
+      }
+    },
+    {
+      "label": "BTC / USD feed x0.97",
+      "kind": "feed",
+      "factor": 0.97,
+      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 0.97,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "Oracle: BTC / USD BASE_FEED_1 x0.97"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue."
+      ],
+      "dexLimited": {
+        "vaultLoss": "0",
+        "vaultHiddenLoss": "0",
+        "withdrawableAfter": "149002371",
+        "holderLoss": "0",
+        "holderHiddenLoss": "0",
+        "liquidated": 0,
+        "unliquidated": 0
+      }
+    },
+    {
+      "label": "BTC / USD feed x0.95",
+      "kind": "feed",
+      "factor": 0.95,
+      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 0.95,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "Oracle: BTC / USD BASE_FEED_1 x0.95"
+          ],
+          "liquidatable": 1,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "25262755669"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue."
+      ],
+      "dexLimited": {
+        "vaultLoss": "0",
+        "vaultHiddenLoss": "0",
+        "withdrawableAfter": "149002371",
+        "holderLoss": "0",
+        "holderHiddenLoss": "0",
+        "liquidated": 1,
+        "unliquidated": 0
+      }
+    },
+    {
+      "label": "BTC / USD feed x0.9",
+      "kind": "feed",
+      "factor": 0.9,
+      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 0.9,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "Oracle: BTC / USD BASE_FEED_1 x0.9"
+          ],
+          "liquidatable": 2,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "44390361730"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue."
+      ],
+      "dexLimited": {
+        "vaultLoss": "0",
+        "vaultHiddenLoss": "0",
+        "withdrawableAfter": "149002371",
+        "holderLoss": "0",
+        "holderHiddenLoss": "0",
+        "liquidated": 2,
+        "unliquidated": 0
+      }
+    },
+    {
+      "label": "BTC / USD feed x0.8",
+      "kind": "feed",
+      "factor": 0.8,
+      "node": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 0.8,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "Oracle: BTC / USD BASE_FEED_1 x0.8"
+          ],
+          "liquidatable": 14,
+          "badDebt": "5870238343",
+          "hiddenShortfall": "0",
+          "repaid": "2852981428067"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue."
+      ],
+      "dexLimited": {
+        "vaultLoss": "0",
+        "vaultHiddenLoss": "0",
+        "withdrawableAfter": "149002371",
+        "holderLoss": "0",
+        "holderHiddenLoss": "0",
+        "liquidated": 6,
+        "unliquidated": 8
+      }
+    },
+    {
+      "label": "cbBTC market depeg x0.99 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.99,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 1,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "collateral cbBTC market value x0.99; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "cbBTC market depeg x0.97 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.97,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 1,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "collateral cbBTC market value x0.97; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "cbBTC market depeg x0.95 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.95,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 1,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "collateral cbBTC market value x0.95; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "cbBTC market depeg x0.9 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.9,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 1,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "collateral cbBTC market value x0.9; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "cbBTC market depeg x0.8 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.8,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 1,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "collateral cbBTC market value x0.8; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "1201670196",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "oracle 0xA6D695… overprices x1.02",
+      "kind": "oracleOverprice",
+      "factor": 1.02,
+      "node": "0xA6D6950c9F177F1De7f7757FB33539e3Ec60182a",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 1.02,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "oracle 0xA6D6950c overprices x1.02"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue.",
+        "Worst case: an actor borrows all idle liquidity against collateral valued at the overpriced oracle and walks away."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "oracle 0xA6D695… overprices x1.05",
+      "kind": "oracleOverprice",
+      "factor": 1.05,
+      "node": "0xA6D6950c9F177F1De7f7757FB33539e3Ec60182a",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 1.05,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "oracle 0xA6D6950c overprices x1.05"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue.",
+        "Worst case: an actor borrows all idle liquidity against collateral valued at the overpriced oracle and walks away."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "oracle 0xA6D695… overprices x1.1",
+      "kind": "oracleOverprice",
+      "factor": 1.1,
+      "node": "0xA6D6950c9F177F1De7f7757FB33539e3Ec60182a",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "149002371",
+      "withdrawableAfter": "149002371",
+      "markets": [
+        {
+          "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+          "label": "cbBTC/USDC LLTV 86.0% (queue #2)",
+          "factorSeen": 1.1,
+          "path": [
+            "market:0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+            "oracle 0xA6D6950c overprices x1.1"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue.",
+        "Worst case: an actor borrows all idle liquidity against collateral valued at the overpriced oracle and walks away."
+      ],
+      "dexLimited": null
+    }
+  ],
+  "crossCheck": [
+    {
+      "id": "feed_shock_5pct",
+      "label": "BTC / USD x0.95",
+      "factor": 0.95,
+      "executedBadDebt": "0",
+      "analyticBadDebt": "0",
+      "executedLiquidations": 1,
+      "analyticLiquidatable": 1,
+      "executedVaultLoss": "0",
+      "analyticVaultLoss": "0",
+      "executedHolderValueLoss": "0",
+      "note": "Executed values include interest accrued during the liquidation sequence (tx k at T0+12k); analytic ignores it."
+    },
+    {
+      "id": "feed_shock_10pct",
+      "label": "BTC / USD x0.9",
+      "factor": 0.9,
+      "executedBadDebt": "0",
+      "analyticBadDebt": "0",
+      "executedLiquidations": 2,
+      "analyticLiquidatable": 2,
+      "executedVaultLoss": "0",
+      "analyticVaultLoss": "0",
+      "executedHolderValueLoss": "0",
+      "note": "Executed values include interest accrued during the liquidation sequence (tx k at T0+12k); analytic ignores it."
+    }
+  ],
+  "incidents": [
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "regime": "oracle blind: no liquidation, losses unrecognised on-chain, liquidity drained by the run",
+      "title": "Incident: sdeUSD depegs on the market, oracles unchanged; the largest competing holders exit first",
+      "valueSource": "analytic economic shortfall (debt minus collateral market value of underwater borrowers), pro rata of vault supply shares",
+      "executedFacts": {
+        "liquidatableFoundOnFork": 0,
+        "holderMaxWithdrawAfterRun": "149002371"
+      },
+      "inputs": {
+        "positionValue": "262885403789693",
+        "exitableNow": "149002371",
+        "incidentValueLoss": "0",
+        "incidentLocked": "262885254787322"
+      }
+    },
+    {
+      "id": "incident_feed_shock_plus_run",
+      "regime": "oracle sees it: liquidations realise bad debt and bring repaid liquidity back",
+      "title": "Incident: BTC / USD -10% (oracle sees it), liquidations, then the largest competing holders exit first",
+      "valueSource": "executed on fork: holder value before minus after liquidations (bad debt socialised by Morpho Blue; net of lostAssets on MetaMorpho V1.1, where the share price does not drop)",
+      "executedFacts": {
+        "holderMaxWithdrawAfterRun": "149002371"
+      },
+      "inputs": {
+        "positionValue": "262885403789693",
+        "exitableNow": "149002371",
+        "incidentValueLoss": "867647238735",
+        "incidentLocked": "262890056390387"
+      }
+    },
+    {
+      "id": "incident_feed_dexlimited_plus_run",
+      "regime": "oracle sees it, but liquidations stop where the AMM depth measured at the block runs out: part of the loss stays unrecognised and less liquidity comes back",
+      "title": "Incident: BTC / USD -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first",
+      "valueSource": "executed on fork (bad debt of the liquidations the AMM depth allows) + analytic unrecognised shortfall of the positions left insolvent",
+      "executedFacts": {
+        "holderMaxWithdrawAfterRun": "149002371",
+        "liquidatedOnFork": 2,
+        "leftInsolvent": 0
+      },
+      "inputs": {
+        "positionValue": "262885403789693",
+        "exitableNow": "149002371",
+        "incidentValueLoss": "867647238735",
+        "incidentLocked": "262890056390387"
+      }
+    }
+  ],
+  "verdictParams": {
+    "netApy": 2979.931324313932,
+    "decimals": 6,
+    "gasCostOut": "0",
+    "gasCostReentry": "0",
+    "gasNote": "gas is paid in ETH: not converted into the vault asset (no sourced price), shown separately",
+    "gasOutEth": "0",
+    "slippage": "0",
+    "exitGasUsed": null,
+    "baseFeePerGas": "121537943",
+    "defaults": {
+      "probability": 0.05,
+      "horizonDays": 30,
+      "lockedHaircut": 0.1
+    }
+  },
+  "verdicts": [
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "verdict": {
+        "decision": "NO_ACTION_POSSIBLE",
+        "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+        "breakEvenProbability": null,
+        "expectedLossStay": 1314426.2739366102,
+        "expectedLossExit": 1350920.0631229812,
+        "exitCost": 36494.534197803754,
+        "incidentLoss": 26288525.478732202,
+        "exitableShare": 5.667959074639272e-7,
+        "parts": {
+          "forgoneYield": 36494.534197803754,
+          "gasOut": 0,
+          "gasReentry": 0,
+          "slippage": 0,
+          "valueLoss": 0,
+          "lockedAfterRun": 262885254.787322
+        }
+      }
+    },
+    {
+      "id": "incident_feed_shock_plus_run",
+      "verdict": {
+        "decision": "NO_ACTION_POSSIBLE",
+        "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+        "breakEvenProbability": null,
+        "expectedLossStay": 1357832.6438886852,
+        "expectedLossExit": 1394326.4084725035,
+        "exitCost": 36494.534197803754,
+        "incidentLoss": 27156652.877773702,
+        "exitableShare": 5.667959074639272e-7,
+        "parts": {
+          "forgoneYield": 36494.534197803754,
+          "gasOut": 0,
+          "gasReentry": 0,
+          "slippage": 0,
+          "valueLoss": 867647.238735,
+          "lockedAfterRun": 262890056.390387
+        }
+      }
+    },
+    {
+      "id": "incident_feed_dexlimited_plus_run",
+      "verdict": {
+        "decision": "NO_ACTION_POSSIBLE",
+        "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+        "breakEvenProbability": null,
+        "expectedLossStay": 1357832.6438886852,
+        "expectedLossExit": 1394326.4084725035,
+        "exitCost": 36494.534197803754,
+        "incidentLoss": 27156652.877773702,
+        "exitableShare": 5.667959074639272e-7,
+        "parts": {
+          "forgoneYield": 36494.534197803754,
+          "gasOut": 0,
+          "gasReentry": 0,
+          "slippage": 0,
+          "valueLoss": 867647.238735,
+          "lockedAfterRun": 262890056.390387
+        }
+      }
+    }
+  ],
+  "depegCurve": [
+    {
+      "factor": 0.99,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.98,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.97,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.95,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.9,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.85,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.8,
+      "holderLoss": "0",
+      "breakEven": null
+    }
+  ],
+  "depegCurveCollateral": "sdeUSD",
+  "evidence": [
+    {
+      "item": "Vault total assets",
+      "value": "262,885,956.59 USDC",
+      "cls": "measured",
+      "source": "totalAssets() on 0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1 at block 26157638",
+      "hypotheses": "none"
+    },
+    {
+      "item": "Withdrawable now (vault)",
+      "value": "149 USDC",
+      "cls": "measured",
+      "source": "Σ over the withdraw queue of min(vault supply, market idle liquidity): MetaMorpho withdrawQueue(i), Morpho Blue market(id) and position(id, vault)",
+      "hypotheses": "stored market totals (interest accrued up to the market's lastUpdate)"
+    },
+    {
+      "item": "Holder position",
+      "value": "262,885,403.79 USDC",
+      "cls": "measured",
+      "source": "convertToAssets(balanceOf(holder))",
+      "hypotheses": "holder selection: largest holder from Morpho API candidates, balance re-read on-chain"
+    },
+    {
+      "item": "Holder exit alone",
+      "value": "149 USDC",
+      "cls": "executed",
+      "source": "scenario alone: redeem on the local fork, tx 1 at T0+12 s",
+      "hypotheses": "holder impersonated on the fork"
+    },
+    {
+      "item": "Worst executed run (holder exitable)",
+      "value": "81.41 USDC (-45.36 %)",
+      "cls": "executed",
+      "source": "scenario top_holders_first: 3 exits then the holder's",
+      "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
+    },
+    {
+      "item": "Borrowers identified",
+      "value": "100.00 % / 100.00 % of debt",
+      "cls": "measured",
+      "source": "candidates from Morpho API, each position(id, borrower) re-read on-chain; coverage = Σ borrowShares found / totalBorrowShares",
+      "hypotheses": "none (coverage is measured, not assumed)"
+    },
+    {
+      "item": "Public Allocator backstop (net)",
+      "value": "317,392.17 USDC",
+      "cls": "bounded",
+      "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; executed in scenario all_first_then_public_allocator: holder exitable 81.41 USDC → 81.41 USDC"
+    },
+    {
+      "item": "AMM liquidation capacity, cbBTC market #2",
+      "value": "2.25 of 8,343.74 cbBTC posted",
+      "cls": "bounded",
+      "source": "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry",
+      "hypotheses": "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price"
+    },
+    {
+      "item": "Vault loss, BTC / USD x0.95",
+      "value": "0 USDC executed vs 0 USDC analytic",
+      "cls": "executed",
+      "source": "scenario feed_shock_5pct: oracle replaced on the fork, 1 liquidate() transactions, bad debt from Morpho Blue's Liquidate events",
+      "hypotheses": "every unhealthy borrower is liquidated by a liquidator with enough loan tokens"
+    },
+    {
+      "item": "Vault loss, BTC / USD x0.9",
+      "value": "0 USDC executed vs 0 USDC analytic",
+      "cls": "executed",
+      "source": "scenario feed_shock_10pct: oracle replaced on the fork, 2 liquidate() transactions, bad debt from Morpho Blue's Liquidate events",
+      "hypotheses": "every unhealthy borrower is liquidated by a liquidator with enough loan tokens"
+    },
+    {
+      "item": "Economic shortfall, oracle-blind depeg -10 % (holder share)",
+      "value": "0 USDC",
+      "cls": "modeled",
+      "source": "Σ max(0, debt − collateral × market price) over the identified borrowers, pro rata of supply shares",
+      "hypotheses": "depeg persists, underwater borrowers walk away; lower bound for holders who stay (first exiters leave at full value)"
+    },
+    {
+      "item": "Feed freshness, BTC / USD",
+      "value": "age 0.4 h; max observed interval 1.0 h; trigger move ~0.50 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, USDC / USD",
+      "value": "age 7.1 h; max observed interval 23.0 h; heartbeat-driven (moves < 0.05 %) → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Net APY (yield given up by exiting)",
+      "value": "297993.13 %",
+      "cls": "measured",
+      "source": "IRM borrowRateView(params, market) per market × utilization × (1 − market fee), weighted by the vault's supply, minus the vault performance fee",
+      "hypotheses": "rate constant over the horizon (APR compounded continuously)"
+    },
+    {
+      "item": "Gas of the exit",
+      "value": "null gas × 0.122 gwei",
+      "cls": "executed",
+      "source": "gasUsed of the exit on the fork × baseFeePerGas of the source block header",
+      "hypotheses": "re-entry assumed to cost the same gas (no deposit executed)"
+    },
+    {
+      "item": "Break-even incident probability",
+      "value": "— / — / —",
+      "cls": "modeled",
+      "source": "p* = exit cost / (incident loss × exitable share); src/verdict/verdict.ts",
+      "hypotheses": "horizon 30 d, locked funds cost 10 %, net APY 297993.13 %"
+    },
+    {
+      "item": "Incident probability",
+      "value": "5 % (default)",
+      "cls": "hypothesis",
+      "source": "user input",
+      "hypotheses": "never a prediction"
+    },
+    {
+      "item": "Reference yield: Sky Savings Rate (sUSDS)",
+      "value": "3.80 %",
+      "cls": "measured",
+      "source": "ssr() of sUSDS 0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD at block 26157638",
+      "hypotheses": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
+    },
+    {
+      "item": "Spread-implied incident probability",
+      "value": "see section 5 (depends on horizon and loss fraction)",
+      "cls": "modeled",
+      "source": "PD ≈ (vault net APY − reference yield) × horizon / loss fraction (classic credit approximation)",
+      "hypotheses": "risk-neutral, includes liquidity and smart-contract premia; not a prediction; undefined when the spread is ≤ 0"
+    }
+  ],
+  "mitigation": {
+    "id": "all_first_then_public_allocator",
+    "baseId": "all_first",
+    "withoutWei": "81408318",
+    "withWei": "81408318",
+    "fullExitWithPa": false,
+    "reallocations": [
+      {
+        "vault": "0x68Aea7b82Df6CcdF76235D46445Ed83f85F845A3",
+        "moved": "317075113411",
+        "ok": true,
+        "error": null,
+        "withdrawals": 3,
+        "feeWei": "0"
+      }
+    ]
+  },
+  "headline": "CANNOT EXIT: Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way. Dominant dependency: holder concentration (holder #4 leaving first cuts this exit by 45.36 %); the BTC / USD price feed.",
+  "getBack": {
+    "alone": {
+      "outWei": "149002371",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()"
+    },
+    "afterHolder": {
+      "id": "h4_first",
+      "who": "holder #4 exits",
+      "otherVault": "0x94643e86aa5E38DDAc6c7791C1297f4E40cD96c1",
+      "outWei": "81408729",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": -45.36
+    },
+    "afterPeer": {
+      "id": "peer1_first",
+      "who": "Steakhouse USDC #1 exits its own vault",
+      "otherVault": "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+      "outWei": "149002371",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": 0
+    }
+  },
+  "dominantDependency": {
+    "liquidity": "holder concentration (holder #4 leaving first cuts this exit by 45.36 %)",
+    "value": "the BTC / USD price feed"
+  },
+  "references": [
+    {
+      "name": "holding the asset idle",
+      "apy": 0,
+      "source": "no yield, no lending risk",
+      "note": "not used for the implied probability: against holding idle, the spread-implied probability essentially equals the break-even"
+    },
+    {
+      "name": "Sky Savings Rate (sUSDS)",
+      "apy": 0.037999998803906365,
+      "source": "ssr() of sUSDS 0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD at block 26157638",
+      "note": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
+    }
+  ],
+  "verdictGrid": [
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 0,
+          "valueLoss": 0,
+          "lockedPart": 0,
+          "lockedAfterRun": 262885254.787322,
+          "exitCost": 8515.391312820877,
+          "forgoneYield": 8515.391312820877,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 0,
+          "expectedLossExitAtDefault": 8515.391312820877,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the incident causes no loss"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 26288525.478732202,
+          "valueLoss": 0,
+          "lockedPart": 26288525.478732202,
+          "lockedAfterRun": 262885254.787322,
+          "exitCost": 8515.391312820877,
+          "forgoneYield": 8515.391312820877,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 1314426.2739366102,
+          "expectedLossExitAtDefault": 1322940.9202379982,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 131442627.393661,
+          "valueLoss": 0,
+          "lockedPart": 131442627.393661,
+          "lockedAfterRun": 262885254.787322,
+          "exitCost": 8515.391312820877,
+          "forgoneYield": 8515.391312820877,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 6572131.369683051,
+          "expectedLossExitAtDefault": 6580643.035938708,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 0,
+          "valueLoss": 0,
+          "lockedPart": 0,
+          "lockedAfterRun": 262885254.787322,
+          "exitCost": 36494.534197803754,
+          "forgoneYield": 36494.534197803754,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 0,
+          "expectedLossExitAtDefault": 36494.534197803754,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the incident causes no loss"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 26288525.478732202,
+          "valueLoss": 0,
+          "lockedPart": 26288525.478732202,
+          "lockedAfterRun": 262885254.787322,
+          "exitCost": 36494.534197803754,
+          "forgoneYield": 36494.534197803754,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 1314426.2739366102,
+          "expectedLossExitAtDefault": 1350920.0631229812,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 131442627.393661,
+          "valueLoss": 0,
+          "lockedPart": 131442627.393661,
+          "lockedAfterRun": 262885254.787322,
+          "exitCost": 36494.534197803754,
+          "forgoneYield": 36494.534197803754,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 6572131.369683051,
+          "expectedLossExitAtDefault": 6608622.178823691,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 0,
+          "valueLoss": 0,
+          "lockedPart": 0,
+          "lockedAfterRun": 262885254.787322,
+          "exitCost": 109483.60259341127,
+          "forgoneYield": 109483.60259341127,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 0,
+          "expectedLossExitAtDefault": 109483.60259341127,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the incident causes no loss"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 26288525.478732202,
+          "valueLoss": 0,
+          "lockedPart": 26288525.478732202,
+          "lockedAfterRun": 262885254.787322,
+          "exitCost": 109483.60259341127,
+          "forgoneYield": 109483.60259341127,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 1314426.2739366102,
+          "expectedLossExitAtDefault": 1423909.1315185886,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 131442627.393661,
+          "valueLoss": 0,
+          "lockedPart": 131442627.393661,
+          "lockedAfterRun": 262885254.787322,
+          "exitCost": 109483.60259341127,
+          "forgoneYield": 109483.60259341127,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 6572131.369683051,
+          "expectedLossExitAtDefault": 6681611.247219299,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incident_feed_shock_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 867647.238735,
+          "valueLoss": 867647.238735,
+          "lockedPart": 0,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 8515.391312820877,
+          "forgoneYield": 8515.391312820877,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 43382.36193675001,
+          "expectedLossExitAtDefault": 51897.72866062568,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 27156652.877773702,
+          "valueLoss": 867647.238735,
+          "lockedPart": 26289005.6390387,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 8515.391312820877,
+          "forgoneYield": 8515.391312820877,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 1357832.6438886852,
+          "expectedLossExitAtDefault": 1366347.2655875206,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 132312675.4339285,
+          "valueLoss": 867647.238735,
+          "lockedPart": 131445028.1951935,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 8515.391312820877,
+          "forgoneYield": 8515.391312820877,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 6615633.771696426,
+          "expectedLossExitAtDefault": 6624145.4132950995,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 867647.238735,
+          "valueLoss": 867647.238735,
+          "lockedPart": 0,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 36494.534197803754,
+          "forgoneYield": 36494.534197803754,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 43382.36193675001,
+          "expectedLossExitAtDefault": 79876.87154560856,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 27156652.877773702,
+          "valueLoss": 867647.238735,
+          "lockedPart": 26289005.6390387,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 36494.534197803754,
+          "forgoneYield": 36494.534197803754,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 1357832.6438886852,
+          "expectedLossExitAtDefault": 1394326.4084725035,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 132312675.4339285,
+          "valueLoss": 867647.238735,
+          "lockedPart": 131445028.1951935,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 36494.534197803754,
+          "forgoneYield": 36494.534197803754,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 6615633.771696426,
+          "expectedLossExitAtDefault": 6652124.556180082,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 867647.238735,
+          "valueLoss": 867647.238735,
+          "lockedPart": 0,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 109483.60259341127,
+          "forgoneYield": 109483.60259341127,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 43382.36193675001,
+          "expectedLossExitAtDefault": 152865.9399412161,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 27156652.877773702,
+          "valueLoss": 867647.238735,
+          "lockedPart": 26289005.6390387,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 109483.60259341127,
+          "forgoneYield": 109483.60259341127,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 1357832.6438886852,
+          "expectedLossExitAtDefault": 1467315.476868111,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 132312675.4339285,
+          "valueLoss": 867647.238735,
+          "lockedPart": 131445028.1951935,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 109483.60259341127,
+          "forgoneYield": 109483.60259341127,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 6615633.771696426,
+          "expectedLossExitAtDefault": 6725113.62457569,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incident_feed_dexlimited_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 867647.238735,
+          "valueLoss": 867647.238735,
+          "lockedPart": 0,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 8515.391312820877,
+          "forgoneYield": 8515.391312820877,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 43382.36193675001,
+          "expectedLossExitAtDefault": 51897.72866062568,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 27156652.877773702,
+          "valueLoss": 867647.238735,
+          "lockedPart": 26289005.6390387,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 8515.391312820877,
+          "forgoneYield": 8515.391312820877,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 1357832.6438886852,
+          "expectedLossExitAtDefault": 1366347.2655875206,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 132312675.4339285,
+          "valueLoss": 867647.238735,
+          "lockedPart": 131445028.1951935,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 8515.391312820877,
+          "forgoneYield": 8515.391312820877,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 6615633.771696426,
+          "expectedLossExitAtDefault": 6624145.4132950995,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 867647.238735,
+          "valueLoss": 867647.238735,
+          "lockedPart": 0,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 36494.534197803754,
+          "forgoneYield": 36494.534197803754,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 43382.36193675001,
+          "expectedLossExitAtDefault": 79876.87154560856,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 27156652.877773702,
+          "valueLoss": 867647.238735,
+          "lockedPart": 26289005.6390387,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 36494.534197803754,
+          "forgoneYield": 36494.534197803754,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 1357832.6438886852,
+          "expectedLossExitAtDefault": 1394326.4084725035,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 132312675.4339285,
+          "valueLoss": 867647.238735,
+          "lockedPart": 131445028.1951935,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 36494.534197803754,
+          "forgoneYield": 36494.534197803754,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 6615633.771696426,
+          "expectedLossExitAtDefault": 6652124.556180082,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 867647.238735,
+          "valueLoss": 867647.238735,
+          "lockedPart": 0,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 109483.60259341127,
+          "forgoneYield": 109483.60259341127,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 43382.36193675001,
+          "expectedLossExitAtDefault": 152865.9399412161,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 27156652.877773702,
+          "valueLoss": 867647.238735,
+          "lockedPart": 26289005.6390387,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 109483.60259341127,
+          "forgoneYield": 109483.60259341127,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 1357832.6438886852,
+          "expectedLossExitAtDefault": 1467315.476868111,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 132312675.4339285,
+          "valueLoss": 867647.238735,
+          "lockedPart": 131445028.1951935,
+          "lockedAfterRun": 262890056.390387,
+          "exitCost": 109483.60259341127,
+          "forgoneYield": 109483.60259341127,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 5.667959074639272e-7,
+          "expectedLossStayAtDefault": 6615633.771696426,
+          "expectedLossExitAtDefault": 6725113.62457569,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bindingIncident": null,
+  "headlineDecision": "NO_ACTION_POSSIBLE",
+  "dex": {
+    "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64": {
+      "capacity": "225300000",
+      "collateralAtRisk": "834374398653",
+      "venues": [
+        {
+          "id": "univ3:0x54E58c986818903d2d86dAfE03f5F5E6C2cA6710",
+          "route": "Uniswap V3 0.05% pool",
+          "pool": "0x54E58c986818903d2d86dAfE03f5F5E6C2cA6710",
+          "capacity": "100000",
+          "avgPrice": 81159.573
+        },
+        {
+          "id": "univ3:0x4548280AC92507C9092a511C7396Cbea78FA9E49",
+          "route": "Uniswap V3 0.3% pool",
+          "pool": "0x4548280AC92507C9092a511C7396Cbea78FA9E49",
+          "capacity": "38800000",
+          "avgPrice": 79072.0980798969
+        },
+        {
+          "id": "2hop:0x15aA01580ae866f9FF4DBe45E06e307941d90C7b:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.3% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+          "capacity": "186400000",
+          "avgPrice": 79078.9771743562
+        },
+        {
+          "id": "2hop:0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0x8a4f25… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+          "capacity": "14800000",
+          "avgPrice": 79160.1715405405
+        }
+      ]
+    }
+  }
+};
