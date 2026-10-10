@@ -8,3 +8,4 @@ web/node_modules/
 web/dist/
 scratch/
 web/public/data/
+results/e2e-failures/

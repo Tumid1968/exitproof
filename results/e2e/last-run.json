@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-10T16:28:27.374Z",
+  "target": "local",
+  "metrics": [
+    {
+      "target": "http",
+      "viewport": "1440",
+      "firstVaultDisplayMs": 405,
+      "requests": 9
+    },
+    {
+      "target": "http",
+      "theme": "dark",
+      "contrastViolations": []
+    },
+    {
+      "target": "http",
+      "theme": "light",
+      "contrastViolations": []
+    },
+    {
+      "target": "http",
+      "viewport": "375",
+      "firstVaultDisplayMs": 311,
+      "requests": 9
+    },
+    {
+      "target": "file",
+      "viewport": "1440",
+      "firstVaultDisplayMs": 334,
+      "requests": 9
+    },
+    {
+      "target": "file",
+      "theme": "dark",
+      "contrastViolations": []
+    },
+    {
+      "target": "file",
+      "theme": "light",
+      "contrastViolations": []
+    },
+    {
+      "target": "file",
+      "viewport": "375",
+      "firstVaultDisplayMs": 337,
+      "requests": 9
+    },
+    {
+      "live": "execute again",
+      "result": "3,318.751556 WETH in 601 ms — identical to the wei"
+    }
+  ],
+  "warnings": [
+    "http 375px: 14 controls inside the expert tabs are under 44 px (not part of the opening flow; not failed)",
+    "file 375px: 14 controls inside the expert tabs are under 44 px (not part of the opening flow; not failed)"
+  ]
+}
