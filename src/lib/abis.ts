@@ -49,7 +49,7 @@ export const morphoBlueAbi = parseAbi([
   "function feeRecipient() view returns (address)",
   "function accrueInterest((address loanToken, address collateralToken, address oracle, address irm, uint256 lltv))",
   "function liquidate((address loanToken, address collateralToken, address oracle, address irm, uint256 lltv) marketParams, address borrower, uint256 seizedAssets, uint256 repaidShares, bytes data) returns (uint256, uint256)",
-  "event Borrow(bytes32 indexed id, address caller, address indexed onBehalf, address indexed receiver, uint256 assets, uint256 shares)",
+  "event Liquidate(bytes32 indexed id, address indexed caller, address indexed borrower, uint256 repaidAssets, uint256 repaidShares, uint256 seizedAssets, uint256 badDebtAssets, uint256 badDebtShares)",
 ]);
 
 export const factoryAbi = parseAbi([

@@ -1,0 +1,1298 @@
+{
+  "scenario": {
+    "id": "lido_loss_10pct",
+    "title": "Lido loss: stETH backing -10% (seen by the exchange-rate oracle)",
+    "target": {
+      "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "holder": "0x27F23c710dD3d878FE9393d93465FeD1302f2EbD"
+    },
+    "hypotheses": [
+      "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+      "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+      "Every unhealthy borrower is liquidated by a liquidator with enough WETH (impersonated)."
+    ],
+    "actions": [
+      {
+        "type": "measure",
+        "label": "source state"
+      },
+      {
+        "type": "oraclePrice",
+        "label": "oracle 0xbD60A677… price x0.9",
+        "oracle": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+        "num": "900000",
+        "den": "1000000"
+      },
+      {
+        "type": "liquidateAll",
+        "label": "liquidations in wstETH/WETH LLTV 94.5% (queue #1)",
+        "marketId": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+        "borrowers": [
+          "0x462a336dCac6eaF544106266914caa5a18b831d0",
+          "0x4b441cd7C5085d0C255eff3dB7eC3417cCA1a1a0",
+          "0xB8a451107A9f87FDe481D4D686247D6e43Ed715e",
+          "0x5ceDE91b3c5783d093B2F6C29Cb2571a11204B27",
+          "0x8b4943EBcf5F31923E0C409943d5FeF53c0C53CB",
+          "0xc19140bd471e314788Df400C5C7760c9d8654119",
+          "0x946802757D0ec3e07DEE2B746cCFc297962c7FD8",
+          "0xBa19dcE4E43Fe16671d81B10D6f823d22032b6e2",
+          "0xa25328Aa6581B609978D4a33f4b45536fc8D11F4",
+          "0xffDf0d9b1079E3922AF387cF1F93973CD6d6F578",
+          "0x56143f72736598e09BCCA5f94cfEe4DbA3Ac6bF4",
+          "0x00ABc02c649f81Ac8B3a7Bf9926645492F53590a",
+          "0x32691f40E1FE4Ce475292c29dc2E85b04E4FfcFC",
+          "0xb32b2DAC2FE23Aa80D41fd9FC8601bFF4b88cBC3",
+          "0x5ACdAbEc96C1D2bc16C030b7dD98D2A8d669DC98",
+          "0xfa7E52Eb10069fE6f33223182124389513260D44",
+          "0xDE97a58C9E3163cC5B4E7C65250f15C5Ec7b8bD6",
+          "0x6b0a26C51c5ca3411192BA8e11fEC4419597b2f7",
+          "0x6d265486E4527524b5BD2C9Ce7958540653d1617",
+          "0x4789C274d65b6d4C5c9db42813dfc67F87DACDE6",
+          "0x26Be8d49Cfd55f6467c1c586ee59D4d839c0Bb61",
+          "0xfeed46c11F57B7126a773EeC6ae9cA7aE1C03C9a",
+          "0x0F6C608F362FDd72ef8B2d561F05c7933fEDca13",
+          "0x5A2d4A07b186e02702fd165a119122A0095335c3",
+          "0xD187f0707B49b2BB4F1cBFA3e630DBebd891f231",
+          "0x2735A560ca4a5ec14776a2cEF36280f17a980CD2",
+          "0xF012FE980bfBf4E6120A51b134935E2F70109dE9",
+          "0x6d0DEbaeDFeBEED33aa83d813E32561e60dfE90c",
+          "0xd90c2DC41d97c62585841A8b6E0d500A5217B9Ab",
+          "0xE7E0ee487a3d836894fDb04C0aBc5859eAc11D9a",
+          "0x828c5e02d79f122ABA8FedDe33824f2340935305",
+          "0xa8AB743C1ED8Fb898360ab99ef9d52bf799a6F7F",
+          "0xF33C2069ebcD3979147395e8A61B22be3e387321",
+          "0x8A7EA8BF5D72037b151DF18dBE180B345917e2eD",
+          "0x5fF8b28732Ed1ea382Ca06F0aB65d3CD7003F53B",
+          "0x69b7126E34672F174Aa754D6B1ccAA3f2095f12a",
+          "0x7030D5Ae6c8beBd850e2EfB8382AD7dDe4b88174",
+          "0xD1A2d9DF5db842DA2Ee81075Fa441602B2352915",
+          "0x8C407cc9395540F32F726884cDdB2a4e06822bd7",
+          "0x3361A72C248765cb2709C1912045bD5a78263BCD",
+          "0x72811209562DA01D5b2A105F7C5e20B90Ef2fB44",
+          "0xA9601cb7afB057Ed60A0E9177c7068933Ff739AC",
+          "0x91E895a53184Aa6C58ABd2A8F4f3cB8f75287760",
+          "0xA9b4aA23fF4D79ed9386872759ab1Db66EEa04ea",
+          "0xa2533E65a31DFDe8BA16477D02a1B0E772A924AC",
+          "0xc8a3b83B64F54001CaC41281ca80D22916D2191F",
+          "0x1F3A9A20c9e68ABdA4e8811fF7A627087BfbF801",
+          "0xDbDDb659dB12E4a04043136b30DF0D1d77623a99",
+          "0x2ed38012A1A33aeAE3375245259C8777e77dF5ea"
+        ]
+      },
+      {
+        "type": "liquidateAll",
+        "label": "liquidations in wstETH/WETH LLTV 96.5% (queue #2)",
+        "marketId": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "borrowers": [
+          "0x462a336dCac6eaF544106266914caa5a18b831d0",
+          "0x9A3569c7053F9fB5abEB7CCB1678Bd33c47aD278",
+          "0x13d0503352f34B751CACfbe27e694B58561F2983",
+          "0xb224f589297A5A207e6069De5DaFD4b120129817",
+          "0x893aa69FBAA1ee81B536f0FbE3A3453e86290080",
+          "0x1676D23711186076Fa74aa53511dDa750A1F0D9A",
+          "0x4b441cd7C5085d0C255eff3dB7eC3417cCA1a1a0",
+          "0xfB74196ecCf35a260dd5CFd300bAa37AE058B6C0",
+          "0x5ceDE91b3c5783d093B2F6C29Cb2571a11204B27",
+          "0xB7829e0A55975e9380e76E27D89391a795807a7F",
+          "0xB8a451107A9f87FDe481D4D686247D6e43Ed715e",
+          "0x2b1dE6F5Bb3F8ae0B19099DbbDe4398a0fdF6c8E",
+          "0xCaA6F0E7EA422EbAa63cAecE7e8530E01C418F32",
+          "0xd16728A5Cc5870C5F7A09B65d04c35Ace6D33da5",
+          "0x83a59Ce2eF545c019e77c542552eC0f0f58402B6",
+          "0x68B1c5dEAF2b5de25D7eeD4E6d453aCb0502177d",
+          "0xB1F57674Aa6aE260f9d962CF6FeC8b5f9989D02D",
+          "0xE5613b1FA1caBdAFA9C4B8b16dc7c6fEAB58Eefa",
+          "0x66C0d9152209B51977047b9DC3b0B5bf2339b67C",
+          "0x8044A52A999a07163908e7dD20f477d698a9F07b",
+          "0xD81A40c8571fB9c5fb423D4EA06079F24210292B",
+          "0xB0739e7150FE098D040c79b98cFe7929F8659E4f",
+          "0xd174C970805EA549031B7568A123362AC867e683",
+          "0x7926333578a4a7E96350A6F1340BA929b2f86522",
+          "0xc38D4C2FafCDA2032f3dB82647512754558e3B89",
+          "0x16034D2b0cA0AE52bcFeEF88F55473e12F905C19",
+          "0x43C0Ec5456b67c8A7471b3dCadebEE0e2a272E72",
+          "0xFc99dd3D0d25d046ef8d94F3A64e486F6551Bfe5",
+          "0x7e499BDa05a7991B3a05a355b9849cf160269828",
+          "0x9eC90ffEA23B3dc33965f120AB87AbeBc17C0F1A",
+          "0x52b4c7627CEc29bD90e53c76c285A714c1C66045",
+          "0xF69AA51A1fdeB7B7BecC206fe44eF72660dEdF30",
+          "0xE58eEd9692572ee7Ec5D3eBB4Fc1Af56090eAd46",
+          "0x1e661e672eab9f7BA827064D126b5AA3bDD14985",
+          "0xe1590894e25d4aD93Be881E315aCd9516F2e6B0b",
+          "0x97891Bb5a666800D2F07C27Feb00ddddb69AF221",
+          "0x47A96DCb58E36B8c4A80EF72A50843De0FA382d9",
+          "0xb774299E256955FCD3C2B6Cb8EaDcB15Ed26d7AB",
+          "0x70b9d624b2469A46E0a398c268abEeE2C6aE438b",
+          "0x9c5D92cd4e2c14c9F402FBA0187fBA470391A163",
+          "0x542eDec06EE7106F6c005A2673249CA2D0d3cA18",
+          "0x81F6ae5Bd24a31B0b28fFb4012e34d6A10761b3F",
+          "0xcc8d76aa1ECCE6abc9E67Bf4fE6d7fBE02Cc2c85",
+          "0xfAfcB4fD02A320D9760d30447b8D14414E3F8a7b",
+          "0x26C0FcA64A2860D3571Bf284b5F3e59673cb138F",
+          "0xEDE8Ff76E5cE200bFfc4B21c8FD54C822b11d05e",
+          "0x8dA94391457f1C1e4a62d11B33CB8Ca265DCFB67",
+          "0x7D9d0DA1Ad30d4a707A473C9e91ecc100Ff065ef",
+          "0x782C6C86833e571072A2E8D06a39296832019C0a",
+          "0x4789C274d65b6d4C5c9db42813dfc67F87DACDE6",
+          "0xfA4400264ABD97fA6d61AB04471DacaD081928DE",
+          "0x92fE48f0402C7F2341c9b91c8B048814f2EAAF6F",
+          "0x37Db6089A117925922Bc6f1c38a2388fEd666600",
+          "0xfF18Ea2B12476e96dA2dfD458E431e26dbFd735E",
+          "0x6d0DEbaeDFeBEED33aa83d813E32561e60dfE90c",
+          "0x452E834e1711b30b9B256325Ff093640f076E085",
+          "0x9085DA766BBFCd0d04767992BF33Bb07a6583E99",
+          "0xa20F7c02d1afD9DA1EEDBB593681C70Acef60Fb0",
+          "0x463625e8521b3fBaC07EEf403ED2d8837E946270",
+          "0xED92063044F9004b27F2da5C6Ed5AfC1cB0188F9",
+          "0x7CdF6069f3A82DBE4fB7fa9d86bc46137760D5f4",
+          "0xE170ED9D77792397271d564c7161351d69fe9300",
+          "0x142F3316ec1cfcd7db3dfA44c0F1aB8AEd28D6BE",
+          "0xBdBcB59b6E7D74988494861D617069972e21b5e3",
+          "0xb3DA159cFeb3B5319f4d5A1Fc6Ad7193Ffbde459",
+          "0x00bee60F3a37576b1FE180A4A52E39f8D18480f9",
+          "0xf83dB716A1Ff12F9005F98f678D8BE97B8Bc81d6",
+          "0x1de35FFE05Fe45368ad200b9Be424430052425f6",
+          "0xd775B8A4fC53f07E2f011A33a0D68A07a2d15fd9",
+          "0x9d186580aA4B06F4D21237Dffd52886819394762",
+          "0xd2E03Efa11e8d1bdc01052554B25bcA9b18B852b",
+          "0x6046BbdC5af2E2c763DeB921b2E50eB0D3B39d80",
+          "0xE70c134cAd0faEe3Dd716C3864Fb8A11583e5cDd",
+          "0xeBCe3c37F85a1C52Db4BFaB33545f0e9837A5f5E",
+          "0x6241E0edCB939c94c7dB830aBD0B24648517c634",
+          "0xB22cd280b29e581e34423E86F65fd259F456D335",
+          "0x3E19a14F4E987a474850883c25aB9C763bEF68c6",
+          "0x69b7126E34672F174Aa754D6B1ccAA3f2095f12a",
+          "0xC8520E36c0fd5df783bF32869E23606f7EDDF8Fb",
+          "0x03b26cc31A241804a6C79F0d34B2ec4E1E792B68",
+          "0x5Ee7035b168531736eAE63FECa62ac54e0069E17",
+          "0xf01E4fd10144D069df66A47588696cAeF07b9a77",
+          "0x204070E0C972319722BC4BD1D236b5Ba953dDb82",
+          "0x354fbb15068cE4Ba4e5657EF1E9B5f2bdC9785e0",
+          "0x47d2eaaD8c87eFaA29ac6Cb3FFf44E3f7081145b",
+          "0xa5ab0893Dda1d207D850867045cbc27c3787AFEd",
+          "0xa8e32Be4CA13b271673f8b01F1eeACFde66FA413",
+          "0x9C25964aAF541e3d530A0775d2885034BBb35cF8",
+          "0x39292F487A35975c2055F2a3FCe817A55024C415",
+          "0x3006D86584B0fe871005bb7dC61EA00dFf44FCa6",
+          "0xe9e8B9a9135C4b3A8E673BC2C7F96F26924c0253",
+          "0x8895aC80947C6FcA7009E4e71D70f7979015FC37",
+          "0x8C0Dc4D360060c18f3e433571aA56E65025baB1C",
+          "0x13E91D7FE3D385B1Fc4899fd67a3e1341FcA6E22",
+          "0xd7C6b904bA79b1A2d7E505Db8FCff6c30D28b097",
+          "0xD7E291D66CD1071c64376719895fC3dB0b745Cbd",
+          "0x8C407cc9395540F32F726884cDdB2a4e06822bd7",
+          "0xD1A2d9DF5db842DA2Ee81075Fa441602B2352915",
+          "0x314Ab1044316e62dCDdbC87c2df57F1254b4B4A6",
+          "0xDCF972E3851620D1BA5201B923391B9f6A3ba528",
+          "0x82a89f2595159015f2eb4318221C838fE4e63280",
+          "0x5E395c998487D6447aB8242ED93aBe89eC7d2A49",
+          "0xdFc42cc413FDdE396d7Ca299d6B715442e1B481a",
+          "0xdB2867C1eCa05D8825AAe2348EF3D47B097d83Ff",
+          "0xaE9746a85F7E08Cbfd08dB00Edf9B6C21f592fEc",
+          "0x8Be46b25d59616e594f0A9e20147fb14c1B989d9",
+          "0x3DE20F55a095a291cDE0A606198fc58344179CD4",
+          "0xA612A79417E2AeeFDaf7Ed607AdF3f343b6b53Db",
+          "0x4C8C25074882e2DFB956541dAd78A012102056B8",
+          "0xFdD9919df5be35F5963d92680551f510Fa27Dc08",
+          "0x4006c797Fd3850473b7bEc993a86a77fE7Ab882d",
+          "0xC6d6b46266adb9F7ACedce42cD3A3Cf3C0f98f24",
+          "0x49915dD96502c7C96a69Ed8dBb66656Fce985296"
+        ]
+      },
+      {
+        "type": "measure",
+        "label": "after shock and liquidations"
+      },
+      {
+        "type": "measure",
+        "label": "before the holder's exit"
+      },
+      {
+        "type": "exit",
+        "label": "holder exits everything (redeem all shares)",
+        "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+        "owner": "0x27F23c710dD3d878FE9393d93465FeD1302f2EbD",
+        "action": {
+          "kind": "redeemAll"
+        }
+      },
+      {
+        "type": "exit",
+        "label": "holder withdraws its maximum",
+        "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+        "owner": "0x27F23c710dD3d878FE9393d93465FeD1302f2EbD",
+        "action": {
+          "kind": "withdrawMax"
+        }
+      },
+      {
+        "type": "measure",
+        "label": "end"
+      }
+    ]
+  },
+  "result": {
+    "id": "lido_loss_10pct",
+    "title": "Lido loss: stETH backing -10% (seen by the exchange-rate oracle)",
+    "hypotheses": [
+      "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
+      "Shock hypothesis: the oracle contract is replaced on the fork by one returning the shocked price.",
+      "Every unhealthy borrower is liquidated by a liquidator with enough WETH (impersonated)."
+    ],
+    "target": {
+      "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "holder": "0x27F23c710dD3d878FE9393d93465FeD1302f2EbD"
+    },
+    "txCount": 96,
+    "results": [
+      {
+        "type": "measure",
+        "label": "source state",
+        "m": {
+          "label": "source state",
+          "afterTx": 0,
+          "vaultTotalAssets": "9718206779004181082252",
+          "vaultTotalSupply": "9236915366149900690829",
+          "holderShares": "4951898501365758933941",
+          "holderValue": "5209914824792343398774",
+          "holderMaxWithdraw": "5209914824792343398774",
+          "markets": [
+            {
+              "id": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+              "totalSupplyAssets": "755115093812241914020",
+              "totalBorrowAssets": "0",
+              "liquidity": "755115093812241914020",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+              "totalSupplyAssets": "9156173253204013786528",
+              "totalBorrowAssets": "7772149663402350058355",
+              "liquidity": "1384023589801663728173",
+              "vaultSupplyAssets": "1727775218217080336795"
+            },
+            {
+              "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+              "totalSupplyAssets": "33887475257061196484738",
+              "totalBorrowAssets": "28328032324615452058973",
+              "liquidity": "5559442932445744425765",
+              "vaultSupplyAssets": "7970284437014749692738"
+            },
+            {
+              "id": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+              "totalSupplyAssets": "26617885432229928503",
+              "totalBorrowAssets": "23179092472204791217",
+              "liquidity": "3438792960025137286",
+              "vaultSupplyAssets": "20116053728304155755"
+            },
+            {
+              "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+              "totalSupplyAssets": "77772939737825012963",
+              "totalBorrowAssets": "54923403954837736028",
+              "liquidity": "22849535782987276935",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+              "totalSupplyAssets": "74775829900816519299",
+              "totalBorrowAssets": "22864116304661990645",
+              "liquidity": "51911713596154528654",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+              "totalSupplyAssets": "440011670201860",
+              "totalBorrowAssets": "400803899065931",
+              "liquidity": "39207771135929",
+              "vaultSupplyAssets": "0"
+            }
+          ]
+        }
+      },
+      {
+        "type": "oraclePrice",
+        "label": "oracle 0xbD60A677… price x0.9",
+        "oracle": "0xbD60A6770b27E084E8617335ddE769241B0e71D8",
+        "priceBefore": "1245938079126728715000000000000000000",
+        "priceAfter": "1121344271214055843500000000000000000"
+      },
+      {
+        "type": "liquidateAll",
+        "label": "liquidations in wstETH/WETH LLTV 94.5% (queue #1)",
+        "marketId": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+        "attempted": 26,
+        "liquidated": 26,
+        "repaidAssets": "7297727938316836857481",
+        "badDebtRealised": "303765907284081524920",
+        "liquidations": [
+          {
+            "borrower": "0x462a336dCac6eaF544106266914caa5a18b831d0",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "5925705162542143794479",
+            "badDebtRealised": "241817308796427165474",
+            "error": null
+          },
+          {
+            "borrower": "0x4b441cd7C5085d0C255eff3dB7eC3417cCA1a1a0",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "770212520446640885744",
+            "badDebtRealised": "47730854650179381946",
+            "error": null
+          },
+          {
+            "borrower": "0xB8a451107A9f87FDe481D4D686247D6e43Ed715e",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "175298789191293226354",
+            "badDebtRealised": "2635003323412135299",
+            "error": null
+          },
+          {
+            "borrower": "0x5ceDE91b3c5783d093B2F6C29Cb2571a11204B27",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "165555152597852853847",
+            "badDebtRealised": "9101637909975986606",
+            "error": null
+          },
+          {
+            "borrower": "0x8b4943EBcf5F31923E0C409943d5FeF53c0C53CB",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "157885581806288710466",
+            "badDebtRealised": "1925298242038901175",
+            "error": null
+          },
+          {
+            "borrower": "0x946802757D0ec3e07DEE2B746cCFc297962c7FD8",
+            "mode": "repayAll",
+            "ok": true,
+            "repaidAssets": "80683606746090382333",
+            "badDebtRealised": "0",
+            "error": null
+          },
+          {
+            "borrower": "0xffDf0d9b1079E3922AF387cF1F93973CD6d6F578",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "16052726022508424686",
+            "badDebtRealised": "384703602835095202",
+            "error": null
+          },
+          {
+            "borrower": "0x00ABc02c649f81Ac8B3a7Bf9926645492F53590a",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "5268763090098337625",
+            "badDebtRealised": "152355913857426260",
+            "error": null
+          },
+          {
+            "borrower": "0x4789C274d65b6d4C5c9db42813dfc67F87DACDE6",
+            "mode": "repayAll",
+            "ok": true,
+            "repaidAssets": "210404819154883315",
+            "badDebtRealised": "0",
+            "error": null
+          },
+          {
+            "borrower": "0x26Be8d49Cfd55f6467c1c586ee59D4d839c0Bb61",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "208163115740596699",
+            "badDebtRealised": "166452522555179",
+            "error": null
+          },
+          {
+            "borrower": "0xfeed46c11F57B7126a773EeC6ae9cA7aE1C03C9a",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "166794543954893172",
+            "badDebtRealised": "11022262716114904",
+            "error": null
+          },
+          {
+            "borrower": "0x5A2d4A07b186e02702fd165a119122A0095335c3",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "124486588510653398",
+            "badDebtRealised": "115817180787839",
+            "error": null
+          },
+          {
+            "borrower": "0xD187f0707B49b2BB4F1cBFA3e630DBebd891f231",
+            "mode": "repayAll",
+            "ok": true,
+            "repaidAssets": "110207464182441523",
+            "badDebtRealised": "0",
+            "error": null
+          },
+          {
+            "borrower": "0x2735A560ca4a5ec14776a2cEF36280f17a980CD2",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "101142473325311429",
+            "badDebtRealised": "3762725337910352",
+            "error": null
+          },
+          {
+            "borrower": "0x6d0DEbaeDFeBEED33aa83d813E32561e60dfE90c",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "44113683629560959",
+            "badDebtRealised": "330443103834822",
+            "error": null
+          },
+          {
+            "borrower": "0xd90c2DC41d97c62585841A8b6E0d500A5217B9Ab",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "42477460987881570",
+            "badDebtRealised": "1877196584094088",
+            "error": null
+          },
+          {
+            "borrower": "0xE7E0ee487a3d836894fDb04C0aBc5859eAc11D9a",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "28231847140895918",
+            "badDebtRealised": "54229583718297",
+            "error": null
+          },
+          {
+            "borrower": "0x828c5e02d79f122ABA8FedDe33824f2340935305",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "26393824411020165",
+            "badDebtRealised": "1299799531034695",
+            "error": null
+          },
+          {
+            "borrower": "0x69b7126E34672F174Aa754D6B1ccAA3f2095f12a",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1558235743637214",
+            "badDebtRealised": "101770855839897",
+            "error": null
+          },
+          {
+            "borrower": "0x7030D5Ae6c8beBd850e2EfB8382AD7dDe4b88174",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1102842090739026",
+            "badDebtRealised": "6773257483826",
+            "error": null
+          },
+          {
+            "borrower": "0x3361A72C248765cb2709C1912045bD5a78263BCD",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "468707888564087",
+            "badDebtRealised": "6500797774851",
+            "error": null
+          },
+          {
+            "borrower": "0xA9601cb7afB057Ed60A0E9177c7068933Ff739AC",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "83131911978687",
+            "badDebtRealised": "789818719452",
+            "error": null
+          },
+          {
+            "borrower": "0xA9b4aA23fF4D79ed9386872759ab1Db66EEa04ea",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "6391190646970",
+            "badDebtRealised": "74777738321",
+            "error": null
+          },
+          {
+            "borrower": "0xc8a3b83B64F54001CaC41281ca80D22916D2191F",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "744050562841",
+            "badDebtRealised": "9287712609",
+            "error": null
+          },
+          {
+            "borrower": "0xDbDDb659dB12E4a04043136b30DF0D1d77623a99",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "4980592",
+            "badDebtRealised": "70833",
+            "error": null
+          },
+          {
+            "borrower": "0x2ed38012A1A33aeAE3375245259C8777e77dF5ea",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "994382",
+            "badDebtRealised": "42993",
+            "error": null
+          }
+        ]
+      },
+      {
+        "type": "liquidateAll",
+        "label": "liquidations in wstETH/WETH LLTV 96.5% (queue #2)",
+        "marketId": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+        "attempted": 64,
+        "liquidated": 64,
+        "repaidAssets": "20724207481041716091748",
+        "badDebtRealised": "1002501124419286241122",
+        "liquidations": [
+          {
+            "borrower": "0x462a336dCac6eaF544106266914caa5a18b831d0",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "5444139433028563891380",
+            "badDebtRealised": "156622649867676800726",
+            "error": null
+          },
+          {
+            "borrower": "0x13d0503352f34B751CACfbe27e694B58561F2983",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "2752843557944810786541",
+            "badDebtRealised": "156504676442120725746",
+            "error": null
+          },
+          {
+            "borrower": "0xb224f589297A5A207e6069De5DaFD4b120129817",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "2375728350291226082766",
+            "badDebtRealised": "185336616758597295967",
+            "error": null
+          },
+          {
+            "borrower": "0x1676D23711186076Fa74aa53511dDa750A1F0D9A",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "2108183297095985689008",
+            "badDebtRealised": "61011916687014600218",
+            "error": null
+          },
+          {
+            "borrower": "0x4b441cd7C5085d0C255eff3dB7eC3417cCA1a1a0",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1515527685874887069511",
+            "badDebtRealised": "118269693388949238592",
+            "error": null
+          },
+          {
+            "borrower": "0xfB74196ecCf35a260dd5CFd300bAa37AE058B6C0",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1429914792057484318208",
+            "badDebtRealised": "109862290249464512517",
+            "error": null
+          },
+          {
+            "borrower": "0x5ceDE91b3c5783d093B2F6C29Cb2571a11204B27",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1418401343966901248728",
+            "badDebtRealised": "77967947861370634854",
+            "error": null
+          },
+          {
+            "borrower": "0xB7829e0A55975e9380e76E27D89391a795807a7F",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1422061204740868539337",
+            "badDebtRealised": "66857627772244937948",
+            "error": null
+          },
+          {
+            "borrower": "0xB8a451107A9f87FDe481D4D686247D6e43Ed715e",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "705472994699679574167",
+            "badDebtRealised": "6262468539125247492",
+            "error": null
+          },
+          {
+            "borrower": "0x2b1dE6F5Bb3F8ae0B19099DbbDe4398a0fdF6c8E",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "300501663168822186780",
+            "badDebtRealised": "18235643155503766465",
+            "error": null
+          },
+          {
+            "borrower": "0xCaA6F0E7EA422EbAa63cAecE7e8530E01C418F32",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "293753779947907387560",
+            "badDebtRealised": "8408100422262626803",
+            "error": null
+          },
+          {
+            "borrower": "0xd16728A5Cc5870C5F7A09B65d04c35Ace6D33da5",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "147743259677625621070",
+            "badDebtRealised": "8301826629525514661",
+            "error": null
+          },
+          {
+            "borrower": "0x83a59Ce2eF545c019e77c542552eC0f0f58402B6",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "110957015636630825739",
+            "badDebtRealised": "3161512164464550834",
+            "error": null
+          },
+          {
+            "borrower": "0x68B1c5dEAF2b5de25D7eeD4E6d453aCb0502177d",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "109543232163118427113",
+            "badDebtRealised": "3224290398665102674",
+            "error": null
+          },
+          {
+            "borrower": "0xB1F57674Aa6aE260f9d962CF6FeC8b5f9989D02D",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "88951350290313329236",
+            "badDebtRealised": "4976197336847990845",
+            "error": null
+          },
+          {
+            "borrower": "0xE5613b1FA1caBdAFA9C4B8b16dc7c6fEAB58Eefa",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "81493818157232476161",
+            "badDebtRealised": "1344034466779922100",
+            "error": null
+          },
+          {
+            "borrower": "0x66C0d9152209B51977047b9DC3b0B5bf2339b67C",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "74306121911742707059",
+            "badDebtRealised": "774379275659228780",
+            "error": null
+          },
+          {
+            "borrower": "0x8044A52A999a07163908e7dD20f477d698a9F07b",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "61652471393981428902",
+            "badDebtRealised": "4423747980191997092",
+            "error": null
+          },
+          {
+            "borrower": "0xd174C970805EA549031B7568A123362AC867e683",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "43758786674197352201",
+            "badDebtRealised": "1895185332055388205",
+            "error": null
+          },
+          {
+            "borrower": "0x7926333578a4a7E96350A6F1340BA929b2f86522",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "44586466342678621909",
+            "badDebtRealised": "471881092524322133",
+            "error": null
+          },
+          {
+            "borrower": "0xc38D4C2FafCDA2032f3dB82647512754558e3B89",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "44493763270288961091",
+            "badDebtRealised": "473293744007561576",
+            "error": null
+          },
+          {
+            "borrower": "0x43C0Ec5456b67c8A7471b3dCadebEE0e2a272E72",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "38290323416708652990",
+            "badDebtRealised": "2924027188409199497",
+            "error": null
+          },
+          {
+            "borrower": "0xFc99dd3D0d25d046ef8d94F3A64e486F6551Bfe5",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "35505978091148350311",
+            "badDebtRealised": "1885049832191541252",
+            "error": null
+          },
+          {
+            "borrower": "0x7e499BDa05a7991B3a05a355b9849cf160269828",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "23996063676107266597",
+            "badDebtRealised": "718712052471932035",
+            "error": null
+          },
+          {
+            "borrower": "0x9eC90ffEA23B3dc33965f120AB87AbeBc17C0F1A",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "16905383361143539138",
+            "badDebtRealised": "1094963120324629737",
+            "error": null
+          },
+          {
+            "borrower": "0xE58eEd9692572ee7Ec5D3eBB4Fc1Af56090eAd46",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "11983132805918159966",
+            "badDebtRealised": "504021912849529340",
+            "error": null
+          },
+          {
+            "borrower": "0x1e661e672eab9f7BA827064D126b5AA3bDD14985",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "11039469610852915695",
+            "badDebtRealised": "670993964096802594",
+            "error": null
+          },
+          {
+            "borrower": "0x47A96DCb58E36B8c4A80EF72A50843De0FA382d9",
+            "mode": "repayAll",
+            "ok": true,
+            "repaidAssets": "6051464055170829284",
+            "badDebtRealised": "0",
+            "error": null
+          },
+          {
+            "borrower": "0x542eDec06EE7106F6c005A2673249CA2D0d3cA18",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1550661269443590656",
+            "badDebtRealised": "122408350958709706",
+            "error": null
+          },
+          {
+            "borrower": "0x81F6ae5Bd24a31B0b28fFb4012e34d6A10761b3F",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1330531664454011870",
+            "badDebtRealised": "28410849796158658",
+            "error": null
+          },
+          {
+            "borrower": "0xcc8d76aa1ECCE6abc9E67Bf4fE6d7fBE02Cc2c85",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1210364536872701865",
+            "badDebtRealised": "69069714875912894",
+            "error": null
+          },
+          {
+            "borrower": "0x26C0FcA64A2860D3571Bf284b5F3e59673cb138F",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "675071730599955467",
+            "badDebtRealised": "18195295731695223",
+            "error": null
+          },
+          {
+            "borrower": "0x8dA94391457f1C1e4a62d11B33CB8Ca265DCFB67",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "474194573400460282",
+            "badDebtRealised": "35275714142434391",
+            "error": null
+          },
+          {
+            "borrower": "0x4789C274d65b6d4C5c9db42813dfc67F87DACDE6",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "258816096859015618",
+            "badDebtRealised": "1619605029854853",
+            "error": null
+          },
+          {
+            "borrower": "0xfA4400264ABD97fA6d61AB04471DacaD081928DE",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "237822279087565492",
+            "badDebtRealised": "19818780381653540",
+            "error": null
+          },
+          {
+            "borrower": "0x92fE48f0402C7F2341c9b91c8B048814f2EAAF6F",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "240070991653113854",
+            "badDebtRealised": "10716580835985449",
+            "error": null
+          },
+          {
+            "borrower": "0xfF18Ea2B12476e96dA2dfD458E431e26dbFd735E",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "76459883418154414",
+            "badDebtRealised": "798297021074726",
+            "error": null
+          },
+          {
+            "borrower": "0x6d0DEbaeDFeBEED33aa83d813E32561e60dfE90c",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "58668109542202677",
+            "badDebtRealised": "3025490786613876",
+            "error": null
+          },
+          {
+            "borrower": "0x9085DA766BBFCd0d04767992BF33Bb07a6583E99",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "46719176615724296",
+            "badDebtRealised": "1359622739297993",
+            "error": null
+          },
+          {
+            "borrower": "0xa20F7c02d1afD9DA1EEDBB593681C70Acef60Fb0",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "44863900534980547",
+            "badDebtRealised": "1309966605425288",
+            "error": null
+          },
+          {
+            "borrower": "0x463625e8521b3fBaC07EEf403ED2d8837E946270",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "45712258657489023",
+            "badDebtRealised": "314867525700287",
+            "error": null
+          },
+          {
+            "borrower": "0x7CdF6069f3A82DBE4fB7fa9d86bc46137760D5f4",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "33514503670281238",
+            "badDebtRealised": "902460502941604",
+            "error": null
+          },
+          {
+            "borrower": "0xE170ED9D77792397271d564c7161351d69fe9300",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "33287104690989250",
+            "badDebtRealised": "838410771615606",
+            "error": null
+          },
+          {
+            "borrower": "0x00bee60F3a37576b1FE180A4A52E39f8D18480f9",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "26994612714939818",
+            "badDebtRealised": "696209843561901",
+            "error": null
+          },
+          {
+            "borrower": "0xd775B8A4fC53f07E2f011A33a0D68A07a2d15fd9",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "15713715116013345",
+            "badDebtRealised": "984137089323689",
+            "error": null
+          },
+          {
+            "borrower": "0x9d186580aA4B06F4D21237Dffd52886819394762",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "11095701563663085",
+            "badDebtRealised": "227474922633563",
+            "error": null
+          },
+          {
+            "borrower": "0xd2E03Efa11e8d1bdc01052554B25bcA9b18B852b",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "11127827760880108",
+            "badDebtRealised": "74497021133007",
+            "error": null
+          },
+          {
+            "borrower": "0xeBCe3c37F85a1C52Db4BFaB33545f0e9837A5f5E",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "8864612001211706",
+            "badDebtRealised": "56045810848038",
+            "error": null
+          },
+          {
+            "borrower": "0x6241E0edCB939c94c7dB830aBD0B24648517c634",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "8447993389934511",
+            "badDebtRealised": "248208471212812",
+            "error": null
+          },
+          {
+            "borrower": "0x3E19a14F4E987a474850883c25aB9C763bEF68c6",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "4200824553931084",
+            "badDebtRealised": "263659149589738",
+            "error": null
+          },
+          {
+            "borrower": "0x69b7126E34672F174Aa754D6B1ccAA3f2095f12a",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "3223100473939040",
+            "badDebtRealised": "260661481812225",
+            "error": null
+          },
+          {
+            "borrower": "0xC8520E36c0fd5df783bF32869E23606f7EDDF8Fb",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "3221037828441228",
+            "badDebtRealised": "90528697767850",
+            "error": null
+          },
+          {
+            "borrower": "0x03b26cc31A241804a6C79F0d34B2ec4E1E792B68",
+            "mode": "repayAll",
+            "ok": true,
+            "repaidAssets": "2261620364016572",
+            "badDebtRealised": "0",
+            "error": null
+          },
+          {
+            "borrower": "0x5Ee7035b168531736eAE63FECa62ac54e0069E17",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "2062663002704859",
+            "badDebtRealised": "153020271278340",
+            "error": null
+          },
+          {
+            "borrower": "0xf01E4fd10144D069df66A47588696cAeF07b9a77",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "2112798443491476",
+            "badDebtRealised": "60591690807560",
+            "error": null
+          },
+          {
+            "borrower": "0x204070E0C972319722BC4BD1D236b5Ba953dDb82",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "2011728447954778",
+            "badDebtRealised": "56475396303872",
+            "error": null
+          },
+          {
+            "borrower": "0x47d2eaaD8c87eFaA29ac6Cb3FFf44E3f7081145b",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "1499734272357195",
+            "badDebtRealised": "51316432321204",
+            "error": null
+          },
+          {
+            "borrower": "0xa8e32Be4CA13b271673f8b01F1eeACFde66FA413",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "754226504847212",
+            "badDebtRealised": "57513439407843",
+            "error": null
+          },
+          {
+            "borrower": "0x9C25964aAF541e3d530A0775d2885034BBb35cF8",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "741692571818931",
+            "badDebtRealised": "21603533397574",
+            "error": null
+          },
+          {
+            "borrower": "0xDCF972E3851620D1BA5201B923391B9f6A3ba528",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "110957015636633",
+            "badDebtRealised": "8832628649786",
+            "error": null
+          },
+          {
+            "borrower": "0x5E395c998487D6447aB8242ED93aBe89eC7d2A49",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "74516183577452",
+            "badDebtRealised": "1993068660936",
+            "error": null
+          },
+          {
+            "borrower": "0xA612A79417E2AeeFDaf7Ed607AdF3f343b6b53Db",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "187652053131",
+            "badDebtRealised": "5521817262",
+            "error": null
+          },
+          {
+            "borrower": "0xFdD9919df5be35F5963d92680551f510Fa27Dc08",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "59979280240",
+            "badDebtRealised": "1704044117",
+            "error": null
+          },
+          {
+            "borrower": "0x4006c797Fd3850473b7bEc993a86a77fE7Ab882d",
+            "mode": "seizeAll",
+            "ok": true,
+            "repaidAssets": "378924347",
+            "badDebtRealised": "10995028",
+            "error": null
+          }
+        ]
+      },
+      {
+        "type": "measure",
+        "label": "after shock and liquidations",
+        "m": {
+          "label": "after shock and liquidations",
+          "afterTx": 94,
+          "vaultTotalAssets": "9425101167087179932510",
+          "vaultTotalSupply": "9236915366149900690829",
+          "holderShares": "4951898501365758933941",
+          "holderValue": "5052784668305713248091",
+          "holderMaxWithdraw": "5052784668305713248091",
+          "markets": [
+            {
+              "id": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+              "totalSupplyAssets": "755115093812241914020",
+              "totalBorrowAssets": "0",
+              "liquidity": "755115093812241914020",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+              "totalSupplyAssets": "8852434259177412400739",
+              "totalBorrowAssets": "170682731058911815085",
+              "liquidity": "8681751528118500585654",
+              "vaultSupplyAssets": "1670459493386108260364"
+            },
+            {
+              "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+              "totalSupplyAssets": "32885081188638749226098",
+              "totalBorrowAssets": "6601430775151288708585",
+              "liquidity": "26283650413487460517513",
+              "vaultSupplyAssets": "7734522823536667684985"
+            },
+            {
+              "id": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+              "totalSupplyAssets": "26617885432229928503",
+              "totalBorrowAssets": "23179092472204791217",
+              "liquidity": "3438792960025137286",
+              "vaultSupplyAssets": "20116053728304155755"
+            },
+            {
+              "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+              "totalSupplyAssets": "77772939737825012963",
+              "totalBorrowAssets": "54923403954837736028",
+              "liquidity": "22849535782987276935",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+              "totalSupplyAssets": "74775829900816519299",
+              "totalBorrowAssets": "22864116304661990645",
+              "liquidity": "51911713596154528654",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+              "totalSupplyAssets": "440011670201860",
+              "totalBorrowAssets": "400803899065931",
+              "liquidity": "39207771135929",
+              "vaultSupplyAssets": "0"
+            }
+          ]
+        }
+      },
+      {
+        "type": "measure",
+        "label": "before the holder's exit",
+        "m": {
+          "label": "before the holder's exit",
+          "afterTx": 94,
+          "vaultTotalAssets": "9425101167087179932510",
+          "vaultTotalSupply": "9236915366149900690829",
+          "holderShares": "4951898501365758933941",
+          "holderValue": "5052784668305713248091",
+          "holderMaxWithdraw": "5052784668305713248091",
+          "markets": [
+            {
+              "id": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+              "totalSupplyAssets": "755115093812241914020",
+              "totalBorrowAssets": "0",
+              "liquidity": "755115093812241914020",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+              "totalSupplyAssets": "8852434259177412400739",
+              "totalBorrowAssets": "170682731058911815085",
+              "liquidity": "8681751528118500585654",
+              "vaultSupplyAssets": "1670459493386108260364"
+            },
+            {
+              "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+              "totalSupplyAssets": "32885081188638749226098",
+              "totalBorrowAssets": "6601430775151288708585",
+              "liquidity": "26283650413487460517513",
+              "vaultSupplyAssets": "7734522823536667684985"
+            },
+            {
+              "id": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+              "totalSupplyAssets": "26617885432229928503",
+              "totalBorrowAssets": "23179092472204791217",
+              "liquidity": "3438792960025137286",
+              "vaultSupplyAssets": "20116053728304155755"
+            },
+            {
+              "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+              "totalSupplyAssets": "77772939737825012963",
+              "totalBorrowAssets": "54923403954837736028",
+              "liquidity": "22849535782987276935",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+              "totalSupplyAssets": "74775829900816519299",
+              "totalBorrowAssets": "22864116304661990645",
+              "liquidity": "51911713596154528654",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+              "totalSupplyAssets": "440011670201860",
+              "totalBorrowAssets": "400803899065931",
+              "liquidity": "39207771135929",
+              "vaultSupplyAssets": "0"
+            }
+          ]
+        }
+      },
+      {
+        "type": "exit",
+        "label": "holder exits everything (redeem all shares)",
+        "result": {
+          "k": 95,
+          "label": "holder exits everything (redeem all shares)",
+          "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "owner": "0x27F23c710dD3d878FE9393d93465FeD1302f2EbD",
+          "action": {
+            "kind": "redeemAll"
+          },
+          "timestamp": "1791583583",
+          "call": "redeem(all shares)",
+          "sharesIn": "4951898501365758933941",
+          "ok": true,
+          "assetsOutWei": "5052784671074335326237",
+          "error": null,
+          "gasUsed": "469389",
+          "ownerMaxWithdrawBeforeWei": "5052784668305713248091"
+        }
+      },
+      {
+        "type": "exit",
+        "label": "holder withdraws its maximum",
+        "result": {
+          "k": 96,
+          "label": "holder withdraws its maximum",
+          "vault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+          "owner": "0x27F23c710dD3d878FE9393d93465FeD1302f2EbD",
+          "action": {
+            "kind": "withdrawMax"
+          },
+          "timestamp": "1791583595",
+          "call": "withdraw(maxWithdraw)",
+          "sharesIn": "0",
+          "assetsRequested": "0",
+          "ok": true,
+          "assetsOutWei": "0",
+          "error": null,
+          "gasUsed": "352608",
+          "ownerMaxWithdrawBeforeWei": "0"
+        }
+      },
+      {
+        "type": "measure",
+        "label": "end",
+        "m": {
+          "label": "end",
+          "afterTx": 96,
+          "vaultTotalAssets": "4372316504571509499858",
+          "vaultTotalSupply": "4285016864950466992626",
+          "holderShares": "0",
+          "holderValue": "0",
+          "holderMaxWithdraw": "0",
+          "markets": [
+            {
+              "id": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+              "totalSupplyAssets": "755115093812241914020",
+              "totalBorrowAssets": "0",
+              "liquidity": "755115093812241914020",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+              "totalSupplyAssets": "7181974783890733006071",
+              "totalBorrowAssets": "170682753368096877306",
+              "liquidity": "7011292030522636128765",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+              "totalSupplyAssets": "29502756036251963313786",
+              "totalBorrowAssets": "6601430796242973665621",
+              "liquidity": "22901325240008989648165",
+              "vaultSupplyAssets": "4352197655018930157035"
+            },
+            {
+              "id": "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0",
+              "totalSupplyAssets": "26617885432229928503",
+              "totalBorrowAssets": "23179092472204791217",
+              "liquidity": "3438792960025137286",
+              "vaultSupplyAssets": "20116053728304155755"
+            },
+            {
+              "id": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
+              "totalSupplyAssets": "77772939737825012963",
+              "totalBorrowAssets": "54923403954837736028",
+              "liquidity": "22849535782987276935",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0x2cbfb38723a8d9a2ad1607015591a78cfe3a5949561b39bde42c242b22874ec0",
+              "totalSupplyAssets": "74775829900816519299",
+              "totalBorrowAssets": "22864116304661990645",
+              "liquidity": "51911713596154528654",
+              "vaultSupplyAssets": "0"
+            },
+            {
+              "id": "0x62aad0b7cfadc9d66eafe559ecd2a084f74062f396c193973b124db9fee481c4",
+              "totalSupplyAssets": "440011670201860",
+              "totalBorrowAssets": "400803899065931",
+              "liquidity": "39207771135929",
+              "vaultSupplyAssets": "0"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

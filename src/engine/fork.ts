@@ -8,6 +8,7 @@
 import { encodeFunctionData, decodeFunctionResult, type Address, type Hex, type Abi } from "viem";
 import { rpc, rpcRaw, revertData } from "../lib/rpc.ts";
 import { erc20Abi, metaMorphoAbi } from "../lib/abis.ts";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { NODE_URL, SOURCE, TIMESTAMP_STEP } from "../lib/constants.ts";
 import { decodeRevert, type DecodedError } from "./decode.ts";
 
@@ -40,6 +41,8 @@ export type StepResult = {
 export type BranchResult = { id: string; steps: StepResult[] };
 
 const hex = (n: bigint) => "0x" + n.toString(16);
+const SNAP_FILE = "cache/fork-base-snapshot.json";
+export type TxLog = { address: Address; topics: Hex[]; data: Hex };
 
 export class ForkEngine {
   private baseSnapshot: string | null = null;
@@ -47,12 +50,24 @@ export class ForkEngine {
 
   async init() {
     const chainId = BigInt(await rpc<string>(this.url, "eth_chainId"));
-    const head = BigInt(await rpc<string>(this.url, "eth_blockNumber"));
+    let head = BigInt(await rpc<string>(this.url, "eth_blockNumber"));
+    if (head !== SOURCE.block && existsSync(SNAP_FILE)) {
+      // A previous session left local blocks: revert to the base snapshot it saved (Hardhat 3 has no hardhat_reset).
+      const saved = JSON.parse(readFileSync(SNAP_FILE, "utf8")) as { url: string; id: string };
+      if (saved.url === this.url) await rpcRaw(this.url, "evm_revert", [saved.id]);
+      head = BigInt(await rpc<string>(this.url, "eth_blockNumber"));
+    }
     const blk = await rpc<{ hash: Hex; timestamp: Hex }>(this.url, "eth_getBlockByNumber", [hex(SOURCE.block), false]);
     if (head !== SOURCE.block || blk.hash.toLowerCase() !== SOURCE.blockHash || BigInt(blk.timestamp) !== SOURCE.timestamp)
       throw new Error(`Fork is not at the frozen source block (head=${head}, hash=${blk.hash}). Restart the node.`);
-    this.baseSnapshot = await rpc<string>(this.url, "evm_snapshot");
+    await this.saveSnapshot();
     return { localChainId: Number(chainId), forkBlock: head, blockHash: blk.hash, timestamp: BigInt(blk.timestamp) };
+  }
+
+  private async saveSnapshot() {
+    this.baseSnapshot = await rpc<string>(this.url, "evm_snapshot");
+    mkdirSync("cache", { recursive: true });
+    writeFileSync(SNAP_FILE, JSON.stringify({ url: this.url, id: this.baseSnapshot }));
   }
 
   /** Back to the pristine source state (Hardhat consumes a snapshot on revert, so re-take it). */
@@ -60,7 +75,7 @@ export class ForkEngine {
     if (!this.baseSnapshot) throw new Error("init() first");
     const ok = await rpc<boolean>(this.url, "evm_revert", [this.baseSnapshot]);
     if (!ok) throw new Error("evm_revert failed");
-    this.baseSnapshot = await rpc<string>(this.url, "evm_snapshot");
+    await this.saveSnapshot();
   }
 
   async call<T>(to: Address, abi: Abi, functionName: string, args: unknown[] = []): Promise<T> {
@@ -82,11 +97,11 @@ export class ForkEngine {
       { from, to, data, gas: hex(6_000_000n), value: hex(value) },
     ]);
     if (r.ok) {
-      const rc = await rpc<{ status: Hex; gasUsed: Hex }>(this.url, "eth_getTransactionReceipt", [r.result]);
-      if (rc.status === "0x1") return { ok: true as const, ts, gasUsed: BigInt(rc.gasUsed), error: null };
-      return { ok: false as const, ts, gasUsed: BigInt(rc.gasUsed), error: decodeRevert(undefined, "status 0") };
+      const rc = await rpc<{ status: Hex; gasUsed: Hex; logs: TxLog[] }>(this.url, "eth_getTransactionReceipt", [r.result]);
+      if (rc.status === "0x1") return { ok: true as const, ts, gasUsed: BigInt(rc.gasUsed), error: null, logs: rc.logs };
+      return { ok: false as const, ts, gasUsed: BigInt(rc.gasUsed), error: decodeRevert(undefined, "status 0"), logs: [] as TxLog[] };
     }
-    return { ok: false as const, ts, gasUsed: null, error: decodeRevert(revertData(r.error), r.error.message) };
+    return { ok: false as const, ts, gasUsed: null, error: decodeRevert(revertData(r.error), r.error.message), logs: [] as TxLog[] };
   }
 
   async runStep(step: Step, k: number): Promise<StepResult> {
