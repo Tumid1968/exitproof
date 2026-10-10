@@ -32,3 +32,10 @@
 - Tests: 16/16 unit, 54 e2e (53 passed, 1 opt-in skipped), 9/9 fork.
 - Fixed on the way (separate commit): transparent sticky tab bar.
 - Open: Credora definition not re-checked (forum unreachable); history covers only the stETH depeg incident (Steakhouse ETH, Gauntlet WETH Prime).
+
+## Polish (10 Oct, tag pre-polish)
+- Incident defined in plain words; 'Another vault' explains the shared market (one wstETH market, from the graph); tags with letters F/M/A/H, legend = honesty line; hero 'for this vault' + 'all 23 vaults replayed OK' (from the index).
+- Oct 10, 2025 from every feed round: 0.999667 → 0.955694, −4.40 % (9.5× the 1-day p99), fall 7 min 48 s, back within 0.5 % after 38 min 48 s; the daily sample shows 0.45 % (counts understate intraday drops).
+- Rule of three, Credora wording (economic shortfall, approximate), threshold tooltip, DefiLlama citation (page 403 to automated requests, not re-read).
+- Bug fixed (separate commit): live 'Execute again' failed with 'evm_revert failed' after another process used the fork.
+- Tests: 16/16 unit, 9/9 fork, e2e 70 (69 passed, 1 opt-in skipped).

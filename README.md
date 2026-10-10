@@ -91,7 +91,7 @@ npm run demo -- --offline    # the proxy serves its disk cache only (after one o
 
 `http://127.0.0.1:5173/#/status` shows proxy, fork, API and mode. If the fork stops answering, the UI switches to the static replay with a visible banner.
 
-Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork), `npm run test:e2e` (54 end-to-end checks in the installed Chrome, see below). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
+Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork), `npm run test:e2e` (70 end-to-end checks in the installed Chrome, see below). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
 
 ## How it works (short)
 
