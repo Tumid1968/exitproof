@@ -106,3 +106,14 @@ test("historical reference file: sha256 matches and counts are k of N", async ()
   const ks = h.windows.bySize.map((x: { k: number }) => x.k);
   assert.deepEqual([...ks].sort((a, b) => b - a), ks, "k must not increase with the shock size");
 });
+
+test("one-word answer: limits stated, applied to the worst executed case", async () => {
+  const { answerWord, ANSWER_LIMITS } = await import("../src/refine/refine.ts");
+  assert.deepEqual(ANSWER_LIMITS, { safe: 0.9, careful: 0.5 });
+  assert.equal(answerWord(true, 1), "Safe");
+  assert.equal(answerWord(true, 0.9), "Safe");
+  assert.equal(answerWord(true, 0.899), "Careful");
+  assert.equal(answerWord(true, 0.5), "Careful");
+  assert.equal(answerWord(true, 0.399), "Risky");
+  assert.equal(answerWord(false, 1), "Risky");
+});

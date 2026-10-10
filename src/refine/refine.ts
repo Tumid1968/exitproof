@@ -39,6 +39,11 @@ export function regimeOf(collateral: string, loan: string): "pegged" | "volatile
 export const REGIMES = { pegged: 0.9, volatile: 0.6 } as const; // price factor: −10 % / −40 %
 
 const WATCH_UTILIZATION = 0.9;
+/** limits of the one-word answer (share of the largest deposit that comes out in the worst executed case) */
+export const ANSWER_LIMITS = { safe: 0.9, careful: 0.5 } as const;
+export function answerWord(aloneFull: boolean, worstShare: number) {
+  return !aloneFull || worstShare < ANSWER_LIMITS.careful ? "Risky" : worstShare < ANSWER_LIMITS.safe ? "Careful" : "Safe";
+}
 const round6 = (x: number) => Math.round(x * 1e6) / 1e6;
 
 export function buildRefine(vault: Address) {
@@ -112,8 +117,20 @@ export function buildRefine(vault: Address) {
       exposureShare: round6(Number((exposure * 1_000_000n) / (totalAssets || 1n)) / 1_000_000), shocks };
   });
 
+  // plain-language answer for a newcomer: one word from the executed runs, with the limits stated on screen
+  const value = BigInt(r.target.holderValue);
+  const shareOf = (x: any) => (value === 0n ? 0 : Number((BigInt(x.holderExecutedExit) * 10000n) / value) / 10000);
+  const worstRun = r.runs.reduce((a: any, b: any) => (BigInt(b.holderExecutedExit) < BigInt(a.holderExecutedExit) ? b : a));
+  const worstShare = shareOf(worstRun), aloneShare = shareOf(alone);
+  const answer = {
+    word: answerWord(!!alone.fullExitOk, worstShare),
+    aloneFull: !!alone.fullExitOk, aloneShare, worstShare,
+    worstRun: { id: worstRun.id, otherPool: worstRun.others.some((o: any) => o.vault.toLowerCase() !== vault.toLowerCase()), others: worstRun.others.length },
+    rule: `Safe: at least ${ANSWER_LIMITS.safe * 100} % comes out even in the worst executed case; Careful: ${ANSWER_LIMITS.careful * 100}–${ANSWER_LIMITS.safe * 100} %; Risky: below ${ANSWER_LIMITS.careful * 100} %, or not everything can come out even alone. These limits are a choice, for the largest deposit in the pool.`,
+  };
+
   return {
-    schema: "exitproof-refine/1", vault, name: r.target.name, assetSymbol: loanSym, source: r.source,
+    schema: "exitproof-refine/1", vault, name: r.target.name, assetSymbol: loanSym, source: r.source, answer,
     note: "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
     history, governance, exitWindow, vaultLevel, concentration, utilization,
     regimes: { definition: "pegged: collateral of the same family as the loan asset (ETH, USD, BTC, EUR by symbol), −10 %; volatile: otherwise, −40 %", factors: REGIMES, byRegime: regimes },
