@@ -604,7 +604,7 @@
       "holderExecutedExit": "29030900791570",
       "lockedWei": "1530483834959",
       "changeVsAloneWei": "-1530484301710",
-      "changePct": -5
+      "changePct": -5.01
     }
   ],
   "cushion": {
@@ -6228,7 +6228,7 @@
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "29,030,900.79 USDC (-5 %)",
+      "value": "29,030,900.79 USDC (-5.01 %)",
       "cls": "executed",
       "source": "scenario all_first: 6 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -6490,7 +6490,7 @@
       }
     ]
   },
-  "headline": "STAY: no modelled incident causes a loss large enough to justify paying the exit cost. Dominant dependency: the ETH / USD price feed.",
+  "headline": "No modeled incident causes a loss large enough to pay for leaving.",
   "getBack": {
     "alone": {
       "outWei": "30561385093280",
@@ -7253,6 +7253,41 @@
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "cbBTC depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "ETH / USD −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "ETH / USD −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.0007862312625337212,
+        "decision": "EXIT",
+        "exitCost": 24028.316019694554,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.0033695625537159477,
+        "decision": "EXIT",
+        "exitCost": 102978.49722726236,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.010108687661147843,
+        "decision": "EXIT",
+        "exitCost": 308935.49168178707,
+        "exitableShare": 1
+      }
+    ]
+  },
   "bindingIncident": null,
   "headlineDecision": "STAY",
   "dex": {

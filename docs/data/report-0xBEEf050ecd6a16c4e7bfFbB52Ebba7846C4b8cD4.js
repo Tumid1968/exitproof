@@ -417,7 +417,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xBEE
       "holderExecutedExit": "4210679414346963425094",
       "lockedWei": "999235410445379973680",
       "changeVsAloneWei": "-999235440462352210989",
-      "changePct": -19.17
+      "changePct": -19.18
     },
     {
       "id": "B_C_first",
@@ -474,7 +474,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xBEE
       "holderExecutedExit": "3318751556034097893931",
       "lockedWei": "1891163268758245504843",
       "changeVsAloneWei": "-1891163298775217742152",
-      "changePct": -36.29
+      "changePct": -36.3
     },
     {
       "id": "B_both_vaults",
@@ -2471,7 +2471,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xBEE
     }
   ],
   "mitigation": null,
-  "headline": "Exiting becomes worthwhile if you judge the incident \"stETH depegs on the market, the exchange-rate oracle does not see it; holder #2 and Vault Bridge #1 run first\" more likely than 1.13 % within 30 days (5.57 % if locked funds cost 0 %). The yield spread over the ETH staking yield (Lido, 7 days), 1.53 % vs 2.24 %, is negative: it prices no default risk. Dominant dependency: exit liquidity shared with Vault Bridge WETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 36.29 %); wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations.",
+  "headline": "Leaving pays off if you judge “wstETH depegs (oracle blind) and others exit first” more likely than 1.13 % (locked funds cost 10 %) or 5.57 % (cost 0 %) within 30 days. Dominant dependency: exit liquidity shared with Vault Bridge WETH.",
   "getBack": {
     "alone": {
       "outWei": "5209914854809315636083",
@@ -2485,7 +2485,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xBEE
       "outWei": "4210679414346963425094",
       "fullExitOk": false,
       "error": "NotEnoughLiquidity()",
-      "changePct": -19.17
+      "changePct": -19.18
     },
     "afterPeer": {
       "id": "VB1_other_vault",
@@ -2494,11 +2494,11 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xBEE
       "outWei": "3318751556034097893931",
       "fullExitOk": false,
       "error": "NotEnoughLiquidity()",
-      "changePct": -36.29
+      "changePct": -36.3
     }
   },
   "dominantDependency": {
-    "liquidity": "exit liquidity shared with Vault Bridge WETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 36.29 %)",
+    "liquidity": "exit liquidity shared with Vault Bridge WETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 36.30 %)",
     "value": "wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations"
   },
   "references": [
@@ -3234,6 +3234,41 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xBEE
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_steth_depeg_blind_plus_run": "wstETH depegs (oracle blind) and others exit first",
+    "incident_lido10_plus_run": "wstETH/stETH rate −10 % and others exit first",
+    "incident_lido10_dexlimited_plus_run": "wstETH/stETH rate −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.0002928250849762501,
+        "decision": "EXIT",
+        "exitCost": 1.5255937512888431,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.0012548911163676524,
+        "decision": "EXIT",
+        "exitCost": 6.5378758306640465,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.0037646285895626156,
+        "decision": "EXIT",
+        "exitCost": 19.613394298599363,
+        "exitableShare": 1
+      }
+    ]
+  },
   "bindingIncident": "incident_steth_depeg_blind_plus_run",
   "headlineDecision": "EXIT",
   "dex": {

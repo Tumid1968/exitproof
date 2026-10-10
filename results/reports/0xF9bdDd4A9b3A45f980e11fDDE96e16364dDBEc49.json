@@ -428,7 +428,7 @@
       "holderExecutedExit": "6459371452150",
       "lockedWei": "1154870020504",
       "changeVsAloneWei": "-1154870198546",
-      "changePct": -15.16
+      "changePct": -15.17
     },
     {
       "id": "h3_first",
@@ -507,7 +507,7 @@
       "holderExecutedExit": "6342690806247",
       "lockedWei": "1271550666407",
       "changeVsAloneWei": "-1271550844449",
-      "changePct": -16.69
+      "changePct": -16.7
     },
     {
       "id": "peer1_first",
@@ -627,7 +627,7 @@
       "holderExecutedExit": "6342691275257",
       "lockedWei": "1271550197397",
       "changeVsAloneWei": "-1271550375439",
-      "changePct": -16.69
+      "changePct": -16.7
     }
   ],
   "cushion": {
@@ -4717,7 +4717,7 @@
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "6,342,690.81 USDC (-16.69 %)",
+      "value": "6,342,690.81 USDC (-16.70 %)",
       "cls": "executed",
       "source": "scenario top_holders_first: 3 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -4908,7 +4908,7 @@
       }
     ]
   },
-  "headline": "Exiting becomes worthwhile if you judge the incident \"Chainlink-formatted InfiniFi RT Oracle -10% (oracle sees it), liquidations, then the largest competing holders exit first\" more likely than 34.38 % within 30 days (never, even if certain, if locked funds cost 0 %). The yield spread over the Sky Savings Rate (sUSDS), 6.35 % vs 3.80 %, implies ~13.80 % (risk-neutral, includes liquidity premium, not a prediction). Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 15.16 %); the Chainlink-formatted InfiniFi RT Oracle price feed.",
+  "headline": "Leaving pays off if you judge “Chainlink-formatted InfiniFi RT Oracle −10 % and others exit first” more likely than 34.38 % (locked funds cost 10 %) or never (even if certain) (cost 0 %) within 30 days. Dominant dependency: holder concentration in this vault.",
   "getBack": {
     "alone": {
       "outWei": "7614241650696",
@@ -4922,7 +4922,7 @@
       "outWei": "6459371452150",
       "fullExitOk": false,
       "error": "NotEnoughLiquidity()",
-      "changePct": -15.16
+      "changePct": -15.17
     },
     "afterPeer": {
       "id": "peer1_first",
@@ -4935,7 +4935,7 @@
     }
   },
   "dominantDependency": {
-    "liquidity": "holder concentration (holder #2 leaving first cuts this exit by 15.16 %)",
+    "liquidity": "holder concentration (holder #2 leaving first cuts this exit by 15.17 %)",
     "value": "the Chainlink-formatted InfiniFi RT Oracle price feed"
   },
   "references": [
@@ -5671,6 +5671,41 @@
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "PT-USD3-17DEC2026 depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "Chainlink-formatted InfiniFi RT Oracle −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "Chainlink-formatted InfiniFi RT Oracle −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.0012174992358191033,
+        "decision": "EXIT",
+        "exitCost": 9270.333174298368,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.005217853867796156,
+        "decision": "EXIT",
+        "exitCost": 39729.99931842157,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.015653561603388468,
+        "decision": "EXIT",
+        "exitCost": 119189.99795526471,
+        "exitableShare": 1
+      }
+    ]
+  },
   "bindingIncident": "incident_feed_shock_plus_run",
   "headlineDecision": "STAY",
   "dex": {

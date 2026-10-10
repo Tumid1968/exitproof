@@ -526,7 +526,7 @@
       "holderExecutedExit": "1545870063041384818996",
       "lockedWei": "20174527847775528542",
       "changeVsAloneWei": "-20174536395494005786",
-      "changePct": -1.28
+      "changePct": -1.29
     }
   ],
   "cushion": {
@@ -1905,7 +1905,7 @@
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "1,545.87 WETH (-1.28 %)",
+      "value": "1,545.87 WETH (-1.29 %)",
       "cls": "executed",
       "source": "scenario all_first: 6 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -2054,7 +2054,7 @@
       }
     ]
   },
-  "headline": "Exiting becomes worthwhile if you judge the incident \"wstETH/stETH exchange rate -10% (oracle sees it), liquidations, then the largest competing holders exit first\" more likely than 4.02 % within 30 days (4.02 % if locked funds cost 0 %). The yield spread over the ETH staking yield (Lido, 7 days), 1.45 % vs 2.24 %, is negative: it prices no default risk. Dominant dependency: wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations.",
+  "headline": "Leaving pays off if you judge “wstETH/stETH exchange rate −10 % and others exit first” more likely than 4.02 % (locked funds cost 10 %) or 4.02 % (cost 0 %) within 30 days.",
   "getBack": {
     "alone": {
       "outWei": "1566044599436878824782",
@@ -2817,6 +2817,41 @@
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "wstETH depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "wstETH/stETH exchange rate −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "wstETH/stETH exchange rate −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.00027745282818561343,
+        "decision": "EXIT",
+        "exitCost": 0.43450350080697947,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.0011888501640683721,
+        "decision": "EXIT",
+        "exitCost": 1.861792368816965,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.0035664084315886135,
+        "decision": "EXIT",
+        "exitCost": 5.585154633190842,
+        "exitableShare": 1
+      }
+    ]
+  },
   "bindingIncident": "incident_feed_shock_plus_run",
   "headlineDecision": "EXIT",
   "dex": {

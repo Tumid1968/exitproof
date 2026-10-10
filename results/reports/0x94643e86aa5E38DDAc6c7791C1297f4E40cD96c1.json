@@ -1254,7 +1254,7 @@
       }
     ]
   },
-  "headline": "CANNOT EXIT: Only 0.0000567% of the position can be withdrawn now (149 USDC): exiting is practically impossible at this block, the position rides the incident either way. Dominant dependency: holder concentration (holder #4 leaving first cuts this exit by 45.36 %); the BTC / USD price feed.",
+  "headline": "Less than 1 % of the position can leave at this block: exiting is not an option. Dominant dependency: holder concentration in this vault.",
   "getBack": {
     "alone": {
       "outWei": "149002371",
@@ -2017,6 +2017,41 @@
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "sdeUSD depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "BTC / USD −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "BTC / USD −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": null,
+        "decision": "NO_ACTION_POSSIBLE",
+        "exitCost": 8515.391312820877,
+        "exitableShare": 5.667959074639272e-7
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": null,
+        "decision": "NO_ACTION_POSSIBLE",
+        "exitCost": 36494.534197803754,
+        "exitableShare": 5.667959074639272e-7
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": null,
+        "decision": "NO_ACTION_POSSIBLE",
+        "exitCost": 109483.60259341127,
+        "exitableShare": 5.667959074639272e-7
+      }
+    ]
+  },
   "bindingIncident": null,
   "headlineDecision": "NO_ACTION_POSSIBLE",
   "dex": {

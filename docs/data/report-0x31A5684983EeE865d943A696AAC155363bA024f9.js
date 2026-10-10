@@ -418,7 +418,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x31A
       "holderExecutedExit": "3420785421278894366570",
       "lockedWei": "207368319078664883276",
       "changeVsAloneWei": "-207368337894441030723",
-      "changePct": -5.71
+      "changePct": -5.72
     },
     {
       "id": "peer2_first",
@@ -3064,7 +3064,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x31A
       }
     ]
   },
-  "headline": "Exiting becomes worthwhile if you judge the incident \"wstETH/stETH exchange rate -10% (oracle sees it), liquidations, then the largest competing holders exit first\" more likely than 5.19 % within 30 days (5.19 % if locked funds cost 0 %). The yield spread over the ETH staking yield (Lido, 7 days), 1.37 % vs 2.24 %, is negative: it prices no default risk. Dominant dependency: exit liquidity shared with Steakhouse ETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 5.71 %); wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations.",
+  "headline": "Leaving pays off if you judge “wstETH/stETH exchange rate −10 % and others exit first” more likely than 5.19 % (locked funds cost 10 %) or 5.19 % (cost 0 %) within 30 days. Dominant dependency: exit liquidity shared with Steakhouse ETH.",
   "getBack": {
     "alone": {
       "outWei": "3628153759173335397293",
@@ -3087,11 +3087,11 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x31A
       "outWei": "3420785421278894366570",
       "fullExitOk": false,
       "error": "NotEnoughLiquidity()",
-      "changePct": -5.71
+      "changePct": -5.72
     }
   },
   "dominantDependency": {
-    "liquidity": "exit liquidity shared with Steakhouse ETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 5.71 %)",
+    "liquidity": "exit liquidity shared with Steakhouse ETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 5.72 %)",
     "value": "wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations"
   },
   "references": [
@@ -3827,6 +3827,41 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x31A
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "wstETH depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "wstETH/stETH exchange rate −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "wstETH/stETH exchange rate −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.0002633587934900974,
+        "decision": "EXIT",
+        "exitCost": 0.9555061916571509,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.0011286097893440283,
+        "decision": "EXIT",
+        "exitCost": 4.0947698286126935,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.0033857863002673266,
+        "decision": "EXIT",
+        "exitCost": 12.284153229366284,
+        "exitableShare": 1
+      }
+    ]
+  },
   "bindingIncident": "incident_feed_shock_plus_run",
   "headlineDecision": "STAY",
   "dex": {

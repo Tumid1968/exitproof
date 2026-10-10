@@ -1863,7 +1863,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x78B
     }
   ],
   "mitigation": null,
-  "headline": "Exiting becomes worthwhile if you judge the incident \"rswETH/ETH exchange rate -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first\" more likely than 16.44 % within 30 days (never, even if certain, if locked funds cost 0 %). No sourced reference yield exists for this asset, so no spread-implied probability is given. Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 0.17 %); ynETHx collateral priced by \"vault rate\": a market depeg is not seen by liquidations.",
+  "headline": "Leaving pays off if you judge “rswETH/ETH exchange rate −10 %, AMM-limited liquidations, and others exit first” more likely than 16.44 % (locked funds cost 10 %) or never (even if certain) (cost 0 %) within 30 days. Dominant dependency: holder concentration in this vault.",
   "getBack": {
     "alone": {
       "outWei": "649107817739602446746",
@@ -2423,6 +2423,41 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x78B
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "ynETHx depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "rswETH/ETH exchange rate −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "rswETH/ETH exchange rate −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.0028011962505260575,
+        "decision": "EXIT",
+        "exitCost": 1.818278385239326,
+        "exitableShare": 0.3173619141246035
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.012005126787968817,
+        "decision": "EXIT",
+        "exitCost": 7.792621651025683,
+        "exitableShare": 0.3173619141246035
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.036015380363906446,
+        "decision": "EXIT",
+        "exitCost": 23.377864953077047,
+        "exitableShare": 0.3173619141246035
+      }
+    ]
+  },
   "bindingIncident": "incident_feed_dexlimited_plus_run",
   "headlineDecision": "STAY",
   "dex": {

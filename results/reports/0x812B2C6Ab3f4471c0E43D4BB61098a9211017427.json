@@ -808,7 +808,7 @@
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "185.98 WBTC (0 %)",
+      "value": "185.98 WBTC (0.00 %)",
       "cls": "executed",
       "source": "scenario alone: 0 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -899,7 +899,7 @@
     }
   ],
   "mitigation": null,
-  "headline": "STAY: no modelled incident causes a loss large enough to justify paying the exit cost.",
+  "headline": "No modeled incident causes a loss large enough to pay for leaving.",
   "getBack": {
     "alone": {
       "outWei": "18597594621",
@@ -1115,6 +1115,39 @@
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "cbBTC depegs (oracle blind) and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 2.2043362569069644e-13,
+        "decision": "EXIT",
+        "exitCost": 4.099535211432824e-11,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 9.447155386744132e-13,
+        "decision": "EXIT",
+        "exitCost": 1.7569436620426387e-10,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 2.8341466160232398e-12,
+        "decision": "EXIT",
+        "exitCost": 5.270830986127916e-10,
+        "exitableShare": 1
+      }
+    ]
+  },
   "bindingIncident": null,
   "headlineDecision": "STAY",
   "dex": {

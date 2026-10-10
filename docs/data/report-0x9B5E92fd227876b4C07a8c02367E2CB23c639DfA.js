@@ -553,7 +553,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x9B5
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "0 USDC (0 %)",
+      "value": "0 USDC (0.00 %)",
       "cls": "executed",
       "source": "scenario alone: 0 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -623,7 +623,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x9B5
     }
   ],
   "mitigation": null,
-  "headline": "STAY: no modelled incident causes a loss large enough to justify paying the exit cost.",
+  "headline": "No modeled incident causes a loss large enough to pay for leaving.",
   "getBack": {
     "alone": {
       "outWei": "0",
@@ -660,6 +660,37 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x9B5
     }
   ],
   "verdictGrid": [],
+  "shortIncidents": {},
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": null,
+        "decision": "NO_ACTION_POSSIBLE",
+        "exitCost": 0,
+        "exitableShare": 0
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": null,
+        "decision": "NO_ACTION_POSSIBLE",
+        "exitCost": 0,
+        "exitableShare": 0
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": null,
+        "decision": "NO_ACTION_POSSIBLE",
+        "exitCost": 0,
+        "exitableShare": 0
+      }
+    ]
+  },
   "bindingIncident": null,
   "headlineDecision": "STAY",
   "dex": {}

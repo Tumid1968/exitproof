@@ -6995,7 +6995,7 @@
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "5,107,681.42 USDT (0 %)",
+      "value": "5,107,681.42 USDT (0.00 %)",
       "cls": "executed",
       "source": "scenario alone: 0 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -7264,7 +7264,7 @@
       }
     ]
   },
-  "headline": "Exiting becomes worthwhile if you judge the incident \"USDS / USD -10% (oracle sees it), liquidations, then the largest competing holders exit first\" more likely than 99.43 % within 30 days (99.43 % if locked funds cost 0 %). The yield spread over the Sky Savings Rate (sUSDS), 2.35 % vs 3.80 %, is negative: it prices no default risk. Dominant dependency: the USDS / USD price feed.",
+  "headline": "Leaving pays off if you judge “USDS / USD −10 % and others exit first” more likely than 99.43 % (locked funds cost 10 %) or 99.43 % (cost 0 %) within 30 days.",
   "getBack": {
     "alone": {
       "outWei": "5107681416367",
@@ -8027,6 +8027,41 @@
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "WBTC depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "USDS / USD −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "USDS / USD −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.0004498915023966939,
+        "decision": "EXIT",
+        "exitCost": 2297.902445916658,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.0019281064388429736,
+        "decision": "EXIT",
+        "exitCost": 9848.153339642819,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.005784319316528921,
+        "decision": "EXIT",
+        "exitCost": 29544.460018928457,
+        "exitableShare": 1
+      }
+    ]
+  },
   "bindingIncident": "incident_feed_shock_plus_run",
   "headlineDecision": "STAY",
   "dex": {

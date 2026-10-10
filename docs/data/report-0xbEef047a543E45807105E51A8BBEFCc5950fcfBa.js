@@ -432,7 +432,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
       "holderExecutedExit": "58810553612719",
       "lockedWei": "11965860376940",
       "changeVsAloneWei": "-888410724229",
-      "changePct": -1.48
+      "changePct": -1.49
     },
     {
       "id": "h4_first",
@@ -457,7 +457,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
       "holderExecutedExit": "58966575748809",
       "lockedWei": "11809838240850",
       "changeVsAloneWei": "-732388588139",
-      "changePct": -1.22
+      "changePct": -1.23
     },
     {
       "id": "top_holders_first",
@@ -496,7 +496,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
       "holderExecutedExit": "52764366875017",
       "lockedWei": "18012047114642",
       "changeVsAloneWei": "-6934597461931",
-      "changePct": -11.61
+      "changePct": -11.62
     },
     {
       "id": "peer1_first",
@@ -546,7 +546,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
       "holderExecutedExit": "54591282920772",
       "lockedWei": "16185131068887",
       "changeVsAloneWei": "-5107681416176",
-      "changePct": -8.55
+      "changePct": -8.56
     },
     {
       "id": "peer3_first",
@@ -571,7 +571,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
       "holderExecutedExit": "58770288339206",
       "lockedWei": "12006125650453",
       "changeVsAloneWei": "-928675997742",
-      "changePct": -1.55
+      "changePct": -1.56
     },
     {
       "id": "all_first",
@@ -631,7 +631,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
       "holderExecutedExit": "46728009239343",
       "lockedWei": "24048404750316",
       "changeVsAloneWei": "-12970955097605",
-      "changePct": -21.72
+      "changePct": -21.73
     }
   ],
   "cushion": null,
@@ -5670,7 +5670,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "46,728,009.24 USDT (-21.72 %)",
+      "value": "46,728,009.24 USDT (-21.73 %)",
       "cls": "executed",
       "source": "scenario all_first: 6 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -5910,7 +5910,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
       }
     ]
   },
-  "headline": "Exiting becomes worthwhile if you judge the incident \"DAI / USD -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first\" more likely than 8.39 % within 30 days (never, even if certain, if locked funds cost 0 %). The yield spread over the Sky Savings Rate (sUSDS), 2.40 % vs 3.80 %, is negative: it prices no default risk. Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 8.9 %); the DAI / USD price feed.",
+  "headline": "Leaving pays off if you judge “DAI / USD −10 %, AMM-limited liquidations, and others exit first” more likely than 8.39 % (locked funds cost 10 %) or never (even if certain) (cost 0 %) within 30 days. Dominant dependency: holder concentration in this vault.",
   "getBack": {
     "alone": {
       "outWei": "59698964336948",
@@ -5933,11 +5933,11 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
       "outWei": "54591282920772",
       "fullExitOk": false,
       "error": "NotEnoughLiquidity()",
-      "changePct": -8.55
+      "changePct": -8.56
     }
   },
   "dominantDependency": {
-    "liquidity": "holder concentration (holder #2 leaving first cuts this exit by 8.9 %)",
+    "liquidity": "holder concentration (holder #2 leaving first cuts this exit by 8.90 %)",
     "value": "the DAI / USD price feed"
   },
   "references": [
@@ -6673,6 +6673,41 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "wstETH depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "DAI / USD −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "DAI / USD −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.00045970639403443105,
+        "decision": "EXIT",
+        "exitCost": 27443.99562292847,
+        "exitableShare": 0.8434867065413982
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.0019701702601475613,
+        "decision": "EXIT",
+        "exitCost": 117617.12409826485,
+        "exitableShare": 0.8434867065413982
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.005910510780442684,
+        "decision": "EXIT",
+        "exitCost": 352851.37229479454,
+        "exitableShare": 0.8434867065413982
+      }
+    ]
+  },
   "bindingIncident": "incident_feed_dexlimited_plus_run",
   "headlineDecision": "STAY",
   "dex": {

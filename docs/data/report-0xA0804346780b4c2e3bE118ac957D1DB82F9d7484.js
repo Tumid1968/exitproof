@@ -575,7 +575,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xA08
       "holderExecutedExit": "12991495285499",
       "lockedWei": "5897430891863",
       "changeVsAloneWei": "-401769222439",
-      "changePct": -2.99
+      "changePct": -3
     },
     {
       "id": "h4_first",
@@ -639,7 +639,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xA08
       "holderExecutedExit": "11436780857000",
       "lockedWei": "7452145320362",
       "changeVsAloneWei": "-1956483650938",
-      "changePct": -14.6
+      "changePct": -14.61
     },
     {
       "id": "peer1_first",
@@ -774,7 +774,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xA08
       "holderExecutedExit": "11436780960493",
       "lockedWei": "7452145216869",
       "changeVsAloneWei": "-1956483547445",
-      "changePct": -14.6
+      "changePct": -14.61
     }
   ],
   "cushion": null,
@@ -8953,7 +8953,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xA08
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "11,436,780.86 USDT (-14.6 %)",
+      "value": "11,436,780.86 USDT (-14.61 %)",
       "cls": "executed",
       "source": "scenario top_holders_first: 3 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -9263,7 +9263,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xA08
       }
     ]
   },
-  "headline": "Exiting becomes worthwhile if you judge the incident \"reUSD/USD exchange rate -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first\" more likely than 7.02 % within 30 days (never, even if certain, if locked funds cost 0 %). The yield spread over the Sky Savings Rate (sUSDS), 3.05 % vs 3.80 %, is negative: it prices no default risk. Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 9.3 %); the reUSD/USD exchange rate price feed.",
+  "headline": "Leaving pays off if you judge “reUSD/USD exchange rate −10 %, AMM-limited liquidations, and others exit first” more likely than 7.02 % (locked funds cost 10 %) or never (even if certain) (cost 0 %) within 30 days. Dominant dependency: holder concentration in this vault.",
   "getBack": {
     "alone": {
       "outWei": "13393264507938",
@@ -9290,7 +9290,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xA08
     }
   },
   "dominantDependency": {
-    "liquidity": "holder concentration (holder #2 leaving first cuts this exit by 9.3 %)",
+    "liquidity": "holder concentration (holder #2 leaving first cuts this exit by 9.30 %)",
     "value": "the reUSD/USD exchange rate price feed"
   },
   "references": [
@@ -10026,6 +10026,41 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xA08
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "PT-reUSD-10DEC2026 depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "reUSD/USD exchange rate −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "reUSD/USD exchange rate −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.0005853289811522471,
+        "decision": "EXIT",
+        "exitCost": 7839.465868733901,
+        "exitableShare": 0.7090537800920393
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.0025085527763667732,
+        "decision": "EXIT",
+        "exitCost": 33597.71086600243,
+        "exitableShare": 0.7090537800920393
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.007525658329100318,
+        "decision": "EXIT",
+        "exitCost": 100793.13259800729,
+        "exitableShare": 0.7090537800920393
+      }
+    ]
+  },
   "bindingIncident": "incident_feed_dexlimited_plus_run",
   "headlineDecision": "STAY",
   "dex": {

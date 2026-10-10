@@ -419,7 +419,7 @@
       "holderExecutedExit": "98349832063414274119633",
       "lockedWei": "521798873393017317971978",
       "changeVsAloneWei": "-227822494662360171344704",
-      "changePct": -69.84
+      "changePct": -69.85
     },
     {
       "id": "h4_first",
@@ -444,7 +444,7 @@
       "holderExecutedExit": "214982936098606816729581",
       "lockedWei": "405165769357824775362030",
       "changeVsAloneWei": "-111189390627167628734756",
-      "changePct": -34.08
+      "changePct": -34.09
     },
     {
       "id": "top_holders_first",
@@ -3167,7 +3167,7 @@
     }
   ],
   "mitigation": null,
-  "headline": "Exiting becomes worthwhile if you judge the incident \"sUSDe depegs on the market, oracles unchanged; the largest competing holders exit first\" more likely than 5.02 % within 30 days (never, even if certain, if locked funds cost 0 %). The yield spread over the Sky Savings Rate (sUSDS), 5.73 % vs 3.80 %, implies ~1.69 % (risk-neutral, includes liquidity premium, not a prediction). Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 88.15 %); sUSDe collateral priced by \"vault rate\": a market depeg is not seen by liquidations.",
+  "headline": "Leaving pays off if you judge “sUSDe depegs (oracle blind) and others exit first” more likely than 5.02 % (locked funds cost 10 %) or never (even if certain) (cost 0 %) within 30 days. Dominant dependency: holder concentration in this vault.",
   "getBack": {
     "alone": {
       "outWei": "326172326725774445464337",
@@ -3922,6 +3922,41 @@
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "sUSDe depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "undefined −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "undefined −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.0010994382838977884,
+        "decision": "EXIT",
+        "exitCost": 358.60634315033417,
+        "exitableShare": 0.525958248168414
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.00471187835956195,
+        "decision": "EXIT",
+        "exitCost": 1536.8843277871463,
+        "exitableShare": 0.525958248168414
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.01413563507868585,
+        "decision": "EXIT",
+        "exitCost": 4610.6529833614395,
+        "exitableShare": 0.525958248168414
+      }
+    ]
+  },
   "bindingIncident": "incident_blind_depeg_plus_run",
   "headlineDecision": "STAY",
   "dex": {

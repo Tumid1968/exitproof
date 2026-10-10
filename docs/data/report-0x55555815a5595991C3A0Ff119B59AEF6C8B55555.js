@@ -1604,7 +1604,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x555
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "149.15 USDC (0 %)",
+      "value": "149.15 USDC (0.00 %)",
       "cls": "executed",
       "source": "scenario alone: 0 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -1730,7 +1730,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x555
     }
   ],
   "mitigation": null,
-  "headline": "CANNOT EXIT: Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way. Dominant dependency: the RLP Price AggregatorV3 interface price feed.",
+  "headline": "Less than 1 % of the position can leave at this block: exiting is not an option.",
   "getBack": {
     "alone": {
       "outWei": "149153571",
@@ -2485,6 +2485,41 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0x555
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "sdeUSD depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "RLP Price AggregatorV3 interface −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "RLP Price AggregatorV3 interface −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": null,
+        "decision": "NO_ACTION_POSSIBLE",
+        "exitCost": 4262.016138271139,
+        "exitableShare": 0.0000011227310907044284
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": null,
+        "decision": "NO_ACTION_POSSIBLE",
+        "exitCost": 18265.78344973345,
+        "exitableShare": 0.0000011227310907044284
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": null,
+        "decision": "NO_ACTION_POSSIBLE",
+        "exitCost": 54797.35034920035,
+        "exitableShare": 0.0000011227310907044284
+      }
+    ]
+  },
   "bindingIncident": null,
   "headlineDecision": "NO_ACTION_POSSIBLE",
   "dex": {

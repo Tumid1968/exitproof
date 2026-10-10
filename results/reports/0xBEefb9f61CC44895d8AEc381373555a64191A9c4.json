@@ -505,7 +505,7 @@
       "holderExecutedExit": "3880106943192",
       "lockedWei": "4309144712434",
       "changeVsAloneWei": "-4309144836038",
-      "changePct": -52.61
+      "changePct": -52.62
     }
   ],
   "cushion": {
@@ -2685,7 +2685,7 @@
     },
     {
       "item": "Worst executed run (holder exitable)",
-      "value": "3,880,106.94 USDC (-52.61 %)",
+      "value": "3,880,106.94 USDC (-52.62 %)",
       "cls": "executed",
       "source": "scenario all_first: 6 exits then the holder's",
       "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
@@ -2841,7 +2841,7 @@
       }
     ]
   },
-  "headline": "Exiting becomes worthwhile if you judge the incident \"USDC / ETH -10% (oracle sees it), liquidations, then the largest competing holders exit first\" more likely than 6.50 % within 30 days (never, even if certain, if locked funds cost 0 %). The yield spread over the Sky Savings Rate (sUSDS), 4.05 % vs 3.80 %, implies ~0.40 % (risk-neutral, includes liquidity premium, not a prediction). Dominant dependency: exit liquidity shared with Steakhouse USDC in the same Morpho markets (its largest depositor leaving first cuts this exit by 24.74 %); the USDC / ETH price feed.",
+  "headline": "Leaving pays off if you judge “USDC / ETH −10 % and others exit first” more likely than 6.50 % (locked funds cost 10 %) or never (even if certain) (cost 0 %) within 30 days. Dominant dependency: exit liquidity shared with Steakhouse USDC.",
   "getBack": {
     "alone": {
       "outWei": "8189251779230",
@@ -3604,6 +3604,41 @@
       ]
     }
   ],
+  "shortIncidents": {
+    "incident_blind_depeg_plus_run": "WBTC depegs (oracle blind) and others exit first",
+    "incident_feed_shock_plus_run": "USDC / ETH −10 % and others exit first",
+    "incident_feed_dexlimited_plus_run": "USDC / ETH −10 %, AMM-limited liquidations, and others exit first"
+  },
+  "notModeled": {
+    "risks": [
+      "smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)",
+      "governance attack (owner/curator multisig, token admins, Lido DAO)",
+      "oracle exploit or manipulation beyond the modeled price moves"
+    ],
+    "totalLoss": [
+      {
+        "horizonDays": 7,
+        "breakEven": 0.0007768233737973779,
+        "decision": "EXIT",
+        "exitCost": 6361.6020999991515,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 30,
+        "breakEven": 0.00332924303056019,
+        "decision": "EXIT",
+        "exitCost": 27264.00899999636,
+        "exitableShare": 1
+      },
+      {
+        "horizonDays": 90,
+        "breakEven": 0.00998772909168057,
+        "decision": "EXIT",
+        "exitCost": 81792.02699998907,
+        "exitableShare": 1
+      }
+    ]
+  },
   "bindingIncident": "incident_feed_shock_plus_run",
   "headlineDecision": "STAY",
   "dex": {
