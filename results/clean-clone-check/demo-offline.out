@@ -1,0 +1,11 @@
+
+> exitproof@0.1.0 demo
+> tsx src/cli/demo.ts --offline --no-open
+
+[demo 16:45:06] starting (offline: proxy serves the disk cache only)
+(node:30208) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[demo 16:45:08] proxy: up
+[demo 16:45:10] fork: up
+[demo 16:45:12] api: up
+[demo 16:45:14] web: up

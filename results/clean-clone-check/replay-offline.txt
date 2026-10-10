@@ -1,0 +1,21 @@
+
+> exitproof@0.1.0 replay
+> tsx src/cli/replay.ts
+
+manifest results/manifests/0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4.json: sha256 OK
+OK   A_alone
+OK   C_first
+OK   D_first
+OK   C_D_first
+OK   B_first
+OK   B_C_first
+OK   VB1_other_vault
+OK   B_both_vaults
+OK   lido_loss_5pct
+OK   lido_loss_10pct
+OK   incident_lido10_plus_run
+OK   incident_lido10_dexlimited_plus_run
+OK   incident_steth_depeg_blind_plus_run
+OK   cushion passes at 1736990000000000000000, reverts at 1736991000000000000000
+
+REPLAY OK: 13 scenarios + cushion identical to the wei

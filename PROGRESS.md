@@ -1,18 +1,14 @@
 # PROGRESS
 
 ## Fait (sam. 10 oct.)
-- Phases 0 à 5 et première série de priorités d'Alex : voir NOTES 1-26 et l'historique git.
-- **Deuxième série d'Alex (sam. ~14:30)** :
-  1. Interface réordonnée : phrase de verdict en tête (rester/sortir, point mort, référence de spread, dépendance dominante), puis « What I really get back » (seul / après un gros détenteur / après un déposant d'un autre coffre, chacun ré-exécutable en direct), puis décision, puis le « pourquoi » (graphe, sorties détaillées, chocs, file de retrait), registre des preuves, replay.
-  2. Trois probabilités côte à côte : point mort, probabilité implicite par le spread (Sky Savings Rate lu on-chain pour USD, staking Lido 7 jours mesuré on-chain pour WETH ; pas de référence pour BTC ; « inactif » non montré car égal au point mort), curseur utilisateur. Aucune fréquence historique (pas de source datée).
-  3. README « Existing work (Travaux existants) » : Credora/RedStone (PSL, API sur liste blanche → rien d'intégré), DefiLlama (pages de risque), PD ≈ spread / LGD ; accroche recentrée sur la sortie exécutée.
-  4. 20 plus gros coffres V1 par TVL pré-analysés (23 coffres au total, tous rejoués au wei) ; refus expliqué pour V2 (détection on-chain des adaptateurs), autre ERC-4626, jeton, portefeuille.
-  5. README « Known limitations (Limites connues) ».
-  6. DEMO.md : scripts 90 s et 3 min, ouverture sur l'ordre des sorties exécuté en direct.
-- Robustesse : relance sur ECONNRESET pour les appels idempotents ; pipeline qui continue si un coffre échoue.
-
-## En cours
-- Régénération des 23 rapports (phrase de verdict corrigée), tests, commit.
+- Moteur, découverte, chocs, verdict, replay, interface : voir NOTES 1-31 et l'historique git.
+- **Série 3 d'Alex (sam. ~16:20)** :
+  1. Version statique `docs/` (double-clic, GitHub Pages, Vercel ; aucun fork, RPC ni réseau) ; 23 coffres ; bandeau honnête ; bouton d'exécution grisé avec empreinte du manifeste et statut du replay ; aucune clé dans les JSON (grep).
+  2. Écran : verdict en fourchette (1,13 % / 5,57 %), ligne mesuré / modélisé / hypothèse avec 463/580 WETH, « What I really get back » (6 ordres exécutés, erreur + sélecteur, coussin), décision (horizon, interrupteur 10 % / 0 %, trois tuiles), onglets (Dependencies 7 couches, Exits, Shocks, Withdraw queue, Evidence, Replay), prénom « Jad », thème clair/sombre, mobile (600 px vérifiés).
+  3. `npm run demo` supervisé, page `#/status`, repli automatique en statique ; clone propre hors connexion : test:fork 9/9, replay OK.
+  4. Honnêteté visible dans l'interface.
+  5. Réponses : valeur 5209914854809315636083 expliquée (NOTES 32) ; replay hors connexion sur clone propre vert.
+  6. DEMO.md (90 s commençant par l'ordre des sorties, 3 min), LIVRABLES.md.
 
 ## Reste à faire (Alex)
-- Vidéo, git push, soumission.
+- git push, activer GitHub Pages sur `/docs` et recopier l'URL dans LIVRABLES.md, enregistrer la vidéo de secours, soumettre.

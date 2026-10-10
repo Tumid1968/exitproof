@@ -132,6 +132,25 @@ Other readable errors: 409 when another analysis is running; 503 when the archiv
 
 **Evidence ledger.** A UI section lists every headline number with its class: measured on-chain, executed on the fork, bounded (upper or lower bound), modeled, or hypothesis. Each row gives its source call or scenario and its hypotheses.
 
+## See it without installing anything (static replay)
+
+`docs/` is a static build of the UI that reads only the exported results (23 vaults: reports, dependency graphs, manifest hashes and replay status). No fork, no proxy, no RPC key, no network call.
+
+- **Open `docs/index.html` by double-click** (works from disk: the data are plain scripts, not fetched JSON). Verified from a fresh clone without `npm install`.
+- **Or publish `docs/`**: GitHub Pages (Settings → Pages → Deploy from a branch → the branch, folder `/docs`) or Vercel (import the repo, no build command, output directory `docs`).
+- A permanent banner says what you see: results executed on a fork of Ethereum frozen at block 26,157,638, replayed from the manifests. The "Execute again on the fork" button is disabled there and shows instead the manifest sha256 and the last wei-exact replay status.
+- Rebuild it after new results: `npm run build:static` (export + Vite build; the export refuses to write anything matching an RPC-key pattern).
+
+## Live demo in one command
+
+```bash
+npm ci
+npm run demo                 # proxy (online) → fork → API → web, health-checked, restarted if they die, browser opened
+npm run demo -- --offline    # same, the proxy serves its disk cache only (after one online run)
+```
+
+`http://127.0.0.1:5173/#/status` shows proxy, fork (block 26,157,638), API and online/offline mode in green/red. If the fork stops answering, the UI switches by itself to the static replay of the same results, with a visible banner.
+
 ## Run it
 
 Requirements: Node 24, Windows/macOS/Linux. No API key is needed: the default upstream is `https://eth.drpc.org`. To use your own archive RPC, set `EXITPROOF_RPC_URL`; it is never written to disk or committed.
@@ -148,6 +167,8 @@ npm run test:fork        # acceptance on the fork: reference values to the wei
 npm run api              # terminal 3: local API on 127.0.0.1:8700
 npm run web              # terminal 4: UI on http://127.0.0.1:5173
 ```
+
+**Verified on a clean clone** (10 Oct, 16:45): `npm ci`, one online warm-up (`npm run demo`, `npm run replay`), then `npm run demo -- --offline`: `npm run test:fork` 9/9 and `npm run replay` REPLAY OK to the wei, with the proxy refusing only `eth_feeHistory`. Raw outputs: `results/clean-clone-check/`.
 
 **First run:** with an empty cache, the first replay or pipeline run fetches state from the archive RPC (about 2 minutes for Steakhouse ETH; rate limits of the free endpoint are retried by the proxy). Verified from a fresh clone: `npm ci`, `npm run proxy`, `npm run fork`, `npm run replay` → REPLAY OK.
 

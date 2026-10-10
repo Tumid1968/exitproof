@@ -1,0 +1,21 @@
+
+> exitproof@0.1.0 test:fork
+> node --import tsx --test --test-concurrency=1 test/acceptance.test.ts
+
+✔ A alone receives 5209.914854809315636083 WETH (285.8138ms)
+✔ B first: A's full exit reverts NotEnoughLiquidity, max 4210.679414346963425094 (183.6356ms)
+✔ C, D, C+D first: no effect on A (462.4887ms)
+✔ B then C: max 3489.008199441496936870 (219.2189ms)
+✔ cross-vault: Vault Bridge #1 exits its own vault -> A max 3318.751556034097893931 (-36%) (231.2868ms)
+✔ B exits both vaults -> A max 2079.210741633111021926 (-60%) (261.3851ms)
+✔ cushion: passes at 1736.990, reverts at 1736.991 (3219.3704ms)
+✔ a scenario that fails right after an oracle override leaves no shocked oracle behind (98.8944ms)
+✔ an override orphaned by a killed process is restored by the next run (211.6586ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6167.9826
