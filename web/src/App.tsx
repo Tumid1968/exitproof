@@ -274,7 +274,7 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
       )}
       {r.dex && Object.keys(r.dex).length > 0 && <>
         <h3 style={{ fontSize: 14, margin: "14px 0 6px" }}>AMM layer: can liquidators sell what they seize? <Chip k="onchain" /></h3>
-        <p className="sub">Pools discovered on-chain (Uniswap V3 factory, Curve registry, and through the unwrapped underlying). Capacity = largest amount whose quoted proceeds at the block still cover what the liquidator repays (oracle price / liquidation incentive). Beyond it, liquidating is unprofitable: insolvent positions stay, losses stay unrecognised and no liquidity comes back.</p>
+        <p className="sub">Pools discovered on-chain (Uniswap V3 factory, Curve registry, through the unwrapped underlying, and two hops via WETH). Lower bound: direct pools add up, only the best two-hop route counts, aggregators and other DEXes are not included. Capacity per venue = largest amount whose quoted proceeds at the block still cover what the liquidator repays (oracle price / liquidation incentive). Beyond it, liquidating is unprofitable: insolvent positions stay, losses stay unrecognised and no liquidity comes back.</p>
         <table>
           <thead><tr><th>Market</th><th className="r">Collateral posted by borrowers</th><th className="r">Absorbable at a profit</th><th>Venues with capacity (capacity · avg price)</th></tr></thead>
           <tbody>{Object.entries(r.dex).map(([id, d]: [string, any]) => {

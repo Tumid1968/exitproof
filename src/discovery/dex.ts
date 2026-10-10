@@ -28,7 +28,9 @@ const wrapperAbi = parseAbi(["function stETH() view returns (address)", "functio
 
 export type Venue = {
   id: string;
-  kind: "uniswap-v3" | "curve";
+  kind: "uniswap-v3" | "curve" | "two-hop";
+  /** two-hop routes share their second pool: count only the best one (lower bound) */
+  hops?: 2;
   pool: Address;
   route: string;
   /** proceeds in loan-token units for `amount` collateral units, or null if the quote fails */
@@ -78,6 +80,32 @@ export async function discoverVenues(r: Reader, collateral: Address, loanToken: 
           return b ?? null;
         },
       });
+    }
+  }
+  // Two hops through WETH when the loan token is not WETH: liquidators route via the deepest WETH pool.
+  if (getAddress(loanToken) !== getAddress(WETH) && getAddress(collateral) !== getAddress(WETH)) {
+    let best: { fee: number; pool: Address; out: bigint; prov: string } | null = null;
+    for (const fee of [100, 500, 3000, 10000]) {
+      const [pool, pId] = await r.call<Address>(UNIV3_FACTORY, univ3FactoryAbi, "getPool", [WETH, loanToken, fee]);
+      if (!pool || pool === zeroAddress) continue;
+      const [res] = await r.call<readonly [bigint, bigint, number, bigint]>(UNIV3_QUOTER_V2, quoterAbi, "quoteExactInputSingle", [{ tokenIn: WETH, tokenOut: loanToken, amountIn: 100n * 10n ** 18n, fee, sqrtPriceLimitX96: 0n }]);
+      if (res && (!best || res[0] > best.out)) best = { fee, pool, out: res[0], prov: pId };
+    }
+    if (best) {
+      const second = best;
+      const firstLegs = await discoverVenues(r, collateral, WETH);
+      for (const v of firstLegs) {
+        venues.push({
+          id: `2hop:${v.pool}:${second.pool}`, kind: "two-hop", hops: 2, pool: v.pool,
+          route: `${v.route} → WETH → Uniswap V3 ${second.fee / 10000}% pool`, prov: [...v.prov, second.prov],
+          quote: async (x) => {
+            const weth = await v.quote(x);
+            if (!weth) return null;
+            const [res] = await r.call<readonly [bigint, bigint, number, bigint]>(UNIV3_QUOTER_V2, quoterAbi, "quoteExactInputSingle", [{ tokenIn: WETH, tokenOut: loanToken, amountIn: weth, fee: second.fee, sqrtPriceLimitX96: 0n }]);
+            return res ? res[0] : null;
+          },
+        });
+      }
     }
   }
   return venues;

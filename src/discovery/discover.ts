@@ -532,7 +532,10 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
         addNode({ id: did, kind: "dex", layer: 4, label: v.route, address: v.pool, data: { venue: v.kind }, prov: v.prov });
         addEdge({ from: `token:${getAddress(m.params.collateralToken)}`, to: did, rel: "sold by liquidators via", prov: v.prov });
       }
-      const capacity = out.reduce((s, x) => s + x.capacity, 0n);
+      // Direct venues add up; two-hop routes share their WETH leg, so only the best one counts (lower bound).
+      const direct = out.filter((x) => !x.id.startsWith("2hop:")).reduce((s, x) => s + x.capacity, 0n);
+      const bestHop = out.filter((x) => x.id.startsWith("2hop:")).reduce((mx, x) => (x.capacity > mx ? x.capacity : mx), 0n);
+      const capacity = direct + bestHop;
       dex[m.id] = { capacity, collateralAtRisk: atRisk, venues: out };
       const node = nodes.get(`market:${m.id}`)!;
       node.data.liquidationCapacityCollateral = capacity;
