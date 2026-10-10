@@ -1766,6 +1766,727 @@
       "note": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
     }
   ],
+  "verdictGrid": [
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 0,
+          "valueLoss": 0,
+          "lockedPart": 0,
+          "lockedAfterRun": 132848733.570802,
+          "exitCost": 4262.016138271139,
+          "forgoneYield": 4262.016138271139,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 0,
+          "expectedLossExitAtDefault": 4262.016138271139,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the incident causes no loss"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 13284873.3570802,
+          "valueLoss": 0,
+          "lockedPart": 13284873.3570802,
+          "lockedAfterRun": 132848733.570802,
+          "exitCost": 4262.016138271139,
+          "forgoneYield": 4262.016138271139,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 664243.6678540101,
+          "expectedLossExitAtDefault": 668504.9382252636,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 66424366.785401,
+          "valueLoss": 0,
+          "lockedPart": 66424366.785401,
+          "lockedAfterRun": 132848733.570802,
+          "exitCost": 4262.016138271139,
+          "forgoneYield": 4262.016138271139,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 3321218.33927005,
+          "expectedLossExitAtDefault": 3325476.626573233,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 0,
+          "valueLoss": 0,
+          "lockedPart": 0,
+          "lockedAfterRun": 132848733.570802,
+          "exitCost": 18265.78344973345,
+          "forgoneYield": 18265.78344973345,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 0,
+          "expectedLossExitAtDefault": 18265.78344973345,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the incident causes no loss"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 13284873.3570802,
+          "valueLoss": 0,
+          "lockedPart": 13284873.3570802,
+          "lockedAfterRun": 132848733.570802,
+          "exitCost": 18265.78344973345,
+          "forgoneYield": 18265.78344973345,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 664243.6678540101,
+          "expectedLossExitAtDefault": 682508.7055367258,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 66424366.785401,
+          "valueLoss": 0,
+          "lockedPart": 66424366.785401,
+          "lockedAfterRun": 132848733.570802,
+          "exitCost": 18265.78344973345,
+          "forgoneYield": 18265.78344973345,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 3321218.33927005,
+          "expectedLossExitAtDefault": 3339480.3938846956,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 0,
+          "valueLoss": 0,
+          "lockedPart": 0,
+          "lockedAfterRun": 132848733.570802,
+          "exitCost": 54797.35034920035,
+          "forgoneYield": 54797.35034920035,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 0,
+          "expectedLossExitAtDefault": 54797.35034920035,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the incident causes no loss"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 13284873.3570802,
+          "valueLoss": 0,
+          "lockedPart": 13284873.3570802,
+          "lockedAfterRun": 132848733.570802,
+          "exitCost": 54797.35034920035,
+          "forgoneYield": 54797.35034920035,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 664243.6678540101,
+          "expectedLossExitAtDefault": 719040.2724361927,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 66424366.785401,
+          "valueLoss": 0,
+          "lockedPart": 66424366.785401,
+          "lockedAfterRun": 132848733.570802,
+          "exitCost": 54797.35034920035,
+          "forgoneYield": 54797.35034920035,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 3321218.33927005,
+          "expectedLossExitAtDefault": 3376011.9607841624,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incident_feed_shock_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 915296.823964,
+          "valueLoss": 915296.823964,
+          "lockedPart": 0,
+          "lockedAfterRun": 132888334.24147001,
+          "exitCost": 4262.016138271139,
+          "forgoneYield": 4262.016138271139,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 45764.8411982,
+          "expectedLossExitAtDefault": 50026.80595486107,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 14204130.248111002,
+          "valueLoss": 915296.823964,
+          "lockedPart": 13288833.424147002,
+          "lockedAfterRun": 132888334.24147001,
+          "exitCost": 4262.016138271139,
+          "forgoneYield": 4262.016138271139,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 710206.5124055501,
+          "expectedLossExitAtDefault": 714467.731172889,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 67359463.944699,
+          "valueLoss": 915296.823964,
+          "lockedPart": 66444167.120735005,
+          "lockedAfterRun": 132888334.24147001,
+          "exitCost": 4262.016138271139,
+          "forgoneYield": 4262.016138271139,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 3367973.1972349505,
+          "expectedLossExitAtDefault": 3372231.4320450006,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 915296.823964,
+          "valueLoss": 915296.823964,
+          "lockedPart": 0,
+          "lockedAfterRun": 132888334.24147001,
+          "exitCost": 18265.78344973345,
+          "forgoneYield": 18265.78344973345,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 45764.8411982,
+          "expectedLossExitAtDefault": 64030.57326632338,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 14204130.248111002,
+          "valueLoss": 915296.823964,
+          "lockedPart": 13288833.424147002,
+          "lockedAfterRun": 132888334.24147001,
+          "exitCost": 18265.78344973345,
+          "forgoneYield": 18265.78344973345,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 710206.5124055501,
+          "expectedLossExitAtDefault": 728471.4984843512,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 67359463.944699,
+          "valueLoss": 915296.823964,
+          "lockedPart": 66444167.120735005,
+          "lockedAfterRun": 132888334.24147001,
+          "exitCost": 18265.78344973345,
+          "forgoneYield": 18265.78344973345,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 3367973.1972349505,
+          "expectedLossExitAtDefault": 3386235.1993564633,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 915296.823964,
+          "valueLoss": 915296.823964,
+          "lockedPart": 0,
+          "lockedAfterRun": 132888334.24147001,
+          "exitCost": 54797.35034920035,
+          "forgoneYield": 54797.35034920035,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 45764.8411982,
+          "expectedLossExitAtDefault": 100562.14016579028,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 14204130.248111002,
+          "valueLoss": 915296.823964,
+          "lockedPart": 13288833.424147002,
+          "lockedAfterRun": 132888334.24147001,
+          "exitCost": 54797.35034920035,
+          "forgoneYield": 54797.35034920035,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 710206.5124055501,
+          "expectedLossExitAtDefault": 765003.0653838181,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 67359463.944699,
+          "valueLoss": 915296.823964,
+          "lockedPart": 66444167.120735005,
+          "lockedAfterRun": 132888334.24147001,
+          "exitCost": 54797.35034920035,
+          "forgoneYield": 54797.35034920035,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 3367973.1972349505,
+          "expectedLossExitAtDefault": 3422766.76625593,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incident_feed_dexlimited_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 876908.3602839999,
+          "valueLoss": 876908.3602839999,
+          "lockedPart": 0,
+          "lockedAfterRun": 132849945.66095099,
+          "exitCost": 4262.016138271139,
+          "forgoneYield": 4262.016138271139,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 43845.4180142,
+          "expectedLossExitAtDefault": 48107.38492585715,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 14161902.9263791,
+          "valueLoss": 876908.3602839999,
+          "lockedPart": 13284994.566095099,
+          "lockedAfterRun": 132849945.66095099,
+          "exitCost": 4262.016138271139,
+          "forgoneYield": 4262.016138271139,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 708095.146318955,
+          "expectedLossExitAtDefault": 712356.3674567903,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 67301881.1907595,
+          "valueLoss": 876908.3602839999,
+          "lockedPart": 66424972.830475494,
+          "lockedAfterRun": 132849945.66095099,
+          "exitCost": 4262.016138271139,
+          "forgoneYield": 4262.016138271139,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 3365094.059537975,
+          "expectedLossExitAtDefault": 3369352.2975805225,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 876908.3602839999,
+          "valueLoss": 876908.3602839999,
+          "lockedPart": 0,
+          "lockedAfterRun": 132849945.66095099,
+          "exitCost": 18265.78344973345,
+          "forgoneYield": 18265.78344973345,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 43845.4180142,
+          "expectedLossExitAtDefault": 62111.15223731946,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 14161902.9263791,
+          "valueLoss": 876908.3602839999,
+          "lockedPart": 13284994.566095099,
+          "lockedAfterRun": 132849945.66095099,
+          "exitCost": 18265.78344973345,
+          "forgoneYield": 18265.78344973345,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 708095.146318955,
+          "expectedLossExitAtDefault": 726360.1347682525,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 67301881.1907595,
+          "valueLoss": 876908.3602839999,
+          "lockedPart": 66424972.830475494,
+          "lockedAfterRun": 132849945.66095099,
+          "exitCost": 18265.78344973345,
+          "forgoneYield": 18265.78344973345,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 3365094.059537975,
+          "expectedLossExitAtDefault": 3383356.064891985,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 876908.3602839999,
+          "valueLoss": 876908.3602839999,
+          "lockedPart": 0,
+          "lockedAfterRun": 132849945.66095099,
+          "exitCost": 54797.35034920035,
+          "forgoneYield": 54797.35034920035,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 43845.4180142,
+          "expectedLossExitAtDefault": 98642.71913678636,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 14161902.9263791,
+          "valueLoss": 876908.3602839999,
+          "lockedPart": 13284994.566095099,
+          "lockedAfterRun": 132849945.66095099,
+          "exitCost": 54797.35034920035,
+          "forgoneYield": 54797.35034920035,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 708095.146318955,
+          "expectedLossExitAtDefault": 762891.7016677194,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "NO_ACTION_POSSIBLE",
+          "breakEven": null,
+          "sentence": "Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way.",
+          "incidentLoss": 67301881.1907595,
+          "valueLoss": 876908.3602839999,
+          "lockedPart": 66424972.830475494,
+          "lockedAfterRun": 132849945.66095099,
+          "exitCost": 54797.35034920035,
+          "forgoneYield": 54797.35034920035,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.0000011227310907044284,
+          "expectedLossStayAtDefault": 3365094.059537975,
+          "expectedLossExitAtDefault": 3419887.631791452,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": 1,
+              "reason": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bindingIncident": null,
+  "headlineDecision": "NO_ACTION_POSSIBLE",
   "dex": {
     "0xe1b65304edd8ceaea9b629df4c3c926a37d1216e27900505c04f14b2ed279f33": {
       "capacity": "0",

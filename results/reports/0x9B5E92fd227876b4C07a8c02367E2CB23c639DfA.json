@@ -659,5 +659,8 @@
       "note": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
     }
   ],
+  "verdictGrid": [],
+  "bindingIncident": null,
+  "headlineDecision": "STAY",
   "dex": {}
 }

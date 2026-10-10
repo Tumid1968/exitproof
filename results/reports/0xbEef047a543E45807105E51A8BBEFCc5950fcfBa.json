@@ -5910,7 +5910,7 @@
       }
     ]
   },
-  "headline": "STAY at a 5.00 % assumed probability: exiting now pays off if you believe the incident \"DAI / USD -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first\" has more than 8.39 % chance within 30 days; the yield spread over the Sky Savings Rate (sUSDS), 2.40 % vs 3.80 %, is negative: it prices no default risk. Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 8.9 %); the DAI / USD price feed.",
+  "headline": "Exiting becomes worthwhile if you judge the incident \"DAI / USD -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first\" more likely than 8.39 % within 30 days (never, even if certain, if locked funds cost 0 %). The yield spread over the Sky Savings Rate (sUSDS), 2.40 % vs 3.80 %, is negative: it prices no default risk. Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 8.9 %); the DAI / USD price feed.",
   "getBack": {
     "alone": {
       "outWei": "59698964336948",
@@ -5954,6 +5954,727 @@
       "note": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
     }
   ],
+  "verdictGrid": [
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": null,
+          "sentence": "This incident causes no loss to the position under these assumptions: exiting only costs 27,444 USDT.",
+          "incidentLoss": 0,
+          "valueLoss": 0,
+          "lockedPart": 0,
+          "lockedAfterRun": 16391247.458003001,
+          "exitCost": 27443.99562292847,
+          "forgoneYield": 27443.99562292847,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 0,
+          "expectedLossExitAtDefault": 27443.99562292847,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "EXIT",
+          "breakEven": 0.01984984372985496,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.98%. Expected loss if you stay 81,956.24 USDT vs 40,271.24 USDT if you exit (only 84.3% of the position can leave now).",
+          "incidentLoss": 1639124.7458003003,
+          "valueLoss": 0,
+          "lockedPart": 1639124.7458003003,
+          "lockedAfterRun": 16391247.458003001,
+          "exitCost": 27443.99562292847,
+          "forgoneYield": 27443.99562292847,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 81956.23729001502,
+          "expectedLossExitAtDefault": 40271.23624066339,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "EXIT",
+          "breakEven": 0.003969968745970992,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 0.397%. Expected loss if you stay 409,781.19 USDT vs 91,580.2 USDT if you exit (only 84.3% of the position can leave now).",
+          "incidentLoss": 8195623.729001501,
+          "valueLoss": 0,
+          "lockedPart": 8195623.729001501,
+          "lockedAfterRun": 16391247.458003001,
+          "exitCost": 27443.99562292847,
+          "forgoneYield": 27443.99562292847,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 409781.18645007507,
+          "expectedLossExitAtDefault": 91580.19871160308,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": null,
+          "sentence": "This incident causes no loss to the position under these assumptions: exiting only costs 117,617.12 USDT.",
+          "incidentLoss": 0,
+          "valueLoss": 0,
+          "lockedPart": 0,
+          "lockedAfterRun": 16391247.458003001,
+          "exitCost": 117617.12409826485,
+          "forgoneYield": 117617.12409826485,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 0,
+          "expectedLossExitAtDefault": 117617.12409826485,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.08507075884223553,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 8.51%. Exiting costs 117,617.12 USDT for an expected avoided loss of 69,129 USDT.",
+          "incidentLoss": 1639124.7458003003,
+          "valueLoss": 0,
+          "lockedPart": 1639124.7458003003,
+          "lockedAfterRun": 16391247.458003001,
+          "exitCost": 117617.12409826485,
+          "forgoneYield": 117617.12409826485,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 81956.23729001502,
+          "expectedLossExitAtDefault": 130444.36471599976,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "EXIT",
+          "breakEven": 0.017014151768447106,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 30 days, above the break-even 1.7%. Expected loss if you stay 409,781.19 USDT vs 181,753.33 USDT if you exit (only 84.3% of the position can leave now).",
+          "incidentLoss": 8195623.729001501,
+          "valueLoss": 0,
+          "lockedPart": 8195623.729001501,
+          "lockedAfterRun": 16391247.458003001,
+          "exitCost": 117617.12409826485,
+          "forgoneYield": 117617.12409826485,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 409781.18645007507,
+          "expectedLossExitAtDefault": 181753.32718693945,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": null,
+          "sentence": "This incident causes no loss to the position under these assumptions: exiting only costs 352,851.37 USDT.",
+          "incidentLoss": 0,
+          "valueLoss": 0,
+          "lockedPart": 0,
+          "lockedAfterRun": 16391247.458003001,
+          "exitCost": 352851.37229479454,
+          "forgoneYield": 352851.37229479454,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 0,
+          "expectedLossExitAtDefault": 352851.37229479454,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.2552122765267066,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 25.5%. Exiting costs 352,851.37 USDT for an expected avoided loss of 69,129 USDT.",
+          "incidentLoss": 1639124.7458003003,
+          "valueLoss": 0,
+          "lockedPart": 1639124.7458003003,
+          "lockedAfterRun": 16391247.458003001,
+          "exitCost": 352851.37229479454,
+          "forgoneYield": 352851.37229479454,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 81956.23729001502,
+          "expectedLossExitAtDefault": 365678.61291252944,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "STAY",
+          "breakEven": 0.05104245530534132,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 5.1%. Exiting costs 352,851.37 USDT for an expected avoided loss of 345,644.98 USDT.",
+          "incidentLoss": 8195623.729001501,
+          "valueLoss": 0,
+          "lockedPart": 8195623.729001501,
+          "lockedAfterRun": 16391247.458003001,
+          "exitCost": 352851.37229479454,
+          "forgoneYield": 352851.37229479454,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 409781.18645007507,
+          "expectedLossExitAtDefault": 416987.5753834691,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incident_feed_shock_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 0.7461141298701746,
+          "sentence": "STAY: you assume a 5% chance of this incident within 7 days, below the break-even 74.6%. Exiting costs 27,444 USDT for an expected avoided loss of 1,839.13 USDT.",
+          "incidentLoss": 43607.765562,
+          "valueLoss": 43607.765562,
+          "lockedPart": 0,
+          "lockedAfterRun": 15815920.9362,
+          "exitCost": 27443.99562292847,
+          "forgoneYield": 27443.99562292847,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 2180.3882781,
+          "expectedLossExitAtDefault": 27785.25537335243,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "EXIT",
+          "breakEven": 0.02001991931887718,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 2%. Expected loss if you stay 81,259.99 USDT vs 40,162.26 USDT if you exit (only 84.3% of the position can leave now).",
+          "incidentLoss": 1625199.8591820002,
+          "valueLoss": 43607.765562,
+          "lockedPart": 1581592.0936200002,
+          "lockedAfterRun": 15815920.9362,
+          "exitCost": 27443.99562292847,
+          "forgoneYield": 27443.99562292847,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 81259.99295910001,
+          "expectedLossExitAtDefault": 40162.26474738,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "EXIT",
+          "breakEven": 0.004091818003917192,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 0.409%. Expected loss if you stay 397,578.41 USDT vs 89,670.3 USDT if you exit (only 84.3% of the position can leave now).",
+          "incidentLoss": 7951568.233662,
+          "valueLoss": 43607.765562,
+          "lockedPart": 7907960.4681,
+          "lockedAfterRun": 15815920.9362,
+          "exitCost": 27443.99562292847,
+          "forgoneYield": 27443.99562292847,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 397578.41168310004,
+          "expectedLossExitAtDefault": 89670.3022434903,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 3.1976319851578903,
+          "sentence": "STAY: even if this incident were certain within 30 days, exiting would cost more (117,617.12 USDT) than the loss it avoids (36,782.57 USDT).",
+          "incidentLoss": 43607.765562,
+          "valueLoss": 43607.765562,
+          "lockedPart": 0,
+          "lockedAfterRun": 15815920.9362,
+          "exitCost": 117617.12409826485,
+          "forgoneYield": 117617.12409826485,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 2180.3882781,
+          "expectedLossExitAtDefault": 117958.38384868881,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.08579965422375933,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 8.58%. Exiting costs 117,617.12 USDT for an expected avoided loss of 68,541.72 USDT.",
+          "incidentLoss": 1625199.8591820002,
+          "valueLoss": 43607.765562,
+          "lockedPart": 1581592.0936200002,
+          "lockedAfterRun": 15815920.9362,
+          "exitCost": 117617.12409826485,
+          "forgoneYield": 117617.12409826485,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 81259.99295910001,
+          "expectedLossExitAtDefault": 130335.39322271638,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "EXIT",
+          "breakEven": 0.01753636287393082,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 30 days, above the break-even 1.75%. Expected loss if you stay 397,578.41 USDT vs 179,843.43 USDT if you exit (only 84.3% of the position can leave now).",
+          "incidentLoss": 7951568.233662,
+          "valueLoss": 43607.765562,
+          "lockedPart": 7907960.4681,
+          "lockedAfterRun": 15815920.9362,
+          "exitCost": 117617.12409826485,
+          "forgoneYield": 117617.12409826485,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 397578.41168310004,
+          "expectedLossExitAtDefault": 179843.43071882665,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 9.592895955473672,
+          "sentence": "STAY: even if this incident were certain within 90 days, exiting would cost more (352,851.37 USDT) than the loss it avoids (36,782.57 USDT).",
+          "incidentLoss": 43607.765562,
+          "valueLoss": 43607.765562,
+          "lockedPart": 0,
+          "lockedAfterRun": 15815920.9362,
+          "exitCost": 352851.37229479454,
+          "forgoneYield": 352851.37229479454,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 2180.3882781,
+          "expectedLossExitAtDefault": 353192.6320452185,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.257398962671278,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 25.7%. Exiting costs 352,851.37 USDT for an expected avoided loss of 68,541.72 USDT.",
+          "incidentLoss": 1625199.8591820002,
+          "valueLoss": 43607.765562,
+          "lockedPart": 1581592.0936200002,
+          "lockedAfterRun": 15815920.9362,
+          "exitCost": 352851.37229479454,
+          "forgoneYield": 352851.37229479454,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 81259.99295910001,
+          "expectedLossExitAtDefault": 365569.6414192461,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "STAY",
+          "breakEven": 0.052609088621792456,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 5.26%. Exiting costs 352,851.37 USDT for an expected avoided loss of 335,352.11 USDT.",
+          "incidentLoss": 7951568.233662,
+          "valueLoss": 43607.765562,
+          "lockedPart": 7907960.4681,
+          "lockedAfterRun": 15815920.9362,
+          "exitCost": 352851.37229479454,
+          "forgoneYield": 352851.37229479454,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 397578.41168310004,
+          "expectedLossExitAtDefault": 415077.67891535634,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incident_feed_dexlimited_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 1.432835344763396,
+          "sentence": "STAY: even if this incident were certain within 7 days, exiting would cost more (27,444 USDT) than the loss it avoids (19,153.63 USDT).",
+          "incidentLoss": 22707.682482,
+          "valueLoss": 22707.682482,
+          "lockedPart": 0,
+          "lockedAfterRun": 16390555.883866,
+          "exitCost": 27443.99562292847,
+          "forgoneYield": 27443.99562292847,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 1135.3841241,
+          "expectedLossExitAtDefault": 27621.69833153197,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "EXIT",
+          "breakEven": 0.01957942543817779,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.96%. Expected loss if you stay 83,088.16 USDT vs 40,448.4 USDT if you exit (only 84.3% of the position can leave now).",
+          "incidentLoss": 1661763.2708686,
+          "valueLoss": 22707.682482,
+          "lockedPart": 1639055.5883866001,
+          "lockedAfterRun": 16390555.883866,
+          "exitCost": 27443.99562292847,
+          "forgoneYield": 27443.99562292847,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 83088.16354343001,
+          "expectedLossExitAtDefault": 40448.39774653762,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "EXIT",
+          "breakEven": 0.003959166095546718,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 0.396%. Expected loss if you stay 410,899.28 USDT vs 91,755.2 USDT if you exit (only 84.3% of the position can leave now).",
+          "incidentLoss": 8217985.624415001,
+          "valueLoss": 22707.682482,
+          "lockedPart": 8195277.941933,
+          "lockedAfterRun": 16390555.883866,
+          "exitCost": 27443.99562292847,
+          "forgoneYield": 27443.99562292847,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 410899.28122075007,
+          "expectedLossExitAtDefault": 91755.19540656026,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 6.140722906128839,
+          "sentence": "STAY: even if this incident were certain within 30 days, exiting would cost more (117,617.12 USDT) than the loss it avoids (19,153.63 USDT).",
+          "incidentLoss": 22707.682482,
+          "valueLoss": 22707.682482,
+          "lockedPart": 0,
+          "lockedAfterRun": 16390555.883866,
+          "exitCost": 117617.12409826485,
+          "forgoneYield": 117617.12409826485,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 1135.3841241,
+          "expectedLossExitAtDefault": 117794.82680686834,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.08391182330647623,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 8.39%. Exiting costs 117,617.12 USDT for an expected avoided loss of 70,083.76 USDT.",
+          "incidentLoss": 1661763.2708686,
+          "valueLoss": 22707.682482,
+          "lockedPart": 1639055.5883866001,
+          "lockedAfterRun": 16390555.883866,
+          "exitCost": 117617.12409826485,
+          "forgoneYield": 117617.12409826485,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 83088.16354343001,
+          "expectedLossExitAtDefault": 130621.526221874,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "EXIT",
+          "breakEven": 0.016967854695200218,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 30 days, above the break-even 1.7%. Expected loss if you stay 410,899.28 USDT vs 181,928.32 USDT if you exit (only 84.3% of the position can leave now).",
+          "incidentLoss": 8217985.624415001,
+          "valueLoss": 22707.682482,
+          "lockedPart": 8195277.941933,
+          "lockedAfterRun": 16390555.883866,
+          "exitCost": 117617.12409826485,
+          "forgoneYield": 117617.12409826485,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 410899.28122075007,
+          "expectedLossExitAtDefault": 181928.32388189662,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 18.422168718386516,
+          "sentence": "STAY: even if this incident were certain within 90 days, exiting would cost more (352,851.37 USDT) than the loss it avoids (19,153.63 USDT).",
+          "incidentLoss": 22707.682482,
+          "valueLoss": 22707.682482,
+          "lockedPart": 0,
+          "lockedAfterRun": 16390555.883866,
+          "exitCost": 352851.37229479454,
+          "forgoneYield": 352851.37229479454,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 1135.3841241,
+          "expectedLossExitAtDefault": 353029.07500339806,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.2517354699194287,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 25.2%. Exiting costs 352,851.37 USDT for an expected avoided loss of 70,083.76 USDT.",
+          "incidentLoss": 1661763.2708686,
+          "valueLoss": 22707.682482,
+          "lockedPart": 1639055.5883866001,
+          "lockedAfterRun": 16390555.883866,
+          "exitCost": 352851.37229479454,
+          "forgoneYield": 352851.37229479454,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 83088.16354343001,
+          "expectedLossExitAtDefault": 365855.7744184037,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "STAY",
+          "breakEven": 0.05090356408560065,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 5.09%. Exiting costs 352,851.37 USDT for an expected avoided loss of 346,588.08 USDT.",
+          "incidentLoss": 8217985.624415001,
+          "valueLoss": 22707.682482,
+          "lockedPart": 8195277.941933,
+          "lockedAfterRun": 16390555.883866,
+          "exitCost": 352851.37229479454,
+          "forgoneYield": 352851.37229479454,
+          "gas": 0,
+          "slippage": 0,
+          "exitableShare": 0.8434867065413982,
+          "expectedLossStayAtDefault": 410899.28122075007,
+          "expectedLossExitAtDefault": 417162.5720784263,
+          "implied": [
+            {
+              "reference": "Sky Savings Rate (sUSDS)",
+              "referenceApy": 0.037999998803906365,
+              "value": null,
+              "reason": "not evaluated: the vault yields 2.40 %, less than the Sky Savings Rate (sUSDS) (3.80 %), so the spread prices no default risk"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bindingIncident": "incident_feed_dexlimited_plus_run",
+  "headlineDecision": "STAY",
   "dex": {
     "0xe7e9694b754c4d4f7e21faf7223f6fa71abaeb10296a4c43a54a7977149687d2": {
       "capacity": "5079040000000000000000",

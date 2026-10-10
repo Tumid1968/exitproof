@@ -1,6 +1,6 @@
 {
   "exitproof_manifest": "0.2",
-  "created_at": "2026-10-10T13:35:26.610Z",
+  "created_at": "2026-10-10T14:34:20.591Z",
   "tooling": {
     "node": "v24.14.1",
     "hardhat": "3.19.0",
@@ -12259,5 +12259,5 @@
       }
     ]
   },
-  "sha256": "7275419cfcd9e1ef2b15aabc40d130b70efac825e333ca4439af89d1c5ce06a1"
+  "sha256": "dce280549cddd4c49744343629e664d45652ca101d1da75895709b603ef09193"
 }

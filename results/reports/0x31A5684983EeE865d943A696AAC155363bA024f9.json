@@ -3064,7 +3064,7 @@
       }
     ]
   },
-  "headline": "STAY at a 5.00 % assumed probability: exiting now pays off if you believe the incident \"wstETH/stETH exchange rate -10% (oracle sees it), liquidations, then the largest competing holders exit first\" has more than 5.19 % chance within 30 days; the yield spread over the ETH staking yield (Lido, 7 days), 1.37 % vs 2.24 %, is negative: it prices no default risk. Dominant dependency: exit liquidity shared with Steakhouse ETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 5.71 %); wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations.",
+  "headline": "Exiting becomes worthwhile if you judge the incident \"wstETH/stETH exchange rate -10% (oracle sees it), liquidations, then the largest competing holders exit first\" more likely than 5.19 % within 30 days (5.19 % if locked funds cost 0 %). The yield spread over the ETH staking yield (Lido, 7 days), 1.37 % vs 2.24 %, is negative: it prices no default risk. Dominant dependency: exit liquidity shared with Steakhouse ETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 5.71 %); wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations.",
   "getBack": {
     "alone": {
       "outWei": "3628153759173335397293",
@@ -3108,6 +3108,727 @@
       "note": "the usual ETH benchmark yield; not risk-free (Lido smart-contract and slashing risk)"
     }
   ],
+  "verdictGrid": [
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "EXIT",
+          "breakEven": 0.015475069336477605,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.55%. Expected loss if you stay 3.09 WETH vs 0.96 WETH if you exit.",
+          "incidentLoss": 61.74487305235174,
+          "valueLoss": 61.74487305235174,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 0.9555061916571509,
+          "forgoneYield": 0.9554280634212523,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.0872436526175875,
+          "expectedLossExitAtDefault": 0.9555061916571509,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "EXIT",
+          "breakEven": 0.015475069336477605,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.55%. Expected loss if you stay 3.09 WETH vs 0.96 WETH if you exit.",
+          "incidentLoss": 61.74487305235174,
+          "valueLoss": 61.74487305235174,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 0.9555061916571509,
+          "forgoneYield": 0.9554280634212523,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.0872436526175875,
+          "expectedLossExitAtDefault": 0.9555061916571509,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "EXIT",
+          "breakEven": 0.015475069336477605,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.55%. Expected loss if you stay 3.09 WETH vs 0.96 WETH if you exit.",
+          "incidentLoss": 61.74487305235174,
+          "valueLoss": 61.74487305235174,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 0.9555061916571509,
+          "forgoneYield": 0.9554280634212523,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.0872436526175875,
+          "expectedLossExitAtDefault": 0.9555061916571509,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 0.06631756818320532,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 6.63%. Exiting costs 4.09 WETH for an expected avoided loss of 3.09 WETH.",
+          "incidentLoss": 61.74487305235174,
+          "valueLoss": 61.74487305235174,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 4.0947698286126935,
+          "forgoneYield": 4.094691700376795,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.0872436526175875,
+          "expectedLossExitAtDefault": 4.0947698286126935,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.06631756818320532,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 6.63%. Exiting costs 4.09 WETH for an expected avoided loss of 3.09 WETH.",
+          "incidentLoss": 61.74487305235174,
+          "valueLoss": 61.74487305235174,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 4.0947698286126935,
+          "forgoneYield": 4.094691700376795,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.0872436526175875,
+          "expectedLossExitAtDefault": 4.0947698286126935,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "STAY",
+          "breakEven": 0.06631756818320532,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 6.63%. Exiting costs 4.09 WETH for an expected avoided loss of 3.09 WETH.",
+          "incidentLoss": 61.74487305235174,
+          "valueLoss": 61.74487305235174,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 4.0947698286126935,
+          "forgoneYield": 4.094691700376795,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.0872436526175875,
+          "expectedLossExitAtDefault": 4.0947698286126935,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 0.19895017387032113,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 19.9%. Exiting costs 12.28 WETH for an expected avoided loss of 3.09 WETH.",
+          "incidentLoss": 61.74487305235174,
+          "valueLoss": 61.74487305235174,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 12.284153229366284,
+          "forgoneYield": 12.284075101130385,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.0872436526175875,
+          "expectedLossExitAtDefault": 12.284153229366284,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.19895017387032113,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 19.9%. Exiting costs 12.28 WETH for an expected avoided loss of 3.09 WETH.",
+          "incidentLoss": 61.74487305235174,
+          "valueLoss": 61.74487305235174,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 12.284153229366284,
+          "forgoneYield": 12.284075101130385,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.0872436526175875,
+          "expectedLossExitAtDefault": 12.284153229366284,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "STAY",
+          "breakEven": 0.19895017387032113,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 19.9%. Exiting costs 12.28 WETH for an expected avoided loss of 3.09 WETH.",
+          "incidentLoss": 61.74487305235174,
+          "valueLoss": 61.74487305235174,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 12.284153229366284,
+          "forgoneYield": 12.284075101130385,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.0872436526175875,
+          "expectedLossExitAtDefault": 12.284153229366284,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incident_feed_shock_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "EXIT",
+          "breakEven": 0.012099333579416066,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.21%. Expected loss if you stay 3.95 WETH vs 0.96 WETH if you exit.",
+          "incidentLoss": 78.97180331342392,
+          "valueLoss": 78.97180331342392,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 0.9555061916571509,
+          "forgoneYield": 0.9554280634212523,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.948590165671196,
+          "expectedLossExitAtDefault": 0.9555061916571509,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "EXIT",
+          "breakEven": 0.012099333579416066,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.21%. Expected loss if you stay 3.95 WETH vs 0.96 WETH if you exit.",
+          "incidentLoss": 78.97180331342392,
+          "valueLoss": 78.97180331342392,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 0.9555061916571509,
+          "forgoneYield": 0.9554280634212523,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.948590165671196,
+          "expectedLossExitAtDefault": 0.9555061916571509,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "EXIT",
+          "breakEven": 0.012099333579416066,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.21%. Expected loss if you stay 3.95 WETH vs 0.96 WETH if you exit.",
+          "incidentLoss": 78.97180331342392,
+          "valueLoss": 78.97180331342392,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 0.9555061916571509,
+          "forgoneYield": 0.9554280634212523,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.948590165671196,
+          "expectedLossExitAtDefault": 0.9555061916571509,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 0.05185103615224967,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 5.19%. Exiting costs 4.09 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.97180331342392,
+          "valueLoss": 78.97180331342392,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 4.0947698286126935,
+          "forgoneYield": 4.094691700376795,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.948590165671196,
+          "expectedLossExitAtDefault": 4.0947698286126935,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.05185103615224967,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 5.19%. Exiting costs 4.09 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.97180331342392,
+          "valueLoss": 78.97180331342392,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 4.0947698286126935,
+          "forgoneYield": 4.094691700376795,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.948590165671196,
+          "expectedLossExitAtDefault": 4.0947698286126935,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "STAY",
+          "breakEven": 0.05185103615224967,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 5.19%. Exiting costs 4.09 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.97180331342392,
+          "valueLoss": 78.97180331342392,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 4.0947698286126935,
+          "forgoneYield": 4.094691700376795,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.948590165671196,
+          "expectedLossExitAtDefault": 4.0947698286126935,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 0.15555112982051125,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 15.6%. Exiting costs 12.28 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.97180331342392,
+          "valueLoss": 78.97180331342392,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 12.284153229366284,
+          "forgoneYield": 12.284075101130385,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.948590165671196,
+          "expectedLossExitAtDefault": 12.284153229366284,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.15555112982051125,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 15.6%. Exiting costs 12.28 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.97180331342392,
+          "valueLoss": 78.97180331342392,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 12.284153229366284,
+          "forgoneYield": 12.284075101130385,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.948590165671196,
+          "expectedLossExitAtDefault": 12.284153229366284,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "STAY",
+          "breakEven": 0.15555112982051125,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 15.6%. Exiting costs 12.28 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.97180331342392,
+          "valueLoss": 78.97180331342392,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 12.284153229366284,
+          "forgoneYield": 12.284075101130385,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.948590165671196,
+          "expectedLossExitAtDefault": 12.284153229366284,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incident_feed_dexlimited_plus_run",
+      "cells": [
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0,
+          "decision": "EXIT",
+          "breakEven": 0.012104952304222363,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.21%. Expected loss if you stay 3.95 WETH vs 0.96 WETH if you exit.",
+          "incidentLoss": 78.93514717310022,
+          "valueLoss": 78.93514717310022,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 0.9555061916571509,
+          "forgoneYield": 0.9554280634212523,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.9467573586550113,
+          "expectedLossExitAtDefault": 0.9555061916571509,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.1,
+          "decision": "EXIT",
+          "breakEven": 0.012104952304222363,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.21%. Expected loss if you stay 3.95 WETH vs 0.96 WETH if you exit.",
+          "incidentLoss": 78.93514717310022,
+          "valueLoss": 78.93514717310022,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 0.9555061916571509,
+          "forgoneYield": 0.9554280634212523,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.9467573586550113,
+          "expectedLossExitAtDefault": 0.9555061916571509,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 7,
+          "lockedHaircut": 0.5,
+          "decision": "EXIT",
+          "breakEven": 0.012104952304222363,
+          "sentence": "EXIT: you assume a 5% chance of this incident within 7 days, above the break-even 1.21%. Expected loss if you stay 3.95 WETH vs 0.96 WETH if you exit.",
+          "incidentLoss": 78.93514717310022,
+          "valueLoss": 78.93514717310022,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 0.9555061916571509,
+          "forgoneYield": 0.9554280634212523,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.9467573586550113,
+          "expectedLossExitAtDefault": 0.9555061916571509,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 0.051875114891888396,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 5.19%. Exiting costs 4.09 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.93514717310022,
+          "valueLoss": 78.93514717310022,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 4.0947698286126935,
+          "forgoneYield": 4.094691700376795,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.9467573586550113,
+          "expectedLossExitAtDefault": 4.0947698286126935,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.051875114891888396,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 5.19%. Exiting costs 4.09 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.93514717310022,
+          "valueLoss": 78.93514717310022,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 4.0947698286126935,
+          "forgoneYield": 4.094691700376795,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.9467573586550113,
+          "expectedLossExitAtDefault": 4.0947698286126935,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 30,
+          "lockedHaircut": 0.5,
+          "decision": "STAY",
+          "breakEven": 0.051875114891888396,
+          "sentence": "STAY: you assume a 5% chance of this incident within 30 days, below the break-even 5.19%. Exiting costs 4.09 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.93514717310022,
+          "valueLoss": 78.93514717310022,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 4.0947698286126935,
+          "forgoneYield": 4.094691700376795,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.9467573586550113,
+          "expectedLossExitAtDefault": 4.0947698286126935,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0,
+          "decision": "STAY",
+          "breakEven": 0.15562336512058242,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 15.6%. Exiting costs 12.28 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.93514717310022,
+          "valueLoss": 78.93514717310022,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 12.284153229366284,
+          "forgoneYield": 12.284075101130385,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.9467573586550113,
+          "expectedLossExitAtDefault": 12.284153229366284,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.1,
+          "decision": "STAY",
+          "breakEven": 0.15562336512058242,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 15.6%. Exiting costs 12.28 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.93514717310022,
+          "valueLoss": 78.93514717310022,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 12.284153229366284,
+          "forgoneYield": 12.284075101130385,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.9467573586550113,
+          "expectedLossExitAtDefault": 12.284153229366284,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        },
+        {
+          "horizonDays": 90,
+          "lockedHaircut": 0.5,
+          "decision": "STAY",
+          "breakEven": 0.15562336512058242,
+          "sentence": "STAY: you assume a 5% chance of this incident within 90 days, below the break-even 15.6%. Exiting costs 12.28 WETH for an expected avoided loss of 3.95 WETH.",
+          "incidentLoss": 78.93514717310022,
+          "valueLoss": 78.93514717310022,
+          "lockedPart": 0,
+          "lockedAfterRun": 0,
+          "exitCost": 12.284153229366284,
+          "forgoneYield": 12.284075101130385,
+          "gas": 0.00007812823589869,
+          "slippage": 0,
+          "exitableShare": 1,
+          "expectedLossStayAtDefault": 3.9467573586550113,
+          "expectedLossExitAtDefault": 12.284153229366284,
+          "implied": [
+            {
+              "reference": "ETH staking yield (Lido, 7 days)",
+              "referenceApy": 0.02236858013048378,
+              "value": null,
+              "reason": "not evaluated: the vault yields 1.37 %, less than the ETH staking yield (Lido, 7 days) (2.24 %), so the spread prices no default risk"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bindingIncident": "incident_feed_shock_plus_run",
+  "headlineDecision": "STAY",
   "dex": {
     "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e": {
       "capacity": "18638012000000000000000",

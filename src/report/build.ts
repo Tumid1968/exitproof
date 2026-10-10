@@ -251,6 +251,28 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     return spread <= 0 || lossFrac <= 0 ? null : Math.min(1, (spread * days) / 365 / lossFrac);
   };
   const pctS = (x: number) => `${(x * 100).toFixed(2)} %`;
+  const HORIZONS = [7, 30, 90], HAIRCUTS = [0, 0.1, 0.5];
+  const posUnits = Number(formatUnits(holderValue, dec));
+  const verdictGrid = incidents.map((inc) => ({
+    id: inc.id,
+    cells: HORIZONS.flatMap((h) => HAIRCUTS.map((hc) => {
+      const v = decide(scaleTo18(mkInputs(inc.inputs, { ...defaults, horizonDays: h, lockedHaircut: hc }), dec), unit);
+      const lossFrac = posUnits > 0 ? v.incidentLoss / posUnits : 0;
+      return {
+        horizonDays: h, lockedHaircut: hc,
+        decision: v.decision, breakEven: v.breakEvenProbability, sentence: v.sentence,
+        incidentLoss: v.incidentLoss, valueLoss: v.parts.valueLoss, lockedPart: hc * v.parts.lockedAfterRun, lockedAfterRun: v.parts.lockedAfterRun,
+        exitCost: v.exitCost, forgoneYield: v.parts.forgoneYield, gas: v.parts.gasOut + v.parts.gasReentry, slippage: v.parts.slippage,
+        exitableShare: v.exitableShare, expectedLossStayAtDefault: v.expectedLossStay, expectedLossExitAtDefault: v.expectedLossExit,
+        implied: references.filter((r) => r.apy !== 0).map((r) => {
+          const val = Number.isFinite(r.apy) ? impliedFor(lossFrac, r, h) : null;
+          const reason = !Number.isFinite(r.apy) ? "reference unavailable" : netApy - r.apy <= 0 ? `not evaluated: the vault yields ${pctS(netApy)}, less than the ${r.name} (${pctS(r.apy)}), so the spread prices no default risk` : lossFrac <= 0 ? "not evaluated: the incident causes no loss" : null;
+          return { reference: r.name, referenceApy: r.apy, value: val, reason };
+        }),
+      };
+    })),
+  }));
+  const cellOf = (id: string, h: number, hc: number) => verdictGrid.find((x) => x.id === id)?.cells.find((c) => c.horizonDays === h && c.lockedHaircut === hc);
   const headline = (() => {
     const deps = [liqDep, valueDep].filter(Boolean).join("; ");
     if (!binding) {
@@ -264,7 +286,9 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
       : impl === null
       ? `the yield spread over the ${refMain.name}, ${pctS(netApy)} vs ${pctS(refMain.apy)}, is ${netApy - refMain.apy <= 0 ? "negative: it prices no default risk" : "not defined"}`
       : `the yield spread over the ${refMain.name}, ${pctS(netApy)} vs ${pctS(refMain.apy)}, implies ~${pctS(impl)} (risk-neutral, includes liquidity premium, not a prediction)`;
-    return `${binding.v.decision === "EXIT" ? "EXIT" : "STAY"} at a ${pctS(defaults.probability)} assumed probability: exiting now pays off if you believe the incident "${binding.inc.title.replace(/^Incident: /, "")}" has more than ${pctS(binding.v.breakEvenProbability!)} chance within ${defaults.horizonDays} days; ${implTxt}.${deps ? ` Dominant dependency: ${deps}.` : ""}`;
+    const zero = cellOf(binding.inc.id, defaults.horizonDays, 0)?.breakEven ?? null;
+    const zeroTxt = zero === null ? "" : ` (${zero > 1 ? "never, even if certain," : pctS(zero)} if locked funds cost 0 %)`;
+    return `Exiting becomes worthwhile if you judge the incident "${binding.inc.title.replace(/^Incident: /, "")}" more likely than ${pctS(binding.v.breakEvenProbability!)} within ${defaults.horizonDays} days${zeroTxt}. ${implTxt[0].toUpperCase() + implTxt.slice(1)}.${deps ? ` Dominant dependency: ${deps}.` : ""}`;
   })();
 
   // ---- 7. evidence ledger: every headline number with its class, source and hypotheses
@@ -320,7 +344,9 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     incidents: incidents.map((x) => ({ ...x, inputs: Object.fromEntries(Object.entries(x.inputs).map(([k, v]) => [k, v.toString()])) })),
     verdictParams: { netApy, decimals: dec, gasCostOut: gasInAsset.toString(), gasCostReentry: gasInAsset.toString(), gasNote: gasInAsset === 0n ? "gas is paid in ETH: not converted into the vault asset (no sourced price), shown separately" : null, gasOutEth: gasOut.toString(), slippage: slippage.toString(), exitGasUsed: aloneExit.gasUsed, baseFeePerGas: baseFee.toString(), defaults },
     verdicts, depegCurve, depegCurveCollateral: blindSym, evidence, mitigation,
-    headline, getBack, dominantDependency: { liquidity: liqDep, value: valueDep }, references,
+    headline, getBack, dominantDependency: { liquidity: liqDep, value: valueDep }, references, verdictGrid,
+    bindingIncident: binding ? binding.inc.id : null,
+    headlineDecision: binding ? binding.v.decision : verdicts.some((v) => v.verdict.decision === "NO_ACTION_POSSIBLE") ? "NO_ACTION_POSSIBLE" : "STAY",
     dex: Object.fromEntries(Object.entries(g.dex ?? {}).map(([id, d]) => [id, { capacity: d.capacity.toString(), collateralAtRisk: d.collateralAtRisk.toString(), venues: d.venues.filter((v) => v.capacity > 0n).map((v) => ({ ...v, capacity: v.capacity.toString() })) }])),
   };
   mkdirSync("results/reports", { recursive: true });
