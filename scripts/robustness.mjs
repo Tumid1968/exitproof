@@ -13,6 +13,8 @@ const cases = [
   ["invalid: EOA", "0x000000000000000000000000000000000000dEaD"],
   ["invalid: ERC-20 (USDC)", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"],
   ["invalid: Morpho Blue", "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb"],
+  ["invalid: Morpho Vault V2", "0x0229dB3921dE71CFa43Cfe9fb6A87b403647A9ae"],
+  ["invalid: other ERC-4626 (sUSDS)", "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD"],
 ];
 const only = process.argv.slice(2);
 for (const [label, vault] of cases) {

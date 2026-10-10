@@ -1,22 +1,18 @@
 # PROGRESS
 
 ## Fait (sam. 10 oct.)
-- Phases 0 à 5 : voir historique git et NOTES 1-19 (moteur, découverte sourcée, chocs, verdict, replay au wei en ligne/hors connexion, interface).
-- Revue de code indépendante : 3 défauts corrigés (NOTES 18). Copie fraîche : replay vert à froid (NOTES 19).
-- **Priorités d'Alex (sam. ~12:20)** :
-  1. Robustesse `/api/analyze` : tâche de fond + suivi, erreurs 400/409/422/503 lisibles, filet anti-crash ; banc de 12 cas (7 coffres inconnus, 5 entrées invalides) tout vert ; découverte d'un coffre inconnu < 1 min (NOTES 21).
-  2. Verdict : horizon, rendement (APY net lu on-chain) et coût du bloqué affichés à côté du point mort.
-  3. Fraîcheur des feeds : intervalle max et variation de déclenchement observés (24 rounds) ; alerte seulement si l'âge dépasse l'intervalle observé (NOTES 22).
-  4. Registre des preuves (mesuré / exécuté / borné / modélisé / hypothèse) avec sources et hypothèses, dans le rapport et l'interface.
-  5. Public Allocator exécuté (scénario d'atténuation) : Steakhouse USDT 46,73 M → 50,47 M sortables (NOTES 23).
-  6. README et DEMO.md à jour.
-- Tests : 13 unitaires, 7 d'acceptation sur fork ; 11 coffres en résultats, tous rejoués au wei.
+- Phases 0 à 5 et première série de priorités d'Alex : voir NOTES 1-26 et l'historique git.
+- **Deuxième série d'Alex (sam. ~14:30)** :
+  1. Interface réordonnée : phrase de verdict en tête (rester/sortir, point mort, référence de spread, dépendance dominante), puis « What I really get back » (seul / après un gros détenteur / après un déposant d'un autre coffre, chacun ré-exécutable en direct), puis décision, puis le « pourquoi » (graphe, sorties détaillées, chocs, file de retrait), registre des preuves, replay.
+  2. Trois probabilités côte à côte : point mort, probabilité implicite par le spread (Sky Savings Rate lu on-chain pour USD, staking Lido 7 jours mesuré on-chain pour WETH ; pas de référence pour BTC ; « inactif » non montré car égal au point mort), curseur utilisateur. Aucune fréquence historique (pas de source datée).
+  3. README « Existing work (Travaux existants) » : Credora/RedStone (PSL, API sur liste blanche → rien d'intégré), DefiLlama (pages de risque), PD ≈ spread / LGD ; accroche recentrée sur la sortie exécutée.
+  4. 20 plus gros coffres V1 par TVL pré-analysés (23 coffres au total, tous rejoués au wei) ; refus expliqué pour V2 (détection on-chain des adaptateurs), autre ERC-4626, jeton, portefeuille.
+  5. README « Known limitations (Limites connues) ».
+  6. DEMO.md : scripts 90 s et 3 min, ouverture sur l'ordre des sorties exécuté en direct.
+- Robustesse : relance sur ECONNRESET pour les appels idempotents ; pipeline qui continue si un coffre échoue.
 
 ## En cours
-- (rien)
-
-## Bloqué
-- (rien)
+- Régénération des 23 rapports (phrase de verdict corrigée), tests, commit.
 
 ## Reste à faire (Alex)
 - Vidéo, git push, soumission.

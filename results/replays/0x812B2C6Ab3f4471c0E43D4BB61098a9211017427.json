@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-10T13:27:53.399Z",
+  "manifest": "results/manifests/0x812B2C6Ab3f4471c0E43D4BB61098a9211017427.json",
+  "manifestSha256": "014e700f25b29bce82e484ac1620e466f840ce6b77855e3382ee8b39d35e5ddb",
+  "hashOk": true,
+  "cushionOk": true,
+  "scenarios": [
+    {
+      "id": "alone",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h2_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h3_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "h4_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "top_holders_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "peer1_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "all_first",
+      "ok": true,
+      "diffs": []
+    },
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "ok": true,
+      "diffs": []
+    }
+  ],
+  "verdict": "REPLAY OK"
+}

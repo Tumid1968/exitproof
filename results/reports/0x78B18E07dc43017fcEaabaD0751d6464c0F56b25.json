@@ -1853,9 +1853,46 @@
       "cls": "hypothesis",
       "source": "user input",
       "hypotheses": "never a prediction"
+    },
+    {
+      "item": "Spread-implied incident probability",
+      "value": "see section 5 (depends on horizon and loss fraction)",
+      "cls": "modeled",
+      "source": "PD ≈ (vault net APY − reference yield) × horizon / loss fraction (classic credit approximation)",
+      "hypotheses": "risk-neutral, includes liquidity and smart-contract premia; not a prediction; undefined when the spread is ≤ 0"
     }
   ],
   "mitigation": null,
+  "headline": "STAY at a 5.00 % assumed probability: exiting now pays off if you believe the incident \"rswETH/ETH exchange rate -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first\" has more than 16.44 % chance within 30 days; no sourced reference yield exists for this asset, so no spread-implied probability is given. Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 0.17 %); ynETHx collateral priced by \"vault rate\": a market depeg is not seen by liquidations.",
+  "getBack": {
+    "alone": {
+      "outWei": "649107817739602446746",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()"
+    },
+    "afterHolder": {
+      "id": "h2_first",
+      "who": "holder #2 exits",
+      "otherVault": "0x78B18E07dc43017fcEaabaD0751d6464c0F56b25",
+      "outWei": "647988751294618125097",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": -0.17
+    },
+    "afterPeer": null
+  },
+  "dominantDependency": {
+    "liquidity": "holder concentration (holder #2 leaving first cuts this exit by 0.17 %)",
+    "value": "ynETHx collateral priced by \"vault rate\": a market depeg is not seen by liquidations"
+  },
+  "references": [
+    {
+      "name": "holding the asset idle",
+      "apy": 0,
+      "source": "no yield, no lending risk",
+      "note": "not used for the implied probability: against holding idle, the spread-implied probability essentially equals the break-even"
+    }
+  ],
   "dex": {
     "0xd2630c0ebf33ba83c82e8cd400a8e6345370238ca695ce58773b2d3e43de1b0a": {
       "capacity": "0",

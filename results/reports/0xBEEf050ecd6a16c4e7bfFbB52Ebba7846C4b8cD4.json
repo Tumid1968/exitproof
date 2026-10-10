@@ -2454,9 +2454,67 @@
       "cls": "hypothesis",
       "source": "user input",
       "hypotheses": "never a prediction"
+    },
+    {
+      "item": "Reference yield: ETH staking yield (Lido, 7 days)",
+      "value": "2.24 %",
+      "cls": "measured",
+      "source": "stEthPerToken() of wstETH at blocks 26107238 and 26157638 (7.03 days)",
+      "hypotheses": "the usual ETH benchmark yield; not risk-free (Lido smart-contract and slashing risk)"
+    },
+    {
+      "item": "Spread-implied incident probability",
+      "value": "see section 5 (depends on horizon and loss fraction)",
+      "cls": "modeled",
+      "source": "PD ≈ (vault net APY − reference yield) × horizon / loss fraction (classic credit approximation)",
+      "hypotheses": "risk-neutral, includes liquidity and smart-contract premia; not a prediction; undefined when the spread is ≤ 0"
     }
   ],
   "mitigation": null,
+  "headline": "EXIT at a 5.00 % assumed probability: exiting now pays off if you believe the incident \"stETH depegs on the market, the exchange-rate oracle does not see it; holder #2 and Vault Bridge #1 run first\" has more than 1.13 % chance within 30 days; the yield spread over the ETH staking yield (Lido, 7 days), 1.53 % vs 2.24 %, is negative: it prices no default risk. Dominant dependency: exit liquidity shared with Vault Bridge WETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 36.29 %); wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations.",
+  "getBack": {
+    "alone": {
+      "outWei": "5209914854809315636083",
+      "fullExitOk": true,
+      "error": null
+    },
+    "afterHolder": {
+      "id": "B_first",
+      "who": "holder #2 exits",
+      "otherVault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "outWei": "4210679414346963425094",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": -19.17
+    },
+    "afterPeer": {
+      "id": "VB1_other_vault",
+      "who": "Vault Bridge WETH #1 exits its own vault",
+      "otherVault": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "outWei": "3318751556034097893931",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": -36.29
+    }
+  },
+  "dominantDependency": {
+    "liquidity": "exit liquidity shared with Vault Bridge WETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 36.29 %)",
+    "value": "wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations"
+  },
+  "references": [
+    {
+      "name": "holding the asset idle",
+      "apy": 0,
+      "source": "no yield, no lending risk",
+      "note": "not used for the implied probability: against holding idle, the spread-implied probability essentially equals the break-even"
+    },
+    {
+      "name": "ETH staking yield (Lido, 7 days)",
+      "apy": 0.02236858013048378,
+      "source": "stEthPerToken() of wstETH at blocks 26107238 and 26157638 (7.03 days)",
+      "note": "the usual ETH benchmark yield; not risk-free (Lido smart-contract and slashing risk)"
+    }
+  ],
   "dex": {
     "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d": {
       "capacity": "11541125802633455603656",

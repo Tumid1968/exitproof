@@ -2518,6 +2518,20 @@
       "cls": "hypothesis",
       "source": "user input",
       "hypotheses": "never a prediction"
+    },
+    {
+      "item": "Reference yield: ETH staking yield (Lido, 7 days)",
+      "value": "2.24 %",
+      "cls": "measured",
+      "source": "stEthPerToken() of wstETH at blocks 26107238 and 26157638 (7.03 days)",
+      "hypotheses": "the usual ETH benchmark yield; not risk-free (Lido smart-contract and slashing risk)"
+    },
+    {
+      "item": "Spread-implied incident probability",
+      "value": "see section 5 (depends on horizon and loss fraction)",
+      "cls": "modeled",
+      "source": "PD ≈ (vault net APY − reference yield) × horizon / loss fraction (classic credit approximation)",
+      "hypotheses": "risk-neutral, includes liquidity and smart-contract premia; not a prediction; undefined when the spread is ≤ 0"
     }
   ],
   "mitigation": {
@@ -2537,6 +2551,50 @@
       }
     ]
   },
+  "headline": "EXIT at a 5.00 % assumed probability: exiting now pays off if you believe the incident \"wstETH depegs on the market, oracles unchanged; the largest competing holders exit first\" has more than 2.39 % chance within 30 days; the yield spread over the ETH staking yield (Lido, 7 days), 1.53 % vs 2.24 %, is negative: it prices no default risk. Dominant dependency: exit liquidity shared with Steakhouse ETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 14.74 %); wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations.",
+  "getBack": {
+    "alone": {
+      "outWei": "2131468655399819347283",
+      "fullExitOk": true,
+      "error": null
+    },
+    "afterHolder": {
+      "id": "h2_first",
+      "who": "holder #2 exits",
+      "otherVault": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "outWei": "2131468667873325070586",
+      "fullExitOk": true,
+      "error": null,
+      "changePct": 0
+    },
+    "afterPeer": {
+      "id": "peer1_first",
+      "who": "Steakhouse ETH #1 exits its own vault",
+      "otherVault": "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4",
+      "outWei": "1817275293641627371235",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": -14.74
+    }
+  },
+  "dominantDependency": {
+    "liquidity": "exit liquidity shared with Steakhouse ETH in the same Morpho markets (its largest depositor leaving first cuts this exit by 14.74 %)",
+    "value": "wstETH collateral priced by \"wstETH/stETH exchange rate\": a market depeg is not seen by liquidations"
+  },
+  "references": [
+    {
+      "name": "holding the asset idle",
+      "apy": 0,
+      "source": "no yield, no lending risk",
+      "note": "not used for the implied probability: against holding idle, the spread-implied probability essentially equals the break-even"
+    },
+    {
+      "name": "ETH staking yield (Lido, 7 days)",
+      "apy": 0.02236858013048378,
+      "source": "stEthPerToken() of wstETH at blocks 26107238 and 26157638 (7.03 days)",
+      "note": "the usual ETH benchmark yield; not risk-free (Lido smart-contract and slashing risk)"
+    }
+  ],
   "dex": {
     "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e": {
       "capacity": "18638012000000000000000",

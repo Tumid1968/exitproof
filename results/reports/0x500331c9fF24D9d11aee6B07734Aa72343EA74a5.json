@@ -3150,9 +3150,59 @@
       "cls": "hypothesis",
       "source": "user input",
       "hypotheses": "never a prediction"
+    },
+    {
+      "item": "Reference yield: Sky Savings Rate (sUSDS)",
+      "value": "3.80 %",
+      "cls": "measured",
+      "source": "ssr() of sUSDS 0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD at block 26157638",
+      "hypotheses": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
+    },
+    {
+      "item": "Spread-implied incident probability",
+      "value": "see section 5 (depends on horizon and loss fraction)",
+      "cls": "modeled",
+      "source": "PD ≈ (vault net APY − reference yield) × horizon / loss fraction (classic credit approximation)",
+      "hypotheses": "risk-neutral, includes liquidity and smart-contract premia; not a prediction; undefined when the spread is ≤ 0"
     }
   ],
   "mitigation": null,
+  "headline": "STAY at a 5.00 % assumed probability: exiting now pays off if you believe the incident \"sUSDe depegs on the market, oracles unchanged; the largest competing holders exit first\" has more than 5.02 % chance within 30 days; the yield spread over the Sky Savings Rate (sUSDS), 5.73 % vs 3.80 %, implies ~1.69 % (risk-neutral, includes liquidity premium, not a prediction). Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 88.15 %); sUSDe collateral priced by \"vault rate\": a market depeg is not seen by liquidations.",
+  "getBack": {
+    "alone": {
+      "outWei": "326172326725774445464337",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()"
+    },
+    "afterHolder": {
+      "id": "h2_first",
+      "who": "holder #2 exits",
+      "otherVault": "0x500331c9fF24D9d11aee6B07734Aa72343EA74a5",
+      "outWei": "38642732518775782440123",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": -88.15
+    },
+    "afterPeer": null
+  },
+  "dominantDependency": {
+    "liquidity": "holder concentration (holder #2 leaving first cuts this exit by 88.15 %)",
+    "value": "sUSDe collateral priced by \"vault rate\": a market depeg is not seen by liquidations"
+  },
+  "references": [
+    {
+      "name": "holding the asset idle",
+      "apy": 0,
+      "source": "no yield, no lending risk",
+      "note": "not used for the implied probability: against holding idle, the spread-implied probability essentially equals the break-even"
+    },
+    {
+      "name": "Sky Savings Rate (sUSDS)",
+      "apy": 0.037999998803906365,
+      "source": "ssr() of sUSDS 0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD at block 26157638",
+      "note": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
+    }
+  ],
   "dex": {
     "0x1247f1c237eceae0602eab1470a5061a6dd8f734ba88c7cdc5d6109fb0026b28": {
       "capacity": "0",

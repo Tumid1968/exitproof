@@ -51,17 +51,18 @@ export function App() {
         <div className="legend"><Chip k="onchain" /> real data read at the block <Chip k="fork" /> tx simulated locally <Chip k="hyp" /> scenario assumption <Chip k="offchain" /> candidates from Morpho API, verified on-chain</div>
       </div>
       <main>
-        <BottomLine r={report} />
-        <Position r={report} />
+        <Headline r={report} />
+        <GetBack key={"g" + report.target.vault} r={report} />
+        <VerdictPanel key={"v" + report.target.vault} r={report} />
         <section className="panel">
-          <h2><span className="n">2</span> Dependency stack — discovered from contract reads</h2>
-          <p className="sub">Starting from the vault address only. Each box and link carries the reads it rests on (call, contract, block). Red = path of the selected shock (section 4).</p>
+          <h2><span className="n">3</span> Why: the dependency stack, discovered from contract reads</h2>
+          <p className="sub">Starting from the vault address only. Each box and link carries the reads it rests on (call, contract, block). Red = path of the selected shock (section 5).</p>
           {graph && <Findings g={graph} />}
           {graph && graph.target.vault === report.target.vault && <GraphView key={graph.target.vault} g={graph} highlight={highlight} />}
         </section>
         <Runs key={"r" + report.target.vault} r={report} />
         <Shocks key={"s" + report.target.vault} r={report} sel={shockSel} setSel={setShockSel} />
-        <VerdictPanel key={"v" + report.target.vault} r={report} />
+        <Position r={report} />
         <Evidence r={report} />
         <Proofs key={"p" + report.target.vault} r={report} />
       </main>
@@ -69,26 +70,60 @@ export function App() {
   );
 }
 
-function BottomLine({ r }: { r: Report }) {
+function Headline({ r }: { r: Report }) {
+  if (!r.headline) return null;
+  const word = r.headline.split(":")[0];
+  const cls = word.startsWith("EXIT") ? "EXIT" : word.startsWith("CANNOT") ? "NO_ACTION_POSSIBLE" : "STAY";
+  return (
+    <section className={`verdict ${cls}`} style={{ fontSize: 16 }}>
+      <div className="muted" style={{ fontSize: 12, marginBottom: 4 }}>Verdict for the {r.target.holderLabel} of {r.target.name}, at the default assumptions (adjust in section 2) <Chip k="hyp" /></div>
+      <b>{word}</b>{r.headline.slice(word.length)}
+    </section>
+  );
+}
+
+function GetBack({ r }: { r: Report }) {
+  const gb = r.getBack;
+  const [live, setLive] = useState<Record<string, { out: string; ok: boolean; err: string | null; ms: number } | string>>({});
+  if (!gb) return null;
   const value = BigInt(r.target.holderValue);
-  const worst = [...r.runs].sort((a: any, b: any) => (BigInt(a.holderExecutedExit) < BigInt(b.holderExecutedExit) ? -1 : 1))[0];
   const share = (x: string) => pct(Number(BigInt(x) * 10000n / (value || 1n)) / 10000, 0);
+  const runLive = async (key: string, exits: { vault: string; owner: string; label: string }[]) => {
+    setLive({ ...live, [key]: "executing on the fork…" });
+    try {
+      const o: any = await api("/api/run", { vault: r.target.vault, holder: r.target.holder, exits });
+      const ex = o.result.results.filter((x: any) => x.type === "exit" && x.result.owner === r.target.holder);
+      const out = ex[0].result.ok ? ex[0].result.assetsOutWei : ex[1]?.result.assetsOutWei ?? "0";
+      setLive((l) => ({ ...l, [key]: { out, ok: ex[0].result.ok, err: ex[0].result.error?.name ?? null, ms: o.ms } }));
+    } catch (e) { setLive((l) => ({ ...l, [key]: String((e as Error).message) })); }
+  };
+  const cards = [
+    { key: "alone", title: "I exit alone", sub: "nobody moves before me", d: gb.alone, exits: [] as any[] },
+    gb.afterHolder && { key: "holder", title: "Another large holder exits first", sub: gb.afterHolder.who, d: gb.afterHolder, exits: [{ vault: gb.afterHolder.otherVault, owner: r.runs.find((x: any) => x.id === gb.afterHolder.id)?.others[0].owner, label: gb.afterHolder.who }] },
+    gb.afterPeer && { key: "peer", title: "A depositor of ANOTHER vault exits first", sub: gb.afterPeer.who + " (holds no share of this vault)", d: gb.afterPeer, exits: [{ vault: gb.afterPeer.otherVault, owner: r.runs.find((x: any) => x.id === gb.afterPeer.id)?.others[0].owner, label: gb.afterPeer.who }] },
+  ].filter(Boolean) as any[];
   return (
     <section className="panel" style={{ borderColor: "#2f81f7" }}>
-      <h2>Bottom line for the {r.target.holderLabel} of {r.target.name}</h2>
-      <div className="kpis" style={{ marginTop: 8 }}>
-        <div className="kpi"><div className="l">Exits alone today <Chip k="fork" /></div><div className="v ok">{share(r.runs[0].holderExecutedExit)}</div><div className="muted">{w(r.runs[0].holderExecutedExit)} {r.target.assetSymbol}</div></div>
-        <div className="kpi"><div className="l">Worst executed run <Chip k="fork" /></div><div className="v bad">{share(worst.holderExecutedExit)}</div><div className="muted">{worst.others.length} exits first, {worst.others.filter((o: any) => o.vault !== r.target.vault).length} from other vaults</div></div>
-        {r.incidents.map((i: any) => {
-          const v = r.verdicts.find((x: any) => x.id === i.id)?.verdict;
+      <h2><span className="n">1</span> What I really get back <Chip k="fork" /> <Chip k="hyp" /></h2>
+      <p className="sub">Same block, same starting state, position of {w(r.target.holderValue)} {r.target.assetSymbol}. Only the order of exits changes. Each number is a real withdrawal executed on a local fork of Ethereum; other holders are impersonated (a scenario, not their intention). Ratings (e.g. Credora) and risk pages (e.g. DefiLlama) describe the vault's risk; this section executes <b>your</b> exit in a given order.</p>
+      <div className="kpis" style={{ gridTemplateColumns: `repeat(${cards.length}, minmax(0,1fr))` }}>
+        {cards.map((c: any) => {
+          const l = live[c.key];
           return (
-            <div className="kpi" key={i.id}><div className="l">{i.id.includes("blind") ? "Market depeg −10%, oracle blind, + run" : i.id.includes("dexlimited") ? "Price −10%, AMM-limited liquidations, + run" : "Price −10%, all liquidated, + run"} <Chip k="hyp" /></div>
-              <div className="v">{v?.breakEvenProbability === null || v?.breakEvenProbability === undefined ? "—" : v.breakEvenProbability > 1 ? ">100%" : pct(v.breakEvenProbability, 2)} <small>break-even / 30 d</small></div>
-              <div className="muted">exitable after the run: {share(i.executedFacts.holderMaxWithdrawAfterRun)}</div></div>
+            <div className="kpi" key={c.key}>
+              <div className="l"><b style={{ color: "var(--text)" }}>{c.title}</b></div>
+              <div className="muted" style={{ fontSize: 12, minHeight: 32 }}>{c.sub}</div>
+              <div className="v" style={{ fontSize: 26 }}>
+                <span className={c.d.fullExitOk ? "ok" : "bad"}>{w(c.d.outWei)}</span> <small>{r.target.assetSymbol} · {share(c.d.outWei)}</small>
+              </div>
+              <div style={{ fontSize: 12, margin: "4px 0 8px" }}>{c.d.fullExitOk ? <span className="ok">✓ full exit succeeds</span> : <span className="bad">✗ full exit reverts {c.d.error}; maximum shown</span>}{c.d.changePct ? <span className="bad"> · {c.d.changePct} % vs alone</span> : null}</div>
+              <button onClick={() => runLive(c.key, c.exits)} disabled={typeof l === "string" && l.startsWith("executing")}>Execute again on the fork</button>
+              {l && <div style={{ fontSize: 12, marginTop: 6 }} className="mono">{typeof l === "string" ? l : <>{l.ok ? "✓" : "✗ " + l.err} → {w(l.out, 4)} in {l.ms} ms {l.out === c.d.outWei ? <span className="ok">(identical to the wei)</span> : null}</>}</div>}
+            </div>
           );
         })}
       </div>
-      <p className="muted" style={{ margin: "8px 0 0", fontSize: 12 }}>Break-even = the incident probability above which exiting now beats staying, computed over a <b>{r.verdictParams.defaults.horizonDays}-day horizon</b> at the vault's <b>net APY of {pct(r.verdictParams.netApy, 2)}</b> (read on-chain), locked funds costing {pct(r.verdictParams.defaults.lockedHaircut, 0)}; adjust in section 5. Probabilities are your assumptions, not predictions.</p>
+      {r.cushion && r.cushion.revertsAt !== "none" && <p style={{ margin: "10px 0 0" }}>Cushion: my full exit survives as long as less than <b>{w(r.cushion.passesAt, 3)}</b> {r.target.assetSymbol} leaves before me (bisection on the fork). Beyond it, every unit others withdraw is a unit I cannot.</p>}
     </section>
   );
 }
@@ -136,7 +171,7 @@ function Position({ r }: { r: Report }) {
   const t = r.target, v = r.vault;
   return (
     <section className="panel">
-      <h2><span className="n">1</span> Position: {t.name} <span className="muted" style={{ fontWeight: 400 }}>{t.version} · asset {t.assetSymbol}</span></h2>
+      <h2><span className="n">6</span> Position and withdraw queue: {t.name} <span className="muted" style={{ fontWeight: 400 }}>{t.version} · asset {t.assetSymbol}</span></h2>
       <p className="sub">Vault <a className="mono" href={etherscan(t.vault)} target="_blank" rel="noreferrer">{t.vault}</a> · holder: the {t.holderLabel} <a className="mono" href={etherscan(t.holder)} target="_blank" rel="noreferrer">{short(t.holder)}</a> · amounts in {t.assetSymbol}, no USD conversion</p>
       <div className="kpis">
         <div className="kpi"><div className="l">Vault total assets <Chip k="onchain" /></div><div className="v">{w(v.totalAssets)}</div></div>
@@ -243,7 +278,7 @@ function Runs({ r }: { r: Report }) {
   };
   return (
     <section className="panel">
-      <h2><span className="n">3</span> Exit liquidity: who leaves before you? <Chip k="fork" /> <Chip k="hyp" /></h2>
+      <h2><span className="n">4</span> Exit liquidity in detail: who leaves before you? <Chip k="fork" /> <Chip k="hyp" /></h2>
       <p className="sub">Same block, same state; only the order of exits changes. Real holders at the block, impersonated on the local fork (scenario assumption, not their intention). Each line is an executed transaction sequence.</p>
       <table>
         <thead><tr><th>Exits executed before the holder</th><th className="r">Holder max withdraw</th><th>Full exit</th><th style={{ width: "34%" }}>Position: exitable vs locked</th><th className="r">vs alone</th></tr></thead>
@@ -328,7 +363,7 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
   };
   return (
     <section className="panel">
-      <h2><span className="n">4</span> Shocks: propagate a failure through the stack <Chip k="hyp" /></h2>
+      <h2><span className="n">5</span> Shocks: propagate a failure through the stack <Chip k="hyp" /></h2>
       <p className="sub">A shock hits one discovered dependency (feed, collateral market price, oracle) and follows the discovered links only: feed → oracle (active router leg) → market → borrowers → vault → holder. Value loss = bad debt Morpho Blue socialises to lenders when all collateral of insolvent borrowers is seized. Liquidations repay debt, so they also bring idle liquidity back. Assumptions: every unhealthy borrower is liquidated, no top-ups, instantaneous move.</p>
       <div className="row" style={{ marginBottom: 8 }}>
         {[["all", "All"], ["feed", "Price feed moves (oracle sees it)"], ["blindDepeg", "Market depeg (oracle blind)"], ["oracleOverprice", "Oracle overprices"]].map(([k, l]) => <button key={k} className={kind === k ? "on" : ""} onClick={() => setKind(k)}>{l}</button>)}
@@ -354,7 +389,7 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
       </div>
       {selRow && (
         <div style={{ marginTop: 10 }} className="grid">
-          <div><b>Propagation path</b> (highlighted in red in section 2):
+          <div><b>Propagation path</b> (highlighted in red in section 3):
             <ul style={{ margin: "4px 0", paddingLeft: 18 }}>{selRow.markets.map((m: any) => <li key={m.id}>{m.path.join(" → ")} · liquidatable {m.liquidatable} · bad debt {w(m.badDebt)} · repaid {w(m.repaid)}{BigInt(m.hiddenShortfall) > 0n ? ` · unrecognised shortfall ${w(m.hiddenShortfall)}` : ""}</li>)}</ul>
           </div>
           <div className="note">{selRow.hypotheses.join(" ")}</div>
@@ -391,7 +426,7 @@ function Shocks({ r, sel, setSel }: { r: Report; sel: number | null; setSel: (i:
 function VerdictPanel({ r }: { r: Report }) {
   if (!r.incidents?.length) return (
     <section className="panel">
-      <h2><span className="n">5</span> Decision: stay or exit?</h2>
+      <h2><span className="n">2</span> Decision: stay or exit?</h2>
       <p className="sub">No incident could be built for this vault: none of the markets it supplies has a collateral, an oracle that answers and identified borrowers, so there is no price shock to propagate. Exit liquidity results above still apply.</p>
     </section>
   );
@@ -416,7 +451,7 @@ function VerdictBody({ r }: { r: Report }) {
   const f = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 2 });
   return (
     <section className="panel">
-      <h2><span className="n">5</span> Decision: stay or exit?</h2>
+      <h2><span className="n">2</span> Decision: stay or exit?</h2>
       <p className="sub">Expected loss if you stay = p × incident loss. Exit cost = forgone yield on what can leave now + gas out and back (gas used on the fork × base fee of the block) + measured slippage. The break-even probability is where both are equal. <b>p is your assumption, not a prediction.</b></p>
       <div className="row" style={{ marginBottom: 10 }}>
         {r.incidents.map((x: any, i: number) => <button key={x.id} className={inc === i ? "on" : ""} onClick={() => setInc(i)}>{x.title}</button>)}
@@ -442,6 +477,7 @@ function VerdictBody({ r }: { r: Report }) {
           </table>
         </div>
         <div className="grid">
+          <ProbTriple r={r} v={v} h={h} p={p} />
           <div className={`verdict ${v.decision}`}>
             <div className="d">{v.decision === "NO_ACTION_POSSIBLE" ? "CANNOT EXIT" : v.decision}</div>
             <div style={{ margin: "6px 0" }}>Break-even incident probability: <b>{v.breakEvenProbability === null ? "—" : v.breakEvenProbability > 1 ? ">100%" : pct(v.breakEvenProbability, 2)}</b> within {h} days</div>
@@ -490,11 +526,39 @@ const CLS: Record<string, [string, string]> = {
   modeled: ["modeled", "modeled"], hypothesis: ["hyp", "hypothesis"],
 };
 
+function ProbTriple({ r, v, h, p }: { r: Report; v: any; h: number; p: number }) {
+  const V = Number(BigInt(r.target.holderValue)) / 10 ** r.target.assetDecimals;
+  const lossFrac = V > 0 ? v.incidentLoss / V : 0;
+  const netApy = r.verdictParams.netApy;
+  // "holding idle" is not shown: against it, the spread-implied probability equals the break-even by construction
+  const refs = ((r.references ?? []) as { name: string; apy: number; source: string; note: string }[]).filter((x) => x.apy !== 0);
+  const implied = (ref: { apy: number }) => { const sp = netApy - ref.apy; return sp <= 0 || lossFrac <= 0 ? null : Math.min(1, (sp * h) / 365 / lossFrac); };
+  const be = v.breakEvenProbability;
+  return (
+    <div className="kpis" style={{ gridTemplateColumns: "repeat(3, minmax(0,1fr))" }}>
+      <div className="kpi"><div className="l">Break-even p* <Chip k="fork" /></div>
+        <div className="v">{be === null ? "—" : be > 1 ? ">100%" : pct(be, 2)}</div>
+        <div className="muted" style={{ fontSize: 12 }}>above it, exiting now beats staying ({h} d)</div></div>
+      <div className="kpi"><div className="l">Implied by the yield spread <Chip k="hyp" /></div>
+        {refs.map((ref) => {
+          const x = implied(ref);
+          return <div key={ref.name} style={{ fontSize: 13, margin: "3px 0" }} title={`${ref.source}. ${ref.note}`}>
+            vs {ref.name} ({Number.isFinite(ref.apy) ? pct(ref.apy, 2) : "n/a"}): <b>{x === null ? (netApy - ref.apy <= 0 ? "spread ≤ 0, prices no default risk" : "—") : pct(x, 2)}</b></div>;
+        })}
+        {!refs.length && <div style={{ fontSize: 13 }}>no sourced reference yield for {r.target.assetSymbol}</div>}
+        <div className="muted" style={{ fontSize: 11 }}>(net APY {pct(netApy, 2)} − reference) × {h}/365 ÷ loss fraction {pct(lossFrac, 1)}. Risk-neutral, includes liquidity and smart-contract premia: not a prediction. Against holding the asset idle it would essentially equal the break-even (same yield given up, same loss), so it is not shown.</div></div>
+      <div className="kpi"><div className="l">Your assumption <Chip k="hyp" /></div>
+        <div className="v">{pct(p, 2)}</div>
+        <div className="muted" style={{ fontSize: 12 }}>slider on the left; no historical incident frequency is shown (none could be sourced with date and sample)</div></div>
+    </div>
+  );
+}
+
 function Evidence({ r }: { r: Report }) {
   if (!r.evidence) return null;
   return (
     <section className="panel">
-      <h2><span className="n">6</span> Evidence ledger: measured, executed, bounded, modeled</h2>
+      <h2><span className="n">7</span> Evidence ledger: measured, executed, bounded, modeled</h2>
       <p className="sub">Every headline number, how it was obtained and what it assumes. <b>Measured</b> = read on-chain at the block. <b>Executed</b> = real contract calls on the local fork. <b>Bounded</b> = a measured upper or lower bound. <b>Modeled</b> = computed from measured inputs with the stated hypotheses. <b>Hypothesis</b> = your input.</p>
       <table>
         <thead><tr><th>Item</th><th>Value</th><th>Class</th><th>Source</th><th>Hypotheses</th></tr></thead>
@@ -519,7 +583,7 @@ function Proofs({ r }: { r: Report }) {
   };
   return (
     <section className="panel">
-      <h2><span className="n">7</span> Proof: replayable to the wei, offline <Chip k="fork" /></h2>
+      <h2><span className="n">8</span> Proof: replayable to the wei, offline <Chip k="fork" /></h2>
       <p className="sub">Every scenario above is recorded in a manifest (inputs, timestamps T0+12·k, expected amounts, statuses and decoded errors). Replay re-executes them on a fresh fork and compares to the wei; transaction hashes are not compared. Works without Internet once the proxy cache is warm.</p>
       {m && <div className="kv mono" style={{ marginBottom: 10 }}>
         <div className="k">manifest sha256</div><div>{m.sha256}</div>

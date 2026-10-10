@@ -1,0 +1,990 @@
+{
+  "schema": "exitproof.report/0.2",
+  "generatedBy": "src/report/build.ts",
+  "catalog": "generic (derived from the discovered graph)",
+  "source": {
+    "chainId": 1,
+    "block": "26157638",
+    "blockHash": "0x3e8450286456e913f08f2290aa3eac5e0c8b6d5be51bef3955032d9c43977bf4",
+    "timestamp": "1791582443",
+    "baseFeePerGas": "121537943",
+    "forkLocalChainId": 31337
+  },
+  "target": {
+    "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+    "name": "Vault Bridge WBTC",
+    "version": "MetaMorpho V1.1",
+    "asset": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+    "assetSymbol": "WBTC",
+    "assetDecimals": 8,
+    "holder": "0x2C24B57e2CCd1f273045Af6A5f632504C432374F",
+    "holderLabel": "largest holder",
+    "holderShares": "185894101368804724214",
+    "holderValue": "18597594621",
+    "holderMaxWithdraw": "18597594621"
+  },
+  "vault": {
+    "totalAssets": "18612875429",
+    "totalSupply": "186046842200037814782",
+    "withdrawableNow": "18612875429",
+    "lentOutNotWithdrawable": "0",
+    "liquidRatio": 1,
+    "grossSupplyApyBeforeVaultFee": 1.2098988477760031e-11,
+    "vaultPerformanceFee": 0.05,
+    "marketCount": 2,
+    "exposedMarketCount": 2,
+    "peerVaultCount": 1,
+    "publicAllocatorIsAllocator": true,
+    "publicAllocatorReallocatableIntoExposedMarkets": "0",
+    "nodeCount": 42,
+    "edgeCount": 44,
+    "readCount": 300,
+    "netApy": 1.1494039053872028e-11,
+    "holders": {
+      "coverage": 1,
+      "list": [
+        {
+          "address": "0x2C24B57e2CCd1f273045Af6A5f632504C432374F",
+          "shares": "185894101368804724214",
+          "assets": "18597594621",
+          "shareOfSupply": 0.999179,
+          "isContract": true
+        },
+        {
+          "address": "0x02cc00667f1B5c30e5FeeDA32331CA2e01A37318",
+          "shares": "140205540770960390",
+          "assets": "14026727",
+          "shareOfSupply": 0.000753,
+          "isContract": false
+        },
+        {
+          "address": "0xd3B6d50C64a1729595b92243Fe9d222cb35638B6",
+          "shares": "9897335488667031",
+          "assets": "990169",
+          "shareOfSupply": 0.000053,
+          "isContract": false
+        },
+        {
+          "address": "0xC55bDCA87a66d6F87C673d38A2cF4D9e50AA280A",
+          "shares": "1480968937308374",
+          "assets": "148162",
+          "shareOfSupply": 0.000007,
+          "isContract": true
+        },
+        {
+          "address": "0x34702F5F789196A723B8DF6334922f145A7db1b2",
+          "shares": "396207500264986",
+          "assets": "39638",
+          "shareOfSupply": 0.000002,
+          "isContract": true
+        },
+        {
+          "address": "0xf200EF1DAd3d0cEE48380F860e61362B4f1eb96B",
+          "shares": "152532645747554",
+          "assets": "15259",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x52EAF3F04cbac0a4B9878A75AB2523722325D4D4",
+          "shares": "150373951165144",
+          "assets": "15044",
+          "shareOfSupply": 0,
+          "isContract": true
+        },
+        {
+          "address": "0xDD8cC9d9Aa7dBD8e897341F394299285255d5650",
+          "shares": "111552099898408",
+          "assets": "11160",
+          "shareOfSupply": 0,
+          "isContract": true
+        },
+        {
+          "address": "0xE01dddFB490726df1Fc3A62aB627F05ce673c586",
+          "shares": "100259801175706",
+          "assets": "10030",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0xF463463Da89164292d41fEe1781b5F1BD543afB9",
+          "shares": "99984334988518",
+          "assets": "10002",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x22ed9e1FF9538f01976be7425CC3b070c8e7Ecaf",
+          "shares": "99974940400479",
+          "assets": "10001",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x22B11b23E0E773d3F7C9a68340484b9486105D74",
+          "shares": "15995217539826",
+          "assets": "1600",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0xdC7762656C49419AB45D97384bF85E05F3e26524",
+          "shares": "9172251943035",
+          "assets": "917",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0xA810d77016C842C15b39B5E40Ffc5e00FA9CD5a6",
+          "shares": "6998650233613",
+          "assets": "700",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x1121aFF29666B91181568264Ab0F2Bc58Bf90a11",
+          "shares": "4737914104465",
+          "assets": "474",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x9ee3Cab99e98779510589de324E0A511AE4e5ad7",
+          "shares": "2838762513370",
+          "assets": "284",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x0f07C26023f08f271B1566c852f685Ab17686A90",
+          "shares": "2638869874620",
+          "assets": "264",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x6bD2DeFa6fDc4D3b90DA690A7987b0bEC6BF6d95",
+          "shares": "1437277298651",
+          "assets": "143",
+          "shareOfSupply": 0,
+          "isContract": true
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dEaD",
+          "shares": "1000000000000",
+          "assets": "100",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0xC2780996936211D912f16048f7DCD0e0A91d6904",
+          "shares": "767662060321",
+          "assets": "76",
+          "shareOfSupply": 0,
+          "isContract": false
+        },
+        {
+          "address": "0x000000000004444c5dc75cB358380D2e3dE08A90",
+          "shares": "514156946067",
+          "assets": "51",
+          "shareOfSupply": 0,
+          "isContract": true
+        },
+        {
+          "address": "0x2D22414C5a37Fff7D41e715a87BFa1Afda77b8ca",
+          "shares": "10",
+          "assets": "0",
+          "shareOfSupply": 0,
+          "isContract": true
+        }
+      ]
+    }
+  },
+  "queue": [
+    {
+      "index": 0,
+      "id": "0xa36e440fbc54d7ed744ae4895b2729642a8be5d488cdd477c59b54afbb90b5bf",
+      "collateral": "none",
+      "collateralDecimals": 18,
+      "lltv": "0",
+      "vaultSupply": "18612038912",
+      "liquidity": "25413875270",
+      "withdrawable": "18612038912",
+      "utilization": 0,
+      "oracle": "0x0000000000000000000000000000000000000000",
+      "supplyApr": null
+    },
+    {
+      "index": 1,
+      "id": "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+      "collateral": "cbBTC",
+      "collateralDecimals": 8,
+      "lltv": "945000000000000000",
+      "vaultSupply": "836517",
+      "liquidity": "837617",
+      "withdrawable": "836517",
+      "utilization": 0.001073,
+      "oracle": "0xD776c7be7a06212c0F93eD478d3ba4Ce4fA55D31",
+      "supplyApr": 2.6920971712368004e-7
+    }
+  ],
+  "runs": [
+    {
+      "id": "alone",
+      "title": "Holder exits alone",
+      "others": [],
+      "holderMaxWithdrawBefore": "18597594621",
+      "fullExitOk": true,
+      "fullExitError": null,
+      "holderExecutedExit": "18597594621",
+      "lockedWei": "0",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "h2_first",
+      "title": "Holder #2 exits first",
+      "others": [
+        {
+          "label": "holder #2 exits",
+          "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+          "owner": "0x02cc00667f1B5c30e5FeeDA32331CA2e01A37318",
+          "out": "14026727",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "18597594621",
+      "fullExitOk": true,
+      "fullExitError": null,
+      "holderExecutedExit": "18597594621",
+      "lockedWei": "0",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "h3_first",
+      "title": "Holder #3 exits first",
+      "others": [
+        {
+          "label": "holder #3 exits",
+          "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+          "owner": "0xd3B6d50C64a1729595b92243Fe9d222cb35638B6",
+          "out": "990169",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "18597594621",
+      "fullExitOk": true,
+      "fullExitError": null,
+      "holderExecutedExit": "18597594621",
+      "lockedWei": "0",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "h4_first",
+      "title": "Holder #4 exits first",
+      "others": [
+        {
+          "label": "holder #4 exits",
+          "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+          "owner": "0xC55bDCA87a66d6F87C673d38A2cF4D9e50AA280A",
+          "out": "148162",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "18597594621",
+      "fullExitOk": true,
+      "fullExitError": null,
+      "holderExecutedExit": "18597594621",
+      "lockedWei": "0",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "top_holders_first",
+      "title": "Holders #2, #3, #4 exit first",
+      "others": [
+        {
+          "label": "holder #2 exits",
+          "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+          "owner": "0x02cc00667f1B5c30e5FeeDA32331CA2e01A37318",
+          "out": "14026727",
+          "ok": true
+        },
+        {
+          "label": "holder #3 exits",
+          "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+          "owner": "0xd3B6d50C64a1729595b92243Fe9d222cb35638B6",
+          "out": "990169",
+          "ok": true
+        },
+        {
+          "label": "holder #4 exits",
+          "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+          "owner": "0xC55bDCA87a66d6F87C673d38A2cF4D9e50AA280A",
+          "out": "148162",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "18597594621",
+      "fullExitOk": true,
+      "fullExitError": null,
+      "holderExecutedExit": "18597594621",
+      "lockedWei": "0",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "peer1_first",
+      "title": "Largest holder of ANOTHER vault (Gauntlet WBTC Core) exits first",
+      "others": [
+        {
+          "label": "Gauntlet WBTC Core #1 exits its own vault",
+          "vault": "0x443df5eEE3196e9b2Dd77CaBd3eA76C3dee8f9b2",
+          "owner": "0x2E15D7AA0650dE1009710FDd45C3468d75AE1392",
+          "out": "1012641998",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "18597594621",
+      "fullExitOk": true,
+      "fullExitError": null,
+      "holderExecutedExit": "18597594621",
+      "lockedWei": "0",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    },
+    {
+      "id": "all_first",
+      "title": "Everyone above exits first (same vault and peer vaults)",
+      "others": [
+        {
+          "label": "holder #2 exits",
+          "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+          "owner": "0x02cc00667f1B5c30e5FeeDA32331CA2e01A37318",
+          "out": "14026727",
+          "ok": true
+        },
+        {
+          "label": "holder #3 exits",
+          "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+          "owner": "0xd3B6d50C64a1729595b92243Fe9d222cb35638B6",
+          "out": "990169",
+          "ok": true
+        },
+        {
+          "label": "holder #4 exits",
+          "vault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+          "owner": "0xC55bDCA87a66d6F87C673d38A2cF4D9e50AA280A",
+          "out": "148162",
+          "ok": true
+        },
+        {
+          "label": "Gauntlet WBTC Core #1 exits its own vault",
+          "vault": "0x443df5eEE3196e9b2Dd77CaBd3eA76C3dee8f9b2",
+          "owner": "0x2E15D7AA0650dE1009710FDd45C3468d75AE1392",
+          "out": "1012641998",
+          "ok": true
+        }
+      ],
+      "holderMaxWithdrawBefore": "18597594621",
+      "fullExitOk": true,
+      "fullExitError": null,
+      "holderExecutedExit": "18597594621",
+      "lockedWei": "0",
+      "changeVsAloneWei": "0",
+      "changePct": 0
+    }
+  ],
+  "cushion": {
+    "otherHolder": "0x02cc00667f1B5c30e5FeeDA32331CA2e01A37318",
+    "precisionWei": "100000",
+    "passesAt": "14026727",
+    "revertsAt": "none",
+    "probes": 2
+  },
+  "sweep": [
+    {
+      "label": "cbBTC market depeg x0.99 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.99,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "18612875429",
+      "withdrawableAfter": "18612875429",
+      "markets": [
+        {
+          "id": "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+          "label": "cbBTC/WBTC LLTV 94.5% (queue #1)",
+          "factorSeen": 1,
+          "path": [
+            "market:0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+            "collateral cbBTC market value x0.99; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "cbBTC market depeg x0.97 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.97,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "18612875429",
+      "withdrawableAfter": "18612875429",
+      "markets": [
+        {
+          "id": "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+          "label": "cbBTC/WBTC LLTV 94.5% (queue #1)",
+          "factorSeen": 1,
+          "path": [
+            "market:0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+            "collateral cbBTC market value x0.97; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "cbBTC market depeg x0.95 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.95,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "18612875429",
+      "withdrawableAfter": "18612875429",
+      "markets": [
+        {
+          "id": "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+          "label": "cbBTC/WBTC LLTV 94.5% (queue #1)",
+          "factorSeen": 1,
+          "path": [
+            "market:0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+            "collateral cbBTC market value x0.95; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "cbBTC market depeg x0.9 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.9,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "18612875429",
+      "withdrawableAfter": "18612875429",
+      "markets": [
+        {
+          "id": "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+          "label": "cbBTC/WBTC LLTV 94.5% (queue #1)",
+          "factorSeen": 1,
+          "path": [
+            "market:0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+            "collateral cbBTC market value x0.9; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "cbBTC market depeg x0.8 (oracle unchanged)",
+      "kind": "blindDepeg",
+      "factor": 0.8,
+      "node": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "18612875429",
+      "withdrawableAfter": "18612875429",
+      "markets": [
+        {
+          "id": "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+          "label": "cbBTC/WBTC LLTV 94.5% (queue #1)",
+          "factorSeen": 1,
+          "path": [
+            "market:0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+            "collateral cbBTC market value x0.8; oracle unchanged"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The oracle does not observe this price: the loss is economic (unrecognised on-chain) and no liquidation brings liquidity back. Split pro rata of current shares: a LOWER BOUND for holders who stay, since those who exit first leave at full value."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "oracle 0xD776c7… overprices x1.02",
+      "kind": "oracleOverprice",
+      "factor": 1.02,
+      "node": "0xD776c7be7a06212c0F93eD478d3ba4Ce4fA55D31",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "18612875429",
+      "withdrawableAfter": "18612875429",
+      "markets": [
+        {
+          "id": "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+          "label": "cbBTC/WBTC LLTV 94.5% (queue #1)",
+          "factorSeen": 1.02,
+          "path": [
+            "market:0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+            "oracle 0xD776c7be overprices x1.02"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue.",
+        "Worst case: an actor borrows all idle liquidity against collateral valued at the overpriced oracle and walks away."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "oracle 0xD776c7… overprices x1.05",
+      "kind": "oracleOverprice",
+      "factor": 1.05,
+      "node": "0xD776c7be7a06212c0F93eD478d3ba4Ce4fA55D31",
+      "vaultLoss": "0",
+      "vaultLossPct": 0,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "0",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "18612875429",
+      "withdrawableAfter": "18612875429",
+      "markets": [
+        {
+          "id": "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+          "label": "cbBTC/WBTC LLTV 94.5% (queue #1)",
+          "factorSeen": 1.05,
+          "path": [
+            "market:0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+            "oracle 0xD776c7be overprices x1.05"
+          ],
+          "liquidatable": 0,
+          "badDebt": "0",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue.",
+        "Worst case: an actor borrows all idle liquidity against collateral valued at the overpriced oracle and walks away."
+      ],
+      "dexLimited": null
+    },
+    {
+      "label": "oracle 0xD776c7… overprices x1.1",
+      "kind": "oracleOverprice",
+      "factor": 1.1,
+      "node": "0xD776c7be7a06212c0F93eD478d3ba4Ce4fA55D31",
+      "vaultLoss": "31752",
+      "vaultLossPct": 0.0001,
+      "vaultHiddenLoss": "0",
+      "holderLoss": "31725",
+      "holderHiddenLoss": "0",
+      "withdrawableBefore": "18612875429",
+      "withdrawableAfter": "18612038912",
+      "markets": [
+        {
+          "id": "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+          "label": "cbBTC/WBTC LLTV 94.5% (queue #1)",
+          "factorSeen": 1.1,
+          "path": [
+            "market:0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f",
+            "oracle 0xD776c7be overprices x1.1"
+          ],
+          "liquidatable": 0,
+          "badDebt": "31828",
+          "hiddenShortfall": "0",
+          "repaid": "0"
+        }
+      ],
+      "hypotheses": [
+        "Liquidators liquidate every liquidatable position in full; borrowers do not add collateral or repay first.",
+        "Shock is instantaneous; interest accrual during the event is ignored in this analytic estimate (the fork run includes it).",
+        "The shocked price is what the oracle returns to Morpho Blue.",
+        "Worst case: an actor borrows all idle liquidity against collateral valued at the overpriced oracle and walks away."
+      ],
+      "dexLimited": null
+    }
+  ],
+  "crossCheck": [],
+  "incidents": [
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "regime": "oracle blind: no liquidation, losses unrecognised on-chain, liquidity drained by the run",
+      "title": "Incident: cbBTC depegs on the market, oracles unchanged; the largest competing holders exit first",
+      "valueSource": "analytic economic shortfall (debt minus collateral market value of underwater borrowers), pro rata of vault supply shares",
+      "executedFacts": {
+        "liquidatableFoundOnFork": 0,
+        "holderMaxWithdrawAfterRun": "18597594621"
+      },
+      "inputs": {
+        "positionValue": "18597594621",
+        "exitableNow": "18597594621",
+        "incidentValueLoss": "0",
+        "incidentLocked": "0"
+      }
+    }
+  ],
+  "verdictParams": {
+    "netApy": 1.1494039053872028e-11,
+    "decimals": 8,
+    "gasCostOut": "0",
+    "gasCostReentry": "0",
+    "gasNote": "gas is paid in ETH: not converted into the vault asset (no sourced price), shown separately",
+    "gasOutEth": "23624302284454",
+    "slippage": "0",
+    "exitGasUsed": "194378",
+    "baseFeePerGas": "121537943",
+    "defaults": {
+      "probability": 0.05,
+      "horizonDays": 30,
+      "lockedHaircut": 0.1
+    }
+  },
+  "verdicts": [
+    {
+      "id": "incident_blind_depeg_plus_run",
+      "verdict": {
+        "decision": "STAY",
+        "sentence": "This incident causes no loss to the position under these assumptions: exiting only costs 0 WBTC.",
+        "breakEvenProbability": null,
+        "expectedLossStay": 0,
+        "expectedLossExit": 1.7569436620426387e-10,
+        "exitCost": 1.7569436620426387e-10,
+        "incidentLoss": 0,
+        "exitableShare": 1,
+        "parts": {
+          "forgoneYield": 1.7569436620426387e-10,
+          "gasOut": 0,
+          "gasReentry": 0,
+          "slippage": 0,
+          "valueLoss": 0,
+          "lockedAfterRun": 0
+        }
+      }
+    }
+  ],
+  "depegCurve": [
+    {
+      "factor": 0.99,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.98,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.97,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.95,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.9,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.85,
+      "holderLoss": "0",
+      "breakEven": null
+    },
+    {
+      "factor": 0.8,
+      "holderLoss": "0",
+      "breakEven": null
+    }
+  ],
+  "depegCurveCollateral": "cbBTC",
+  "evidence": [
+    {
+      "item": "Vault total assets",
+      "value": "186.13 WBTC",
+      "cls": "measured",
+      "source": "totalAssets() on 0x812B2C6Ab3f4471c0E43D4BB61098a9211017427 at block 26157638",
+      "hypotheses": "none"
+    },
+    {
+      "item": "Withdrawable now (vault)",
+      "value": "186.13 WBTC",
+      "cls": "measured",
+      "source": "Σ over the withdraw queue of min(vault supply, market idle liquidity): MetaMorpho withdrawQueue(i), Morpho Blue market(id) and position(id, vault)",
+      "hypotheses": "stored market totals (interest accrued up to the market's lastUpdate)"
+    },
+    {
+      "item": "Holder position",
+      "value": "185.98 WBTC",
+      "cls": "measured",
+      "source": "convertToAssets(balanceOf(holder))",
+      "hypotheses": "holder selection: largest holder from Morpho API candidates, balance re-read on-chain"
+    },
+    {
+      "item": "Holder exit alone",
+      "value": "185.98 WBTC",
+      "cls": "executed",
+      "source": "scenario alone: redeem on the local fork, tx 1 at T0+12 s",
+      "hypotheses": "holder impersonated on the fork"
+    },
+    {
+      "item": "Worst executed run (holder exitable)",
+      "value": "185.98 WBTC (0 %)",
+      "cls": "executed",
+      "source": "scenario alone: 0 exits then the holder's",
+      "hypotheses": "other holders impersonated: their exits are a scenario, not their intention"
+    },
+    {
+      "item": "Cushion before blockage",
+      "value": "no blockage even at the competitor's full exit",
+      "cls": "executed",
+      "source": "bisection, 2 executions on the fork",
+      "hypotheses": "competitor = next largest holder of the vault"
+    },
+    {
+      "item": "Borrowers identified",
+      "value": "100.00 % / 100.00 % of debt",
+      "cls": "measured",
+      "source": "candidates from Morpho API, each position(id, borrower) re-read on-chain; coverage = Σ borrowShares found / totalBorrowShares",
+      "hypotheses": "none (coverage is measured, not assumed)"
+    },
+    {
+      "item": "Public Allocator backstop (net)",
+      "value": "0 WBTC",
+      "cls": "bounded",
+      "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity"
+    },
+    {
+      "item": "AMM liquidation capacity, cbBTC market #1",
+      "value": "4.64 of 0 cbBTC posted",
+      "cls": "bounded",
+      "source": "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry",
+      "hypotheses": "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price"
+    },
+    {
+      "item": "Economic shortfall, oracle-blind depeg -10 % (holder share)",
+      "value": "0 WBTC",
+      "cls": "modeled",
+      "source": "Σ max(0, debt − collateral × market price) over the identified borrowers, pro rata of supply shares",
+      "hypotheses": "depeg persists, underwater borrowers walk away; lower bound for holders who stay (first exiters leave at full value)"
+    },
+    {
+      "item": "Feed freshness, cbBTC / USD",
+      "value": "age 10.1 h; max observed interval 24.0 h; trigger move ~2.00 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0x2665701293fCbEB223D11A08D826563EDcCE423A",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Feed freshness, BTC / USD",
+      "value": "age 0.4 h; max observed interval 1.0 h; trigger move ~0.50 % → normal",
+      "cls": "measured",
+      "source": "latestRoundData + getRoundData of the last 25 rounds on 0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
+    },
+    {
+      "item": "Net APY (yield given up by exiting)",
+      "value": "0.00 %",
+      "cls": "measured",
+      "source": "IRM borrowRateView(params, market) per market × utilization × (1 − market fee), weighted by the vault's supply, minus the vault performance fee",
+      "hypotheses": "rate constant over the horizon (APR compounded continuously)"
+    },
+    {
+      "item": "Gas of the exit",
+      "value": "194378 gas × 0.122 gwei",
+      "cls": "executed",
+      "source": "gasUsed of the exit on the fork × baseFeePerGas of the source block header",
+      "hypotheses": "re-entry assumed to cost the same gas (no deposit executed)"
+    },
+    {
+      "item": "Break-even incident probability",
+      "value": "—",
+      "cls": "modeled",
+      "source": "p* = exit cost / (incident loss × exitable share); src/verdict/verdict.ts",
+      "hypotheses": "horizon 30 d, locked funds cost 10 %, net APY 0.00 %"
+    },
+    {
+      "item": "Incident probability",
+      "value": "5 % (default)",
+      "cls": "hypothesis",
+      "source": "user input",
+      "hypotheses": "never a prediction"
+    },
+    {
+      "item": "Spread-implied incident probability",
+      "value": "see section 5 (depends on horizon and loss fraction)",
+      "cls": "modeled",
+      "source": "PD ≈ (vault net APY − reference yield) × horizon / loss fraction (classic credit approximation)",
+      "hypotheses": "risk-neutral, includes liquidity and smart-contract premia; not a prediction; undefined when the spread is ≤ 0"
+    }
+  ],
+  "mitigation": null,
+  "headline": "STAY: no modelled incident causes a loss large enough to justify paying the exit cost.",
+  "getBack": {
+    "alone": {
+      "outWei": "18597594621",
+      "fullExitOk": true,
+      "error": null
+    },
+    "afterHolder": {
+      "id": "h2_first",
+      "who": "holder #2 exits",
+      "otherVault": "0x812B2C6Ab3f4471c0E43D4BB61098a9211017427",
+      "outWei": "18597594621",
+      "fullExitOk": true,
+      "error": null,
+      "changePct": 0
+    },
+    "afterPeer": {
+      "id": "peer1_first",
+      "who": "Gauntlet WBTC Core #1 exits its own vault",
+      "otherVault": "0x443df5eEE3196e9b2Dd77CaBd3eA76C3dee8f9b2",
+      "outWei": "18597594621",
+      "fullExitOk": true,
+      "error": null,
+      "changePct": 0
+    }
+  },
+  "dominantDependency": {
+    "liquidity": null,
+    "value": null
+  },
+  "references": [
+    {
+      "name": "holding the asset idle",
+      "apy": 0,
+      "source": "no yield, no lending risk",
+      "note": "not used for the implied probability: against holding idle, the spread-implied probability essentially equals the break-even"
+    }
+  ],
+  "dex": {
+    "0xab04bdfbeef6de62e3020d44710d6461eccfb901b9659f866844805fca115f2f": {
+      "capacity": "463962500",
+      "collateralAtRisk": "1500",
+      "venues": [
+        {
+          "id": "univ3:0xe8f7c89C5eFa061e340f2d2F206EC78FD8f7e124",
+          "route": "Uniswap V3 0.01% pool",
+          "pool": "0xe8f7c89C5eFa061e340f2d2F206EC78FD8f7e124",
+          "capacity": "100000000",
+          "avgPrice": 1.00128737
+        },
+        {
+          "id": "univ3:0x0da6253560822973185297d5f32fF8fA38243Afe",
+          "route": "Uniswap V3 0.05% pool",
+          "pool": "0x0da6253560822973185297d5f32fF8fA38243Afe",
+          "capacity": "100000000",
+          "avgPrice": 1.0000731
+        },
+        {
+          "id": "curve:0x839d6bDeDFF886404A6d7a788ef241e4e28F4802",
+          "route": "Curve pool 0x839d6b…",
+          "pool": "0x839d6bDeDFF886404A6d7a788ef241e4e28F4802",
+          "capacity": "100000000",
+          "avgPrice": 1.00096806
+        },
+        {
+          "id": "curve:0x66039342C66760874047c36943B1e2d8300363BB",
+          "route": "Curve pool 0x660393…",
+          "pool": "0x66039342C66760874047c36943B1e2d8300363BB",
+          "capacity": "100000000",
+          "avgPrice": 1.00047591
+        },
+        {
+          "id": "2hop:0x15aA01580ae866f9FF4DBe45E06e307941d90C7b:0x4585FE77225b41b697C938B018E2Ac67Ac5a20c0",
+          "route": "Uniswap V3 0.3% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+          "capacity": "63962500",
+          "avgPrice": 0.983507070549
+        },
+        {
+          "id": "2hop:0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f:0x4585FE77225b41b697C938B018E2Ac67Ac5a20c0",
+          "route": "Curve pool 0x8a4f25… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+          "capacity": "5800000",
+          "avgPrice": 0.983506551724
+        }
+      ]
+    }
+  }
+}

@@ -1,12 +1,23 @@
 # ExitProof
 
-**For a position in a MetaMorpho V1 vault, ExitProof finds the hidden dependencies, propagates failures through them, and answers the portfolio manager's real question: does the expected loss of staying justify exiting now, despite exit costs and the liquidity you cannot get out?**
+**For a position in a MetaMorpho V1 vault, ExitProof executes your exit on a fork of Ethereum, alone and after others leave first (other large holders, and depositors of other vaults that lend in the same markets), and answers the portfolio manager's question: does the expected loss of staying justify exiting now, despite exit costs and the liquidity you cannot get out?** To explain the result and propagate shocks, it maps the vault's dependency stack from on-chain reads, as existing risk tools also do (see [Existing work](#existing-work-travaux-existants)).
 
 Built for the BSA EPFL hackathon (10–11 October 2026), Belem Capital track, *DeFi Risk Dependency Challenge*.
 
 Everything runs on **real Ethereum state frozen at block 26,157,638** (`0x3e84…7bf4`, 2026-10-09 21:47 UTC). Exits and shocks are **executed** on a local Hardhat 3 fork of that block. Each run can be replayed to the wei, and the replay also works offline.
 
 > Every number in this README was produced by the code in this repository (`npm run all`, `npm run replay`).
+
+## Existing work (Travaux existants)
+
+ExitProof builds on ideas that are already public; it does not claim that mapping dependencies or estimating a risk probability is new.
+
+- **Credora by RedStone** rates Morpho vaults bottom-up (collateral assets → markets → vaults) and publishes a **PSL**, the annualised Probability of Significant Loss (a 1 % loss), with a letter rating; a vault's PSL is the allocation-weighted PSL of its markets, adjusted for curator and governance. Ratings are shown in the Morpho app. Sources: [RedStone Credora FAQ](https://docs.redstone.finance/docs/redstone-credora/faq/), [How to rate Morpho](https://docs.redstone.finance/docs/redstone-credora/how-to-rate-morpho/), [Morpho vault methodology](https://credora-forum.discourse.group/t/morpho-vault-methodology/160). **API access:** the FAQ states that the API requires whitelisted access requested through a form; our unauthenticated requests to candidate endpoints returned 403/404 (10 Oct 2026). Nothing from Credora is integrated.
+- **DefiLlama** publishes a risk page per vault (e.g. [this vault](https://defillama.com/yields/pool/e3cd6e7f-aefe-44bd-8e20-94304abd285d/risk)): collateral and markets behind the vault, the loss if a collateral drops by a chosen percentage, a modelled bad-debt ceiling, and oracle exposure, including oracles that follow an exchange rate or NAV rather than a market price. The "oracle blind to a market depeg" observation in this README is therefore of the same kind as what DefiLlama shows.
+- **Credit spreads**: the classic approximation PD ≈ spread / LGD (default probability ≈ yield spread over a reference rate divided by the loss given default) is textbook credit risk; ExitProof uses it only as a risk-neutral reference next to the break-even, with the same caveats.
+- **Shared-market contagion** between vaults is documented (e.g. LlamaRisk's Morpho vault risk disclaimer, articles on shared markets).
+
+**What ExitProof adds, in one line:** exits *executed* on a fork of the real state (order of departures, contagion between vaults that share markets, with a bisected cushion), a break-even probability weighed against the measured cost of exiting, and a wei-exact replay of every number, offline.
 
 ## What it does
 
@@ -30,7 +41,8 @@ Everything runs on **real Ethereum state frozen at block 26,157,638** (`0x3e84�
    Each feed shock is evaluated in two liquidation regimes: liquidators absorb everything, or liquidations stop where the AMM depth measured at the block runs out (the positions left over keep an unrecognised shortfall and bring no liquidity back).
 
    The impact is computed analytically for sensitivity sweeps, and **executed on the fork**: the oracle is replaced by a constant and every unhealthy borrower is liquidated with a real `liquidate` transaction. Bad debt is read from Morpho Blue's `Liquidate` event, then the vault and holder values are re-read. Exit runs (other holders, including holders of **other vaults**, leaving first) are executed the same way.
-3. **Stay / exit verdict** (`src/verdict/verdict.ts`). Expected loss of staying = p × incident loss. Exit cost = forgone yield on what can leave now (net APY read on-chain) + gas out (gas used by the exit on the fork × base fee of the block) and back in (assumed equal to the exit's gas; no deposit is executed) + slippage on what is actually redeemed (value of the redeemed shares minus assets received, measured on the fork; locked funds are not slippage). Any part that cannot leave stays exposed. The tool outputs the **break-even probability p\*** and a sensitivity analysis. **p is the user's assumption, never a prediction.**
+3. **Stay / exit verdict** (`src/verdict/verdict.ts`). The UI shows three numbers side by side and never claims to know the probability of a crisis: the **break-even p\*** below, the probability **implied by the yield spread** (vault net APY minus a sourced reference yield — Sky Savings Rate read on-chain for USD assets, the 7-day Lido staking yield measured on-chain for WETH; none for BTC assets — times the horizon, divided by the loss fraction ℓ of the incident; against "holding the asset idle" it would essentially equal the break-even (same yield given up, same loss), so it is not shown: risk-neutral, includes liquidity and smart-contract premia, not a prediction; undefined when the spread is ≤ 0, as it is for Steakhouse ETH and Steakhouse USDT at this block), and **your own assumption** (slider). No historical incident frequency is shown: none could be sourced with a date and a sample.
+   Mechanics: Expected loss of staying = p × incident loss. Exit cost = forgone yield on what can leave now (net APY read on-chain) + gas out (gas used by the exit on the fork × base fee of the block) and back in (assumed equal to the exit's gas; no deposit is executed) + slippage on what is actually redeemed (value of the redeemed shares minus assets received, measured on the fork; locked funds are not slippage). Any part that cannot leave stays exposed. The tool outputs the **break-even probability p\*** and a sensitivity analysis. **p is the user's assumption, never a prediction.**
 4. **Executed proof.** `results/manifests/<vault>.json` (sha256) records every scenario (inputs, timestamps `T0 + 12·k`, expected amounts, statuses, decoded errors). `npm run replay` re-executes them all on a fresh fork and compares to the wei, both online and offline (local proxy serving its disk cache).
 
 ## Results for Steakhouse ETH, largest holder (5,209.91 WETH = 53.6 % of the vault)
@@ -109,7 +121,10 @@ The UI has an **Analyze** box: paste any MetaMorpho V1 address. The analysis run
 | Adpend USDC (V1.1, 0 % liquid, an oracle whose `price()` reverts) | report: 0.0001 % exitable → "exiting is practically impossible"; frozen market reported |
 | Gauntlet DAI Core (V1.0, 15 % liquid), Metronome msETH (V1.0, 32 %) | report + replay OK |
 | `hello`, `0x1234` | 400: not an Ethereum address |
-| an EOA, the USDC token, Morpho Blue | 422: not a MetaMorpho V1.0/V1.1 vault per the factories' `isMetaMorpho()` |
+| an EOA, the USDC token, Morpho Blue | 422 with the reason: "no code: a wallet", "an ERC-20 token, not a vault", "a contract that does not expose a vault interface" |
+| a Morpho Vault V2 (`0x0229…09ae`), sUSDS (another ERC-4626) | 422 with the reason: V2 allocates through adapters and its `maxWithdraw` does not report available liquidity; other ERC-4626 vaults have unknown withdrawal rules |
+
+**Pre-analysed:** the 20 largest MetaMorpho V1 vaults on Ethereum by TVL with an ETH, BTC or USD asset (list from the Morpho API, `scripts/top-vaults.mjs`), plus the bench vaults: 23 vaults in `results/`, each with a report and a manifest replayed to the wei. Pasting one of them is instant, also offline.
 
 Other readable errors: 409 when another analysis is running; 503 when the archive RPC is unreachable or rate-limited, or in offline mode for a vault never analysed online.
 
@@ -155,7 +170,7 @@ npm run web              # terminal 4: UI on http://127.0.0.1:5173
 
 ## What works / partial / excluded
 
-- **Works:** everything above, for any MetaMorpho V1.0/V1.1 vault (shown on eleven: WETH, USDC, USDT, DAI and msETH vaults, liquid from 0 % to 100 %, see the bench above). On V1.1 the share price does not drop after bad debt (`lostAssets`), so losses are measured on the vault's real assets (sum of its market positions): fork 143.731 vs analytic 143.734 WETH for a −10 % feed shock on Vault Bridge WETH. Wei-exact replay online and offline. Unit and fork acceptance tests.
+- **Works:** everything above, for any MetaMorpho V1.0/V1.1 vault (shown on 23: WETH, WBTC, USDC, USDT, DAI and msETH vaults, liquid from 0 % to 100 %, see above). On V1.1 the share price does not drop after bad debt (`lostAssets`), so losses are measured on the vault's real assets (sum of its market positions): fork 143.731 vs analytic 143.734 WETH for a −10 % feed shock on Vault Bridge WETH. Wei-exact replay online and offline. Unit and fork acceptance tests.
 - **Partial:**
   - The AMM capacity is a lower bound. Only Uniswap V3 and Curve are counted (direct pools, plus the best two-hop route via WETH); aggregators and other DEXes are not. Depth is assumed to scale with the shocked price.
   - Gas is paid in ETH; for non-ETH vaults it is shown in ETH and not converted (no sourced price).
@@ -165,6 +180,29 @@ npm run web              # terminal 4: UI on http://127.0.0.1:5173
   - MetaMorpho V2 and other vault types, which are refused explicitly (their `max*` semantics differ).
   - USD values: native units only.
   - Anything after the frozen block: ExitProof describes one state, not its evolution.
+
+## Known limitations (Limites connues)
+
+What is **bounded** (a measured upper or lower bound, not an exact value):
+- AMM liquidation capacity: lower bound (Uniswap V3 and Curve only, direct pools plus the best two-hop route via WETH; aggregators and other DEXes excluded).
+- Public Allocator backstop: upper bound (peers drawing on the same source market share its liquidity); executed only in the mitigation scenario.
+- Oracle-blind economic shortfall: lower bound for holders who stay (first exiters leave at full value).
+
+What is **modelled** (computed from measured inputs with stated hypotheses):
+- Analytic shock propagation: instantaneous price move, every unhealthy borrower liquidated (or as many as the AMM depth allows), no top-ups, interest ignored (the fork runs include it; cross-checks agree within interest accrued).
+- Break-even probability: exit cost over the incident loss times the exitable share; the horizon, net APY, locked-funds cost are user or default inputs shown next to the result.
+- Spread-implied probability: risk-neutral, includes liquidity and smart-contract premia, depends on the chosen reference yield.
+- Feed heartbeat and deviation threshold: inferred from the last 24 rounds, not read from Chainlink.
+- Re-entry gas assumed equal to the exit gas; gas not converted into non-ETH assets (no sourced price).
+
+What the tool **does not do**:
+- No prediction: it does not estimate the probability of any incident; probabilities are the user's assumptions, or a risk-neutral reading of the spread.
+- Not investment advice, not an audit, not a rating.
+- MetaMorpho V1.0 and V1.1 only. Morpho Vault V2 (adapters), other ERC-4626 vaults, tokens and wallets are refused with an explanation.
+- One frozen block (26,157,638): no evolution after it, no repayments, re-allocations by curators or new deposits.
+- Other actors are impersonated on a local fork: their exits are scenarios, not their intentions.
+- Peer vaults, borrowers and holders are enumerated from the Morpho API (candidates) and verified on-chain; an address the API omits can be missed (coverage is measured and shown).
+- Vaults never analysed online cannot be analysed offline (the cache is empty for them).
 
 ## Assumptions and honesty
 

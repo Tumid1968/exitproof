@@ -18,6 +18,7 @@ import { propagate, type Shock } from "../shocks/analytic.ts";
 import { decide, scaleTo18, type VerdictInputs } from "../verdict/verdict.ts";
 import { ACTORS, SOURCE, TIMESTAMP_STEP } from "../lib/constants.ts";
 import { toJson } from "../lib/util.ts";
+import { referenceRates } from "./references.ts";
 
 const B = (s: string | bigint) => BigInt(s);
 type LiqResult = Extract<ScenarioResult["results"][number], { type: "liquidateAll" }>;
@@ -209,6 +210,63 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     };
   })() : null;
 
+  // ---- 8. headline: what I really get back, dominant dependency, one-sentence verdict
+  const references = await referenceRates(unit);
+  const single = runs.filter((x) => x.others.length === 1);
+  const worstOf = (xs: typeof runs) => [...xs].sort((a, b) => a.changePct - b.changePct)[0] ?? null;
+  const pick = (x: (typeof runs)[number] | null) => x && {
+    id: x.id, who: x.others[0].label, otherVault: x.others[0].vault, outWei: x.holderExecutedExit,
+    fullExitOk: x.fullExitOk, error: x.fullExitError?.name ?? null, changePct: x.changePct,
+  };
+  const getBack = {
+    alone: { outWei: runs[0].holderExecutedExit, fullExitOk: runs[0].fullExitOk, error: runs[0].fullExitError?.name ?? null },
+    afterHolder: pick(worstOf(single.filter((x) => x.others[0].vault === vault))),
+    afterPeer: pick(worstOf(single.filter((x) => x.others[0].vault !== vault))),
+  };
+  const peerName = (a: string) => g.peers.find((x) => x.vault === a)?.name ?? a;
+  const liqDep = (() => {
+    const h = getBack.afterHolder, pe = getBack.afterPeer;
+    if (pe && (!h || pe.changePct < h.changePct) && pe.changePct < 0)
+      return `exit liquidity shared with ${peerName(pe.otherVault)} in the same Morpho markets (its largest depositor leaving first cuts this exit by ${-pe.changePct} %)`;
+    if (h && h.changePct < 0) return `holder concentration (${(h.who ?? "another holder").replace(" exits", "")} leaving first cuts this exit by ${-h.changePct} %)`;
+    return null;
+  })();
+  const valueDep = (() => {
+    const blindI = incidents.find((i) => i.id.includes("blind"));
+    const coll = meta.incidents.blind ? g.markets.find((m) => m.params.collateralToken === meta.incidents.blind!.collateral) : null;
+    if (blindI && blindI.inputs.incidentValueLoss > 0n && coll) {
+      const o = g.nodes.find((n) => n.id === `oracle:${getAddress(coll.params.oracle)}`);
+      return `${coll.collateralSymbol} collateral priced by "${o?.label.replace("Oracle: ", "") ?? "its oracle"}": a market depeg is not seen by liquidations`;
+    }
+    const sh = meta.incidents.shock;
+    return sh ? `the ${sh.shock.label.replace(/ x0\.9$/, "")} price feed` : null;
+  })();
+  const binding = verdicts
+    .map((v, i) => ({ v: v.verdict, inc: incidents[i] }))
+    .filter((x) => x.v.breakEvenProbability !== null)
+    .sort((a, b) => a.v.breakEvenProbability! - b.v.breakEvenProbability!)[0] ?? null;
+  const refMain = references.find((r) => r.apy !== 0 && Number.isFinite(r.apy)) ?? null;
+  const impliedFor = (lossFrac: number, ref: { apy: number }, days: number) => {
+    const spread = netApy - ref.apy;
+    return spread <= 0 || lossFrac <= 0 ? null : Math.min(1, (spread * days) / 365 / lossFrac);
+  };
+  const pctS = (x: number) => `${(x * 100).toFixed(2)} %`;
+  const headline = (() => {
+    const deps = [liqDep, valueDep].filter(Boolean).join("; ");
+    if (!binding) {
+      const none = verdicts.find((v) => v.verdict.decision === "NO_ACTION_POSSIBLE");
+      return none ? `CANNOT EXIT: ${none.verdict.sentence}${deps ? ` Dominant dependency: ${deps}.` : ""}`
+        : `STAY: no modelled incident causes a loss large enough to justify paying the exit cost.${deps ? ` Dominant dependency: ${deps}.` : ""}`;
+    }
+    const lf = binding.v.incidentLoss / Number(formatUnits(holderValue, dec));
+    const impl = refMain ? impliedFor(lf, refMain, defaults.horizonDays) : null;
+    const implTxt = !refMain ? "no sourced reference yield exists for this asset, so no spread-implied probability is given"
+      : impl === null
+      ? `the yield spread over the ${refMain.name}, ${pctS(netApy)} vs ${pctS(refMain.apy)}, is ${netApy - refMain.apy <= 0 ? "negative: it prices no default risk" : "not defined"}`
+      : `the yield spread over the ${refMain.name}, ${pctS(netApy)} vs ${pctS(refMain.apy)}, implies ~${pctS(impl)} (risk-neutral, includes liquidity premium, not a prediction)`;
+    return `${binding.v.decision === "EXIT" ? "EXIT" : "STAY"} at a ${pctS(defaults.probability)} assumed probability: exiting now pays off if you believe the incident "${binding.inc.title.replace(/^Incident: /, "")}" has more than ${pctS(binding.v.breakEvenProbability!)} chance within ${defaults.horizonDays} days; ${implTxt}.${deps ? ` Dominant dependency: ${deps}.` : ""}`;
+  })();
+
   // ---- 7. evidence ledger: every headline number with its class, source and hypotheses
   type Ev = { item: string; value: string; cls: "measured" | "executed" | "bounded" | "modeled" | "hypothesis"; source: string; hypotheses: string };
   const fmtA = (x: bigint) => `${Number(formatUnits(x, dec)).toLocaleString("en-US", { maximumFractionDigits: 2 })} ${unit}`;
@@ -245,6 +303,8 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     { item: "Gas of the exit", value: `${aloneExit.gasUsed} gas × ${(Number(baseFee) / 1e9).toFixed(3)} gwei`, cls: "executed", source: "gasUsed of the exit on the fork × baseFeePerGas of the source block header", hypotheses: "re-entry assumed to cost the same gas (no deposit executed)" },
     { item: "Break-even incident probability", value: verdicts.map((v) => (v.verdict.breakEvenProbability === null ? "—" : v.verdict.breakEvenProbability > 1 ? ">100 %" : `${(v.verdict.breakEvenProbability * 100).toFixed(2)} %`)).join(" / "), cls: "modeled", source: "p* = exit cost / (incident loss × exitable share); src/verdict/verdict.ts", hypotheses: `horizon ${defaults.horizonDays} d, locked funds cost ${defaults.lockedHaircut * 100} %, net APY ${(netApy * 100).toFixed(2)} %` },
     { item: "Incident probability", value: `${defaults.probability * 100} % (default)`, cls: "hypothesis", source: "user input", hypotheses: "never a prediction" },
+    ...references.filter((r) => r.apy !== 0).map((r) => ({ item: `Reference yield: ${r.name}`, value: Number.isFinite(r.apy) ? `${(r.apy * 100).toFixed(2)} %` : "unavailable", cls: "measured" as const, source: r.source, hypotheses: r.note })),
+    { item: "Spread-implied incident probability", value: "see section 5 (depends on horizon and loss fraction)", cls: "modeled", source: "PD ≈ (vault net APY − reference yield) × horizon / loss fraction (classic credit approximation)", hypotheses: "risk-neutral, includes liquidity and smart-contract premia; not a prediction; undefined when the spread is ≤ 0" },
   ];
 
   const report = {
@@ -260,6 +320,7 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     incidents: incidents.map((x) => ({ ...x, inputs: Object.fromEntries(Object.entries(x.inputs).map(([k, v]) => [k, v.toString()])) })),
     verdictParams: { netApy, decimals: dec, gasCostOut: gasInAsset.toString(), gasCostReentry: gasInAsset.toString(), gasNote: gasInAsset === 0n ? "gas is paid in ETH: not converted into the vault asset (no sourced price), shown separately" : null, gasOutEth: gasOut.toString(), slippage: slippage.toString(), exitGasUsed: aloneExit.gasUsed, baseFeePerGas: baseFee.toString(), defaults },
     verdicts, depegCurve, depegCurveCollateral: blindSym, evidence, mitigation,
+    headline, getBack, dominantDependency: { liquidity: liqDep, value: valueDep }, references,
     dex: Object.fromEntries(Object.entries(g.dex ?? {}).map(([id, d]) => [id, { capacity: d.capacity.toString(), collateralAtRisk: d.collateralAtRisk.toString(), venues: d.venues.filter((v) => v.capacity > 0n).map((v) => ({ ...v, capacity: v.capacity.toString() })) }])),
   };
   mkdirSync("results/reports", { recursive: true });

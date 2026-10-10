@@ -6,7 +6,7 @@
  *   -> 3 oracle, IRM, collateral token -> 4 price feeds / exchange-rate adapters, yield source / custody admin
  *   -> 5 aggregators behind feeds ; plus peer vaults lending in the same markets and the borrowers of each market.
  */
-import { getAddress, zeroAddress, type Address, type Hex } from "viem";
+import { getAddress, parseAbi, zeroAddress, type Address, type Hex } from "viem";
 import { borrowerCandidates, holderCandidates, supplyingVaultCandidates } from "./morphoApi.ts";
 import { discoverVenues, venueCapacity, type Venue } from "./dex.ts";
 import { lifWad } from "../shocks/analytic.ts";
@@ -97,8 +97,7 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
   // ---------- Layer 1: the vault ----------
   const [isV10, f10] = await r.must<boolean>(ADDR.metaMorphoFactoryV1_0, factoryAbi, "isMetaMorpho", [vault]);
   const [isV11, f11] = await r.must<boolean>(ADDR.metaMorphoFactoryV1_1, factoryAbi, "isMetaMorpho", [vault]);
-  if (!isV10 && !isV11)
-    throw new Error(`${vault} is not a MetaMorpho V1.0/V1.1 vault per the factories' isMetaMorpho(). MetaMorpho V2 and other vaults are out of scope (different max* semantics).`);
+  if (!isV10 && !isV11) throw new Error(await whyNotV1(r, vault));
   const version = isV10 ? "MetaMorpho V1.0" : "MetaMorpho V1.1";
   log(`vault ${vault}: ${version}`);
 
@@ -616,4 +615,30 @@ export async function discover(vaultIn: Address, opts: DiscoverOptions = {}): Pr
     ],
   };
   return g;
+}
+
+/** A readable reason why an address is not analysed (shown to whoever pasted it). */
+async function whyNotV1(r: Reader, a: Address): Promise<string> {
+  const head = `${a} is not a MetaMorpho V1.0/V1.1 vault (neither MetaMorpho factory recognises it with isMetaMorpho()).`;
+  const [size] = await r.codeSize(a);
+  if (size === 0) return `${head} It has no code at block ${SOURCE.block}: it is a wallet (EOA) or an address not deployed yet.`;
+  const probe = parseAbi([
+    "function adaptersLength() view returns (uint256)", "function liquidityAdapter() view returns (address)",
+    "function asset() view returns (address)", "function totalAssets() view returns (uint256)",
+    "function symbol() view returns (string)", "function name() view returns (string)", "function decimals() view returns (uint8)",
+  ]);
+  const [name] = await r.call<string>(a, probe, "name");
+  const [adapters] = await r.call<bigint>(a, probe, "adaptersLength");
+  const [liqAdapter] = await r.call<Address>(a, probe, "liquidityAdapter");
+  const label = name ? ` ("${name}")` : "";
+  if (adapters !== undefined || liqAdapter !== undefined)
+    return `${head} It looks like a Morpho Vault V2${label} (it has adapters${adapters !== undefined ? `: ${adapters}` : ""}). V2 allocates through adapters and its maxWithdraw/maxRedeem do not report the liquidity actually available, so the exit model used here (withdraw queue of Morpho Blue markets) does not apply. Not supported.`;
+  const [asset] = await r.call<Address>(a, probe, "asset");
+  const [ta] = await r.call<bigint>(a, probe, "totalAssets");
+  if (asset && ta !== undefined)
+    return `${head} It is an ERC-4626 vault${label} of another kind (not created by a MetaMorpho V1 factory): its allocation and withdrawal rules are unknown to this engine, so it is not analysed.`;
+  const [sym] = await r.call<string>(a, probe, "symbol");
+  const [dec] = await r.call<number>(a, probe, "decimals");
+  if (sym && dec !== undefined) return `${head} It is an ERC-20 token (${sym}), not a vault. Paste the address of a vault that holds it instead.`;
+  return `${head} It is a contract${label} that does not expose a vault interface.`;
 }

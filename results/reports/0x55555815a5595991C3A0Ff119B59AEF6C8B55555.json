@@ -1713,9 +1713,59 @@
       "cls": "hypothesis",
       "source": "user input",
       "hypotheses": "never a prediction"
+    },
+    {
+      "item": "Reference yield: Sky Savings Rate (sUSDS)",
+      "value": "3.80 %",
+      "cls": "measured",
+      "source": "ssr() of sUSDS 0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD at block 26157638",
+      "hypotheses": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
+    },
+    {
+      "item": "Spread-implied incident probability",
+      "value": "see section 5 (depends on horizon and loss fraction)",
+      "cls": "modeled",
+      "source": "PD ≈ (vault net APY − reference yield) × horizon / loss fraction (classic credit approximation)",
+      "hypotheses": "risk-neutral, includes liquidity and smart-contract premia; not a prediction; undefined when the spread is ≤ 0"
     }
   ],
   "mitigation": null,
+  "headline": "CANNOT EXIT: Only 0.000112% of the position can be withdrawn now (149.15 USDC): exiting is practically impossible at this block, the position rides the incident either way. Dominant dependency: the RLP Price AggregatorV3 interface price feed.",
+  "getBack": {
+    "alone": {
+      "outWei": "149153571",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()"
+    },
+    "afterHolder": {
+      "id": "h2_first",
+      "who": "holder #2 exits",
+      "otherVault": "0x55555815a5595991C3A0Ff119B59AEF6C8B55555",
+      "outWei": "149153571",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": 0
+    },
+    "afterPeer": null
+  },
+  "dominantDependency": {
+    "liquidity": null,
+    "value": "the RLP Price AggregatorV3 interface price feed"
+  },
+  "references": [
+    {
+      "name": "holding the asset idle",
+      "apy": 0,
+      "source": "no yield, no lending risk",
+      "note": "not used for the implied probability: against holding idle, the spread-implied probability essentially equals the break-even"
+    },
+    {
+      "name": "Sky Savings Rate (sUSDS)",
+      "apy": 0.037999998803906365,
+      "source": "ssr() of sUSDS 0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD at block 26157638",
+      "note": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
+    }
+  ],
   "dex": {
     "0xe1b65304edd8ceaea9b629df4c3c926a37d1216e27900505c04f14b2ed279f33": {
       "capacity": "0",

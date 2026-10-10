@@ -5877,6 +5877,20 @@
       "cls": "hypothesis",
       "source": "user input",
       "hypotheses": "never a prediction"
+    },
+    {
+      "item": "Reference yield: Sky Savings Rate (sUSDS)",
+      "value": "3.80 %",
+      "cls": "measured",
+      "source": "ssr() of sUSDS 0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD at block 26157638",
+      "hypotheses": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
+    },
+    {
+      "item": "Spread-implied incident probability",
+      "value": "see section 5 (depends on horizon and loss fraction)",
+      "cls": "modeled",
+      "source": "PD ≈ (vault net APY − reference yield) × horizon / loss fraction (classic credit approximation)",
+      "hypotheses": "risk-neutral, includes liquidity and smart-contract premia; not a prediction; undefined when the spread is ≤ 0"
     }
   ],
   "mitigation": {
@@ -5896,6 +5910,50 @@
       }
     ]
   },
+  "headline": "STAY at a 5.00 % assumed probability: exiting now pays off if you believe the incident \"DAI / USD -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first\" has more than 8.39 % chance within 30 days; the yield spread over the Sky Savings Rate (sUSDS), 2.40 % vs 3.80 %, is negative: it prices no default risk. Dominant dependency: holder concentration (holder #2 leaving first cuts this exit by 8.9 %); the DAI / USD price feed.",
+  "getBack": {
+    "alone": {
+      "outWei": "59698964336948",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()"
+    },
+    "afterHolder": {
+      "id": "h2_first",
+      "who": "holder #2 exits",
+      "otherVault": "0xbEef047a543E45807105E51A8BBEFCc5950fcfBa",
+      "outWei": "54385166209102",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": -8.9
+    },
+    "afterPeer": {
+      "id": "peer2_first",
+      "who": "Gauntlet USDT Frontier #1 exits its own vault",
+      "otherVault": "0x79FD640000F8563A866322483524a4b48f1Ed702",
+      "outWei": "54591282920772",
+      "fullExitOk": false,
+      "error": "NotEnoughLiquidity()",
+      "changePct": -8.55
+    }
+  },
+  "dominantDependency": {
+    "liquidity": "holder concentration (holder #2 leaving first cuts this exit by 8.9 %)",
+    "value": "the DAI / USD price feed"
+  },
+  "references": [
+    {
+      "name": "holding the asset idle",
+      "apy": 0,
+      "source": "no yield, no lending risk",
+      "note": "not used for the implied probability: against holding idle, the spread-implied probability essentially equals the break-even"
+    },
+    {
+      "name": "Sky Savings Rate (sUSDS)",
+      "apy": 0.037999998803906365,
+      "source": "ssr() of sUSDS 0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD at block 26157638",
+      "note": "on-chain USD savings rate set by Sky governance; not a sovereign risk-free rate (USDS has its own risks)"
+    }
+  ],
   "dex": {
     "0xe7e9694b754c4d4f7e21faf7223f6fa71abaeb10296a4c43a54a7977149687d2": {
       "capacity": "5079040000000000000000",
