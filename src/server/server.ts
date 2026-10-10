@@ -11,7 +11,7 @@ import { ScenarioRunner, type Scenario, type ScenarioAction } from "../engine/sc
 import { loadGraph } from "../discovery/load.ts";
 import { FORK_FACT, RUN_HYPOTHESIS, shockActions } from "../scenarios/catalog.ts";
 import { ACTORS, NODE_URL, PROXY_URL, SOURCE } from "../lib/constants.ts";
-import { rpcRaw } from "../lib/rpc.ts";
+import { rpc, rpcRaw } from "../lib/rpc.ts";
 import { toJson } from "../lib/util.ts";
 import { buildReport, manifestPath, reportPath } from "../report/build.ts";
 import { discover } from "../discovery/discover.ts";
@@ -87,11 +87,15 @@ const exclusive = <T,>(fn: () => Promise<T>): Promise<T> => {
   queue = p.catch(() => undefined);
   return p;
 };
+let runnerInstance = "";
 async function getRunner() {
-  if (!runner) {
+  // If the fork was restarted (npm run demo restarts it when it dies), its snapshots are gone: re-init.
+  const id = (await rpc<{ instanceId: string }>(NODE_URL, "hardhat_metadata")).instanceId;
+  if (!runner || id !== runnerInstance) {
     engine = new ForkEngine();
     await engine.init();
     runner = new ScenarioRunner(engine);
+    runnerInstance = id;
   }
   return runner;
 }

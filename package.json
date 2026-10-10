@@ -22,7 +22,8 @@
     "test:fork": "node --import tsx --test --test-concurrency=1 test/acceptance.test.ts",
     "all": "tsx src/cli/all.ts",
     "export:static": "tsx src/cli/export-static.ts",
-    "build:static": "tsx src/cli/export-static.ts && vite build --config web/vite.config.ts"
+    "build:static": "tsx src/cli/export-static.ts && vite build --config web/vite.config.ts",
+    "demo": "tsx src/cli/demo.ts"
   },
   "dependencies": {
     "hardhat": "3.19.0",
