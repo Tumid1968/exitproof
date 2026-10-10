@@ -103,6 +103,8 @@ export const collateralProbeAbi = parseAbi([
   "function pauser() view returns (address)",
   "function paused() view returns (bool)",
   "function getImplementation() view returns (address)",
+  "function implementation() view returns (address)",
+  "function kernel() view returns (address)",
   "function convertToAssets(uint256) view returns (uint256)",
   "function asset() view returns (address)",
 ]);
@@ -111,4 +113,17 @@ export const safeAbi = parseAbi([
   "function getThreshold() view returns (uint256)",
   "function getOwners() view returns (address[])",
   "function VERSION() view returns (string)",
+]);
+
+/** Primary/backup oracle router with deviation challenge ("MODT" revert strings), seen behind EIP-1167 clones. */
+export const oracleRouterAbi = parseAbi([
+  "function primaryOracle() view returns (address)",
+  "function backupOracle() view returns (address)",
+  "function currentOracle() view returns (address)",
+  "function isPrimary() view returns (bool)",
+  "function deviationThreshold() view returns (uint256)",
+  "function getDeviation() view returns (uint256)",
+  "function challengeTimelockDuration() view returns (uint256)",
+  "function healingTimelockDuration() view returns (uint256)",
+  "function isChallenged() view returns (bool)",
 ]);
