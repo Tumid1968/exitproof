@@ -5474,7 +5474,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
     {
       "id": "incident_blind_depeg_plus_run",
       "regime": "oracle blind: no liquidation, losses unrecognised on-chain, liquidity drained by the run",
-      "title": "Incident: wstETH depegs on the market, oracles unchanged; the largest competing holders exit first",
+      "title": "Incident: stETH depegs on the market, oracles unchanged; the largest competing holders exit first",
       "valueSource": "analytic economic shortfall (debt minus collateral market value of underwater borrowers), pro rata of vault supply shares",
       "executedFacts": {
         "liquidatableFoundOnFork": 1,
@@ -6674,7 +6674,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["report:0xbEe
     }
   ],
   "shortIncidents": {
-    "incident_blind_depeg_plus_run": "wstETH depegs (oracle blind) and others exit first",
+    "incident_blind_depeg_plus_run": "stETH depegs (oracle blind) and others exit first",
     "incident_feed_shock_plus_run": "DAI / USD −10 % and others exit first",
     "incident_feed_dexlimited_plus_run": "DAI / USD −10 %, AMM-limited liquidations, and others exit first"
   },

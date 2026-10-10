@@ -1,6 +1,6 @@
 {
   "exitproof_manifest": "0.2",
-  "created_at": "2026-10-10T15:28:23.870Z",
+  "created_at": "2026-10-10T15:48:27.712Z",
   "tooling": {
     "node": "v24.14.1",
     "hardhat": "3.19.0",
@@ -5596,7 +5596,7 @@
     {
       "scenario": {
         "id": "incident_blind_depeg_plus_run",
-        "title": "Incident: wstETH depegs on the market, oracles unchanged; the largest competing holders exit first",
+        "title": "Incident: stETH depegs on the market, oracles unchanged; the largest competing holders exit first",
         "target": {
           "vault": "0xa71D08A159258553a5Ac190d60Fa919425Ff02EA",
           "holder": "0xc2CbF475ACEAa393a7434Fc30782E5ae0deF41bB"
@@ -5955,7 +5955,7 @@
       },
       "expected": {
         "id": "incident_blind_depeg_plus_run",
-        "title": "Incident: wstETH depegs on the market, oracles unchanged; the largest competing holders exit first",
+        "title": "Incident: stETH depegs on the market, oracles unchanged; the largest competing holders exit first",
         "hypotheses": [
           "Contracts and state are real at the source block; transactions are simulated on a local fork, never sent to Ethereum.",
           "Other holders are impersonated on a local fork: their exits are a scenario hypothesis, not their signature or intention.",
@@ -6273,5 +6273,5 @@
       }
     ]
   },
-  "sha256": "b4668c783cf91c42d017c579c608bfcb331919f4be8433e7b5e773fd0bb677f1"
+  "sha256": "7c115c6c067e142def8fcc17f77eb9ffb79a8c1168acac5af46e5444beb418e8"
 }

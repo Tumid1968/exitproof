@@ -277,7 +277,8 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
   const shortOf = (id: string): string => {
     if (id === meta.incidents.blind?.id) {
       const sym = g.markets.find((m) => m.params.collateralToken === meta.incidents.blind!.collateral)?.collateralSymbol ?? "collateral";
-      return `${sym} depegs (oracle blind) and others exit first`;
+      // wstETH wraps stETH: the asset that can depeg on the market is stETH
+      return `${sym === "wstETH" ? "stETH" : sym} depegs (oracle blind) and others exit first`;
     }
     const sh = id === meta.incidents.dexShock?.id ? meta.incidents.dexShock : meta.incidents.shock;
     const feed = (sh?.shock.label ?? "price feed").replace(/ x0\.9$/, "");

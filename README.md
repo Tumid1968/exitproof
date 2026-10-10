@@ -139,6 +139,7 @@ What the tool **does not do**:
 - **Prior preparation (night of 9–10 Oct 2026):** desk research and a throwaway feasibility check, kept in a separate research folder that is **not** included here. That check covered RPC archive availability, whether a Hardhat 3 fork works at this block, and the reference values for this vault and block. Only **facts** were reused: public addresses, block number and hash, and the reference amounts used as acceptance tests. Its code was not copied.
 - **Libraries (all via npm):**
   - viem 2.57.4 (MIT), Hardhat 3.19.0 (MIT), React / React-DOM 19.3.0 (MIT), Vite 8.3.4 (MIT), @vitejs/plugin-react 6.1.2 (MIT), tsx 4.23.15 (MIT), TypeScript 7.0.2 (Apache-2.0)
+  - Font: Outfit (SIL Open Font License 1.1), woff2 files taken from @fontsource/outfit 5.3.0 and embedded in `web/public/fonts` → `docs/fonts` with their license file; no font CDN. The animated waves in the background are drawn by our own canvas code (no library, no image or video).
   - Data sources: Ethereum archive RPC (dRPC public endpoint) and Morpho public GraphQL API, used for candidate lists only.
 - **AI assistance:** the code was written with Claude Code (Anthropic), working with the team member who directed the work and reviewed the results. No AI is used in any computation of the tool.
 

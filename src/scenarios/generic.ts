@@ -118,7 +118,7 @@ export function genericCatalog(g: DependencyGraph, holderIn?: Address): { scenar
     const sameColl = exposed.filter((m) => m.params.collateralToken === main.params.collateralToken);
     scenarios.push({
       id: "incident_blind_depeg_plus_run",
-      title: `Incident: ${main.collateralSymbol} depegs on the market, oracles unchanged; the largest competing holders exit first`,
+      title: `Incident: ${main.collateralSymbol === "wstETH" ? "stETH" : main.collateralSymbol} depegs on the market, oracles unchanged; the largest competing holders exit first`,
       target, hypotheses: [FORK_FACT, RUN_HYPOTHESIS, "The depeg is off-chain (DEX price); on-chain oracle unchanged, so no position becomes liquidatable."],
       actions: [
         { type: "measure", label: "source state" },

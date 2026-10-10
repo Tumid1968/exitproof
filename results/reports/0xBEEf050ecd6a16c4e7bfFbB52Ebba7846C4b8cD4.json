@@ -2471,7 +2471,7 @@
     }
   ],
   "mitigation": null,
-  "headline": "Leaving pays off if you judge “wstETH depegs (oracle blind) and others exit first” more likely than 1.13 % (locked funds cost 10 %) or 5.57 % (cost 0 %) within 30 days. Dominant dependency: exit liquidity shared with Vault Bridge WETH.",
+  "headline": "Leaving pays off if you judge “stETH depegs (oracle blind) and others exit first” more likely than 1.13 % (locked funds cost 10 %) or 5.57 % (cost 0 %) within 30 days. Dominant dependency: exit liquidity shared with Vault Bridge WETH.",
   "getBack": {
     "alone": {
       "outWei": "5209914854809315636083",
@@ -3235,7 +3235,7 @@
     }
   ],
   "shortIncidents": {
-    "incident_steth_depeg_blind_plus_run": "wstETH depegs (oracle blind) and others exit first",
+    "incident_steth_depeg_blind_plus_run": "stETH depegs (oracle blind) and others exit first",
     "incident_lido10_plus_run": "wstETH/stETH rate −10 % and others exit first",
     "incident_lido10_dexlimited_plus_run": "wstETH/stETH rate −10 %, AMM-limited liquidations, and others exit first"
   },
