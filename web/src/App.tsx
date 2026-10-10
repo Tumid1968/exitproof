@@ -154,6 +154,14 @@ function Findings({ g }: { g: Graph }) {
     if (o?.data.router) items.push(`${m.collateralSymbol} market #${m.queueIndex}: oracle is a primary/backup router (deviation challenge ${(Number(o.data.deviationThreshold) / 1e16).toFixed(0)}%, ${o.data.isPrimary ? "primary active" : "backup active"}); legs: ${feeds.join(" | ")}.`);
     else if (o) items.push(`${m.collateralSymbol} market #${m.queueIndex}: priced by ${feeds.join(", ") || "opaque oracle"}${feeds.length === 1 && String(feeds[0]).includes("exchange rate") ? " only — the oracle follows the redemption rate, not the market price: a market depeg is invisible to liquidations." : "."}`);
   }
+  const vnode = nodes.find((n) => n.id === `vault:${g.target.vault}`);
+  const gov = nodes.filter((n) => n.kind === "governance" && ["owner", "curator", "guardian"].includes(String(n.data.role)));
+  if (vnode) items.push(`Governance: ${gov.map((n) => n.label).join(", ")}; changes to caps, markets and fees wait a ${Number(vnode.data.timelockSeconds) / 86400}-day timelock (guardian can veto).`);
+  const feeds = nodes.filter((n) => n.kind === "feed" && typeof n.data.ageSeconds === "number");
+  if (feeds.length) {
+    const oldest = feeds.reduce((a, b) => ((a.data.ageSeconds as number) > (b.data.ageSeconds as number) ? a : b));
+    items.push(`Freshness: oldest price feed in the stack is ${oldest.data.description} (last update ${((oldest.data.ageSeconds as number) / 3600).toFixed(1)} h before the block). Morpho oracles do not check staleness: a frozen feed is treated as a valid price.`);
+  }
   const hl = g.holders?.list ?? [];
   if (hl.length) items.push(`Ownership: the largest holder has ${pct(hl[0].shareOfSupply)} of the shares, the top 3 ${pct(hl.slice(0, 3).reduce((s: number, h: any) => s + h.shareOfSupply, 0))} (balances re-read on-chain; ${pct(g.holders.coverage)} of supply identified).`);
   const peerShared = g.peers.length;

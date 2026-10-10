@@ -110,6 +110,8 @@ npm run api              # terminal 3: local API on 127.0.0.1:8700
 npm run web              # terminal 4: UI on http://127.0.0.1:5173
 ```
 
+**First run:** with an empty cache, the first replay or pipeline run fetches state from the archive RPC (about 2 minutes for Steakhouse ETH; rate limits of the free endpoint are retried by the proxy). Verified from a fresh clone: `npm ci`, `npm run proxy`, `npm run fork`, `npm run replay` → REPLAY OK.
+
 **Offline:** once the cache is warm (one online run), stop the proxy, start `npm run proxy:offline`, restart the fork, then run `npm run replay`. Discovery also runs offline with `EXITPROOF_OFFLINE=1` (Morpho API answers are cached too). The proxy logs every request it refuses in `cache/proxy.log`.
 
 ## Architecture
