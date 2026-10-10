@@ -272,10 +272,12 @@ for (const tg of targets) {
         const tile = page.locator(".histtile:not(.oct2025)");
         await tile.locator(".histtable").waitFor();
         const rows = await tile.locator(".histtable tr").allInnerTexts();
-        assert.deepEqual(rows.map(norm), h.windows.bySize.map((x: any) => `${Math.round(x.size * 100)} %${x.size === 0.1 ? " (this incident)" : ""} ${x.k} of ${x.n} windows`));
+        assert.deepEqual(rows.map(norm), h.windows.bySize.map((x: any) => `${Math.round(x.size * 100)} %${x.size === 0.1 ? " (this incident)" : ""} intraday: k = ${x.k} of ${x.n} windows · daily sample: k = ${x.kDailySample}`));
         const text = norm(await tile.innerText());
         assert.ok(text.includes("One event is not a distribution. This is a reference, not a forecast."), text);
         assert.ok(text.includes("The market's oracle does not use this feed."), text);
+        assert.ok(text.includes("may update only once every 24 hours when the price is calm") && text.includes("does not show prices on decentralised exchanges"), text);
+        assert.ok(text.includes(`−${(h.windows.worst.drop * 100).toFixed(2)}`), "worst window from the intraday computation");
       }));
 
       test("13. break it down: no verdict before the second slider; p = shock × others exit, compared with p*", () => withPage(T("breakdown"), tg.base(), opts, async ({ page }) => {

@@ -14,7 +14,7 @@ window.__EXITPROOF__=window.__EXITPROOF__||{};window.__EXITPROOF__["refine:0xBEE
   "note": "Derived from results already executed or read (report, graph, history); no scenario re-executed, no existing number changed.",
   "history": {
     "file": "results/history/steth-eth.json",
-    "sha256": "2c7512271d1230ffb94a953fb138a02cb0927dd386cb2c3f19232c50d36b1b40",
+    "sha256": "a80a9663e764eabebfaff22a9d7b662443409c5e80d501a701f03c9a8ca121d2",
     "incidentShockSize": 0.1,
     "sizeSource": "scenario catalog: market price x0.9"
   },

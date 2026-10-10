@@ -87,6 +87,27 @@ const windows = Array.from({ length: Math.floor((p.length - 1) / WINDOW_DAYS) },
 const worst = windows.reduce((a, b) => (b.drop > a.drop ? b : a));
 const round6 = (x: number) => Math.round(x * 1e6) / 1e6;
 
+// ---- intraday: every round, not only the daily sample. Drop in a span = largest fall from a peak to a later trough,
+// starting from the price in force at the span's start (last round before it).
+const pr = usable.map((x) => Number(x.answer) / scale), ts = usable.map((x) => x.updatedAt);
+/** index of the last round updated at or before t */
+const at = (t: number) => { let lo = 0, hi = ts.length - 1; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (ts[m] <= t) lo = m; else hi = m - 1; } return lo; };
+function fallIn(t0: number, t1: number) {
+  let i = at(t0), peak = pr[i], drop = 0, from = ts[i], to = ts[i], peakT = ts[i];
+  for (i = i + 1; i < ts.length && ts[i] < t1; i++) {
+    if (pr[i] > peak) { peak = pr[i]; peakT = ts[i]; }
+    const d = 1 - pr[i] / peak;
+    if (d > drop) { drop = d; from = peakT; to = ts[i]; }
+  }
+  return { drop, from, to };
+}
+const dayStart = days.map((d) => Date.parse(d.date + "T00:00:00Z") / 1000);
+const drop1i = dayStart.slice(1).map((t) => fallIn(t, t + DAY).drop);
+const drop30i = dayStart.slice(0, dayStart.length - WINDOW_DAYS).map((t) => fallIn(t, t + WINDOW_DAYS * DAY).drop);
+const windowsI = Array.from({ length: windows.length }, (_, w) => { const t = dayStart[w * WINDOW_DAYS]; const f = fallIn(t, t + WINDOW_DAYS * DAY); return { start: days[w * WINDOW_DAYS].date, ...f }; });
+const worstI = windowsI.reduce((a, b) => (b.drop > a.drop ? b : a));
+const isoT = (t: number) => new Date(t * 1000).toISOString().replace(".000", "");
+
 /**
  * 10 October 2025 (a day of very large liquidations across crypto markets): every round of the feed from
  * 9 Oct 00:00 UTC to 13 Oct 00:00 UTC, not only the daily sample. "Before" = last round updated before the
@@ -113,7 +134,7 @@ function oct10() {
     fall: { firstMoveAt: iso(firstMove.updatedAt), firstMovePrice: round6(px(firstMove)), secondsFirstMoveToMin: min.updatedAt - firstMove.updatedAt,
       backWithinHalfPercentAt: recovered ? iso(recovered.updatedAt) : null, secondsMinToRecovery: recovered ? recovered.updatedAt - min.updatedAt : null },
     dailySample: d9 && d10 ? { oct9: round6(d9.price), oct10: round6(d10.price), drop: round6(Math.max(0, 1 - d10.price / d9.price)), note: "the daily samples behind the k-of-N counts miss intraday moves" } : null,
-    vsOneDayP99: round6(Math.max(0, 1 - px(min) / px(before)) / pctl(drop1, 0.99)),
+    vsOneDayP99: round6(Math.max(0, 1 - px(min) / px(before)) / pctl(drop1i, 0.99)),
     note: "Chainlink feed reading, not a DEX price. Shows how the stETH/ETH feed moved on a day of very large liquidations; it does not say how any vault behaved.",
     window: { from: iso(from), to: iso(to), roundsInWindow: win.length },
     before: { price: round6(px(before)), updatedAt: iso(before.updatedAt), roundId: before.roundId },
@@ -126,19 +147,29 @@ function oct10() {
 
 const body = {
   schema: "exitproof-history/1",
-  what: "Chainlink stETH/ETH feed, daily samples, read at the source block. Not used by the market oracle; a historical reference, not a forecast.",
+  what: "Chainlink stETH/ETH feed, every round, read at the source block. Not used by the market oracle; a historical reference, not a forecast. The feed may update only every 24 h when the price is calm, and it is not a DEX price.",
   feed: { address: FEED, description, decimals, phases },
   source: { chainId: 1, block: SOURCE.block.toString(), timestamp: SOURCE.timestamp.toString(), method: "getRoundData of every round (multicall3, eth_call at the source block); daily sample = last round updated before the end of each UTC day" },
   period: { from: days[0].date, to: days[days.length - 1].date, days: days.length, rounds: usable.length },
+  method: "intraday: every round of the feed; the drop in a span is the largest fall from a peak to a later trough, starting from the price in force at the span's start",
   drops: {
-    oneDay: { p95: round6(pctl(drop1, 0.95)), p99: round6(pctl(drop1, 0.99)), max: round6(Math.max(...drop1)), samples: drop1.length },
-    thirtyDays: { p95: round6(pctl(drop30, 0.95)), p99: round6(pctl(drop30, 0.99)), max: round6(Math.max(...drop30)), samples: drop30.length, note: "overlapping windows stepped by one day (percentiles only)" },
-    definition: "drop = 1 − lowest daily price in the window ÷ daily price at the window start (0 if it never fell); percentiles by nearest rank",
+    oneDay: { p95: round6(pctl(drop1i, 0.95)), p99: round6(pctl(drop1i, 0.99)), max: round6(Math.max(...drop1i)), samples: drop1i.length, note: "each UTC day" },
+    thirtyDays: { p95: round6(pctl(drop30i, 0.95)), p99: round6(pctl(drop30i, 0.99)), max: round6(Math.max(...drop30i)), samples: drop30i.length, note: "overlapping 30-day spans starting each UTC day (percentiles only)" },
+    definition: "drop = largest fall from a peak to a later trough within the span, using every feed round; percentiles by nearest rank",
   },
   windows: {
-    days: WINDOW_DAYS, count: windows.length, note: "non-overlapping 30-day windows from the first daily sample",
-    bySize: SIZES.map((s) => ({ size: s, k: windows.filter((w) => w.drop >= s).length, n: windows.length })),
-    worst: { start: worst.start, drop: round6(worst.drop) },
+    days: WINDOW_DAYS, count: windowsI.length, note: "non-overlapping 30-day windows from the first daily sample date",
+    bySize: SIZES.map((s) => ({ size: s, k: windowsI.filter((w) => w.drop >= s).length, n: windowsI.length, kDailySample: windows.filter((w) => w.drop >= s).length })),
+    worst: { start: worstI.start, drop: round6(worstI.drop), peakAt: isoT(worstI.from), troughAt: isoT(worstI.to) },
+  },
+  comparison: {
+    dailySample: {
+      what: "previous method, kept for comparison: last round of each UTC day; drop = from the window's first daily price to its lowest daily price",
+      oneDay: { p95: round6(pctl(drop1, 0.95)), p99: round6(pctl(drop1, 0.99)), max: round6(Math.max(...drop1)) },
+      thirtyDays: { p95: round6(pctl(drop30, 0.95)), p99: round6(pctl(drop30, 0.99)), max: round6(Math.max(...drop30)) },
+      bySize: SIZES.map((s) => ({ size: s, k: windows.filter((w) => w.drop >= s).length, n: windows.length })),
+      worst: { start: worst.start, drop: round6(worst.drop) },
+    },
   },
   daily: days.map((d) => [d.date, round6(d.price)]),
   events: [oct10()],
@@ -148,4 +179,5 @@ const out = { ...body, sha256: createHash("sha256").update(json).digest("hex") }
 mkdirSync("results/history", { recursive: true });
 writeFileSync("results/history/steth-eth.json", toJson(out));
 console.log(`${description}: ${days.length} days ${body.period.from} → ${body.period.to}; ${windows.length} windows; k by size:`, body.windows.bySize.map((x) => `${x.size * 100}%: ${x.k}/${x.n}`).join(", "));
-console.log("1-day drop p95/p99", body.drops.oneDay, "30-day", body.drops.thirtyDays, "worst window", body.windows.worst);
+console.log("intraday 1-day", body.drops.oneDay, "30-day", body.drops.thirtyDays, "worst window", body.windows.worst);
+console.log("daily sample (old):", body.comparison.dailySample.bySize.map((x) => `${x.size * 100}%: ${x.k}`).join(", "), body.comparison.dailySample.oneDay, body.comparison.dailySample.worst);

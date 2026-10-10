@@ -165,7 +165,7 @@ function Oct2025Card({ history }: { history?: any }) {
         <tr><td>Time</td><td className="r">{dur(e.secondsBeforeToMin)} between the two readings (the feed only updates every 24 h when calm); the fall itself took {dur(e.fall.secondsFirstMoveToMin)}{e.fall.secondsMinToRecovery !== null ? <>, back within 0.5&nbsp;% {dur(e.fall.secondsMinToRecovery)} later</> : null}</td></tr>
       </tbody></table>
         : <span className="statsub">The feed moved by {p(e.dropFromBefore)} at most over this window.</span>}
-      {e.dailySample && <span className="statsub">The daily samples behind the counts above recorded only {p(e.dailySample.drop)} that day: they miss intraday moves, so those counts understate short drops.</span>}
+      {e.dailySample && <span className="statsub">A once-a-day sample would have recorded only {p(e.dailySample.drop)} that day; the counts above use every feed update instead.</span>}
       <span className="statsub">{e.window.roundsInWindow} feed updates between {t(e.window.from)} and {t(e.window.to)}.</span>
       <span className="statsub"><b>Chainlink feed reading, not a DEX price. This shows how the stETH/ETH feed moved on a day of very large liquidations; it does not say how any vault behaved.</b></span>
     </div>
@@ -186,12 +186,13 @@ function HistoryTile({ refine, history }: { refine?: any; history?: any }) {
   return (
     <div className="stat histtile">
       <span className="statlabel">How often has this shock happened? <Tag k="hist" /></span>
-      <span className="statsub">stETH below ETH by at least … within a 30-day window, {mon(history.period.from)} – {mon(history.period.to)} ({history.windows.count} non-overlapping windows, daily prices of the Chainlink stETH/ETH feed):</span>
+      <span className="statsub">stETH fell against ETH by at least … (from a high to a later low) within a 30-day window, {mon(history.period.from)} – {mon(history.period.to)} ({history.windows.count} non-overlapping windows, every update of the Chainlink stETH/ETH feed):</span>
       <table className="histtable"><tbody>
-        {rows.map((x) => <tr key={x.size} className={Math.abs(x.size - size) < 1e-9 ? "this" : ""}><td>{(x.size * 100).toFixed(0)}&nbsp;%{Math.abs(x.size - size) < 1e-9 ? " (this incident)" : ""}</td><td className="r">{x.k} of {x.n} windows</td></tr>)}
+        {rows.map((x) => <tr key={x.size} className={Math.abs(x.size - size) < 1e-9 ? "this" : ""}><td>{(x.size * 100).toFixed(0)}&nbsp;%{Math.abs(x.size - size) < 1e-9 ? " (this incident)" : ""}</td><td className="r">intraday: k = {x.k} of {x.n} windows{x.kDailySample !== undefined ? <span className="small muted"> · daily sample: k = {x.kDailySample}</span> : null}</td></tr>)}
       </tbody></table>
       {rare >= rows.length / 2 && <span className="statsub">{rare} of the {rows.length} sizes happened in 0 or 1 window over this period.</span>}
-      <span className="statsub">Worst window: −{p(history.windows.worst.drop)} (from {history.windows.worst.start}). 99th percentile of drops: {p(history.drops.oneDay.p99)} over 1 day, {p(history.drops.thirtyDays.p99)} over 30 days. The market's oracle does not use this feed.</span>
+      <span className="statsub">Worst window: −{p(history.windows.worst.drop)}{history.windows.worst.peakAt ? <> (high on {history.windows.worst.peakAt.slice(0, 10)}, low on {history.windows.worst.troughAt.slice(0, 10)})</> : <> (from {history.windows.worst.start})</>}. 99th percentile of drops: {p(history.drops.oneDay.p99)} over 1 day, {p(history.drops.thirtyDays.p99)} over 30 days. The market's oracle does not use this feed.</span>
+      <span className="statsub">The Chainlink feed may update only once every 24 hours when the price is calm, and it does not show prices on decentralised exchanges, so short dips there can be deeper than what it records.</span>
       {(() => { const t = rows.find((x) => Math.abs(x.size - size) < 1e-9); return t && t.k === 0
         ? <span className="statsub ruleofthree">0 events in {t.n} windows does not mean zero risk: with this sample, the frequency could still be as high as about 3/{t.n} ≈ {(300 / t.n).toFixed(1)}&nbsp;% of 30-day windows (rule of three, about 95&nbsp;% confidence).</span> : null; })()}
       <span className="statsub"><b>One event is not a distribution. This is a reference, not a forecast.</b></span>

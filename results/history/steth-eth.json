@@ -1,6 +1,6 @@
 {
   "schema": "exitproof-history/1",
-  "what": "Chainlink stETH/ETH feed, daily samples, read at the source block. Not used by the market oracle; a historical reference, not a forecast.",
+  "what": "Chainlink stETH/ETH feed, every round, read at the source block. Not used by the market oracle; a historical reference, not a forecast. The feed may update only every 24 h when the price is calm, and it is not a DEX price.",
   "feed": {
     "address": "0x86392dC19c0b719886221c78AB11eb8Cf5c52812",
     "description": "STETH / ETH",
@@ -30,61 +30,122 @@
     "days": 1871,
     "rounds": 2020
   },
+  "method": "intraday: every round of the feed; the drop in a span is the largest fall from a peak to a later trough, starting from the price in force at the span's start",
   "drops": {
     "oneDay": {
-      "p95": 0.001309,
-      "p99": 0.004638,
-      "max": 0.021075,
-      "samples": 1870
+      "p95": 0.001459,
+      "p99": 0.005987,
+      "max": 0.043988,
+      "samples": 1870,
+      "note": "each UTC day"
     },
     "thirtyDays": {
-      "p95": 0.015224,
-      "p99": 0.043288,
+      "p95": 0.028262,
+      "p99": 0.045368,
       "max": 0.050353,
       "samples": 1841,
-      "note": "overlapping windows stepped by one day (percentiles only)"
+      "note": "overlapping 30-day spans starting each UTC day (percentiles only)"
     },
-    "definition": "drop = 1 − lowest daily price in the window ÷ daily price at the window start (0 if it never fell); percentiles by nearest rank"
+    "definition": "drop = largest fall from a peak to a later trough within the span, using every feed round; percentiles by nearest rank"
   },
   "windows": {
     "days": 30,
     "count": 62,
-    "note": "non-overlapping 30-day windows from the first daily sample",
+    "note": "non-overlapping 30-day windows from the first daily sample date",
     "bySize": [
       {
         "size": 0.01,
-        "k": 6,
-        "n": 62
+        "k": 13,
+        "n": 62,
+        "kDailySample": 6
       },
       {
         "size": 0.03,
-        "k": 1,
-        "n": 62
+        "k": 3,
+        "n": 62,
+        "kDailySample": 1
       },
       {
         "size": 0.05,
         "k": 0,
-        "n": 62
+        "n": 62,
+        "kDailySample": 0
       },
       {
         "size": 0.1,
         "k": 0,
-        "n": 62
+        "n": 62,
+        "kDailySample": 0
       },
       {
         "size": 0.15,
         "k": 0,
-        "n": 62
+        "n": 62,
+        "kDailySample": 0
       },
       {
         "size": 0.2,
         "k": 0,
-        "n": 62
+        "n": 62,
+        "kDailySample": 0
       }
     ],
     "worst": {
       "start": "2022-05-22",
-      "drop": 0.042022
+      "drop": 0.047478,
+      "peakAt": "2022-06-01T17:40:58Z",
+      "troughAt": "2022-06-18T09:09:38Z"
+    }
+  },
+  "comparison": {
+    "dailySample": {
+      "what": "previous method, kept for comparison: last round of each UTC day; drop = from the window's first daily price to its lowest daily price",
+      "oneDay": {
+        "p95": 0.001309,
+        "p99": 0.004638,
+        "max": 0.021075
+      },
+      "thirtyDays": {
+        "p95": 0.015224,
+        "p99": 0.043288,
+        "max": 0.050353
+      },
+      "bySize": [
+        {
+          "size": 0.01,
+          "k": 6,
+          "n": 62
+        },
+        {
+          "size": 0.03,
+          "k": 1,
+          "n": 62
+        },
+        {
+          "size": 0.05,
+          "k": 0,
+          "n": 62
+        },
+        {
+          "size": 0.1,
+          "k": 0,
+          "n": 62
+        },
+        {
+          "size": 0.15,
+          "k": 0,
+          "n": 62
+        },
+        {
+          "size": 0.2,
+          "k": 0,
+          "n": 62
+        }
+      ],
+      "worst": {
+        "start": "2022-05-22",
+        "drop": 0.042022
+      }
     }
   },
   "daily": [
@@ -7590,7 +7651,7 @@
         "drop": 0.004544,
         "note": "the daily samples behind the k-of-N counts miss intraday moves"
       },
-      "vsOneDayP99": 9.484989,
+      "vsOneDayP99": 7.347748,
       "note": "Chainlink feed reading, not a DEX price. Shows how the stETH/ETH feed moved on a day of very large liquidations; it does not say how any vault behaved.",
       "window": {
         "from": "2025-10-09T00:00:00Z",
@@ -7749,5 +7810,5 @@
       ]
     }
   ],
-  "sha256": "9f6dd5e75806196521b754472d8c6053940ce029b26bc7650ce15fc2c1e6ef97"
+  "sha256": "a80a9663e764eabebfaff22a9d7b662443409c5e80d501a701f03c9a8ca121d2"
 }
