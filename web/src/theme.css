@@ -225,3 +225,5 @@ main.app { padding-top: 76px; }
 .vaultlevel { margin: 4px 0 16px; }
 .nmh { font-size: 1.1rem; font-weight: 500; margin: 18px 0 6px; }
 @media (max-width: 640px) { .exitwinsub { font-size: 16px; } .histtable { font-size: 16px; } }
+/* the tab bar stays under the top bar while scrolling: opaque, so text does not show through */
+.deep .tabs { top: 60px; background: var(--topbg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 0 0 16px 16px; padding: 8px 0; z-index: 6; }
