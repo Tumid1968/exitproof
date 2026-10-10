@@ -213,3 +213,15 @@ main.app { padding-top: 76px; }
 .nav .navlink, .nav .pill, .nav .logo { white-space: nowrap; }
 .nav .narrow { display: none; }
 @media (max-width: 420px) { .nav .wide { display: none; } .nav .narrow { display: inline; } .nav { gap: 4px; } }
+
+/* probability refinements */
+.exitwin { margin: 12px 0 0; font-size: 16px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px; }
+.exitwinsub { margin: 2px auto 0; font-size: 14px; color: var(--muted); max-width: 40em; }
+.histtile { cursor: default; margin: 0 0 14px; }
+.histtable { width: 100%; border-collapse: collapse; font-size: 15px; margin: 4px 0; }
+.histtable td { padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.histtable tr.this td { font-weight: 600; }
+.histtable td.r { text-align: right; font-variant-numeric: tabular-nums; }
+.vaultlevel { margin: 4px 0 16px; }
+.nmh { font-size: 1.1rem; font-weight: 500; margin: 18px 0 6px; }
+@media (max-width: 640px) { .exitwinsub { font-size: 16px; } .histtable { font-size: 16px; } }

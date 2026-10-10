@@ -16,6 +16,7 @@ const TAGS = {
   fork: ["measured on fork", "Executed on a copy of Ethereum frozen at block 26,157,638: real contracts, real state, simulated transactions."],
   modeled: ["modeled", "Computed from measured data with stated assumptions; a lower bound, not a measurement."],
   hyp: ["your assumption", "A choice you make (probability, cost of locked funds). Nothing here predicts it."],
+  hist: ["historical reference", "Past prices read from the chain at block 26,157,638. What happened before, not a forecast."],
 } as const;
 export function Tag({ k }: { k: keyof typeof TAGS }) {
   const [open, setOpen] = useState(false);
@@ -65,7 +66,7 @@ function pickScenarios(r: any) {
   return out;
 }
 
-export function ExitPanel({ r, entry, mode, pick }: { r: any; entry?: IndexEntry; mode: Mode; pick: number }) {
+export function ExitPanel({ r, entry, mode, pick, refine }: { r: any; entry?: IndexEntry; mode: Mode; pick: number; refine?: any }) {
   const scenarios = useMemo(() => pickScenarios(r), [r]);
   const [sel, setSel] = useState(0);
   // "See it in action" (pick > 0): show the depositor of another vault leaving first
@@ -99,6 +100,8 @@ export function ExitPanel({ r, entry, mode, pick }: { r: any; entry?: IndexEntry
       <div className="bignum" aria-live="polite">
         <div key={s.key + run.holderExecutedExit} className={`amount ${full ? "good" : "bad"}`}>{w(run.holderExecutedExit)} <span className="unit">{u}</span></div>
         <div className="delta">{s.key === "alone" ? (full ? "100 % of your position" : `${share.toFixed(0)} % of your position`) : `${run.changePct === 0 ? "±0.00" : run.changePct.toFixed(2)} % vs exiting alone`} <Tag k="fork" /></div>
+        <p className="exitwin"><b>Exit window:</b> {full ? "Immediate" : <>Partial: {share.toFixed(0)}&nbsp;% now, the rest when borrowers repay or the curator reallocates</>} <Tag k="fork" /></p>
+        {refine?.governance && <p className="exitwinsub">{governanceLine(refine.governance)}</p>}
         <div className="thinbar" role="img" aria-label={`${share.toFixed(0)} % of the position can be withdrawn`}>
           <div className={`fill ${full ? "good" : "bad"}`} style={{ width: `${Math.min(100, share)}%` }} />
         </div>
@@ -124,13 +127,46 @@ export function ExitPanel({ r, entry, mode, pick }: { r: any; entry?: IndexEntry
   );
 }
 
-export function LeaveCard({ r }: { r: any }) {
+/** "How often has this shock happened?": raw counts from the on-chain history; never a single forecast. */
+function HistoryTile({ refine, history }: { refine?: any; history?: any }) {
+  if (!refine?.history || !history) return (
+    <div className="stat histtile"><span className="statlabel">How often has this shock happened?</span>
+      <span className="statsub">No price history was read for this incident's shock ({NM}).</span></div>
+  );
+  const size = refine.history.incidentShockSize;
+  const rows: any[] = history.windows.bySize;
+  const rare = rows.filter((x) => x.k <= 1).length;
+  const mon = (d: string) => new Date(d + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
+  const p = (x: number) => `${(x * 100).toFixed(x < 0.01 ? 2 : 1)}\u00a0%`;
+  return (
+    <div className="stat histtile">
+      <span className="statlabel">How often has this shock happened? <Tag k="hist" /></span>
+      <span className="statsub">stETH below ETH by at least … within a 30-day window, {mon(history.period.from)} – {mon(history.period.to)} ({history.windows.count} non-overlapping windows, daily prices of the Chainlink stETH/ETH feed):</span>
+      <table className="histtable"><tbody>
+        {rows.map((x) => <tr key={x.size} className={Math.abs(x.size - size) < 1e-9 ? "this" : ""}><td>{(x.size * 100).toFixed(0)}&nbsp;%{Math.abs(x.size - size) < 1e-9 ? " (this incident)" : ""}</td><td className="r">{x.k} of {x.n} windows</td></tr>)}
+      </tbody></table>
+      {rare >= rows.length / 2 && <span className="statsub">{rare} of the {rows.length} sizes happened in 0 or 1 window over this period.</span>}
+      <span className="statsub">Worst window: −{p(history.windows.worst.drop)} (from {history.windows.worst.start}). 99th percentile of drops: {p(history.drops.oneDay.p99)} over 1 day, {p(history.drops.thirtyDays.p99)} over 30 days. The market's oracle does not use this feed.</span>
+      <span className="statsub"><b>One event is not a distribution. This is a reference, not a forecast.</b></span>
+    </div>
+  );
+}
+
+export function LeaveCard({ r, refine, history }: { r: any; refine?: any; history?: any }) {
   const grid: any[] = r.verdictGrid ?? [];
   const g = grid.find((x) => x.id === r.bindingIncident);
   const [hc, setHc] = useState(0.1);
   const [p, setP] = useState<number | null>(null); // no verdict before the user touches the slider
   const [calc, setCalc] = useState(false);
-  useEffect(() => { setP(null); setCalc(false); setHc(0.1); }, [r]);
+  // "break it down": p = P(shock) × P(others exit first | shock); the first factor starts at the historical count
+  const [split, setSplit] = useState(false);
+  const [pa, setPa] = useState<number | null>(null);
+  const [pb, setPb] = useState<number | null>(null);
+  useEffect(() => { setP(null); setCalc(false); setHc(0.1); setSplit(false); setPa(null); setPb(null); }, [r]);
+  const ref = refine?.history && history ? history.windows.bySize.find((x: any) => Math.abs(x.size - refine.history.incidentShockSize) < 1e-9) : null;
+  const refP = ref ? ref.k / ref.n : null;
+  const a = pa ?? refP;
+  const pEff = !split ? p : pb === null || a === null ? null : a * pb;
   const u = r.target.assetSymbol;
   const n = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 2 });
   const c10 = g?.cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === 0.1);
@@ -138,8 +174,9 @@ export function LeaveCard({ r }: { r: any }) {
   const c = hc === 0.1 ? c10 : c0;
   // wording only: the dependency sentence is the report's own text
   const dominant = /Dominant dependency: (.*?)\.?$/.exec(r.headline ?? "")?.[1] ?? null;
-  const reading = !c ? NM : p === null ? "Move the slider to compare your own estimate." : c.decision === "NO_ACTION_POSSIBLE" ? "You cannot leave: less than 1 % of the position can be withdrawn."
-    : c.breakEven === null ? "This incident costs you nothing: staying is cheaper." : p > c.breakEven ? "With your estimate, leaving pays off." : "With your estimate, staying is cheaper.";
+  const reading = !c ? NM : pEff === null ? (split ? "Move the second slider (and the first if you disagree with the reference) to compare." : "Move the slider to compare your own estimate.") : c.decision === "NO_ACTION_POSSIBLE" ? "You cannot leave: less than 1 % of the position can be withdrawn."
+    : c.breakEven === null ? "This incident costs you nothing: staying is cheaper." : pEff > c.breakEven ? "With your estimate, leaving pays off." : "With your estimate, staying is cheaper.";
+  const vl = refine?.vaultLevel;
   return (
     <section className="card glass sr">
       <h2 className="serif">Should I leave?</h2>
@@ -163,16 +200,41 @@ export function LeaveCard({ r }: { r: any }) {
             <span className="statsub">chance of the incident within 30 days above which leaving pays off</span>
           </button></div>
         </div>
+        <HistoryTile refine={refine} history={history} />
         <div className="toggle" role="radiogroup" aria-label="cost of locked funds">
           <span className="muted">locked funds cost</span>
           {[0.1, 0].map((x) => <button key={x} role="radio" aria-checked={hc === x} className={`pill seg ${hc === x ? "active" : ""}`} onClick={() => setHc(x)}>{x * 100} %</button>)}
         </div>
-        <label className="slider2">
-          <span>Your estimate of the chance of this incident within 30 days <Tag k="hyp" /></span>
-          <input type="range" min={0} max={0.3} step={0.0025} value={p ?? Math.min(0.3, c?.breakEven ?? 0)} onChange={(e) => setP(Number(e.target.value))} aria-label="your estimate" />
-          <span className="sliderval">{p === null ? "—" : pct(p, 2)}</span>
-        </label>
-        <p className={`reading ${p === null ? "muted" : reading.includes("leaving pays") ? "bad" : "good"}`} aria-live="polite">{reading}</p>
+        <div className="toggle" role="radiogroup" aria-label="how to give your estimate">
+          <span className="muted">your estimate</span>
+          <button role="radio" aria-checked={!split} className={`pill seg ${!split ? "active" : ""}`} onClick={() => setSplit(false)}>direct</button>
+          <button role="radio" aria-checked={split} className={`pill seg ${split ? "active" : ""}`} onClick={() => setSplit(true)}>break it down</button>
+        </div>
+        {!split ? (
+          <label className="slider2">
+            <span>Your estimate of the chance of this incident within 30 days <Tag k="hyp" /></span>
+            <input type="range" min={0} max={0.3} step={0.0025} value={p ?? Math.min(0.3, c?.breakEven ?? 0)} onChange={(e) => setP(Number(e.target.value))} aria-label="your estimate" />
+            <span className="sliderval">{p === null ? "—" : pct(p, 2)}</span>
+          </label>
+        ) : <>
+          <label className="slider2">
+            <span>1. Chance of the shock ({refine?.history ? `stETH at least ${(refine.history.incidentShockSize * 100).toFixed(0)}\u00a0% below ETH` : "the incident's price move"}) within 30 days <Tag k="hyp" /></span>
+            <input type="range" min={0} max={0.5} step={0.0025} value={a ?? 0} onChange={(e) => setPa(Number(e.target.value))} aria-label="chance of the shock" />
+            <span className="sliderval">{pa === null && ref
+              ? <>{ref.k} of {ref.n} windows{ref.k > 3 ? ` ≈ ${pct(ref.k / ref.n, 1)}` : ""} <span className="small muted">(historical reference; move it if you disagree)</span></>
+              : a === null ? "—" : pct(a, 2)}</span>
+          </label>
+          <label className="slider2">
+            <span>2. Chance that others exit before you, if the shock happens <Tag k="hyp" /></span>
+            <input type="range" min={0} max={1} step={0.01} value={pb ?? 0.5} onChange={(e) => setPb(Number(e.target.value))} aria-label="chance that others exit first" />
+            <span className="sliderval">{pb === null ? "—" : pct(pb, 0)}</span>
+          </label>
+          <p className="small">Your estimate = 1 × 2 = <b>{pEff === null ? "—" : pct(pEff, 2)}</b>, compared with the threshold above.</p>
+        </>}
+        <p className={`reading ${pEff === null ? "muted" : reading.includes("leaving pays") ? "bad" : "good"}`} aria-live="polite">{reading}</p>
+        {vl && <p className="small vaultlevel">{vl.ratio >= 0.01
+          ? <>Credora defines a significant loss as bad debt above 1&nbsp;% of principal. This incident produces <b>{pct(vl.ratio, 2)}</b> at vault level <Tag k="modeled" /> ({vl.basis.startsWith("analytic economic shortfall") ? "an economic shortfall that the oracle does not recognise on-chain" : "modeled loss"}).</>
+          : <>At vault level this incident produces <b>{pct(vl.ratio, 2)}</b> of the vault's assets <Tag k="modeled" />, below the 1&nbsp;% of principal that Credora uses to define a loss event.</>}</p>}
         <button className="pill primary" aria-expanded={calc} onClick={() => setCalc(!calc)}>{calc ? "Hide the calculation" : "Show how this is calculated"}</button>
         {calc && c && (
           <div className="detailbox">
@@ -192,19 +254,36 @@ export function LeaveCard({ r }: { r: any }) {
   );
 }
 
-export function NotModeledCard({ r }: { r: any }) {
+/** One line on the configuration timelock (governance), kept apart from the liquidity lock. */
+function governanceLine(gv: any) {
+  const d = gv.timelockDays;
+  const t = d === null ? "timelock not read" : d === 0 ? "no timelock: configuration changes apply immediately" : `configuration changes wait ${Number(d.toFixed(2))} days (timelock)`;
+  return `Governance: ${t}${gv.guardian ? ", and a guardian can veto them" : ", no guardian"} (read on-chain). This is about the vault's settings, not about liquidity.`;
+}
+
+export function NotModeledCard({ r, refine }: { r: any; refine?: any }) {
   const nm = r.notModeled;
   if (!nm) return null;
   return (
     <details className="card glass fold sr">
       <summary><span className="serif">Not modeled</span> <span className="muted">contract hack, governance attack, oracle exploit</span></summary>
-      <p>These risks cannot be read on-chain, so they are not simulated. If one of them wiped out the whole position ({w(r.target.holderValue)} {r.target.assetSymbol}), leaving now pays off above these chances:</p>
+      <p>These risks cannot be read on-chain, so they are not simulated.</p>
+      <h3 className="nmh">Contract hack: total-loss threshold</h3>
+      <p>A hack comes without warning. If it wiped out the whole position ({w(r.target.holderValue)} {r.target.assetSymbol}), leaving now pays off above these chances:</p>
       <div className="threestats">
         {nm.totalLoss.map((x: any) => (
           <div key={x.horizonDays} className="stat"><span className="statlabel">within {x.horizonDays} days</span><span className="statnum">{x.decision === "NO_ACTION_POSSIBLE" ? "—" : fmtP(x.breakEven)}</span></div>
         ))}
       </div>
-      <p className="small">Same calculation and inputs as above (yield given up {pct(r.verdictParams.netApy, 2)} a year, gas and slippage executed on the fork). <b>The probability is yours, nothing here predicts it.</b></p>
+      <p className="small">Same calculation and inputs as above (yield given up {pct(r.verdictParams.netApy, 2)} a year, gas and slippage executed on the fork). Other risk teams also avoid predicting hack probabilities; we show the threshold instead. <b>The probability is yours, nothing here predicts it.</b></p>
+      <h3 className="nmh">Governance attack</h3>
+      {refine?.governance ? (
+        refine.governance.timelockDays > 0
+          ? <p>Changes to the vault's configuration wait {Number(refine.governance.timelockDays.toFixed(2))} days (timelock){refine.governance.guardian ? " and a guardian can veto them" : ""}, read on-chain. The threshold above applies to a governance attack only if you do not watch the vault's pending changes; if you do, you can leave during those {Number(refine.governance.timelockDays.toFixed(2))} days. This timelock concerns the vault's settings; it is not the liquidity lock measured above.</p>
+          : <p>This vault has no timelock: configuration changes apply at once, so the threshold above applies to a governance attack as it is.</p>
+      ) : <p>Timelock and guardian: {NM}.</p>}
+      <h3 className="nmh">Oracle exploit beyond the modeled moves</h3>
+      <p>Treated like a hack: the total-loss threshold above applies.</p>
     </details>
   );
 }

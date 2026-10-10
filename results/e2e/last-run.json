@@ -1,12 +1,12 @@
 {
-  "at": "2026-10-10T16:28:27.374Z",
+  "at": "2026-10-10T16:58:36.062Z",
   "target": "local",
   "metrics": [
     {
       "target": "http",
       "viewport": "1440",
-      "firstVaultDisplayMs": 405,
-      "requests": 9
+      "firstVaultDisplayMs": 527,
+      "requests": 11
     },
     {
       "target": "http",
@@ -21,14 +21,14 @@
     {
       "target": "http",
       "viewport": "375",
-      "firstVaultDisplayMs": 311,
-      "requests": 9
+      "firstVaultDisplayMs": 488,
+      "requests": 11
     },
     {
       "target": "file",
       "viewport": "1440",
-      "firstVaultDisplayMs": 334,
-      "requests": 9
+      "firstVaultDisplayMs": 495,
+      "requests": 11
     },
     {
       "target": "file",
@@ -43,12 +43,12 @@
     {
       "target": "file",
       "viewport": "375",
-      "firstVaultDisplayMs": 337,
-      "requests": 9
+      "firstVaultDisplayMs": 538,
+      "requests": 11
     },
     {
       "live": "execute again",
-      "result": "3,318.751556 WETH in 601 ms — identical to the wei"
+      "result": "3,318.751556 WETH in 1684 ms — identical to the wei"
     }
   ],
   "warnings": [

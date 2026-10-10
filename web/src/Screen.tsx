@@ -21,7 +21,7 @@ function useScrollReveal() {
     return () => { io.disconnect(); mo.disconnect(); };
   }, []);
 }
-import { apiPost, getGraph, getIndex, getReport, liveUsable, readStatus, type IndexEntry, type Mode, type Status } from "./data";
+import { apiPost, getGraph, getHistory, getIndex, getRefine, getReport, liveUsable, readStatus, type IndexEntry, type Mode, type Status } from "./data";
 import { pct, setAssetDecimals } from "./lib";
 
 const BLOCK = "26,157,638";
@@ -48,6 +48,8 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
   const [vault, setVault] = useState<string>(hashVault() ?? "0xBEEf050ecd6a16c4e7bfFbB52Ebba7846C4b8cD4");
   const [report, setReport] = useState<any>(null);
   const [graph, setGraph] = useState<any>(null);
+  const [refine, setRefine] = useState<any>(null);
+  const [history, setHistory] = useState<any>(null);
   const [err, setErr] = useState<string | null>(null);
   const [howto, setHowto] = useState(false);
   const [more, setMore] = useState(false);
@@ -84,6 +86,8 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
     setReport(null); setGraph(null); setErr(null);
     getReport(mode, vault).then((r) => { setAssetDecimals(r.target.assetDecimals); setReport(r); }).catch((e) => setErr(String(e.message)));
     getGraph(mode, vault).then(setGraph).catch(() => setGraph(null));
+    setRefine(null); setHistory(null);
+    getRefine(vault).then((x) => { setRefine(x); if (x.history) getHistory("steth-eth").then(setHistory).catch(() => setHistory(null)); }).catch(() => setRefine(null));
   }, [mode, vault]);
 
   const entry = index.find((x) => x.vault.toLowerCase() === vault.toLowerCase());
@@ -141,9 +145,9 @@ function Dashboard({ theme, setTheme }: { theme: string; setTheme: (t: string) =
         {err && <section className="card bad">This vault has no exported result ({err}). Pick another vault in the list.</section>}
         {!report && !err && <section className="card">Loading…</section>}
         {report && <>
-          <ExitPanel r={report} entry={entry} mode={mode ?? "static"} pick={pick} />
-          <LeaveCard r={report} />
-          <NotModeledCard r={report} />
+          <ExitPanel r={report} entry={entry} mode={mode ?? "static"} pick={pick} refine={refine} />
+          <LeaveCard r={report} refine={refine} history={history} />
+          <NotModeledCard r={report} refine={refine} />
           <div className="reveal">
             <button className="pill ghostpill big" aria-expanded={more} onClick={() => setMore(!more)}>{more ? "Hide the dependencies and the proof" : "See the dependencies and the proof"}</button>
           </div>

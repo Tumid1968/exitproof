@@ -53,6 +53,8 @@ function fmtUnits(x: string | bigint, decimals: number, dp = 2) {
   return (neg ? "-" : "") + int + frac;
 }
 const fmtPct = (x: number) => (x * 100).toFixed(2) + "%";
+/** visible text with all whitespace (tabs, line breaks of flex items, no-break spaces) collapsed */
+const norm = (t: string) => t.replace(/\s+/g, " ").trim();
 
 /** the five scenario pills: worst executed run of each kind (same rule as the opening screen) */
 function expectedPills(r: any) {
@@ -255,6 +257,56 @@ for (const tg of targets) {
         assert.deepEqual(shown, r.notModeled.totalLoss.map((x: any) => fmtPct(x.breakEven)));
         assert.deepEqual(shown, ["0.03%", "0.13%", "0.38%"]);
         assert.match(await page.locator("details.fold").innerText(), /The probability is yours, nothing here predicts it\./);
+      }));
+
+      test("12. history tile: k of N per shock size from results/history, no single forecast", () => withPage(T("history"), tg.base(), opts, async ({ page }) => {
+        await waitAmount(page);
+        await showAll(page);
+        const h = readJson("results/history/steth-eth.json");
+        const tile = page.locator(".histtile");
+        await tile.locator(".histtable").waitFor();
+        const rows = await tile.locator(".histtable tr").allInnerTexts();
+        assert.deepEqual(rows.map(norm), h.windows.bySize.map((x: any) => `${Math.round(x.size * 100)} %${x.size === 0.1 ? " (this incident)" : ""} ${x.k} of ${x.n} windows`));
+        const text = norm(await tile.innerText());
+        assert.ok(text.includes("One event is not a distribution. This is a reference, not a forecast."), text);
+        assert.ok(text.includes("The market's oracle does not use this feed."), text);
+      }));
+
+      test("13. break it down: no verdict before the second slider; p = shock × others exit, compared with p*", () => withPage(T("breakdown"), tg.base(), opts, async ({ page }) => {
+        await waitAmount(page);
+        await showAll(page);
+        await page.getByRole("radio", { name: "break it down" }).click();
+        assert.match(await page.locator(".reading").innerText(), /^Move the second slider/);
+        const h = readJson("results/history/steth-eth.json");
+        const ref = h.windows.bySize.find((x: any) => x.size === 0.1);
+        assert.match(await page.locator(".slider2 .sliderval").first().innerText(), new RegExp(`^${ref.k} of ${ref.n} windows`));
+        await page.getByRole("slider", { name: "chance that others exit first" }).focus();
+        await page.keyboard.press("End"); // 100 % × reference
+        const expectRef = ref.k / ref.n; // product with 100 %
+        const be = report(STEAKHOUSE).verdictGrid.find((x: any) => x.id === report(STEAKHOUSE).bindingIncident).cells.find((c: any) => c.horizonDays === 30 && c.lockedHaircut === 0.1).breakEven;
+        await page.locator(".reading", { hasText: expectRef > be ? "leaving pays off" : "staying is cheaper" }).waitFor({ timeout: 3000 });
+        await page.getByRole("slider", { name: "chance of the shock" }).focus();
+        await page.keyboard.press("End"); // 50 % × 100 % = 50 % > p*
+        await page.locator(".reading", { hasText: "leaving pays off" }).waitFor({ timeout: 3000 });
+        await page.keyboard.press("Home"); // 0 %
+        await page.locator(".reading", { hasText: "staying is cheaper" }).waitFor({ timeout: 3000 });
+      }));
+
+      test("14. exit window, governance window and vault-level loss match results/refine", () => withPage(T("refine"), tg.base(), opts, async ({ page }) => {
+        await waitAmount(page);
+        await showAll(page);
+        const rf = readJson(`results/refine/${STEAKHOUSE}.json`);
+        assert.ok(norm(await page.locator(".exitwin").innerText()).startsWith("Exit window: Immediate"));
+        await clickPill(page, "One holder before me");
+        assert.match(norm(await page.locator(".exitwin").innerText()), /^Exit window: Partial: [0-9]+ % now/);
+        assert.ok(norm(await page.locator(".exitwinsub").innerText()).includes(`wait ${rf.governance.timelockDays} days (timelock), and a guardian can veto them`));
+        const vl = await page.locator(".vaultlevel").innerText();
+        assert.ok(vl.includes(fmtPct(rf.vaultLevel.ratio)), `vault-level line lacks ${fmtPct(rf.vaultLevel.ratio)}: ${vl}`);
+        assert.equal(/significant loss/.test(vl), rf.vaultLevel.ratio >= 0.01);
+        await page.locator("details.fold > summary").click();
+        const nm = norm(await page.locator("details.fold").innerText());
+        for (const s of ["Contract hack: total-loss threshold", "Other risk teams also avoid predicting hack probabilities; we show the threshold instead.",
+          `wait ${rf.governance.timelockDays} days (timelock)`, "not the liquidity lock measured above"]) assert.ok(nm.includes(s), `Not modeled lacks "${s}"`);
       }));
 
       test("7. tabs open without errors; Replay shows REPLAY OK and the manifest sha256 computed here", () => withPage(T("tabs"), tg.base(), opts, async ({ page, errors }) => {
