@@ -87,6 +87,43 @@ const windows = Array.from({ length: Math.floor((p.length - 1) / WINDOW_DAYS) },
 const worst = windows.reduce((a, b) => (b.drop > a.drop ? b : a));
 const round6 = (x: number) => Math.round(x * 1e6) / 1e6;
 
+/**
+ * 10 October 2025 (a day of very large liquidations across crypto markets): every round of the feed from
+ * 9 Oct 00:00 UTC to 13 Oct 00:00 UTC, not only the daily sample. "Before" = last round updated before the
+ * end of 9 Oct (UTC). Feed reading only: it says nothing about how any vault behaved.
+ */
+function oct10() {
+  const from = Date.UTC(2025, 9, 9) / 1000, endOf9 = Date.UTC(2025, 9, 10) / 1000, to = Date.UTC(2025, 9, 13) / 1000;
+  const iso = (t: number) => new Date(t * 1000).toISOString().replace(".000", "");
+  const before = [...usable].reverse().find((x) => x.updatedAt < endOf9)!;
+  const win = usable.filter((x) => x.updatedAt >= from && x.updatedAt < to);
+  const after = win.filter((x) => x.updatedAt >= endOf9);
+  const px = (x: { answer: bigint }) => Number(x.answer) / scale;
+  const min = after.reduce((a, b) => (px(b) < px(a) ? b : a), before);
+  // largest peak-to-trough fall between consecutive-or-later rounds inside the window (before included)
+  let peak = before, worst = { drop: 0, from: before, to: before };
+  for (const x of [before, ...after]) { if (px(x) > px(peak)) peak = x; const d = 1 - px(x) / px(peak); if (d > worst.drop) worst = { drop: d, from: peak, to: x }; }
+  // the fall itself: first round more than 0.5 % (the feed's deviation threshold) below "before", then back within 0.5 %
+  const firstMove = after.find((x) => px(x) < px(before) * 0.995) ?? min;
+  const recovered = after.find((x) => x.updatedAt > min.updatedAt && px(x) >= px(before) * 0.995) ?? null;
+  // what the daily sample used for the k-of-N counts recorded that day
+  const d9 = days.find((d) => d.date === "2025-10-09"), d10 = days.find((d) => d.date === "2025-10-10");
+  return {
+    id: "2025-10-10", title: "What stETH did on Oct 10, 2025",
+    fall: { firstMoveAt: iso(firstMove.updatedAt), firstMovePrice: round6(px(firstMove)), secondsFirstMoveToMin: min.updatedAt - firstMove.updatedAt,
+      backWithinHalfPercentAt: recovered ? iso(recovered.updatedAt) : null, secondsMinToRecovery: recovered ? recovered.updatedAt - min.updatedAt : null },
+    dailySample: d9 && d10 ? { oct9: round6(d9.price), oct10: round6(d10.price), drop: round6(Math.max(0, 1 - d10.price / d9.price)), note: "the daily samples behind the k-of-N counts miss intraday moves" } : null,
+    vsOneDayP99: round6(Math.max(0, 1 - px(min) / px(before)) / pctl(drop1, 0.99)),
+    note: "Chainlink feed reading, not a DEX price. Shows how the stETH/ETH feed moved on a day of very large liquidations; it does not say how any vault behaved.",
+    window: { from: iso(from), to: iso(to), roundsInWindow: win.length },
+    before: { price: round6(px(before)), updatedAt: iso(before.updatedAt), roundId: before.roundId },
+    min: { price: round6(px(min)), updatedAt: iso(min.updatedAt), roundId: min.roundId },
+    dropFromBefore: round6(Math.max(0, 1 - px(min) / px(before))), secondsBeforeToMin: min.updatedAt - before.updatedAt,
+    largestFallInWindow: { drop: round6(worst.drop), from: iso(worst.from.updatedAt), to: iso(worst.to.updatedAt), seconds: worst.to.updatedAt - worst.from.updatedAt },
+    rounds: [before, ...after].map((x) => [x.roundId, iso(x.updatedAt), round6(px(x))]),
+  };
+}
+
 const body = {
   schema: "exitproof-history/1",
   what: "Chainlink stETH/ETH feed, daily samples, read at the source block. Not used by the market oracle; a historical reference, not a forecast.",
@@ -104,6 +141,7 @@ const body = {
     worst: { start: worst.start, drop: round6(worst.drop) },
   },
   daily: days.map((d) => [d.date, round6(d.price)]),
+  events: [oct10()],
 };
 const json = toJson(body);
 const out = { ...body, sha256: createHash("sha256").update(json).digest("hex") };
