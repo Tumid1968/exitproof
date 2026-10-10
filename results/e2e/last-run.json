@@ -1,106 +1,98 @@
 {
-  "at": "2026-10-10T18:54:12.572Z",
+  "at": "2026-10-10T19:10:12.758Z",
   "target": "local",
   "metrics": [
     {
       "target": "http",
       "viewport": "1440",
-      "firstAnswerMs": 473,
+      "firstAnswerMs": 632,
       "requests": 11
     },
     {
       "target": "http",
-      "theme": "dark",
-      "step": 1,
-      "contrastViolations": []
+      "viewport": "1440",
+      "words": {
+        "main": 44,
+        "why 1": 38,
+        "why 2": 37,
+        "why 3": 31,
+        "why 4": 32
+      }
     },
     {
       "target": "http",
       "theme": "dark",
-      "step": 2,
-      "contrastViolations": []
-    },
-    {
-      "target": "http",
-      "theme": "dark",
-      "step": 3,
       "contrastViolations": []
     },
     {
       "target": "http",
       "theme": "light",
-      "step": 1,
-      "contrastViolations": []
-    },
-    {
-      "target": "http",
-      "theme": "light",
-      "step": 2,
-      "contrastViolations": []
-    },
-    {
-      "target": "http",
-      "theme": "light",
-      "step": 3,
       "contrastViolations": []
     },
     {
       "target": "http",
       "viewport": "375",
-      "firstAnswerMs": 377,
+      "firstAnswerMs": 496,
+      "requests": 11
+    },
+    {
+      "target": "http",
+      "viewport": "375",
+      "words": {
+        "main": 41,
+        "why 1": 38,
+        "why 2": 37,
+        "why 3": 31,
+        "why 4": 32
+      }
+    },
+    {
+      "target": "file",
+      "viewport": "1440",
+      "firstAnswerMs": 467,
       "requests": 11
     },
     {
       "target": "file",
       "viewport": "1440",
-      "firstAnswerMs": 411,
-      "requests": 11
+      "words": {
+        "main": 44,
+        "why 1": 38,
+        "why 2": 37,
+        "why 3": 31,
+        "why 4": 32
+      }
     },
     {
       "target": "file",
       "theme": "dark",
-      "step": 1,
-      "contrastViolations": []
-    },
-    {
-      "target": "file",
-      "theme": "dark",
-      "step": 2,
-      "contrastViolations": []
-    },
-    {
-      "target": "file",
-      "theme": "dark",
-      "step": 3,
       "contrastViolations": []
     },
     {
       "target": "file",
       "theme": "light",
-      "step": 1,
-      "contrastViolations": []
-    },
-    {
-      "target": "file",
-      "theme": "light",
-      "step": 2,
-      "contrastViolations": []
-    },
-    {
-      "target": "file",
-      "theme": "light",
-      "step": 3,
       "contrastViolations": []
     },
     {
       "target": "file",
       "viewport": "375",
-      "firstAnswerMs": 302,
+      "firstAnswerMs": 474,
       "requests": 11
     },
     {
+      "target": "file",
+      "viewport": "375",
+      "words": {
+        "main": 41,
+        "why 1": 38,
+        "why 2": 37,
+        "why 3": 31,
+        "why 4": 32
+      }
+    },
+    {
       "live": "execute again",
-      "result": "3,318.751556 WETH in 813 ms — identical to the wei"
+      "result": "3,318.751556 WETH in 1475 ms — identical to the wei"
     }
   ],
   "warnings": [

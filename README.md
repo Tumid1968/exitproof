@@ -6,9 +6,15 @@ One protocol, MetaMorpho V1 on Morpho Blue. For a position, ExitProof executes t
 
 > Every number in this README was produced by the code in this repository (`npm run all`, `npm run replay`). Labels used everywhere: **measured on the fork** (exit liquidity), **modeled** (value loss, lower bound), **your assumption** (probabilities).
 
-## For a newcomer (first screen)
+## Main screen
 
-The site opens on one question, "Can I get my money back out of this vault if something goes wrong?", answered with one word about the exit and one sentence. The word says how easily the largest deposit can leave, not whether it should: **Easy exit** (at least 90 % gets out even in the worst executed case), **Tight exit** (50–90 %), **Hard exit** (below 50 %, or not everything can get out even alone); a line under it says "This is about how easily you can leave, not whether you should. The advice is below." These limits are a choice, shown under "How we pick the word". For Steakhouse ETH: **Hard exit** — if many people leave at once, about 40 % of the position could get out right away; with nobody leaving first, all of it can. Over the 23 precomputed vaults: 11 Easy exit, 3 Tight exit, 9 Hard exit. The advice itself (stay unless the problem is more likely than about 1 in 89 over a month) is in step 3. Then three steps (What you put in, What could go wrong, Stay or leave), one open at a time, with plain words and a "?" on each technical term (glossary at `#/glossary`). The example "out of every 1,000 WETH in this position" is the measured amount scaled pro rata; a smaller deposit on its own can come out in full while cash lasts, and the page says so. Everything below (numbers, dependencies, proof) is in "Expert mode", closed by default.
+One screen, no scrolling on a phone (375×667): pick a pool, then
+- the exit word: **Easy exit** (at least 90 % of the largest deposit gets out even in the worst executed case), **Tight exit** (50–90 %), **Hard exit** (below 50 %, or not everything can get out even alone); these limits are a choice;
+- one number: "If others leave first, you get back X of Y WETH" (the worst executed case) with a bar;
+- one verdict line: "Leave if you think a problem is more likely than 1 in N this month", which turns into "Stay" or "Leave" once you move the slider;
+- "Replay" (static: the recorded replay) or "Run the exit" (live: the worst case executed again on the fork), and "Why?".
+
+For Steakhouse ETH: Hard exit, 2,079.21 of 5,209.91 WETH, leave above 1 in 89. Over the 23 precomputed vaults: 11 Easy exit, 3 Tight exit, 9 Hard exit. "Why?" opens four short blocks (if a problem hits, who depends on whom, money stuck for a while, what this tool cannot see), with a "?" on each technical term and a glossary at `#/glossary`. Text budget, tested: 41 words on the main screen (95 before), at most 40 per block, no sentence over 20 words. Everything else (all numbers, the dependencies, the proof) is in "Expert mode", closed by default.
 
 ## 1. What do I really get back?
 
@@ -95,7 +101,7 @@ npm run demo -- --offline    # the proxy serves its disk cache only (after one o
 
 `http://127.0.0.1:5173/#/status` shows proxy, fork, API and mode. If the fork stops answering, the UI switches to the static replay with a visible banner.
 
-Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork), `npm run test:e2e` (90 end-to-end checks in the installed Chrome, see below). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
+Other commands: `npm run proxy`, `npm run fork`, `npm run replay [-- 0x<vault>]`, `npm run all` (rebuild results), `npm test` (14 unit tests), `npm run test:fork` (9 acceptance tests on the fork), `npm run test:e2e` (101 end-to-end checks in the installed Chrome, see below). No API key is needed (default upstream `https://eth.drpc.org`); a private archive RPC can be set with `EXITPROOF_RPC_URL`, never written to disk or committed.
 
 ## How it works (short)
 

@@ -44,3 +44,8 @@
 - History on every round: k = 13, 3, 0, 0, 0, 0 of 62 (daily sample 6, 1, 0, 0, 0, 0); worst window −4.75 % (Jun 2022); 1-day p95/p99 0.15 %/0.60 %, 30-day 2.83 %/4.54 %.
 - Newcomer view: one question + Easy/Tight/Hard exit (about leaving, not advice), three steps, "?" on terms, glossary page, scaled example, verdict in two lines, expert mode closed by default.
 - Tests: unit 17/17, e2e 90 (89 passed, 1 opt-in skipped), fork 9/9.
+
+## Lean main screen (10 Oct, tag pre-lean)
+- One screen (fits 375×667): pool, exit word, worst case X of Y, verdict line + slider, Replay / Run the exit, Why?. Main screen 41 words (95 before); Why? blocks 38/37/31/32.
+- Removed: three-step view, hero question and long sentence, per-1,000 example, How to read / Glossary / Demo in the top bar (glossary still reached from the "?" in Why?).
+- Tests: unit 17/17, e2e 101 (100 passed, 1 opt-in skipped), fork 9/9.
