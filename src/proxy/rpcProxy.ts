@@ -99,7 +99,7 @@ const log = (s: string) => appendFileSync(LOG_FILE, `${new Date().toISOString()}
 // Concurrency limiter + retry: free public RPCs rate-limit aggressively.
 let inFlight = 0;
 const waiting: (() => void)[] = [];
-const MAX_IN_FLIGHT = Number(process.env.EXITPROOF_PROXY_CONCURRENCY ?? 8);
+const MAX_IN_FLIGHT = Number(process.env.EXITPROOF_PROXY_CONCURRENCY ?? 4);
 async function withSlot<T>(fn: () => Promise<T>): Promise<T> {
   while (inFlight >= MAX_IN_FLIGHT) await new Promise<void>((res) => waiting.push(res));
   inFlight++;
@@ -108,7 +108,7 @@ async function withSlot<T>(fn: () => Promise<T>): Promise<T> {
 
 async function forward(r: RpcReq): Promise<{ result?: unknown; error?: unknown }> {
   let lastErr: unknown;
-  for (let attempt = 0; attempt < 7; attempt++) {
+  for (let attempt = 0; attempt < 12; attempt++) {
     try {
       const res = await withSlot(() => fetch(UPSTREAM, {
         method: "POST",
@@ -123,7 +123,8 @@ async function forward(r: RpcReq): Promise<{ result?: unknown; error?: unknown }
       return j;
     } catch (e) {
       lastErr = e;
-      await new Promise((res) => setTimeout(res, 300 * 2 ** attempt));
+      // free endpoints answer 429 in bursts: exponential backoff capped at 10 s, with jitter
+      await new Promise((res) => setTimeout(res, Math.min(10_000, 400 * 2 ** attempt) * (0.75 + Math.random() / 2)));
     }
   }
   stats.upstreamErr++;
