@@ -36,9 +36,9 @@
     "peerVaultCount": 13,
     "publicAllocatorIsAllocator": true,
     "publicAllocatorReallocatableIntoExposedMarkets": "9405093943663",
-    "nodeCount": 170,
-    "edgeCount": 264,
-    "readCount": 1790,
+    "nodeCount": 219,
+    "edgeCount": 370,
+    "readCount": 4103,
     "netApy": 0.04099634440354403,
     "holders": {
       "coverage": 0.881083,
@@ -831,8 +831,8 @@
         "withdrawableAfter": "45989139859043",
         "holderLoss": "0",
         "holderHiddenLoss": "0",
-        "liquidated": 5,
-        "unliquidated": 1
+        "liquidated": 6,
+        "unliquidated": 0
       }
     },
     {
@@ -881,13 +881,13 @@
         "The shocked price is what the oracle returns to Morpho Blue."
       ],
       "dexLimited": {
-        "vaultLoss": "724221058",
-        "vaultHiddenLoss": "19408237",
-        "withdrawableAfter": "45988415637985",
-        "holderLoss": "339999482",
-        "holderHiddenLoss": "9111569",
-        "liquidated": 16,
-        "unliquidated": 15
+        "vaultLoss": "721625559",
+        "vaultHiddenLoss": "56582550",
+        "withdrawableAfter": "45988418233484",
+        "holderLoss": "338780975",
+        "holderHiddenLoss": "26563764",
+        "liquidated": 21,
+        "unliquidated": 10
       }
     },
     {
@@ -1091,13 +1091,13 @@
         "The shocked price is what the oracle returns to Morpho Blue."
       ],
       "dexLimited": {
-        "vaultLoss": "602917580",
+        "vaultLoss": "604251366",
         "vaultHiddenLoss": "0",
-        "withdrawableAfter": "45988536941463",
-        "holderLoss": "283051235",
+        "withdrawableAfter": "45988535607677",
+        "holderLoss": "283677406",
         "holderHiddenLoss": "0",
-        "liquidated": 12,
-        "unliquidated": 5
+        "liquidated": 16,
+        "unliquidated": 1
       }
     },
     {
@@ -1902,11 +1902,11 @@
       "dexLimited": {
         "vaultLoss": "2",
         "vaultHiddenLoss": "0",
-        "withdrawableAfter": "45989139859041",
+        "withdrawableAfter": "46009688268528",
         "holderLoss": "0",
         "holderHiddenLoss": "0",
-        "liquidated": 5,
-        "unliquidated": 1
+        "liquidated": 6,
+        "unliquidated": 0
       }
     },
     {
@@ -1981,13 +1981,13 @@
         "The shocked price is what the oracle returns to Morpho Blue."
       ],
       "dexLimited": {
-        "vaultLoss": "435557461",
+        "vaultLoss": "518507660",
         "vaultHiddenLoss": "0",
-        "withdrawableAfter": "45988704301582",
-        "holderLoss": "204480813",
+        "withdrawableAfter": "46034892784008",
+        "holderLoss": "243423377",
         "holderHiddenLoss": "0",
-        "liquidated": 12,
-        "unliquidated": 4
+        "liquidated": 14,
+        "unliquidated": 2
       }
     },
     {
@@ -2478,11 +2478,11 @@
       "dexLimited": {
         "vaultLoss": "0",
         "vaultHiddenLoss": "0",
-        "withdrawableAfter": "45989139859043",
+        "withdrawableAfter": "46009688268530",
         "holderLoss": "0",
         "holderHiddenLoss": "0",
-        "liquidated": 1,
-        "unliquidated": 1
+        "liquidated": 2,
+        "unliquidated": 0
       }
     },
     {
@@ -2531,13 +2531,13 @@
         "The shocked price is what the oracle returns to Morpho Blue."
       ],
       "dexLimited": {
-        "vaultLoss": "0",
+        "vaultLoss": "82950199",
         "vaultHiddenLoss": "0",
-        "withdrawableAfter": "45989139859043",
-        "holderLoss": "0",
+        "withdrawableAfter": "46141881810894",
+        "holderLoss": "38942563",
         "holderHiddenLoss": "0",
-        "liquidated": 1,
-        "unliquidated": 6
+        "liquidated": 6,
+        "unliquidated": 1
       }
     },
     {
@@ -3241,8 +3241,8 @@
         "withdrawableAfter": "45991478001335",
         "holderLoss": "0",
         "holderHiddenLoss": "0",
-        "liquidated": 1,
-        "unliquidated": 2
+        "liquidated": 2,
+        "unliquidated": 1
       }
     },
     {
@@ -6066,9 +6066,9 @@
       "title": "Incident: ETH / USD -10%, liquidations limited by AMM depth measured at the block, then the largest competing holders exit first",
       "valueSource": "executed on fork (bad debt of the liquidations the AMM depth allows) + analytic unrecognised shortfall of the positions left insolvent",
       "executedFacts": {
-        "holderMaxWithdrawAfterRun": "30561390253658",
-        "liquidatedOnFork": 5,
-        "leftInsolvent": 1
+        "holderMaxWithdrawAfterRun": "30561390720204",
+        "liquidatedOnFork": 6,
+        "leftInsolvent": 0
       },
       "inputs": {
         "positionValue": "30561384626529",
@@ -6199,7 +6199,7 @@
   "depegCurveCollateral": "cbBTC",
   "dex": {
     "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64": {
-      "capacity": "38900000",
+      "capacity": "227100000",
       "collateralAtRisk": "834374398653",
       "venues": [
         {
@@ -6215,11 +6215,25 @@
           "pool": "0x4548280AC92507C9092a511C7396Cbea78FA9E49",
           "capacity": "38800000",
           "avgPrice": 79072.0980798969
+        },
+        {
+          "id": "2hop:0x15aA01580ae866f9FF4DBe45E06e307941d90C7b:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.3% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+          "capacity": "188200000",
+          "avgPrice": 79053.1792008501
+        },
+        {
+          "id": "2hop:0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0x8a4f25… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+          "capacity": "14800000",
+          "avgPrice": 79160.1715405405
         }
       ]
     },
     "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49": {
-      "capacity": "3316000000",
+      "capacity": "7967000000",
       "collateralAtRisk": "301745663823",
       "venues": [
         {
@@ -6249,16 +6263,101 @@
           "pool": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
           "capacity": "100000000",
           "avgPrice": 78935.845064
+        },
+        {
+          "id": "2hop:0xe6ff8b9A37B0fab776134636D9981Aa778c4e718:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.01% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xe6ff8b9A37B0fab776134636D9981Aa778c4e718",
+          "capacity": "2116600000",
+          "avgPrice": 78930.3216931871
+        },
+        {
+          "id": "2hop:0x4585FE77225b41b697C938B018E2Ac67Ac5a20c0:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.05% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x4585FE77225b41b697C938B018E2Ac67Ac5a20c0",
+          "capacity": "4651000000",
+          "avgPrice": 78930.437316233
+        },
+        {
+          "id": "2hop:0xCBCdF9626bC03E24f779434178A73a0B4bad62eD:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.3% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xCBCdF9626bC03E24f779434178A73a0B4bad62eD",
+          "capacity": "1919800000",
+          "avgPrice": 78931.0844693197
+        },
+        {
+          "id": "2hop:0x6Ab3bba2F41e7eAA262fa5A1A9b3932fA161526F:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 1% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x6Ab3bba2F41e7eAA262fa5A1A9b3932fA161526F",
+          "capacity": "21400000",
+          "avgPrice": 78983.359088785
+        },
+        {
+          "id": "2hop:0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0x80466c… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5",
+          "capacity": "6400000",
+          "avgPrice": 79202.36046875
+        },
+        {
+          "id": "2hop:0xD51a44d3FaE010294C616388b506AcdA1bfAAE46:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0xD51a44… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46",
+          "capacity": "188200000",
+          "avgPrice": 78930.8943087141
+        },
+        {
+          "id": "2hop:0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0x7F86Bf… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
+          "capacity": "116800000",
+          "avgPrice": 78947.69744948631
+        },
+        {
+          "id": "2hop:0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0xf5f5B9… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4",
+          "capacity": "273400000",
+          "avgPrice": 78937.160158376
         }
       ]
     },
     "0x85252bb8485c99bba46fe149c7dd2aad83672640f53c630890673cf1848ba16e": {
-      "capacity": "0",
+      "capacity": "1945816000000000000000",
       "collateralAtRisk": "20674576915959154583225",
-      "venues": []
+      "venues": [
+        {
+          "id": "2hop:0x202A6012894Ae5c288eA824cbc8A9bfb26A49b93:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.01% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x202A6012894Ae5c288eA824cbc8A9bfb26A49b93",
+          "capacity": "1683904000000000000000",
+          "avgPrice": 2628
+        },
+        {
+          "id": "2hop:0x7A415B19932c0105c82FDB6b720bb01B0CC2CAe3:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.05% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x7A415B19932c0105c82FDB6b720bb01B0CC2CAe3",
+          "capacity": "1945816000000000000000",
+          "avgPrice": 2628
+        },
+        {
+          "id": "2hop:0x13947303F63b363876868D070F14dc865C36463b:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0x139473… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x13947303F63b363876868D070F14dc865C36463b",
+          "capacity": "4144000000000000000",
+          "avgPrice": 2630
+        },
+        {
+          "id": "2hop:0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0xDB74df… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5",
+          "capacity": "1560868000000000000000",
+          "avgPrice": 2628
+        }
+      ]
     },
     "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc": {
-      "capacity": "956000000000000000",
+      "capacity": "1723476000000000000000",
       "collateralAtRisk": "23981696121716954692703",
       "venues": [
         {
@@ -6274,11 +6373,53 @@
           "pool": "0x173821f6aD4c5324cd35753A9FD12D92f2eaAB29",
           "capacity": "442000000000000000",
           "avgPrice": 2976
+        },
+        {
+          "id": "2hop:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.01% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+          "capacity": "1262032000000000000000",
+          "avgPrice": 2968
+        },
+        {
+          "id": "2hop:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.05% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+          "capacity": "100000000000000000",
+          "avgPrice": 2970
+        },
+        {
+          "id": "2hop:0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "unwrap → Uniswap V3 1% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+          "capacity": "109102000000000000000",
+          "avgPrice": 2968
+        },
+        {
+          "id": "2hop:0x828b154032950C8ff7CF8085D841723Db2696056:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "unwrap → Curve pool 0x828b15… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x828b154032950C8ff7CF8085D841723Db2696056",
+          "capacity": "10342000000000000000",
+          "avgPrice": 2968
+        },
+        {
+          "id": "2hop:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "unwrap → Curve pool 0xDC2431… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+          "capacity": "1722520000000000000000",
+          "avgPrice": 2968
+        },
+        {
+          "id": "2hop:0x21E27a5E5513D6e65C4f830167390997aA84843a:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "unwrap → Curve pool 0x21E27a… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+          "capacity": "1709860000000000000000",
+          "avgPrice": 2968
         }
       ]
     },
     "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8": {
-      "capacity": "980000000000000000",
+      "capacity": "1805748000000000000000",
       "collateralAtRisk": "7140649131499737492470",
       "venues": [
         {
@@ -6294,6 +6435,48 @@
           "pool": "0x173821f6aD4c5324cd35753A9FD12D92f2eaAB29",
           "capacity": "448000000000000000",
           "avgPrice": 2966
+        },
+        {
+          "id": "2hop:0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.01% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa",
+          "capacity": "1264816000000000000000",
+          "avgPrice": 2962
+        },
+        {
+          "id": "2hop:0xD340B57AAcDD10F96FC1CF10e15921936F41E29c:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.05% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xD340B57AAcDD10F96FC1CF10e15921936F41E29c",
+          "capacity": "106000000000000000",
+          "avgPrice": 2963
+        },
+        {
+          "id": "2hop:0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "unwrap → Uniswap V3 1% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x63818BbDd21E69bE108A23aC1E84cBf66399Bd7D",
+          "capacity": "117142000000000000000",
+          "avgPrice": 2962
+        },
+        {
+          "id": "2hop:0x828b154032950C8ff7CF8085D841723Db2696056:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "unwrap → Curve pool 0x828b15… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x828b154032950C8ff7CF8085D841723Db2696056",
+          "capacity": "10372000000000000000",
+          "avgPrice": 2963
+        },
+        {
+          "id": "2hop:0xDC24316b9AE028F1497c275EB9192a3Ea0f67022:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "unwrap → Curve pool 0xDC2431… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+          "capacity": "1804768000000000000000",
+          "avgPrice": 2962
+        },
+        {
+          "id": "2hop:0x21E27a5E5513D6e65C4f830167390997aA84843a:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "unwrap → Curve pool 0x21E27a… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+          "capacity": "1791076000000000000000",
+          "avgPrice": 2962
         }
       ]
     },
@@ -6351,7 +6534,7 @@
       ]
     },
     "0x09dc9e7eb5d8fc54b2bc41d1135fd4e99057a580f680321faeb90c7a21e631c1": {
-      "capacity": "3209646805",
+      "capacity": "6579252413",
       "collateralAtRisk": "3369605608",
       "venues": [
         {
@@ -6381,16 +6564,108 @@
           "pool": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
           "capacity": "97000000",
           "avgPrice": 79033.7766494845
+        },
+        {
+          "id": "2hop:0xe6ff8b9A37B0fab776134636D9981Aa778c4e718:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.01% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xe6ff8b9A37B0fab776134636D9981Aa778c4e718",
+          "capacity": "2042460683",
+          "avgPrice": 79031.51574482469
+        },
+        {
+          "id": "2hop:0x4585FE77225b41b697C938B018E2Ac67Ac5a20c0:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.05% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x4585FE77225b41b697C938B018E2Ac67Ac5a20c0",
+          "capacity": "3369605608",
+          "avgPrice": 79910.259650838
+        },
+        {
+          "id": "2hop:0xCBCdF9626bC03E24f779434178A73a0B4bad62eD:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.3% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xCBCdF9626bC03E24f779434178A73a0B4bad62eD",
+          "capacity": "1855646016",
+          "avgPrice": 79031.7826023344
+        },
+        {
+          "id": "2hop:0x6Ab3bba2F41e7eAA262fa5A1A9b3932fA161526F:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 1% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x6Ab3bba2F41e7eAA262fa5A1A9b3932fA161526F",
+          "capacity": "20800000",
+          "avgPrice": 79052.5949134615
+        },
+        {
+          "id": "2hop:0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0x80466c… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5",
+          "capacity": "6400000",
+          "avgPrice": 79202.36046875
+        },
+        {
+          "id": "2hop:0xD51a44d3FaE010294C616388b506AcdA1bfAAE46:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0xD51a44… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46",
+          "capacity": "182200000",
+          "avgPrice": 79036.06199615801
+        },
+        {
+          "id": "2hop:0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0x7F86Bf… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
+          "capacity": "113800000",
+          "avgPrice": 79041.2048963093
+        },
+        {
+          "id": "2hop:0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0xf5f5B9… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4",
+          "capacity": "265000000",
+          "avgPrice": 79035.95913698111
         }
       ]
     },
     "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd": {
-      "capacity": "0",
+      "capacity": "311772721328739003145",
       "collateralAtRisk": "311772721328739003145",
-      "venues": []
+      "venues": [
+        {
+          "id": "2hop:0x202A6012894Ae5c288eA824cbc8A9bfb26A49b93:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.01% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x202A6012894Ae5c288eA824cbc8A9bfb26A49b93",
+          "capacity": "311772721328739003145",
+          "avgPrice": 2724
+        },
+        {
+          "id": "2hop:0x7A415B19932c0105c82FDB6b720bb01B0CC2CAe3:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.05% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x7A415B19932c0105c82FDB6b720bb01B0CC2CAe3",
+          "capacity": "311772721328739003145",
+          "avgPrice": 2721
+        },
+        {
+          "id": "2hop:0x6f5C74e2170cfD6F5B7829F4742Dc54CEC42eA07:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.3% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x6f5C74e2170cfD6F5B7829F4742Dc54CEC42eA07",
+          "capacity": "1000000000000000",
+          "avgPrice": 2562
+        },
+        {
+          "id": "2hop:0x13947303F63b363876868D070F14dc865C36463b:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0x139473… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x13947303F63b363876868D070F14dc865C36463b",
+          "capacity": "4372000000000000000",
+          "avgPrice": 2556
+        },
+        {
+          "id": "2hop:0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0xDB74df… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5",
+          "capacity": "311772721328739003145",
+          "avgPrice": 2725
+        }
+      ]
     },
     "0xbc99de6a88904cd0e69042ad6f266e63182801f030c636507c3caf590ffd84fe": {
-      "capacity": "38900000",
+      "capacity": "228300000",
       "collateralAtRisk": "1999286805",
       "venues": [
         {
@@ -6406,6 +6681,20 @@
           "pool": "0x4548280AC92507C9092a511C7396Cbea78FA9E49",
           "capacity": "38800000",
           "avgPrice": 79072.0980798969
+        },
+        {
+          "id": "2hop:0x15aA01580ae866f9FF4DBe45E06e307941d90C7b:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Uniswap V3 0.3% pool → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x15aA01580ae866f9FF4DBe45E06e307941d90C7b",
+          "capacity": "189400000",
+          "avgPrice": 79035.99926082359
+        },
+        {
+          "id": "2hop:0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+          "route": "Curve pool 0x8a4f25… → WETH → Uniswap V3 0.05% pool",
+          "pool": "0x8a4f252812dFF2A8636E4F7EB249d8FC2E3bd77f",
+          "capacity": "14800000",
+          "avgPrice": 79160.1715405405
         }
       ]
     },

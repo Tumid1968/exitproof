@@ -3432,7 +3432,7 @@
       "prov": [
         "r474",
         "r482",
-        "r485",
+        "r486",
         "r500",
         "r506",
         "r511",
@@ -3454,10 +3454,10 @@
         "r474",
         "r480",
         "r484",
-        "r504",
-        "r510",
-        "r514",
-        "r518"
+        "r503",
+        "r509",
+        "r513",
+        "r516"
       ]
     },
     {
@@ -3475,11 +3475,11 @@
         "r474",
         "r478",
         "r481",
-        "r498",
-        "r503",
-        "r508",
-        "r513",
-        "r517",
+        "r499",
+        "r504",
+        "r510",
+        "r514",
+        "r518",
         "r519",
         "r520"
       ]
@@ -3519,14 +3519,14 @@
       "prov": [
         "r474",
         "r522",
-        "r525",
-        "r540",
-        "r545",
-        "r549",
-        "r553",
-        "r557",
-        "r560",
-        "r563"
+        "r524",
+        "r539",
+        "r544",
+        "r548",
+        "r552",
+        "r556",
+        "r559",
+        "r562"
       ]
     },
     {
@@ -3566,14 +3566,14 @@
       },
       "prov": [
         "r474",
-        "r524",
-        "r527",
-        "r544",
-        "r548",
-        "r552",
-        "r555",
-        "r559",
-        "r562",
+        "r525",
+        "r528",
+        "r545",
+        "r549",
+        "r553",
+        "r557",
+        "r560",
+        "r563",
         "r566",
         "r568",
         "r570",
@@ -4776,7 +4776,7 @@
       "prov": [
         "r474",
         "r477",
-        "r495"
+        "r494"
       ]
     },
     {
@@ -4841,7 +4841,7 @@
       "prov": [
         "r474",
         "r477",
-        "r532"
+        "r531"
       ]
     },
     {
@@ -4867,7 +4867,7 @@
       "prov": [
         "r474",
         "r477",
-        "r535"
+        "r536"
       ]
     },
     {
@@ -11579,6 +11579,16 @@
       "id": "r485",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "6"
+    },
+    {
+      "id": "r486",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8",
       "fn": "totalAssets()",
       "args": [],
@@ -11586,7 +11596,7 @@
       "result": "1857085896129683972586"
     },
     {
-      "id": "r486",
+      "id": "r487",
       "block": "26157638",
       "method": "eth_call",
       "to": "0x739d8a60ED4b14E4cB6DCAEAF79d2ec0Ca092237",
@@ -11594,16 +11604,6 @@
       "args": [],
       "ok": true,
       "result": "5"
-    },
-    {
-      "id": "r487",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "6"
     },
     {
       "id": "r488",
@@ -11796,18 +11796,6 @@
       "id": "r494",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0x2371e134e3455e0593363cBF89d3b6cf53740618"
-      ],
-      "ok": true,
-      "result": true
-    },
-    {
-      "id": "r495",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
       "fn": "aggregate3 x2 withdrawQueue(uint256)",
       "args": [
@@ -11829,6 +11817,18 @@
         "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
         "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
       ]
+    },
+    {
+      "id": "r495",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x2371e134e3455e0593363cBF89d3b6cf53740618"
+      ],
+      "ok": true,
+      "result": true
     },
     {
       "id": "r496",
@@ -11858,10 +11858,10 @@
       "id": "r498",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-      "fn": "isAllocator(address)",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
       "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+        "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
       ],
       "ok": true,
       "result": true
@@ -11870,10 +11870,10 @@
       "id": "r499",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "isAllocator(address)",
       "args": [
-        "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0"
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
       ],
       "ok": true,
       "result": true
@@ -11918,6 +11918,18 @@
       "id": "r503",
       "block": "26157638",
       "method": "eth_call",
+      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r504",
+      "block": "26157638",
+      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -11929,18 +11941,6 @@
         "0",
         "0"
       ]
-    },
-    {
-      "id": "r504",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": false
     },
     {
       "id": "r505",
@@ -12017,22 +12017,6 @@
       "id": "r508",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r509",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
       "fn": "totalSupply()",
       "args": [],
@@ -12040,7 +12024,7 @@
       "result": "267194066128579282216"
     },
     {
-      "id": "r510",
+      "id": "r509",
       "block": "26157638",
       "method": "offchain-candidates",
       "fn": "morpho-api",
@@ -12052,6 +12036,22 @@
         "fetchedAt": "2026-10-10T09:09:08.733Z",
         "resultCount": 5
       }
+    },
+    {
+      "id": "r510",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
     },
     {
       "id": "r511",
@@ -12151,22 +12151,6 @@
       "id": "r513",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r514",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
       "fn": "aggregate3 x5 balanceOf(address)",
       "args": [
@@ -12208,6 +12192,22 @@
         "34133355879007307637",
         "27988079427474282986",
         "20061029578279461248"
+      ]
+    },
+    {
+      "id": "r514",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
       ]
     },
     {
@@ -12261,30 +12261,6 @@
       "id": "r516",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
-      "fn": "totalSupply()",
-      "args": [],
-      "ok": true,
-      "result": "2968469318201336398185"
-    },
-    {
-      "id": "r517",
-      "block": "26157638",
-      "method": "offchain-candidates",
-      "fn": "morpho-api",
-      "args": [
-        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x2371e134e3455e0593363cBF89d3b6cf53740618\"], chainId_in:[1]}) { items { user { address } } } }"
-      ],
-      "ok": true,
-      "result": {
-        "fetchedAt": "2026-10-10T09:09:07.973Z",
-        "resultCount": 5
-      }
-    },
-    {
-      "id": "r518",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
       "fn": "aggregate3 x5 convertToAssets(uint256)",
       "args": [
@@ -12327,6 +12303,30 @@
         "30173532785296921253",
         "21627498065938264837"
       ]
+    },
+    {
+      "id": "r517",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "fn": "totalSupply()",
+      "args": [],
+      "ok": true,
+      "result": "2968469318201336398185"
+    },
+    {
+      "id": "r518",
+      "block": "26157638",
+      "method": "offchain-candidates",
+      "fn": "morpho-api",
+      "args": [
+        "{ vaultPositions(first: 5, orderBy: Shares, orderDirection: Desc, where:{vaultAddress_in:[\"0x2371e134e3455e0593363cBF89d3b6cf53740618\"], chainId_in:[1]}) { items { user { address } } } }"
+      ],
+      "ok": true,
+      "result": {
+        "fetchedAt": "2026-10-10T09:09:07.973Z",
+        "resultCount": 5
+      }
     },
     {
       "id": "r519",
@@ -12456,21 +12456,21 @@
       "id": "r524",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-      "fn": "name()",
-      "args": [],
-      "ok": true,
-      "result": "Gauntlet LRT Core"
-    },
-    {
-      "id": "r525",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
       "fn": "totalAssets()",
       "args": [],
       "ok": true,
       "result": "6604026177135432340255"
+    },
+    {
+      "id": "r525",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "name()",
+      "args": [],
+      "ok": true,
+      "result": "Gauntlet LRT Core"
     },
     {
       "id": "r526",
@@ -12486,21 +12486,21 @@
       "id": "r527",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-      "fn": "totalAssets()",
-      "args": [],
-      "ok": true,
-      "result": "875884334084614873775"
-    },
-    {
-      "id": "r528",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
       "fn": "withdrawQueueLength()",
       "args": [],
       "ok": true,
       "result": "5"
+    },
+    {
+      "id": "r528",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "totalAssets()",
+      "args": [],
+      "ok": true,
+      "result": "875884334084614873775"
     },
     {
       "id": "r529",
@@ -12563,16 +12563,6 @@
       "id": "r531",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-      "fn": "withdrawQueueLength()",
-      "args": [],
-      "ok": true,
-      "result": "6"
-    },
-    {
-      "id": "r532",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
       "fn": "aggregate3 x5 withdrawQueue(uint256)",
       "args": [
@@ -12617,6 +12607,16 @@
       ]
     },
     {
+      "id": "r532",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "withdrawQueueLength()",
+      "args": [],
+      "ok": true,
+      "result": "6"
+    },
+    {
       "id": "r533",
       "block": "26157638",
       "method": "eth_call",
@@ -12640,6 +12640,18 @@
     },
     {
       "id": "r535",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
+      "args": [
+        "0x31A5684983EeE865d943A696AAC155363bA024f9"
+      ],
+      "ok": true,
+      "result": false
+    },
+    {
+      "id": "r536",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -12693,18 +12705,6 @@
       ]
     },
     {
-      "id": "r536",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
-      "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9"
-      ],
-      "ok": true,
-      "result": false
-    },
-    {
       "id": "r537",
       "block": "26157638",
       "method": "eth_call",
@@ -12730,10 +12730,10 @@
       "id": "r539",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
-      "fn": "isMetaMorpho(address)",
+      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
+      "fn": "isAllocator(address)",
       "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658"
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
       ],
       "ok": true,
       "result": true
@@ -12742,10 +12742,10 @@
       "id": "r540",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
-      "fn": "isAllocator(address)",
+      "to": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "fn": "isMetaMorpho(address)",
       "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658"
       ],
       "ok": true,
       "result": true
@@ -12804,18 +12804,6 @@
       "id": "r544",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-      "fn": "isAllocator(address)",
-      "args": [
-        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
-      ],
-      "ok": true,
-      "result": true
-    },
-    {
-      "id": "r545",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
@@ -12827,6 +12815,18 @@
         "0",
         "0"
       ]
+    },
+    {
+      "id": "r545",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "isAllocator(address)",
+      "args": [
+        "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D"
+      ],
+      "ok": true,
+      "result": true
     },
     {
       "id": "r546",
@@ -12894,13 +12894,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
       ],
       "ok": true,
       "result": [
-        "2795098797631830809999",
-        "204901202368169190001"
+        "0",
+        "0"
       ]
     },
     {
@@ -12910,13 +12910,13 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9",
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
       ],
       "ok": true,
       "result": [
-        "0",
-        "0"
+        "2795098797631830809999",
+        "204901202368169190001"
       ]
     },
     {
@@ -12985,8 +12985,8 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
+        "0x31A5684983EeE865d943A696AAC155363bA024f9",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
       ],
       "ok": true,
       "result": [
@@ -13001,8 +13001,8 @@
       "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
       "fn": "flowCaps(address,bytes32)",
       "args": [
-        "0x31A5684983EeE865d943A696AAC155363bA024f9",
-        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e"
       ],
       "ok": true,
       "result": [
@@ -13030,22 +13030,6 @@
       "id": "r555",
       "block": "26157638",
       "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r556",
-      "block": "26157638",
-      "method": "eth_call",
       "to": "0x31A5684983EeE865d943A696AAC155363bA024f9",
       "fn": "totalSupply()",
       "args": [],
@@ -13053,7 +13037,7 @@
       "result": "6436342173522994817677"
     },
     {
-      "id": "r557",
+      "id": "r556",
       "block": "26157638",
       "method": "offchain-candidates",
       "fn": "morpho-api",
@@ -13065,6 +13049,22 @@
         "fetchedAt": "2026-10-10T09:09:09.227Z",
         "resultCount": 5
       }
+    },
+    {
+      "id": "r557",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x12dbf4937132ff2c6445212519295ce9afbee3c765ba626af5b197fe6c3941a0"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
+      ]
     },
     {
       "id": "r558",
@@ -13084,22 +13084,6 @@
     },
     {
       "id": "r559",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-      "fn": "config(bytes32)",
-      "args": [
-        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        false,
-        "0"
-      ]
-    },
-    {
-      "id": "r560",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -13146,6 +13130,22 @@
       ]
     },
     {
+      "id": "r560",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+      "fn": "config(bytes32)",
+      "args": [
+        "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        false,
+        "0"
+      ]
+    },
+    {
       "id": "r561",
       "block": "26157638",
       "method": "eth_call",
@@ -13163,22 +13163,6 @@
     },
     {
       "id": "r562",
-      "block": "26157638",
-      "method": "eth_call",
-      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
-      "fn": "flowCaps(address,bytes32)",
-      "args": [
-        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
-        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
-      ],
-      "ok": true,
-      "result": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "id": "r563",
       "block": "26157638",
       "method": "eth_call",
       "to": "0xcA11bde05977b3631167028862bE2a173976CA11",
@@ -13222,6 +13206,22 @@
         "595316108942787967248",
         "456510481628974606838",
         "67570466739047034530"
+      ]
+    },
+    {
+      "id": "r563",
+      "block": "26157638",
+      "method": "eth_call",
+      "to": "0xfd32fA2ca22c76dD6E550706Ad913FC6CE91c75D",
+      "fn": "flowCaps(address,bytes32)",
+      "args": [
+        "0x4881Ef0BF6d2365D3dd6499ccd7532bcdBCE0658",
+        "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284"
+      ],
+      "ok": true,
+      "result": [
+        "0",
+        "0"
       ]
     },
     {
