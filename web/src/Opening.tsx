@@ -182,7 +182,7 @@ function HistoryTile({ refine, history }: { refine?: any; history?: any }) {
   const rows: any[] = history.windows.bySize;
   const rare = rows.filter((x) => x.k <= 1).length;
   const mon = (d: string) => new Date(d + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
-  const p = (x: number) => `${(x * 100).toFixed(x < 0.01 ? 2 : 1)}\u00a0%`;
+  const p = (x: number) => `${(x * 100).toFixed(2)}\u00a0%`;
   return (
     <div className="stat histtile">
       <span className="statlabel">How often has this shock happened? <Tag k="hist" /></span>
