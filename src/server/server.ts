@@ -166,9 +166,12 @@ const server = http.createServer(async (req, res) => {
       const s = buildCustom(body);
       const t0 = Date.now();
       const r = await exclusive(async () => {
-        const rn = await getRunner();
+        let rn = await getRunner();
+        // Another process on the same node (npm run test:fork, a replay) may have reverted to an older snapshot,
+        // which invalidates ours: start from the base state, re-initialising if our snapshot is gone.
+        try { await engine!.reset(); } catch { runner = null; rn = await getRunner(); }
         const out = await rn.run(s);
-        await engine!.reset();
+        try { await engine!.reset(); } catch { runner = null; }
         return out;
       });
       return json(res, 200, { scenario: s, result: r, ms: Date.now() - t0 });
