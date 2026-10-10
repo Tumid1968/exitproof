@@ -32,3 +32,4 @@
     - filet anti-crash du serveur (unhandledRejection / uncaughtException), corps non-JSON → 400, analyse concurrente → 409.
 22. Fraîcheur des feeds : intervalle maximal et variation de déclenchement **observés** sur les 24 derniers rounds (`getRoundData`), Chainlink ne les publiant pas on-chain. cbBTC/USD : âge 10,1 h, intervalle max observé 24,0 h, déclenchement ~2 % → normal.
 23. Public Allocator exécuté (scénario d'atténuation générique) : Steakhouse USDT, sortie possible du plus gros détenteur 46,73 M → 50,47 M USDT après déplacement de 3,75 M par un coffre pair (frais payés dans la transaction).
+24. Feeds de stablecoins (USDT/USD…) : presque toutes les mises à jour viennent du heartbeat ; quand les variations observées sont < 0,05 %, l'interface dit « heartbeat-driven » au lieu d'un seuil de variation ~0,00 % trompeur. Graphe : hauteur limitée à 720 px avec défilement (coffres à 180+ nœuds).

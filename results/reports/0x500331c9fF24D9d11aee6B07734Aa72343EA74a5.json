@@ -3051,7 +3051,7 @@
       "value": "0 DAI",
       "cls": "bounded",
       "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
-      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; not executed before the exit"
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity"
     },
     {
       "item": "AMM liquidation capacity, sUSDe market #1",

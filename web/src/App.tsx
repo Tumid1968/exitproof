@@ -180,7 +180,7 @@ function Findings({ g }: { g: Graph }) {
     const u = oldest.data.observedUpdates;
     items.push(late.length
       ? `Freshness ALERT: ${late.map((f) => `${f.data.description} last updated ${h(f.data.ageSeconds as number)} before the block, longer than any of its last ${f.data.observedUpdates.roundsObserved} update intervals (max ${h(f.data.observedUpdates.maxGapSeconds)})`).join("; ")}. Morpho oracles do not check staleness.`
-      : `Freshness: every Chainlink feed updated within its usual interval. Oldest: ${oldest.data.description}, ${h(oldest.data.ageSeconds as number)} old${u ? `; over its last ${u.roundsObserved} rounds it updated at most every ${h(u.maxGapSeconds)} (heartbeat-like) or on moves of ~${(u.minTriggeredMovePct ?? u.medianMovePct).toFixed(1)} % (observed on-chain; Chainlink does not publish these on-chain)` : ""}. Morpho oracles do not check staleness themselves.`);
+      : `Freshness: every Chainlink feed updated within its usual interval. Oldest: ${oldest.data.description}, ${h(oldest.data.ageSeconds as number)} old${u ? `; over its last ${u.roundsObserved} rounds it updated at most every ${h(u.maxGapSeconds)} (heartbeat-like) ${(u.minTriggeredMovePct ?? u.medianMovePct) < 0.05 ? "(heartbeat-driven)" : `or on moves of ~${(u.minTriggeredMovePct ?? u.medianMovePct).toFixed(1)} %`} (observed on-chain; Chainlink does not publish these on-chain)` : ""}. Morpho oracles do not check staleness themselves.`);
   }
   for (const n of (g.notes ?? []).filter((x: string) => x.includes("price() reverts"))) items.push("Frozen market: " + n);
   const hl = g.holders?.list ?? [];

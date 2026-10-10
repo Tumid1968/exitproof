@@ -221,7 +221,7 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     { item: "Worst executed run (holder exitable)", value: `${fmtA(B(worstRun.holderExecutedExit))} (${worstRun.changePct} %)`, cls: "executed", source: `scenario ${worstRun.id}: ${worstRun.others.length} exits then the holder's`, hypotheses: "other holders impersonated: their exits are a scenario, not their intention" },
     ...(cushion ? [{ item: "Cushion before blockage", value: cushion.revertsAt === "none" ? "no blockage even at the competitor's full exit" : `passes ${fmtA(B(cushion.passesAt))}, reverts ${fmtA(B(cushion.revertsAt))}`, cls: "executed" as const, source: `bisection, ${cushion.probes.length} executions on the fork`, hypotheses: "competitor = next largest holder of the vault" }] : []),
     { item: "Borrowers identified", value: Object.values(g.borrowers).map((b) => `${(b.coverage * 100).toFixed(2)} %`).join(" / ") + " of debt", cls: "measured", source: "candidates from Morpho API, each position(id, borrower) re-read on-chain; coverage = Σ borrowShares found / totalBorrowShares", hypotheses: "none (coverage is measured, not assumed)" },
-    { item: "Public Allocator backstop (net)", value: fmtA(B(String(g.summary.publicAllocatorReallocatableIntoExposedMarkets ?? "0"))), cls: "bounded", source: "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator", hypotheses: "upper bound: peers drawing on the same source market share its liquidity; not executed before the exit" },
+    { item: "Public Allocator backstop (net)", value: fmtA(B(String(g.summary.publicAllocatorReallocatableIntoExposedMarkets ?? "0"))), cls: "bounded", source: "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator", hypotheses: `upper bound: peers drawing on the same source market share its liquidity${mitigation ? `; executed in scenario ${mitigation.id}: holder exitable ${fmtA(B(mitigation.withoutWei))} → ${fmtA(B(mitigation.withWei))}` : ""}` },
     ...Object.entries(g.dex ?? {}).map(([id, d]) => {
       const m = g.markets.find((x) => x.id === id)!;
       return { item: `AMM liquidation capacity, ${m.collateralSymbol} market #${m.queueIndex}`, value: `${Number(formatUnits(d.capacity, m.collateralDecimals)).toLocaleString("en-US", { maximumFractionDigits: 2 })} of ${Number(formatUnits(d.collateralAtRisk, m.collateralDecimals)).toLocaleString("en-US", { maximumFractionDigits: 2 })} ${m.collateralSymbol} posted`, cls: "bounded" as const, source: "Uniswap V3 QuoterV2 and Curve get_dy quotes at the block; venues from the Uniswap V3 factory and Curve MetaRegistry", hypotheses: "lower bound: aggregators and other DEXes excluded; depth assumed to scale with a shocked price" };
@@ -231,10 +231,11 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     ...g.nodes.filter((n) => n.kind === "feed" && n.data.observedUpdates).map((n) => {
       const u = n.data.observedUpdates as { roundsObserved: number; maxGapSeconds: number; minTriggeredMovePct: number | null; medianMovePct: number; ageWithinObservedMax: boolean };
       const age = ((n.data.ageSeconds as number) / 3600).toFixed(1);
-      const trig = (u.minTriggeredMovePct ?? u.medianMovePct).toFixed(2);
+      const tm = u.minTriggeredMovePct ?? u.medianMovePct;
+      const trig = tm < 0.05 ? "heartbeat-driven (moves < 0.05 %)" : `trigger move ~${tm.toFixed(2)} %`;
       return {
         item: `Feed freshness, ${n.data.description}`,
-        value: `age ${age} h; max observed interval ${(u.maxGapSeconds / 3600).toFixed(1)} h; trigger move ~${trig} % → ${u.ageWithinObservedMax ? "normal" : "OLDER than any observed interval"}`,
+        value: `age ${age} h; max observed interval ${(u.maxGapSeconds / 3600).toFixed(1)} h; ${trig} → ${u.ageWithinObservedMax ? "normal" : "OLDER than any observed interval"}`,
         cls: "measured" as const,
         source: `latestRoundData + getRoundData of the last ${u.roundsObserved} rounds on ${n.address}`,
         hypotheses: "heartbeat and deviation threshold are not on-chain: inferred from observed updates",

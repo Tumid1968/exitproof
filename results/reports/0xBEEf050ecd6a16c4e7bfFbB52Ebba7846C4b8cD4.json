@@ -2334,7 +2334,7 @@
       "value": "0 WETH",
       "cls": "bounded",
       "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
-      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; not executed before the exit"
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity"
     },
     {
       "item": "AMM liquidation capacity, wstETH market #1",
@@ -2422,7 +2422,7 @@
     },
     {
       "item": "Feed freshness, WBTC / BTC",
-      "value": "age 0.4 h; max observed interval 24.0 h; trigger move ~0.02 % → normal",
+      "value": "age 0.4 h; max observed interval 24.0 h; heartbeat-driven (moves < 0.05 %) → normal",
       "cls": "measured",
       "source": "latestRoundData + getRoundData of the last 25 rounds on 0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
       "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"

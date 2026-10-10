@@ -2419,7 +2419,7 @@
       "value": "3.44 WETH",
       "cls": "bounded",
       "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
-      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; not executed before the exit"
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; executed in scenario all_first_then_public_allocator: holder exitable 1,274.42 WETH → 1,277.86 WETH"
     },
     {
       "item": "AMM liquidation capacity, wstETH market #1",

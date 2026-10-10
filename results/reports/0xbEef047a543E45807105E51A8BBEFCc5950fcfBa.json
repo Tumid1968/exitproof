@@ -5687,7 +5687,7 @@
       "value": "3,749,484.33 USDT",
       "cls": "bounded",
       "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
-      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; not executed before the exit"
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; executed in scenario all_first_then_public_allocator: holder exitable 46,728,009.24 USDT → 50,473,744.09 USDT"
     },
     {
       "item": "AMM liquidation capacity, wstETH market #1",
@@ -5782,7 +5782,7 @@
     },
     {
       "item": "Feed freshness, WBTC / BTC",
-      "value": "age 0.4 h; max observed interval 24.0 h; trigger move ~0.02 % → normal",
+      "value": "age 0.4 h; max observed interval 24.0 h; heartbeat-driven (moves < 0.05 %) → normal",
       "cls": "measured",
       "source": "latestRoundData + getRoundData of the last 25 rounds on 0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23",
       "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
@@ -5796,7 +5796,7 @@
     },
     {
       "item": "Feed freshness, USDT / USD",
-      "value": "age 7.1 h; max observed interval 24.0 h; trigger move ~0.00 % → normal",
+      "value": "age 7.1 h; max observed interval 24.0 h; heartbeat-driven (moves < 0.05 %) → normal",
       "cls": "measured",
       "source": "latestRoundData + getRoundData of the last 25 rounds on 0x3E7d1eAB13ad0104d2750B8863b489D65364e32D",
       "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
@@ -5817,7 +5817,7 @@
     },
     {
       "item": "Feed freshness, DAI / USD",
-      "value": "age 0.7 h; max observed interval 1.0 h; trigger move ~0.01 % → normal",
+      "value": "age 0.7 h; max observed interval 1.0 h; heartbeat-driven (moves < 0.05 %) → normal",
       "cls": "measured",
       "source": "latestRoundData + getRoundData of the last 25 rounds on 0xAed0c38402a5d19df6E4c03F4E2DceD6e29c1ee9",
       "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"
@@ -5838,7 +5838,7 @@
     },
     {
       "item": "Feed freshness, FLHYon / USD (Calculated)",
-      "value": "age 8.2 h; max observed interval 72.0 h; trigger move ~0.04 % → normal",
+      "value": "age 8.2 h; max observed interval 72.0 h; heartbeat-driven (moves < 0.05 %) → normal",
       "cls": "measured",
       "source": "latestRoundData + getRoundData of the last 25 rounds on 0x1b5dEC296BEE063230B7E477D5FE5aDA326Cb08e",
       "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"

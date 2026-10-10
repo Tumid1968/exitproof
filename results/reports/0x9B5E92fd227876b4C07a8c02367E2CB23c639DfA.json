@@ -570,11 +570,11 @@
       "value": "0 USDC",
       "cls": "bounded",
       "source": "flowCaps(vault, id), config(id), market(id), position(id, vault) of every peer vault with the Public Allocator",
-      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity; not executed before the exit"
+      "hypotheses": "upper bound: peers drawing on the same source market share its liquidity"
     },
     {
       "item": "Feed freshness, USDC / USD",
-      "value": "age 7.1 h; max observed interval 23.0 h; trigger move ~0.00 % → normal",
+      "value": "age 7.1 h; max observed interval 23.0 h; heartbeat-driven (moves < 0.05 %) → normal",
       "cls": "measured",
       "source": "latestRoundData + getRoundData of the last 25 rounds on 0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6",
       "hypotheses": "heartbeat and deviation threshold are not on-chain: inferred from observed updates"

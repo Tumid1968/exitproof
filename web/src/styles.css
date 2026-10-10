@@ -81,7 +81,7 @@ tr.click:hover td { background: var(--panel2); }
 .bar .lock { background: repeating-linear-gradient(45deg, #f8514955, #f8514955 6px, #f8514922 6px, #f8514922 12px); }
 .bar span { position: absolute; left: 8px; top: 4px; font-size: 12px; font-weight: 600; }
 
-.graph-wrap { overflow-x: auto; background: #0b0e13; border: 1px solid var(--line); border-radius: 8px; }
+.graph-wrap { overflow: auto; max-height: 720px; background: #0b0e13; border: 1px solid var(--line); border-radius: 8px; }
 .gnode { cursor: pointer; }
 .gnode rect { stroke-width: 1.2; }
 .gnode text { font-size: 11px; fill: var(--text); pointer-events: none; }
