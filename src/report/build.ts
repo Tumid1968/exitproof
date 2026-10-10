@@ -273,22 +273,38 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     })),
   }));
   const cellOf = (id: string, h: number, hc: number) => verdictGrid.find((x) => x.id === id)?.cells.find((c) => c.horizonDays === h && c.lockedHaircut === hc);
+  // Short incident names (for a two-line verdict)
+  const shortOf = (id: string): string => {
+    if (id === meta.incidents.blind?.id) {
+      const sym = g.markets.find((m) => m.params.collateralToken === meta.incidents.blind!.collateral)?.collateralSymbol ?? "collateral";
+      return `${sym} depegs (oracle blind) and others exit first`;
+    }
+    const sh = id === meta.incidents.dexShock?.id ? meta.incidents.dexShock : meta.incidents.shock;
+    const feed = (sh?.shock.label ?? "price feed").replace(/ x0\.9$/, "");
+    return `${feed} −10 %${id === meta.incidents.dexShock?.id ? ", AMM-limited liquidations," : ""} and others exit first`;
+  };
+  const shortIncidents = Object.fromEntries(incidents.map((i) => [i.id, shortOf(i.id)]));
+  const depShort = (() => {
+    const h = getBack.afterHolder, pe = getBack.afterPeer;
+    if (pe && (!h || pe.changePct < h.changePct) && pe.changePct < 0) return `exit liquidity shared with ${peerName(pe.otherVault)}`;
+    if (h && h.changePct < 0) return "holder concentration in this vault";
+    return null;
+  })();
+  // Same function and parameters as p*, for a total loss of the position (hack, governance attack, oracle exploit: not modeled)
+  const totalLoss = [7, 30, 90].map((h) => {
+    const v = decide(scaleTo18(mkInputs({ positionValue: holderValue, exitableNow, incidentValueLoss: holderValue, incidentLocked: 0n }, { ...defaults, horizonDays: h, lockedHaircut: 0 }), dec), unit);
+    return { horizonDays: h, breakEven: v.breakEvenProbability, decision: v.decision, exitCost: v.exitCost, exitableShare: v.exitableShare };
+  });
   const headline = (() => {
-    const deps = [liqDep, valueDep].filter(Boolean).join("; ");
+    const dep = depShort ? ` Dominant dependency: ${depShort}.` : "";
     if (!binding) {
       const none = verdicts.find((v) => v.verdict.decision === "NO_ACTION_POSSIBLE");
-      return none ? `CANNOT EXIT: ${none.verdict.sentence}${deps ? ` Dominant dependency: ${deps}.` : ""}`
-        : `STAY: no modelled incident causes a loss large enough to justify paying the exit cost.${deps ? ` Dominant dependency: ${deps}.` : ""}`;
+      return none ? `Less than 1 % of the position can leave at this block: exiting is not an option.${dep}`
+        : `No modeled incident causes a loss large enough to pay for leaving.${dep}`;
     }
-    const lf = binding.v.incidentLoss / Number(formatUnits(holderValue, dec));
-    const impl = refMain ? impliedFor(lf, refMain, defaults.horizonDays) : null;
-    const implTxt = !refMain ? "no sourced reference yield exists for this asset, so no spread-implied probability is given"
-      : impl === null
-      ? `the yield spread over the ${refMain.name}, ${pctS(netApy)} vs ${pctS(refMain.apy)}, is ${netApy - refMain.apy <= 0 ? "negative: it prices no default risk" : "not defined"}`
-      : `the yield spread over the ${refMain.name}, ${pctS(netApy)} vs ${pctS(refMain.apy)}, implies ~${pctS(impl)} (risk-neutral, includes liquidity premium, not a prediction)`;
-    const zero = cellOf(binding.inc.id, defaults.horizonDays, 0)?.breakEven ?? null;
-    const zeroTxt = zero === null ? "" : ` (${zero > 1 ? "never, even if certain," : pctS(zero)} if locked funds cost 0 %)`;
-    return `Exiting becomes worthwhile if you judge the incident "${binding.inc.title.replace(/^Incident: /, "")}" more likely than ${pctS(binding.v.breakEvenProbability!)} within ${defaults.horizonDays} days${zeroTxt}. ${implTxt[0].toUpperCase() + implTxt.slice(1)}.${deps ? ` Dominant dependency: ${deps}.` : ""}`;
+    const at = (hc: number) => cellOf(binding.inc.id, defaults.horizonDays, hc)?.breakEven ?? null;
+    const f = (x: number | null) => (x === null ? "never" : x > 1 ? "never (even if certain)" : pctS(x));
+    return `Leaving pays off if you judge “${shortOf(binding.inc.id)}” more likely than ${f(at(0.1))} (locked funds cost 10 %) or ${f(at(0))} (cost 0 %) within ${defaults.horizonDays} days.${dep}`;
   })();
 
   // ---- 7. evidence ledger: every headline number with its class, source and hypotheses
@@ -344,7 +360,8 @@ export async function buildReport(vaultIn: Address = ACTORS.steakhouseEth, holde
     incidents: incidents.map((x) => ({ ...x, inputs: Object.fromEntries(Object.entries(x.inputs).map(([k, v]) => [k, v.toString()])) })),
     verdictParams: { netApy, decimals: dec, gasCostOut: gasInAsset.toString(), gasCostReentry: gasInAsset.toString(), gasNote: gasInAsset === 0n ? "gas is paid in ETH: not converted into the vault asset (no sourced price), shown separately" : null, gasOutEth: gasOut.toString(), slippage: slippage.toString(), exitGasUsed: aloneExit.gasUsed, baseFeePerGas: baseFee.toString(), defaults },
     verdicts, depegCurve, depegCurveCollateral: blindSym, evidence, mitigation,
-    headline, getBack, dominantDependency: { liquidity: liqDep, value: valueDep }, references, verdictGrid,
+    headline, getBack, dominantDependency: { liquidity: liqDep, value: valueDep }, references, verdictGrid, shortIncidents,
+    notModeled: { risks: ["smart-contract hack (Morpho Blue, MetaMorpho, collateral or oracle contracts)", "governance attack (owner/curator multisig, token admins, Lido DAO)", "oracle exploit or manipulation beyond the modeled price moves"], totalLoss },
     bindingIncident: binding ? binding.inc.id : null,
     headlineDecision: binding ? binding.v.decision : verdicts.some((v) => v.verdict.decision === "NO_ACTION_POSSIBLE") ? "NO_ACTION_POSSIBLE" : "STAY",
     dex: Object.fromEntries(Object.entries(g.dex ?? {}).map(([id, d]) => [id, { capacity: d.capacity.toString(), collateralAtRisk: d.collateralAtRisk.toString(), venues: d.venues.filter((v) => v.capacity > 0n).map((v) => ({ ...v, capacity: v.capacity.toString() })) }])),
